@@ -1,17 +1,17 @@
 # Required Notice
 
-**Copyright © 2025 Wolfie**  
-Licensed under the Polyform Noncommercial License 1.0.0  
+**Copyright © 2025 Wolfie**
+Licensed under the Polyform Noncommercial License 1.0.0
 https://polyformproject.org/licenses/noncommercial/1.0.0
 
 ---
 
 ## Project Information
 
-**Project:** SAS Curiosity Cup 2026 - North Carolina EV Infrastructure Gap Analysis  
-**Institution:** Fayetteville State University  
-**Course:** BIDA 650 - Advanced Business Analytics  
-**Faculty Advisor:** Dr. Xiaofeng Nie  
+**Project:** SAS Curiosity Cup 2026 - North Carolina EV Infrastructure Gap Analysis
+**Institution:** Fayetteville State University
+**Course:** BIDA 640 - Big Data & Web Intelligence
+**Faculty Advisor:** Thomas Grant
 **Competition:** SAS Global Student Analytics Competition 2026
 
 ---
@@ -21,6 +21,7 @@ https://polyformproject.org/licenses/noncommercial/1.0.0
 This project uses publicly available datasets:
 
 1. **North Carolina Electric Vehicle Registrations**
+
    - Source: North Carolina Department of Transportation (NCDOT)
    - Period: September 2018 - June 2025
    - License: Public domain / open data
@@ -47,16 +48,18 @@ Competition materials and reference papers included in this repository are used 
 This software is licensed for **non-commercial use only**.
 
 ### You MAY:
-✅ Study the code and methodology  
-✅ Use it for educational purposes  
-✅ Share it with attribution  
-✅ Modify it for personal learning  
+
+✅ Study the code and methodology
+✅ Use it for educational purposes
+✅ Share it with attribution
+✅ Modify it for personal learning
 
 ### You MAY NOT:
-❌ Use it for commercial purposes  
-❌ Sell the code or derivatives  
-❌ Incorporate it into commercial products  
-❌ Relicense under different terms  
+
+❌ Use it for commercial purposes
+❌ Sell the code or derivatives
+❌ Incorporate it into commercial products
+❌ Relicense under different terms
 
 For commercial licensing inquiries, please contact the author.
 
