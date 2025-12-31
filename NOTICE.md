@@ -8,10 +8,10 @@ https://polyformproject.org/licenses/noncommercial/1.0.0
 
 ## Project Information
 
-**Project:** SAS Curiosity Cup 2026 - North Carolina EV Infrastructure Gap Analysis
-**Institution:** Fayetteville State University
-**Course:** BIDA 640 - Big Data & Web Intelligence
-**Faculty Advisor:** Thomas Grant
+**Project:** SAS Curiosity Cup 2026 - North Carolina EV Infrastructure Gap Analysis<br>
+**Institution:** Fayetteville State University<br>
+**Course:** BIDA 640 - Big Data & Web Intelligence<br>
+**Faculty Advisor:** Thomas Grant<br>
 **Competition:** SAS Global Student Analytics Competition 2026
 
 ---
@@ -49,16 +49,16 @@ This software is licensed for **non-commercial use only**.
 
 ### You MAY:
 
-✅ Study the code and methodology
-✅ Use it for educational purposes
-✅ Share it with attribution
+✅ Study the code and methodology<br>
+✅ Use it for educational purposes<br>
+✅ Share it with attribution<br>
 ✅ Modify it for personal learning
 
 ### You MAY NOT:
 
-❌ Use it for commercial purposes
-❌ Sell the code or derivatives
-❌ Incorporate it into commercial products
+❌ Use it for commercial purposes<br>
+❌ Sell the code or derivatives<br>
+❌ Incorporate it into commercial products<br>
 ❌ Relicense under different terms
 
 For commercial licensing inquiries, please contact the author.
