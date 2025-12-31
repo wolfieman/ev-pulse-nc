@@ -43,4 +43,29 @@ Chart and map generation code
 
 ## Python Scripts (`python/`)
 
-**Status:** Future development
+Utility scripts for data acquisition and preprocessing.
+
+### data-acquisition/
+
+**ncdot_zev_downloader.py** - Downloads monthly ZEV registration data from NCDOT
+
+```bash
+# Download a range of months
+python ncdot_zev_downloader.py --start 2025-07 --end 2025-10 --outdir ../../../data/raw/ncdot-monthly
+
+# Download specific months
+python ncdot_zev_downloader.py --months 2025-07 2025-08 2025-09
+```
+
+**Dependencies:** `requests`, `openpyxl` (optional, for Excel validation)
+
+### data-cleaning/
+
+**consolidate_zev_monthly.py** - Consolidates monthly Excel files into a single dataset
+
+```bash
+# Consolidate all files in a directory
+python consolidate_zev_monthly.py --indir ../../../data/raw/ncdot-monthly --out ../../../data/processed/nc_zev_consolidated.xlsx
+```
+
+**Dependencies:** `pandas`, `openpyxl`

@@ -25,6 +25,12 @@
   - Power output (kW) per connector
   - Facility type, access type, operational status
 
+### ncdot-monthly/ (downloaded via Python script)
+- **Source:** NCDOT Climate Change Documents
+- **Description:** Monthly ZEV registration Excel files
+- **Files:** `{year}-{month}-registration-data.xlsx`
+- **Download:** Use `code/python/data-acquisition/ncdot_zev_downloader.py`
+
 ## Processed Data (`processed/`)
 
 Cleaned and transformed datasets generated from SAS processing scripts.

@@ -50,9 +50,9 @@ This project applies a comprehensive **4-phase analytics framework**—descripti
   - Time series forecasting (ARIMA/Exponential Smoothing)
   - Data manipulation and cleaning
   - Statistical analysis and visualization
-- **Python** - Exploratory data analysis, geospatial processing
-  - pandas, matplotlib, seaborn
-  - Geopy for geocoding
+- **Python** - Data acquisition and preprocessing utilities
+  - requests, openpyxl - NCDOT data downloading
+  - pandas - Data consolidation and cleaning
 - **Excel** - Initial data profiling and validation
 
 ### Analytical Framework
@@ -96,7 +96,11 @@ sas-cup-26/
 │   │   ├── 04-forecasting/       # Time series forecasting models
 │   │   ├── 05-gap-analysis/      # Diagnostic gap metrics
 │   │   └── 06-visualization/     # Chart and map generation
-│   ├── python/                   # Python EDA scripts (future)
+│   ├── python/                   # Python utility scripts
+│   │   ├── data-acquisition/     # Data download scripts
+│   │   │   └── ncdot_zev_downloader.py
+│   │   └── data-cleaning/        # Data consolidation scripts
+│   │       └── consolidate_zev_monthly.py
 │   └── README.md                 # Code execution guide
 │
 ├── docs/                         # Project documentation
