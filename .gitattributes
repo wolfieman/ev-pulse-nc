@@ -1,0 +1,16 @@
+# Git LFS tracking rules for large data files
+# Install Git LFS before committing: git lfs install
+# Track all CSV files with Git LFS
+*.csv filter=lfs diff=lfs merge=lfs -text
+# Track Excel files with Git LFS
+*.xlsx filter=lfs diff=lfs merge=lfs -text
+*.xls filter=lfs diff=lfs merge=lfs -text
+# Track SAS data files with Git LFS
+*.sas7bdat filter=lfs diff=lfs merge=lfs -text
+*.sas7bcat filter=lfs diff=lfs merge=lfs -text
+code/sas/02-data-prep/shapefiles/*.shp filter=lfs diff=lfs merge=lfs -text
+code/sas/02-data-prep/shapefiles/*.shx filter=lfs diff=lfs merge=lfs -text
+code/sas/02-data-prep/shapefiles/*.dbf filter=lfs diff=lfs merge=lfs -text
+code/sas/02-data-prep/shapefiles/*.prj filter=lfs diff=lfs merge=lfs -text
+code/sas/02-data-prep/shapefiles/*.cpg filter=lfs diff=lfs merge=lfs -text
+*.geojson filter=lfs diff=lfs merge=lfs -text

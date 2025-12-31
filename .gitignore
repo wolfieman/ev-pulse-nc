@@ -1,0 +1,152 @@
+# SAS Curiosity Cup 2026 - North Carolina EV Infrastructure Analysis
+# .gitignore
+
+# ============================================================================
+# Large Data Files (use Git LFS instead)
+# ============================================================================
+*.csv
+*.xlsx
+*.xls
+*.sas7bdat
+*.sas7bcat
+
+# ============================================================================
+# SAS Files
+# ============================================================================
+# SAS temporary files
+*.log
+*.lst
+*.sas7bndx
+work/
+saswork/
+sastemp/
+
+# SAS WORK library
+SASWORK*/
+!SASWORK*/.gitkeep
+
+# SAS catalog files
+*.sas7bcat
+*.sc2
+
+# SAS output files
+*.rtf
+*.pdf
+*.html
+!paper/*.pdf
+!docs/**/*.pdf
+!output/figures/*.pdf
+
+# ============================================================================
+# Python
+# ============================================================================
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb_checkpoints
+
+# ============================================================================
+# R (if used)
+# ============================================================================
+.Rhistory
+.RData
+.Rproj.user
+
+# ============================================================================
+# Data Science / Analytics
+# ============================================================================
+# Processed data (keep raw in Git LFS)
+data/processed/*.csv
+data/processed/*.parquet
+
+# Model artifacts
+*.pkl
+*.pickle
+*.joblib
+*.h5
+*.hdf5
+
+# ============================================================================
+# IDE / Editor
+# ============================================================================
+# VS Code
+.vscode/
+*.code-workspace
+
+# PyCharm
+.idea/
+*.iml
+
+# SAS Studio / Enterprise Guide
+*.egp
+*.egp.bak
+
+# ============================================================================
+# OS Generated
+# ============================================================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# ============================================================================
+# Documentation
+# ============================================================================
+# MS Office temporary files
+~$*.docx
+~$*.xlsx
+~$*.pptx
+*.tmp
+
+# ============================================================================
+# Git LFS
+# ============================================================================
+# Track these large files with Git LFS (uncomment after LFS init)
+# See: git lfs track "*.csv"
+# .gitattributes will handle LFS patterns
+
+# ============================================================================
+# Project Specific
+# ============================================================================
+# Scratch / working files
+scratch/
+temp/
+tmp/
+
+# Credentials (if any API keys used)
+.env
+.env.local
+credentials.json
+secrets/
+
+# Output archives
+*.zip
+*.tar.gz
+!submission/*.zip
+
+# ============================================================================
+# Competition Submission
+# ============================================================================
+# Keep final submission materials
+!paper/final-paper.docx
+!paper/appendix-visualizations.docx
