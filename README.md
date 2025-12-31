@@ -46,7 +46,7 @@ This project applies a comprehensive **4-phase analytics framework**—descripti
 ## 🛠️ Tech Stack & Methodology
 
 ### Software & Tools
-- **SAS Viya Workbench for Learners** - Primary analytics platform
+- **SAS Viya** - Primary analytics platform
   - Time series forecasting (ARIMA/Exponential Smoothing)
   - Data manipulation and cleaning
   - Statistical analysis and visualization
@@ -133,7 +133,7 @@ sas-cup-26/
 ## 🚀 Getting Started
 
 ### Prerequisites
-- SAS Viya Workbench for Learners (free academic license)
+- SAS Viya 
 - Git with Git LFS extension
 - Python 3.8+ (optional, for EDA scripts)
 
@@ -243,13 +243,13 @@ This analysis stands out through:
 
 ## 👥 Team
 
-**Wolfie**  
+**Wolfgang Sanyer**  
 MBA Candidate, Business & Data Analytics Concentration  
 Fayetteville State University  
 Background: Computer Science, 15+ years data analytics experience
 
-**Faculty Advisor:** Dr. Xiaofeng Nie  
-Course: BIDA 650 - Advanced Business Analytics
+**Faculty Advisor:** Thomas Grant  
+Course: BIDA 640 - Big Data & Web Intelligence
 
 ---
 
@@ -280,7 +280,7 @@ See the [LICENSE](LICENSE) file for full terms.
 
 **Required Notice:**
 ```
-Copyright © 2025 Wolfie
+Copyright © 2025 Wolfgang Sanyer
 Licensed under the Polyform Noncommercial License 1.0.0
 https://polyformproject.org/licenses/noncommercial/1.0.0
 ```
