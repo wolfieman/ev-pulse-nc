@@ -88,6 +88,9 @@ data/processed/*.parquet
 .idea/
 *.iml
 
+# Claude Code
+.claude/
+
 # SAS Studio / Enterprise Guide
 *.egp
 *.egp.bak
