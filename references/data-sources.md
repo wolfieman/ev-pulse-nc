@@ -24,10 +24,7 @@
 - NREL - 2030 National Charging Network projections
 - NEVI Formula Program guidelines - Federal infrastructure funding
 
-## Competition Materials
+## Reference Materials
 
-- SAS Curiosity Cup 2026 Final Competition Guidelines
-- Reference papers from 2025 winning teams:
-  - Team DataMind (social media analysis)
-  - Machine Learning Dynamite (breast cancer detection)
-  - Team Data ACES (Alzheimer's prediction)
+- Reference analytics papers and case studies
+- Industry research and best practices

@@ -1,15 +1,15 @@
 #!/bin/bash
 
-# SAS Curiosity Cup 2026 - Repository Structure Builder
+# EV Pulse NC - Repository Structure Builder
 # Run this script to create the complete folder structure locally
 # Usage: bash setup-repo-structure.sh
 
-echo "🚀 Creating SAS Curiosity Cup 2026 repository structure..."
+echo "🚀 Creating EV Pulse NC repository structure..."
 echo ""
 
 # Create main directory
-# mkdir -p sas-cup-26
-# cd sas-cup-26
+# mkdir -p ev-pulse-nc
+# cd ev-pulse-nc
 
 # ============================================================================
 # DATA DIRECTORIES

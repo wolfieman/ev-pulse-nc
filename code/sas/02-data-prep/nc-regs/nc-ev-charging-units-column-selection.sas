@@ -1,5 +1,5 @@
 /*==============================================================
-  SAS Curiosity Cup 2026 — AFDC Charging Units Curation (KEEP-only)
+  EV Pulse NC — AFDC Charging Units Curation (KEEP-only)
   Input : CUPDATA.EV_CHARGING_UNITS
   Output: CUPDATA.NC_EV_CHARGING_UNITS
 
