@@ -1,5 +1,5 @@
 # Quick Reference Card
-## sas-cup-26 - Essential Commands
+## ev-pulse-nc - Essential Commands
 
 ---
 
@@ -27,13 +27,13 @@ git lfs install
 git lfs track "*.csv"
 
 # 5. Create GitHub repo (via web: github.com/new)
-# Name: sas-cup-26
+# Name: ev-pulse-nc
 # Public, no README
 
 # 6. Initial commit and push
 git add .
 git commit -m "Initial commit: SAS Curiosity Cup 2026 project"
-git remote add origin https://github.com/YOUR_USERNAME/sas-cup-26.git
+git remote add origin https://github.com/YOUR_USERNAME/ev-pulse-nc.git
 git branch -M main
 git push -u origin main
 ```
@@ -93,7 +93,7 @@ git commit -m "Fix: Track CSV with LFS"
 ### Wrong remote URL
 ```bash
 git remote -v  # Check current
-git remote set-url origin https://github.com/YOUR_USERNAME/sas-cup-26.git
+git remote set-url origin https://github.com/YOUR_USERNAME/ev-pulse-nc.git
 ```
 
 ### Undo last commit (not pushed yet)
@@ -136,8 +136,5 @@ paper/             ← Write final paper here
 ❌ Don't commit *.log or *.lst files  
 
 ---
-
-**Competition Deadline:** February 22, 2026  
-**Days Remaining:** Check SETUP-CHECKLIST.md
 
 **Full Instructions:** See LOCAL-SETUP-GUIDE.md

@@ -1,4 +1,4 @@
-# Setup Checklist for sas-cup-26
+# Setup Checklist for ev-pulse-nc
 
 ## ✅ Pre-Commit Checklist
 
@@ -9,7 +9,7 @@
 - [ ] Copy project documents to `docs/`
   - [ ] planning/ (execution plan, outline)
   - [ ] eda-reports/ (3 EDA PDFs)
-  - [ ] competition-guidelines/ (guidelines + reference papers)
+  - [ ] reference-papers/ (research papers)
   - [ ] research/ (supporting papers)
 - [ ] Export SAS code scripts to `code/sas/`
 - [ ] Verify `.gitignore` and `.gitattributes` in place
@@ -35,10 +35,10 @@ git add .
 git commit -m "Initial commit: SAS Curiosity Cup 2026 project structure"
 
 # Create GitHub repo (via web or gh CLI)
-gh repo create sas-cup-26 --public --source=. --remote=origin
+gh repo create ev-pulse-nc --public --source=. --remote=origin
 
 # Or manually add remote
-git remote add origin https://github.com/yourusername/sas-cup-26.git
+git remote add origin https://github.com/yourusername/ev-pulse-nc.git
 
 # Push to GitHub
 git branch -M main

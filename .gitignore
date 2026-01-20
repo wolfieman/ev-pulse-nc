@@ -1,4 +1,4 @@
-# SAS Curiosity Cup 2026 - North Carolina EV Infrastructure Analysis
+# EV Pulse NC - North Carolina Electric Vehicle Analytics
 # .gitignore
 
 # ============================================================================
@@ -148,8 +148,7 @@ secrets/
 !submission/*.zip
 
 # ============================================================================
-# Competition Submission
+# Report Deliverables
 # ============================================================================
-# Keep final submission materials
-!paper/final-paper.docx
-!paper/appendix-visualizations.docx
+# Keep final report materials
+!paper/*.docx

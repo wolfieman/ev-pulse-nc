@@ -1,9 +1,7 @@
-# SAS Curiosity Cup 2026: North Carolina EV Infrastructure Gap Analysis
+# EV Pulse NC: North Carolina Electric Vehicle Analytics
 
-🏆 **Competition:** [SAS Curiosity Cup 2026](https://www.sas.com/curiositycup) - Global Student Analytics Competition  
-📊 **Category:** Business & Economy  
-🎯 **Objective:** Quantify the alignment between North Carolina's electric vehicle adoption growth and public charging infrastructure deployment  
-📅 **Competition Timeline:** December 2025 - February 2026
+📊 **Focus:** Data-driven analysis of North Carolina's electric vehicle adoption and charging infrastructure
+🎯 **Objective:** Quantify the alignment between North Carolina's electric vehicle adoption growth and public charging infrastructure deployment
 
 ---
 
@@ -74,7 +72,7 @@ This project applies a comprehensive **4-phase analytics framework**—descripti
 ## 📁 Repository Structure
 
 ```
-sas-cup-26/
+ev-pulse-nc/
 ├── README.md                     # This file
 ├── LICENSE                       # Polyform Noncommercial License 1.0.0
 ├── NOTICE.md                     # Copyright notice
@@ -145,8 +143,8 @@ sas-cup-26/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/sas-cup-26.git
-   cd sas-cup-26
+   git clone https://github.com/yourusername/ev-pulse-nc.git
+   cd ev-pulse-nc
    ```
 
 2. **Install Git LFS** (required for large datasets)
@@ -216,20 +214,20 @@ sas-cup-26/
 
 ---
 
-## 📄 Competition Deliverables
+## 📄 Report Structure
 
-### Paper Structure (4-5 pages + 2-page appendix)
-1. **Introduction** (½ page) - Problem framing, stakes, preview
-2. **Problem Statement** (½ page) - Research questions, significance
-3. **Data** (½ page) - Sources, structure, scope
-4. **Data Cleaning & Validation** (½ page) - Quality assessment, processing
-5. **Analysis** (1½-2 pages) - Four-phase framework execution ⭐ CORE
-6. **Visualization** (brief reference) - Figures in appendix
-7. **Impact & Implications** (½ page) - Policy relevance, stakeholder value
-8. **Suggestions for Future Study** (¼-½ page) - Extensions, limitations
-9. **Conclusion** (¼-½ page) - Key messages, call to action
+### Analysis Report Organization
+1. **Introduction** - Problem framing, stakes, preview
+2. **Problem Statement** - Research questions, significance
+3. **Data** - Sources, structure, scope
+4. **Data Cleaning & Validation** - Quality assessment, processing
+5. **Analysis** - Four-phase framework execution
+6. **Visualization** - Figures in appendix
+7. **Impact & Implications** - Policy relevance, stakeholder value
+8. **Suggestions for Future Study** - Extensions, limitations
+9. **Conclusion** - Key messages, call to action
 
-**Appendix A** (1-2 pages) - Essential visualizations only
+**Appendix** - Essential visualizations
 
 ---
 
@@ -252,8 +250,8 @@ MBA Candidate, Business & Data Analytics Concentration
 Fayetteville State University  
 Background: Computer Science, 15+ years data analytics experience
 
-**Faculty Advisor:** Thomas Grant  
-Course: BIDA 640 - Big Data & Web Intelligence
+**Faculty Advisor:** Thomas Grant
+Course: BIDA-670
 
 ---
 
@@ -262,10 +260,6 @@ Course: BIDA 640 - Big Data & Web Intelligence
 ### Data Sources
 - North Carolina Department of Transportation (NCDOT) - Vehicle Registration Database
 - U.S. Department of Energy, Alternative Fuels Data Center (AFDC) - Charging Infrastructure Database
-
-### Competition Framework
-- SAS Institute Inc. - Curiosity Cup 2026 Competition Guidelines
-- Reference analyses from 2025 winning teams (see `docs/competition-guidelines/reference-papers/`)
 
 ### Research Support
 - Anyer et al. - EV adoption modeling methodologies
@@ -293,8 +287,6 @@ https://polyformproject.org/licenses/noncommercial/1.0.0
 
 ## 🔗 Links
 
-- **SAS Curiosity Cup:** https://www.sas.com/curiositycup
-- **Competition Guidelines:** [docs/competition-guidelines/curiosity_cup2026finalcompetitionguidelines.pdf]
 - **NCDOT Open Data:** https://ncdot.gov/data
 - **AFDC Station Locator:** https://afdc.energy.gov/stations
 
@@ -303,10 +295,9 @@ https://polyformproject.org/licenses/noncommercial/1.0.0
 ## 📧 Contact
 
 For questions about this analysis or collaboration opportunities:
-- **GitHub Issues:** [Open an issue](https://github.com/yourusername/sas-cup-26/issues)
-- **Competition Timeline:** Submission deadline February 22, 2026
+- **GitHub Issues:** [Open an issue](https://github.com/yourusername/ev-pulse-nc/issues)
 
 ---
 
-**Status:** 🚧 Active Development (Dec 2025 - Feb 2026)  
-**Last Updated:** December 30, 2025
+**Status:** 🚧 Active Development
+**Last Updated:** January 2026
