@@ -1,5 +1,5 @@
 # LOCAL Repository Setup Guide
-## SAS Curiosity Cup 2026 - `sas-cup-26`
+## EV Pulse NC - `ev-pulse-nc`
 
 **For macOS/Linux/Windows users**
 
@@ -79,8 +79,8 @@ This creates the entire folder structure automatically.
 If the script doesn't work, create folders manually:
 
 ```bash
-mkdir -p sas-cup-26
-cd sas-cup-26
+mkdir -p ev-pulse-nc
+cd ev-pulse-nc
 
 # Create all directories
 mkdir -p data/{raw,processed}
@@ -92,7 +92,7 @@ mkdir -p paper
 mkdir -p references/competitor-analyses
 ```
 
-Then copy the 4 downloaded files (`.gitignore`, `README.md`, `LICENSE`, `NOTICE.md`) into `sas-cup-26/`
+Then copy the 4 downloaded files (`.gitignore`, `README.md`, `LICENSE`, `NOTICE.md`) into `ev-pulse-nc/`
 
 ---
 
@@ -100,7 +100,7 @@ Then copy the 4 downloaded files (`.gitignore`, `README.md`, `LICENSE`, `NOTICE.
 
 **Copy datasets to `data/raw/`:**
 ```bash
-cd sas-cup-26
+cd ev-pulse-nc
 cp /path/to/NC_EV_PHEV_TS.csv data/raw/
 cp /path/to/alt_fuel_stations_ev_charging_units.csv data/raw/
 ```
@@ -137,7 +137,7 @@ cp /path/to/evpapersanyeretal.pdf docs/research/
 
 ### STEP 5: Initialize Git with LFS
 
-**From inside `sas-cup-26/` directory:**
+**From inside `ev-pulse-nc/` directory:**
 
 ```bash
 # Initialize Git repository
@@ -180,7 +180,7 @@ git lfs track
 **Option A: GitHub Web Interface**
 
 1. Go to https://github.com/new
-2. Repository name: **`sas-cup-26`**
+2. Repository name: **`ev-pulse-nc`**
 3. Description: *SAS Curiosity Cup 2026: North Carolina EV Infrastructure Gap Analysis*
 4. **Public** repository (you said no payment)
 5. **DO NOT** initialize with README (you already have one)
@@ -189,7 +189,7 @@ git lfs track
 **Option B: GitHub CLI** (if installed)
 
 ```bash
-gh repo create sas-cup-26 \
+gh repo create ev-pulse-nc \
   --public \
   --description "SAS Curiosity Cup 2026: North Carolina EV Infrastructure Gap Analysis" \
   --source=. \
@@ -229,7 +229,7 @@ git commit -m "Initial commit: SAS Curiosity Cup 2026 project structure
 
 ```bash
 # Add remote (replace 'yourusername' with your GitHub username)
-git remote add origin https://github.com/yourusername/sas-cup-26.git
+git remote add origin https://github.com/yourusername/ev-pulse-nc.git
 
 # Verify remote
 git remote -v
@@ -254,7 +254,7 @@ git push -u origin main
 
 ### STEP 9: Verify on GitHub
 
-1. Go to https://github.com/yourusername/sas-cup-26
+1. Go to https://github.com/yourusername/ev-pulse-nc
 2. Verify folder structure visible
 3. Check that CSV files show LFS badge (small "LFS" indicator)
 4. Click on `data/raw/NC_EV_PHEV_TS.csv` - should say "Stored with Git LFS"

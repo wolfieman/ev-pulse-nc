@@ -8,11 +8,10 @@ https://polyformproject.org/licenses/noncommercial/1.0.0
 
 ## Project Information
 
-**Project:** SAS Curiosity Cup 2026 - North Carolina EV Infrastructure Gap Analysis<br>
+**Project:** EV Pulse NC - North Carolina Electric Vehicle Analytics<br>
 **Institution:** Fayetteville State University<br>
-**Course:** BIDA 640 - Big Data & Web Intelligence<br>
-**Faculty Advisor:** Thomas Grant<br>
-**Competition:** SAS Global Student Analytics Competition 2026
+**Course:** BIDA-670<br>
+**Faculty Advisor:** Thomas Grant
 
 ---
 
@@ -33,13 +32,9 @@ This project uses publicly available datasets:
 
 ---
 
-## Competition Compliance
-
-This work was created for submission to the SAS Curiosity Cup 2026 competition.
+## Academic Work
 
 All analyses, code, and written materials are original work by the author, except where explicitly cited or attributed to external sources.
-
-Competition materials and reference papers included in this repository are used for educational purposes only and remain the property of their respective copyright holders.
 
 ---
 
