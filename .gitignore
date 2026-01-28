@@ -152,3 +152,6 @@ secrets/
 # ============================================================================
 # Keep final report materials
 !paper/*.docx
+
+# Claude local settings (machine-specific)
+.claude/settings.local.json
