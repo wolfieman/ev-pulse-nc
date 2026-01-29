@@ -9,7 +9,6 @@
 - [ ] Copy project documents to `docs/`
   - [ ] planning/ (execution plan, outline)
   - [ ] eda-reports/ (3 EDA PDFs)
-  - [ ] reference-papers/ (research papers)
   - [ ] research/ (supporting papers)
 - [ ] Export SAS code scripts to `code/sas/`
 - [ ] Verify `.gitignore` and `.gitattributes` in place
@@ -32,7 +31,7 @@ git lfs track "*.xlsx"
 git add .
 
 # Initial commit
-git commit -m "Initial commit: SAS Curiosity Cup 2026 project structure"
+git commit -m "Initial commit: EV Pulse NC research project structure"
 
 # Create GitHub repo (via web or gh CLI)
 gh repo create ev-pulse-nc --public --source=. --remote=origin

@@ -86,7 +86,7 @@ cd ev-pulse-nc
 mkdir -p data/{raw,processed}
 mkdir -p code/sas/{01-data-import,02-data-prep/{nc-regs,supply,shapefiles},03-eda,04-forecasting,05-gap-analysis,06-visualization}
 mkdir -p code/python
-mkdir -p docs/{planning,eda-reports,competition-guidelines/reference-papers,research}
+mkdir -p docs/{planning,eda-reports,research}
 mkdir -p output/{figures,tables,models}
 mkdir -p paper
 mkdir -p references/competitor-analyses
@@ -110,20 +110,11 @@ cp /path/to/alt_fuel_stations_ev_charging_units.csv data/raw/
 # Planning documents
 cp /path/to/execution-plan-v01.docx docs/planning/
 cp /path/to/outline-v03.docx docs/planning/
-cp /path/to/curiosity-cup-2026-paper-outline.md docs/planning/
 
 # EDA reports
 cp /path/to/ncevregistrationseda.pdf docs/eda-reports/
 cp /path/to/altfuelstationseda.pdf docs/eda-reports/
 cp /path/to/enhancedchargingunitseda.pdf docs/eda-reports/
-
-# Competition materials
-cp /path/to/curiosity_cup2026finalcompetitionguidelines.pdf docs/competition-guidelines/
-
-# Reference papers
-cp /path/to/teamdatamindcuriositycup2025.pdf docs/competition-guidelines/reference-papers/
-cp /path/to/teammachinelearningdynamite_curiositycup2025.pdf docs/competition-guidelines/reference-papers/
-cp /path/to/teamdataacescuriositycup2025.pdf docs/competition-guidelines/reference-papers/
 
 # Research papers
 cp /path/to/evpapersanyeretal.pdf docs/research/
@@ -181,8 +172,8 @@ git lfs track
 
 1. Go to https://github.com/new
 2. Repository name: **`ev-pulse-nc`**
-3. Description: *SAS Curiosity Cup 2026: North Carolina EV Infrastructure Gap Analysis*
-4. **Public** repository (you said no payment)
+3. Description: *North Carolina EV Infrastructure Gap Analysis - Research Project*
+4. **Public** repository
 5. **DO NOT** initialize with README (you already have one)
 6. Click "Create repository"
 
@@ -191,7 +182,7 @@ git lfs track
 ```bash
 gh repo create ev-pulse-nc \
   --public \
-  --description "SAS Curiosity Cup 2026: North Carolina EV Infrastructure Gap Analysis" \
+  --description "North Carolina EV Infrastructure Gap Analysis - Research Project" \
   --source=. \
   --remote=origin
 ```
@@ -212,11 +203,11 @@ git lfs ls-files
 # Should show your CSV files (after git add)
 
 # Create initial commit
-git commit -m "Initial commit: SAS Curiosity Cup 2026 project structure
+git commit -m "Initial commit: EV Pulse NC research project structure
 
 - Complete folder structure for 4-phase analytics workflow
 - Project documentation and planning materials
-- EDA reports and competition guidelines
+- EDA reports
 - Large datasets tracked with Git LFS (1.2GB+)
 - SAS code structure ready for script export"
 ```
@@ -343,7 +334,7 @@ git push
 2. ✅ Update README.md line 165 with your GitHub username
 3. ✅ Export SAS code to `code/sas/` subdirectories
 4. ✅ Generate visualizations to `output/figures/`
-5. ✅ Write competition paper in `paper/`
+5. ✅ Write research paper in `paper/`
 6. ✅ Commit and push changes as you work
 
 ---
@@ -352,9 +343,7 @@ git push
 
 - Git LFS docs: https://git-lfs.github.com/
 - GitHub docs: https://docs.github.com/
-- SAS Curiosity Cup: https://www.sas.com/curiositycup
 
 ---
 
-**Created:** December 30, 2025  
-**Project Deadline:** February 22, 2026
+**Created:** December 30, 2025
