@@ -1,4 +1,4 @@
-# Competition Paper
+# Research Paper
 
 ## Requirements
 - **Main Text:** 2-5 pages (target: 4 pages)
@@ -17,6 +17,3 @@
 9. Conclusion (¼-½ page)
 
 **Appendix A:** Supporting visualizations (1-2 pages max)
-
-## Submission
-Due: **February 22, 2026** by 11:59:59 PM local time
