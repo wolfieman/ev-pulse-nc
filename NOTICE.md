@@ -1,6 +1,6 @@
 # Required Notice
 
-**Copyright © 2025 Wolfie**
+**Copyright © 2025 Wolfgang Sanyer**
 Licensed under the Polyform Noncommercial License 1.0.0
 https://polyformproject.org/licenses/noncommercial/1.0.0
 
@@ -11,7 +11,7 @@ https://polyformproject.org/licenses/noncommercial/1.0.0
 **Project:** EV Pulse NC - North Carolina Electric Vehicle Analytics<br>
 **Institution:** Fayetteville State University<br>
 **Course:** BIDA-670<br>
-**Faculty Advisor:** Thomas Grant
+**Faculty Advisor:** Dr. Majed Al-Ghandour
 
 ---
 
