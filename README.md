@@ -9,7 +9,7 @@
 
 North Carolina's battery electric vehicle (BEV) fleet has experienced explosive growth, expanding from 5,165 vehicles in September 2018 to 94,371 in June 2025—a **1,727% increase** with a **53.8% compound annual growth rate (CAGR)**. However, public charging infrastructure has not kept pace, creating a widening gap that threatens the equitable transition to electric mobility.
 
-This project applies a comprehensive **4-phase analytics framework**—descriptive, diagnostic, predictive, and prescriptive analysis—to:
+This project applies a comprehensive **5-phase analytics framework**—exploratory, descriptive, diagnostic, predictive, and prescriptive analysis—to:
 
 1. **Quantify infrastructure gaps** at the county level across North Carolina
 2. **Forecast future demand** using time series models
@@ -44,20 +44,20 @@ This project applies a comprehensive **4-phase analytics framework**—descripti
 ## 🛠️ Tech Stack & Methodology
 
 ### Software & Tools
-- **SAS Viya** - Primary analytics platform
-  - Time series forecasting (ARIMA/Exponential Smoothing)
-  - Data manipulation and cleaning
-  - Statistical analysis and visualization
-- **Python** - Data acquisition and preprocessing utilities
-  - requests, openpyxl - NCDOT data downloading
-  - pandas - Data consolidation and cleaning
+- **Python** - Primary analytics platform
+  - pandas - Data manipulation and cleaning
+  - statsmodels - Time series forecasting (ARIMA/Exponential Smoothing)
+  - matplotlib/seaborn - Statistical visualization
+  - geopandas - Geographic analysis
+  - requests, openpyxl - Data acquisition
 - **Excel** - Initial data profiling and validation
 
 ### Analytical Framework
-1. **Descriptive Analysis** - Historical trends, distributions, geographic patterns
-2. **Diagnostic Analysis** - Gap identification, county classification, equity assessment
-3. **Predictive Analysis** - County-level BEV forecasting (Sept 2018 - June 2028)
-4. **Prescriptive Analysis** - Investment optimization, deployment prioritization
+1. **Exploratory Analysis** - Data profiling, quality assessment, initial patterns
+2. **Descriptive Analysis** - Historical trends, distributions, geographic patterns
+3. **Diagnostic Analysis** - Gap identification, county classification, equity assessment
+4. **Predictive Analysis** - County-level BEV forecasting (Sept 2018 - June 2028)
+5. **Prescriptive Analysis** - Investment optimization, deployment prioritization
 
 ### Data Sources
 - **NC Department of Transportation (NCDOT)** - Vehicle registration time series
@@ -74,6 +74,8 @@ This project applies a comprehensive **4-phase analytics framework**—descripti
 ```
 ev-pulse-nc/
 ├── README.md                     # This file
+├── INSTALLATION.md               # Setup guide
+├── QUICK-REFERENCE.md            # Daily workflow commands
 ├── LICENSE                       # Polyform Noncommercial License 1.0.0
 ├── NOTICE.md                     # Copyright notice
 ├── .gitignore                    # Git ignore patterns
@@ -81,45 +83,27 @@ ev-pulse-nc/
 │
 ├── data/                         # Dataset directory (Git LFS)
 │   ├── raw/                      # Original datasets
-│   │   ├── NC_EV_PHEV_TS.csv              # 520 MB - BEV registrations
-│   │   └── alt_fuel_stations_ev_charging_units.csv  # 695 MB - Charging infrastructure
 │   ├── processed/                # Cleaned/transformed data
+│   ├── generated/                # Analysis outputs
 │   └── README.md                 # Data dictionary & sources
 │
 ├── code/                         # Analysis code
-│   ├── sas/                      # SAS Studio/Viya code
-│   │   ├── 01-data-import/       # Import scripts (.ctl files)
-│   │   ├── 02-data-prep/         # Cleaning, validation, geocoding
-│   │   ├── 03-eda/               # Exploratory data analysis
-│   │   ├── 04-forecasting/       # Time series forecasting models
-│   │   ├── 05-gap-analysis/      # Diagnostic gap metrics
-│   │   └── 06-visualization/     # Chart and map generation
-│   ├── python/                   # Python utility scripts
+│   ├── python/                   # Python scripts
 │   │   ├── data-acquisition/     # Data download scripts
-│   │   │   └── ncdot_zev_downloader.py
 │   │   └── data-cleaning/        # Data consolidation scripts
-│   │       └── consolidate_zev_monthly.py
 │   └── README.md                 # Code execution guide
 │
 ├── docs/                         # Project documentation
-│   ├── planning/
-│   │   ├── execution-plan-v01.docx
-│   │   └── outline-v03.docx
+│   ├── planning/                 # Project plans and outlines
 │   ├── eda-reports/              # Exploratory data analysis reports
-│   │   ├── ncevregistrationseda.pdf
-│   │   ├── altfuelstationseda.pdf
-│   │   └── enhancedchargingunitseda.pdf
-│   └── research/                 # Supporting research
-│       └── evpapersanyeretal.pdf
+│   └── research/                 # Supporting research papers
 │
 ├── output/                       # Generated outputs
-│   ├── figures/                  # Visualizations for paper appendix
+│   ├── figures/                  # Visualizations for paper
 │   ├── tables/                   # Summary statistics tables
 │   └── models/                   # Saved forecasting artifacts
 │
 ├── paper/                        # Research paper
-│   ├── final-paper.docx          # 4-5 page main text
-│   └── appendix-visualizations.docx  # 2-page appendix
 │
 └── references/                   # Supporting materials
     └── data-sources.md           # Citations & links
@@ -130,51 +114,56 @@ ev-pulse-nc/
 ## 🚀 Getting Started
 
 ### Prerequisites
-- SAS Viya 
+- Python 3.10+
 - Git with Git LFS extension
-- Python 3.8+ (optional, for EDA scripts)
 
 ### Setup Instructions
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/ev-pulse-nc.git
+   git clone https://github.com/wolfieman/ev-pulse-nc.git
    cd ev-pulse-nc
    ```
 
-2. **Install Git LFS** (required for large datasets)
+2. **Install Git LFS and pull data**
    ```bash
    git lfs install
    git lfs pull
    ```
 
-3. **Verify data files**
+3. **Set up Python environment**
    ```bash
-   ls -lh data/raw/
-   # Should show NC_EV_PHEV_TS.csv (520 MB)
-   # Should show alt_fuel_stations_ev_charging_units.csv (695 MB)
+   python -m venv .venv
+   source .venv/bin/activate  # or .venv\Scripts\activate on Windows
+   pip install pandas statsmodels matplotlib seaborn geopandas
    ```
 
-4. **Import data into SAS Viya**
-   - Use scripts in `code/sas/01-data-import/`
-   - Follow instructions in `code/README.md`
+4. **Verify data files**
+   ```bash
+   ls -lh data/raw/
+   ```
 
-5. **Run analyses**
-   - Execute SAS scripts in numerical order (01 → 06)
-   - Review outputs in `output/` directory
+See [INSTALLATION.md](INSTALLATION.md) for detailed setup instructions.
 
 ---
 
 ## 📊 Analytical Workflow
 
-### Phase 1: Descriptive Analysis
+### Phase 1: Exploratory Analysis
+- **Objective:** Profile data quality, identify patterns, and assess completeness
+- **Outputs:**
+  - Data quality reports
+  - Missing value analysis
+  - Initial visualizations and distributions
+
+### Phase 2: Descriptive Analysis
 - **Objective:** Characterize historical BEV adoption and infrastructure deployment
 - **Outputs:** 
   - Time series trends (statewide and county-level)
   - Geographic distribution maps
   - Summary statistics by urban/rural classification
 
-### Phase 2: Diagnostic Analysis
+### Phase 3: Diagnostic Analysis
 - **Objective:** Identify where infrastructure gaps exist and their severity
 - **Key Metrics:**
   - BEVs per charging station (accessibility metric)
@@ -185,7 +174,7 @@ ev-pulse-nc/
   - Urban vs. rural disparity analysis
   - Zero-infrastructure county identification
 
-### Phase 3: Predictive Analysis
+### Phase 4: Predictive Analysis
 - **Objective:** Forecast future BEV adoption to anticipate infrastructure needs
 - **Methods:**
   - County-level ARIMA time series forecasting
@@ -196,7 +185,7 @@ ev-pulse-nc/
   - Confidence intervals (±2σ)
   - Projected infrastructure gap scenarios
 
-### Phase 4: Prescriptive Analysis
+### Phase 5: Prescriptive Analysis
 - **Objective:** Optimize infrastructure investment allocation
 - **Framework:**
   - Composite scoring: Current gap + Forecasted growth + Equity considerations
@@ -234,23 +223,23 @@ This analysis stands out through:
 2. **County-Level Granularity** - 100 counties × 82 months = 8,200 observations
 3. **Connector-Level Detail** - 1,725 individual charging units analyzed (4.85x more granular than station-level)
 4. **Equity Focus** - Urban-rural disparity analysis with Gini coefficient quantification
-5. **4-Phase Completeness** - Full descriptive → diagnostic → predictive → prescriptive workflow
+5. **5-Phase Completeness** - Full exploratory → descriptive → diagnostic → predictive → prescriptive workflow
 
 ---
 
 ## 👥 Team
 
-**Wolfgang Sanyer**
-MBA Candidate, Business & Data Analytics Concentration
-Fayetteville State University
+**Wolfgang Sanyer**<br>
+MBA Candidate, Business & Data Analytics Concentration<br>
+Fayetteville State University<br>
 Background: Computer Science, 15+ years data analytics experience
 
-**Braeden Baker**
-MBA Candidate, Business & Data Analytics Concentration
-Fayetteville State University
+**Braeden Baker**<br>
+MBA Candidate, Business & Data Analytics Concentration<br>
+Fayetteville State University<br>
 Background: Finance
 
-**Faculty Advisor:** Dr. Majed Al-Ghandour
+**Faculty Advisor:** Dr. Majed Al-Ghandour<br>
 **Course:** BIDA-670
 
 ---

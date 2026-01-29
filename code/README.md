@@ -1,51 +1,12 @@
 # Code Directory
 
-## SAS Scripts (`sas/`)
-
-Execute in numerical order:
-
-### 01-data-import/
-Data import scripts (.ctl files) for loading datasets into SAS libraries
-
-**TODO:** Export your SAS import scripts here
-- `alt-fuel-stations-import.ctl`
-- `ev_charging_units-import.ctl`
-- `nc_ev_phev_ts-import.ctl`
-
-### 02-data-prep/
-Data cleaning, validation, and transformation
-
-- `nc-regs/` - BEV registration data processing
-- `supply/` - Charging infrastructure processing
-- `shapefiles/` - Geographic data handling (if used)
-
-**TODO:** Export your data prep .sas scripts here
-
-### 03-eda/
-Exploratory data analysis scripts
-
-**TODO:** Export your EDA .sas scripts here
-
-### 04-forecasting/
-Time series forecasting models (ARIMA, Exponential Smoothing)
-
-**TODO:** Export your forecasting .sas scripts here
-
-### 05-gap-analysis/
-Diagnostic gap metrics and county classification
-
-**TODO:** Export your gap analysis .sas scripts here
-
-### 06-visualization/
-Chart and map generation code
-
-**TODO:** Export your visualization .sas scripts here
-
 ## Python Scripts (`python/`)
 
-Utility scripts for data acquisition and preprocessing.
+All analysis code is written in Python.
 
 ### data-acquisition/
+
+Scripts for downloading and fetching data from sources.
 
 **ncdot_zev_downloader.py** - Downloads monthly ZEV registration data from NCDOT
 
@@ -57,9 +18,11 @@ python ncdot_zev_downloader.py --start 2025-07 --end 2025-10 --outdir ../../../d
 python ncdot_zev_downloader.py --months 2025-07 2025-08 2025-09
 ```
 
-**Dependencies:** `requests`, `openpyxl` (optional, for Excel validation)
+**Dependencies:** `requests`, `openpyxl`
 
 ### data-cleaning/
+
+Data cleaning, validation, and transformation scripts.
 
 **consolidate_zev_monthly.py** - Consolidates monthly Excel files into a single dataset
 
@@ -69,3 +32,32 @@ python consolidate_zev_monthly.py --indir ../../../data/raw/ncdot-monthly --out 
 ```
 
 **Dependencies:** `pandas`, `openpyxl`
+
+### analysis/ (planned)
+
+Core analysis scripts:
+- Exploratory data analysis
+- Descriptive statistics
+- Diagnostic gap analysis
+- Predictive modeling (ARIMA forecasting)
+- Prescriptive recommendations
+
+### visualization/ (planned)
+
+Chart and map generation code.
+
+---
+
+## Running the Analysis
+
+```bash
+# Set up virtual environment
+python -m venv .venv
+source .venv/bin/activate  # or .venv\Scripts\activate on Windows
+
+# Install dependencies
+pip install pandas statsmodels matplotlib seaborn geopandas requests openpyxl
+
+# Run scripts
+python code/python/data-cleaning/consolidate_zev_monthly.py
+```
