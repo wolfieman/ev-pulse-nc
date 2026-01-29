@@ -132,7 +132,6 @@ touch code/sas/06-visualization/PLACEHOLDER-viz-scripts.txt
 echo "📝 Creating documentation directories..."
 mkdir -p docs/planning
 mkdir -p docs/eda-reports
-mkdir -p docs/competition-guidelines/reference-papers
 mkdir -p docs/research
 
 # ============================================================================
@@ -148,7 +147,7 @@ cat > output/README.md << 'EOF'
 # Output Directory
 
 ## Figures (`figures/`)
-Visualizations for paper appendix (max 2 pages in competition submission)
+Visualizations for paper appendix (max 2 pages)
 
 **TODO:** Export your generated figures here
 - BEV growth trajectory charts
@@ -177,7 +176,7 @@ echo "📄 Creating paper directory..."
 mkdir -p paper
 
 cat > paper/README.md << 'EOF'
-# Competition Paper
+# Research Paper
 
 ## Requirements
 - **Main Text:** 2-5 pages (target: 4 pages)
@@ -196,17 +195,12 @@ cat > paper/README.md << 'EOF'
 9. Conclusion (¼-½ page)
 
 **Appendix A:** Supporting visualizations (1-2 pages max)
-
-## Submission
-Due: **February 22, 2026** by 11:59:59 PM local time
 EOF
 
 # ============================================================================
 # REFERENCES DIRECTORY
 # ============================================================================
 echo "📚 Creating references directory..."
-mkdir -p references/competitor-analyses
-
 cat > references/data-sources.md << 'EOF'
 # Data Sources & References
 
@@ -232,14 +226,6 @@ cat > references/data-sources.md << 'EOF'
 - McKinsey & Company - Public EV charging station profitability analysis
 - NREL - 2030 National Charging Network projections
 - NEVI Formula Program guidelines - Federal infrastructure funding
-
-## Competition Materials
-
-- SAS Curiosity Cup 2026 Final Competition Guidelines
-- Reference papers from 2025 winning teams:
-  - Team DataMind (social media analysis)
-  - Machine Learning Dynamite (breast cancer detection)
-  - Team Data ACES (Alzheimer's prediction)
 EOF
 
 # ============================================================================
@@ -266,7 +252,7 @@ EOF
 
 # Create initial commit checklist
 cat > SETUP-CHECKLIST.md << 'EOF'
-# Setup Checklist for sas-cup-26
+# Setup Checklist for ev-pulse-nc
 
 ## ✅ Pre-Commit Checklist
 
@@ -277,7 +263,6 @@ cat > SETUP-CHECKLIST.md << 'EOF'
 - [ ] Copy project documents to `docs/`
   - [ ] planning/ (execution plan, outline)
   - [ ] eda-reports/ (3 EDA PDFs)
-  - [ ] competition-guidelines/ (guidelines + reference papers)
   - [ ] research/ (supporting papers)
 - [ ] Export SAS code scripts to `code/sas/`
 - [ ] Verify `.gitignore` and `.gitattributes` in place
@@ -300,13 +285,13 @@ git lfs track "*.xlsx"
 git add .
 
 # Initial commit
-git commit -m "Initial commit: SAS Curiosity Cup 2026 project structure"
+git commit -m "Initial commit: EV Pulse NC research project structure"
 
 # Create GitHub repo (via web or gh CLI)
-gh repo create sas-cup-26 --public --source=. --remote=origin
+gh repo create ev-pulse-nc --public --source=. --remote=origin
 
 # Or manually add remote
-git remote add origin https://github.com/yourusername/sas-cup-26.git
+git remote add origin https://github.com/yourusername/ev-pulse-nc.git
 
 # Push to GitHub
 git branch -M main

@@ -32,7 +32,7 @@ git lfs track "*.csv"
 
 # 6. Initial commit and push
 git add .
-git commit -m "Initial commit: SAS Curiosity Cup 2026 project"
+git commit -m "Initial commit: EV Pulse NC research project"
 git remote add origin https://github.com/YOUR_USERNAME/ev-pulse-nc.git
 git branch -M main
 git push -u origin main

@@ -1,7 +1,7 @@
 # Output Directory
 
 ## Figures (`figures/`)
-Visualizations for paper appendix (max 2 pages in competition submission)
+Visualizations for paper appendix (max 2 pages)
 
 **TODO:** Export your generated figures here
 - BEV growth trajectory charts

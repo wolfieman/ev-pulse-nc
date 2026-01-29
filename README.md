@@ -104,15 +104,11 @@ ev-pulse-nc/
 ├── docs/                         # Project documentation
 │   ├── planning/
 │   │   ├── execution-plan-v01.docx
-│   │   ├── outline-v03.docx
-│   │   └── curiosity-cup-2026-paper-outline.md
+│   │   └── outline-v03.docx
 │   ├── eda-reports/              # Exploratory data analysis reports
 │   │   ├── ncevregistrationseda.pdf
 │   │   ├── altfuelstationseda.pdf
 │   │   └── enhancedchargingunitseda.pdf
-│   ├── competition-guidelines/
-│   │   ├── curiosity_cup2026finalcompetitionguidelines.pdf
-│   │   └── reference-papers/     # Winning papers from 2025
 │   └── research/                 # Supporting research
 │       └── evpapersanyeretal.pdf
 │
@@ -121,12 +117,11 @@ ev-pulse-nc/
 │   ├── tables/                   # Summary statistics tables
 │   └── models/                   # Saved forecasting artifacts
 │
-├── paper/                        # Competition submission
+├── paper/                        # Research paper
 │   ├── final-paper.docx          # 4-5 page main text
 │   └── appendix-visualizations.docx  # 2-page appendix
 │
 └── references/                   # Supporting materials
-    ├── competitor-analyses/      # 2025 winning papers
     └── data-sources.md           # Citations & links
 ```
 
