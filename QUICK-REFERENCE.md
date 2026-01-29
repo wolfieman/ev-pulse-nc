@@ -44,7 +44,6 @@ git pull
 ```
 data/raw/          <- Raw datasets (CSV, XLSX)
 data/processed/    <- Cleaned data
-code/sas/          <- SAS scripts
 code/python/       <- Python scripts
 docs/              <- Documentation
 output/figures/    <- Generated visualizations
