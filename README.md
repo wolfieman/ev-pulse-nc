@@ -240,13 +240,18 @@ This analysis stands out through:
 
 ## 👥 Team
 
-**Wolfgang Sanyer**  
-MBA Candidate, Business & Data Analytics Concentration  
-Fayetteville State University  
+**Wolfgang Sanyer**
+MBA Candidate, Business & Data Analytics Concentration
+Fayetteville State University
 Background: Computer Science, 15+ years data analytics experience
 
-**Faculty Advisor:** Thomas Grant
-Course: BIDA-670
+**Braeden Baker**
+MBA Candidate, Business & Data Analytics Concentration
+Fayetteville State University
+Background: Finance
+
+**Faculty Advisor:** Dr. Majed Al-Ghandour
+**Course:** BIDA-670
 
 ---
 
