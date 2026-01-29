@@ -33,6 +33,6 @@
 
 ## Processed Data (`processed/`)
 
-Cleaned and transformed datasets generated from SAS processing scripts.
+Cleaned and transformed datasets generated from Python processing scripts.
 
 **Note:** Use Git LFS for all CSV files >100MB

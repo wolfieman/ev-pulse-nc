@@ -65,7 +65,7 @@ bash setup-repo-structure.sh
 ```bash
 mkdir -p ev-pulse-nc && cd ev-pulse-nc
 mkdir -p data/{raw,processed,generated}
-mkdir -p code/{sas,python}
+mkdir -p code/python
 mkdir -p docs/{planning,eda-reports,research}
 mkdir -p output/{figures,tables,models}
 mkdir -p paper references
@@ -103,7 +103,7 @@ git push -u origin main
 | Location | Contents |
 |----------|----------|
 | **Git LFS** | CSV, XLSX files (data) |
-| **Regular Git** | Code (.sas, .py), docs (.md, .pdf, .docx) |
+| **Regular Git** | Code (.py), docs (.md, .pdf, .docx) |
 | **Ignored** | *.log, *.lst, __pycache__, .DS_Store |
 
 ---

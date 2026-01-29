@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Add MonthDate column to EV/PHEV datasets for SAS compatibility.
+Add MonthDate column to EV/PHEV datasets for numeric month format.
 
 Derives MonthDate (YYYYMM format) from the Month column (YYYY-MM format).
 Overwrites the input file in place.
@@ -29,7 +29,7 @@ def add_monthdate(filepath: Path) -> None:
     if "MonthDate" in df.columns:
         print("MonthDate column already exists, updating...")
 
-    # Convert YYYY-MM to YYYYMM (SAS-compliant numeric format)
+    # Convert YYYY-MM to YYYYMM (numeric format for analysis)
     df["MonthDate"] = df["Month"].astype(str).str.replace("-", "", regex=False)
 
     # Reorder columns to place MonthDate after Month

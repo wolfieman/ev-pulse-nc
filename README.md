@@ -205,7 +205,7 @@ See [INSTALLATION.md](INSTALLATION.md) for detailed setup instructions.
 2. **Problem Statement** - Research questions, significance
 3. **Data** - Sources, structure, scope
 4. **Data Cleaning & Validation** - Quality assessment, processing
-5. **Analysis** - Four-phase framework execution
+5. **Analysis** - Five-phase framework execution
 6. **Visualization** - Figures in appendix
 7. **Impact & Implications** - Policy relevance, stakeholder value
 8. **Suggestions for Future Study** - Extensions, limitations
@@ -284,7 +284,7 @@ https://polyformproject.org/licenses/noncommercial/1.0.0
 ## 📧 Contact
 
 For questions about this analysis or collaboration opportunities:
-- **GitHub Issues:** [Open an issue](https://github.com/yourusername/ev-pulse-nc/issues)
+- **GitHub Issues:** [Open an issue](https://github.com/wolfieman/ev-pulse-nc/issues)
 
 ---
 
