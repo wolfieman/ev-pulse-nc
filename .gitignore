@@ -2,11 +2,10 @@
 # .gitignore
 
 # ============================================================================
-# Large Data Files (use Git LFS instead)
+# Large Data Files (tracked by Git LFS via .gitattributes)
 # ============================================================================
-*.csv
-*.xlsx
-*.xls
+# CSV and XLSX files are tracked by Git LFS - do NOT ignore them
+# SAS data files - ignore (too large, binary)
 *.sas7bdat
 *.sas7bcat
 
