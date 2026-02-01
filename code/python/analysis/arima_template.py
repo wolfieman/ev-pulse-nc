@@ -26,6 +26,14 @@ def prepare_time_series(df: pd.DataFrame, date_col: str, value_col: str) -> pd.S
     Key requirements:
     - DatetimeIndex with proper frequency
     - No missing values in the series
+
+    Args:
+        df: DataFrame containing the time series data
+        date_col: Name of the column containing date values
+        value_col: Name of the column containing the values to forecast
+
+    Returns:
+        Series with DatetimeIndex set to month-start frequency
     """
     # Create datetime index
     df = df.copy()
@@ -89,6 +97,9 @@ def fit_sarima(series: pd.Series, order: tuple, seasonal_order: tuple, trend: st
             Q = seasonal MA order
             s = seasonal period (12 for monthly data with yearly seasonality)
         trend: "n" (none), "c" (constant), "t" (linear), "ct" (both)
+
+    Returns:
+        Fitted SARIMAX model results object
     """
     model = SARIMAX(
         series,
@@ -111,6 +122,13 @@ def fit_sarima(series: pd.Series, order: tuple, seasonal_order: tuple, trend: st
 def get_model_info(results) -> dict:
     """
     Extract key model information comparable to SAS output.
+
+    Args:
+        results: Fitted ARIMA/SARIMAX model results object
+
+    Returns:
+        Dictionary containing model information criteria, parameters,
+        standard errors, p-values, and residual diagnostics
     """
     info = {
         # Information criteria
@@ -177,6 +195,13 @@ def calculate_accuracy(actual: pd.Series, predicted: pd.Series) -> dict:
     Calculate forecast accuracy metrics.
 
     Use these to compare Python results with SAS holdout validation.
+
+    Args:
+        actual: Series of actual observed values with DatetimeIndex
+        predicted: Series of predicted/forecasted values with DatetimeIndex
+
+    Returns:
+        Dictionary containing MAE, RMSE, MAPE, MedAPE, MPE, and count (n)
     """
     # Align series
     common_idx = actual.index.intersection(predicted.index)

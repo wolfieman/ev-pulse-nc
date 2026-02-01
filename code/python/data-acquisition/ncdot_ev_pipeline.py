@@ -16,7 +16,6 @@ Usage:
 
 import argparse
 import calendar
-import os
 import re
 import sys
 from datetime import datetime
@@ -27,12 +26,12 @@ import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 
-HUB = "https://www.ncdot.gov/initiatives-policies/environmental/climate-change/Pages/zev-registration-data.aspx"
-YEAR_URL_FMT = "https://www.ncdot.gov/initiatives-policies/environmental/climate-change/Pages/{year}-zev-registration-data.aspx"
-YEAR_URL_SPECIAL = {
+BASE_URL = "https://www.ncdot.gov/initiatives-policies/environmental/climate-change/Pages/zev-registration-data.aspx"
+YEAR_URL_TEMPLATE = "https://www.ncdot.gov/initiatives-policies/environmental/climate-change/Pages/{year}-zev-registration-data.aspx"
+YEAR_URL_OVERRIDES = {
     2020: "https://www.ncdot.gov/initiatives-policies/environmental/climate-change/Pages/2020-zev-data.aspx"
 }
-UA = {"User-Agent": "EV-Pulse-NC/1.0"}
+USER_AGENT = {"User-Agent": "EV-Pulse-NC/1.0"}
 
 FULL_MONTHS = {m.lower(): i for i, m in enumerate(calendar.month_name) if m}
 ABBR_MONTHS = {m.lower(): i for i, m in enumerate(calendar.month_abbr) if m}
@@ -41,7 +40,18 @@ ABBR_MONTHS["sept"] = 9
 
 
 def parse_year_month_from_filename(name: str) -> tuple[int | None, int | None]:
-    """Extract (year, month) from filename patterns like '2025-june-registration-data.xlsx'."""
+    """Extract year and month from NCDOT filename patterns.
+
+    Handles patterns like '2025-june-registration-data.xlsx' or 'june-2025-data.xlsx'.
+    Supports both full month names and three-letter abbreviations.
+
+    Args:
+        name: Filename string to parse (e.g., '2025-june-registration-data.xlsx')
+
+    Returns:
+        Tuple of (year, month) as integers, or (None, None) if pattern not matched.
+        Month is 1-indexed (January = 1).
+    """
     s = name.lower()
     m1 = re.search(
         r'(\d{4})[-_](jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec|january|february|march|april|may|june|july|august|september|october|november|december)', s)
@@ -61,22 +71,53 @@ def parse_year_month_from_filename(name: str) -> tuple[int | None, int | None]:
 
 
 def get_soup(url: str) -> BeautifulSoup:
-    """Fetch URL and return parsed BeautifulSoup object."""
-    r = requests.get(url, headers=UA, timeout=30)
+    """Fetch URL and return parsed BeautifulSoup object.
+
+    Args:
+        url: The URL to fetch
+
+    Returns:
+        BeautifulSoup object parsed from the HTML content
+
+    Raises:
+        requests.RequestException: If the HTTP request fails
+        requests.HTTPError: If the response status code indicates an error
+    """
+    r = requests.get(url, headers=USER_AGENT, timeout=30)
     r.raise_for_status()
     return BeautifulSoup(r.text, "html.parser")
 
 
 def discover_year_pages(years: list[int]) -> list[str]:
-    """Build list of NCDOT year pages to scrape for xlsx links."""
-    urls = [HUB]
+    """Build list of NCDOT year pages to scrape for xlsx links.
+
+    Constructs URLs for each year's registration data page. Uses override URLs
+    for years with non-standard URL patterns (e.g., 2020).
+
+    Args:
+        years: List of years to build page URLs for (e.g., [2023, 2024, 2025])
+
+    Returns:
+        List of URLs starting with the main hub page, followed by year-specific pages
+    """
+    urls = [BASE_URL]
     for y in years:
-        urls.append(YEAR_URL_SPECIAL.get(y, YEAR_URL_FMT.format(year=y)))
+        urls.append(YEAR_URL_OVERRIDES.get(y, YEAR_URL_TEMPLATE.format(year=y)))
     return urls
 
 
 def discover_xlsx_links(pages: list[str]) -> list[str]:
-    """Scrape pages to find all registration-data xlsx download links."""
+    """Scrape pages to find all registration-data xlsx download links.
+
+    Parses each page's HTML to extract links to Excel files containing
+    registration data. Deduplicates results based on URL path (ignoring query params).
+
+    Args:
+        pages: List of NCDOT page URLs to scrape for xlsx links
+
+    Returns:
+        Sorted list of unique xlsx download URLs found across all pages
+    """
     links = []
     for page in pages:
         try:
@@ -85,7 +126,7 @@ def discover_xlsx_links(pages: list[str]) -> list[str]:
                 href = a["href"]
                 if href.lower().endswith(".xlsx") and "registration-data" in href.lower():
                     links.append(urljoin(page, href))
-        except Exception as e:
+        except (requests.RequestException, requests.HTTPError) as e:
             print(f"[warn] Failed to parse {page}: {e}", file=sys.stderr)
     seen, unique = set(), []
     for u in links:
@@ -97,7 +138,20 @@ def discover_xlsx_links(pages: list[str]) -> list[str]:
 
 
 def download_with_checks(url: str, dest: Path, retries: int = 2) -> bool:
-    """Download file with retry logic. Skip if already exists and non-zero."""
+    """Download file with retry logic, skipping if already exists and non-zero.
+
+    Implements idempotent download behavior: existing files with non-zero size
+    are skipped. Zero-byte files are re-downloaded. Failed downloads are retried
+    up to the specified number of times.
+
+    Args:
+        url: URL of the file to download
+        dest: Destination Path where the file should be saved
+        retries: Maximum number of retry attempts after initial failure (default: 2)
+
+    Returns:
+        True if file exists or was downloaded successfully, False on failure
+    """
     if dest.exists():
         try:
             if dest.stat().st_size > 0:
@@ -110,7 +164,7 @@ def download_with_checks(url: str, dest: Path, retries: int = 2) -> bool:
 
     last_err = None
     with requests.Session() as s:
-        s.headers.update(UA)
+        s.headers.update(USER_AGENT)
         for attempt in range(1, retries + 2):
             try:
                 resp = s.get(url, timeout=60)
@@ -129,11 +183,22 @@ def download_with_checks(url: str, dest: Path, retries: int = 2) -> bool:
 
 
 def download_all(links: list[str], outdir: Path) -> list[Path]:
-    """Download all xlsx files to output directory."""
+    """Download all xlsx files to output directory.
+
+    Creates the output directory if it does not exist. Extracts filenames
+    from URLs, stripping query parameters.
+
+    Args:
+        links: List of xlsx file URLs to download
+        outdir: Directory Path where files should be saved
+
+    Returns:
+        List of Path objects for successfully downloaded files
+    """
     outdir.mkdir(parents=True, exist_ok=True)
     files = []
     for url in links:
-        fname = os.path.basename(url.split("?")[0])
+        fname = Path(url.split("?")[0]).name
         dest = outdir / fname
         ok = download_with_checks(url, dest)
         if ok:
@@ -176,7 +241,22 @@ def standardize_columns(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def build_master(xlsx_files: list[Path]) -> pd.DataFrame:
-    """Consolidate all xlsx files into a single master DataFrame."""
+    """Consolidate all xlsx files into a single master DataFrame.
+
+    Reads each Excel file, standardizes column names across schema variations,
+    extracts date from filename, and combines into a master dataset. Adds
+    computed columns for total EV count and EV share.
+
+    Args:
+        xlsx_files: List of Path objects pointing to xlsx files to consolidate
+
+    Returns:
+        DataFrame with standardized columns (County, BEV, PHEV, Hybrid, etc.),
+        sorted by County and Date
+
+    Raises:
+        RuntimeError: If no files could be processed successfully
+    """
     frames = []
     for p in xlsx_files:
         try:
@@ -206,7 +286,17 @@ def build_master(xlsx_files: list[Path]) -> pd.DataFrame:
 
 
 def qa_report(master: pd.DataFrame) -> str:
-    """Generate QA summary report for the master dataset."""
+    """Generate QA summary report for the master dataset.
+
+    Produces a text report summarizing data coverage, including date range,
+    county counts per month, statewide EV totals, and missing value rates.
+
+    Args:
+        master: The consolidated master DataFrame to analyze
+
+    Returns:
+        Multi-line string containing the QA report summary
+    """
     lines = []
     lines.append("=== NCDOT EV Registrations: QA Summary ===")
     months = master["Date"].dropna().dt.to_period("M").unique()

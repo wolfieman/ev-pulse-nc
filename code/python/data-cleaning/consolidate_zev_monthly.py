@@ -32,6 +32,8 @@ COLUMN_MAP = {
     "plug-in hybrid": "PlugInHybrid",
 }
 
+REQUIRED_COLUMNS = {"County", "Electric", "PlugInHybrid"}
+
 
 def extract_month_from_filename(filename: str) -> str | None:
     """Extract YYYY-MM from filename like '2025-july-registration-data.xlsx'."""
@@ -43,9 +45,6 @@ def extract_month_from_filename(filename: str) -> str | None:
         if month_num:
             return f"{year}-{month_num}"
     return None
-
-
-REQUIRED_COLUMNS = {"County", "Electric", "PlugInHybrid"}
 
 
 def normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
@@ -109,7 +108,15 @@ def load_monthly_file(path: Path) -> tuple[pd.DataFrame, str | None]:
 
 
 def consolidate(files: list[Path]) -> pd.DataFrame:
-    """Consolidate multiple monthly files into one DataFrame."""
+    """Consolidate multiple monthly files into one DataFrame.
+
+    Args:
+        files: List of paths to monthly Excel files
+
+    Returns:
+        Combined DataFrame sorted by Month and County with columns
+        [Month, County, Electric, PlugInHybrid], or empty DataFrame if no valid data
+    """
     frames = []
 
     for path in files:
