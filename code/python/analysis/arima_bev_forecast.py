@@ -19,7 +19,6 @@ Author: EV-Pulse-NC Project
 import argparse
 import warnings
 from pathlib import Path
-from typing import Optional
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -33,7 +32,8 @@ from statsmodels.tsa.arima.model import ARIMA
 from statsmodels.tsa.statespace.sarimax import SARIMAX
 from statsmodels.tsa.stattools import adfuller, kpss
 
-warnings.filterwarnings("ignore")
+warnings.filterwarnings("ignore", category=FutureWarning)
+warnings.filterwarnings("ignore", category=UserWarning, module="statsmodels")
 
 
 # =============================================================================
@@ -256,7 +256,7 @@ def test_stationarity(series: pd.Series, name: str = "Series") -> dict:
 def fit_arima_model(
     series: pd.Series,
     order: tuple = DEFAULT_ORDER,
-    seasonal_order: Optional[tuple] = None,
+    seasonal_order: tuple | None = None,
     trend: str = "n"
 ) -> ARIMA:
     """
@@ -315,7 +315,7 @@ def fit_arima_model(
     return fitted
 
 
-def print_model_summary(fitted_model, sas_comparison: Optional[dict] = None):
+def print_model_summary(fitted_model, sas_comparison: dict | None = None):
     """
     Print model summary with coefficient estimates and fit statistics.
 
@@ -381,7 +381,7 @@ def print_model_summary(fitted_model, sas_comparison: Optional[dict] = None):
 # Model Diagnostics
 # =============================================================================
 
-def run_diagnostics(fitted_model, output_dir: Optional[Path] = None):
+def run_diagnostics(fitted_model, output_dir: Path | None = None):
     """
     Run and display model diagnostics.
 
@@ -496,7 +496,7 @@ def generate_forecast(
 def validate_forecast(
     forecast_df: pd.DataFrame,
     actual_df: pd.DataFrame,
-    output_dir: Optional[Path] = None
+    output_dir: Path | None = None
 ) -> dict:
     """
     Validate forecasts against actual holdout data.
@@ -619,11 +619,17 @@ def plot_forecast(
     train_data: pd.DataFrame,
     forecast_df: pd.DataFrame,
     fitted_model,
-    actual_holdout: Optional[pd.DataFrame] = None,
-    output_dir: Optional[Path] = None
-):
-    """
-    Create forecast visualization with historical data and predictions.
+    actual_holdout: pd.DataFrame | None = None,
+    output_dir: Path | None = None
+) -> None:
+    """Create forecast visualization with historical data and predictions.
+
+    Args:
+        train_data: Historical training data with BEV column
+        forecast_df: Forecast results with Forecast, Lower_CI, Upper_CI columns
+        fitted_model: Fitted ARIMA model results
+        actual_holdout: Optional actual values for validation period
+        output_dir: Optional directory to save plots
     """
     if output_dir:
         output_dir.mkdir(parents=True, exist_ok=True)
@@ -718,7 +724,7 @@ def auto_select_order(
                     if score < best_score:
                         best_score = score
                         best_order = (p, d, q)
-                except:
+                except (ValueError, np.linalg.LinAlgError) as e:
                     continue
 
     # Show top 5 models
@@ -737,7 +743,8 @@ def auto_select_order(
 # Main Execution
 # =============================================================================
 
-def main():
+def main() -> None:
+    """Run ARIMA forecasting pipeline with CLI argument parsing."""
     parser = argparse.ArgumentParser(
         description="ARIMA Model for NC BEV Registration Forecasting",
         formatter_class=argparse.RawDescriptionHelpFormatter
