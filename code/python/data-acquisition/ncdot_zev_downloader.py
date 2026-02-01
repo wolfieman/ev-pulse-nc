@@ -14,9 +14,9 @@ import argparse
 import calendar
 import sys
 import zipfile
+from datetime import datetime
 from pathlib import Path
 from typing import NamedTuple
-from datetime import datetime
 
 import requests
 
@@ -24,6 +24,7 @@ import requests
 try:
     from openpyxl import load_workbook
     from openpyxl.utils.exceptions import InvalidFileException
+
     OPENPYXL_AVAILABLE = True
 except ImportError:
     OPENPYXL_AVAILABLE = False
@@ -37,7 +38,9 @@ class DownloadResult(NamedTuple):
     message: str
 
 
-BASE_URL = "https://www.ncdot.gov/initiatives-policies/environmental/climate-change/Documents"
+BASE_URL = (
+    "https://www.ncdot.gov/initiatives-policies/environmental/climate-change/Documents"
+)
 FILENAME_TEMPLATE = "{year}-{month_name}-registration-data.xlsx"
 USER_AGENT = {"User-Agent": "NCDOT-ZEV-Downloader/1.0"}
 MONTH_NAMES = {i: name.lower() for i, name in enumerate(calendar.month_name) if name}
@@ -49,7 +52,9 @@ def parse_month(month_str: str) -> tuple[int, int]:
         dt = datetime.strptime(month_str, "%Y-%m")
         return dt.year, dt.month
     except ValueError:
-        raise ValueError(f"Invalid month format: {month_str}. Use YYYY-MM (e.g., 2025-07)")
+        raise ValueError(
+            f"Invalid month format: {month_str}. Use YYYY-MM (e.g., 2025-07)"
+        )
 
 
 def generate_month_range(start: str, end: str) -> list[tuple[int, int]]:
@@ -69,7 +74,9 @@ def generate_month_range(start: str, end: str) -> list[tuple[int, int]]:
     end_year, end_month = parse_month(end)
 
     if (start_year, start_month) > (end_year, end_month):
-        raise ValueError(f"Start month ({start}) must be before or equal to end month ({end})")
+        raise ValueError(
+            f"Start month ({start}) must be before or equal to end month ({end})"
+        )
 
     months = []
     year, month = start_year, start_month
@@ -121,13 +128,18 @@ def validate_excel(file_path: Path) -> tuple[bool, str]:
             return True, f"Valid Excel with sheets: {', '.join(sheet_names)}"
         except (InvalidFileException, zipfile.BadZipFile) as e:
             return False, f"Invalid Excel format: {e}"
-        except (IOError, OSError) as e:
+        except OSError as e:
             return False, f"File read error: {e}"
 
-    return True, f"Downloaded {size:,} bytes (openpyxl not available for deep validation)"
+    return (
+        True,
+        f"Downloaded {size:,} bytes (openpyxl not available for deep validation)",
+    )
 
 
-def download_file(url: str, dest: Path, retries: int = 3, timeout: int = 60) -> tuple[bool, str]:
+def download_file(
+    url: str, dest: Path, retries: int = 3, timeout: int = 60
+) -> tuple[bool, str]:
     """Download a file with retry logic.
 
     Args:
@@ -144,7 +156,9 @@ def download_file(url: str, dest: Path, retries: int = 3, timeout: int = 60) -> 
     for attempt in range(1, retries + 1):
         response = None
         try:
-            response = requests.get(url, headers=USER_AGENT, timeout=timeout, stream=True)
+            response = requests.get(
+                url, headers=USER_AGENT, timeout=timeout, stream=True
+            )
             response.raise_for_status()
 
             content = response.content
@@ -170,7 +184,7 @@ def download_file(url: str, dest: Path, retries: int = 3, timeout: int = 60) -> 
         except requests.exceptions.RequestException as e:
             last_error = f"Request failed: {e}"
 
-        except (IOError, OSError) as e:
+        except OSError as e:
             last_error = f"File write error: {e}"
 
         except ValueError as e:
@@ -206,7 +220,12 @@ def download_month(year: int, month: int, outdir: Path) -> DownloadResult:
     valid, validation_msg = validate_excel(dest)
     if not valid:
         dest.unlink()  # Remove invalid file
-        return DownloadResult(month_label, False, None, f"Download succeeded but validation failed: {validation_msg}")
+        return DownloadResult(
+            month_label,
+            False,
+            None,
+            f"Download succeeded but validation failed: {validation_msg}",
+        )
 
     return DownloadResult(month_label, True, dest, validation_msg)
 
@@ -220,13 +239,17 @@ Examples:
   %(prog)s --start 2025-07 --end 2025-10
   %(prog)s --months 2025-07 2025-08 2025-09 2025-10
   %(prog)s --start 2025-01 --end 2025-12 --outdir ../../../data/raw/ncdot-monthly
-        """
+        """,
     )
 
     parser.add_argument("--start", help="Start month (YYYY-MM format)")
     parser.add_argument("--end", help="End month (YYYY-MM format)")
-    parser.add_argument("--months", nargs="+", help="Specific months to download (YYYY-MM format)")
-    parser.add_argument("--outdir", default=".", help="Output directory (default: current directory)")
+    parser.add_argument(
+        "--months", nargs="+", help="Specific months to download (YYYY-MM format)"
+    )
+    parser.add_argument(
+        "--outdir", default=".", help="Output directory (default: current directory)"
+    )
 
     args = parser.parse_args()
 
