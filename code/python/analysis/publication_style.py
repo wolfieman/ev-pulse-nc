@@ -23,10 +23,10 @@ Author: BIDA 670 EV-Pulse-NC Project
 Date: 2026
 """
 
-import matplotlib.pyplot as plt
-import matplotlib as mpl
 from pathlib import Path
-from typing import Optional, Literal
+from typing import Literal, Optional
+
+import matplotlib.pyplot as plt
 
 # =============================================================================
 # COLOR PALETTE - IBM Design Library (Colorblind Safe)
@@ -36,17 +36,15 @@ from typing import Optional, Literal
 
 COLORS = {
     # Primary model colors (Flat UI - vivid and modern)
-    "ESM": "#2ecc71",      # Emerald Green - fresh, vibrant
-    "ARIMA": "#3498db",    # Peter River Blue - classic, trustworthy
-    "UCM": "#9b59b6",      # Amethyst Purple - distinctive, sophisticated
-
+    "ESM": "#2ecc71",  # Emerald Green - fresh, vibrant
+    "ARIMA": "#3498db",  # Peter River Blue - classic, trustworthy
+    "UCM": "#9b59b6",  # Amethyst Purple - distinctive, sophisticated
     # Semantic colors
     "positive": "#2ecc71",  # Green
     "negative": "#e74c3c",  # Alizarin Red - vivid warning
-    "neutral": "#3498db",   # Blue
-    "highlight": "#f39c12", # Orange - attention-grabbing
-    "reference": "#2c3e50", # Dark slate for reference lines
-
+    "neutral": "#3498db",  # Blue
+    "highlight": "#f39c12",  # Orange - attention-grabbing
+    "reference": "#2c3e50",  # Dark slate for reference lines
     # Grays for annotations
     "gray_dark": "#525252",
     "gray_medium": "#8D8D8D",
@@ -55,12 +53,29 @@ COLORS = {
 }
 
 # Sequential palettes for heatmaps/gradients (colorblind safe)
-PALETTE_SEQUENTIAL = ["#FFF7FB", "#ECE7F2", "#D0D1E6", "#A6BDDB", "#74A9CF",
-                      "#3690C0", "#0570B0", "#034E7B"]
+PALETTE_SEQUENTIAL = [
+    "#FFF7FB",
+    "#ECE7F2",
+    "#D0D1E6",
+    "#A6BDDB",
+    "#74A9CF",
+    "#3690C0",
+    "#0570B0",
+    "#034E7B",
+]
 
 # Diverging palette for error visualization (colorblind safe)
-PALETTE_DIVERGING = ["#D73027", "#F46D43", "#FDAE61", "#FEE090", "#FFFFBF",
-                     "#E0F3F8", "#ABD9E9", "#74ADD1", "#4575B4"]
+PALETTE_DIVERGING = [
+    "#D73027",
+    "#F46D43",
+    "#FDAE61",
+    "#FEE090",
+    "#FFFFBF",
+    "#E0F3F8",
+    "#ABD9E9",
+    "#74ADD1",
+    "#4575B4",
+]
 
 # Model color list for iteration
 MODEL_COLORS = [COLORS["ESM"], COLORS["ARIMA"], COLORS["UCM"]]
@@ -72,10 +87,10 @@ MODEL_COLORS = [COLORS["ESM"], COLORS["ARIMA"], COLORS["UCM"]]
 
 # Common journal figure width requirements (in inches)
 FIGURE_WIDTHS = {
-    "single_column": 3.5,    # Most journals single column
+    "single_column": 3.5,  # Most journals single column
     "one_half_column": 5.5,  # 1.5 column width
-    "double_column": 7.0,    # Full page width
-    "presentation": 10.0,    # For slides/posters
+    "double_column": 7.0,  # Full page width
+    "presentation": 10.0,  # For slides/posters
 }
 
 # Standard figure dimensions (width, height) in inches
@@ -101,9 +116,9 @@ SCREEN_DPI = 150  # For preview/screen display
 # Font family priority (first available will be used)
 FONT_FAMILIES = [
     "Times New Roman",  # Windows/Mac - classic academic
-    "Liberation Serif", # Linux equivalent
-    "DejaVu Serif",     # Cross-platform fallback
-    "serif",            # System default
+    "Liberation Serif",  # Linux equivalent
+    "DejaVu Serif",  # Cross-platform fallback
+    "serif",  # System default
 ]
 
 # Sans-serif alternative for presentations/posters
@@ -130,6 +145,7 @@ FONT_SIZES = {
 # =============================================================================
 # RCPARAMS CONFIGURATION
 # =============================================================================
+
 
 def get_publication_rcparams(
     use_serif: bool = True,
@@ -158,20 +174,17 @@ def get_publication_rcparams(
         "figure.edgecolor": "white",
         "figure.autolayout": False,  # We'll use tight_layout manually
         "figure.constrained_layout.use": True,  # Better than tight_layout
-
         # =====================================================================
         # FONT
         # =====================================================================
         "font.family": font_family[0] if not use_latex else "serif",
         "font.size": FONT_SIZES["tick_label"],
         "font.weight": "normal",
-
         # =====================================================================
         # TEXT
         # =====================================================================
         "text.usetex": use_latex,
         "text.color": COLORS["gray_dark"],
-
         # =====================================================================
         # AXES
         # =====================================================================
@@ -191,7 +204,6 @@ def get_publication_rcparams(
         "axes.spines.top": False,
         "axes.spines.right": False,
         "axes.prop_cycle": plt.cycler(color=MODEL_COLORS),
-
         # =====================================================================
         # GRID
         # =====================================================================
@@ -199,7 +211,6 @@ def get_publication_rcparams(
         "grid.linestyle": "-",
         "grid.linewidth": 0.5,
         "grid.alpha": 0.7,
-
         # =====================================================================
         # TICKS
         # =====================================================================
@@ -217,7 +228,6 @@ def get_publication_rcparams(
         "ytick.minor.size": 2,
         "xtick.major.pad": 6,
         "ytick.major.pad": 6,
-
         # =====================================================================
         # LEGEND
         # =====================================================================
@@ -233,7 +243,6 @@ def get_publication_rcparams(
         "legend.handletextpad": 0.5,
         "legend.columnspacing": 1.0,
         "legend.markerscale": 1.0,
-
         # =====================================================================
         # LINES
         # =====================================================================
@@ -241,24 +250,20 @@ def get_publication_rcparams(
         "lines.markersize": 6,
         "lines.markeredgewidth": 0.8,
         "lines.markeredgecolor": "white",
-
         # =====================================================================
         # SCATTER
         # =====================================================================
         "scatter.edgecolors": "white",
-
         # =====================================================================
         # PATCHES (bars, etc.)
         # =====================================================================
         "patch.linewidth": 0.8,
         "patch.edgecolor": "white",
         "patch.facecolor": COLORS["ESM"],
-
         # =====================================================================
         # HISTOGRAM
         # =====================================================================
         "hist.bins": "auto",
-
         # =====================================================================
         # BOXPLOT
         # =====================================================================
@@ -271,12 +276,10 @@ def get_publication_rcparams(
         "boxplot.flierprops.markersize": 4,
         "boxplot.flierprops.markerfacecolor": COLORS["gray_medium"],
         "boxplot.flierprops.markeredgecolor": "white",
-
         # =====================================================================
         # ERRORBAR
         # =====================================================================
         "errorbar.capsize": 3,
-
         # =====================================================================
         # SAVING
         # =====================================================================
@@ -286,7 +289,6 @@ def get_publication_rcparams(
         "savefig.bbox": "tight",
         "savefig.pad_inches": 0.1,
         "savefig.transparent": False,
-
         # =====================================================================
         # PDF/SVG EXPORT
         # =====================================================================
@@ -354,6 +356,7 @@ def setup_publication_style(
     # Try to set up seaborn if available
     try:
         import seaborn as sns
+
         sns.set_theme(style="whitegrid", rc=rcparams)
     except ImportError:
         pass
@@ -362,6 +365,7 @@ def setup_publication_style(
 # =============================================================================
 # HELPER FUNCTIONS
 # =============================================================================
+
 
 def save_figure(
     fig: plt.Figure,
@@ -398,21 +402,40 @@ def save_figure(
 
         # Format-specific settings
         if fmt == "pdf":
-            fig.savefig(filepath, format="pdf", dpi=export_dpi,
-                       bbox_inches="tight", pad_inches=0.1)
+            fig.savefig(
+                filepath,
+                format="pdf",
+                dpi=export_dpi,
+                bbox_inches="tight",
+                pad_inches=0.1,
+            )
         elif fmt == "svg":
-            fig.savefig(filepath, format="svg",
-                       bbox_inches="tight", pad_inches=0.1)
+            fig.savefig(filepath, format="svg", bbox_inches="tight", pad_inches=0.1)
         elif fmt == "eps":
-            fig.savefig(filepath, format="eps", dpi=export_dpi,
-                       bbox_inches="tight", pad_inches=0.1)
+            fig.savefig(
+                filepath,
+                format="eps",
+                dpi=export_dpi,
+                bbox_inches="tight",
+                pad_inches=0.1,
+            )
         elif fmt == "tiff":
-            fig.savefig(filepath, format="tiff", dpi=export_dpi,
-                       bbox_inches="tight", pad_inches=0.1,
-                       pil_kwargs={"compression": "tiff_lzw"})
+            fig.savefig(
+                filepath,
+                format="tiff",
+                dpi=export_dpi,
+                bbox_inches="tight",
+                pad_inches=0.1,
+                pil_kwargs={"compression": "tiff_lzw"},
+            )
         else:  # png and others
-            fig.savefig(filepath, format=fmt, dpi=export_dpi,
-                       bbox_inches="tight", pad_inches=0.1)
+            fig.savefig(
+                filepath,
+                format=fmt,
+                dpi=export_dpi,
+                bbox_inches="tight",
+                pad_inches=0.1,
+            )
 
         saved_paths.append(filepath)
 
@@ -422,7 +445,9 @@ def save_figure(
 def add_panel_label(
     ax: plt.Axes,
     label: str,
-    loc: Literal["upper left", "upper right", "lower left", "lower right"] = "upper left",
+    loc: Literal[
+        "upper left", "upper right", "lower left", "lower right"
+    ] = "upper left",
     fontsize: Optional[int] = None,
     fontweight: str = "bold",
     offset: tuple[float, float] = (0.02, 0.98),
@@ -452,15 +477,25 @@ def add_panel_label(
         "lower right": (1 - offset[0], offset[0]),
     }
 
-    ha_map = {"upper left": "left", "upper right": "right",
-              "lower left": "left", "lower right": "right"}
-    va_map = {"upper left": "top", "upper right": "top",
-              "lower left": "bottom", "lower right": "bottom"}
+    ha_map = {
+        "upper left": "left",
+        "upper right": "right",
+        "lower left": "left",
+        "lower right": "right",
+    }
+    va_map = {
+        "upper left": "top",
+        "upper right": "top",
+        "lower left": "bottom",
+        "lower right": "bottom",
+    }
 
     x, y = positions.get(loc, positions["upper left"])
 
     ax.text(
-        x, y, label,
+        x,
+        y,
+        label,
         transform=ax.transAxes,
         fontsize=fontsize,
         fontweight=fontweight,
@@ -515,7 +550,11 @@ def format_axis_labels(
         title_kwargs: Additional kwargs for title.
     """
     default_label_kwargs = {"fontsize": FONT_SIZES["axis_label"]}
-    default_title_kwargs = {"fontsize": FONT_SIZES["title"], "fontweight": "bold", "pad": 12}
+    default_title_kwargs = {
+        "fontsize": FONT_SIZES["title"],
+        "fontweight": "bold",
+        "pad": 12,
+    }
 
     if xlabel:
         ax.set_xlabel(xlabel, **(xlabel_kwargs or default_label_kwargs))
@@ -528,7 +567,9 @@ def format_axis_labels(
 def add_stats_annotation(
     ax: plt.Axes,
     text: str,
-    loc: Literal["upper left", "upper right", "lower left", "lower right"] = "upper right",
+    loc: Literal[
+        "upper left", "upper right", "lower left", "lower right"
+    ] = "upper right",
     fontsize: Optional[int] = None,
     boxstyle: str = "round,pad=0.4",
     facecolor: str = "#FFFDE7",  # Light yellow
@@ -557,10 +598,18 @@ def add_stats_annotation(
         "lower right": (1 - offset[0], offset[1]),
     }
 
-    ha_map = {"upper left": "left", "upper right": "right",
-              "lower left": "left", "lower right": "right"}
-    va_map = {"upper left": "top", "upper right": "top",
-              "lower left": "bottom", "lower right": "bottom"}
+    ha_map = {
+        "upper left": "left",
+        "upper right": "right",
+        "lower left": "left",
+        "lower right": "right",
+    }
+    va_map = {
+        "upper left": "top",
+        "upper right": "top",
+        "lower left": "bottom",
+        "lower right": "bottom",
+    }
 
     x, y = positions.get(loc, positions["upper right"])
 
@@ -584,6 +633,7 @@ def add_stats_annotation(
 # FIGURE-TYPE-SPECIFIC STYLE HELPERS
 # =============================================================================
 
+
 def style_scatter_plot(
     ax: plt.Axes,
     add_identity_line: bool = True,
@@ -605,9 +655,15 @@ def style_scatter_plot(
         xlim = ax.get_xlim()
         ylim = ax.get_ylim()
         max_val = max(xlim[1], ylim[1])
-        ax.plot([0, max_val], [0, max_val],
-                color=identity_color, linestyle=identity_style,
-                linewidth=1.5, label=identity_label, zorder=1)
+        ax.plot(
+            [0, max_val],
+            [0, max_val],
+            color=identity_color,
+            linestyle=identity_style,
+            linewidth=1.5,
+            label=identity_label,
+            zorder=1,
+        )
         ax.set_xlim(0, max_val)
         ax.set_ylim(0, max_val)
 
@@ -635,12 +691,24 @@ def style_histogram(
         mean_color: Color of mean line.
     """
     if add_zero_line:
-        ax.axvline(x=0, color=zero_color, linestyle="-",
-                   linewidth=2, label="Zero (unbiased)", zorder=10)
+        ax.axvline(
+            x=0,
+            color=zero_color,
+            linestyle="-",
+            linewidth=2,
+            label="Zero (unbiased)",
+            zorder=10,
+        )
 
     if add_mean_line and data_mean is not None:
-        ax.axvline(x=data_mean, color=mean_color, linestyle="--",
-                   linewidth=2, label=f"Mean: {data_mean:+.1f}", zorder=10)
+        ax.axvline(
+            x=data_mean,
+            color=mean_color,
+            linestyle="--",
+            linewidth=2,
+            label=f"Mean: {data_mean:+.1f}",
+            zorder=10,
+        )
 
 
 def style_bar_chart(
@@ -667,9 +735,14 @@ def style_bar_chart(
         for i, (patch, val) in enumerate(zip(ax.patches, values)):
             x = patch.get_x() + patch.get_width() / 2
             y = patch.get_height() + offset
-            ax.text(x, y, label_format.format(val),
-                   ha="center", va="bottom",
-                   fontsize=FONT_SIZES["annotation"])
+            ax.text(
+                x,
+                y,
+                label_format.format(val),
+                ha="center",
+                va="bottom",
+                fontsize=FONT_SIZES["annotation"],
+            )
 
 
 def style_boxplot(
@@ -751,6 +824,7 @@ def style_time_series(
 # QUICK SETUP FOR COMMON SCENARIOS
 # =============================================================================
 
+
 def quick_setup_paper():
     """Quick setup for academic paper figures (serif fonts, 600 DPI)."""
     setup_publication_style(use_serif=True, context="paper")
@@ -770,6 +844,7 @@ def quick_setup_poster():
 # VALIDATION / DIAGNOSTIC
 # =============================================================================
 
+
 def print_current_settings():
     """Print current matplotlib settings for debugging."""
     print("=" * 60)
@@ -786,7 +861,10 @@ def print_current_settings():
         ("Label size", plt.rcParams["axes.labelsize"]),
         ("Legend size", plt.rcParams["legend.fontsize"]),
         ("Grid visible", plt.rcParams["axes.grid"]),
-        ("Spines (top/right)", f"{plt.rcParams['axes.spines.top']}/{plt.rcParams['axes.spines.right']}"),
+        (
+            "Spines (top/right)",
+            f"{plt.rcParams['axes.spines.top']}/{plt.rcParams['axes.spines.right']}",
+        ),
     ]
 
     for name, value in settings:
@@ -843,9 +921,13 @@ if __name__ == "__main__":
     y_lower = y_pred - 15
     y_upper = y_pred + 15
 
-    axes[1, 1].fill_between(t, y_lower, y_upper, alpha=0.3, color=COLORS["ESM"], label="95% CI")
+    axes[1, 1].fill_between(
+        t, y_lower, y_upper, alpha=0.3, color=COLORS["ESM"], label="95% CI"
+    )
     axes[1, 1].plot(t, y_pred, color=COLORS["ESM"], marker="s", label="Predicted")
-    axes[1, 1].scatter(t, y_actual, color=COLORS["negative"], s=60, zorder=5, label="Actual")
+    axes[1, 1].scatter(
+        t, y_actual, color=COLORS["negative"], s=60, zorder=5, label="Actual"
+    )
     axes[1, 1].set_xlabel("Time")
     axes[1, 1].set_ylabel("Value")
     axes[1, 1].set_title("Time Series Example")

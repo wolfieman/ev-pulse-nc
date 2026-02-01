@@ -172,16 +172,22 @@ ev-pulse-nc/
   - Urban vs. rural disparity analysis
   - Zero-infrastructure county identification
 
-### Phase 4: Predictive Analysis
+### Phase 4: Predictive Analysis (COMPLETE)
 - **Objective:** Forecast future BEV adoption to anticipate infrastructure needs
 - **Methods:**
-  - County-level ARIMA time series forecasting
-  - Weighted MAPE: 2.73% (high accuracy)
-  - Horizon: Through June 2028
+  - SAS Model Studio auto-selected models per county
+  - ESM: 82 counties, ARIMA: 13 counties, UCM: 5 counties
+  - Training period: Sep 2018 - Jun 2025 (82 months)
+- **Validation (Jul-Oct 2025, 4 months out-of-sample):**
+  - MAPE: 4.36% (strong accuracy)
+  - MAE: 27.10 vehicles, RMSE: 114.11 vehicles
+  - Bias: +18.36 (systematic underprediction)
+  - 95% CI Coverage: 75.3% (below nominal due to bias)
+  - Key Finding: 68.9% of forecasts underpredicted actuals
 - **Outputs:**
   - Forecasted BEV registrations by county-month
-  - Confidence intervals (±2σ)
-  - Projected infrastructure gap scenarios
+  - 95% confidence intervals
+  - 8 publication-quality figures (600 DPI, PDF exports)
 
 ### Phase 5: Prescriptive Analysis
 - **Objective:** Optimize infrastructure investment allocation
@@ -286,5 +292,5 @@ For questions about this analysis or collaboration opportunities:
 
 ---
 
-**Status:** 🚧 Active Development
-**Last Updated:** January 2026
+**Status:** Phase 1 Complete (Forecast Validation)
+**Last Updated:** February 2026
