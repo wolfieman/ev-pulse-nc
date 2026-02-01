@@ -32,7 +32,7 @@ This document defines the coding standards and design philosophy for the EV Puls
 
 ### Data File Naming Pattern
 
-Follow the `domain-subject-grain-date.ext` convention for **new files**:
+Follow the `domain-subject-grain-date.ext` convention:
 
 ```
 ncdot-ev-registrations-county-202506.csv
@@ -42,8 +42,6 @@ ncdot-ev-registrations-county-202506.csv
 │     └── Subject (ev-registrations, charging-stations)
 └── Domain/Source (ncdot, afdc)
 ```
-
-**Note:** Legacy data files (e.g., `NC_EV_PHEV_TS.csv`, `alt_fuel_stations_ev_charging_units.csv`) pre-date this convention and are exempt. New files should follow kebab-case.
 
 ### Directory Structure Note
 
@@ -138,6 +136,77 @@ def download_file(url: str, dest: Path, retries: int = 3, timeout: int = 60) -> 
 
 - Prefer return values over exceptions
 - Use `print()` for CLI script output (acceptable for research project)
+
+---
+
+## Data Validation
+
+### Philosophy
+
+Validate defensively **at boundaries** (file I/O, external APIs, user input), trust **internally** in pure transformations. This keeps code simple while catching real problems early.
+
+### Validation Patterns
+
+**At Boundaries (File I/O, APIs):**
+- Check file existence and size
+- Validate external data structure (columns, sheet names, formats)
+- Provide specific, actionable error messages
+- Return `(success: bool, message: str)` tuples
+- Log warnings to stderr for skipped/malformed data
+
+```python
+def validate_excel(file_path: Path) -> tuple[bool, str]:
+    """Validate file exists and meets minimum standards."""
+    if not file_path.exists():
+        return False, "File does not exist"
+    if file_path.stat().st_size < 1000:
+        return False, "File suspiciously small"
+    return True, "Valid"
+```
+
+**In Data Processing:**
+- Check required columns are present
+- Log warnings for skipped rows/files, don't fail silently
+
+```python
+missing_cols = REQUIRED_COLUMNS - set(df.columns)
+if missing_cols:
+    print(f"[warn] Missing columns {missing_cols}", file=sys.stderr)
+    return pd.DataFrame(), None
+```
+
+### Framework Decision
+
+**Do not use pandera, pydantic, or great_expectations** for this project:
+- Validation logic is simple enough to read and understand
+- Data volumes are research scale, not production scale
+- Adds complexity without solving current problems
+
+**When to reconsider:** If adding 5+ data sources or moving to automated pipelines.
+
+---
+
+## Configuration Strategy
+
+This project uses a simple, explicit configuration approach:
+
+### Current Approach
+
+1. **Command-line arguments** (preferred) - All scripts use `argparse` with sensible defaults
+2. **Module-level constants** - For fixed values like URLs and column names
+3. **Default paths** - Scripts infer reasonable directories when not specified
+
+### Guidelines
+
+- Use CLI arguments for parameters users might customize
+- Use constants for fixed values (URLs, formats, thresholds)
+- Use `.env` files only if external API keys are ever needed (currently not applicable)
+
+### No API Keys Required
+
+Current data sources (NCDOT and AFDC) require no authentication:
+- NCDOT: Public website downloads
+- AFDC: Pre-downloaded CSV data in Git LFS
 
 ---
 
