@@ -2,7 +2,7 @@
 
 ## Raw Data (`raw/`)
 
-### NC_EV_PHEV_TS.csv (520 MB)
+### ncdot-ev-phev-registrations-county-201809-202506.csv (520 MB)
 - **Source:** North Carolina Department of Transportation (NCDOT)
 - **Description:** Monthly electric vehicle (BEV) and plug-in hybrid (PHEV) registrations
 - **Structure:** 8,200 observations (100 counties × 82 months)
@@ -14,7 +14,7 @@
   - `PlugInHybrid`: Plug-in hybrid count (PHEV) - excluded from analysis
   - `MonthDate`: Numeric month (YYYYMM)
 
-### alt_fuel_stations_ev_charging_units.csv (695 MB)
+### afdc-charging-stations-connector.csv (695 MB)
 - **Source:** U.S. Department of Energy, Alternative Fuels Data Center (AFDC)
 - **Description:** Connector-level EV charging infrastructure data
 - **Structure:** 1,725 charging unit records from 355 unique stations

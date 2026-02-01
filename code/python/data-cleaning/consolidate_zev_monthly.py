@@ -4,7 +4,7 @@ Consolidate NCDOT ZEV monthly registration files into a single dataset.
 
 Reads multiple monthly Excel files, extracts relevant columns (County, Electric,
 Plug-In Hybrid), adds a Month column derived from filenames, and produces a
-consolidated output matching the NC_EV_PHEV.xlsx format.
+consolidated output matching the ncdot-ev-phev format.
 
 Usage:
     python consolidate_zev_monthly.py --indir ../../../data/raw/ncdot-monthly --out ../../../data/processed/nc_zev_consolidated.xlsx
