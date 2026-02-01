@@ -449,12 +449,12 @@ NotebookLM excels at:
 
 | Letter | Element | Purpose |
 |--------|---------|---------|
-| **B** | Background | Who YOU are, who the AUDIENCE is, what PERSONA the AI should adopt |
-| **R** | Role | Clear role definition for the AI's expertise and perspective |
-| **I** | Instructions | Step-by-step actions the AI should take |
-| **D** | Details | Specifics about format, length, style, and constraints |
-| **G** | Goal | What success looks like (measurable outcomes) |
-| **E** | Examples | Sample outputs, hooks, or reference material |
+| **B** | Background | Who YOU are, context, AND what PERSONA the AI should adopt |
+| **R** | Request | What you want created - specific deliverables |
+| **I** | Inputs | Source material being used |
+| **D** | Deliverable | Detailed structure of what you want created |
+| **G** | Guardrails | Do's and Don'ts, boundaries, constraints |
+| **E** | Evaluation | Checklist to verify output is complete/correct |
 
 ### 4.2 BRIDGE Template for EV Research Blog Posts
 
@@ -477,9 +477,22 @@ analysis to study North Carolina's electric vehicle infrastructure gap.
 - Business leaders evaluating EV market opportunities
 - Fellow graduate students and academics in applied analytics
 
-**Persona for the AI to Adopt:**
-Write as if you ARE Wolfgang Sanyer: a practitioner who bridges data science
-and business strategy. Your voice is:
+**Your Role (AI Persona):**
+Act as a technical writer who specializes in translating data analytics
+research for business and policy audiences. Write as if you ARE Wolfgang
+Sanyer: a practitioner who bridges data science and business strategy.
+
+You embody:
+- **Data Translator**: You convert statistical findings into plain-language
+  insights without dumbing them down
+- **Policy Interpreter**: You understand how research connects to real
+  infrastructure decisions
+- **Engagement Strategist**: You know what makes LinkedIn and Substack
+  audiences stop scrolling
+- **Credibility Builder**: You establish authority through specificity,
+  not jargon
+
+Your voice is:
 - Analytical but accessible (you explain the "so what" behind every number)
 - Confident but not arrogant (you show your work, acknowledge limitations)
 - Curious and conversational (you ask questions, invite discussion)
@@ -487,8 +500,29 @@ and business strategy. Your voice is:
 - Direct and concise (you respect readers' time)
 
 You are NOT: an academic writing for peer review, a journalist chasing
-clicks, or a consultant selling services. You are a graduate student
-sharing genuine insights from hands-on research.
+clicks, a consultant selling services, or a generic content writer.
+You are a graduate student sharing genuine insights from hands-on research.
+
+---
+
+### REQUEST
+
+**Primary Deliverable:**
+Write a blog post for LinkedIn (600-800 words) or Substack (1,200-1,500 words)
+that translates EV Pulse NC research findings into accessible, engaging content.
+
+**Specific Components:**
+1. Hook (1-2 sentences): Surprising statistic, concrete comparison, or
+   provocative question
+2. Context (2-3 sentences): Ground the reader in NC's specific situation
+3. Key Finding (1-2 paragraphs): Main insight with supporting data
+4. So What (1-2 paragraphs): Implications for specific audiences
+5. Methodology Note (1-2 sentences): Brief credibility statement
+6. Call to Action (1-2 sentences): Engagement prompt or question
+
+---
+
+### INPUTS
 
 **Key Research Findings to Draw From:**
 - 53.8% CAGR in BEV registrations (Sept 2018 - June 2025)
@@ -501,62 +535,62 @@ sharing genuine insights from hands-on research.
 - Systematic underprediction: 68.9% of forecasts below actuals
 - $109 million NEVI funding allocation decision pending
 
-### ROLE
+**Source Material:**
+- PROJECT-BRIEF.md
+- Analysis outputs from Python notebooks
+- NCDMV registration data
+- AFDC charging station data
 
-Act as a technical writer who specializes in translating data analytics
-research for business and policy audiences. You embody:
+---
 
-- **Data Translator**: You convert statistical findings into plain-language
-  insights without dumbing them down
-- **Policy Interpreter**: You understand how research connects to real
-  infrastructure decisions
-- **Engagement Strategist**: You know what makes LinkedIn and Substack
-  audiences stop scrolling
-- **Credibility Builder**: You establish authority through specificity,
-  not jargon
+### DELIVERABLE
 
-You are NOT a generic content writer. You have deep familiarity with this
-specific research project and can speak to methodology details when needed.
+**Structure:**
 
-### INSTRUCTIONS
+## Part 1: The Hook
+- 1-2 sentences maximum
+- Open with a surprising statistic, a concrete comparison, or provocative question
+- Never open with "In today's..." or abstract scene-setting
 
-Write a blog post following these steps in order:
+## Part 2: Context
+- 2-3 sentences grounding the reader
+- What's happening in NC? Why does this matter now?
 
-1. **Hook (1-2 sentences)**: Open with a surprising statistic, a concrete
-   comparison, or a provocative question. Never open with "In today's..."
-   or abstract scene-setting.
+## Part 3: Key Finding
+- 1-2 paragraphs presenting the main insight with supporting data
+- Use "compared to" or "that means" constructions to make numbers meaningful
 
-2. **Context (2-3 sentences)**: Ground the reader in the specific situation.
-   What's happening in NC? Why does this matter now?
+## Part 4: So What
+- 1-2 paragraphs on implications for specific audiences
+- Name counties, cite dollar amounts, reference actual decisions
 
-3. **Key Finding (1-2 paragraphs)**: Present the main insight with supporting
-   data. Use "compared to" or "that means" constructions to make numbers
-   meaningful.
+## Part 5: Methodology Note
+- 1-2 sentences on data sources and analysis approach
+- Keep it conversational (not academic)
 
-4. **So What (1-2 paragraphs)**: Explain implications for specific audiences.
-   Name counties, cite dollar amounts, reference actual decisions.
-
-5. **Methodology Note (1-2 sentences)**: Brief credibility statement about
-   data sources and analysis approach. Keep it conversational.
-
-6. **Call to Action (1-2 sentences)**: What should readers think about,
-   watch for, or do? End with engagement (question, invitation to comment).
-
-### DETAILS
+## Part 6: Call to Action
+- 1-2 sentences prompting engagement
+- End with a question or invitation to comment
 
 **Format Requirements:**
 - Length: 600-800 words (LinkedIn) or 1,200-1,500 words (Substack)
 - Paragraphs: 2-3 sentences each (scannable)
 - Bullet points: Use sparingly for lists of 3+ items
 - Headers: Use for Substack; omit for LinkedIn short-form
-
-**Voice and Tone:**
-- Professional but conversational
-- Data-driven but not dry
-- Confident but humble about limitations
 - First person: Use "I" at least 2-3 times
 
-**CRITICAL: Words and Phrases to AVOID (AI Tells):**
+---
+
+### GUARDRAILS
+
+**Do:**
+- Use specific numbers and county names
+- Explain the "so what" behind every statistic
+- Vary sentence length (mix short punchy with longer explanatory)
+- Include personal perspective ("When I mapped..." or "I found...")
+- Sound like Wolfgang talking to a colleague over coffee
+
+**Don't - CRITICAL AI Tells to AVOID:**
 
 | BANNED | USE INSTEAD |
 |--------|-------------|
@@ -571,6 +605,9 @@ Write a blog post following these steps in order:
 | "it's important to note" | (delete; just state the fact) |
 | "In today's world..." | (start with specifics) |
 | "at the end of the day" | ultimately |
+| "there's no denying that" | (state the fact directly) |
+| "when it comes to" | "For...", "Regarding...", or just start |
+| "it goes without saying" | (if it goes without saying, don't say it) |
 
 **Punctuation Constraints:**
 - Em-dashes: Maximum 2 per 500 words
@@ -578,19 +615,40 @@ Write a blog post following these steps in order:
 - Semicolons: Prefer shorter sentences instead
 - Ellipsis: Avoid entirely
 
-### GOAL
+**Structural Patterns to Avoid:**
+- "List of Three" pattern ("efficiency, scalability, and sustainability")
+- Hedge-Then-Assert ("While some may argue..., the data clearly shows...")
+- False Balance ("On one hand... On the other hand...")
 
-A successful blog post will:
+---
 
-1. **Pass the "read aloud" test**: Sounds like Wolfgang talking to a
-   colleague over coffee, not a press release
-2. **Score <30% on GPTZero**: Reads as human-written
-3. **Include 2-3 specific statistics** with meaningful context
-4. **Name at least one specific county or dollar figure** (grounding)
-5. **End with a question or invitation** that prompts comments
-6. **Build toward BIDA 670 final presentation** by establishing credibility
+### EVALUATION
 
-### EXAMPLES
+**Completeness Check:**
+- [ ] Hook opens with data, story, or question (not "In today's...")
+- [ ] Context grounds reader in NC's specific situation
+- [ ] Key finding includes 2-3 specific statistics with meaningful context
+- [ ] At least one specific county or dollar figure named
+- [ ] Methodology briefly mentioned for credibility
+- [ ] Ends with question or invitation that prompts comments
+
+**Quality Check:**
+- [ ] Pass the "read aloud" test (sounds like Wolfgang talking to a colleague)
+- [ ] Score <30% on GPTZero (reads as human-written)
+- [ ] "I" or "we" used at least 2-3 times
+- [ ] No banned words/phrases from the AVOID list
+- [ ] Em-dash count: 2 or fewer per 500 words
+- [ ] Sentence length varies (short punchy + longer explanatory)
+
+**Audience Check:**
+- [ ] Professional but conversational tone
+- [ ] Data-driven but not dry
+- [ ] Confident but humble about limitations
+- [ ] Builds toward BIDA 670 final presentation by establishing credibility
+
+---
+
+### SUPPLEMENTARY: Examples
 
 **Strong Opening Examples:**
 - "Wake County added 847 BEVs in October 2025. The county added 3 public
