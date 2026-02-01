@@ -7,7 +7,7 @@ Overwrites the input file in place.
 
 Usage:
     python add_monthdate.py
-    python add_monthdate.py --file ../../../data/generated/NC_EV_PHEV_latest.xlsx
+    python add_monthdate.py --file ../../../data/generated/ncdot-ev-phev-latest.xlsx
 """
 
 import argparse
@@ -15,7 +15,7 @@ from pathlib import Path
 
 import pandas as pd
 
-DEFAULT_FILE = Path(__file__).resolve().parent.parent.parent.parent / "data" / "generated" / "NC_EV_PHEV_latest.xlsx"
+DEFAULT_FILE = Path(__file__).resolve().parent.parent.parent.parent / "data" / "generated" / "ncdot-ev-phev-latest.xlsx"
 
 
 def add_monthdate(filepath: Path) -> None:

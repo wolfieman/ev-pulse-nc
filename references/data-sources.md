@@ -4,7 +4,7 @@
 
 ### 1. North Carolina Electric Vehicle Registrations
 - **Source:** North Carolina Department of Transportation (NCDOT)
-- **Dataset:** NC_EV_PHEV_TS.csv
+- **Dataset:** ncdot-ev-phev-registrations-county-201809-202506.csv
 - **Monthly Files URL:** https://www.ncdot.gov/initiatives-policies/environmental/climate-change/Documents/{year}-{month}-registration-data.xlsx
 - **Coverage:** September 2018 - June 2025 (82 months)
 - **Granularity:** County-month panel data (100 counties × 82 months = 8,200 observations)
@@ -12,7 +12,7 @@
 
 ### 2. Alternative Fuel Stations - Electric Vehicle Charging
 - **Source:** U.S. Department of Energy, Alternative Fuels Data Center (AFDC)
-- **Dataset:** alt_fuel_stations_ev_charging_units.csv
+- **Dataset:** afdc-charging-stations-connector.csv
 - **URL:** https://afdc.energy.gov/stations
 - **Coverage:** 355 stations, 1,725 connector records
 - **Updated:** 2025
