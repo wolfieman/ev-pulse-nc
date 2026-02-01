@@ -33,14 +33,38 @@ python consolidate_zev_monthly.py --indir ../../../data/raw/ncdot-monthly --out 
 
 **Dependencies:** `pandas`, `openpyxl`
 
-### analysis/ (planned)
+### analysis/
 
-Core analysis scripts:
-- Exploratory data analysis
-- Descriptive statistics
-- Diagnostic gap analysis
-- Predictive modeling (ARIMA forecasting)
-- Prescriptive recommendations
+Core analysis scripts for time series modeling and forecasting.
+
+**arima_bev_forecast.py** - Full ARIMA implementation for BEV registration forecasting
+
+```bash
+# Run with default ARIMA(1,1,1)
+python arima_bev_forecast.py
+
+# Specify custom order
+python arima_bev_forecast.py --order 2 1 1
+
+# Auto-select best order
+python arima_bev_forecast.py --auto-select
+
+# Compare with SAS AIC
+python arima_bev_forecast.py --order 1 1 1 --sas-aic 1523.45
+```
+
+Features:
+- Stationarity testing (ADF, KPSS)
+- Model fitting with diagnostics
+- Forecast generation with confidence intervals
+- Holdout validation (MAPE, MAE, RMSE)
+- Diagnostic plots saved to `output/arima/`
+
+**arima_template.py** - Minimal template for SAS-to-Python ARIMA translation
+
+Use this as a quick reference for replicating SAS PROC ARIMA in Python.
+
+**Dependencies:** `pandas`, `numpy`, `statsmodels`, `matplotlib`, `scipy`
 
 ### visualization/ (planned)
 
