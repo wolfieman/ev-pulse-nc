@@ -1,0 +1,112 @@
+======================================================================
+SAS MODEL STUDIO FORECAST VALIDATION REPORT
+Generated: 2026-02-01 15:55
+Validation Period: Jul 2025 - Oct 2025
+======================================================================
+
+EXECUTIVE SUMMARY
+----------------------------------------------------------------------
+The SAS Model Studio forecasts demonstrated moderate point forecast
+accuracy (MAPE 4.34%) but exhibited systematic
+underprediction with 69.0% of forecasts
+falling below actual values. Confidence interval coverage was
+75.5% vs. the nominal 95% target.
+
+OVERALL METRICS
+----------------------------------------------------------------------
+  Observations:        400
+  Counties:            100
+
+  Point Forecast Accuracy:
+    MAE:               26.88 vehicles
+    RMSE:              113.54 vehicles
+    MAPE:              4.34%
+
+  Bias Analysis:
+    Mean Bias:         +18.22 vehicles
+    Direction:         UNDERPREDICTION
+    Underprediction %: 69.0%
+
+  Uncertainty Quantification:
+    95% CI Coverage:   75.5% (target: 95%)
+    Coverage Gap:      19.5 percentage points
+
+METRICS BY MODEL TYPE
+----------------------------------------------------------------------
+ModelType  Counties   MAE   RMSE  MAPE  MeanBias  PctUnderpredicted  CI_Coverage
+    ARIMA        13 84.83 252.94  5.43     39.31              78.85        67.31
+      ESM        82 19.10  74.67  4.16     15.85              67.07        75.30
+      UCM         5  3.71   6.36  4.43      2.19              75.00       100.00
+
+INTERPRETATION BY MODEL TYPE
+----------------------------------------------------------------------
+  ARIMA (13 counties):
+    - MAPE: 5.43%
+    - Bias: +39.3 vehicles (mean)
+    - Underprediction rate: 78.8%
+    - CI Coverage: 67.3% vs 95% target
+
+  ESM (82 counties):
+    - MAPE: 4.16%
+    - Bias: +15.8 vehicles (mean)
+    - Underprediction rate: 67.1%
+    - CI Coverage: 75.3% vs 95% target
+
+  UCM (5 counties):
+    - MAPE: 4.43%
+    - Bias: +2.2 vehicles (mean)
+    - Underprediction rate: 75.0%
+    - CI Coverage: 100.0% vs 95% target
+
+TOP 10 BEST PERFORMING COUNTIES (Lowest MAPE)
+----------------------------------------------------------------------
+    County ModelType  MAPE  MeanBias  CI_Coverage
+  Caldwell       ESM  0.30     -0.72       100.00
+    Wilkes       ESM  0.44      0.14       100.00
+    Pender       ESM  0.53      0.06       100.00
+       Lee       ESM  0.59      0.09       100.00
+Cumberland       ESM  0.67      2.50       100.00
+      Pitt       ESM  0.69      5.25       100.00
+    Orange       ESM  0.82     16.43       100.00
+Rockingham       ESM  0.83      0.95       100.00
+      Dare       ESM  0.87      0.81       100.00
+  Johnston       ESM  0.88     14.49       100.00
+
+TOP 10 WORST PERFORMING COUNTIES (Highest MAPE)
+----------------------------------------------------------------------
+    County ModelType  MAPE  MeanBias  CI_Coverage
+    Bertie       ESM  9.54      1.67        75.00
+     Gates     ARIMA  9.91      2.19        50.00
+    Graham       ESM 10.48     -1.50        75.00
+    Warren       ESM 11.67      5.87        25.00
+     Avery       ESM 12.16      8.85        25.00
+Washington       ESM 12.88      2.17        50.00
+      Clay       ESM 14.22      5.50        25.00
+      Hyde       UCM 15.00      0.75       100.00
+ Edgecombe     ARIMA 16.67     12.13         0.00
+  Scotland       ESM 18.76     -8.79         0.00
+
+KEY FINDINGS
+----------------------------------------------------------------------
+1. SYSTEMATIC UNDERPREDICTION: Actual EV registrations exceeded
+   forecasts in 69.0% of observations,
+   suggesting EV adoption is accelerating faster than historical
+   patterns predicted.
+
+2. CONFIDENCE INTERVAL UNDERCOVERAGE: The 95% prediction intervals
+   captured only 75.5% of actual values.
+   This undercoverage is explained by the systematic bias - when
+   forecast centers are too low, the intervals shift downward.
+
+3. MODEL TYPE PERFORMANCE: ESM models showed the best balance of
+   accuracy and calibration. ARIMA models had higher bias in
+   high-growth urban counties.
+
+METHODOLOGY
+----------------------------------------------------------------------
+- Training period: September 2018 - June 2025 (82 months)
+- Validation period: July - October 2025 (4 months, out-of-sample)
+- Models: SAS Model Studio auto-selected (ESM, ARIMA, UCM)
+- Comparison: True holdout validation with no data leakage
+
+======================================================================
