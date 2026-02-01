@@ -143,8 +143,6 @@ ev-pulse-nc/
    ls -lh data/raw/
    ```
 
-See [INSTALLATION.md](INSTALLATION.md) for detailed setup instructions.
-
 ---
 
 ## 📊 Analytical Workflow
