@@ -1,7 +1,7 @@
 [project]
 name = "ev-pulse-nc"
 version = "0.1.0"
-description = "Add your description here"
+description = "North Carolina Electric Vehicle Analytics - Data-driven analysis of EV adoption and charging infrastructure"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
@@ -9,7 +9,17 @@ dependencies = [
     "geopandas>=1.1.2",
     "matplotlib>=3.10.8",
     "numpy>=2.4.1",
+    "openpyxl>=3.1.0",
     "pandas>=3.0.0",
     "plotly>=6.5.2",
+    "requests>=2.31.0",
     "seaborn>=0.13.2",
 ]
+
+[tool.ruff]
+line-length = 88
+target-version = "py314"
+exclude = [".venv"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
