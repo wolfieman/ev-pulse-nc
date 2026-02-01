@@ -324,6 +324,15 @@ def standardize_columns(df: pd.DataFrame) -> pd.DataFrame:
     - 2018-2019: COUNTY, Fuel.Type.Primary.Description, Total.Vehicles
     - 2020-2021: County, Fuel Type - Primary, Total Vehicles
     - 2022-2025: County, Fuel Type, Count
+
+    Args:
+        df: Raw DataFrame from an NCDOT Excel file
+
+    Returns:
+        DataFrame with standardized column names (County, BEV, PHEV, etc.)
+
+    Raises:
+        ValueError: If County column is not found in the input data
     """
     mapping = {
         "county": "County",
