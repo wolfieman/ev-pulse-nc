@@ -11,6 +11,7 @@ Usage:
 """
 
 import argparse
+import sys
 from pathlib import Path
 
 import pandas as pd
@@ -19,9 +20,24 @@ DEFAULT_FILE = Path(__file__).resolve().parent.parent.parent.parent / "data" / "
 
 
 def add_monthdate(filepath: Path) -> None:
-    """Add MonthDate column derived from Month column."""
+    """Add MonthDate column derived from Month column.
+
+    Modifies the file in place, overwriting the original.
+
+    Args:
+        filepath: Path to Excel file to process
+
+    Raises:
+        ValueError: If Month column not found in file
+        FileNotFoundError: If file doesn't exist
+    """
     print(f"Reading: {filepath}")
-    df = pd.read_excel(filepath)
+    try:
+        df = pd.read_excel(filepath)
+    except FileNotFoundError:
+        raise FileNotFoundError(f"File not found: {filepath}")
+    except Exception as e:
+        raise RuntimeError(f"Failed to read Excel file {filepath}: {e}") from e
 
     if "Month" not in df.columns:
         raise ValueError(f"Month column not found. Available columns: {df.columns.tolist()}")
@@ -40,11 +56,17 @@ def add_monthdate(filepath: Path) -> None:
     df = df[cols]
 
     print(f"Writing: {filepath}")
-    df.to_excel(filepath, index=False)
+    try:
+        df.to_excel(filepath, index=False)
+    except PermissionError:
+        raise PermissionError(f"Cannot write to file (may be open): {filepath}")
+    except Exception as e:
+        raise RuntimeError(f"Failed to write Excel file {filepath}: {e}") from e
     print(f"Done. Added MonthDate column ({len(df)} rows)")
 
 
 def main():
+    """Parse arguments and run the MonthDate column addition."""
     parser = argparse.ArgumentParser(description="Add MonthDate column to EV/PHEV Excel files")
     parser.add_argument("--file", type=Path, default=DEFAULT_FILE,
                         help=f"Excel file to process (default: {DEFAULT_FILE})")
@@ -59,4 +81,4 @@ def main():
 
 
 if __name__ == "__main__":
-    exit(main())
+    sys.exit(main())
