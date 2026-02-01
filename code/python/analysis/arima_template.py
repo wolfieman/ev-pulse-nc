@@ -9,15 +9,15 @@ For full implementation with diagnostics and validation, see:
     arima_bev_forecast.py
 """
 
-import pandas as pd
 import numpy as np
+import pandas as pd
 from statsmodels.tsa.arima.model import ARIMA
 from statsmodels.tsa.statespace.sarimax import SARIMAX
-
 
 # =============================================================================
 # 1. LOAD AND PREPARE DATA
 # =============================================================================
+
 
 def prepare_time_series(df: pd.DataFrame, date_col: str, value_col: str) -> pd.Series:
     """
@@ -55,6 +55,7 @@ def prepare_time_series(df: pd.DataFrame, date_col: str, value_col: str) -> pd.S
 # 2. FIT ARIMA MODEL
 # =============================================================================
 
+
 def fit_arima(series: pd.Series, order: tuple, trend: str = "n"):
     """
     Fit ARIMA model.
@@ -75,7 +76,7 @@ def fit_arima(series: pd.Series, order: tuple, trend: str = "n"):
         order=order,
         trend=trend,
         enforce_stationarity=False,  # Allow non-stationary parameters
-        enforce_invertibility=False   # Allow non-invertible parameters
+        enforce_invertibility=False,  # Allow non-invertible parameters
     )
 
     # Fit using exact MLE (default)
@@ -84,7 +85,9 @@ def fit_arima(series: pd.Series, order: tuple, trend: str = "n"):
     return results
 
 
-def fit_sarima(series: pd.Series, order: tuple, seasonal_order: tuple, trend: str = "n"):
+def fit_sarima(
+    series: pd.Series, order: tuple, seasonal_order: tuple, trend: str = "n"
+):
     """
     Fit Seasonal ARIMA (SARIMA) model.
 
@@ -107,7 +110,7 @@ def fit_sarima(series: pd.Series, order: tuple, seasonal_order: tuple, trend: st
         seasonal_order=seasonal_order,
         trend=trend,
         enforce_stationarity=False,
-        enforce_invertibility=False
+        enforce_invertibility=False,
     )
 
     results = model.fit(disp=False)
@@ -118,6 +121,7 @@ def fit_sarima(series: pd.Series, order: tuple, seasonal_order: tuple, trend: st
 # =============================================================================
 # 3. EXTRACT MODEL INFORMATION
 # =============================================================================
+
 
 def get_model_info(results) -> dict:
     """
@@ -136,16 +140,13 @@ def get_model_info(results) -> dict:
         "bic": results.bic,
         "hqic": results.hqic,
         "log_likelihood": results.llf,
-
         # Parameters
         "params": results.params.to_dict(),
         "std_errors": results.bse.to_dict(),
         "pvalues": results.pvalues.to_dict(),
-
         # Residual diagnostics
         "residual_variance": results.resid.var(),
         "residual_std": results.resid.std(),
-
         # Number of observations
         "nobs": results.nobs,
     }
@@ -156,6 +157,7 @@ def get_model_info(results) -> dict:
 # =============================================================================
 # 4. GENERATE FORECASTS
 # =============================================================================
+
 
 def forecast(results, steps: int, alpha: float = 0.05) -> pd.DataFrame:
     """
@@ -177,11 +179,13 @@ def forecast(results, steps: int, alpha: float = 0.05) -> pd.DataFrame:
     conf_int = forecast_obj.conf_int(alpha=alpha)
 
     # Build output DataFrame
-    output = pd.DataFrame({
-        "forecast": forecast_mean,
-        "lower_ci": conf_int.iloc[:, 0],
-        "upper_ci": conf_int.iloc[:, 1]
-    })
+    output = pd.DataFrame(
+        {
+            "forecast": forecast_mean,
+            "lower_ci": conf_int.iloc[:, 0],
+            "upper_ci": conf_int.iloc[:, 1],
+        }
+    )
 
     return output
 
@@ -189,6 +193,7 @@ def forecast(results, steps: int, alpha: float = 0.05) -> pd.DataFrame:
 # =============================================================================
 # 5. CALCULATE ACCURACY METRICS
 # =============================================================================
+
 
 def calculate_accuracy(actual: pd.Series, predicted: pd.Series) -> dict:
     """
@@ -214,11 +219,11 @@ def calculate_accuracy(actual: pd.Series, predicted: pd.Series) -> dict:
 
     metrics = {
         "MAE": abs_errors.mean(),
-        "RMSE": np.sqrt((errors ** 2).mean()),
+        "RMSE": np.sqrt((errors**2).mean()),
         "MAPE": pct_errors.mean(),
         "MedAPE": pct_errors.median(),
         "MPE": (errors / actual * 100).mean(),  # Bias indicator
-        "n": len(common_idx)
+        "n": len(common_idx),
     }
 
     return metrics
@@ -248,9 +253,9 @@ if __name__ == "__main__":
     results = fit_arima(series, order=(1, 1, 1), trend="n")
 
     # Print summary (matches SAS PROC ARIMA output structure)
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
     print("MODEL SUMMARY")
-    print("="*60)
+    print("=" * 60)
     print(results.summary())
 
     # Get structured info
@@ -261,9 +266,9 @@ if __name__ == "__main__":
 
     # Generate 4-month forecast (for holdout validation)
     fc = forecast(results, steps=4)
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
     print("FORECAST")
-    print("="*60)
+    print("=" * 60)
     print(fc)
 
     # If you have actual holdout data:
