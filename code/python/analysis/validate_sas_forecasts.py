@@ -117,8 +117,7 @@ def filter_validation_period(
     """
     sas_filtered = sas_df[sas_df["MonthDate"].isin(VALIDATION_MONTHS)].copy()
     actual_filtered = actual_df[
-        (actual_df["Date"] >= VALIDATION_START)
-        & (actual_df["Date"] <= VALIDATION_END)
+        (actual_df["Date"] >= VALIDATION_START) & (actual_df["Date"] <= VALIDATION_END)
     ].copy()
     return sas_filtered, actual_filtered
 
@@ -153,9 +152,9 @@ def merge_for_comparison(
     # Point forecast error metrics
     merged["Error"] = merged["Actual"] - merged["Predicted"]
     merged["AbsError"] = merged["Error"].abs()
-    merged["PctError"] = (
-        (merged["Error"] / merged["Actual"]).where(merged["Actual"] > 0) * 100
-    )
+    merged["PctError"] = (merged["Error"] / merged["Actual"]).where(
+        merged["Actual"] > 0
+    ) * 100
 
     # Bias indicators
     merged["IsUnderprediction"] = merged["Error"] > 0
@@ -271,10 +270,10 @@ def generate_report(
         "",
         "EXECUTIVE SUMMARY",
         "-" * 70,
-        f"The SAS Model Studio forecasts demonstrated moderate point forecast",
+        "The SAS Model Studio forecasts demonstrated moderate point forecast",
         f"accuracy (MAPE {overall['MAPE']:.2f}%) but exhibited systematic",
         f"underprediction with {overall['PctUnderpredicted']:.1f}% of forecasts",
-        f"falling below actual values. Confidence interval coverage was",
+        "falling below actual values. Confidence interval coverage was",
         f"{overall['CI_Coverage']:.1f}% vs. the nominal 95% target.",
         "",
         "OVERALL METRICS",

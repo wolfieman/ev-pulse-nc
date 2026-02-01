@@ -1,7 +1,7 @@
 # EV Pulse NC: Project Brief
 
 **Audience:** Dr. Majed Al-Ghandour, BIDA 670 Instructor
-**Date:** January 30, 2026
+**Date:** February 1, 2026
 
 ---
 
@@ -17,11 +17,21 @@ What makes this distinctive: county-level granularity over 82 months with connec
 
 ---
 
-## Extension Slice #1: Validation (Priority #1)
+## Extension Slice #1: Validation (Priority #1) - COMPLETE
 
-The validation extension tests forecast accuracy using out-of-sample data. The baseline reported strong historical fit (MAPE 2.73%), but this measures in-sample performance.
+The validation extension tested SAS Model Studio forecast accuracy using true out-of-sample data (Jul-Oct 2025).
 
-NCDOT has published July-October 2025 actual BEV counts. The validation process compares ARIMA predictions against actuals, calculating accuracy metrics (MAPE, MAE, RMSE). Most infrastructure planning studies deploy forecasts without validation. Strong performance (MAPE below 5%) enables confident policy recommendations through 2028.
+**Results:**
+- **MAPE:** 4.36% (strong validation, below 5% threshold)
+- **MAE:** 27.10 vehicles, **RMSE:** 114.11 vehicles
+- **Systematic Bias:** +18.36 vehicles (underprediction)
+- **Underprediction Rate:** 68.9% of forecasts fell below actuals
+- **95% CI Coverage:** 75.3% (below nominal 95% due to bias)
+- **Model Distribution:** ESM (82 counties), ARIMA (13 counties), UCM (5 counties)
+
+**Key Finding:** EV adoption in North Carolina is accelerating faster than historical patterns predicted. The models systematically underestimated growth, particularly in high-growth urban counties (Mecklenburg, Wake). This suggests that forecast-based infrastructure planning should add a 4-5% buffer to account for faster-than-predicted adoption.
+
+**Deliverables:** 8 publication-quality figures (600 DPI, PDF exports) documenting validation analysis.
 
 ---
 
@@ -51,7 +61,7 @@ Employment centers need 2-3 times more infrastructure than residential analysis 
 
 ## Integration Logic
 
-The extensions connect through a dependency chain. Validation (Priority #1) establishes confidence in ARIMA forecasting. If validation is strong (MAPE below 5%), county-level forecasts can be used as constraints for ZIP code allocation and workplace demand calculations. The AFDC infrastructure update (Priority #5) provides the current baseline that subsequent extensions require.
+The extensions connect through a dependency chain. Validation (Priority #1) established confidence in SAS Model Studio forecasting with MAPE 4.36% (below 5% threshold). The systematic underprediction finding (68.9% of forecasts below actuals) informs how forecasts should be applied: with a 4-5% upward buffer to account for accelerating adoption. The AFDC infrastructure update (Priority #5) provides the current baseline that subsequent extensions require.
 
 ZIP code analysis (Priority #2) and CTPP workplace charging (Priority #3) complement each other, creating a triple-layer model: county-level totals (baseline), sub-county spatial patterns (ZIP codes), and cross-county commuting flows (CTPP).
 

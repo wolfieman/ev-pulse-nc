@@ -21,20 +21,18 @@ import argparse
 from pathlib import Path
 
 import matplotlib.pyplot as plt
-import pandas as pd
 import numpy as np
+import pandas as pd
 
 # Import publication styling
 from publication_style import (
-    setup_publication_style,
     COLORS,
-    FONT_SIZES,
     FIGURE_SIZES,
-    save_figure,
+    FONT_SIZES,
     add_panel_label,
     add_stats_annotation,
-    style_scatter_plot,
-    style_histogram,
+    save_figure,
+    setup_publication_style,
     style_boxplot,
 )
 
@@ -95,8 +93,9 @@ def fig01_predicted_vs_actual(df: pd.DataFrame, output_dir: Path) -> None:
 
     # Identity line (perfect prediction)
     max_val = max(df["Predicted"].max(), df["Actual"].max()) * 1.05
-    ax.plot([0, max_val], [0, max_val], "k--", lw=1.5,
-            label="Perfect prediction", zorder=2)
+    ax.plot(
+        [0, max_val], [0, max_val], "k--", lw=1.5, label="Perfect prediction", zorder=2
+    )
 
     # Axis configuration
     ax.set_xlabel("Predicted BEV Registrations")
@@ -147,7 +146,7 @@ def fig02_error_distribution(df: pd.DataFrame, output_dir: Path) -> None:
     # Use Freedman-Diaconis rule but cap at 50 bins
     q75, q25 = np.percentile(errors, [75, 25])
     iqr = q75 - q25
-    bin_width = 2 * iqr / (len(errors) ** (1/3)) if iqr > 0 else 1
+    bin_width = 2 * iqr / (len(errors) ** (1 / 3)) if iqr > 0 else 1
     n_bins = min(50, max(15, int((errors.max() - errors.min()) / bin_width)))
 
     # Histogram with improved styling
@@ -161,10 +160,22 @@ def fig02_error_distribution(df: pd.DataFrame, output_dir: Path) -> None:
     )
 
     # Reference lines
-    ax.axvline(x=0, color=COLORS["reference"], linestyle="-",
-               lw=2, label="Zero (unbiased)", zorder=10)
-    ax.axvline(x=mean_bias, color=COLORS["negative"], linestyle="--",
-               lw=2, label=f"Mean bias: {mean_bias:+.1f}", zorder=10)
+    ax.axvline(
+        x=0,
+        color=COLORS["reference"],
+        linestyle="-",
+        lw=2,
+        label="Zero (unbiased)",
+        zorder=10,
+    )
+    ax.axvline(
+        x=mean_bias,
+        color=COLORS["negative"],
+        linestyle="--",
+        lw=2,
+        label=f"Mean bias: {mean_bias:+.1f}",
+        zorder=10,
+    )
 
     # Axis labels
     ax.set_xlabel("Forecast Error (Actual - Predicted)")
@@ -208,13 +219,15 @@ def fig03_metrics_by_model(model_metrics: pd.DataFrame, output_dir: Path) -> Non
 
     # Create x-axis labels with county counts
     labels = [
-        f"{m}\n(n={int(model_metrics[model_metrics['ModelType']==m]['Counties'].values[0])})"
+        f"{m}\n(n={int(model_metrics[model_metrics['ModelType'] == m]['Counties'].values[0])})"
         for m in models
     ]
 
     # Panel A: MAPE
     mape_values = model_metrics["MAPE"].values
-    bars_a = axes[0].bar(x, mape_values, width=bar_width, color=colors, edgecolor="white")
+    bars_a = axes[0].bar(
+        x, mape_values, width=bar_width, color=colors, edgecolor="white"
+    )
     axes[0].set_ylabel("MAPE (%)")
     axes[0].set_title("Point Forecast Accuracy")
     axes[0].set_xticks(x)
@@ -223,14 +236,22 @@ def fig03_metrics_by_model(model_metrics: pd.DataFrame, output_dir: Path) -> Non
 
     # Value labels
     for i, v in enumerate(mape_values):
-        axes[0].text(i, v + max(mape_values) * 0.03, f"{v:.2f}%",
-                    ha="center", va="bottom", fontsize=FONT_SIZES["annotation"])
+        axes[0].text(
+            i,
+            v + max(mape_values) * 0.03,
+            f"{v:.2f}%",
+            ha="center",
+            va="bottom",
+            fontsize=FONT_SIZES["annotation"],
+        )
 
     add_panel_label(axes[0], "A")
 
     # Panel B: Mean Bias
     bias_values = model_metrics["MeanBias"].values
-    bars_b = axes[1].bar(x, bias_values, width=bar_width, color=colors, edgecolor="white")
+    bars_b = axes[1].bar(
+        x, bias_values, width=bar_width, color=colors, edgecolor="white"
+    )
     axes[1].set_ylabel("Mean Bias (vehicles)")
     axes[1].set_title("Systematic Bias")
     axes[1].set_xticks(x)
@@ -242,8 +263,9 @@ def fig03_metrics_by_model(model_metrics: pd.DataFrame, output_dir: Path) -> Non
         offset = abs(max(bias_values) - min(bias_values)) * 0.05
         y_pos = v + offset if v >= 0 else v - offset
         va = "bottom" if v >= 0 else "top"
-        axes[1].text(i, y_pos, f"{v:+.1f}", ha="center", va=va,
-                    fontsize=FONT_SIZES["annotation"])
+        axes[1].text(
+            i, y_pos, f"{v:+.1f}", ha="center", va=va, fontsize=FONT_SIZES["annotation"]
+        )
 
     add_panel_label(axes[1], "B")
 
@@ -254,21 +276,32 @@ def fig03_metrics_by_model(model_metrics: pd.DataFrame, output_dir: Path) -> Non
     axes[2].set_title("Bias Direction")
     axes[2].set_xticks(x)
     axes[2].set_xticklabels(labels)
-    axes[2].axhline(y=50, color=COLORS["gray_medium"], linestyle="--", lw=1,
-                   label="50% (unbiased)")
+    axes[2].axhline(
+        y=50, color=COLORS["gray_medium"], linestyle="--", lw=1, label="50% (unbiased)"
+    )
     axes[2].set_ylim(0, 100)
     axes[2].legend(loc="lower right", fontsize=FONT_SIZES["annotation"])
 
     # Value labels
     for i, v in enumerate(underpred):
-        axes[2].text(i, v + 2, f"{v:.1f}%", ha="center", va="bottom",
-                    fontsize=FONT_SIZES["annotation"])
+        axes[2].text(
+            i,
+            v + 2,
+            f"{v:.1f}%",
+            ha="center",
+            va="bottom",
+            fontsize=FONT_SIZES["annotation"],
+        )
 
     add_panel_label(axes[2], "C")
 
     # Main title
-    fig.suptitle("Forecast Performance by Model Type",
-                fontsize=FONT_SIZES["title"] + 1, fontweight="bold", y=1.02)
+    fig.suptitle(
+        "Forecast Performance by Model Type",
+        fontsize=FONT_SIZES["title"] + 1,
+        fontweight="bold",
+        y=1.02,
+    )
 
     # Save figure
     save_figure(fig, "fig-03-metrics-by-model-type", output_dir, EXPORT_FORMATS)
@@ -296,12 +329,14 @@ def fig04_ci_coverage(model_metrics: pd.DataFrame, output_dir: Path) -> None:
 
     # Create x-axis labels with county counts
     labels = [
-        f"{m}\n(n={int(model_metrics[model_metrics['ModelType']==m]['Counties'].values[0])})"
+        f"{m}\n(n={int(model_metrics[model_metrics['ModelType'] == m]['Counties'].values[0])})"
         for m in models
     ]
 
     # Bars
-    bars = ax.bar(x, coverage, width=bar_width, color=colors, alpha=0.85, edgecolor="white")
+    bars = ax.bar(
+        x, coverage, width=bar_width, color=colors, alpha=0.85, edgecolor="white"
+    )
 
     # 95% target line
     ax.axhline(y=95, color=COLORS["negative"], linestyle="--", lw=2, label="95% Target")
@@ -320,14 +355,28 @@ def fig04_ci_coverage(model_metrics: pd.DataFrame, output_dir: Path) -> None:
     # Value labels with gap annotation
     for i, (v, m) in enumerate(zip(coverage, models)):
         # Main value label
-        ax.text(i, v + 2, f"{v:.1f}%", ha="center", va="bottom",
-               fontsize=FONT_SIZES["annotation"] + 1, fontweight="bold")
+        ax.text(
+            i,
+            v + 2,
+            f"{v:.1f}%",
+            ha="center",
+            va="bottom",
+            fontsize=FONT_SIZES["annotation"] + 1,
+            fontweight="bold",
+        )
 
         # Gap annotation (if below target)
         gap = 95 - v
         if gap > 0:
-            ax.text(i, v - 4, f"(-{gap:.1f}pp)", ha="center", va="top",
-                   fontsize=FONT_SIZES["annotation"], color=COLORS["negative"])
+            ax.text(
+                i,
+                v - 4,
+                f"(-{gap:.1f}pp)",
+                ha="center",
+                va="top",
+                fontsize=FONT_SIZES["annotation"],
+                color=COLORS["negative"],
+            )
 
     # Summary annotation
     overall_coverage = coverage.mean()
@@ -386,15 +435,32 @@ def fig05_time_series_examples(comparison: pd.DataFrame, output_dir: Path) -> No
         )
 
         # Predicted line with markers
-        ax.plot(x, subset["Predicted"], color=COLORS["ESM"],
-               lw=2, marker="s", markersize=8, markerfacecolor=COLORS["ESM"],
-               markeredgecolor="white", markeredgewidth=1.5,
-               label="Predicted", zorder=3)
+        ax.plot(
+            x,
+            subset["Predicted"],
+            color=COLORS["ESM"],
+            lw=2,
+            marker="s",
+            markersize=8,
+            markerfacecolor=COLORS["ESM"],
+            markeredgecolor="white",
+            markeredgewidth=1.5,
+            label="Predicted",
+            zorder=3,
+        )
 
         # Actual points (on top)
-        ax.scatter(x, subset["Actual"], color=COLORS["negative"],
-                  s=80, marker="o", edgecolors="white", linewidths=1.5,
-                  label="Actual", zorder=5)
+        ax.scatter(
+            x,
+            subset["Actual"],
+            color=COLORS["negative"],
+            s=80,
+            marker="o",
+            edgecolors="white",
+            linewidths=1.5,
+            label="Actual",
+            zorder=5,
+        )
 
         # Axis configuration
         ax.set_xticks(x)
@@ -408,8 +474,12 @@ def fig05_time_series_examples(comparison: pd.DataFrame, output_dir: Path) -> No
         add_panel_label(ax, panel)
 
     # Main title
-    fig.suptitle("Time Series Validation Examples",
-                fontsize=FONT_SIZES["title"] + 1, fontweight="bold", y=1.02)
+    fig.suptitle(
+        "Time Series Validation Examples",
+        fontsize=FONT_SIZES["title"] + 1,
+        fontweight="bold",
+        y=1.02,
+    )
 
     # Save figure
     save_figure(fig, "fig-05-time-series-examples", output_dir, EXPORT_FORMATS)
@@ -431,8 +501,10 @@ def fig06_mape_boxplot(county_metrics: pd.DataFrame, output_dir: Path) -> None:
 
     # Prepare data
     model_types = ["ESM", "ARIMA", "UCM"]
-    data = [county_metrics[county_metrics["ModelType"] == m]["MAPE"].values
-            for m in model_types]
+    data = [
+        county_metrics[county_metrics["ModelType"] == m]["MAPE"].values
+        for m in model_types
+    ]
     colors = [COLORS[m] for m in model_types]
 
     # Create boxplot
@@ -442,8 +514,12 @@ def fig06_mape_boxplot(county_metrics: pd.DataFrame, output_dir: Path) -> None:
         patch_artist=True,
         widths=0.6,
         showmeans=True,
-        meanprops=dict(marker="D", markerfacecolor="white",
-                      markeredgecolor=COLORS["reference"], markersize=6),
+        meanprops=dict(
+            marker="D",
+            markerfacecolor="white",
+            markeredgecolor=COLORS["reference"],
+            markersize=6,
+        ),
     )
 
     # Apply custom styling
@@ -452,8 +528,13 @@ def fig06_mape_boxplot(county_metrics: pd.DataFrame, output_dir: Path) -> None:
     # Add sample size labels below x-axis
     for i, m in enumerate(model_types):
         n = len(county_metrics[county_metrics["ModelType"] == m])
-        ax.text(i + 1, ax.get_ylim()[0] - 0.8, f"n={n}",
-               ha="center", fontsize=FONT_SIZES["annotation"])
+        ax.text(
+            i + 1,
+            ax.get_ylim()[0] - 0.8,
+            f"n={n}",
+            ha="center",
+            fontsize=FONT_SIZES["annotation"],
+        )
 
     # Axis configuration
     ax.set_ylabel("MAPE (%)")
@@ -461,8 +542,9 @@ def fig06_mape_boxplot(county_metrics: pd.DataFrame, output_dir: Path) -> None:
     ax.set_title("MAPE Distribution by Model Type")
 
     # Add threshold reference line
-    ax.axhline(y=5, color=COLORS["gray_medium"], linestyle="--", lw=1.5,
-              label="5% threshold")
+    ax.axhline(
+        y=5, color=COLORS["gray_medium"], linestyle="--", lw=1.5, label="5% threshold"
+    )
     ax.legend(loc="upper right", framealpha=0.95)
 
     # Ensure y-axis starts at 0
@@ -474,7 +556,9 @@ def fig06_mape_boxplot(county_metrics: pd.DataFrame, output_dir: Path) -> None:
     print("[ok] fig-06-mape-boxplot-by-model")
 
 
-def fig07_county_performance(county_metrics: pd.DataFrame, output_dir: Path, n: int = 5) -> None:
+def fig07_county_performance(
+    county_metrics: pd.DataFrame, output_dir: Path, n: int = 5
+) -> None:
     """Create lollipop chart of top/bottom performing counties.
 
     Horizontal lollipop chart showing the best and worst performing counties
@@ -503,13 +587,25 @@ def fig07_county_performance(county_metrics: pd.DataFrame, output_dir: Path, n: 
 
     # Lollipop stems
     for i, (idx, row) in enumerate(combined.iterrows()):
-        ax.hlines(y=i, xmin=0, xmax=row["MAPE"],
-                 color=COLORS.get(row["ModelType"], COLORS["neutral"]),
-                 alpha=0.7, lw=2.5)
+        ax.hlines(
+            y=i,
+            xmin=0,
+            xmax=row["MAPE"],
+            color=COLORS.get(row["ModelType"], COLORS["neutral"]),
+            alpha=0.7,
+            lw=2.5,
+        )
 
     # Lollipop heads
-    ax.scatter(combined["MAPE"], y_positions, c=colors, s=120,
-              edgecolors="white", linewidths=1.5, zorder=5)
+    ax.scatter(
+        combined["MAPE"],
+        y_positions,
+        c=colors,
+        s=120,
+        edgecolors="white",
+        linewidths=1.5,
+        zorder=5,
+    )
 
     # Y-axis labels
     labels = [f"{row['County']} ({row['ModelType']})" for _, row in combined.iterrows()]
@@ -518,16 +614,28 @@ def fig07_county_performance(county_metrics: pd.DataFrame, output_dir: Path, n: 
 
     # Value annotations
     for i, (_, row) in enumerate(combined.iterrows()):
-        ax.text(row["MAPE"] + 0.4, i, f"{row['MAPE']:.1f}%",
-               va="center", fontsize=FONT_SIZES["annotation"])
+        ax.text(
+            row["MAPE"] + 0.4,
+            i,
+            f"{row['MAPE']:.1f}%",
+            va="center",
+            fontsize=FONT_SIZES["annotation"],
+        )
 
     # Separator line and label
     separator_y = n - 0.5
     ax.axhline(y=separator_y, color=COLORS["reference"], linestyle="-", lw=1)
-    ax.text(ax.get_xlim()[1] * 0.5, separator_y, f"  Top {n}  |  Bottom {n}  ",
-           ha="center", va="center", fontsize=FONT_SIZES["annotation"],
-           bbox=dict(boxstyle="round,pad=0.3", facecolor="white",
-                    edgecolor=COLORS["gray_light"]))
+    ax.text(
+        ax.get_xlim()[1] * 0.5,
+        separator_y,
+        f"  Top {n}  |  Bottom {n}  ",
+        ha="center",
+        va="center",
+        fontsize=FONT_SIZES["annotation"],
+        bbox=dict(
+            boxstyle="round,pad=0.3", facecolor="white", edgecolor=COLORS["gray_light"]
+        ),
+    )
 
     # Axis configuration
     ax.set_xlabel("MAPE (%)")
@@ -536,6 +644,7 @@ def fig07_county_performance(county_metrics: pd.DataFrame, output_dir: Path, n: 
 
     # Model type legend
     from matplotlib.patches import Patch
+
     legend_elements = [
         Patch(facecolor=COLORS[m], edgecolor="white", label=m)
         for m in ["ESM", "ARIMA", "UCM"]
