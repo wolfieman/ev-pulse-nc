@@ -11,8 +11,8 @@ Originally developed for nc-ev-atlas project.
 Usage:
     python ncdot_ev_pipeline.py --years 2025
     python ncdot_ev_pipeline.py --start-month 2025-07 --end-month 2025-10
-    python ncdot_ev_pipeline.py --outdir ../../../data/raw/ncdot-monthly --out ../../../data/processed/nc-ev-registrations-master
-    python ncdot_ev_pipeline.py --skip-download --out ../../../data/processed/nc-ev-registrations-master
+    python ncdot_ev_pipeline.py --outdir ../../../data/raw/ncdot-monthly
+    python ncdot_ev_pipeline.py --skip-download --out ../../../data/processed/master
 """
 
 import argparse
@@ -447,8 +447,8 @@ Examples:
   %(prog)s --years 2025
   %(prog)s --start-month 2025-07 --end-month 2025-10
   %(prog)s --years 2024 2025 --start-month 2024-06
-  %(prog)s --outdir ../../../data/raw/ncdot-monthly --out ../../../data/processed/nc-ev-master
-  %(prog)s --skip-download --out ../../../data/processed/nc-ev-master
+  %(prog)s --outdir ../../../data/raw/ncdot-monthly
+  %(prog)s --skip-download --out ../../../data/processed/master
         """,
     )
     parser.add_argument(
@@ -472,13 +472,15 @@ Examples:
         "--start-month",
         type=str,
         default=None,
-        help="Start month in YYYY-MM format (e.g., 2025-07). Filters to this month and later.",
+        help="Start month in YYYY-MM format (e.g., 2025-07). "
+        "Filters to this month and later.",
     )
     parser.add_argument(
         "--end-month",
         type=str,
         default=None,
-        help="End month in YYYY-MM format (e.g., 2025-10). Filters to this month and earlier.",
+        help="End month in YYYY-MM format (e.g., 2025-10). "
+        "Filters to this month and earlier.",
     )
     parser.add_argument(
         "--skip-download",
