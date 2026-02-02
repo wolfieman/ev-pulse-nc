@@ -131,10 +131,10 @@ The project's methodological innovations—temporal depth, connector-level granu
 ---
 
 **Project Team:**
-Wolfgang Sanyer & Braeden Baker
-MBA Candidates, Business & Data Analytics Concentration
+Wolfgang Sanyer & Braeden Baker<BR>
+MBA Candidates, Business & Data Analytics Concentration<BR>
 Fayetteville State University
 
-**Faculty Advisor:** Dr. Majed Al-Ghandour
-**Course:** BIDA 670 - Advanced Analytics Capstone
+**Faculty Advisor:** Dr. Majed Al-Ghandour<BR>
+**Course:** BIDA 670 - Advanced Analytics Capstone<BR>
 **Semester:** Spring 2026
