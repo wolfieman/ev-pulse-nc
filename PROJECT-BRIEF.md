@@ -11,7 +11,7 @@ North Carolina faces a critical infrastructure challenge: electric vehicle adopt
 
 This project analyzes alignment between EV adoption and infrastructure across all 100 North Carolina counties using 8,200 county-month observations (82 months) and 1,725 individual charging connectors. Core question: where should North Carolina's $109 million in NEVI funding go?
 
-**Baseline analysis last semester** produced county-level ARIMA forecasts (weighted MAPE 2.73%), identified infrastructure gap of 16.9 BEVs per port, and revealed extreme geographic inequality (Gini 0.805—top 10 counties hold 72% of BEVs, bottom 50 hold 4.8%). This semester adds four extensions to enhance spatial precision, temporal currency, and demand dimensionality.
+**Baseline analysis last semester** produced county-level ARIMA forecasts (weighted MAPE 2.73%), identified infrastructure gap of 16.9 BEVs per port, and revealed extreme geographic inequality (Gini 0.805—top 10 counties hold 72% of BEVs, bottom 50 hold 4.8%). This semester adds three extensions to enhance spatial precision, temporal currency, and demand dimensionality.
 
 What makes this distinctive: county-level granularity over 82 months with connector-level detail (1,725 units vs. 355 stations)—4.85 times more precision than typical state-level snapshot studies.
 
@@ -85,7 +85,7 @@ Five innovations distinguish this from typical EV infrastructure studies:
 
 ## Conclusion
 
-EV Pulse NC addresses how North Carolina should allocate $109 million in NEVI funding to maximize efficiency and equity. The baseline analysis last semester established comprehensive county-level understanding. This semester's four extensions enhance that foundation by validating forecast accuracy, updating infrastructure data with dual-snapshot growth analysis, adding sub-county spatial precision, and incorporating workplace charging demand.
+EV Pulse NC addresses how North Carolina should allocate $109 million in NEVI funding to maximize efficiency and equity. The baseline analysis last semester established comprehensive county-level understanding. This semester's three extensions enhance that foundation by validating forecast accuracy, updating infrastructure data with dual-snapshot growth analysis, adding sub-county spatial precision, and incorporating workplace charging demand.
 
 The project provides stakeholders with actionable insights at multiple scales: statewide trends for policy, county-level forecasts for regional planning, ZIP code detail for site selection, and workplace demand sizing for employment centers.
 
