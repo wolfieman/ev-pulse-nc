@@ -2,7 +2,7 @@
 
 **Audience:** Dr. Majed Al-Ghandour, BIDA 670 Instructor
 **Purpose:** Clarify project structure, baseline vs. extensions, and methodological innovation
-**Date:** January 30, 2026
+**Date:** February 1, 2026
 
 ---
 
@@ -36,23 +36,51 @@ This baseline work established credibility through methodological rigor, compreh
 
 ## The Extension Framework - This Semester
 
-The baseline analysis proved the project's viability and established analytical credibility. This semester's work builds on that foundation through four targeted extensions that enhance rather than replace the county-level temporal analysis. The extension logic follows a clear principle: start with validation to confirm the baseline's accuracy, then add analytical dimensions that address stakeholder questions the baseline could not answer.
+The baseline analysis proved the project's viability and established analytical credibility. This semester's work builds on that foundation through three targeted extensions that enhance rather than replace the county-level temporal analysis. The extension logic follows a clear principle: start with validation to confirm the baseline's accuracy, then add analytical dimensions that address stakeholder questions the baseline could not answer.
 
-The extensions are prioritized based on analytical value, data availability, and integration potential. Priority #1 (validation) must be completed first because it establishes confidence in the forecasting methodology that underpins all subsequent work. Priority #5 (infrastructure data update) provides the current baseline that Priorities #2 and #3 depend upon. Priority #2 (ZIP code analysis) and Priority #3 (workplace charging via CTPP) can proceed in parallel once the updated infrastructure baseline is available. This sequencing ensures that each extension builds logically on validated prior work.
+The extensions are prioritized based on analytical value, data availability, and integration potential. Priority #1 (validation) was completed first, establishing confidence in the forecasting methodology (MAPE 4.36%) while revealing systematic underprediction (68.9% of forecasts below actuals). Priority #5 (infrastructure data update) provides the current baseline that Priorities #2 and #3 depend upon. Priority #2 (ZIP code analysis) and Priority #3 (workplace charging via CTPP) can proceed in parallel once the updated infrastructure baseline is available. This sequencing ensures that each extension builds logically on validated prior work.
 
 The extensions share a common analytical philosophy: acknowledge limitations transparently, report ranges rather than false precision, and frame findings as proof-of-concept methodologies that future work can refine. Unlike the baseline analysis, which aimed for comprehensive state coverage, the extensions apply strategic selectivity—focusing analytical effort where data quality supports meaningful insights. For example, ZIP code analysis targets the top 100-120 urban ZIP codes rather than attempting to analyze all 800 statewide, and workplace charging analysis focuses on the top 15 employment centers rather than modeling all 10,000 possible county-to-county commute pairs.
 
 ---
 
-## Extension Slice #1: Validation (Priority #1)
+## Extension Slice #1: Validation (Priority #1) - COMPLETE
 
-The validation extension addresses a fundamental question: how accurate are the ARIMA forecasts used to project future infrastructure needs? The baseline analysis reported strong historical fit (MAPE of 2.73%), but this measures in-sample performance—how well models fit the data used to train them. Out-of-sample validation tests whether models maintain accuracy when predicting genuinely new data they have never seen.
+The validation extension addressed a fundamental question: how accurate are the SAS Model Studio forecasts used to project future infrastructure needs? The baseline analysis reported strong historical fit (MAPE of 2.73%), but this measures in-sample performance—how well models fit the data used to train them. Out-of-sample validation tests whether models maintain accuracy when predicting genuinely new data they have never seen.
 
-The methodology leverages a fortunate timing advantage. The baseline analysis used data through June 2025 to build forecasting models. In the months since project completion, NCDOT has published July through October 2025 actual BEV registration counts. These four months of new data provide an out-of-sample testing window. The validation process compares what the ARIMA models predicted for July-October 2025 against what actually occurred, calculating accuracy metrics (MAPE, mean absolute error, root mean squared error) to quantify forecast performance.
+### Validation Results
 
-This validation employs an accuracy spectrum interpretation rather than a binary pass-fail threshold. If aggregate MAPE across counties remains below 5%, this indicates strong validation—the models can be used confidently for policy recommendations through 2028. If MAPE falls between 5-10%, this suggests moderate validation requiring wider confidence intervals and cautious interpretation. If MAPE exceeds 10%, this signals weak validation requiring diagnostic work to identify failure modes (structural breaks, non-stationarity, specification errors) before proceeding with extensions.
+The validation compared SAS Model Studio predictions against NCDOT actual data for July-October 2025 (4 months out-of-sample). Key findings:
 
-The innovation here is methodological transparency. Most infrastructure planning studies deploy forecasts with minimal validation, assuming models trained on historical data will perform adequately on future projections. By explicitly testing forecast accuracy before making policy recommendations, this extension demonstrates scientific rigor and builds stakeholder confidence. If validation reveals weaknesses, the analysis includes remediation strategies: bias correction factors, hybrid approaches combining ARIMA with external growth factors, or migration to alternative forecasting methodologies.
+| Metric | Result | Interpretation |
+|--------|--------|----------------|
+| MAPE | 4.36% | Strong validation (below 5% threshold) |
+| MAE | 27.10 vehicles | Average absolute error per county-month |
+| RMSE | 114.11 vehicles | Root mean squared error |
+| Bias | +18.36 vehicles | Systematic underprediction |
+| Underprediction Rate | 68.9% | Majority of forecasts fell below actuals |
+| 95% CI Coverage | 75.3% | Below nominal 95% due to bias |
+
+SAS Model Studio auto-selected different model types per county: ESM (82 counties), ARIMA (13 counties), and UCM (5 counties). ESM models performed best overall (MAPE 4.16%), while ARIMA models showed higher errors (MAPE 5.43%) reflecting their use in larger, more volatile urban counties.
+
+### Key Finding: Systematic Underprediction
+
+The most significant finding was systematic underprediction. Actual EV registrations exceeded forecasts in 68.9% of observations, with a mean bias of +18.4 vehicles per county-month. The 95% prediction interval coverage was only 75.3%, substantially below the nominal 95% level. This pattern was most pronounced in high-growth urban counties, where actual adoption outpaced predictions by up to 975 vehicles per month (Mecklenburg County, October 2025).
+
+This suggests EV adoption in North Carolina is accelerating faster than historical patterns predicted—likely driven by Inflation Reduction Act tax credits, Tesla price reductions, and expanding charging infrastructure. For policy planning, this finding indicates that forecast-based infrastructure allocations should include a 4-5% upward buffer to account for faster-than-predicted adoption.
+
+### Deliverables
+
+The validation produced 8 publication-quality figures (600 DPI, PDF exports):
+1. Predicted vs. actual scatter plot
+2. Error distribution histogram
+3. Metrics comparison by model type
+4. Confidence interval coverage analysis
+5. Time series examples with forecasts and actuals
+6. MAPE boxplot by model type
+7. County-level performance grids (5x5 and 10x10)
+
+With MAPE at 4.36% (below the 5% threshold), the validation confirms strong forecast accuracy. County-level forecasts can be used reliably as constraints for ZIP code allocation and workplace demand calculations, with appropriate acknowledgment of the systematic underprediction bias.
 
 ---
 
@@ -96,7 +124,7 @@ The workplace extension explicitly acknowledges uncertainty through sensitivity 
 
 ## Integration Logic
 
-The extensions connect through a logical dependency chain. Validation (Priority #1) establishes confidence in the ARIMA forecasting methodology that underpins the baseline analysis. If validation is strong (MAPE below 5%), the county-level forecasts can be used reliably as constraints for ZIP code allocation and workplace demand calculations. If validation reveals weaknesses, extensions proceed with appropriately wider uncertainty intervals.
+The extensions connect through a logical dependency chain. Validation (Priority #1) established confidence in the SAS Model Studio forecasting methodology that underpins the baseline analysis. With MAPE at 4.36% (below 5% threshold), the county-level forecasts can be used reliably as constraints for ZIP code allocation and workplace demand calculations. The systematic underprediction finding (68.9% of forecasts below actuals) indicates that a 4-5% upward buffer should be applied to forecast-based infrastructure planning.
 
 The AFDC infrastructure update (Priority #5) provides the current baseline that subsequent extensions require. ZIP code analysis needs January 2026 station locations to calculate sub-county infrastructure density. Workplace charging analysis needs current station type classifications (workplace-accessible vs. residential public) to measure existing workplace supply. Without updated infrastructure data, extensions would compound the 6-month staleness problem present in the baseline analysis.
 
@@ -118,13 +146,13 @@ This project introduces several analytical innovations that distinguish it from 
 
 **Dual-dimension demand model:** Combining residential BEV registrations (baseline) with workplace commuting flows (CTPP extension) creates a more complete demand picture. Employment centers like Wake County serve both residents and net inbound commuters, while bedroom communities primarily serve residents. This distinction matters for infrastructure type allocation: workplace chargers in employment centers, residential public chargers in bedroom communities.
 
-**Validation-first approach:** Explicitly testing forecast accuracy with out-of-sample data before making policy recommendations demonstrates scientific rigor uncommon in applied infrastructure planning. Most studies deploy forecasts without validation, assuming historical fit guarantees future accuracy. This project treats validation as a prerequisite, not an afterthought, and commits to reporting accuracy limitations transparently.
+**Validation-first approach:** Explicitly testing forecast accuracy with out-of-sample data before making policy recommendations demonstrates scientific rigor uncommon in applied infrastructure planning. Most studies deploy forecasts without validation, assuming historical fit guarantees future accuracy. This project treated validation as a prerequisite, not an afterthought, and the results (MAPE 4.36%, systematic underprediction of 68.9%) inform how forecasts should be applied—with upward buffers to account for accelerating adoption.
 
 ---
 
 ## Conclusion
 
-EV Pulse NC addresses a critical infrastructure planning challenge: how should North Carolina allocate $109 million in NEVI Formula Program funding to maximize both efficiency and equity? The baseline analysis completed last semester established a comprehensive county-level understanding of the demand-supply gap using 82 months of time series data and connector-level infrastructure detail. This semester's extensions enhance that foundation by validating forecast accuracy (Priority #1), updating infrastructure data with a dual-snapshot growth analysis (Priority #5), adding sub-county spatial precision in urban areas (Priority #2), and incorporating workplace charging demand through commuting flow analysis (Priority #3).
+EV Pulse NC addresses a critical infrastructure planning challenge: how should North Carolina allocate $109 million in NEVI Formula Program funding to maximize both efficiency and equity? The baseline analysis completed last semester established a comprehensive county-level understanding of the demand-supply gap using 82 months of time series data and connector-level infrastructure detail. This semester's Phase 1 work validated forecast accuracy (Priority #1), achieving MAPE 4.36% while revealing systematic underprediction (68.9% of forecasts below actuals)—indicating EV adoption is accelerating faster than historical patterns predicted. Remaining extensions include updating infrastructure data with a dual-snapshot growth analysis (Priority #5), adding sub-county spatial precision in urban areas (Priority #2), and incorporating workplace charging demand through commuting flow analysis (Priority #3).
 
 The project's methodological innovations—temporal depth, connector-level granularity, dual-snapshot evolution tracking, and dual-dimension demand modeling—collectively provide stakeholders with actionable insights at multiple scales: statewide trends for policy, county-level forecasts for regional planning, ZIP code detail for site selection, and workplace demand sizing for employment center targeting. By combining comprehensive baseline analysis with strategically targeted extensions, the project delivers both breadth and depth without sacrificing analytical rigor.
 
