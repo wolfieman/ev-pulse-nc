@@ -36,7 +36,7 @@ This baseline work established credibility through methodological rigor, compreh
 
 ## The Extension Framework - This Semester
 
-The baseline analysis proved the project's viability and established analytical credibility. This semester's work builds on that foundation through four targeted extensions that enhance rather than replace the county-level temporal analysis. The extension logic follows a clear principle: start with validation to confirm the baseline's accuracy, then add analytical dimensions that address stakeholder questions the baseline could not answer.
+The baseline analysis proved the project's viability and established analytical credibility. This semester's work builds on that foundation through three targeted extensions that enhance rather than replace the county-level temporal analysis. The extension logic follows a clear principle: start with validation to confirm the baseline's accuracy, then add analytical dimensions that address stakeholder questions the baseline could not answer.
 
 The extensions are prioritized based on analytical value, data availability, and integration potential. Priority #1 (validation) was completed first, establishing confidence in the forecasting methodology (MAPE 4.36%) while revealing systematic underprediction (68.9% of forecasts below actuals). Priority #5 (infrastructure data update) provides the current baseline that Priorities #2 and #3 depend upon. Priority #2 (ZIP code analysis) and Priority #3 (workplace charging via CTPP) can proceed in parallel once the updated infrastructure baseline is available. This sequencing ensures that each extension builds logically on validated prior work.
 
