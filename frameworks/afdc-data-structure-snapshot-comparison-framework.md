@@ -1038,6 +1038,6 @@ The NREL API offers a straightforward single-request snapshot download with a ge
 ---
 
 **Document Version:** 1.0
-**Author:** Research framework developed with Claude Sonnet 4.5
+**Author:** EV Pulse NC Research Team
 **Status:** Conceptual framework complete - No implementation performed
 **Next Steps:** Week 1 implementation (Jan 27 - Feb 1, 2026) per top-priorities.txt timeline
