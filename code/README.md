@@ -37,6 +37,20 @@ python consolidate_zev_monthly.py --indir ../../../data/raw/ncdot-monthly --out 
 
 Core analysis scripts for time series modeling and forecasting.
 
+**validate_sas_forecasts.py** - Validates SAS Model Studio forecasts against actual NCDOT data
+
+```bash
+# Run validation analysis
+uv run python code/python/analysis/validate_sas_forecasts.py
+```
+
+Features:
+- Out-of-sample validation (Jul-Oct 2025 actuals vs. SAS predictions)
+- Metrics: MAPE, MAE, RMSE, Bias, 95% CI Coverage
+- Model-type stratification (ESM, ARIMA, UCM)
+- Publication-quality figures (600 DPI, PDF exports)
+- Outputs saved to `output/figures/`
+
 **arima_bev_forecast.py** - Full ARIMA implementation for BEV registration forecasting
 
 ```bash

@@ -1,0 +1,32 @@
+=== NCDOT EV Registrations: QA Summary ===
+Months covered: 2025-01 → 2025-10  (n=10)
+Median counties per month: 100
+Last 6 months – counties present:
+  2025-05: 100
+  2025-06: 100
+  2025-07: 100
+  2025-08: 100
+  2025-09: 100
+  2025-10: 100
+
+Statewide EV totals (last 6 months):
+            BEV   PHEV  TotalEV
+Date                           
+2025-05   92266  29125   121391
+2025-06   94371  29472   123843
+2025-07   96490  29896   126386
+2025-08   99828  30538   130366
+2025-09  102922  30971   133893
+2025-10  105693  31463   137156
+
+Top missing-value rates:
+County        0.0
+BEV           0.0
+PHEV          0.0
+Hybrid        0.0
+AllHybrids    0.0
+Gas           0.0
+Diesel        0.0
+Date          0.0
+TotalEV       0.0
+EV_Share      0.0

@@ -42,11 +42,6 @@ The VS Code ruff extension handles this automatically on save.
 - Each commit should represent one logical change
 - Use present tense ("Add forecast model" not "Added forecast model")
 
-**AI-assisted commits:** Include the co-author line:
-```
-Co-Authored-By: Claude <noreply@anthropic.com>
-```
-
 ## Testing Requirements
 
 - **Add or update unit tests** when logic changes
