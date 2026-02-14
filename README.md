@@ -271,7 +271,7 @@ See the [LICENSE](LICENSE) file for full terms.
 
 **Required Notice:**
 ```
-Copyright © 2025 Wolfgang Sanyer
+Copyright © 2026 Wolfgang Sanyer
 Licensed under the Polyform Noncommercial License 1.0.0
 https://polyformproject.org/licenses/noncommercial/1.0.0
 ```
