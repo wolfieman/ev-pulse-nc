@@ -278,7 +278,16 @@ https://polyformproject.org/licenses/noncommercial/1.0.0
 
 ---
 
-## 🔗 Links
+## Related Repositories
+
+| Repo | Purpose |
+|------|---------|
+| [[private orchestrator repo]](https://github.com/wolfieman/[private orchestrator repo]) | MBA multi-course hub |
+| [[private course repo]](https://github.com/wolfieman/[private course repo]) | BIDA 670 course logistics |
+
+---
+
+## Links
 
 - **NCDOT Open Data:** https://ncdot.gov/data
 - **AFDC Station Locator:** https://afdc.energy.gov/stations
