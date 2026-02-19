@@ -181,7 +181,7 @@ Based on 3-agent analysis across decision framework, stakeholder value, and data
 
 | Risk | Probability | Impact | Mitigation |
 |------|------------|--------|------------|
-| Judges question data currency | High | High | Explicitly justify in methods section |
+| Reviewers question data currency | High | High | Explicitly justify in methods section |
 | Gap analysis overstates need | High | High | Add sensitivity analysis ("if infrastructure grew 20%...") |
 | Policy recommendations misallocate | Medium | Very High | Caveat with "pending current infrastructure validation" |
 | Competitors use current data | Medium | High | Accept competitive disadvantage |

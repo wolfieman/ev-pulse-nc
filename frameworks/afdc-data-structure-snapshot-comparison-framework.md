@@ -17,7 +17,7 @@ This document provides a comprehensive conceptual framework for updating EV Puls
 - AFDC provides ~50+ fields per station with rich temporal metadata
 - Snapshot comparison requires multi-dimensional change classification
 - 6-month data staleness is SIGNIFICANT for NC's rapidly evolving infrastructure (47.6% of current infrastructure added in 2024-2025)
-- Recommended update frequency: Quarterly for competition-grade analysis
+- Recommended update frequency: Quarterly for policy-grade analysis
 
 ---
 
@@ -769,7 +769,7 @@ Capacity (kW) = (Level 2 connectors × 7.2 kW avg) + (DCFC connectors × 150 kW 
 | **Production Dashboards** | Daily or weekly | Real-time policy monitoring, charger availability tracking |
 | **Academic Research** | Quarterly | Balance data freshness with analysis stability |
 | **Policy Reports** | Annually or biennially | Long-term trend analysis, stable for multi-year comparisons |
-| **Competition Submissions** | At submission deadline | Ensure data reflects current state for evaluation |
+| **Capstone Deliverables** | At submission deadline | Ensure data reflects current state for evaluation |
 
 **Industry Practice (Charging Network Operators):**
 
@@ -839,7 +839,7 @@ Capacity (kW) = (Level 2 connectors × 7.2 kW avg) + (DCFC connectors × 150 kW 
    - 18-month lag likely misses substantial NEVI-funded deployments in 2025-2026
 
 3. **Policy Relevance:**
-   - Competition focuses on NEVI funding allocation recommendations
+   - Capstone project focuses on NEVI funding allocation recommendations
    - Outdated infrastructure data → Outdated gap analysis → Potentially misallocated funding recommendations
 
 4. **Comparison to BEV Data:**
@@ -871,13 +871,13 @@ Conclusion: Using stale infrastructure data OVERSTATES gap by ~22% (54.7 vs. 44.
 | Priority | Timing | Rationale |
 |----------|--------|-----------|
 | **Immediate (Week 1)** | Jan 27 - Feb 1, 2026 | Update before Priority #2 and #3 analyses begin (avoid rework) |
-| **Pre-Competition (Week 3)** | Feb 9-15, 2026 | Final refresh before paper writing (ensure latest data in submission) |
-| **Post-Competition (Ongoing)** | Quarterly (April, July, Oct 2026) | Maintain dataset for future analysis, capstone presentations |
+| **Pre-Capstone project (Week 3)** | Feb 9-15, 2026 | Final refresh before paper writing (ensure latest data in submission) |
+| **Post-Capstone project (Ongoing)** | Quarterly (April, July, Oct 2026) | Maintain dataset for future analysis, capstone presentations |
 
-**Recommended Update Frequency for Competition:**
+**Recommended Update Frequency for Capstone project:**
 
 1. **Priority #5 Implementation (Week 1):** Download Jan 2026 snapshot
-2. **Mid-Competition Check (Week 3):** Validate no major infrastructure changes since Jan snapshot
+2. **Mid-Capstone project Check (Week 3):** Validate no major infrastructure changes since Jan snapshot
 3. **Post-Submission Archive:** Save Feb 2026 snapshot for future reference
 
 **Long-Term Best Practice:**
@@ -914,7 +914,7 @@ Conclusion: Using stale infrastructure data OVERSTATES gap by ~22% (54.7 vs. 44.
 5. **Data Currency:**
    - 18-month data lag is CRITICAL staleness for NC's rapid infrastructure growth
    - Recommended refresh: Immediate (Week 1) to avoid gap analysis overstatement
-   - Best practice: Quarterly updates for competition-grade policy analysis
+   - Best practice: Quarterly updates for capstone project-grade policy analysis
 
 ### 6.2 Integration with EV Pulse NC Priorities
 
@@ -1014,7 +1014,7 @@ The AFDC API provides rich temporal metadata (`date_last_confirmed`, `open_date`
 2. **ZIP-level analysis** for Priority #2 sub-county gap assessment
 3. **Workplace classification** for Priority #3 CTPP commuting integration
 
-The NREL API offers a straightforward single-request snapshot download with a generous 1,000 requests/hour rate limit, making quarterly data updates feasible for competition-grade policy analysis. No implementation has been performed per the directive; this document serves as a methodological blueprint for Priority #5 execution in Week 1 of the competition timeline (Jan 27 - Feb 1, 2026).
+The NREL API offers a straightforward single-request snapshot download with a generous 1,000 requests/hour rate limit, making quarterly data updates feasible for capstone project-grade policy analysis. No implementation has been performed per the directive; this document serves as a methodological blueprint for Priority #5 execution in Week 1 of the capstone project timeline (Jan 27 - Feb 1, 2026).
 
 ---
 
