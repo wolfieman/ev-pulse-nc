@@ -16,7 +16,7 @@ This document analyzes WHO benefits from updating the AFDC infrastructure data f
 - Policy decisions made in 2025-2026 already incorporate lag time expectations
 
 **Jan 2026 Update Value:**
-- **Moderate value** - Removes 6-month staleness critique in competition paper
+- **Moderate value** - Removes 6-month staleness critique in research paper
 - **Marginal benefit**: Likely adds 45-95 stations (13-27% increase) based on "47.6% recent deployment" finding
 - **Risk**: Over-emphasizes short-term deployment surge vs. structural gaps
 
@@ -66,7 +66,7 @@ This document analyzes WHO benefits from updating the AFDC infrastructure data f
 
 **Current Need (July 2024 data):**
 - **Low urgency** - Research publications accept data vintage up to 12-18 months
-- July 2024 baseline sufficient for peer review (competition deadline Feb 2026 = 7-month lag)
+- July 2024 baseline sufficient for peer review (capstone project deadline Feb 2026 = 7-month lag)
 
 **Jan 2026 Update Value:**
 - **Moderate value** - Eliminates "data currency" critique from reviewers
@@ -75,7 +75,7 @@ This document analyzes WHO benefits from updating the AFDC infrastructure data f
 
 **Trade-off**: Time spent updating (2 hours) vs. validating methodology (Priority #1: 4-6 hours)
 
-**Verdict**: Competition judges may note data freshness, but won't penalize 6-month lag if methodology is sound. **Priority: Medium (6/10)**
+**Verdict**: Capstone project reviewers may note data freshness, but won't penalize 6-month lag if methodology is sound. **Priority: Medium (6/10)**
 
 ---
 
@@ -258,7 +258,7 @@ Week 2: Priority #3 CTPP (3 hrs) → Classification logic on 400 stations
 **Pros**:
 - Single source of truth throughout analysis
 - Spatial distribution insights inform ZIP/CTPP priorities
-- Competition paper says "Jan 2026 data" (freshness signal)
+- Capstone project paper says "Jan 2026 data" (freshness signal)
 
 **Cons**:
 - If API issues arise (2-hour estimate becomes 4 hours), delays cascade
@@ -301,7 +301,7 @@ Week 4: Update Paper (1 hr) → Refresh key statistics
 
 **Cons**:
 - If Jan 2026 reveals major shifts (e.g., rural deployment surge), requires analysis redesign
-- Tight timeline (Week 4 = competition prep week)
+- Tight timeline (Week 4 = capstone project prep week)
 
 ---
 
@@ -347,23 +347,23 @@ Week 4: Update Paper (1 hr) → Refresh key statistics
 ### Option B: Wait Until Pre-Final Analysis (April 2026)
 
 **Implementation**:
-- Complete competition analysis with July 2024 baseline
+- Complete capstone project analysis with July 2024 baseline
 - After Feb 22 submission, update to April 2026 data (9-month gap)
 - Publish updated analysis as research extension
 
 **Pros**:
-- ✅ Zero competition risk (no delays)
+- ✅ Zero capstone project risk (no delays)
 - ✅ Freshest possible data for publication (April 2026 = 10-month newer than July 2024)
 - ✅ Enables temporal comparison (July 2024 → Jan 2026 → April 2026 = 9-month growth rate)
 
 **Cons**:
-- ❌ Competition paper uses stale data (judges may note)
+- ❌ Capstone project paper uses stale data (reviewers may note)
 - ❌ Misses spatial distribution insights for Priorities #2-3
 - ❌ Priority #6 (Buffer Analysis) uses outdated coverage zones
 
-**Effort**: 0 hours (Week 1-4), then 2 hours (post-competition)
+**Effort**: 0 hours (Week 1-4), then 2 hours (post-capstone project)
 
-**Recommended If**: Competition timeline at risk, need to eliminate all non-critical tasks
+**Recommended If**: Capstone project timeline at risk, need to eliminate all non-critical tasks
 
 ---
 
@@ -379,7 +379,7 @@ Week 4: Update Paper (1 hr) → Refresh key statistics
 - ✅ Enables unique research questions:
   - "Which counties saw fastest infrastructure growth?" (Jan - July ratio)
   - "Is private sector self-correcting gaps?" (rural deployment rate)
-  - "Network competition dynamics" (Tesla vs. ChargePoint market share change)
+  - "Network capstone project dynamics" (Tesla vs. ChargePoint market share change)
 - ✅ Methodological sophistication (temporal analysis)
 - ✅ No rework of July 2024 baseline (both coexist)
 
@@ -426,7 +426,7 @@ Week 4: Update Paper (1 hr) → Refresh key statistics
 
 ### 6.1 Quantitative Comparison
 
-| Option | Effort (Hours) | Competition Value | Research Value | Risk Level | Recommended? |
+| Option | Effort (Hours) | Capstone project Value | Research Value | Risk Level | Recommended? |
 |--------|----------------|------------------|----------------|------------|--------------|
 | **A: Update Now** | 3 | High (freshness) | Medium | Medium (API dependency) | ✅ **YES** (if API confirmed) |
 | **B: Wait (April)** | 0 → 2 | Low (staleness) | High (publication) | Low | ⚠️ Only if timeline critical |
@@ -472,7 +472,7 @@ Total: 3 hours over 2 weeks (non-blocking)
 **If API key not received by Week 1, Day 3**:
 - **Fallback**: Option B (Wait Until April) - proceed with July 2024 baseline
 - **Paper language**: "Data current through July 2024; NREL API integration demonstrates replicable methodology for future updates"
-- **Honest framing**: Methodology validation > data currency (judges will accept if acknowledged)
+- **Honest framing**: Methodology validation > data currency (reviewers will accept if acknowledged)
 
 **If Jan 2026 query reveals major changes** (e.g., 500 stations, +40%):
 - **Pivot**: Full replacement (Option A) - recalculate county metrics
@@ -527,6 +527,6 @@ Total: 3 hours over 2 weeks (non-blocking)
 
 **Timing**: Execute in Week 2 (after Validation establishes credibility), parallel to ZIP/CTPP analysis.
 
-**Effort**: 3 hours (2 API query, 1 growth analysis) - fits within 18-hour competition budget.
+**Effort**: 3 hours (2 API query, 1 growth analysis) - fits within 18-hour capstone project budget.
 
 **Critical Action**: Apply for NREL API key immediately (Week 1, Day 1) to eliminate approval uncertainty.
