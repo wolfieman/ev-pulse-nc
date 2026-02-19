@@ -12,7 +12,7 @@ This framework provides a conceptual roadmap for evaluating whether to update th
 - **Infrastructure Data:** July 2024 AFDC snapshot (355 charging stations, 1,725 connectors)
 - **BEV Registration Data:** Through October 2025 (updated regularly via NCDOT downloads)
 - **Data Staleness:** 6-month gap between infrastructure snapshot and most recent BEV data
-- **Competition Deadline:** February 22, 2026 (27 days remaining)
+- **Project Timeline:** Progress Report due Week 8 (Mar 2-8); Final Report due Weeks 13-14 (Apr 6-19)
 
 **Key Tension:**
 Your residential BEV data is current through Oct 2025, but your infrastructure baseline is 6 months stale. This creates an analytical asymmetry that may impact gap analysis validity.
@@ -30,20 +30,20 @@ Your residential BEV data is current through Oct 2025, but your infrastructure b
 - **Data currency mismatch:** Oct 2025 BEV data vs. July 2024 infrastructure = apples-to-oranges comparison
 - **Recent infrastructure surge:** 47.6% of infrastructure added in 2024-2025 (per your current analysis) - this means July-Jan could represent 20-25% growth
 - **Gap analysis validity:** Comparing Oct 2025 demand to July 2024 supply artificially inflates the gap
-- **Competition credibility:** Judges may question why you're using 6-month-old infrastructure data
+- **Capstone project credibility:** Reviewers may question why you're using 6-month-old infrastructure data
 - **Federal policy relevance:** NEVI funding decisions require current infrastructure baseline
 
 **When this applies:**
 - Gap analysis is your primary contribution
 - Infrastructure timing matters for policy recommendations
 - You're making site-specific recommendations (Cary case study)
-- Competition judges value data currency
+- Faculty reviewers and policy stakeholders value data currency
 
 #### Option B: Update is Nice-to-Have
 **Reasoning:**
 - **Relative change matters more than absolute:** If infrastructure grew 20% and BEVs grew 15%, the gap still widened
 - **Time series focus:** Your ARIMA forecasting uses historical trends, not point-in-time snapshots
-- **Resource constraints:** 27 days until competition deadline, limited API implementation time
+- **Resource constraints:** Limited API implementation time relative to other capstone priorities
 - **Validation risk:** New data may introduce new spatial join errors or county assignment issues
 - **Historical consistency:** Maintaining July 2024 baseline ensures all analyses use same reference point
 
@@ -58,7 +58,7 @@ Your residential BEV data is current through Oct 2025, but your infrastructure b
 - **Targeted validation:** Update only high-growth counties (Wake, Durham, Mecklenburg) to validate assumption that infrastructure is keeping pace
 - **Best of both worlds:** Maintain July 2024 baseline for consistency, but validate with Jan 2026 data for key regions
 - **Resource-efficient:** Single API call for 10-20 counties vs. entire state
-- **Addresses judges' questions:** "Have you verified your baseline is still accurate?"
+- **Addresses reviewers' questions:** "Have you verified your baseline is still accurate?"
 
 **When this applies:**
 - Limited time but need to address data currency concern
@@ -73,12 +73,12 @@ Your residential BEV data is current through Oct 2025, but your infrastructure b
 | **Analysis Validity** | ✅ Apples-to-apples | ⚠️ Requires caveat | ⚠️ Hybrid approach |
 | **Implementation Effort** | ⚠️ 2 hours (per ranked recommendations) | ✅ Zero effort | ✅ 30 minutes |
 | **Risk Level** | ⚠️ Data quality issues | ✅ No new risk | ✅ Minimal risk |
-| **Competition Impact** | ✅ High credibility | ⚠️ Requires justification | ⚠️ Moderate credibility |
+| **Project Impact** | ✅ High credibility | ⚠️ Requires justification | ⚠️ Moderate credibility |
 | **Policy Relevance** | ✅ Current baseline | ⚠️ Historical baseline | ⚠️ Validated trends |
 
 **Recommended Decision Path (Node 1):** **Option A (Full Update)** with fallback to Option C if time constraints emerge in Week 3.
 
-**Rationale:** Your ranked recommendations document scores AFDC update at 45/50 with only 2 hours effort. The asymmetry between Oct 2025 BEV data and July 2024 infrastructure data undermines your gap analysis validity. Updating now prevents judges from questioning your methodology.
+**Rationale:** Your ranked recommendations document scores AFDC update at 45/50 with only 2 hours effort. The asymmetry between Oct 2025 BEV data and July 2024 infrastructure data undermines your gap analysis validity. Updating now prevents reviewers from questioning your methodology.
 
 ---
 
@@ -151,7 +151,7 @@ Your residential BEV data is current through Oct 2025, but your infrastructure b
 **Pros:**
 - Zero disruption to existing pipeline
 - Quantifies "sensitivity to data vintage"
-- Provides robustness check for competition judges
+- Provides robustness check for faculty reviewers
 - Low risk (no changes to production analysis)
 - Generates interesting methodological insight ("Gap increased X% even accounting for infrastructure growth")
 
@@ -181,7 +181,7 @@ Your residential BEV data is current through Oct 2025, but your infrastructure b
 | **Risk Level** | ⚠️ Medium (spatial join re-run) | ❌ High (merge errors) | ✅ Low (no changes) |
 | **Time Required** | ✅ 2 hours | ❌ 4 hours | ⚠️ 3 hours |
 | **Actionability** | ✅ Updates all outputs | ⚠️ Mixed vintage data | ❌ Doesn't update analysis |
-| **Competition Value** | ✅ Current baseline | ⚠️ Complex to explain | ⚠️ Robustness check only |
+| **Academic Value** | ✅ Current baseline | ⚠️ Complex to explain | ⚠️ Robustness check only |
 
 **Recommended Decision Path (Node 2):** **Option A (Full Snapshot Replacement)**
 
@@ -206,7 +206,7 @@ Your residential BEV data is current through Oct 2025, but your infrastructure b
 
 **Pros:**
 - Simplest implementation (one API call)
-- Clean narrative for competition paper
+- Clean narrative for research paper
 - Validates your "47.6% recent deployment" finding
 - Provides concrete before/after numbers for policy recommendations
 
@@ -217,7 +217,7 @@ Your residential BEV data is current through Oct 2025, but your infrastructure b
 - Single snapshot still subject to "point in time" critique
 
 **When this applies:**
-- Competition deadline is tight (27 days)
+- Capstone project deadline is tight (27 days)
 - Your primary focus is **demand forecasting**, not supply modeling
 - You need to update baseline but don't have time for time series analysis
 - Paper focuses on "current state gap" not "gap evolution over time"
@@ -248,7 +248,7 @@ Your residential BEV data is current through Oct 2025, but your infrastructure b
 **When this applies:**
 - You have 6-8 weeks until deadline (not 27 days)
 - Infrastructure dynamics are core to your research question
-- You're pursuing journal publication post-competition
+- You're pursuing journal publication post-capstone project
 - You have team capacity for advanced modeling
 
 #### Option C: Hybrid Milestone Approach
@@ -287,13 +287,13 @@ Your residential BEV data is current through Oct 2025, but your infrastructure b
 | **Effort** | ✅ 2 hours | ❌ 15-20 hours | ⚠️ 4-6 hours |
 | **Sophistication** | ⚠️ Basic | ✅ Advanced | ⚠️ Moderate |
 | **Data Requirements** | ✅ 1 API call | ❌ 7+ API calls (impossible without historical data) | ✅ 1 API call + projection |
-| **Feasibility (27 days)** | ✅ Yes | ❌ No | ✅ Yes |
+| **Feasibility** | ✅ Yes | ❌ No | ✅ Yes |
 | **Scenario Modeling** | ❌ No | ✅ Yes | ✅ Yes (simplified) |
-| **Competition Impact** | ⚠️ Standard | ✅ High differentiation | ✅ Strong enhancement |
+| **Project Impact** | ⚠️ Standard | ✅ High differentiation | ✅ Strong enhancement |
 
 **Recommended Decision Path (Node 3):** **Option C (Hybrid Milestone Approach)** if time allows after completing Top 5 priorities, otherwise **Option A (One-Time Update)**.
 
-**Rationale:** Option B is infeasible given AFDC API limitations (no historical snapshots). Option A meets minimum requirement. Option C provides scenario modeling capability (which ranked recommendations suggest for competition) without excessive effort.
+**Rationale:** Option B is infeasible given AFDC API limitations (no historical snapshots). Option A meets minimum requirement. Option C provides scenario modeling capability (which ranked recommendations suggest for capstone project) without excessive effort.
 
 ---
 
@@ -317,7 +317,7 @@ Your residential BEV data is current through Oct 2025, but your infrastructure b
 
 **Integration Value:** ⭐⭐⭐⭐⭐ **Critical**
 - AFDC update directly improves validity of gap analysis (core deliverable)
-- Without update, judges may question why BEV data is current but infrastructure is stale
+- Without update, reviewers may question why BEV data is current but infrastructure is stale
 
 #### Priority #2: ZIP-Level Infrastructure Analysis
 
@@ -406,10 +406,9 @@ Your residential BEV data is current through Oct 2025, but your infrastructure b
 - **Rationale:** Capital allocation requires current baseline
 - **Source:** FHWA Planning Guidelines
 
-**Competition Context (SAS Curiosity Cup):**
-- **Standard:** Not explicitly stated in competition guidelines
-- **Likely Expectation:** Judges value **data currency** as indicator of analytical rigor
-- **Precedent:** Review 2025 winning papers (from your docs folder) for data vintage practices
+**Capstone Project Context:**
+- **Standard:** Faculty and policy stakeholders expect current data for credible analysis
+- **Expectation:** Reviewers value **data currency** as indicator of analytical rigor
 
 #### Your Project's Data Currency Snapshot
 
@@ -447,7 +446,7 @@ Recommending stations in locations that **already received stations** between Ju
 
 **Case FOR Updating (Current Data):**
 - Policy relevance: NEVI funding decisions require current baseline
-- Competition credibility: Judges expect current data for 2026 competition
+- Academic credibility: Reviewers expect current data for 2026 capstone deliverable
 - Analytical validity: Reduces temporal mismatch with BEV data
 - Risk mitigation: Avoids overstating gap, misallocating resources
 
@@ -456,7 +455,7 @@ Recommending stations in locations that **already received stations** between Ju
 - Time cost: 2 hours to update, 4-6 hours if issues emerge
 - Validation risk: New data may have geocoding errors, county mismatches
 - Historical consistency: Maintains same baseline across all analyses
-- Competition deadline: 27 days remaining, every hour counts
+- Capstone timeline: multiple deliverables ahead, every hour counts
 
 **Decision Framework:**
 
@@ -498,13 +497,13 @@ Based on analysis across all five decision nodes:
 
 **DECISION 1 (Value Proposition):** ✅ **Update is Critical (Option A)**
 - Rationale: Gap analysis validity requires temporal alignment with Oct 2025 BEV data
-- Competition deadline allows 2-hour task (ranked recommendations scoring)
+- Capstone project deadline allows 2-hour task (ranked recommendations scoring)
 - Policy focus demands current infrastructure baseline
 
 **DECISION 2 (Update Scope):** ✅ **Full Snapshot Replacement (Option A)**
 - Rationale: Simplest implementation, captures all changes (new, closed, upgrades)
 - 2-hour estimate vs. 4+ hours for incremental update
-- Clean narrative for competition paper
+- Clean narrative for research paper
 
 **DECISION 3 (Temporal Strategy):** ✅ **Hybrid Milestone Approach (Option C)** if time allows, else **One-Time Update (Option A)**
 - Rationale: Hybrid enables scenario modeling (ranked recommendations priority) without full time series complexity
@@ -544,7 +543,7 @@ Based on analysis across all five decision nodes:
 2. **Recent Surge Context:** 47.6% deployment in 2024-2025 means July-Jan gap likely saw 20-25% infrastructure growth
 3. **Gap Inflation Risk:** Stale infrastructure data overstates gap by 15-20% (per scenario analysis)
 4. **Policy Misallocation Risk:** Recommending stations where they were just deployed (6-month blind spot)
-5. **Competition Credibility:** Judges expect current data for 2026 competition, not 6-month-old baseline
+5. **Capstone project Credibility:** Reviewers expect current data for 2026 capstone project, not 6-month-old baseline
 
 ### Why Update is Lower Risk Than It Appears
 
@@ -589,7 +588,7 @@ Based on analysis across all five decision nodes:
 
 | Risk | Probability | Impact | Mitigation |
 |------|------------|--------|------------|
-| **Judges question data currency** | High | High | Explicitly justify in methods section |
+| **Reviewers question data currency** | High | High | Explicitly justify in methods section |
 | **Gap analysis overstates need** | High | High | Add sensitivity analysis ("if infrastructure grew 20%...") |
 | **Policy recommendations misallocate** | Medium | Very High | Caveat recommendations with "pending validation of current infrastructure" |
 | **Competitors use current data** | Medium | High | Accept competitive disadvantage |
@@ -611,7 +610,7 @@ Based on analysis across all five decision nodes:
 
 **Time Commitment:** 2-6 hours (2 hrs minimum, 6 hrs if pursuing hybrid approach with scenario modeling)
 
-**Expected Outcome:** Jan 2026 infrastructure baseline (400-450 stations, up 12-27% from July 2024) establishes current reference point for gap analysis, ZIP-level analysis, workplace charging classification, and buffer analysis. Eliminates 6-month temporal mismatch, strengthens competition credibility, improves policy recommendation validity.
+**Expected Outcome:** Jan 2026 infrastructure baseline (400-450 stations, up 12-27% from July 2024) establishes current reference point for gap analysis, ZIP-level analysis, workplace charging classification, and buffer analysis. Eliminates 6-month temporal mismatch, strengthens academic credibility, improves policy recommendation validity.
 
 **Next Steps:**
 1. Apply for NREL API key immediately (instant approval): https://developer.nrel.gov/signup/
