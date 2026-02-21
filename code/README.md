@@ -8,14 +8,17 @@ All analysis code is written in Python.
 
 Scripts for downloading and fetching data from sources.
 
-**ncdot_zev_downloader.py** - Downloads monthly ZEV registration data from NCDOT
+**ncdot_ev_pipeline.py** - Downloads and consolidates county-level EV registration data from NCDOT
 
 ```bash
-# Download a range of months
-python ncdot_zev_downloader.py --start 2025-07 --end 2025-10 --outdir ../../../data/raw/ncdot-monthly
+# Download all available data for 2025
+python ncdot_ev_pipeline.py --years 2025
 
-# Download specific months
-python ncdot_zev_downloader.py --months 2025-07 2025-08 2025-09
+# Download a specific month range
+python ncdot_ev_pipeline.py --start-month 2025-07 --end-month 2025-10 --outdir ../../../data/raw/ncdot-monthly
+
+# Consolidation only (skip download, use existing files)
+python ncdot_ev_pipeline.py --skip-download --out ../../../data/processed/master
 ```
 
 **Dependencies:** `requests`, `openpyxl`
@@ -94,7 +97,7 @@ python -m venv .venv
 source .venv/bin/activate  # or .venv\Scripts\activate on Windows
 
 # Install dependencies
-pip install pandas statsmodels matplotlib seaborn geopandas requests openpyxl
+pip install -e .
 
 # Run scripts
 python code/python/data-cleaning/consolidate_zev_monthly.py
