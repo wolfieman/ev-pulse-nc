@@ -301,6 +301,5 @@ All frameworks created by expert agent analysis (Jan 30, 2026) for EV Pulse NC B
 For conceptual questions about these frameworks, refer to:
 - Original agent analysis outputs (tool results from Jan 30, 2026 session)
 - Project lead: Wolfgang Sanyer
-- Project partner: Braeden (data collection, GIS analysis)
 
 **Note:** These frameworks are living documents. As priorities evolve or new constraints emerge, update frameworks accordingly.
