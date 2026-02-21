@@ -7,6 +7,7 @@
 
 ## Prerequisites
 
+- Python 3.14+ installed
 - Git installed
 - Git LFS installed ([download](https://git-lfs.github.com/))
 - GitHub account
@@ -29,7 +30,17 @@ git lfs pull
 ls -lh data/raw/
 ```
 
-**Done!** You now have the full project with all data files.
+```bash
+# 4. Set up Python environment
+python -m venv .venv
+source .venv/bin/activate  # or .venv\Scripts\activate on Windows
+pip install -e .
+
+# 5. Verify
+python -c "import pandas; print('Ready')"
+```
+
+**Done!** You now have the full project with all data files and dependencies.
 
 ---
 
