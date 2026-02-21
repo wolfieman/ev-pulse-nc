@@ -34,7 +34,7 @@ The VS Code ruff extension handles this automatically on save.
 
 **Format:**
 ```
-[EV-PULSE-NC] Brief description of change
+[EVPULS] Brief description of change
 ```
 
 **Guidelines:**
