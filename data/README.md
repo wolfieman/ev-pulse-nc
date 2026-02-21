@@ -27,7 +27,7 @@ data/
 - **Description:** Monthly ZEV registration Excel files by county
 - **Files:** `{year}-{month}-registration-data.xlsx`
 - **Download Script:** `code/python/data-acquisition/ncdot_ev_pipeline.py`
-- **Current Files:** January - October 2025 (10 files)
+- **Current Files:** July - October 2025 (4 validation-period files)
 
 **Important:** Raw files should NEVER be modified. All transformations happen via processing scripts.
 
@@ -94,7 +94,7 @@ May be deprecated in future cleanup.
 
 | Dataset | Source | Script | Last Updated |
 |---------|--------|--------|--------------|
-| ncdot-monthly/*.xlsx | NCDOT website | ncdot_ev_pipeline.py | 2026-02-01 |
+| ncdot-monthly/*.xlsx (Jul-Oct) | NCDOT website | ncdot_ev_pipeline.py | 2026-02-01 |
 | nc-ev-registrations-2025.csv | ncdot-monthly/ | ncdot_ev_pipeline.py | 2026-02-01 |
 | sas-forecasts.csv | SAS Model Studio | Manual export | 2025-06 |
 | sas-model-info.csv | SAS Model Studio | Manual export | 2025-06 |
