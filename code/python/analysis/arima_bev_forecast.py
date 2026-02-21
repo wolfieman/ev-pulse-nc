@@ -49,7 +49,7 @@ OUTPUT_DIR = PROJECT_ROOT / "output" / "arima"
 
 # Data files
 MAIN_DATA_FILE = DATA_RAW / "ncdot-ev-phev-registrations-county-201809-202506.csv"
-HOLDOUT_DIR = DATA_RAW / "nc-regs-latest-data"
+HOLDOUT_DIR = DATA_RAW / "ncdot-monthly"
 
 # Default ARIMA order - adjust based on your SAS model
 DEFAULT_ORDER = (1, 1, 1)  # (p, d, q)
