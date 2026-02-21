@@ -24,7 +24,7 @@ This document defines the coding standards and design philosophy for the EV Puls
 | Element | Convention | Example |
 |---------|------------|---------|
 | Directories | kebab-case | `data-acquisition/` |
-| Python files | snake_case | `ncdot_zev_downloader.py` |
+| Python files | snake_case | `ncdot_ev_pipeline.py` |
 | Data files | kebab-case with pattern | `ncdot-ev-registrations-county-202506.csv` |
 | Functions/variables | snake_case | `download_month()`, `month_label` |
 | Classes | PascalCase | `DownloadResult` |
@@ -53,7 +53,7 @@ The `code/python/` subdirectories use kebab-case because they contain standalone
 
 ### Encouraged
 
-- **Type hints** at public function signatures (see `ncdot_zev_downloader.py`)
+- **Type hints** at public function signatures (see `ncdot_ev_pipeline.py`)
 - **dataclasses** for structured data with behavior
 - **NamedTuple** for simple immutable record types
 - **Generators** for streaming and pagination
