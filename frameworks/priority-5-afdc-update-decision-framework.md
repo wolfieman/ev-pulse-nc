@@ -549,7 +549,7 @@ Based on analysis across all five decision nodes:
 
 1. **Ranked Recommendations Score:** 45/50 with only 2-hour effort (high ROI)
 2. **Same API, Same Methodology:** Not introducing new data source, just refreshing existing one
-3. **Validation Framework Exists:** Your data-validation-quality-checklist.md covers spatial join validation
+3. **Validation Framework Exists:** Spatial join validation can be performed by spot-checking stations against Google Maps and confirming county assignments
 4. **Fallback Available:** Keep July 2024 data as backup if Jan 2026 data has quality issues
 5. **Single Dependency:** Only affects infrastructure supply metrics, not BEV demand analysis
 
@@ -579,7 +579,7 @@ Based on analysis across all five decision nodes:
 
 | Risk | Probability | Impact | Mitigation |
 |------|------------|--------|------------|
-| **Spatial join errors** | Medium | High | Re-validate using data-validation-quality-checklist.md |
+| **Spatial join errors** | Medium | High | Re-validate spatial joins by spot-checking 10 stations against Google Maps and confirming county assignments match geocoded coordinates |
 | **County assignment mismatches** | Low | Medium | Spot-check 10 stations manually using Google Maps |
 | **Station count unexpected** | Low | Low | Document and explain (federal funding surge) |
 | **Time overrun (>2 hrs)** | Medium | Medium | Budget 3-4 hours buffer; drop hybrid milestones if needed |
@@ -616,5 +616,5 @@ Based on analysis across all five decision nodes:
 1. Apply for NREL API key immediately (instant approval): https://developer.nrel.gov/signup/
 2. Review nrel-api-access-guide.md for implementation details
 3. Schedule AFDC update for Week 1, Day 1 (before other priorities)
-4. Use data-validation-quality-checklist.md to validate Jan 2026 data quality
+4. Validate Jan 2026 data quality by spot-checking spatial joins and confirming county assignments
 5. Document methodology change in paper methods section
