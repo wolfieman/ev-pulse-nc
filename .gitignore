@@ -39,12 +39,15 @@ SASWORK*/
 # ============================================================================
 # Python
 # ============================================================================
+# Build artifacts
+build/
+*.egg-info/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
-*.egg-info/
 
 # Virtual environments
 venv/
