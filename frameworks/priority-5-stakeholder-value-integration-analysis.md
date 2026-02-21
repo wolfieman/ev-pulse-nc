@@ -164,159 +164,33 @@ This document analyzes WHO benefits from updating the AFDC infrastructure data f
 
 ## 3. Integration with Completed Priorities
 
-### 3.1 Priority #1: ARIMA Validation (July-Oct 2025)
+> **Full analysis:** See [Decision Framework — NODE 4: Integration Decision](priority-5-afdc-update-decision-framework.md#node-4-integration-decision) for detailed rationale, dependency chains, and scenario analysis for each priority.
 
-**Question**: Does validation require concurrent infrastructure data?
+| Priority | Requires Jan 2026? | Dependency Type | Key Insight |
+|----------|-------------------|-----------------|-------------|
+| **#1: Validation** | No | Independent | Validates BEV forecasts, not infrastructure; update is enhancement, not prerequisite |
+| **#2: ZIP Analysis** | Moderate | Enhanced | Jan 2026 spatial distribution reveals whether new stations clustered or dispersed |
+| **#3: CTPP Workplace** | Methodology: No; Validation: Yes | Low → High | Classification logic works on either snapshot; Jan 2026 tests market response to workplace demand |
+| **#6: Buffer Coverage** | Yes | **Blocking** | Coverage zones recalculate entirely with new station locations |
 
-**Answer**: **NO, infrastructure update not required for validation**
-
-**Rationale**:
-- Validation tests forecasting accuracy (predicted vs. actual BEV counts)
-- Infrastructure data is *output metric* (gaps), not *validation input*
-- Validation timeframe: July-Oct 2025 (4 months)
-- Infrastructure change in 4 months: Minimal (~10-20 stations, <5% of total)
-
-**Dependency Chain**:
-```
-Priority #1 (Validation) → Validates county BEV forecasts → Independent of infrastructure
-Priority #5 (AFDC Update) → Updates infrastructure baseline → Uses validated forecasts to calculate gaps
-```
-
-**Conclusion**: Validation (Priority #1) can proceed with July 2024 infrastructure. Update to Jan 2026 is enhancement, not prerequisite.
-
----
-
-### 3.2 Priority #2: ZIP Code Analysis
-
-**Question**: Does ZIP-level infrastructure mapping require Jan 2026 data?
-
-**Answer**: **MODERATE - Jan 2026 improves spatial analysis quality**
-
-**Rationale**:
-- ZIP analysis focuses on *intra-county heterogeneity* (e.g., Wake County's 28 ZIP codes)
-- If July-Jan 2024-2026 stations clustered in already-served ZIPs → gap worsens in underserved ZIPs
-- Example scenario:
-  - **July 2024**: Wake ZIP 27603 (downtown Raleigh) has 30 stations
-  - **Jan 2026**: +5 stations added, all in ZIP 27603 (not suburban ZIPs)
-  - **Impact**: Intra-county inequality *increases* despite county total rising
-
-**Spatial Distribution Matters**:
-- If new stations are **evenly distributed**: Gap closure uniform
-- If new stations are **clustered**: Gap severity bifurcates (urban improvement, suburban/rural worsening)
-
-**Dependency Chain**:
-```
-Priority #2 (ZIP Analysis) → Identifies intra-county gaps → ENHANCED by Jan 2026 spatial detail
-Priority #5 (AFDC Update) → Reveals WHERE recent growth occurred → Informs ZIP-level targeting
-```
-
-**Conclusion**: ZIP analysis can proceed with July 2024, but Jan 2026 adds critical *spatial distribution* insight. **Moderate dependency**.
-
----
-
-### 3.3 Priority #3: CTPP Workplace Charging
-
-**Question**: Does workplace station classification require most current data?
-
-**Answer**: **NO - Methodology development uses July 2024, validation needs Jan 2026**
-
-**Rationale**:
-- CTPP analysis identifies *employment centers* (net inbound commuters) → independent of station count
-- Workplace charging methodology requires *station classification* (M-F 8am-6pm vs. 24/7)
-- Classification logic applies equally to 355 stations (July) or 400 stations (Jan)
-
-**Station Classification Challenge**:
-- Current problem: AFDC doesn't tag "workplace" vs. "residential"
-- Workaround: Operating hours heuristic (Priority #3 framework, lines 253-258)
-- **July 2024 sufficient** for proof-of-concept (develop classification logic on 355 stations)
-
-**Validation Scenario**:
-- If Jan 2026 adds 45 stations, WHAT TYPE?
-  - If 90% are workplace (office parks, hospitals) → strengthens Priority #3 findings
-  - If 90% are residential (apartments, retail) → weakens workplace investment case
-
-**Dependency Chain**:
-```
-Priority #3 (CTPP) → Methodology: July 2024 sufficient → Validation: Jan 2026 tests if deployment matches need
-Priority #5 (AFDC Update) → Station types reveal if market is self-correcting workplace gap
-```
-
-**Conclusion**: Methodology development independent of Jan 2026. Update validates whether *market is responding* to workplace demand signals. **Low dependency for methodology, HIGH for validation**.
+**Critical finding:** Only Priority #6 has a blocking dependency. Priorities #1-3 can proceed with July 2024 baseline; Jan 2026 update enhances but does not gate their execution.
 
 ---
 
 ## 4. Timing & Sequencing Considerations (Conceptual)
 
-### 4.1 Critical Path Analysis
+> **Full scenario analysis:** See [Decision Framework — Recommended Execution Order](priority-5-afdc-update-decision-framework.md#integration-with-priority-stack) for three detailed timing scenarios (immediate, parallel, post-analysis) with pros/cons.
 
-**Scenario A: Update Immediately (Week 1)**
-```
-Week 1: AFDC Update (2 hrs) → Baseline established
-Week 1: Priority #1 Validation (4 hrs) → Uses new baseline
-Week 2: Priority #2 ZIP Analysis (4 hrs) → Spatial distribution from Jan 2026
-Week 2: Priority #3 CTPP (3 hrs) → Classification logic on 400 stations
-```
+### Dependency Matrix
 
-**Pros**:
-- Single source of truth throughout analysis
-- Spatial distribution insights inform ZIP/CTPP priorities
-- Capstone project paper says "Jan 2026 data" (freshness signal)
+| Priority | Requires Jan 2026? | Blocking? | Value-Add | Recommended Timing |
+|----------|-------------------|-----------|-----------|-------------------|
+| **#1: Validation** | No | No | Low | Week 1 (independent) |
+| **#2: ZIP Analysis** | Moderate | No | **High** | Week 2 (after AFDC update) |
+| **#3: CTPP Workplace** | Methodology: No | No | Medium | Week 2-3 (parallel with ZIP) |
+| **#6: Buffer Coverage** | Yes | **YES** | **Very High** | Week 3 (after AFDC update) |
 
-**Cons**:
-- If API issues arise (2-hour estimate becomes 4 hours), delays cascade
-- Baseline change may require recalculating county-level metrics (gap ratios, Gini coefficient)
-
----
-
-**Scenario B: Parallel Track (Weeks 1-2)**
-```
-Week 1: Priority #1 Validation (July 2024 baseline) → Proceed independently
-Week 1: Priority #2 ZIP Analysis (July 2024) → Spatial patterns established
-Week 2: AFDC Update (2 hrs) → New baseline acquired
-Week 2: Sensitivity Analysis (1 hr) → "How do findings change with Jan 2026 data?"
-Week 3: Integration (2 hrs) → Update key tables/figures only
-```
-
-**Pros**:
-- Parallel workstreams (no blocking dependencies)
-- If API fails, analysis proceeds with July 2024
-- Sensitivity analysis demonstrates methodological robustness
-
-**Cons**:
-- Risk of rework if Jan 2026 reveals unexpected patterns
-- Two versions of truth (July vs. Jan) during analysis
-
----
-
-**Scenario C: Update Post-Analysis (Week 4)**
-```
-Week 1-3: Complete Priorities #1-3 with July 2024 baseline
-Week 4: AFDC Update (2 hrs) → Validate findings
-Week 4: Spot-Check (1 hr) → Verify county rankings unchanged
-Week 4: Update Paper (1 hr) → Refresh key statistics
-```
-
-**Pros**:
-- No risk of delays to core analysis
-- Jan 2026 serves as *validation* of July 2024 findings (methodological strength)
-- Minimal rework if patterns stable
-
-**Cons**:
-- If Jan 2026 reveals major shifts (e.g., rural deployment surge), requires analysis redesign
-- Tight timeline (Week 4 = capstone project prep week)
-
----
-
-### 4.2 Dependency Matrix
-
-| Priority | Requires Jan 2026? | Blocking Dependency? | Value-Add if Updated |
-|----------|-------------------|----------------------|---------------------|
-| **#1: Validation** | No | No | Low (validates BEV forecasts, not infrastructure) |
-| **#2: ZIP Analysis** | Moderate | No | **High** (spatial distribution critical) |
-| **#3: CTPP Workplace** | Methodology: No, Validation: Yes | No | Medium (tests market response) |
-| **#6: Buffer Coverage** | Yes | **YES** | **Very High** (coverage % recalculates) |
-
-**Critical Finding**: Only Priority #6 (Buffer Analysis) has **blocking dependency** on Jan 2026 data (coverage zones recalculate with new station locations).
+**Recommended sequencing:** Execute AFDC update in Week 1 to establish current baseline before ZIP and CTPP analyses. Only Priority #6 is blocked; Priorities #1-3 can proceed independently if API delays occur.
 
 ---
 
