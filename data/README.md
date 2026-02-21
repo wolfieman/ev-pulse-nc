@@ -1,6 +1,6 @@
 # Data Directory
 
-**Last Updated:** 2026-02-01
+**Last Updated:** 2026-02-21
 **Project:** EV Pulse NC - North Carolina Electric Vehicle Analytics
 
 ---
@@ -96,8 +96,8 @@ May be deprecated in future cleanup.
 |---------|--------|--------|--------------|
 | ncdot-monthly/*.xlsx | NCDOT website | ncdot_ev_pipeline.py | 2026-02-01 |
 | nc-ev-registrations-2025.csv | ncdot-monthly/ | ncdot_ev_pipeline.py | 2026-02-01 |
-| sas-forecasts.csv | SAS Model Studio | Manual export | 2025-06-XX |
-| sas-model-info.csv | SAS Model Studio | Manual export | 2025-06-XX |
+| sas-forecasts.csv | SAS Model Studio | Manual export | 2025-06 |
+| sas-model-info.csv | SAS Model Studio | Manual export | 2025-06 |
 
 ---
 
