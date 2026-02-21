@@ -344,7 +344,7 @@ def fit_arima_model(
     return fitted
 
 
-def print_model_summary(fitted_model, sas_comparison: dict | None = None):
+def print_model_summary(fitted_model, sas_comparison: dict | None = None) -> None:
     """
     Print model summary with coefficient estimates and fit statistics.
 
@@ -419,7 +419,7 @@ def print_model_summary(fitted_model, sas_comparison: dict | None = None):
 # =============================================================================
 
 
-def run_diagnostics(fitted_model, output_dir: Path | None = None):
+def run_diagnostics(fitted_model, output_dir: Path | None = None) -> None:
     """
     Run and display model diagnostics.
 
