@@ -259,11 +259,6 @@ MBA Candidate, Business & Data Analytics Concentration<br>
 Fayetteville State University<br>
 Background: Computer Science, 15+ years data analytics experience
 
-**Braeden Baker**<br>
-MBA Candidate, Business & Data Analytics Concentration<br>
-Fayetteville State University<br>
-Background: Finance
-
 **Faculty Advisor:** Dr. Majed Al-Ghandour<br>
 **Course:** BIDA-670
 
