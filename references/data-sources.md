@@ -10,7 +10,7 @@
 - **Monthly Files URL:** https://www.ncdot.gov/initiatives-policies/environmental/climate-change/Documents/{year}-{month}-registration-data.xlsx
 - **Coverage:** September 2018 - June 2025 (82 months)
 - **Granularity:** County-month panel data (100 counties × 82 months = 8,200 observations)
-- **Download Script:** `code/python/data-acquisition/ncdot_zev_downloader.py`
+- **Download Script:** `code/python/data-acquisition/ncdot_ev_pipeline.py`
 
 ### 2. Alternative Fuel Stations - Electric Vehicle Charging
 - **Source:** U.S. Department of Energy, Alternative Fuels Data Center (AFDC)
