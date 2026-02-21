@@ -212,6 +212,13 @@ Based on expert recommendations, Phase 2 should prioritize:
 
 ---
 
+## Related Documentation
+
+- [frameworks/validation-analysis.md](../frameworks/validation-analysis.md) — Validation framework and accuracy metrics (canonical source for study design and model selection tables)
+- [BLOG-CREATION-PROTOCOL.md](BLOG-CREATION-PROTOCOL.md) — Protocol for creating blog posts from these research findings
+
+---
+
 ## Revision History
 
 | Date | Change |

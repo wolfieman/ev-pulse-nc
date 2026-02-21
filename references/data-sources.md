@@ -1,5 +1,7 @@
 # Data Sources & References
 
+> **See also:** [data/README.md](../data/README.md) for data directory overview | [data/processed/DATA-DICTIONARY.md](../data/processed/DATA-DICTIONARY.md) for detailed field definitions
+
 ## Primary Data Sources
 
 ### 1. North Carolina Electric Vehicle Registrations
