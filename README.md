@@ -130,7 +130,7 @@ ev-pulse-nc/
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Python 3.10+
+- Python 3.14+
 - Git with Git LFS extension
 
 ### Setup Instructions
@@ -151,7 +151,7 @@ ev-pulse-nc/
    ```bash
    python -m venv .venv
    source .venv/bin/activate  # or .venv\Scripts\activate on Windows
-   pip install pandas statsmodels matplotlib seaborn geopandas
+   pip install -e .
    ```
 
 4. **Verify data files**
