@@ -206,7 +206,7 @@ Based on 3-agent analysis across decision framework, stakeholder value, and data
 
 | Risk | Probability | Impact | Mitigation |
 |------|------------|--------|------------|
-| Spatial join errors | Medium | High | Re-validate using data-validation-quality-checklist.md |
+| Spatial join errors | Medium | High | Re-validate spatial joins by spot-checking 10 stations against Google Maps and confirming county assignments match geocoded coordinates |
 | API key approval delay | Low | Medium | Apply immediately (instant approval typical) |
 | Station count unexpected | Low | Low | Document federal funding surge |
 | Time overrun (>2 hrs) | Medium | Medium | Budget 3-4 hours buffer |

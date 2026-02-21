@@ -62,7 +62,8 @@ Update documentation when changes:
 - Add new data sources or dependencies
 
 Key files to update:
-- `data/README.md` - Data dictionary and sources
+- `data/README.md` - Data directory overview and sources
+- `data/processed/DATA-DICTIONARY.md` - Detailed data dictionary
 - `code/README.md` - Code execution guide
 - `README.md` - Project overview (major changes only)
 
