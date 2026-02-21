@@ -7,11 +7,11 @@
 
 ## Project Overview
 
-North Carolina faces a critical infrastructure challenge: electric vehicle adoption is outpacing charging infrastructure deployment. Between September 2018 and June 2025, the state's BEV fleet grew from 5,165 to 94,371 vehicles—a 1,727% increase (53.8% CAGR). Public charging infrastructure has struggled to keep pace, with 16.9 BEVs per port versus the 10-15 national benchmark.
+North Carolina faces a critical infrastructure challenge: EV adoption is outpacing charging deployment, with 53.8% CAGR in BEV registrations but infrastructure lagging 13-40% by county (see [README.md — Key Findings](README.md#-key-findings) for detailed statistics).
 
 This project analyzes alignment between EV adoption and infrastructure across all 100 North Carolina counties using 8,200 county-month observations (82 months) and 1,725 individual charging connectors. Core question: where should North Carolina's $109 million in NEVI funding go?
 
-**Baseline analysis last semester** produced county-level ARIMA forecasts (weighted MAPE 2.73%), identified infrastructure gap of 16.9 BEVs per port, and revealed extreme geographic inequality (Gini 0.805—top 10 counties hold 72% of BEVs, bottom 50 hold 4.8%). This semester adds three extensions to enhance spatial precision, temporal currency, and demand dimensionality.
+**Baseline analysis last semester** produced county-level ARIMA forecasts (weighted MAPE 2.73%), identified the infrastructure gap, and revealed extreme geographic inequality (Gini 0.805). This semester adds three extensions to enhance spatial precision, temporal currency, and demand dimensionality.
 
 What makes this distinctive: county-level granularity over 82 months with connector-level detail (1,725 units vs. 355 stations)—4.85 times more precision than typical state-level snapshot studies.
 
@@ -69,7 +69,7 @@ ZIP code analysis (Priority #2) and CTPP workplace charging (Priority #3) comple
 
 ## Methodological Innovation Summary
 
-Five innovations distinguish this from typical EV infrastructure studies:
+Five innovations distinguish this from typical EV infrastructure studies (see [PROJECT-EXPLANATION.md — Methodological Innovation Summary](PROJECT-EXPLANATION.md#methodological-innovation-summary) for expanded discussion):
 
 1. **County-level granularity over 82 months:** Examines all 100 counties across seven years of monthly observations, enabling time series forecasting that captures heterogeneous adoption trajectories.
 
