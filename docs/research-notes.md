@@ -21,41 +21,17 @@ historical patterns predicted.
 
 ## Phase 1: Forecast Validation
 
-### Study Design
+### Study Design & Model Selection
 
-| Component | Specification |
-|-----------|---------------|
-| Training Period | September 2018 - June 2025 (82 months) |
-| Validation Period | July - October 2025 (4 months) |
-| Geographic Scope | 100 North Carolina counties |
-| Target Variable | BEV (Battery Electric Vehicle) registrations |
-| Validation Type | True out-of-sample holdout |
+> **Canonical tables:** See [frameworks/validation-analysis.md](../frameworks/validation-analysis.md) for the definitive study design, model selection, and accuracy metrics tables.
 
-### Model Selection by SAS Model Studio
-
-SAS Model Studio auto-selected different time series models per county:
-
-| Model Type | Counties | Description |
-|------------|----------|-------------|
-| ESM (Exponential Smoothing) | 82 | Weighted averages with decay |
-| ARIMA | 13 | Autoregressive integrated moving average |
-| UCM (Unobserved Components) | 5* | Structural time series |
-
-*Note: Only 4 UCM counties matched in validation (99 counties total matched).
+**Summary:** 100 NC counties, 82-month training period (Sep 2018 - Jun 2025), 4-month out-of-sample validation (Jul-Oct 2025). SAS Model Studio auto-selected ESM (82 counties), ARIMA (13), UCM (5; 4 matched).
 
 ### Key Findings
 
 #### 1. Point Forecast Accuracy
 
-| Metric | Overall | ESM | ARIMA | UCM |
-|--------|---------|-----|-------|-----|
-| MAPE | 4.36% | 4.16% | 5.43% | 4.87% |
-| MAE | 27.10 | 19.10 | 84.83 | 3.48 |
-| RMSE | 114.11 | 74.67 | 252.94 | 6.53 |
-
-**Interpretation:** MAPE under 5% is generally considered good forecast accuracy.
-ESM models performed best overall. ARIMA's higher MAE/RMSE reflects its use in
-larger, more volatile counties (e.g., Mecklenburg, Wake).
+**Overall MAPE: 4.36%** (below 5% threshold = strong validation). ESM performed best (4.16%); ARIMA showed higher errors (5.43%) reflecting use in larger, more volatile counties. See [validation-analysis.md — Accuracy Metrics](../frameworks/validation-analysis.md#accuracy-metrics) for the full breakdown by model type.
 
 #### 2. Systematic Bias (Key Finding)
 
