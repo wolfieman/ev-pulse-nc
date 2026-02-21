@@ -92,8 +92,8 @@ The project provides stakeholders with actionable insights at multiple scales: s
 ---
 
 **Project Team:**
-Wolfgang Sanyer & Braeden Baker<BR>
-MBA Candidates, Business & Data Analytics Concentration<BR>
+Wolfgang Sanyer<BR>
+MBA Candidate, Business & Data Analytics Concentration<BR>
 Fayetteville State University
 
 **Faculty Advisor:** Dr. Majed Al-Ghandour<BR>

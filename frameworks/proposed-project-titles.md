@@ -124,6 +124,6 @@ Each title corresponds to specific analytical priorities:
 
 **Project:** EV Pulse NC
 **Course:** BIDA 670 - Advanced Analytics
-**Team:** Wolfgang Sanyer, Braeden Baker
+**Team:** Wolfgang Sanyer
 **Instructor:** Dr. Majed Al-Ghandour
 **Semester:** Spring 2026 (Jan 12 - May 8, 2026)
