@@ -62,3 +62,4 @@ paper/             <- Research paper
 ---
 
 **First-time setup?** See [INSTALLATION.md](INSTALLATION.md)
+**Contributing?** See [CONTRIBUTING.md](CONTRIBUTING.md) and [STYLE-GUIDE.md](STYLE-GUIDE.md)
