@@ -90,16 +90,21 @@ ev-pulse-nc/
 ├── code/                         # Analysis code
 │   ├── python/                   # Python scripts
 │   │   ├── data-acquisition/     # Data download scripts
-│   │   └── data-cleaning/        # Data consolidation scripts
+│   │   ├── data-cleaning/        # Data consolidation scripts
+│   │   ├── analysis/             # Time series modeling and validation
+│   │   └── blog/                 # Blog graphics package
 │   └── README.md                 # Code execution guide
 │
 ├── docs/                         # Project documentation
-│   ├── planning/                 # Project plans and outlines
 │   ├── eda-reports/              # Exploratory data analysis reports
 │   └── research/                 # Supporting research papers
 │
+├── frameworks/                   # Analytical frameworks and decision docs
+│   └── README.md                 # Framework directory and priority map
+│
 ├── output/                       # Generated outputs
 │   ├── figures/                  # Visualizations for paper
+│   ├── validation/               # Forecast validation results
 │   ├── tables/                   # Summary statistics tables
 │   └── models/                   # Saved forecasting artifacts
 │

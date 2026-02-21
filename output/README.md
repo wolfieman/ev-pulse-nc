@@ -19,6 +19,17 @@ Publication-quality visualizations for the research paper (600 DPI, PDF exports)
 
 All figures available in both PNG and PDF formats.
 
+## Validation (`validation/`)
+
+Output from `validate_sas_forecasts.py` — SAS Model Studio forecast accuracy assessment.
+
+| File | Description |
+|------|-------------|
+| sas-validation-comparison.csv | Per-county, per-month predicted vs actual with error metrics |
+| sas-validation-by-county.csv | Aggregate accuracy metrics by county and model type |
+| sas-validation-by-model.csv | Aggregate accuracy metrics by model type (ESM, ARIMA, UCM) |
+| sas-validation-report.txt | Human-readable validation report with executive summary |
+
 ## Tables (`tables/`)
 
 Summary statistics and results tables.

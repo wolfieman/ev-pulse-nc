@@ -1,5 +1,16 @@
 # Code Directory
 
+## Directory Structure
+
+```
+code/
+└── python/
+    ├── data-acquisition/       # Data download scripts
+    ├── data-cleaning/          # Data consolidation and transformation
+    ├── analysis/               # Time series modeling and validation
+    └── blog/                   # Blog graphics package
+```
+
 ## Python Scripts (`python/`)
 
 All analysis code is written in Python.
@@ -34,6 +45,13 @@ Data cleaning, validation, and transformation scripts.
 python consolidate_zev_monthly.py --indir ../../../data/raw/ncdot-monthly --out ../../../data/processed/nc_zev_consolidated.xlsx
 ```
 
+**add_monthdate.py** - Adds `MonthDate` column (YYYYMM format) derived from `Month` column. Overwrites input file in place.
+
+```bash
+python add_monthdate.py
+python add_monthdate.py --file ../../../data/generated/ncdot-ev-phev-latest.xlsx
+```
+
 **Dependencies:** `pandas`, `openpyxl`
 
 ### analysis/
@@ -51,8 +69,21 @@ Features:
 - Out-of-sample validation (Jul-Oct 2025 actuals vs. SAS predictions)
 - Metrics: MAPE, MAE, RMSE, Bias, 95% CI Coverage
 - Model-type stratification (ESM, ARIMA, UCM)
-- Publication-quality figures (600 DPI, PDF exports)
-- Outputs saved to `output/figures/`
+- Outputs saved to `output/validation/`
+
+**generate_phase1_figures.py** - Creates publication-quality visualizations from validation results
+
+```bash
+# Generate required figures (scatter, histogram, model comparison, CI coverage)
+uv run python code/python/analysis/generate_phase1_figures.py
+
+# Also generate nice-to-have figures (time series examples, boxplot, lollipop chart)
+uv run python code/python/analysis/generate_phase1_figures.py --nice-to-have
+```
+
+Requires `validate_sas_forecasts.py` to be run first. Outputs saved to `output/figures/` in PNG and PDF formats.
+
+**publication_style.py** - Shared matplotlib styling module for publication-quality figures (600 DPI, colorblind-friendly palette, IEEE-compatible dimensions). Imported by `generate_phase1_figures.py`.
 
 **arima_bev_forecast.py** - Full ARIMA implementation for BEV registration forecasting
 
@@ -83,9 +114,19 @@ Use this as a quick reference for replicating SAS PROC ARIMA in Python.
 
 **Dependencies:** `pandas`, `numpy`, `statsmodels`, `matplotlib`, `scipy`
 
-### visualization/ (planned)
+### blog/
 
-Chart and map generation code.
+Importable Python package for generating blog graphics (LinkedIn, Substack).
+
+**`__init__.py`** - Package initialization; re-exports `blog_graphics` module.
+
+**blog_graphics.py** - Stat cards, multi-panel infographics, social media preview images, and comparison charts for blog content.
+
+```python
+from blog.blog_graphics import create_stat_card, create_social_preview
+```
+
+**Dependencies:** `matplotlib`, `Pillow`
 
 ---
 
