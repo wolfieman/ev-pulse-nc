@@ -43,6 +43,8 @@ ncdot-ev-registrations-county-202506.csv
 └── Domain/Source (ncdot, afdc)
 ```
 
+> **Raw file exemption:** Downloaded files in `data/raw/` retain their source naming (e.g., `2025-july-registration-data.xlsx`) and are exempt from the `domain-subject-grain-date.ext` convention. The naming standard applies to processed and generated files only.
+
 ### Directory Structure Note
 
 The `code/python/` subdirectories use kebab-case because they contain standalone scripts run directly, not importable modules. If importable packages are needed later, they must use snake_case per Python requirements.
