@@ -45,6 +45,26 @@ EV Pulse NC research priorities (post-SAS Cup redefinition):
 | **4** | HEPGIS Equity Analysis | ⏳ Pending | Justice40 integration (not yet started) |
 | **5** | AFDC API Update | ✅ Framework Complete (3 frameworks) | **Dual-snapshot approach** (July 2024 + Jan 2026 growth analysis) |
 | **6** | Buffer Analysis | ⏳ Pending | Coverage zones (not yet started) |
+| **7** | NCDOT NEVI Corridor Validation | ⏳ Optional | Compare scoring framework output vs. NCDOT planned deployments |
+
+### Phase 5: Prescriptive Scoring Framework (Integration Layer)
+
+**Source:** Dr. Al-Ghandour's proposal feedback — "clearly defining prioritization criteria (equity, utilization, cost-effectiveness) within a scoring framework to translate findings into defensible NEVI allocation decisions."
+
+**Formula:**
+```
+NEVI Priority Score(county) = w1 × Equity_Score + w2 × Utilization_Score + w3 × Cost_Effectiveness_Score
+```
+
+| Component | Source Extension | Metrics |
+|-----------|----------------|---------|
+| **Equity_Score** | HEPGIS + ZIP code analysis (#2/#4) | Justice40 disadvantaged community %, Gini coefficient, rural access gap, zero-infrastructure flag |
+| **Utilization_Score** | Validation (#1) + AFDC dual-snapshot (#5) | BEVs/port ratio, forecast growth rate, 4-5% underprediction buffer |
+| **Cost_Effectiveness_Score** | CTPP workplace charging (#3) | Workplace efficiency (15 vs 7.5 BEVs/port), commuter demand sizing, population density |
+
+**Weights:** Literature-driven from DOE/FHWA NEVI guidance (equity-heavy per Justice40: ~0.40/0.35/0.25) + sensitivity analysis showing top counties robust across weight variations.
+
+**Output:** Ranked list of 100 NC counties with defensible NEVI dollar allocations.
 
 ---
 
@@ -94,6 +114,16 @@ EV Pulse NC research priorities (post-SAS Cup redefinition):
 - **Key Insight:** Workplace infrastructure 3× more efficient (15 EVs/port) than residential (7.5 EVs/port) but smaller absolute gap
 - **Recommendation:** Focus on top 15 employment centers, not all 100 counties
 
+### Priority #7: NCDOT NEVI Corridor Validation (OPTIONAL)
+- **Source:** Dr. Al-Ghandour introduced the NCDOT NEVI Mapping Tool during Week 6 check-in (Feb 20, 2026)
+- **Tool:** https://experience.arcgis.com/experience/a1e1459fffee4ccbafaf888f838dcac6/page/NCDOT-NEVI-Mapping-Tool
+- **What it is:** ArcGIS map of NCDOT's planned NEVI station deployments along Alternative Fuel Corridors (AFCs)
+- **Breaking development (Feb 18, 2026):** NCDOT announced shift from corridor-only to rural/community deployment — from 50 corridor stations to 16 rural locations. RFP coming late March 2026.
+- **Alignment:** This is NOT part of the three proposed extensions. It's a **validation benchmark** — do our equity-weighted scores recommend the same locations NCDOT just chose?
+- **Work estimate:** 3-5 hours if folded into scoring framework as validation layer
+- **Professor offering:** Dr. Al-Ghandour (former DOT/CDOT) offered to help obtain NCDOT planning data directly
+- **Strategic value:** If our scoring framework independently recommends rural deployment, it validates both our methodology AND NCDOT's Feb 18 policy shift
+
 ### Priority #5: AFDC API Update
 - **Core Question:** Should we update July 2024 infrastructure to Jan 2026?
 - **Critical Finding:** 6-month staleness creates 15-22% gap overstatement (numerator current, denominator stale)
@@ -108,15 +138,19 @@ EV Pulse NC research priorities (post-SAS Cup redefinition):
 ### How Priorities Connect
 
 ```
-Priority #1 (Validation)
+Priority #1 (Validation) ✅ COMPLETE
     ↓ validates BEV forecasts
     ↓
 Priority #5 (AFDC Update) ← uses validated forecasts
     ↓ provides infrastructure baseline
     ↓
 Priority #2 (ZIP) + Priority #3 (CTPP) ← use Jan 2026 spatial data
-    ↓ identify gaps
+    ↓ identify gaps → feed into
     ↓
+Phase 5: Scoring Framework ← integrates equity + utilization + cost-effectiveness
+    ↓ produces ranked county allocations
+    ↓
+Priority #7 (NCDOT Corridor Validation) ← OPTIONAL: compare scores vs. NCDOT planned sites
 Priority #6 (Buffer) ← requires Jan 2026 station locations
 ```
 
@@ -245,8 +279,8 @@ All frameworks created by expert agent analysis (Jan 30, 2026) for EV Pulse NC B
 ### Version Control
 
 - **Created:** January 30, 2026
-- **Last Updated:** February 1, 2026
-- **Status:** Phase 1 Complete (Priority #1 executed, Priority #4 and #6 pending)
+- **Last Updated:** February 20, 2026
+- **Status:** Phase 1 Complete (Priority #1 executed); Scoring framework defined; NCDOT corridor validation added as optional Priority #7
 
 ### Related Documentation
 
