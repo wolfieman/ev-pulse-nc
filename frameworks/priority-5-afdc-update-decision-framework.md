@@ -1,5 +1,7 @@
 # AFDC API Update Decision Framework - EV Pulse NC Priority #5
 
+> **Related frameworks:** This is one of three Priority #5 AFDC analyses. See also [Stakeholder Value & Integration Analysis](priority-5-stakeholder-value-integration-analysis.md) (who benefits, integration with Priorities #1-3) and [Data Structure & Snapshot Comparison](afdc-data-structure-snapshot-comparison-framework.md) (API fields, comparison methodology).
+
 ## Executive Summary
 
 This framework provides a conceptual roadmap for evaluating whether to update the Alternative Fuels Data Center (AFDC) infrastructure data from the July 2024 snapshot (355 stations) to January 2026 data (estimated 400-450 stations). This is a **decision analysis only** - no implementation, no code, no timelines.
