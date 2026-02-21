@@ -1,5 +1,7 @@
 # Priority #5: AFDC API Update - Stakeholder Value & Integration Analysis
 
+> **Related frameworks:** This is one of three Priority #5 AFDC analyses. See also [Decision Framework](priority-5-afdc-update-decision-framework.md) (5-node decision tree, risk assessment) and [Data Structure & Snapshot Comparison](afdc-data-structure-snapshot-comparison-framework.md) (API fields, comparison methodology).
+
 ## Executive Summary
 
 This document analyzes WHO benefits from updating the AFDC infrastructure data from July 2024 to January 2026, and HOW this update integrates with EV Pulse NC's other analytical priorities. This is a conceptual analysis to inform decision-making—no implementation is performed.

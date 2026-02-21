@@ -9,6 +9,8 @@
 
 ---
 
+> **Related frameworks:** This is one of three Priority #5 AFDC analyses. See also [Decision Framework](priority-5-afdc-update-decision-framework.md) (5-node decision tree, risk assessment) and [Stakeholder Value & Integration Analysis](priority-5-stakeholder-value-integration-analysis.md) (who benefits, integration with Priorities #1-3).
+
 ## Executive Summary
 
 This document provides a comprehensive conceptual framework for updating EV Pulse NC's AFDC (Alternative Fuels Data Center) charging station data from the July 2024 snapshot to a January 2026 snapshot. The framework covers AFDC data structure, temporal comparison methodology, infrastructure classification for integration with Priority #2 (ZIP analysis) and Priority #3 (CTPP workplace analysis), and industry best practices for data currency standards.
