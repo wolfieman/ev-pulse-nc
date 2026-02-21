@@ -19,6 +19,7 @@ Usage:
 """
 
 import argparse
+import sys
 from datetime import datetime
 from pathlib import Path
 
@@ -355,7 +356,7 @@ def generate_report(
     return "\n".join(lines)
 
 
-def main():
+def main() -> None:
     """Run SAS forecast validation."""
     parser = argparse.ArgumentParser(
         description="Validate SAS forecasts against actual NCDOT data"
@@ -372,6 +373,17 @@ def main():
     output_dir = Path(args.output)
     if not output_dir.is_absolute():
         output_dir = script_dir / output_dir
+
+    # Verify required input files exist
+    required_files = {
+        data_dir / "reference-forecasts/sas-forecasts.csv": "SAS forecasts",
+        data_dir / "processed/nc-ev-registrations-2025.csv": "actual registrations",
+        data_dir / "reference-forecasts/sas-model-info.csv": "SAS model info",
+    }
+    for fpath, label in required_files.items():
+        if not fpath.exists():
+            print(f"[error] Missing {label}: {fpath}", file=sys.stderr)
+            sys.exit(1)
 
     # Load data
     print("[i] Loading SAS forecasts...")
