@@ -67,6 +67,16 @@ Key files to update:
 - `code/README.md` - Code execution guide
 - `README.md` - Project overview (major changes only)
 
+## Phase Transition Protocol
+
+At the end of each analytical phase (e.g., Phase 1 → Phase 2), run these three maintenance tasks in order before beginning the next phase:
+
+1. **Structure Optimization & Deduplication** — Consolidate any files added during the phase, remove duplicates, and ensure the directory layout matches `README.md`.
+2. **Staleness Audit** — Verify all timestamps, dates, and status markers in documentation reflect the work just completed.
+3. **Code & Structure Cleanup** — Add missing boundary validations, complete documentation for new scripts, and resolve any naming or style inconsistencies.
+
+> **Timing:** Run at phase boundaries only, not mid-phase. Each task builds on the previous one's output, so execute them sequentially.
+
 ## Definition of Done
 
 A change is complete when:
