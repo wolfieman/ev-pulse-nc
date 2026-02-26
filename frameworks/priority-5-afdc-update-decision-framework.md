@@ -8,6 +8,38 @@ This framework provides a conceptual roadmap for evaluating whether to update th
 
 ---
 
+## Findings Update (Feb 2026)
+
+> **Status:** The API download has been completed. A detailed data comparison revealed that several foundational assumptions in this framework were incorrect. The findings below supersede the staleness-based analysis in subsequent sections.
+
+### What We Discovered
+
+**1. The old file was not a full snapshot.** `afdc-charging-stations-connector-2024-07.csv` was a DCFC-only, public-access-only, connector-level extract containing 355 unique stations (1,725 rows due to one row per connector port). It excluded 82.4% of North Carolina's charging stations -- primarily the 1,636 L2-only stations that constitute the bulk of the state's charging network.
+
+**2. The filename date was misleading.** Despite the "2024-07" filename, the data was updated through December 2025 (max `Updated At`: 2025-12-22). The file was likely downloaded from the AFDC website in late December 2025 or January 2026. The perceived "6-month staleness gap" between July 2024 infrastructure data and October 2025 BEV data did not exist for the stations the old file covered.
+
+**3. The "staleness gap" premise was based on incorrect assumptions.** This framework's original analysis -- including the temporal mismatch argument, gap inflation scenarios, and data currency standards -- assumed the old file was a complete point-in-time snapshot. Since the old file was actually a filtered DCFC-only extract with data current through December 2025, the staleness argument does not apply as framed.
+
+**4. Priority 5 is redefined.** The task is no longer "update stale data to fix a temporal gap." It is now:
+
+> **Replace an incomplete DCFC-only connector-level extract with a complete all-levels station-level API dataset.**
+
+The value of the new file (`afdc-charging-stations-connector-2026-02.csv`, 1,985 stations, 76 columns) is **completeness, not temporal currency:**
+- 1,636 L2-only stations were entirely absent from the old file
+- Geographic coverage doubles (267 cities vs. 135; 358 ZIPs vs. 179)
+- All access types included (public + private)
+- Station-level granularity (one row per station) simplifies downstream analysis
+
+**5. DCFC continuity is strong.** An apples-to-apples comparison (public DCFC stations only) shows 322 of 355 old stations (90.7%) appear in the new file, with near-identical port counts (1,745 vs. 1,742). The DCFC data was thorough; the gap was in L2 coverage.
+
+### Impact on This Framework
+
+The decision tree analysis below (Nodes 1-5) remains valid in its conclusion -- update the data -- but the **rationale has shifted** from temporal alignment to dataset completeness. Sections referencing a "6-month staleness gap," "July 2024 snapshot," or "12-27% station growth" should be read in light of these findings.
+
+For the full comparison analysis with detailed tables and methodology, see [AFDC-DATA-COMPARISON.md](../data/raw/AFDC-DATA-COMPARISON.md).
+
+---
+
 ## Context Analysis
 
 **Current State:**

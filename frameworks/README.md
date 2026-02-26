@@ -44,7 +44,7 @@ EV Pulse NC research priorities (post-SAS Cup redefinition):
 | **2** | ZIP Code Analysis | ✅ Framework Complete ([zip-code-analysis.md](./zip-code-analysis.md)) | Infrastructure-only (adoption data unavailable at ZIP level) |
 | **3** | CTPP Commuting Data | ✅ Framework Complete ([ctpp-analysis.md](./ctpp-analysis.md)) | Top 15 employment centers, 30% workplace charging assumption |
 | **4** | HEPGIS Equity Analysis | ⏳ Pending | Justice40 integration (not yet started) |
-| **5** | AFDC API Update | ✅ Framework Complete (3 frameworks) | **Dual-snapshot approach** (July 2024 + Jan 2026 growth analysis) |
+| **5** | AFDC Infrastructure Data | ✅ Data Acquired (Feb 2026) | Complete API dataset replaces DCFC-only extract (1,985 stations, all levels) |
 | **6** | Buffer Analysis | ⏳ Pending | Coverage zones (not yet started) |
 | **7** | NCDOT NEVI Corridor Validation | ⏳ Optional | Compare scoring framework output vs. NCDOT planned deployments |
 
@@ -60,7 +60,7 @@ NEVI Priority Score(county) = w1 × Equity_Score + w2 × Utilization_Score + w3 
 | Component | Source Extension | Metrics |
 |-----------|----------------|---------|
 | **Equity_Score** | HEPGIS + ZIP code analysis (#2/#4) | Justice40 disadvantaged community %, Gini coefficient, rural access gap, zero-infrastructure flag |
-| **Utilization_Score** | Validation (#1) + AFDC dual-snapshot (#5) | BEVs/port ratio, forecast growth rate, 4-5% underprediction buffer |
+| **Utilization_Score** | Validation (#1) + AFDC complete baseline (#5) | BEVs/port ratio across all charging levels (L1, L2, DCFC), 4-5% underprediction buffer |
 | **Cost_Effectiveness_Score** | CTPP workplace charging (#3) | Workplace efficiency (15 vs 7.5 BEVs/port), commuter demand sizing, population density |
 
 **Weights:** Literature-driven from DOE/FHWA NEVI guidance (equity-heavy per Justice40: ~0.40/0.35/0.25) + sensitivity analysis showing top counties robust across weight variations.
@@ -125,12 +125,12 @@ NEVI Priority Score(county) = w1 × Equity_Score + w2 × Utilization_Score + w3 
 - **Professor offering:** Dr. Al-Ghandour (former DOT/CDOT) offered to help obtain NCDOT planning data directly
 - **Strategic value:** If our scoring framework independently recommends rural deployment, it validates both our methodology AND NCDOT's Feb 18 policy shift
 
-### Priority #5: AFDC API Update
-- **Core Question:** Should we update July 2024 infrastructure to Jan 2026?
-- **Critical Finding:** 6-month staleness creates 15-22% gap overstatement (numerator current, denominator stale)
-- **Key Insight:** **Dual-snapshot approach** transforms weakness into strength—infrastructure growth rate analysis
-- **Stakeholder Value:** Private sector (9/10), County planners (8/10), NEVI admins (7/10)
-- **Integration:** Enhances Priority #2 (spatial distribution), validates Priority #3 (station types), blocks Priority #6 (coverage zones)
+### Priority #5: AFDC Infrastructure Data
+- **Core Question:** Do we have complete infrastructure coverage for gap analysis?
+- **Critical Finding:** Old file was a DCFC-only, public-only, connector-level extract (355 stations); the Feb 2026 API download provides complete coverage (1,985 stations across L1, L2, DCFC, all access types)
+- **Key Insight:** Complete dataset enables accurate BEVs-per-port ratios, ZIP-level infrastructure mapping, and facility-type classification for workplace charging analysis
+- **Background:** The old file's "July 2024" filename was misleading—it contained data through Dec 2025, so no temporal comparison was possible. The real gap was completeness, not currency.
+- **Integration:** Enhances Priority #2 (ZIP-level spatial distribution), validates Priority #3 (station types for workplace charging), enables Priority #6 (coverage zones require all station locations), feeds Scoring Framework (utilization scores across all charging levels)
 
 ---
 
@@ -142,62 +142,63 @@ NEVI Priority Score(county) = w1 × Equity_Score + w2 × Utilization_Score + w3 
 Priority #1 (Validation) ✅ COMPLETE
     ↓ validates BEV forecasts
     ↓
-Priority #5 (AFDC Update) ← uses validated forecasts
-    ↓ provides infrastructure baseline
+Priority #5 (AFDC Data) ✅ DATA ACQUIRED ← provides COMPLETE infrastructure baseline (1,985 stations, all levels)
+    ↓ replaces incomplete DCFC-only extract
     ↓
-Priority #2 (ZIP) + Priority #3 (CTPP) ← use Jan 2026 spatial data
+Priority #2 (ZIP) + Priority #3 (CTPP) ← use Feb 2026 complete spatial data
     ↓ identify gaps → feed into
     ↓
 Phase 5: Scoring Framework ← integrates equity + utilization + cost-effectiveness
     ↓ produces ranked county allocations
     ↓
 Priority #7 (NCDOT Corridor Validation) ← OPTIONAL: compare scores vs. NCDOT planned sites
-Priority #6 (Buffer) ← requires Jan 2026 station locations
+Priority #6 (Buffer) ← requires Feb 2026 complete station locations
 ```
 
 ### Synergy Analysis
 
-**Scenario 1:** Update AFDC (#5) but NOT ZIP (#2) or CTPP (#3)
-- Value: 40% of potential impact (improved gaps, but county-level only)
+**Scenario 1:** Use complete AFDC data (#5) but NOT ZIP (#2) or CTPP (#3)
+- Value: 40% of potential impact (complete infrastructure baseline, but county-level only)
 
-**Scenario 2:** Pursue ZIP (#2) + CTPP (#3) but NOT AFDC (#5)
-- Value: 60% of potential impact (sub-county insights, but stale data)
+**Scenario 2:** Pursue ZIP (#2) + CTPP (#3) but with incomplete DCFC-only data
+- Value: 60% of potential impact (sub-county insights, but missing L1/L2 stations and non-public access points)
 
-**Scenario 3:** Update AFDC (#5) AND pursue ZIP (#2) + CTPP (#3)
-- Value: **100% of potential impact** (current baseline + spatial granularity)
+**Scenario 3:** Use complete AFDC data (#5) AND pursue ZIP (#2) + CTPP (#3)
+- Value: **100% of potential impact** (complete all-levels baseline + spatial granularity)
 
 ---
 
-## Recommended Decision Path (Priority #5)
+## Actual Outcome (Priority #5)
 
-Based on 3-agent analysis across decision framework, stakeholder value, and data structure research:
+Based on data investigation (Feb 2026) — original 3-agent framework analysis has been superseded by findings:
 
-### Final Recommendation: Dual-Snapshot Approach (Option C)
+### Result: Complete API Dataset Replaces Incomplete Extract
 
-**What:**
-- Retain July 2024 as baseline (355 stations, 1,725 ports)
-- Add Jan 2026 as current state (~400-450 stations)
-- Calculate infrastructure growth rate (July → Jan)
+**What happened:**
+- The old file (`afdc-charging-stations-connector-2024-07.csv`) was NOT a July 2024 full snapshot — it was a DCFC-only, public-only, connector-level extract with data through Dec 2025
+- The Feb 2026 API download (`afdc-charging-stations-connector-2026-02.csv`) is a complete station-level dataset: 1,985 stations, all charging levels (L1, L2, DCFC), all access types
+- Both files represent roughly the same point in time — the "6-month staleness gap" never existed
 
-**Why:**
-- Transforms "data staleness" liability into "growth analysis" asset
-- Enables unique research questions (which counties saw fastest deployment?)
-- No rework of existing analysis (July 2024 remains valid)
-- Addresses stakeholders: County planners (spatial distribution), Private sector (market intelligence), NEVI admins (deployment pace)
+**Why this matters:**
+- The old extract covered only 355 DCFC stations; the complete dataset covers 1,985 stations across all levels
+- Full coverage enables accurate BEVs-per-port ratios that account for ALL charging infrastructure, not just fast chargers
+- ZIP-level infrastructure mapping now includes L2 workplace/residential chargers (critical for Priority #3 workplace charging analysis)
+- Facility-type classification (workplace, retail, parking, etc.) now available across all station types
 
-**Effort:** 3 hours (2 hrs API query + 1 hr growth analysis)
+**Effort:** 2 hours (API query + validation of completeness)
 
 **Deliverables:**
-1. Table: "NC EV Charging Infrastructure - Dual Baseline Comparison"
-2. Metric: "Infrastructure deployment rate: +7.5 stations/month"
-3. Map: "New Station Locations (July 2024-Jan 2026)"
-4. Analysis: "Did growth occur in gap counties or already-served areas?"
+1. Complete infrastructure baseline: 1,985 NC stations across L1, L2, and DCFC
+2. All access types included (public, private, workplace, fleet)
+3. Facility-type classification for workplace charging integration
+4. ZIP-level station distribution for spatial analysis
 
 **Integration:**
-- Priority #1 (Validation): Independent—proceed with July 2024
-- Priority #2 (ZIP): Enhanced by Jan 2026 spatial distribution
-- Priority #3 (CTPP): Validates market response to workplace demand
-- Priority #6 (Buffer): Requires Jan 2026 for coverage zones
+- Priority #1 (Validation): Independent — BEV forecast validation unaffected
+- Priority #2 (ZIP): Enhanced by complete spatial distribution across all levels
+- Priority #3 (CTPP): Facility-type data enables workplace vs. residential infrastructure classification
+- Priority #6 (Buffer): Complete station locations enable accurate coverage zone analysis
+- Scoring Framework: BEVs/port ratios now calculated against full infrastructure inventory
 
 ---
 
@@ -212,16 +213,16 @@ Based on 3-agent analysis across decision framework, stakeholder value, and data
 | Station count unexpected | Low | Low | Document federal funding surge |
 | Time overrun (>2 hrs) | Medium | Medium | Budget 3-4 hours buffer |
 
-### Risks of NOT Updating
+### Risks of Using Incomplete (DCFC-Only) Data
 
 | Risk | Probability | Impact | Mitigation |
 |------|------------|--------|------------|
-| Reviewers question data currency | High | High | Explicitly justify in methods section |
-| Gap analysis overstates need | High | High | Add sensitivity analysis ("if infrastructure grew 20%...") |
-| Policy recommendations misallocate | Medium | Very High | Caveat with "pending current infrastructure validation" |
-| Competitors use current data | Medium | High | Accept competitive disadvantage |
+| BEVs/port ratios exclude L1/L2 infrastructure | High | High | Use complete Feb 2026 API dataset (1,985 stations vs. 355 DCFC-only) |
+| Workplace charging analysis misses L2 chargers | High | Very High | Complete dataset includes facility-type classification across all levels |
+| ZIP-level gap analysis undercounts infrastructure | High | High | Complete dataset covers all access types and charging levels |
+| Policy recommendations misallocate NEVI funds | Medium | Very High | Full infrastructure inventory prevents overstatement of gaps |
 
-**Conclusion:** Risks of NOT updating outweigh risks of updating (2-3 hour effort, foundational impact on all downstream priorities).
+**Conclusion:** The incomplete DCFC-only extract (355 stations) is retained for reference but should NOT be used for analysis. The complete Feb 2026 API dataset (1,985 stations) is the authoritative infrastructure baseline for all downstream priorities.
 
 ---
 
@@ -257,12 +258,12 @@ Based on 3-agent analysis across decision framework, stakeholder value, and data
 | Data Type | Max Staleness | Current Status | Action Required |
 |-----------|---------------|----------------|-----------------|
 | **Demand (BEV registrations)** | 6 months | ✅ 3 months (Oct 2025) | None |
-| **Supply (Infrastructure)** | 3 months | ❌ 6 months (July 2024) | **Update required** |
+| **Supply (Infrastructure)** | 3 months | ✅ Current (Feb 2026 API) | Complete dataset acquired (1,985 stations, all levels) |
 | **Demographics** | 5 years | ✅ 4-6 years (2020 Census + ACS) | None |
 | **Traffic Volumes** | 3 years | ✅ 3 years (2023 HPMS) | None |
 | **Commuting Patterns** | 10 years | ✅ 6-10 years (CTPP 2016-2020) | None |
 
-**Rationale:** Infrastructure is MOST DYNAMIC dataset (47.6% deployed in 2024-2025) but currently STALEST. Policy recommendations require current baseline to avoid resource misallocation.
+**Rationale:** Infrastructure data is now current and complete. The Feb 2026 API download provides full coverage of 1,985 NC stations across all charging levels and access types, replacing the previous DCFC-only extract that covered only 355 stations. All data types now meet or exceed their staleness thresholds.
 
 ---
 
@@ -280,13 +281,13 @@ All frameworks created by expert agent analysis (Jan 30, 2026) for EV Pulse NC B
 ### Version Control
 
 - **Created:** January 30, 2026
-- **Last Updated:** February 20, 2026
-- **Status:** Phase 1 Complete (Priority #1 executed); Scoring framework defined; NCDOT corridor validation added as optional Priority #7
+- **Last Updated:** February 26, 2026
+- **Status:** Phase 1 Complete (Priority #1 executed); Scoring framework defined; NCDOT corridor validation added as optional Priority #7; Priority #5 redefined from dual-snapshot temporal comparison to complete dataset replacement (DCFC-only extract superseded by full API download)
 
 ### Related Documentation
 
 **Research Files:**
-- `/research/ev-pulse-nc/ev-pulse-nc-current-state-analysis.md` - Baseline analysis (82 months BEV data, 355 stations)
+- `/research/ev-pulse-nc/ev-pulse-nc-current-state-analysis.md` - Baseline analysis (82 months BEV data, 355 DCFC-only stations — superseded by Feb 2026 complete API dataset: 1,985 stations across all levels)
 - `/research/ev-pulse-nc/ev-pulse-nc-recommendations-RANKED.md` - Original 25 recommendations (pre-SAS Cup removal)
 - `/research/ev-pulse-nc/top-priorities.txt` - Post-redefinition top 6 priorities
 
