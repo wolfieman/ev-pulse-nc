@@ -36,17 +36,19 @@ Shorter conceptual analyses and decision summaries from expert agent research.
 
 ## Priority Map
 
-EV Pulse NC research priorities (post-SAS Cup redefinition):
+EV Pulse NC research priorities and phases (aligned Feb 26, 2026):
 
-| # | Priority | Framework Status | Key Decision |
-|---|----------|------------------|--------------|
-| **1** | Predictive Analysis Validation | **EXECUTED** | MAPE 4.36%, 68.9% underprediction, 8 publication figures |
-| **2** | ZIP Code Analysis | ✅ Framework Complete ([zip-code-analysis.md](./zip-code-analysis.md)) | Infrastructure-only (adoption data unavailable at ZIP level) |
-| **3** | CTPP Commuting Data | ✅ Framework Complete ([ctpp-analysis.md](./ctpp-analysis.md)) | Top 15 employment centers, 30% workplace charging assumption |
-| **4** | HEPGIS Equity Analysis | ⏳ Pending | Justice40 integration (not yet started) |
-| **5** | AFDC Infrastructure Data | ✅ Data Acquired (Feb 2026) | Complete API dataset replaces DCFC-only extract (1,985 stations, all levels) |
-| **6** | Buffer Analysis | ⏳ Pending | Coverage zones (not yet started) |
-| **7** | NCDOT NEVI Corridor Validation | ⏳ Optional | Compare scoring framework output vs. NCDOT planned deployments |
+> **Note:** Priority numbers were realigned to match phase numbers on Feb 26, 2026. Old Priority #5 (AFDC) moved to #2; old Priorities #2-4 shifted to #3-5. Framework filenames retain original numbering for traceability.
+
+| Phase | Priority | Topic | Status | Key Decision |
+|:-----:|:--------:|-------|--------|--------------|
+| **1** | **1** | Predictive Analysis Validation | **Phase 1 Complete** | MAPE 4.36%, 68.9% underprediction, 8 publication figures |
+| **2** | **2** (was #5) | AFDC Infrastructure Data | **Phase 2 Complete** | Complete API dataset replaces DCFC-only extract (1,985 stations, all levels) |
+| **3** | **3** (was #2) | ZIP Code Analysis | ✅ Framework Complete ([zip-code-analysis.md](./zip-code-analysis.md)) | Infrastructure-only (adoption data unavailable at ZIP level) |
+| **4** | **4** (was #3) | CTPP Commuting Data | ✅ Framework Complete ([ctpp-analysis.md](./ctpp-analysis.md)) | Top 15 employment centers, 30% workplace charging assumption |
+| **5** | **5** (was #4) | HEPGIS Equity Analysis | ⏳ Pending | Justice40 integration (not yet started) |
+| **6** | **6** | Buffer Analysis | ⏳ Pending | Coverage zones (not yet started) |
+| **7** | **7** | NCDOT NEVI Corridor Validation | ⏳ Optional | Compare scoring framework output vs. NCDOT planned deployments |
 
 ### Phase 5: Prescriptive Scoring Framework (Integration Layer)
 
@@ -59,9 +61,9 @@ NEVI Priority Score(county) = w1 × Equity_Score + w2 × Utilization_Score + w3 
 
 | Component | Source Extension | Metrics |
 |-----------|----------------|---------|
-| **Equity_Score** | HEPGIS + ZIP code analysis (#2/#4) | Justice40 disadvantaged community %, Gini coefficient, rural access gap, zero-infrastructure flag |
-| **Utilization_Score** | Validation (#1) + AFDC complete baseline (#5) | BEVs/port ratio across all charging levels (L1, L2, DCFC), 4-5% underprediction buffer |
-| **Cost_Effectiveness_Score** | CTPP workplace charging (#3) | Workplace efficiency (15 vs 7.5 BEVs/port), commuter demand sizing, population density |
+| **Equity_Score** | HEPGIS + ZIP code analysis (#3/#5) | Justice40 disadvantaged community %, Gini coefficient, rural access gap, zero-infrastructure flag |
+| **Utilization_Score** | Validation (#1) + AFDC complete baseline (#2) | BEVs/port ratio across all charging levels (L1, L2, DCFC), 4-5% underprediction buffer |
+| **Cost_Effectiveness_Score** | CTPP workplace charging (#4) | Workplace efficiency (15 vs 7.5 BEVs/port), commuter demand sizing, population density |
 
 **Weights:** Literature-driven from DOE/FHWA NEVI guidance (equity-heavy per Justice40: ~0.40/0.35/0.25) + sensitivity analysis showing top counties robust across weight variations.
 
@@ -95,7 +97,7 @@ NEVI Priority Score(county) = w1 × Equity_Score + w2 × Utilization_Score + w3 
 
 ## Key Insights by Priority
 
-### Priority #1: Validation (COMPLETE)
+### Priority #1 / Phase 1: Validation (COMPLETE)
 - **Core Question:** How accurate are SAS Model Studio forecasts for July-Oct 2025?
 - **Result:** MAPE 4.36% (strong validation), but systematic underprediction detected
 - **Key Finding:** 68.9% of forecasts fell below actual values (Bias: +18.36 vehicles)
@@ -103,19 +105,31 @@ NEVI Priority Score(county) = w1 × Equity_Score + w2 × Utilization_Score + w3 
 - **95% CI Coverage:** 75.3% (below nominal 95% due to bias)
 - **Deliverables:** 8 publication-quality figures (600 DPI, PDF exports)
 
-### Priority #2: ZIP Code Analysis
+### Priority #2 / Phase 2: AFDC Infrastructure Data (COMPLETE)
+- **Core Question:** Do we have complete infrastructure coverage for gap analysis?
+- **Critical Finding:** Old file was a DCFC-only, public-only, connector-level extract (355 stations); the Feb 2026 API download provides complete coverage (1,985 stations across L1, L2, DCFC, all access types)
+- **Key Insight:** Complete dataset enables accurate BEVs-per-port ratios, ZIP-level infrastructure mapping, and facility-type classification for workplace charging analysis
+- **Background:** The old file's "July 2024" filename was misleading — it contained data through Dec 2025, so no temporal comparison was possible. The real gap was completeness, not currency.
+- **Integration:** Enhances Priority #3 (ZIP-level spatial distribution), validates Priority #4 (station types for workplace charging), enables Priority #6 (coverage zones require all station locations), feeds Scoring Framework (utilization scores across all charging levels)
+
+### Priority #3 / Phase 3: ZIP Code Analysis
 - **Core Question:** Can we analyze sub-county infrastructure gaps?
 - **Key Constraint:** NCDOT doesn't publish ZIP-level BEV data (only county-level)
 - **Key Insight:** Infrastructure-only ZIP analysis possible (AFDC has ZIP codes), adoption requires allocation heuristics
-- **Expected Finding:** 400-500 ZIPs with <10 BEVs (50-60% of 800 ZIPs)—severe sparsity
+- **Expected Finding:** 400-500 ZIPs with <10 BEVs (50-60% of 800 ZIPs) — severe sparsity
 
-### Priority #3: CTPP Workplace Charging
+### Priority #4 / Phase 4: CTPP Workplace Charging
 - **Core Question:** Does workplace demand differ from residential patterns?
 - **Key Constraint:** CTPP data is 8-10 years old (2012-2016 ACS), requires remote work adjustments
-- **Key Insight:** Workplace infrastructure 3× more efficient (15 EVs/port) than residential (7.5 EVs/port) but smaller absolute gap
+- **Key Insight:** Workplace infrastructure 3x more efficient (15 EVs/port) than residential (7.5 EVs/port) but smaller absolute gap
 - **Recommendation:** Focus on top 15 employment centers, not all 100 counties
 
-### Priority #7: NCDOT NEVI Corridor Validation (OPTIONAL)
+### Priority #5 / Phase 5: HEPGIS Equity Analysis
+- **Core Question:** Which communities face inequitable access to EV charging?
+- **Key Framework:** Justice40 integration — 40% of benefits to disadvantaged communities
+- **Status:** Not yet started
+
+### Priority #7 / Phase 7: NCDOT NEVI Corridor Validation (OPTIONAL)
 - **Source:** Dr. Al-Ghandour introduced the NCDOT NEVI Mapping Tool during Week 6 check-in (Feb 20, 2026)
 - **Tool:** https://experience.arcgis.com/experience/a1e1459fffee4ccbafaf888f838dcac6/page/NCDOT-NEVI-Mapping-Tool
 - **What it is:** ArcGIS map of NCDOT's planned NEVI station deployments along Alternative Fuel Corridors (AFCs)
@@ -125,13 +139,6 @@ NEVI Priority Score(county) = w1 × Equity_Score + w2 × Utilization_Score + w3 
 - **Professor offering:** Dr. Al-Ghandour (former DOT/CDOT) offered to help obtain NCDOT planning data directly
 - **Strategic value:** If our scoring framework independently recommends rural deployment, it validates both our methodology AND NCDOT's Feb 18 policy shift
 
-### Priority #5: AFDC Infrastructure Data
-- **Core Question:** Do we have complete infrastructure coverage for gap analysis?
-- **Critical Finding:** Old file was a DCFC-only, public-only, connector-level extract (355 stations); the Feb 2026 API download provides complete coverage (1,985 stations across L1, L2, DCFC, all access types)
-- **Key Insight:** Complete dataset enables accurate BEVs-per-port ratios, ZIP-level infrastructure mapping, and facility-type classification for workplace charging analysis
-- **Background:** The old file's "July 2024" filename was misleading—it contained data through Dec 2025, so no temporal comparison was possible. The real gap was completeness, not currency.
-- **Integration:** Enhances Priority #2 (ZIP-level spatial distribution), validates Priority #3 (station types for workplace charging), enables Priority #6 (coverage zones require all station locations), feeds Scoring Framework (utilization scores across all charging levels)
-
 ---
 
 ## Cross-Priority Integration
@@ -139,31 +146,31 @@ NEVI Priority Score(county) = w1 × Equity_Score + w2 × Utilization_Score + w3 
 ### How Priorities Connect
 
 ```
-Priority #1 (Validation) ✅ COMPLETE
+Phase 1: Priority #1 (Validation) ✅ COMPLETE
     ↓ validates BEV forecasts
     ↓
-Priority #5 (AFDC Data) ✅ DATA ACQUIRED ← provides COMPLETE infrastructure baseline (1,985 stations, all levels)
-    ↓ replaces incomplete DCFC-only extract
+Phase 2: Priority #2 (AFDC Data) ✅ COMPLETE ← complete infrastructure baseline (1,985 stations, all levels)
+    ↓ provides supply-side foundation
     ↓
-Priority #2 (ZIP) + Priority #3 (CTPP) ← use Feb 2026 complete spatial data
+Phase 3: Priority #3 (ZIP) + Phase 4: Priority #4 (CTPP) ← use Feb 2026 complete spatial data
     ↓ identify gaps → feed into
     ↓
-Phase 5: Scoring Framework ← integrates equity + utilization + cost-effectiveness
+Scoring Framework ← integrates equity + utilization + cost-effectiveness
     ↓ produces ranked county allocations
     ↓
-Priority #7 (NCDOT Corridor Validation) ← OPTIONAL: compare scores vs. NCDOT planned sites
-Priority #6 (Buffer) ← requires Feb 2026 complete station locations
+Phase 7: Priority #7 (NCDOT Corridor Validation) ← OPTIONAL: compare scores vs. NCDOT planned sites
+Phase 6: Priority #6 (Buffer) ← requires Feb 2026 complete station locations
 ```
 
 ### Synergy Analysis
 
-**Scenario 1:** Use complete AFDC data (#5) but NOT ZIP (#2) or CTPP (#3)
+**Scenario 1:** Use complete AFDC data (#2) but NOT ZIP (#3) or CTPP (#4)
 - Value: 40% of potential impact (complete infrastructure baseline, but county-level only)
 
-**Scenario 2:** Pursue ZIP (#2) + CTPP (#3) but with incomplete DCFC-only data
+**Scenario 2:** Pursue ZIP (#3) + CTPP (#4) but with incomplete DCFC-only data
 - Value: 60% of potential impact (sub-county insights, but missing L1/L2 stations and non-public access points)
 
-**Scenario 3:** Use complete AFDC data (#5) AND pursue ZIP (#2) + CTPP (#3)
+**Scenario 3:** Use complete AFDC data (#2) AND pursue ZIP (#3) + CTPP (#4)
 - Value: **100% of potential impact** (complete all-levels baseline + spatial granularity)
 
 ---
@@ -282,7 +289,7 @@ All frameworks created by expert agent analysis (Jan 30, 2026) for EV Pulse NC B
 
 - **Created:** January 30, 2026
 - **Last Updated:** February 26, 2026
-- **Status:** Phase 1 Complete (Priority #1 executed); Scoring framework defined; NCDOT corridor validation added as optional Priority #7; Priority #5 redefined from dual-snapshot temporal comparison to complete dataset replacement (DCFC-only extract superseded by full API download)
+- **Status:** Phases 1-2 Complete; Priority numbers realigned to match phase numbers (old #5 → #2, old #2-4 → #3-5); Scoring framework defined; NCDOT corridor validation added as optional Priority #7
 
 ### Related Documentation
 
