@@ -14,10 +14,13 @@
 
 ### 2. Alternative Fuel Stations - Electric Vehicle Charging
 - **Source:** U.S. Department of Energy, Alternative Fuels Data Center (AFDC)
-- **Dataset:** afdc-charging-stations-connector.csv
-- **URL:** https://afdc.energy.gov/stations
-- **Coverage:** 355 stations, 1,725 connector records
-- **Updated:** 2025
+- **API:** NREL Alternative Fuel Station Locator (`https://developer.nrel.gov/api/alt-fuel-stations/v1.json`)
+- **Snapshots:**
+  - `afdc-charging-stations-connector-2024-07.csv` — July 2024 (1,725 stations, 74 fields)
+  - `afdc-charging-stations-connector-2026-02.csv` — Feb 2026 (1,985 stations, 74 fields)
+- **Download Script:** `code/python/data-acquisition/afdc_api_download.py`
+- **Coverage:** NC operational electric stations (Level 1, Level 2, DCFC)
+- **Feb 2026 Stats:** 4,363 L2 EVSE + 1,747 DCFC + 35 L1 = 6,145 total connectors across 267 cities
 
 ## Supporting Research
 
