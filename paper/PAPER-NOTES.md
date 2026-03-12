@@ -324,4 +324,60 @@ Raw LODES commuter count
 
 ---
 
+## Phase 5 Methodology Notes
+
+### CEJST Data Availability & Vintage (Expert Panel, March 12, 2026)
+- **CEJST was removed from the government website** by the Trump administration on January 22, 2025 (rescinded EO 14008)
+- Data scientists (EDGI / Public Environmental Data Partners coalition) archived and restored CEJST v2.0 within days
+- Download source: PEDP community mirror, not the original geoplatform.gov URL
+- **No version of CEJST uses 2020 Census tract boundaries** — both v1.0 and v2.0 use 2010 tracts. This is an upstream limitation; underlying federal datasets have not migrated to 2020 tracts yet
+- **No API exists** for CEJST — bulk CSV download only
+- Using v2.0 (December 2024 release) which has improved methodology over v1.0 (e.g., excludes higher-ed students from low-income calculations)
+
+### 2010 vs 2020 Tract Vintage Mismatch — Limitation Statement
+- CEJST v2.0 uses 2010 Census tract boundaries; project ZCTA/county boundaries are 2020 vintage
+- **Impact on county-level analysis: negligible** because:
+  1. NC county boundaries are geographically identical between 2010 and 2020
+  2. Census tracts nest within counties in both vintages
+  3. Tract-to-county aggregation is unaffected by tract boundary changes
+  4. Direction of any bias is conservative (slightly overstates disadvantaged coverage in fast-growing areas)
+- **For paper Methods section, include:** "CEJST v2.0 uses 2010 Census tract boundaries. This analysis overlays these tracts onto 2020-vintage county boundaries, which are geographically identical in North Carolina. The tract-to-county aggregation is therefore unaffected by the tract boundary vintage difference. Future updates to CEJST incorporating 2020 tract boundaries would refine sub-county analysis but are not expected to alter county-level equity rankings."
+- **For presentation:** Note that CEJST was taken offline by the current administration but data was preserved by the scientific community — demonstrates data governance awareness
+
+### CEJST Headline Finding
+- 934 of 2,195 NC census tracts (42.6%) flagged as disadvantaged under Justice40
+- Substantially above the national average (~27%)
+- Reflects NC's mix of rural poverty (eastern NC, Appalachian counties) and urban disadvantage
+- Reinforces the 0.40 equity weight in the NEVI Priority Score — nearly half of NC tracts qualify
+- Per-county breakdown needed from EDA to identify which study counties have highest/lowest rates
+
+### Zero-Population Tract Exclusion Decision
+- 25 of 2,195 NC tracts have population = 0.0 (not null — explicit zeros)
+- 12 are water-body tracts (Census 990 series: ocean, Pamlico Sound)
+- 13 are institutional/special-use tracts (Census 980 series: military installations including Fort Bragg, correctional facilities)
+- All 25 have disadvantaged = 0 and threshold_count = 0 — CEJST cannot evaluate tracts without resident population data
+- **Decision:** Exclude from disadvantaged percentage denominator → 934/2,170 = 43.0% (vs 42.6% with all 2,195)
+- Consistent with Phase 3 exclusion of uninhabited ZIPs from zero-station calculations
+- Military/institutional charging demand is captured through Phase 4 LEHD commuter flows, not residential equity designations
+- **Dr. Whitfield flag (confirmed):** Cumberland County has 1 excluded zero-pop tract (Fort Bragg, 37051980100). Effect: 50.7% → 50.0% (0.7 ppt) — negligible
+- **For paper Methods section:** Document exclusion criteria, tract numbering conventions (980=institutional, 990=water), and the 0.4 ppt statewide effect
+
+### Population-Weighted vs Tract-Count Rates
+- Population-weighted disadvantaged rates are consistently **lower** than simple tract-count rates across all study counties
+- Disadvantaged tracts tend to have smaller populations than non-disadvantaged tracts
+- **For paper:** Using population-weighted rates would produce more conservative equity scores than simple tract counts. This means our tract-count-based approach (43.0%) represents an upper bound — the population-weighted percentage is lower. Document this as a methodological choice: tract-count treats all communities equally regardless of size, which is arguably more equitable for infrastructure siting (a small disadvantaged community deserves charging access as much as a large one)
+
+### Step 5.2 EDA Validation
+- 23/23 checks passed (0 failures, 2 expected warnings)
+- The 2 warnings are from the crosswalk vintage mismatch: 465 CEJST tracts (2010 boundaries) not found in LEHD crosswalk (2020 boundaries), and 942 crosswalk tracts not in CEJST — expected due to tract splits/merges between Census vintages, not data quality issues
+- Validates that Step 5.1 download and filtering produced clean, complete data ready for the Step 5.3 spatial crosswalk
+
+### Sources
+- CEJST v2.0 Technical Support Document
+- Harvard EELP Tracker (CEJST removal)
+- Inside Climate News (data scientists restore CEJST)
+- PEDP Mirror: https://edgi-govdata-archiving.github.io/j40-cejst-2/en/downloads/
+
+---
+
 *Last updated: March 12, 2026*
