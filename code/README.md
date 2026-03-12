@@ -32,7 +32,31 @@ python ncdot_ev_pipeline.py --start-month 2025-07 --end-month 2025-10 --outdir .
 python ncdot_ev_pipeline.py --skip-download --out ../../../data/processed/master
 ```
 
-**Dependencies:** `requests`, `openpyxl`
+**afdc_api_download.py** - Downloads NC electric vehicle charging station data from the AFDC API
+
+```bash
+py code/python/data-acquisition/afdc_api_download.py
+```
+
+Requires `NREL_API_KEY` in `.env`. Outputs to `data/raw/`.
+
+**census_county_boundaries.py** - Downloads NC county boundary GeoJSON from Census Bureau cartographic boundary files
+
+```bash
+py code/python/data-acquisition/census_county_boundaries.py
+```
+
+Downloads all US counties from Census TIGER/GENZ shapefiles, filters to NC (FIPS 37), saves as GeoJSON to `data/raw/nc-county-boundaries.geojson`. Used for spatial joins (AFDC stations lack a county field).
+
+**census_zip_population.py** - Downloads NC ZCTA population estimates from Census ACS 5-Year API
+
+```bash
+py code/python/data-acquisition/census_zip_population.py
+```
+
+Requires `CENSUS_API_KEY` in `.env`. Downloads all US ZCTAs from ACS 2022, filters to NC by ZIP prefix (27xxx, 28xxx), saves to `data/raw/nc-zip-population-acs2022.csv`.
+
+**Dependencies:** `requests`, `openpyxl`, `geopandas`, `python-dotenv`
 
 ### data-cleaning/
 
