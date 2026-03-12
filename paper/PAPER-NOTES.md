@@ -234,4 +234,94 @@ Per expert panel recommendation: include a brief paragraph explaining why separa
 
 ---
 
+## Phase 4 Methodology Decisions (Expert Panel, March 12, 2026)
+
+### Data Source: LEHD LODES 2021 (replaces CTPP 2016)
+- Expert panel unanimously recommended LODES over CTPP: more recent (2021 vs 2012-2016), free direct download, block-level geography
+- LODES is the only free origin-destination commuter flow dataset at sub-county geography
+- Alternatives reviewed and rejected: CTPP (too old), StreetLight/Replica ($10K-$100K, cost-prohibitive), NHTS (state-level only, too coarse), ACS commute tables (counts only, no O-D pairs)
+
+### Income Threshold: $75K Household Income Floor
+- LODES income segmentation (SE01/SE02/SE03) has only 3 bins; SE03 threshold is >$40K/year
+- $40K is insufficient for EV affordability — median new EV ~$45K, standard debt-to-income requires ~$75K+ household income
+- Solution: supplement LODES with ACS B19001 (household income, 16 bins) at tract level
+- County-specific correction factor: `pct_HH_above_75K / pct_HH_above_40K` applied to SE03 commuter counts
+- Sensitivity analysis at $60K, $75K, $100K thresholds
+- Limitation: LODES reports individual earnings; ACS B19001 reports household income — unit mismatch documented; household income is arguably more relevant to vehicle purchase decisions
+
+### Renter Charging Access: A Key Equity Dimension
+- US apartment renters face substantial barriers to home EV charging:
+  - Most apartment parking lacks electrical outlets at parking spaces
+  - 240V outlets (needed for L2) are inside units (dryer/stove), not at parking
+  - Running extension cords from units to parking violates fire codes
+  - Only ~5-7% of US multifamily properties have any EV charging (concentrated in new luxury builds)
+  - NC has no "right to charge" law (unlike CA, CO, OR)
+- Renter EV adoption is 3-4x lower than homeowner adoption, primarily due to charging access, not income alone (Axsen et al. 2020; Tal et al. 2024, UC Davis)
+- Workplace charging is essential infrastructure for renters, not supplementary
+- ACS B25003 (housing tenure) added to data pipeline to quantify renter commuter populations
+- Renter share used descriptively in Phase 4; feeds Equity Score in Phase 5 (see renter adjustment removal note below)
+
+### Phase 4 EDA Validation (59/59 checks passed)
+- LODES OD: 3,768,428 intra-NC commuter flow records; zero nulls, zero duplicate block pairs
+- All additive decompositions verified: SA01+SA02+SA03=S000, SE01+SE02+SE03=S000, SI01+SI02+SI03=S000
+- LODES WAC: 71,921 workplace blocks; CE01+CE02+CE03=C000 verified for all rows
+- Crosswalk: 100% coverage — every OD and WAC block maps to a county; all 100 NC counties present
+- ACS: 2,672 NC tracts; tenure identity confirmed (owner + renter = total) for all tracts
+- Statewide >$75K household income share: 44.4%; renter share: 33.8%
+- OD total workers (4,198,163) vs WAC total (4,400,986): 4.6% difference expected (OD Main = intra-state only)
+- Cross-file tract alignment: 100% overlap between crosswalk (2,672 tracts) and ACS (2,672 tracts)
+- Technical note: crosswalk trct is 11-digit full FIPS; ACS tract is 6-digit — must build full FIPS for joins
+
+### Three-Layer Adjustment Pipeline (revised — renter adjustment removed)
+```
+Raw LODES commuter count
+  → SE03 filter (workers earning >$40K)
+  → ACS income correction (estimate >$75K household share)
+  → Remote work reduction (0.85 multiplier, Barrero/Bloom/Davis 2023)
+  = Adjusted workplace charging demand
+```
+
+### Renter Adjustment: Removed from Pipeline (Methodological Decision)
+- Expert panel unanimously recommended removing the renter adjustment multiplier from the demand pipeline
+- Reason: no NC-specific data to calibrate the adjustment; applying an unvalidated alpha parameter is speculation
+- Additional concern: national literature shows renters adopt EVs at 3-4x lower rates (Axsen et al. 2020; Tal et al. 2024) — a renter-heavy origin tract could mean fewer EV commuters, not more, creating a contradictory multiplier
+- ACS B25003 (tenure) data IS retained for:
+  1. Descriptive reporting in Phase 4: "X% of commuters to [county] originate from renter-heavy tracts"
+  2. Equity Score input in Phase 5 (renter charging access as equity dimension)
+  3. Paper limitations section: no NC-specific calibration exists; cite as future research direction
+
+### Phase 4 Findings: Workplace Charging Demand
+
+#### Pipeline Diagnostic
+- Raw S000: 4,198,163 workers → SE03 filter: 2,041,731 (48.6%) → ACS income adj: 1,010,894 (49.5% of SE03) → Remote work ×0.85: **859,260 adjusted demand**
+
+#### Top Employment Centers (by net commuter flow)
+- Mecklenburg: +194,361 net (adj. demand 182,919) — #1 employment magnet
+- Wake: +126,517 net (adj. demand 169,555)
+- Durham: +89,450 net (adj. demand 74,780)
+- Guilford: +47,798, Forsyth: +28,488, New Hanover: +20,642, Buncombe: +18,788
+
+#### County Typology (all 100 NC counties)
+- 8 Employment Centers (net > +10,000)
+- 75 Balanced (-10,000 to +10,000)
+- 17 Bedroom Communities (net < -10,000)
+- Union (-36,113) and Cabarrus (-20,968) confirmed as bedroom communities of Charlotte
+
+#### Workplace Port Estimates (baseline: 30% charging rate, 15:1 port ratio)
+- Statewide: 17,185 ports needed (13,748 L2 / 3,437 DCFC)
+- Mecklenburg: 3,658 ports, Wake: 3,391, Durham: 1,496
+
+#### Cost-Effectiveness Scores (equal-weight, min-max normalized)
+- Mecklenburg: 0.801 (highest), Wake: 0.568, Forsyth: 0.467, Durham: 0.454
+- Buncombe: 0.034 (lowest — lower commuter volumes and density)
+- Scoring skeleton: 13/17 columns now populated (up from 9/17)
+
+#### Figures
+- fig-35: Net commuter flow diverging bar (15 counties, green/red by typology)
+- fig-36: Residential vs residential+workplace demand comparison (10 scoring counties)
+- fig-37: County typology choropleth (all 100 NC counties, 3-class)
+- fig-38: Workplace port scenario range (low/baseline/high dot-and-whisker)
+
+---
+
 *Last updated: March 12, 2026*

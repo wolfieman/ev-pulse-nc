@@ -2,11 +2,11 @@
 """
 NEVI Scoring Framework Skeleton Table.
 
-Builds the integration table that maps Phase 3 outputs to the NEVI
-scoring framework.  Populates columns we can compute now (utilization
-sub-metrics from Phase 1-3, partial equity sub-metrics from Phase 3),
-leaves NaN placeholders for Phases 4 and 5, and documents the source
-phase for each column.
+Builds the integration table that maps Phase 3 and Phase 4 outputs to
+the NEVI scoring framework.  Populates utilization sub-metrics from
+Phases 1-3, cost-effectiveness sub-metrics from Phase 4, and partial
+equity sub-metrics from Phase 3.  Leaves NaN placeholders for Phase 5
+columns, and documents the source phase for each column.
 
 Scoring equation (from analytical-pipeline.md):
 
@@ -54,6 +54,9 @@ ZIP_DENSITY_SUMMARY_CSV = (
 )
 TOP20_UNDERSERVED_CSV = (
     PROJECT_ROOT / "data" / "processed" / "phase3-top20-underserved.csv"
+)
+PHASE4_COST_CSV = (
+    PROJECT_ROOT / "data" / "processed" / "phase4-cost-effectiveness.csv"
 )
 
 # Output
@@ -103,23 +106,6 @@ NAN_COLUMN_DOCS: dict[str, tuple[str, str]] = {
         "Cannot normalize without all 100 NC counties; "
         "requires min-max scaling across full state",
     ),
-    "cost_workplace_efficiency": (
-        "Phase 4 (CTPP/LEHD)",
-        "Workplace charging efficiency ratio "
-        "(15 EVs/port workplace vs 7.5 residential)",
-    ),
-    "cost_commuter_demand": (
-        "Phase 4 (CTPP/LEHD)",
-        "Commuter flow-based demand sizing for each county",
-    ),
-    "cost_pop_density": (
-        "Phase 4 (CTPP/LEHD)",
-        "Population per county area; county area data not yet ingested",
-    ),
-    "cost_score": (
-        "Phase 4 (CTPP/LEHD)",
-        "Cannot compute without workplace efficiency and commuter demand",
-    ),
     "equity_justice40_pct": (
         "Phase 5 (HEPGIS)",
         "Percentage of census tracts designated as Justice40 disadvantaged communities",
@@ -130,9 +116,9 @@ NAN_COLUMN_DOCS: dict[str, tuple[str, str]] = {
         "Gini and zero-station metrics alone are insufficient",
     ),
     "nevi_priority_score": (
-        "Phases 3 + 4 + 5",
+        "Phase 5",
         "Composite score = 0.40*Equity + 0.35*Utilization + "
-        "0.25*Cost_Effectiveness; blocked until all three sub-scores exist",
+        "0.25*Cost_Effectiveness; blocked until equity_score exists",
     ),
 }
 
@@ -198,6 +184,22 @@ def load_top20_underserved(path: Path) -> pd.DataFrame:
     return df
 
 
+def load_phase4_cost(path: Path) -> pd.DataFrame:
+    """Load Phase 4 cost-effectiveness data (LEHD + ACS).
+
+    Args:
+        path: Path to phase4-cost-effectiveness.csv.
+
+    Returns:
+        DataFrame with cost sub-metric columns per county.
+    """
+    df = pd.read_csv(path)
+    if "county_fips" in df.columns:
+        df = df.drop(columns=["county_fips"])
+    print(f"[INFO] Loaded {len(df)} counties from {path.name}")
+    return df
+
+
 # =============================================================================
 # COMPUTATION
 # =============================================================================
@@ -254,17 +256,19 @@ def build_skeleton(
     gini: pd.DataFrame,
     zip_density: pd.DataFrame,
     underserved: pd.DataFrame,
+    phase4_cost: pd.DataFrame,
 ) -> pd.DataFrame:
     """Assemble the NEVI scoring framework skeleton table.
 
-    Populates columns computable from Phase 3 data, sets NaN for
-    columns awaiting Phases 4 and 5.
+    Populates columns computable from Phase 3 and Phase 4 data, sets
+    NaN for columns awaiting Phase 5.
 
     Args:
         top10: Top-10 counties with BEV counts.
         gini: County Gini coefficients.
         zip_density: ZIP-level density data.
         underserved: Top-20 underserved ZIPs.
+        phase4_cost: Phase 4 cost-effectiveness sub-metrics.
 
     Returns:
         DataFrame with one row per county and all scoring columns.
@@ -285,12 +289,42 @@ def build_skeleton(
     skeleton["util_score"] = np.nan
     skeleton["util_source"] = "Phase 1 + Phase 2 + Phase 3"
 
-    # --- Cost-effectiveness sub-metrics (all NaN for now) ---
-    skeleton["cost_workplace_efficiency"] = np.nan
-    skeleton["cost_commuter_demand"] = np.nan
-    skeleton["cost_pop_density"] = np.nan
-    skeleton["cost_score"] = np.nan
-    skeleton["cost_source"] = "Phase 4 (CTPP/LEHD)"
+    # --- Cost-effectiveness sub-metrics (Phase 4) ---
+    skeleton = skeleton.merge(phase4_cost, on="county_name", how="left")
+
+    cost_cols = [
+        "cost_commuter_demand",
+        "cost_workplace_efficiency",
+        "cost_pop_density",
+    ]
+    assert (
+        skeleton[cost_cols].notna().all().all()
+    ), "Phase 4 merge left NaN in cost columns"
+
+    # Min-max normalize each sub-metric
+    for col in cost_cols:
+        col_min = skeleton[col].min()
+        col_max = skeleton[col].max()
+        if col_max != col_min:
+            skeleton[f"{col}_norm"] = (
+                (skeleton[col] - col_min) / (col_max - col_min)
+            )
+        else:
+            skeleton[f"{col}_norm"] = 0.0
+
+    # Equal-weight composite
+    skeleton["cost_score"] = (
+        skeleton["cost_commuter_demand_norm"]
+        + skeleton["cost_workplace_efficiency_norm"]
+        + skeleton["cost_pop_density_norm"]
+    ) / 3.0
+
+    # Drop temporary norm columns
+    skeleton = skeleton.drop(
+        columns=[c for c in skeleton.columns if c.endswith("_norm")]
+    )
+
+    skeleton["cost_source"] = "Phase 4 (LEHD + ACS)"
 
     # --- Equity sub-metrics ---
     # gini_weighted already merged above
@@ -400,7 +434,7 @@ def print_column_status(skeleton: pd.DataFrame) -> None:
     total_data_cols = len(populated) + len(nan_cols)
     print(
         f"\n  SUMMARY: {len(populated)} of {total_data_cols} data columns "
-        f"populated from Phase 3 data"
+        f"populated from Phase 3 + Phase 4 data"
     )
 
 
@@ -431,9 +465,12 @@ def main() -> None:
     gini = load_county_gini(COUNTY_GINI_CSV)
     zip_density = load_zip_density(ZIP_DENSITY_CSV)
     underserved = load_top20_underserved(TOP20_UNDERSERVED_CSV)
+    phase4_cost = load_phase4_cost(PHASE4_COST_CSV)
 
     # --- Build skeleton ---
-    skeleton = build_skeleton(top10, gini, zip_density, underserved)
+    skeleton = build_skeleton(
+        top10, gini, zip_density, underserved, phase4_cost
+    )
 
     # --- Save ---
     output_path = Path(args.output)
@@ -458,8 +495,7 @@ def main() -> None:
         f"{WEIGHT_COST_EFFECTIVENESS:.2f} x Cost_Effectiveness_Score"
     )
     print(
-        "\n  Status: BLOCKED -- awaiting Phase 4 (CTPP/LEHD) and "
-        "Phase 5 (HEPGIS) data\n"
+        "\n  Status: BLOCKED -- awaiting Phase 5 (HEPGIS) data\n"
     )
 
 
