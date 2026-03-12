@@ -174,6 +174,41 @@ Key paper framing:
 - Union: starved on both L2 and DC fast
 - Annotation reinforces: 15 of 20 underserved ZIPs have zero DC fast
 
+### Step 9 Findings: Theil Decomposition & Scoring Framework
+
+#### Theil-T Decomposition (GE(1)) — The Key Finding
+- **Total Theil-T: 0.5791**
+- **Between-county: 0.0900 (15.5%)**
+- **Within-county: 0.4892 (84.5%)**
+- Robustness check (Theil-L / GE(0)): 82.5% within, 17.5% between — consistent
+- Exact decomposition verified to machine precision (diff = 2.22e-16)
+
+#### Policy Interpretation
+- **84.5% of EV charging infrastructure inequality occurs WITHIN counties, not between them**
+- County-level scoring alone would miss 85% of the inequality problem
+- This is the statistical justification for the two-tier scoring approach:
+  - Tier 1 (county-level): identifies which counties deserve NEVI attention
+  - Tier 2 (ZIP-level): identifies where within those counties to deploy
+- Paper framing: "County-level analysis, the standard unit in state EV planning, misses the majority of infrastructure inequality"
+
+#### Per-County Contributions to Within-County Inequality
+- Mecklenburg contributes 41.5% of within-county inequality (largest by far — Gini 0.623, pop 1.09M)
+- Wake contributes 28.1% (second — Gini 0.496, pop 1.11M)
+- Together Mecklenburg + Wake = ~70% of within-county inequality
+- Guilford ranks 4th in contribution (7.7%) despite 2nd-highest Gini — lower population reduces absolute contribution
+- Union contributes only 0.6% — uniform underservice produces low inequality but high need
+
+#### Scoring Framework Skeleton
+- 10 counties × 20 columns; 9 of 17 data columns populated from Phase 3
+- BEV-per-port ratio highlights: Union at 101:1 (worst), Buncombe at 11:1 (best)
+- 8 columns await Phase 4 (CTPP cost-effectiveness) and Phase 5 (Justice40 equity)
+- Composite NEVI Priority Score cannot be computed until all three components available
+- Note: equity_zero_station_pct is 0.0 for all counties because density CSV only includes ZIPs with stations; needs full-county ZIP coverage for signal
+
+#### Figures
+- fig-33: Theil decomposition stacked bar (84.5% within / 15.5% between)
+- fig-34: County contributions to within-county inequality (Mecklenburg dominates)
+
 ### Methodology Notes
 - Top 10 counties selected by BEV registration count (demand-side ranking)
 - Gini coefficient computed on ports per 10,000 population across populated ZCTAs within each county
