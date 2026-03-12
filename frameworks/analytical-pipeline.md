@@ -210,12 +210,12 @@ Ranked list of all 100 North Carolina counties with:
 |-------|----------------|-------------|
 | **Phase 1: Predictive Validation** | Feb 2026 | MAPE 4.36%, 68.9% underprediction bias, 8 publication figures (600 DPI, PDF) |
 | **Phase 2: AFDC Infrastructure Data** | Feb 2026 | Complete API download: 1,985 stations, 6,145 connectors, L1/L2/DCFC, all access types, 267 cities, 358 ZIPs |
+| **Phase 3: ZIP Code Analysis** | Mar 2026 | 134 ZIPs in 10 counties analyzed; Gini 0.566 statewide; Theil decomposition: 84.5% within-county inequality; 34 publication figures (fig-08 to fig-34); scoring framework skeleton (9/17 columns populated) |
 
 ### Pending (Core)
 
 | Phase | Estimated Effort | Dependencies | Next Step |
 |-------|-----------------|--------------|-----------|
-| **Phase 3: ZIP Code Analysis** | 4-6 hours | Phase 2 data (complete) | Map AFDC stations to ~120 urban ZIPs in top 10 counties |
 | **Phase 4: CTPP Workplace Charging** | 3 hours | Phase 2 data (complete) | Download CTPP tables for top 15 employment centers |
 | **Phase 5: HEPGIS Equity Analysis** | TBD | Phase 3 data | Overlay Justice40 boundaries on infrastructure map |
 
