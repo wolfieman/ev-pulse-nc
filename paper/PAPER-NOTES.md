@@ -128,6 +128,52 @@ Key paper framing:
 - Cross-county comparison confirms shared scale works: Mecklenburg's dark cluster is visibly more intense and more isolated than Wake's broader distribution
 - Guilford's zero-station proportion (49%) is the highest — visually dominates the map with hatching, strongest case for NEVI gap-filling
 
+### Step 8 Findings: Publication Figures (fig-25 to fig-32)
+
+#### fig-25: Statewide Underserved Choropleth
+- 199 ZCTAs plotted across 10 counties; 129 with stations, 70 without
+- All 20 underserved ZIPs highlighted with red outlines — geographic spread of the problem is immediately visible
+- Underserved ZIPs are not concentrated in one area; they span Mecklenburg, Guilford, Wake, Forsyth, Union, and others
+
+#### fig-26: Population vs Port Density Scatter
+- High-density ZIPs tend to be low-population (downtown commercial areas)
+- Large-population ZIPs cluster near or below the statewide median (5.51) — more people live in underserved areas
+- Supports the equity argument: infrastructure favors small commercial ZIPs over large residential ones
+
+#### fig-27: Lorenz Curve
+- Visual proof of inequality: substantial gap between equality line and all curves
+- Mecklenburg's curve bows the most (Gini 0.623), Wake the least (0.496) — matches computed values
+- Shaded area between equality line and statewide curve represents the Gini coefficient visually
+- Essential figure for peer review — any inequality paper must include this
+
+#### fig-28: Gini Comparison (Lollipop Chart)
+- Mecklenburg and Guilford clearly above statewide line (0.566)
+- Durham divergence highlighted: weighted (0.41) vs unweighted (0.51) — well-served ZIPs are the populated ones
+- Cabarrus and Orange have lowest Gini but small-n caveat (4 and 5 ZIPs respectively)
+
+#### fig-29: Top 20 Underserved Dot Plot
+- Overwhelming majority of dots are red (no DC fast) — 15 of 20
+- Burlington (27215) at the bottom: worst density, smallest dot relative to population
+- Charlotte 28215 has the largest blue dot (64,713 people) — only 2 ports but at least has DC fast
+- The 732,892 people / 58 ports statistic is annotated — powerful for policy audiences
+
+#### fig-30: Density Distribution (Histogram + KDE)
+- Right-skewed distribution (skewness 2.46) with mean (11.18) pulled well above median (5.51)
+- Log-scale x-axis handles the 357x range cleanly
+- Justifies use of Gini coefficient and median over mean for central tendency
+
+#### fig-31: BEV Registrations vs Port Supply
+- Average ratio: ~1 port per 20 BEVs across the 10 counties
+- Wake and Guilford fall below the reference line (undersupplied relative to BEV demand)
+- Union is the worst: 4,160 BEVs but only ~41 ports — furthest below the reference line
+- Durham and Buncombe above the line (oversupplied relative to demand)
+
+#### fig-32: DC Fast Gap by County
+- Wake and Mecklenburg dominate total port counts but have proportionally more DC fast
+- Orange County: almost entirely L2, negligible DC fast — a gap for corridor travel
+- Union: starved on both L2 and DC fast
+- Annotation reinforces: 15 of 20 underserved ZIPs have zero DC fast
+
 ### Methodology Notes
 - Top 10 counties selected by BEV registration count (demand-side ranking)
 - Gini coefficient computed on ports per 10,000 population across populated ZCTAs within each county
