@@ -12,3 +12,5 @@
 *.prj filter=lfs diff=lfs merge=lfs -text
 *.cpg filter=lfs diff=lfs merge=lfs -text
 *.csv.gz filter=lfs diff=lfs merge=lfs -text
+# Track GeoJSON files with Git LFS
+*.geojson filter=lfs diff=lfs merge=lfs -text

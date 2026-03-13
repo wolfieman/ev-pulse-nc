@@ -324,4 +324,250 @@ Raw LODES commuter count
 
 ---
 
-*Last updated: March 12, 2026*
+## Phase 5 Methodology Notes
+
+### CEJST Data Availability & Vintage (Expert Panel, March 12, 2026)
+- **CEJST was removed from the government website** by the Trump administration on January 22, 2025 (rescinded EO 14008)
+- Data scientists (EDGI / Public Environmental Data Partners coalition) archived and restored CEJST v2.0 within days
+- Download source: PEDP community mirror, not the original geoplatform.gov URL
+- **No version of CEJST uses 2020 Census tract boundaries** — both v1.0 and v2.0 use 2010 tracts. This is an upstream limitation; underlying federal datasets have not migrated to 2020 tracts yet
+- **No API exists** for CEJST — bulk CSV download only
+- Using v2.0 (December 2024 release) which has improved methodology over v1.0 (e.g., excludes higher-ed students from low-income calculations)
+
+### 2010 vs 2020 Tract Vintage Mismatch — Limitation Statement
+- CEJST v2.0 uses 2010 Census tract boundaries; project ZCTA/county boundaries are 2020 vintage
+- **Impact on county-level analysis: negligible** because:
+  1. NC county boundaries are geographically identical between 2010 and 2020
+  2. Census tracts nest within counties in both vintages
+  3. Tract-to-county aggregation is unaffected by tract boundary changes
+  4. Direction of any bias is conservative (slightly overstates disadvantaged coverage in fast-growing areas)
+- **For paper Methods section, include:** "CEJST v2.0 uses 2010 Census tract boundaries. This analysis overlays these tracts onto 2020-vintage county boundaries, which are geographically identical in North Carolina. The tract-to-county aggregation is therefore unaffected by the tract boundary vintage difference. Future updates to CEJST incorporating 2020 tract boundaries would refine sub-county analysis but are not expected to alter county-level equity rankings."
+- **For presentation:** Note that CEJST was taken offline by the current administration but data was preserved by the scientific community — demonstrates data governance awareness
+
+### CEJST Headline Finding
+- 934 of 2,195 NC census tracts (42.6%) flagged as disadvantaged under Justice40
+- Substantially above the national average (~27%)
+- Reflects NC's mix of rural poverty (eastern NC, Appalachian counties) and urban disadvantage
+- Reinforces the 0.40 equity weight in the NEVI Priority Score — nearly half of NC tracts qualify
+- Per-county breakdown needed from EDA to identify which study counties have highest/lowest rates
+
+### Zero-Population Tract Exclusion Decision
+- 25 of 2,195 NC tracts have population = 0.0 (not null — explicit zeros)
+- 12 are water-body tracts (Census 990 series: ocean, Pamlico Sound)
+- 13 are institutional/special-use tracts (Census 980 series: military installations including Fort Bragg, correctional facilities)
+- All 25 have disadvantaged = 0 and threshold_count = 0 — CEJST cannot evaluate tracts without resident population data
+- **Decision:** Exclude from disadvantaged percentage denominator → 934/2,170 = 43.0% (vs 42.6% with all 2,195)
+- Consistent with Phase 3 exclusion of uninhabited ZIPs from zero-station calculations
+- Military/institutional charging demand is captured through Phase 4 LEHD commuter flows, not residential equity designations
+- **Dr. Whitfield flag (confirmed):** Cumberland County has 1 excluded zero-pop tract (Fort Bragg, 37051980100). Effect: 50.7% → 50.0% (0.7 ppt) — negligible
+- **For paper Methods section:** Document exclusion criteria, tract numbering conventions (980=institutional, 990=water), and the 0.4 ppt statewide effect
+
+### Population-Weighted vs Tract-Count Rates
+- Population-weighted disadvantaged rates are consistently **lower** than simple tract-count rates across all study counties
+- Disadvantaged tracts tend to have smaller populations than non-disadvantaged tracts
+- **For paper:** Using population-weighted rates would produce more conservative equity scores than simple tract counts. This means our tract-count-based approach (43.0%) represents an upper bound — the population-weighted percentage is lower. Document this as a methodological choice: tract-count treats all communities equally regardless of size, which is arguably more equitable for infrastructure siting (a small disadvantaged community deserves charging access as much as a large one)
+
+### Step 5.2 EDA Validation
+- 23/23 checks passed (0 failures, 2 expected warnings)
+- The 2 warnings are from the crosswalk vintage mismatch: 465 CEJST tracts (2010 boundaries) not found in LEHD crosswalk (2020 boundaries), and 942 crosswalk tracts not in CEJST — expected due to tract splits/merges between Census vintages, not data quality issues
+- Validates that Step 5.1 download and filtering produced clean, complete data ready for the Step 5.3 spatial crosswalk
+
+### Step 5.3 Crosswalk Methodology — Draft Methods Paragraph
+
+> **Tract-to-ZCTA Equity Crosswalk.** To integrate Justice40 disadvantaged community designations (CEJST v2.0) with the ZIP-code-level infrastructure analysis, we constructed a spatial crosswalk between 2010-vintage Census tracts and 2020-vintage ZCTAs using area-weighted interpolation. Census tract boundaries (2010 TIGER/Line) were overlaid with ZCTA boundaries (2020 TIGER/GENZ) in the NC State Plane projection (EPSG:32119). For each tract-ZCTA intersection, we computed the fraction of the tract's area falling within each ZCTA. Each ZCTA's disadvantaged population share was then estimated as the area-weighted average of the binary disadvantaged flags from its constituent tract fragments. Intersection polygons smaller than 100 m² were discarded as geometric artifacts. Border-state tracts adjacent to North Carolina were included to ensure complete coverage of cross-border ZCTAs. This area-weighted approach follows the methodology used by EPA EJScreen (EPA, 2023) and the HUD USPS Crosswalk for tract-to-ZIP translation. Twenty-five zero-population tracts (12 water-body, 13 institutional/military) were excluded from the disadvantaged denominator, consistent with CEJST's own treatment of these tracts as non-evaluable.
+
+### Step 5.3 Crosswalk — Strengths (for paper)
+- Area-weighted interpolation matches federal practice (EJScreen, HUD) — results directly comparable to tools policymakers already use
+- CEJST v2.0 (most current Justice40 data, December 2024 release)
+- Border-state tract inclusion (GA, SC, TN, VA) ensures complete ZCTA coverage at state boundaries
+- Zero-population tract exclusion is consistent with CEJST methodology and Phase 3's treatment of uninhabited ZCTAs
+- Data preserved despite CEJST removal from government websites — demonstrates research resilience and data governance awareness
+
+### Step 5.3 Crosswalk — Limitations (for paper)
+- **2010-to-2020 boundary vintage mismatch:** Tract boundaries changed between Census decades; area-weighted interpolation assumes uniform population distribution within tracts, which introduces modest error in large, heterogeneous tracts. County-level aggregation is unaffected (NC county boundaries identical in both vintages).
+- **Area-weighted, not population-weighted (dasymetric):** Does not account for sub-tract population concentration; improvement is a future research direction. Panel confirmed area-weighted is the EPA/HUD standard and appropriate for urban/suburban study counties where tracts are small.
+- **CEJST binary flag loses threshold granularity:** A tract meeting 1 burden threshold and a tract meeting 8 thresholds both count as "disadvantaged." We report threshold_count descriptively but do not use it in scoring.
+- **Community-archived data:** CEJST data was archived by PEDP coalition after federal removal; data integrity verified against pre-removal records, but the archival pathway should be noted for reproducibility.
+
+### CEJST Methodology Deep Dive — What "Disadvantaged" Means
+
+**Definition:** A tract is designated disadvantaged if it exceeds the 90th percentile on ANY single burden indicator across 8 categories AND meets the 65th percentile for low-income households (below 200% federal poverty level). This is a "one-strike" design — intentionally broad.
+
+**The 8 burden categories and their data sources:**
+
+| Category | Key Indicators | Data Source | Empirical? |
+|----------|---------------|-------------|:----------:|
+| Energy | Energy cost burden, PM2.5 | DOE LEAD (utility bills), EPA air monitors | Yes |
+| Health | Asthma, diabetes, heart disease, low life expectancy | CDC PLACES, CDC USALEEP (death records) | Yes |
+| Housing | Housing cost burden, lead paint, lack of plumbing, redlining | Census ACS, HUD, HOLC maps | Yes |
+| Legacy Pollution | Proximity to Superfund, hazardous waste, RMP facilities | EPA RCRA, NPL, RMP databases | Yes |
+| Transportation | Diesel PM, transportation barriers, traffic volume | DOT traffic counts, EPA NATA, Census ACS | Yes |
+| Water/Wastewater | Leaking underground storage tanks, wastewater discharge | EPA UST, NPDES permit data | Yes |
+| Workforce | Linguistic isolation, low median income, poverty, unemployment | Census ACS | Yes |
+| Climate Change | Expected building/ag/population loss, flood risk, wildfire risk | FEMA NRI, First Street Foundation | **Mixed** |
+
+**Key finding: 7 of 8 categories are fully empirical.** The climate change category is the only one with forward-looking model projections (First Street Foundation's 30-year flood projection). However, the FEMA NRI components within climate change are actuarial models based on **historical hazard frequencies** — similar to insurance industry calculations.
+
+**National context:** ~37% of US tracts (33% of population) are designated disadvantaged. NC at 43% is consistent with southeastern states (MS 50%+, AL/SC/LA 40-50%). NC's rate reflects rural poverty (eastern NC, Appalachia), above-average health burdens (diabetes, heart disease), housing cost burden, and legacy industrial pollution.
+
+**Study county context:** 18.5% population-weighted average across top-10 BEV counties. Lower than statewide because these are NC's wealthiest urban/suburban counties. But nearly 1 in 5 residents still lives in a disadvantaged tract — reinforces the within-county inequality finding from Phase 3 (84.5% Theil-T).
+
+### Climate Change Category Sensitivity Analysis
+
+**Rationale:** The climate change category includes the only model-based (not purely empirical) indicators in CEJST. To ensure robustness, we test what happens if this category is removed entirely.
+
+**Methodology:** Re-download CEJST with per-category Boolean flags. Count tracts flagged solely by climate change. Recompute disadvantaged rate without them.
+
+**Expected result:** Minimal impact on study counties. Urban disadvantage is driven by health, housing, transportation, and legacy pollution — not climate projections. Larger impact in rural eastern NC (coastal flood risk).
+
+**Results:**
+- 124 of 934 disadvantaged NC tracts (13.3%) are flagged solely by climate change
+- Without climate change: 810/2,170 = 37.3% (down from 43.0%, a -5.7 pp drop)
+- 37.3% is essentially the national average (~37%), confirming climate change accounts for NC's above-average rate
+- **7 of 10 study counties: zero impact** (no climate-change-only tracts)
+- 3 affected: New Hanover -4.7 pp, Durham -3.4 pp, Wake -2.2 pp (modest changes)
+- Conclusion: study county equity rankings are robust to climate change category removal
+- Script: `code/python/analysis/phase5_climate_sensitivity.py`
+
+### Pragmatic Framing for Paper — Draft Paragraph
+
+> We adopt CEJST designations without modification because our analysis aims to describe equity gaps as they exist under current federal policy, not to propose alternative disadvantaged-community definitions. CEJST is the federal screening tool that determines which communities are eligible for Justice40 benefits under the NEVI Formula Program, including NEVI EV charging infrastructure funding. Seven of eight CEJST burden categories rely exclusively on empirical federal datasets (CDC health surveillance, Census ACS economic statistics, EPA facility databases, DOE utility cost records). The climate change category uniquely incorporates forward-looking hazard projections alongside historical hazard data from the FEMA National Risk Index. To test robustness, we conducted a sensitivity analysis removing the climate change category entirely. Of 934 disadvantaged NC tracts, 124 (13.3%) are designated solely due to climate change indicators; removing them reduces the statewide rate from 43.0% to 37.3% (-5.7 pp). Seven of ten study counties are completely unaffected, and the three affected counties show changes of 2.2 to 4.7 percentage points. The majority of disadvantaged tracts in our study counties are flagged by empirical health, housing, and workforce indicators unaffected by this category.
+
+### New Hanover Coastal Sensitivity (for Discussion section)
+- New Hanover County showed the highest sensitivity to climate change category removal (-4.7 pp), consistent with its coastal geography and hurricane/flood exposure
+- Suggests that coastal EV infrastructure siting decisions are more sensitive to the choice of equity screening methodology than inland counties
+- Durham (-3.4 pp) and Wake (-2.2 pp) show modest sensitivity; 7 remaining study counties are unaffected
+- **For Discussion:** Geographic variation in sensitivity — coastal vs inland — adds nuance to equity recommendations
+
+### Step 5.5 Scoring Framework — Sub-Metric Variance Limitation
+
+**Context:** The NEVI Priority Score uses three pillars (Equity 0.40, Utilization 0.35, Cost-Effectiveness 0.25) per Dr. Al-Ghandour's proposal feedback. Within each pillar, sub-metrics were designed to capture distinct dimensions of need.
+
+**Limitation: Two sub-metrics have zero variance across the 10 study counties:**
+
+| Pillar | Sub-metric | Value | Why No Variance |
+|--------|-----------|-------|-----------------|
+| Equity | `zero_station_pct` | 0.0 for all 10 | All top-10 urban counties have at least some stations in every inhabited ZIP |
+| Utilization | `forecast_buffer` | 0.045 for all 10 | Phase 1 underprediction bias correction was applied globally, not per-county |
+
+**Impact:** 7 of 9 designed sub-metrics actively differentiate counties. The two zero-variance sub-metrics are methodologically valid and would contribute if the framework were applied to all 100 NC counties (rural counties have zero-station ZIPs; county-specific forecast errors could replace the global buffer). For the 10-county study cohort, the effective scoring resolution is:
+- Equity: 3 working sub-metrics (justice40_pct, gini_weighted, underserved_zips)
+- Utilization: 1 working sub-metric (bev_per_port)
+- Cost-effectiveness: 3 working sub-metrics (workplace_efficiency, commuter_demand, pop_density)
+
+**Additional limitation — Union County outlier:** Union has 101.5 BEVs per port (next highest: Cabarrus at 32.0). Min-max normalization compresses the remaining 9 counties into the lower portion of the utilization scale. This is a genuine infrastructure deficit, not a data error, but it reduces the utilization score's ability to differentiate mid-ranked counties.
+
+**For paper Methods/Limitations section:** Document that the scoring framework was designed for statewide extensibility but applied to a 10-county cohort where two sub-metrics lack discriminatory power. The rankings are driven by 7 of 9 sub-metrics. Future work could extend to all 100 counties where all sub-metrics would contribute.
+
+### Step 5.5 Final Rankings — NEVI Priority Score
+
+| Rank | County | NEVI Score | Equity | Utilization | Cost-Eff |
+|------|--------|-----------|--------|-------------|----------|
+| 1 | Union | 0.561 | 0.319 | 1.000 | 0.333 |
+| 2 | Mecklenburg | 0.548 | 0.810 | 0.067 | 0.801 |
+| 3 | Guilford | 0.465 | 0.855 | 0.103 | 0.347 |
+| 4 | Forsyth | 0.335 | 0.423 | 0.059 | 0.467 |
+| 5 | New Hanover | 0.334 | 0.623 | 0.034 | 0.267 |
+| 6 | Cabarrus | 0.291 | 0.329 | 0.232 | 0.155 |
+| 7 | Durham | 0.276 | 0.422 | 0.032 | 0.254 |
+| 8 | Wake | 0.248 | 0.152 | 0.166 | 0.568 |
+| 9 | Buncombe | 0.120 | 0.215 | 0.000 | 0.034 |
+| 10 | Orange | 0.077 | 0.059 | 0.101 | 0.071 |
+
+### Three County Archetypes (Expert Panel Interpretation)
+
+1. **Union (Rank #1, 0.561) — Utilization-driven.** Its 101.5 BEV/port ratio dominates the score despite moderate equity burden. This is a suburban growth corridor where infrastructure hasn't kept pace with adoption.
+
+2. **Mecklenburg (Rank #2, 0.548) — Equity-driven.** Highest equity sub-score (0.810) reflecting concentrated disadvantaged tracts in Charlotte's urban core, paired with strong cost-effectiveness from existing station density.
+
+3. **Orange (Rank #10, 0.077) — Low across all pillars.** Only 4.9% J40 population-weighted burden, adequate infrastructure per capita, and a university-town demographic that skews affluent.
+
+**Policy implication**: Different counties need investment for different reasons — Union needs *more stations*, Mecklenburg needs *better-targeted stations*, and Orange is already relatively well-served.
+
+---
+
+## Defining "Disadvantaged" — Expert Panel Guidance
+
+**CRITICAL: Must be clearly defined early in the paper. "Disadvantaged" is NOT a synonym for "poor."**
+
+### Introduction (first mention):
+> Under the federal Justice40 initiative, "disadvantaged" communities are identified using the Climate and Economic Justice Screening Tool (CEJST v2.0), which flags Census tracts that are both low-income (≥65th percentile) AND overburdened on at least one of eight environmental, health, or infrastructure dimensions. This is not a synonym for poverty — a tract must experience a measurable environmental or health burden *in addition to* economic hardship to qualify.
+
+### Methods (operational definition):
+> CEJST employs a conjunctive screen: a tract is classified as disadvantaged if it meets a low-income threshold (≥65th percentile on census poverty or median household income measures) AND exceeds the 90th percentile on any single indicator across eight burden categories — climate change, energy, health, housing, legacy pollution, transportation, water/wastewater, and workforce development. This "one-strike" design intentionally casts a wide net.
+
+### Results (contextualizing 43%):
+> North Carolina's 43.0% disadvantaged rate reflects the cumulative reach of CEJST's one-strike design across a state with documented disparities in air quality, housing cost burden, and legacy industrial contamination — consistent with southeastern-state rates reported by the White House CEQ (2023).
+
+---
+
+## Discussion Section — Within-County Inequality Emphasis
+
+### Theil-T Decomposition Significance
+
+> The Theil-T decomposition finding — that 84.5% of infrastructure inequality is within-county — carries direct implications for equity-focused investment. A county-level allocation formula alone would mask the ZIP-level disparities where disadvantaged communities cluster. For example, Mecklenburg County's aggregate ports-per-capita appears adequate, yet its Justice40 population-weighted burden (23.7%) reveals that disadvantaged tracts within the county are systematically underserved. This validates the project's two-tier scoring architecture: county-level rankings identify *where* to invest, while ZIP-level targeting identifies *for whom*.
+
+**Literature note:** Shorrocks (1980) established Theil decomposition methodology. The expert panel found **no prior published study** applying Theil decomposition to EV charging infrastructure inequality — this is a novel contribution.
+
+### "Disadvantaged" Means Something Different Within vs Between Counties
+- Between counties: disadvantage tracks with rurality and poverty (eastern NC, Appalachia)
+- Within counties: disadvantage clusters in specific urban/suburban tracts amid otherwise affluent counties
+- The 84.5% within-county finding means the EV infrastructure equity problem is primarily an *intra-urban* problem, not a rural vs urban divide
+- This reframes the policy conversation: even NC's wealthiest counties have significant disadvantaged populations that are underserved by current infrastructure
+
+---
+
+## Conclusion Section — Draft Guidance
+
+### Five Unique Contributions
+1. First Theil decomposition of EV infrastructure inequality (novel methodology)
+2. Tract-to-ZCTA area-weighted crosswalk integrating federal equity data with local planning units
+3. Multi-dimensional NEVI scoring framework (equity + utilization + cost-effectiveness)
+4. Empirical validation that within-county inequality dominates between-county (84.5%)
+5. Climate sensitivity analysis demonstrating CEJST robustness for NC context
+
+### Seven Anticipated Reviewer Weaknesses (for Limitations section)
+1. **Top-10 county selection limits generalizability** → Framework designed for statewide extensibility; top-10 captures 73% of NC BEV registrations
+2. **LODES 2021 predates post-COVID commuting shifts** → Most recent available; CTPP 2016 would be even older
+3. **CEJST one-strike design may over-identify disadvantaged tracts** → Sensitivity analysis shows 7/10 counties unaffected by removing most contentious category; we adopt federal definitions as-is
+4. **Static BEV registration (no growth trajectory modeling)** → Phase 1 validation quantified forecast accuracy; growth modeling is future work
+5. **Two zero-variance sub-metrics reduce scoring dimensionality** → Would contribute at statewide scale; documented as limitation of 10-county cohort
+6. **No charging behavior data (session frequency, duration)** → AFDC provides infrastructure location, not usage; cite DOE EVSE data gaps
+7. **Area-weighted interpolation assumes uniform population within tracts** → EPA/HUD standard method; dasymetric refinement is future work
+
+### Weight Sensitivity Analysis (COMPLETE)
+- Tested equity weight at 0.30, 0.35, 0.40, 0.45, 0.50 (holding util:cost ratio constant at 7:5)
+- **Result: Top-3 {Union, Mecklenburg, Guilford} is STABLE across all 5 scenarios**
+- Internal ordering shifts: at higher equity weights, Mecklenburg rises (equity-driven) and Union drops (utilization-driven)
+- Orange locked at #10 in all scenarios; Forsyth fixed at #7
+- **Paper defense sentence:** "Rankings are robust to ±10 percentage-point variation in equity weight, with the top-three counties unchanged across all scenarios tested."
+- Script: `code/python/analysis/phase5_weight_sensitivity.py`
+- Output: `data/processed/scoring-weight-sensitivity.csv`
+
+### Renter Tenure Equity Indicator — Scope Decision
+- Phase 5 plan (pre-approved March 12) included ACS B25003 renter share as an equity sub-metric input
+- **Decision: Not included as a scoring sub-metric.** The equity pillar uses 4 sub-metrics (justice40_pct 0.40, gini_weighted 0.30, underserved_zips 0.20, zero_station_pct 0.10). Renter share was not added as a 5th sub-metric because:
+  1. CEJST's housing burden category already captures housing cost burden (which correlates with renter concentration)
+  2. Adding a 5th equity sub-metric would require re-weighting all others without clear justification
+  3. The Phase 4 panel decision explicitly redirected renter data to "descriptive reporting" and "equity dimension," not as a standalone scoring input
+- **Renter data IS used in Phase 4:** reported descriptively (e.g., "X% of commuters to Mecklenburg originate from renter-heavy tracts")
+- **For Limitations section:** Note that renter charging access barriers are captured indirectly through CEJST housing burden and Phase 4 descriptive analysis, but a dedicated renter equity sub-metric could strengthen future iterations of the framework
+
+### Sources
+- CEJST v2.0 Technical Support Document (December 2024)
+- Harvard EELP Tracker (CEJST removal documentation)
+- Inside Climate News (data scientists restore CEJST)
+- PEDP Mirror: https://edgi-govdata-archiving.github.io/j40-cejst-2/en/downloads/
+- EPA EJScreen Technical Documentation (2023) — area-weighted apportionment standard
+- FHWA NEVI Formula Program Guidance (February 2023) — Justice40 coverage for EV infrastructure
+- HUD USPS Crosswalk — federal standard for tract-to-ZIP geographic translation
+- Maantay et al. (2007), International Journal of Health Geographics — areal interpolation methods comparison
+- Executive Order 14008, Section 223 — Justice40 Initiative (original mandate)
+- CDC PLACES (Population Level Analysis and Community Estimates) — tract-level health indicators
+- DOE LEAD (Low-Income Energy Affordability Data) tool — energy cost burden
+- FEMA National Risk Index — natural hazard expected annual loss
+- First Street Foundation — flood and wildfire forward projections
+
+---
+
+*Last updated: March 13, 2026*
