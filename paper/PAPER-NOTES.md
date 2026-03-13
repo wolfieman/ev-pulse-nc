@@ -535,11 +535,23 @@ Raw LODES commuter count
 6. **No charging behavior data (session frequency, duration)** → AFDC provides infrastructure location, not usage; cite DOE EVSE data gaps
 7. **Area-weighted interpolation assumes uniform population within tracts** → EPA/HUD standard method; dasymetric refinement is future work
 
-### Weight Sensitivity Analysis (HIGH PRIORITY — recommended by panel)
-- Run equity weight at 0.30, 0.35, 0.40, 0.45, 0.50 (holding util:cost ratio constant at 7:5)
-- Goal: confirm top-3 rankings are stable across weight variation
-- Output: small table for paper appendix + one-sentence defense in Methods
+### Weight Sensitivity Analysis (COMPLETE)
+- Tested equity weight at 0.30, 0.35, 0.40, 0.45, 0.50 (holding util:cost ratio constant at 7:5)
+- **Result: Top-3 {Union, Mecklenburg, Guilford} is STABLE across all 5 scenarios**
+- Internal ordering shifts: at higher equity weights, Mecklenburg rises (equity-driven) and Union drops (utilization-driven)
+- Orange locked at #10 in all scenarios; Forsyth fixed at #7
+- **Paper defense sentence:** "Rankings are robust to ±10 percentage-point variation in equity weight, with the top-three counties unchanged across all scenarios tested."
 - Script: `code/python/analysis/phase5_weight_sensitivity.py`
+- Output: `data/processed/scoring-weight-sensitivity.csv`
+
+### Renter Tenure Equity Indicator — Scope Decision
+- Phase 5 plan (pre-approved March 12) included ACS B25003 renter share as an equity sub-metric input
+- **Decision: Not included as a scoring sub-metric.** The equity pillar uses 4 sub-metrics (justice40_pct 0.40, gini_weighted 0.30, underserved_zips 0.20, zero_station_pct 0.10). Renter share was not added as a 5th sub-metric because:
+  1. CEJST's housing burden category already captures housing cost burden (which correlates with renter concentration)
+  2. Adding a 5th equity sub-metric would require re-weighting all others without clear justification
+  3. The Phase 4 panel decision explicitly redirected renter data to "descriptive reporting" and "equity dimension," not as a standalone scoring input
+- **Renter data IS used in Phase 4:** reported descriptively (e.g., "X% of commuters to Mecklenburg originate from renter-heavy tracts")
+- **For Limitations section:** Note that renter charging access barriers are captured indirectly through CEJST housing burden and Phase 4 descriptive analysis, but a dedicated renter equity sub-metric could strengthen future iterations of the framework
 
 ### Sources
 - CEJST v2.0 Technical Support Document (December 2024)
