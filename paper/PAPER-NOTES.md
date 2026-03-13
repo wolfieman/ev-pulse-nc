@@ -372,12 +372,88 @@ Raw LODES commuter count
 - The 2 warnings are from the crosswalk vintage mismatch: 465 CEJST tracts (2010 boundaries) not found in LEHD crosswalk (2020 boundaries), and 942 crosswalk tracts not in CEJST — expected due to tract splits/merges between Census vintages, not data quality issues
 - Validates that Step 5.1 download and filtering produced clean, complete data ready for the Step 5.3 spatial crosswalk
 
+### Step 5.3 Crosswalk Methodology — Draft Methods Paragraph
+
+> **Tract-to-ZCTA Equity Crosswalk.** To integrate Justice40 disadvantaged community designations (CEJST v2.0) with the ZIP-code-level infrastructure analysis, we constructed a spatial crosswalk between 2010-vintage Census tracts and 2020-vintage ZCTAs using area-weighted interpolation. Census tract boundaries (2010 TIGER/Line) were overlaid with ZCTA boundaries (2020 TIGER/GENZ) in the NC State Plane projection (EPSG:32119). For each tract-ZCTA intersection, we computed the fraction of the tract's area falling within each ZCTA. Each ZCTA's disadvantaged population share was then estimated as the area-weighted average of the binary disadvantaged flags from its constituent tract fragments. Intersection polygons smaller than 100 m² were discarded as geometric artifacts. Border-state tracts adjacent to North Carolina were included to ensure complete coverage of cross-border ZCTAs. This area-weighted approach follows the methodology used by EPA EJScreen (EPA, 2023) and the HUD USPS Crosswalk for tract-to-ZIP translation. Twenty-five zero-population tracts (12 water-body, 13 institutional/military) were excluded from the disadvantaged denominator, consistent with CEJST's own treatment of these tracts as non-evaluable.
+
+### Step 5.3 Crosswalk — Strengths (for paper)
+- Area-weighted interpolation matches federal practice (EJScreen, HUD) — results directly comparable to tools policymakers already use
+- CEJST v2.0 (most current Justice40 data, December 2024 release)
+- Border-state tract inclusion (GA, SC, TN, VA) ensures complete ZCTA coverage at state boundaries
+- Zero-population tract exclusion is consistent with CEJST methodology and Phase 3's treatment of uninhabited ZCTAs
+- Data preserved despite CEJST removal from government websites — demonstrates research resilience and data governance awareness
+
+### Step 5.3 Crosswalk — Limitations (for paper)
+- **2010-to-2020 boundary vintage mismatch:** Tract boundaries changed between Census decades; area-weighted interpolation assumes uniform population distribution within tracts, which introduces modest error in large, heterogeneous tracts. County-level aggregation is unaffected (NC county boundaries identical in both vintages).
+- **Area-weighted, not population-weighted (dasymetric):** Does not account for sub-tract population concentration; improvement is a future research direction. Panel confirmed area-weighted is the EPA/HUD standard and appropriate for urban/suburban study counties where tracts are small.
+- **CEJST binary flag loses threshold granularity:** A tract meeting 1 burden threshold and a tract meeting 8 thresholds both count as "disadvantaged." We report threshold_count descriptively but do not use it in scoring.
+- **Community-archived data:** CEJST data was archived by PEDP coalition after federal removal; data integrity verified against pre-removal records, but the archival pathway should be noted for reproducibility.
+
+### CEJST Methodology Deep Dive — What "Disadvantaged" Means
+
+**Definition:** A tract is designated disadvantaged if it exceeds the 90th percentile on ANY single burden indicator across 8 categories AND meets the 65th percentile for low-income households (below 200% federal poverty level). This is a "one-strike" design — intentionally broad.
+
+**The 8 burden categories and their data sources:**
+
+| Category | Key Indicators | Data Source | Empirical? |
+|----------|---------------|-------------|:----------:|
+| Energy | Energy cost burden, PM2.5 | DOE LEAD (utility bills), EPA air monitors | Yes |
+| Health | Asthma, diabetes, heart disease, low life expectancy | CDC PLACES, CDC USALEEP (death records) | Yes |
+| Housing | Housing cost burden, lead paint, lack of plumbing, redlining | Census ACS, HUD, HOLC maps | Yes |
+| Legacy Pollution | Proximity to Superfund, hazardous waste, RMP facilities | EPA RCRA, NPL, RMP databases | Yes |
+| Transportation | Diesel PM, transportation barriers, traffic volume | DOT traffic counts, EPA NATA, Census ACS | Yes |
+| Water/Wastewater | Leaking underground storage tanks, wastewater discharge | EPA UST, NPDES permit data | Yes |
+| Workforce | Linguistic isolation, low median income, poverty, unemployment | Census ACS | Yes |
+| Climate Change | Expected building/ag/population loss, flood risk, wildfire risk | FEMA NRI, First Street Foundation | **Mixed** |
+
+**Key finding: 7 of 8 categories are fully empirical.** The climate change category is the only one with forward-looking model projections (First Street Foundation's 30-year flood projection). However, the FEMA NRI components within climate change are actuarial models based on **historical hazard frequencies** — similar to insurance industry calculations.
+
+**National context:** ~37% of US tracts (33% of population) are designated disadvantaged. NC at 43% is consistent with southeastern states (MS 50%+, AL/SC/LA 40-50%). NC's rate reflects rural poverty (eastern NC, Appalachia), above-average health burdens (diabetes, heart disease), housing cost burden, and legacy industrial pollution.
+
+**Study county context:** 18.5% population-weighted average across top-10 BEV counties. Lower than statewide because these are NC's wealthiest urban/suburban counties. But nearly 1 in 5 residents still lives in a disadvantaged tract — reinforces the within-county inequality finding from Phase 3 (84.5% Theil-T).
+
+### Climate Change Category Sensitivity Analysis
+
+**Rationale:** The climate change category includes the only model-based (not purely empirical) indicators in CEJST. To ensure robustness, we test what happens if this category is removed entirely.
+
+**Methodology:** Re-download CEJST with per-category Boolean flags. Count tracts flagged solely by climate change. Recompute disadvantaged rate without them.
+
+**Expected result:** Minimal impact on study counties. Urban disadvantage is driven by health, housing, transportation, and legacy pollution — not climate projections. Larger impact in rural eastern NC (coastal flood risk).
+
+**Results:**
+- 124 of 934 disadvantaged NC tracts (13.3%) are flagged solely by climate change
+- Without climate change: 810/2,170 = 37.3% (down from 43.0%, a -5.7 pp drop)
+- 37.3% is essentially the national average (~37%), confirming climate change accounts for NC's above-average rate
+- **7 of 10 study counties: zero impact** (no climate-change-only tracts)
+- 3 affected: New Hanover -4.7 pp, Durham -3.4 pp, Wake -2.2 pp (modest changes)
+- Conclusion: study county equity rankings are robust to climate change category removal
+- Script: `code/python/analysis/phase5_climate_sensitivity.py`
+
+### Pragmatic Framing for Paper — Draft Paragraph
+
+> We adopt CEJST designations without modification because our analysis aims to describe equity gaps as they exist under current federal policy, not to propose alternative disadvantaged-community definitions. CEJST is the federal screening tool that determines which communities are eligible for Justice40 benefits under the NEVI Formula Program, including NEVI EV charging infrastructure funding. Seven of eight CEJST burden categories rely exclusively on empirical federal datasets (CDC health surveillance, Census ACS economic statistics, EPA facility databases, DOE utility cost records). The climate change category uniquely incorporates forward-looking hazard projections alongside historical hazard data from the FEMA National Risk Index. To test robustness, we conducted a sensitivity analysis removing the climate change category entirely. Of 934 disadvantaged NC tracts, 124 (13.3%) are designated solely due to climate change indicators; removing them reduces the statewide rate from 43.0% to 37.3% (-5.7 pp). Seven of ten study counties are completely unaffected, and the three affected counties show changes of 2.2 to 4.7 percentage points. The majority of disadvantaged tracts in our study counties are flagged by empirical health, housing, and workforce indicators unaffected by this category.
+
+### New Hanover Coastal Sensitivity (for Discussion section)
+- New Hanover County showed the highest sensitivity to climate change category removal (-4.7 pp), consistent with its coastal geography and hurricane/flood exposure
+- Suggests that coastal EV infrastructure siting decisions are more sensitive to the choice of equity screening methodology than inland counties
+- Durham (-3.4 pp) and Wake (-2.2 pp) show modest sensitivity; 7 remaining study counties are unaffected
+- **For Discussion:** Geographic variation in sensitivity — coastal vs inland — adds nuance to equity recommendations
+
 ### Sources
-- CEJST v2.0 Technical Support Document
-- Harvard EELP Tracker (CEJST removal)
+- CEJST v2.0 Technical Support Document (December 2024)
+- Harvard EELP Tracker (CEJST removal documentation)
 - Inside Climate News (data scientists restore CEJST)
 - PEDP Mirror: https://edgi-govdata-archiving.github.io/j40-cejst-2/en/downloads/
+- EPA EJScreen Technical Documentation (2023) — area-weighted apportionment standard
+- FHWA NEVI Formula Program Guidance (February 2023) — Justice40 coverage for EV infrastructure
+- HUD USPS Crosswalk — federal standard for tract-to-ZIP geographic translation
+- Maantay et al. (2007), International Journal of Health Geographics — areal interpolation methods comparison
+- Executive Order 14008, Section 223 — Justice40 Initiative (original mandate)
+- CDC PLACES (Population Level Analysis and Community Estimates) — tract-level health indicators
+- DOE LEAD (Low-Income Energy Affordability Data) tool — energy cost burden
+- FEMA National Risk Index — natural hazard expected annual loss
+- First Street Foundation — flood and wildfire forward projections
 
 ---
 
-*Last updated: March 12, 2026*
+*Last updated: March 13, 2026*
