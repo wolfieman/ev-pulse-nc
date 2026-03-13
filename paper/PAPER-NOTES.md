@@ -439,6 +439,108 @@ Raw LODES commuter count
 - Durham (-3.4 pp) and Wake (-2.2 pp) show modest sensitivity; 7 remaining study counties are unaffected
 - **For Discussion:** Geographic variation in sensitivity — coastal vs inland — adds nuance to equity recommendations
 
+### Step 5.5 Scoring Framework — Sub-Metric Variance Limitation
+
+**Context:** The NEVI Priority Score uses three pillars (Equity 0.40, Utilization 0.35, Cost-Effectiveness 0.25) per Dr. Al-Ghandour's proposal feedback. Within each pillar, sub-metrics were designed to capture distinct dimensions of need.
+
+**Limitation: Two sub-metrics have zero variance across the 10 study counties:**
+
+| Pillar | Sub-metric | Value | Why No Variance |
+|--------|-----------|-------|-----------------|
+| Equity | `zero_station_pct` | 0.0 for all 10 | All top-10 urban counties have at least some stations in every inhabited ZIP |
+| Utilization | `forecast_buffer` | 0.045 for all 10 | Phase 1 underprediction bias correction was applied globally, not per-county |
+
+**Impact:** 7 of 9 designed sub-metrics actively differentiate counties. The two zero-variance sub-metrics are methodologically valid and would contribute if the framework were applied to all 100 NC counties (rural counties have zero-station ZIPs; county-specific forecast errors could replace the global buffer). For the 10-county study cohort, the effective scoring resolution is:
+- Equity: 3 working sub-metrics (justice40_pct, gini_weighted, underserved_zips)
+- Utilization: 1 working sub-metric (bev_per_port)
+- Cost-effectiveness: 3 working sub-metrics (workplace_efficiency, commuter_demand, pop_density)
+
+**Additional limitation — Union County outlier:** Union has 101.5 BEVs per port (next highest: Cabarrus at 32.0). Min-max normalization compresses the remaining 9 counties into the lower portion of the utilization scale. This is a genuine infrastructure deficit, not a data error, but it reduces the utilization score's ability to differentiate mid-ranked counties.
+
+**For paper Methods/Limitations section:** Document that the scoring framework was designed for statewide extensibility but applied to a 10-county cohort where two sub-metrics lack discriminatory power. The rankings are driven by 7 of 9 sub-metrics. Future work could extend to all 100 counties where all sub-metrics would contribute.
+
+### Step 5.5 Final Rankings — NEVI Priority Score
+
+| Rank | County | NEVI Score | Equity | Utilization | Cost-Eff |
+|------|--------|-----------|--------|-------------|----------|
+| 1 | Union | 0.561 | 0.319 | 1.000 | 0.333 |
+| 2 | Mecklenburg | 0.548 | 0.810 | 0.067 | 0.801 |
+| 3 | Guilford | 0.465 | 0.855 | 0.103 | 0.347 |
+| 4 | Forsyth | 0.335 | 0.423 | 0.059 | 0.467 |
+| 5 | New Hanover | 0.334 | 0.623 | 0.034 | 0.267 |
+| 6 | Cabarrus | 0.291 | 0.329 | 0.232 | 0.155 |
+| 7 | Durham | 0.276 | 0.422 | 0.032 | 0.254 |
+| 8 | Wake | 0.248 | 0.152 | 0.166 | 0.568 |
+| 9 | Buncombe | 0.120 | 0.215 | 0.000 | 0.034 |
+| 10 | Orange | 0.077 | 0.059 | 0.101 | 0.071 |
+
+### Three County Archetypes (Expert Panel Interpretation)
+
+1. **Union (Rank #1, 0.561) — Utilization-driven.** Its 101.5 BEV/port ratio dominates the score despite moderate equity burden. This is a suburban growth corridor where infrastructure hasn't kept pace with adoption.
+
+2. **Mecklenburg (Rank #2, 0.548) — Equity-driven.** Highest equity sub-score (0.810) reflecting concentrated disadvantaged tracts in Charlotte's urban core, paired with strong cost-effectiveness from existing station density.
+
+3. **Orange (Rank #10, 0.077) — Low across all pillars.** Only 4.9% J40 population-weighted burden, adequate infrastructure per capita, and a university-town demographic that skews affluent.
+
+**Policy implication**: Different counties need investment for different reasons — Union needs *more stations*, Mecklenburg needs *better-targeted stations*, and Orange is already relatively well-served.
+
+---
+
+## Defining "Disadvantaged" — Expert Panel Guidance
+
+**CRITICAL: Must be clearly defined early in the paper. "Disadvantaged" is NOT a synonym for "poor."**
+
+### Introduction (first mention):
+> Under the federal Justice40 initiative, "disadvantaged" communities are identified using the Climate and Economic Justice Screening Tool (CEJST v2.0), which flags Census tracts that are both low-income (≥65th percentile) AND overburdened on at least one of eight environmental, health, or infrastructure dimensions. This is not a synonym for poverty — a tract must experience a measurable environmental or health burden *in addition to* economic hardship to qualify.
+
+### Methods (operational definition):
+> CEJST employs a conjunctive screen: a tract is classified as disadvantaged if it meets a low-income threshold (≥65th percentile on census poverty or median household income measures) AND exceeds the 90th percentile on any single indicator across eight burden categories — climate change, energy, health, housing, legacy pollution, transportation, water/wastewater, and workforce development. This "one-strike" design intentionally casts a wide net.
+
+### Results (contextualizing 43%):
+> North Carolina's 43.0% disadvantaged rate reflects the cumulative reach of CEJST's one-strike design across a state with documented disparities in air quality, housing cost burden, and legacy industrial contamination — consistent with southeastern-state rates reported by the White House CEQ (2023).
+
+---
+
+## Discussion Section — Within-County Inequality Emphasis
+
+### Theil-T Decomposition Significance
+
+> The Theil-T decomposition finding — that 84.5% of infrastructure inequality is within-county — carries direct implications for equity-focused investment. A county-level allocation formula alone would mask the ZIP-level disparities where disadvantaged communities cluster. For example, Mecklenburg County's aggregate ports-per-capita appears adequate, yet its Justice40 population-weighted burden (23.7%) reveals that disadvantaged tracts within the county are systematically underserved. This validates the project's two-tier scoring architecture: county-level rankings identify *where* to invest, while ZIP-level targeting identifies *for whom*.
+
+**Literature note:** Shorrocks (1980) established Theil decomposition methodology. The expert panel found **no prior published study** applying Theil decomposition to EV charging infrastructure inequality — this is a novel contribution.
+
+### "Disadvantaged" Means Something Different Within vs Between Counties
+- Between counties: disadvantage tracks with rurality and poverty (eastern NC, Appalachia)
+- Within counties: disadvantage clusters in specific urban/suburban tracts amid otherwise affluent counties
+- The 84.5% within-county finding means the EV infrastructure equity problem is primarily an *intra-urban* problem, not a rural vs urban divide
+- This reframes the policy conversation: even NC's wealthiest counties have significant disadvantaged populations that are underserved by current infrastructure
+
+---
+
+## Conclusion Section — Draft Guidance
+
+### Five Unique Contributions
+1. First Theil decomposition of EV infrastructure inequality (novel methodology)
+2. Tract-to-ZCTA area-weighted crosswalk integrating federal equity data with local planning units
+3. Multi-dimensional NEVI scoring framework (equity + utilization + cost-effectiveness)
+4. Empirical validation that within-county inequality dominates between-county (84.5%)
+5. Climate sensitivity analysis demonstrating CEJST robustness for NC context
+
+### Seven Anticipated Reviewer Weaknesses (for Limitations section)
+1. **Top-10 county selection limits generalizability** → Framework designed for statewide extensibility; top-10 captures 73% of NC BEV registrations
+2. **LODES 2021 predates post-COVID commuting shifts** → Most recent available; CTPP 2016 would be even older
+3. **CEJST one-strike design may over-identify disadvantaged tracts** → Sensitivity analysis shows 7/10 counties unaffected by removing most contentious category; we adopt federal definitions as-is
+4. **Static BEV registration (no growth trajectory modeling)** → Phase 1 validation quantified forecast accuracy; growth modeling is future work
+5. **Two zero-variance sub-metrics reduce scoring dimensionality** → Would contribute at statewide scale; documented as limitation of 10-county cohort
+6. **No charging behavior data (session frequency, duration)** → AFDC provides infrastructure location, not usage; cite DOE EVSE data gaps
+7. **Area-weighted interpolation assumes uniform population within tracts** → EPA/HUD standard method; dasymetric refinement is future work
+
+### Weight Sensitivity Analysis (HIGH PRIORITY — recommended by panel)
+- Run equity weight at 0.30, 0.35, 0.40, 0.45, 0.50 (holding util:cost ratio constant at 7:5)
+- Goal: confirm top-3 rankings are stable across weight variation
+- Output: small table for paper appendix + one-sentence defense in Methods
+- Script: `code/python/analysis/phase5_weight_sensitivity.py`
+
 ### Sources
 - CEJST v2.0 Technical Support Document (December 2024)
 - Harvard EELP Tracker (CEJST removal documentation)
