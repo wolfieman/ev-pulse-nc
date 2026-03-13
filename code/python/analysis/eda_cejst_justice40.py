@@ -355,7 +355,7 @@ def check_crosswalk_match(nc: pd.DataFrame) -> None:
         print(
             "\n    NOTE: Mismatches are expected due to Census tract "
             "vintage differences\n"
-            "    (CEJST uses 2020 tracts; LEHD crosswalk may use "
+            "    (CEJST uses 2010 tracts; LEHD crosswalk may use "
             "2010/2020 hybrid).\n"
             "    These will be handled via tract-level joins with "
             "appropriate fallbacks."
