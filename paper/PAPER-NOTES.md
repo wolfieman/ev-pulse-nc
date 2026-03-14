@@ -570,4 +570,45 @@ Raw LODES commuter count
 
 ---
 
+## Conference Opportunity — Expert Panel Review (March 13, 2026)
+
+### SEINFORMS 2026 (62nd Annual Southeastern INFORMS Conference)
+- **Dates:** October 14–16, 2026
+- **Location:** Myrtle Beach, SC
+- **Submissions open:** March 30, 2026
+- **Website:** https://www.seinforms.org/ | https://seinforms2026.exordo.com/
+- **Format:** Peer-reviewed papers and presentations; multidisciplinary tracks
+- **Publication benefit:** Conference proceedings + fast-track consideration at 4 Cabell's-indexed journals
+
+### Relevant Tracks
+Operations, Business Analytics, Economics, Supply Chain (among others listed)
+
+### Candidate Submission Topics (for panel discussion)
+1. **NEVI Scoring Framework + Weight Sensitivity** — self-contained, methodologically distinct; demonstrates policy-relevant multi-criteria decision analysis
+2. **Theil-T Decomposition of EV Infrastructure Inequality** — novel contribution (no prior published study per panel's own literature review); strong INFORMS/OR audience fit
+3. **Full paper (all phases)** — comprehensive but may exceed scope for a conference paper
+
+### Questions for Expert Panel
+
+**Dr. Reyes (Methodology):**
+- Is SEINFORMS an appropriate venue for our quantitative methodology, or would a transportation-specific conference (e.g., TRB) be a stronger fit?
+- Which submission slice maximizes methodological impact: the Theil decomposition novelty, or the full scoring framework?
+
+**Dr. Okonkwo (Equity & Policy):**
+- Does the equity framing (Justice40, CEJST, disadvantaged communities) align with SEINFORMS audience expectations, or does it need reframing for an OR/analytics audience?
+- Should we emphasize the policy implications (NEVI funding allocation) or the analytical methodology?
+
+**Dr. Whitfield (Data & Implementation):**
+- Is October 2026 sufficient lead time to produce a conference-quality paper given the current state of the analysis (all 5 phases complete, scoring framework populated)?
+- Should we target a full peer-reviewed paper or a presentation-only submission to test the work first?
+
+### Panel Requested Action
+Please review the conference details above and advise on:
+1. **Go / No-go** — Is SEINFORMS 2026 a worthwhile venue for this work?
+2. **Submission scope** — Which topic slice should we submit?
+3. **Format** — Full paper or presentation?
+4. **Alternative venues** — Are there better-fit conferences we should consider instead of or in addition to SEINFORMS?
+
+---
+
 *Last updated: March 13, 2026*
