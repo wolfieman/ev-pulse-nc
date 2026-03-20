@@ -29,8 +29,8 @@ This document provides a comprehensive conceptual framework for updating EV Puls
 
 The AFDC API (Alternative Fuels Data Center) is maintained by NREL (National Renewable Energy Laboratory) and provides comprehensive real-time data on alternative fuel stations across the United States. For EV Pulse NC, we focus exclusively on electric vehicle charging stations (`fuel_type=ELEC`).
 
-**API Endpoint:** `https://developer.nrel.gov/api/alt-fuel-stations/v1`
-**Documentation:** https://developer.nrel.gov/docs/transportation/alt-fuel-stations-v1/all/
+**API Endpoint:** `https://developer.nlr.gov/api/alt-fuel-stations/v1`
+**Documentation:** https://developer.nlr.gov/docs/transportation/alt-fuel-stations-v1/all/
 **Data Granularity:** Connector-level (individual EVSE units), NOT station-level
 
 ### 1.2 Core Station Identification Fields
@@ -502,7 +502,7 @@ WHERE (jan.ev_dc_fast_num > july.ev_dc_fast_num)
 
 ### 3.1 Query Parameters for NC-Specific Filtering
 
-**Base Endpoint:** `GET https://developer.nrel.gov/api/alt-fuel-stations/v1.json`
+**Base Endpoint:** `GET https://developer.nlr.gov/api/alt-fuel-stations/v1.json`
 
 **NC Electric Charging Stations Query:**
 ```
@@ -516,7 +516,7 @@ Parameters:
 
 **Full Query URL (Conceptual):**
 ```
-https://developer.nrel.gov/api/alt-fuel-stations/v1.json?api_key=YOUR_KEY&state=NC&fuel_type=ELEC&status=E&limit=all
+https://developer.nlr.gov/api/alt-fuel-stations/v1.json?api_key=YOUR_KEY&state=NC&fuel_type=ELEC&status=E&limit=all
 ```
 
 **Response Format:**
@@ -560,7 +560,7 @@ Parameters:
 - **Enforcement:** Exceeding limit results in HTTP 429 error, API key blocked for 1 hour
 
 **API Key Acquisition:**
-- **Registration:** Free at https://developer.nrel.gov/signup/
+- **Registration:** Free at https://developer.nlr.gov/signup/
 - **Approval:** Instant (no waiting period)
 - **Delivery:** API key displayed on screen immediately after form submission
 - **Format:** 40-character alphanumeric string
@@ -577,7 +577,7 @@ Parameters:
 
 **Higher Rate Limits:**
 - Available upon request for production applications
-- Contact: NREL Developer Network support (https://developer.nrel.gov/)
+- Contact: NREL Developer Network support (https://developer.nlr.gov/)
 
 ### 3.4 Data Quality Flags and Confidence Indicators
 
@@ -929,7 +929,7 @@ Conclusion: Using stale infrastructure data OVERSTATES gap by ~22% (54.7 vs. 44.
 ### 6.3 Conceptual Implementation Workflow (NO CODE EXECUTION)
 
 **Step 1: Download Jan 2026 Snapshot**
-- API Call: `GET https://developer.nrel.gov/api/alt-fuel-stations/v1.json?api_key=KEY&state=NC&fuel_type=ELEC&limit=all`
+- API Call: `GET https://developer.nlr.gov/api/alt-fuel-stations/v1.json?api_key=KEY&state=NC&fuel_type=ELEC&limit=all`
 - Save as: `afdc_nc_stations_2026_01.csv`
 - Archive July 2024 snapshot as: `afdc_nc_stations_2024_07.csv`
 
@@ -1022,12 +1022,12 @@ The NREL API offers a straightforward single-request snapshot download with a ge
 
 ## SOURCES
 
-- [NREL Developer Network](https://developer.nrel.gov/)
-- [Alternative Fuel Stations API - All Stations](https://developer.nrel.gov/docs/transportation/alt-fuel-stations-v1/all/)
-- [NREL Web Service Rate Limits](https://developer.nrel.gov/docs/rate-limits/)
+- [NREL Developer Network](https://developer.nlr.gov/)
+- [Alternative Fuel Stations API - All Stations](https://developer.nlr.gov/docs/transportation/alt-fuel-stations-v1/all/)
+- [NREL Web Service Rate Limits](https://developer.nlr.gov/docs/rate-limits/)
 - [AFDC Data Download](https://afdc.energy.gov/data_download)
 - [AFDC Electric Vehicle Charging Infrastructure Trends](https://afdc.energy.gov/fuels/electricity-infrastructure-trends)
-- [Alternative Fuel Stations API - EV Charging Ports](https://developer.nrel.gov/docs/transportation/alt-fuel-stations-v1/ev-charging-units/)
+- [Alternative Fuel Stations API - EV Charging Ports](https://developer.nlr.gov/docs/transportation/alt-fuel-stations-v1/ev-charging-units/)
 - [California AB 2127 EV Charging Infrastructure Dashboards](https://www.energy.ca.gov/data-reports/data-exploration-tools/ab-2127-ev-charging-infrastructure-report-dashboards)
 - [National Electric Vehicle Infrastructure (NEVI) Awards Dashboard](https://evstates.org/awards-dashboard/)
 - [Federal Register: National Electric Vehicle Infrastructure Standards and Requirements](https://www.federalregister.gov/documents/2023/02/28/2023-03500/national-electric-vehicle-infrastructure-standards-and-requirements)

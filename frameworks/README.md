@@ -238,7 +238,7 @@ Based on data investigation (Feb 2026) — original 3-agent framework analysis h
 
 ### AFDC API Details
 
-**Endpoint:** `https://developer.nrel.gov/api/alt-fuel-stations/v1.json`
+**Endpoint:** `https://developer.nlr.gov/api/alt-fuel-stations/v1.json`
 
 **NC Query Parameters:**
 - `state=NC`
@@ -248,7 +248,7 @@ Based on data investigation (Feb 2026) — original 3-agent framework analysis h
 
 **Rate Limits:** 1,000 requests/hour (rolling 60-min window)
 **EV Pulse NC Need:** 1 request per snapshot (well within limits)
-**API Key:** Free, instant approval at https://developer.nrel.gov/signup/
+**API Key:** Free, instant approval at https://developer.nlr.gov/signup/
 
 **Key Fields (50+ total):**
 - `id`, `station_name`, `zip`, `latitude`, `longitude`
