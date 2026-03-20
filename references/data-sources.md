@@ -14,7 +14,7 @@
 
 ### 2. Alternative Fuel Stations - Electric Vehicle Charging
 - **Source:** U.S. Department of Energy, Alternative Fuels Data Center (AFDC)
-- **API:** NREL Alternative Fuel Station Locator (`https://developer.nrel.gov/api/alt-fuel-stations/v1.json`)
+- **API:** NREL Alternative Fuel Station Locator (`https://developer.nlr.gov/api/alt-fuel-stations/v1.json`)
 - **Files:**
   - `afdc-charging-stations-connector-2024-07.csv` — **DCFC-only, public-only, connector-level extract** (355 unique stations, 1,725 rows, 74 fields). Despite the "2024-07" filename, data was updated through Dec 2025 (max `Updated At`: 2025-12-22). Likely downloaded from the AFDC website in late Dec 2025 or Jan 2026, not July 2024. Retained for reference only.
   - `afdc-charging-stations-connector-2026-02.csv` — **Complete station-level API download** (1,985 stations, 76 fields). All charging levels (L1, L2, DCFC), all access types (public + private). This is the primary infrastructure dataset.

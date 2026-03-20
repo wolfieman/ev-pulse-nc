@@ -647,7 +647,7 @@ Based on analysis across all five decision nodes:
 **Expected Outcome:** Jan 2026 infrastructure baseline (400-450 stations, up 12-27% from July 2024) establishes current reference point for gap analysis, ZIP-level analysis, workplace charging classification, and buffer analysis. Eliminates 6-month temporal mismatch, strengthens academic credibility, improves policy recommendation validity.
 
 **Next Steps:**
-1. Apply for NREL API key immediately (instant approval): https://developer.nrel.gov/signup/
+1. Apply for NREL API key immediately (instant approval): https://developer.nlr.gov/signup/
 2. Review nrel-api-access-guide.md for implementation details
 3. Schedule AFDC update for Week 1, Day 1 (before other priorities)
 4. Validate Jan 2026 data quality by spot-checking spatial joins and confirming county assignments
