@@ -544,6 +544,18 @@ Raw LODES commuter count
 - Script: `code/python/analysis/phase5_weight_sensitivity.py`
 - Output: `data/processed/scoring-weight-sensitivity.csv`
 
+### TODO: VIF / Multicollinearity Check on Scoring Framework
+- **Status:** NOT YET IMPLEMENTED — action plan at `paper/vif-scoring-framework-action-plan.md`
+- **What:** Compute Variance Inflation Factors for the 3 scoring pillars (equity, utilization, cost-effectiveness) to verify they are sufficiently independent
+- **Why:** Addresses Dr. Al-Ghandour's defensibility feedback; standard check for weighted composites; SAS Training 2 Module 5 flagged this as critical
+- **When:** During paper writing, before finalizing Results section
+- **Script to create:** `code/python/analysis/scoring_framework_vif.py`
+- **Paper placement:** VIF table in Results; interpretation in Methodology/Discussion
+- **Caveat:** n=10 counties limits statistical power; recompute if extended to 100
+- **Expected outcome:** VIF likely 1-3 (pillars are conceptually distinct), but must be verified
+
+---
+
 ### Renter Tenure Equity Indicator — Scope Decision
 - Phase 5 plan (pre-approved March 12) included ACS B25003 renter share as an equity sub-metric input
 - **Decision: Not included as a scoring sub-metric.** The equity pillar uses 4 sub-metrics (justice40_pct 0.40, gini_weighted 0.30, underserved_zips 0.20, zero_station_pct 0.10). Renter share was not added as a 5th sub-metric because:
