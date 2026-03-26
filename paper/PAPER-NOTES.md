@@ -345,8 +345,8 @@ Raw LODES commuter count
 - **For presentation:** Note that CEJST was taken offline by the current administration but data was preserved by the scientific community — demonstrates data governance awareness
 
 ### CEJST Headline Finding
-- 934 of 2,195 NC census tracts (42.6%) flagged as disadvantaged under Justice40
-- Substantially above the national average (~27%)
+- 934 of 2,170 evaluable NC census tracts (43.0%) flagged as disadvantaged under Justice40 (2,195 total tracts minus 25 zero-population tracts)
+- Substantially above the national average (~37% of US tracts)
 - Reflects NC's mix of rural poverty (eastern NC, Appalachian counties) and urban disadvantage
 - Reinforces the 0.40 equity weight in the NEVI Priority Score — nearly half of NC tracts qualify
 - Per-county breakdown needed from EDA to identify which study counties have highest/lowest rates
@@ -543,6 +543,14 @@ Raw LODES commuter count
 - **Paper defense sentence:** "Rankings are robust to ±10 percentage-point variation in equity weight, with the top-three counties unchanged across all scenarios tested."
 - Script: `code/python/analysis/phase5_weight_sensitivity.py`
 - Output: `data/processed/scoring-weight-sensitivity.csv`
+
+### TODO: NEVI Scoring Visualization (fig-43 planned)
+- **Status:** NOT YET CREATED
+- **What:** Bar chart of NEVI Priority Scores by county with stacked or grouped component breakdown (equity, utilization, cost-effectiveness)
+- **Why:** The scoring table exists in the progress report (Section 6.6) but a visual would strengthen the final paper and presentation
+- **Script to create:** `code/python/analysis/phase5_fig43_scoring_barchart.py` (new)
+- **Placement:** Final paper Results section, final presentation
+- **Priority:** LOW for progress report (table suffices), HIGH for final paper/presentation
 
 ### TODO: VIF / Multicollinearity Check on Scoring Framework
 - **Status:** NOT YET IMPLEMENTED — action plan at `paper/vif-scoring-framework-action-plan.md`
