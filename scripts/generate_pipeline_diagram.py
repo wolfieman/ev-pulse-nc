@@ -226,9 +226,9 @@ def create_pipeline_diagram():
     draw_arrow(ax, x_gap + 1.0, y_gap - gap_h / 2, x_lens[2], y_lenses + lens_box_h / 2,
                linewidth=1.8, color="#4A6D8C")
 
-    # Phase 3 — ZIP Code (WHERE) — NEXT
-    draw_rounded_box(ax, x_lens[0], y_lenses, lens_w, lens_box_h, C_NEXT,
-                     C_BORDER_NEXT, linewidth=2)
+    # Phase 3 — ZIP Code (WHERE) — COMPLETE
+    draw_rounded_box(ax, x_lens[0], y_lenses, lens_w, lens_box_h, C_COMPLETE,
+                     C_BORDER_COMPLETE, linewidth=2)
     draw_text(ax, x_lens[0], y_lenses + 0.45, "Phase 3", fontsize=8,
               color="#D4E4F7")
     draw_text(ax, x_lens[0], y_lenses + 0.15, "ZIP Code", fontsize=11,
@@ -237,13 +237,13 @@ def create_pipeline_diagram():
               color="#D4E4F7", weight="semibold")
     draw_text(ax, x_lens[0], y_lenses - 0.40, "Sub-county gaps", fontsize=7.5,
               color="#B4C7E0")
-    draw_text(ax, x_lens[0], y_lenses - 0.58, "4\u20136 hrs", fontsize=7,
+    draw_text(ax, x_lens[0], y_lenses - 0.58, "Mar 2026", fontsize=7,
               color="#A0B8D0")
-    draw_status_badge(ax, x_lens[0] + lens_w / 2 - 0.4, y_lenses + lens_box_h / 2 + 0.22, "NEXT")
+    draw_status_badge(ax, x_lens[0] + lens_w / 2 - 0.55, y_lenses + lens_box_h / 2 + 0.22, "COMPLETE")
 
-    # Phase 4 — CTPP Workplace (WHO) — PENDING
-    draw_rounded_box(ax, x_lens[1], y_lenses, lens_w, lens_box_h, C_PENDING,
-                     C_BORDER_PENDING, linewidth=1.8)
+    # Phase 4 — CTPP Workplace (WHO) — COMPLETE
+    draw_rounded_box(ax, x_lens[1], y_lenses, lens_w, lens_box_h, C_COMPLETE,
+                     C_BORDER_COMPLETE, linewidth=2)
     draw_text(ax, x_lens[1], y_lenses + 0.45, "Phase 4", fontsize=8,
               color="#E8F0F8")
     draw_text(ax, x_lens[1], y_lenses + 0.15, "CTPP Workplace", fontsize=10.5,
@@ -252,24 +252,24 @@ def create_pipeline_diagram():
               color="#E0ECF5", weight="semibold")
     draw_text(ax, x_lens[1], y_lenses - 0.40, "Commuter charging", fontsize=7.5,
               color="#C0D4E8")
-    draw_text(ax, x_lens[1], y_lenses - 0.58, "3 hrs", fontsize=7,
+    draw_text(ax, x_lens[1], y_lenses - 0.58, "Mar 2026", fontsize=7,
               color="#A8C4DC")
-    draw_status_badge(ax, x_lens[1] + lens_w / 2 - 0.55, y_lenses + lens_box_h / 2 + 0.22, "PENDING")
+    draw_status_badge(ax, x_lens[1] + lens_w / 2 - 0.55, y_lenses + lens_box_h / 2 + 0.22, "COMPLETE")
 
-    # Phase 5 — HEPGIS Equity (EQUITY) — PENDING
-    draw_rounded_box(ax, x_lens[2], y_lenses, lens_w, lens_box_h, C_PENDING,
-                     C_BORDER_PENDING, linewidth=1.8)
+    # Phase 5 — CEJST Equity (EQUITY) — COMPLETE
+    draw_rounded_box(ax, x_lens[2], y_lenses, lens_w, lens_box_h, C_COMPLETE,
+                     C_BORDER_COMPLETE, linewidth=2)
     draw_text(ax, x_lens[2], y_lenses + 0.45, "Phase 5", fontsize=8,
               color="#E8F0F8")
-    draw_text(ax, x_lens[2], y_lenses + 0.15, "HEPGIS Equity", fontsize=10.5,
+    draw_text(ax, x_lens[2], y_lenses + 0.15, "CEJST Equity", fontsize=10.5,
               color=C_TEXT_LIGHT, weight="bold")
     draw_text(ax, x_lens[2], y_lenses - 0.12, "EQUITY", fontsize=9,
               color="#E0ECF5", weight="semibold")
     draw_text(ax, x_lens[2], y_lenses - 0.40, "Justice40 communities", fontsize=7.5,
               color="#C0D4E8")
-    draw_text(ax, x_lens[2], y_lenses - 0.58, "TBD", fontsize=7,
+    draw_text(ax, x_lens[2], y_lenses - 0.58, "Apr 2026", fontsize=7,
               color="#A8C4DC")
-    draw_status_badge(ax, x_lens[2] + lens_w / 2 - 0.55, y_lenses + lens_box_h / 2 + 0.22, "PENDING")
+    draw_status_badge(ax, x_lens[2] + lens_w / 2 - 0.55, y_lenses + lens_box_h / 2 + 0.22, "COMPLETE")
 
     # ════════════════════════════════════════════════════════════════════════
     # Cross-feed arrows (secondary data flows)

@@ -107,11 +107,11 @@ NAN_COLUMN_DOCS: dict[str, tuple[str, str]] = {
         "requires min-max scaling across full state",
     ),
     "equity_justice40_pct": (
-        "Phase 5 (HEPGIS)",
+        "Phase 5 (CEJST)",
         "Percentage of census tracts designated as Justice40 disadvantaged communities",
     ),
     "equity_score": (
-        "Phase 3 + Phase 5 (HEPGIS)",
+        "Phase 3 + Phase 5 (CEJST)",
         "Cannot compute without Justice40 data; "
         "Gini and zero-station metrics alone are insufficient",
     ),
@@ -343,7 +343,7 @@ def build_skeleton(
 
     skeleton["equity_justice40_pct"] = np.nan
     skeleton["equity_score"] = np.nan
-    skeleton["equity_source"] = "Phase 3 + Phase 5 (HEPGIS)"
+    skeleton["equity_source"] = "Phase 3 + Phase 5 (CEJST)"
 
     # --- Composite ---
     skeleton["nevi_priority_score"] = np.nan
@@ -495,7 +495,7 @@ def main() -> None:
         f"{WEIGHT_COST_EFFECTIVENESS:.2f} x Cost_Effectiveness_Score"
     )
     print(
-        "\n  Status: BLOCKED -- awaiting Phase 5 (HEPGIS) data\n"
+        "\n  Status: Superseded by scoring_framework_final.py (Phase 5 CEJST implementation)\n"
     )
 
 
