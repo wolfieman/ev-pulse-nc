@@ -1,5 +1,7 @@
 # Priority #3: CTPP Commuting Data - Complete Conceptual Framework
 
+> **Status update (Apr 2026):** The core analysis described below is complete and merged (Phase 4 CTPP/LEHD). See `frameworks/analytical-pipeline.md` and `data/processed/phase4-*.csv`. The "Phase 3B" sub-section below describes potential future extensions and remains aspirational.
+
 ## Executive Summary
 
 CTPP integration transforms EV infrastructure analysis from a single-dimension residential model to a dual-dimension residential + workplace model. The current analysis misses a critical component: workplace charging demand driven by inter-county commuting patterns.
