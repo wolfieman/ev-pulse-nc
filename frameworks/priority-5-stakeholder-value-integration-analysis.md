@@ -1,5 +1,7 @@
 # Priority #5: AFDC API Update - Stakeholder Value & Integration Analysis
 
+> **Historical document — Apr 2026 update.** This document was written in February 2026, before two key project changes: (1) the "July 2024 AFDC file" referenced below was identified as a DCFC-only public extract (not a full snapshot), so the dual-snapshot framing was abandoned in favor of the Feb 2026 full API pull (1,985 stations, 6,145 connectors); (2) the Phase 5 equity layer was pivoted from HEPGIS Justice40 corridors to CEJST tract-level Justice40 designations. The decision logic in this document remains valuable as a record of how those choices were made; the specific counts and the HEPGIS framing are historical. See `frameworks/analytical-pipeline.md` and `frameworks/README.md` for current state.
+
 > **Related frameworks:** This is one of three Priority #5 AFDC analyses. See also [Decision Framework](priority-5-afdc-update-decision-framework.md) (5-node decision tree, risk assessment) and [Data Structure & Snapshot Comparison](afdc-data-structure-snapshot-comparison-framework.md) (API fields, comparison methodology).
 
 ## Executive Summary
