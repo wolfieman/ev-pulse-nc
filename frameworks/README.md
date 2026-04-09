@@ -2,7 +2,7 @@
 
 **Purpose:** This directory contains conceptual frameworks and decision analyses for the EV Pulse NC BIDA 670 capstone project. These documents define WHAT to analyze and WHY, not HOW to implement.
 
-**Status:** Phase 1 Complete (Feb 2026)
+**Status:** All 5 phases complete (Apr 2026)
 **Scope:** Research priorities, decision trees, integration strategies
 **Implementation:** None—these are conceptual roadmaps only
 
@@ -47,9 +47,9 @@ EV Pulse NC research priorities and phases (aligned Feb 26, 2026):
 | **2** | **2** (was #5) | AFDC Infrastructure Data | **Phase 2 Complete** | Complete API dataset replaces DCFC-only extract (1,985 stations, all levels) |
 | **3** | **3** (was #2) | ZIP Code Analysis | ✅ Framework Complete ([zip-code-analysis.md](./zip-code-analysis.md)) | Infrastructure-only (adoption data unavailable at ZIP level) |
 | **4** | **4** (was #3) | CTPP Commuting Data | ✅ Framework Complete ([ctpp-analysis.md](./ctpp-analysis.md)) | Top 15 employment centers, 30% workplace charging assumption |
-| **5** | **5** (was #4) | HEPGIS Equity Analysis | ⏳ Pending | Justice40 integration (not yet started) |
-| **6** | **6** | Buffer Analysis | ⏳ Pending | Coverage zones (not yet started) |
-| **7** | **7** | NCDOT NEVI Corridor Validation | ⏳ Optional | Compare scoring framework output vs. NCDOT planned deployments |
+| **5** | **5** (was #4) | CEJST Equity Analysis | **Phase 5 Complete** | CEJST Justice40 tract overlay; county + ZCTA Justice40 shares; climate sensitivity; weight sensitivity; figures 39–42 |
+| **6** | **6** | Buffer Analysis | **Future Direction** | Coverage zones — preserved for post-capstone roadmap |
+| **7** | **7** | NCDOT NEVI Corridor Validation | **Future Direction** | Compare scoring framework output vs. NCDOT planned deployments — post-capstone roadmap |
 
 ### Phase 5: Prescriptive Scoring Framework (Integration Layer)
 
@@ -62,7 +62,7 @@ NEVI Priority Score(county) = w1 × Equity_Score + w2 × Utilization_Score + w3 
 
 | Component | Source Extension | Metrics |
 |-----------|----------------|---------|
-| **Equity_Score** | HEPGIS + ZIP code analysis (#3/#5) | Justice40 disadvantaged community %, Gini coefficient, rural access gap, zero-infrastructure flag |
+| **Equity_Score** | CEJST Justice40 equity (Phase 5) + Phase 3 ZIP analysis | Justice40 disadvantaged community %, Gini coefficient, rural access gap, zero-infrastructure flag |
 | **Utilization_Score** | Validation (#1) + AFDC complete baseline (#2) | BEVs/port ratio across all charging levels (L1, L2, DCFC), 4-5% underprediction buffer |
 | **Cost_Effectiveness_Score** | CTPP workplace charging (#4) | Workplace efficiency (15 vs 7.5 BEVs/port), commuter demand sizing, population density |
 
@@ -125,10 +125,10 @@ NEVI Priority Score(county) = w1 × Equity_Score + w2 × Utilization_Score + w3 
 - **Key Insight:** Workplace infrastructure 3x more efficient (15 EVs/port) than residential (7.5 EVs/port) but smaller absolute gap
 - **Recommendation:** Focus on top 15 employment centers, not all 100 counties
 
-### Priority #5 / Phase 5: HEPGIS Equity Analysis
+### Priority #5 / Phase 5: CEJST Equity Analysis
 - **Core Question:** Which communities face inequitable access to EV charging?
-- **Key Framework:** Justice40 integration — 40% of benefits to disadvantaged communities
-- **Status:** Not yet started
+- **Key Framework:** CEJST tract-level Justice40 designations — 40% of benefits to disadvantaged communities
+- **Status:** Complete (Mar–Apr 2026). Delivered: county + ZCTA Justice40 shares, climate-subset sensitivity, weight sensitivity, publication figures 39–42
 
 ### Priority #7 / Phase 7: NCDOT NEVI Corridor Validation (OPTIONAL)
 - **Source:** Dr. Al-Ghandour introduced the NCDOT NEVI Mapping Tool during Week 6 check-in (Feb 20, 2026)
@@ -289,8 +289,8 @@ All frameworks created by expert agent analysis (Jan 30, 2026) for EV Pulse NC B
 ### Version Control
 
 - **Created:** January 30, 2026
-- **Last Updated:** February 26, 2026
-- **Status:** Phases 1-2 Complete; Priority numbers realigned to match phase numbers (old #5 → #2, old #2-4 → #3-5); Scoring framework defined; NCDOT corridor validation added as optional Priority #7
+- **Last Updated:** April 2026
+- **Status:** All 5 core phases complete (Phase 1 Validation, Phase 2 AFDC Update, Phase 3 ZIP Analysis, Phase 4 Workplace Charging, Phase 5 CEJST Equity). Phases 6 (Buffer) and 7 (NCDOT Corridor Validation) preserved as Future Directions for the post-capstone roadmap.
 
 ### Related Documentation
 
