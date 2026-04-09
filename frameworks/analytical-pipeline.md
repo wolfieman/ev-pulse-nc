@@ -258,7 +258,9 @@ This table maps each pipeline phase to the corresponding section of the BIDA 670
 | [zip-code-analysis.md](./zip-code-analysis.md) | 3 | Sub-county spatial analysis framework, data availability constraints |
 | [ctpp-analysis.md](./ctpp-analysis.md) | 4 | Workplace charging demand framework, CTPP data structure, remote work adjustments |
 | [afdc-api-analysis.md](./afdc-api-analysis.md) | 2 | NREL API technical specifications, query parameters |
-| [afdc-data-structure-snapshot-comparison-framework.md](./afdc-data-structure-snapshot-comparison-framework.md) | 2 | AFDC data structure (50+ fields), infrastructure classification |
+| [afdc-dataset-reference.md](./afdc-dataset-reference.md) | 2 | AFDC dataset source, vintage, current counts |
+| [afdc-data-structure.md](./afdc-data-structure.md) | 2 | AFDC schema reference (76 fields), infrastructure classification |
+| [stakeholder-value-analysis.md](./stakeholder-value-analysis.md) | All | Stakeholder value of the delivered scoring framework |
 
 ---
 
