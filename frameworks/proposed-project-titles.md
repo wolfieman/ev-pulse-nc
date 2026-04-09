@@ -118,7 +118,7 @@ Each title corresponds to specific analytical priorities:
 - [validation-analysis.md](./validation-analysis.md) - Priority #1: Forecast validation
 - [zip-code-analysis.md](./zip-code-analysis.md) - Priority #2: Sub-county spatial analysis
 - [ctpp-analysis.md](./ctpp-analysis.md) - Priority #3: Workplace charging demand
-- [priority-5-afdc-update-decision-framework.md](./priority-5-afdc-update-decision-framework.md) - Priority #5: Dual-snapshot infrastructure
+- [afdc-dataset-reference.md](./afdc-dataset-reference.md) - Phase 2: AFDC infrastructure dataset reference
 
 ---
 

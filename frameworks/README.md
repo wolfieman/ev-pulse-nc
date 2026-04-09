@@ -16,9 +16,9 @@ Comprehensive decision frameworks with trade-off analyses, stakeholder assessmen
 
 | Framework | Priority | Size | Status | Description |
 |-----------|----------|------|--------|-------------|
-| **[priority-5-afdc-update-decision-framework.md](./priority-5-afdc-update-decision-framework.md)** | #5 | 31K | ✅ Complete | 5-node decision tree for AFDC infrastructure data update (Value Proposition → Update Scope → Temporal Strategy → Integration → Data Currency) |
-| **[priority-5-stakeholder-value-integration-analysis.md](./priority-5-stakeholder-value-integration-analysis.md)** | #5 | 24K | ✅ Complete | Stakeholder differential value matrix (NEVI admins, county planners, private sector, academic, public) + integration with Priorities #1-3 |
-| **[afdc-data-structure-snapshot-comparison-framework.md](./afdc-data-structure-snapshot-comparison-framework.md)** | #5 | 53K | ✅ Complete | AFDC API capabilities, data structure (50+ fields), snapshot comparison methodology, infrastructure classification for ZIP/CTPP integration |
+| **[afdc-dataset-reference.md](./afdc-dataset-reference.md)** | #2 | — | ✅ Current | AFDC dataset source, vintage, file paths, current counts (1,985 stations / 6,145 connectors / 267 cities / 358 ZIPs), refresh cadence, downstream usage |
+| **[afdc-data-structure.md](./afdc-data-structure.md)** | #2 | — | ✅ Current | Field-level schema reference for the 76-column AFDC station-level CSV; identification, geography, charging, facility, temporal fields |
+| **[stakeholder-value-analysis.md](./stakeholder-value-analysis.md)** | All | — | ✅ Current | Stakeholder value of the delivered NEVI scoring framework (NEVI admins, county planners, private operators, academic, public/Justice40 communities) |
 | **[analytical-pipeline.md](./analytical-pipeline.md)** | All | — | ✅ Complete | Project analytical pipeline architecture: foundation (demand + supply) → gap analysis → three lenses (ZIP, CTPP, equity) → scoring framework → NEVI rankings |
 
 ### Analysis Notes (Text)
