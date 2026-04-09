@@ -2,9 +2,19 @@
 
 **Audience:** Dr. Majed Al-Ghandour, BIDA 670 Instructor
 **Purpose:** Clarify project structure, baseline vs. extensions, and methodological innovation
-**Date:** February 1, 2026
+**Date:** February 1, 2026 (original); current-state banner added April 2026
 
 ---
+
+## Current State (Apr 2026)
+
+All five project extensions are merged into `main`: Phase 1 (Validation), Phase 2 (AFDC Update), Phase 3 (ZIP Analysis), Phase 4 (Workplace Charging / LEHD), Phase 5 (CEJST Equity). The Phase 5 equity layer was implemented using CEJST tract-level Justice40 designations, not HEPGIS corridors. The current AFDC infrastructure baseline is 1,985 stations and 6,145 connectors (all levels L1/L2/DCFC, Feb 2026 API download); the earlier 355/1,725 numbers used below were later identified as a DCFC-only public extract, and the dual-snapshot growth framing described in this document was abandoned once that was discovered. For the current analytical pipeline and results narrative, see `frameworks/analytical-pipeline.md` and `paper/PAPER-NOTES.md`.
+
+---
+
+## Historical Proposal (Feb 1, 2026)
+
+The sections below are preserved as the original proposal-stage explanation.
 
 ## Project Overview
 
