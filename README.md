@@ -9,7 +9,7 @@
 
 North Carolina's battery electric vehicle (BEV) fleet has experienced explosive growth, expanding from 5,165 vehicles in September 2018 to 94,371 in June 2025—a **1,727% increase** with a **53.8% compound annual growth rate (CAGR)**. However, public charging infrastructure has not kept pace, creating a widening gap that threatens the equitable transition to electric mobility.
 
-This project applies a comprehensive **5-phase analytics framework**—exploratory, descriptive, diagnostic, predictive, and prescriptive analysis—to:
+This project applies the standard 5-part analytics framework — exploratory, descriptive, diagnostic, predictive, and prescriptive — across the project's five merged extensions (see `frameworks/analytical-pipeline.md` for the extension-by-extension pipeline) to:
 
 1. **Quantify infrastructure gaps** at the county level across North Carolina
 2. **Forecast future demand** using time series models
@@ -29,7 +29,7 @@ This project applies a comprehensive **5-phase analytics framework**—explorato
 - **Research Triangle Leadership:** Wake + Durham + Orange counties = **35.2%** of state total
 
 ### Supply-Side Analysis
-- **Infrastructure Snapshot:** 355 charging stations, 1,725 individual charging units
+- **Infrastructure Snapshot (Feb 2026):** 1,985 charging stations, 6,145 charging connectors (all levels L1/L2/DCFC, 267 cities, 358 ZIPs)
 - **Tesla Dominance:** **60.5%** of all charging connectors despite only **24.8%** of stations
 - **High-Power Focus:** **80.5%** of units provide ≥150 kW charging capacity
 - **Recent Deployment Surge:** **47.6%** of all infrastructure added in 2024-2025 alone
@@ -64,7 +64,7 @@ This project applies a comprehensive **5-phase analytics framework**—explorato
   - 8,200 observations (100 counties × 82 months)
   - September 2018 - June 2025
 - **Alternative Fuels Data Center (AFDC)** - U.S. Department of Energy
-  - 1,725 charging connector records across 355 stations
+  - 6,145 charging connector records across 1,985 stations (Feb 2026 API download; all levels L1/L2/DCFC)
   - Detailed capacity and technology data
 
 ---
@@ -166,23 +166,25 @@ ev-pulse-nc/
 
 ---
 
-## 📊 Analytical Workflow
+## 📊 Analytical Approach
 
-### Phase 1: Exploratory Analysis
+EV Pulse NC applies the standard 5-part analytics framework — exploratory, descriptive, diagnostic, predictive, and prescriptive — across the project's five merged extensions (see `frameworks/analytical-pipeline.md` for the extension-by-extension pipeline).
+
+### Exploratory Analysis
 - **Objective:** Profile data quality, identify patterns, and assess completeness
 - **Outputs:**
   - Data quality reports
   - Missing value analysis
   - Initial visualizations and distributions
 
-### Phase 2: Descriptive Analysis
+### Descriptive Analysis
 - **Objective:** Characterize historical BEV adoption and infrastructure deployment
-- **Outputs:** 
+- **Outputs:**
   - Time series trends (statewide and county-level)
   - Geographic distribution maps
   - Summary statistics by urban/rural classification
 
-### Phase 3: Diagnostic Analysis
+### Diagnostic Analysis
 - **Objective:** Identify where infrastructure gaps exist and their severity
 - **Key Metrics:**
   - BEVs per charging station (accessibility metric)
@@ -193,7 +195,7 @@ ev-pulse-nc/
   - Urban vs. rural disparity analysis
   - Zero-infrastructure county identification
 
-### Phase 4: Predictive Analysis (COMPLETE)
+### Predictive Analysis
 - **Objective:** Forecast future BEV adoption to anticipate infrastructure needs
 - **Methods:**
   - SAS Model Studio auto-selected models per county
@@ -210,10 +212,10 @@ ev-pulse-nc/
   - 95% confidence intervals
   - 8 publication-quality figures (600 DPI, PDF exports)
 
-### Phase 5: Prescriptive Analysis
+### Prescriptive Analysis
 - **Objective:** Optimize infrastructure investment allocation
 - **Framework:**
-  - Composite scoring: Current gap + Forecasted growth + Equity considerations
+  - Composite scoring: Current gap + Forecasted growth + Equity considerations (CEJST Justice40)
   - Investment strategies by county type (urban densification, rural corridor coverage)
   - NEVI funding optimization (80/20 cost-share model)
 - **Outputs:**
@@ -246,7 +248,7 @@ This analysis stands out through:
 
 1. **Sophisticated Gap Metrics** - Capacity-weighted analysis (BEVs per kW) vs. simple station counts
 2. **County-Level Granularity** - 100 counties × 82 months = 8,200 observations
-3. **Connector-Level Detail** - 1,725 individual charging units analyzed (4.85x more granular than station-level)
+3. **Connector-Level Detail** - 6,145 individual charging connectors analyzed (3.1x more granular than station-level)
 4. **Equity Focus** - Urban-rural disparity analysis with Gini coefficient quantification
 5. **5-Phase Completeness** - Full exploratory → descriptive → diagnostic → predictive → prescriptive workflow
 
@@ -317,5 +319,5 @@ For questions about this analysis or collaboration opportunities:
 
 ---
 
-**Status:** Phase 1 Complete (Forecast Validation)
-**Last Updated:** February 2026
+**Status:** All 5 phases complete (Phase 1 Validation, Phase 2 AFDC Update, Phase 3 ZIP Analysis, Phase 4 Workplace Charging, Phase 5 CEJST Equity)
+**Last Updated:** April 2026
