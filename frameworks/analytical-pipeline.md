@@ -3,7 +3,7 @@
 **Project:** EV Pulse NC — BIDA 670 Advanced Analytics Capstone
 **Author:** Wolfgang Sanyer, Fayetteville State University
 **Advisor:** Dr. Majed Al-Ghandour
-**Date:** February 26, 2026
+**Date:** April 2026 (last updated)
 
 ---
 
@@ -62,9 +62,9 @@ The pipeline answers one question: **Where should North Carolina invest its fede
                  v                   v                   v
  +--------------+--+  +-------------+---+  +------------+-----+
  | PHASE 3         |  | PHASE 4         |  | PHASE 5          |
- | ZIP Code        |  | CTPP Workplace  |  | HEPGIS Equity    |
+ | ZIP Code        |  | CTPP Workplace  |  | CEJST Equity     |
  | Analysis        |  | Charging        |  | Analysis         |
- | [PENDING]       |  | [PENDING]       |  | [PENDING]        |
+ | [COMPLETE]      |  | [COMPLETE]      |  | [COMPLETE]       |
  |                 |  |                 |  |                  |
  | Sub-county      |  | Census commute  |  | Justice40        |
  | infrastructure  |  | data sizes      |  | disadvantaged    |
@@ -76,7 +76,7 @@ The pipeline answers one question: **Where should North Carolina invest its fede
  | counties        |  | bidirectional   |  | disadvantaged    |
  |                 |  | flow analysis   |  | communities      |
  |                 |  |                 |  |                  |
- | Est: 4-6 hours  |  | Est: 3 hours    |  | Est: TBD         |
+ | Complete        |  | Complete        |  | Complete         |
  +--------+--------+  +--------+--------+  +--------+---------+
           |                     |                     |
           | Utilization         | Cost-Effectiveness  | Equity
@@ -132,11 +132,11 @@ The pipeline answers one question: **Where should North Carolina invest its fede
 |:-----:|:--------:|-------|--------|-----------|-----------------|-------------------|
 | **1** | 1 | Predictive Validation | **COMPLETE** | -- | 8 publication figures, MAPE 4.36%, bias analysis | Utilization Score (validated BEV forecasts) |
 | **2** | 2 | AFDC Infrastructure Data | **COMPLETE** | -- | 1,985 stations, 6,145 connectors, all levels/access types | Utilization Score (BEVs-per-port ratios) |
-| **3** | 3 | ZIP Code Analysis (WHERE) | **PENDING** | 4-6 hrs | Top 20 underserved ZIPs, Wake County heat map, Gini coefficient | Utilization Score + Equity Score |
-| **4** | 4 | CTPP Workplace Charging (WHO/WHEN) | **PENDING** | 3 hrs | Top 10 employment centers, commuter flow map | Cost-Effectiveness Score |
-| **5** | 5 | HEPGIS Equity Analysis (EQUITY) | **PENDING** | TBD | Justice40 overlay, disadvantaged community mapping | Equity Score (weight: 0.40) |
-| **6** | 6 | Buffer Analysis | Optional | TBD | Coverage zone maps, "charging desert" identification | Enhancement only |
-| **7** | 7 | NCDOT NEVI Corridor Validation | Optional | 3-5 hrs | Comparison of scores vs. NCDOT planned deployments | Validation benchmark |
+| **3** | 3 | ZIP Code Analysis (WHERE) | **COMPLETE** | Mar 2026 | Top 20 underserved ZIPs, Wake County heat map, Gini coefficient | Utilization Score + Equity Score |
+| **4** | 4 | CTPP Workplace Charging (WHO/WHEN) | **COMPLETE** | Mar 2026 | Top 10 employment centers, commuter flow map | Cost-Effectiveness Score |
+| **5** | 5 | CEJST Equity Analysis (EQUITY) | **COMPLETE** | Apr 2026 | CEJST tract-level Justice40 overlay, county + ZCTA disadvantaged community shares, climate sensitivity, weight sensitivity, figures 39–42 | Equity Score (weight: 0.40) |
+| **6** | 6 | Buffer Analysis | Future Direction | — | Coverage zone maps, "charging desert" identification | Post-capstone roadmap |
+| **7** | 7 | NCDOT NEVI Corridor Validation | Future Direction | — | Comparison of scores vs. NCDOT planned deployments | Post-capstone roadmap |
 
 ---
 
@@ -211,20 +211,15 @@ Ranked list of all 100 North Carolina counties with:
 | **Phase 1: Predictive Validation** | Feb 2026 | MAPE 4.36%, 68.9% underprediction bias, 8 publication figures (600 DPI, PDF) |
 | **Phase 2: AFDC Infrastructure Data** | Feb 2026 | Complete API download: 1,985 stations, 6,145 connectors, L1/L2/DCFC, all access types, 267 cities, 358 ZIPs |
 | **Phase 3: ZIP Code Analysis** | Mar 2026 | 134 ZIPs in 10 counties analyzed; Gini 0.566 statewide; Theil decomposition: 84.5% within-county inequality; 34 publication figures (fig-08 to fig-34); scoring framework skeleton (9/17 columns populated) |
+| **Phase 4: CTPP Workplace Charging** | Mar 2026 | LEHD/LODES employment centers, commuter flow analysis, workplace-vs-residential efficiency comparison, figures fig-35 to fig-38 |
+| **Phase 5: CEJST Equity Analysis** | Apr 2026 | CEJST tract-level Justice40 overlay, county + ZCTA Justice40 shares, climate-subset sensitivity, weight sensitivity, figures fig-39 to fig-42 |
 
-### Pending (Core)
+### Future Directions
 
-| Phase | Estimated Effort | Dependencies | Next Step |
-|-------|-----------------|--------------|-----------|
-| **Phase 4: CTPP Workplace Charging** | 3 hours | Phase 2 data (complete) | Download CTPP tables for top 15 employment centers |
-| **Phase 5: HEPGIS Equity Analysis** | TBD | Phase 3 data | Overlay Justice40 boundaries on infrastructure map |
-
-### Optional (Enhancement)
-
-| Phase | Estimated Effort | Value |
-|-------|-----------------|-------|
-| **Phase 6: Buffer Analysis** | TBD | Visual identification of "charging deserts" by distance |
-| **Phase 7: NCDOT Validation** | 3-5 hours | Validates methodology against NCDOT's actual planned NEVI deployments |
+| Phase | Value |
+|-------|-------|
+| **Phase 6: Buffer Analysis** | Visual identification of "charging deserts" by distance — preserved for post-capstone roadmap |
+| **Phase 7: NCDOT Validation** | Validates methodology against NCDOT's planned NEVI deployments — preserved for post-capstone roadmap |
 
 ### Critical Path
 
@@ -234,7 +229,7 @@ The minimum viable analysis requires Phases 1-5 plus the Scoring Framework:
 Phase 1 (done) + Phase 2 (done) --> Gap Analysis --> Phases 3, 4, 5 --> Scoring --> Rankings
 ```
 
-Phases 3 and 4 can proceed in parallel (both depend only on Phase 2 output). Phase 5 can also proceed independently but may benefit from Phase 3 ZIP boundaries. Total remaining core effort: approximately 7-9 hours plus Phase 5 (TBD).
+All core phases complete.
 
 ---
 
@@ -249,7 +244,7 @@ This table maps each pipeline phase to the corresponding section of the BIDA 670
 | **Gap Analysis** | Results | County-level demand-supply comparison, identification of highest-gap counties, BEVs-per-port ratios |
 | **Phase 3: ZIP Code Analysis** | Results | Sub-county gap analysis: top 20 underserved ZIPs, Wake County heat map, Gini coefficient for intra-county inequality |
 | **Phase 4: CTPP Workplace** | Results | Workplace charging demand: top 10 employment centers, commuter flow analysis, 3x efficiency finding (15 vs. 7.5 EVs/port) |
-| **Phase 5: HEPGIS Equity** | Results + Discussion | Results: Justice40 overlay, disadvantaged community mapping. Discussion: policy implications for equitable NEVI deployment |
+| **Phase 5: CEJST Equity** | Results + Discussion | Results: CEJST tract-level Justice40 overlay, county + ZCTA disadvantaged community shares, climate-subset sensitivity, weight sensitivity. Discussion: policy implications for equitable NEVI deployment |
 | **Scoring Framework** | Discussion | NEVI recommendations: weighted scoring equation, ranked county list, dollar allocation model, sensitivity analysis |
 | **Phase 7: NCDOT Validation** | Discussion | Methodology validation: do our equity-weighted scores independently recommend the same locations NCDOT chose in their Feb 18, 2026 rural deployment shift? |
 
@@ -270,6 +265,7 @@ This table maps each pipeline phase to the corresponding section of the BIDA 670
 ## Document Metadata
 
 - **Created:** February 26, 2026
-- **Version:** 1.0
+- **Last Updated:** April 2026
+- **Version:** 1.1
 - **Repository:** `C:\projects\ev-pulse-nc`
 - **Purpose:** Standalone reference for BIDA 670 capstone paper and advisor review
