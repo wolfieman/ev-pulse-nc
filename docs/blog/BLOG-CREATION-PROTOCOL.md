@@ -897,8 +897,8 @@ Use these in your posts:
 | Top 10 Counties | 72% | Share of all BEVs |
 | Top 5 Counties | 57.4% | Share of all BEVs |
 | Bottom 50 Counties | 4.8% | Share of all BEVs |
-| Charging Connectors | 1,725 | Individual units |
-| Charging Stations | 355 | Physical locations |
+| Charging Connectors | 6,145 | Individual units (all levels L1/L2/DCFC, Feb 2026) |
+| Charging Stations | 1,985 | Physical locations (Feb 2026 AFDC API) |
 | NEVI Funding | $109M | Federal allocation for NC |
 | Forecast MAPE | 4.36% | Validation accuracy |
 | Underprediction Rate | 68.9% | Forecasts below actuals |
@@ -934,5 +934,5 @@ Use these in your posts:
 
 ---
 
-*Last updated: February 2026*
+*Last updated: April 2026*
 *Document version: 1.0*

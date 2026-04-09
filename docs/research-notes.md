@@ -1,9 +1,9 @@
-# EV Pulse NC: Research Notes
+# EV Pulse NC: Research Notes (Historical — Phase 1)
 
-Accumulated narrative and findings for the BIDA 670 research paper.
+Accumulated narrative and findings from the Phase 1 Forecast Validation work. This file is preserved as a historical record of the Phase 1 notes. The live research-notes location for the current paper narrative (Phases 2–5) is `paper/PAPER-NOTES.md`.
 
-**Last Updated:** 2026-02-21
-**Phase:** 1 - Forecast Validation (Complete)
+**Last Updated:** 2026-02-21 (Phase 1 historical); superseded April 2026 by `paper/PAPER-NOTES.md`
+**Phase:** 1 - Forecast Validation (Complete) — historical notes only
 
 ---
 
