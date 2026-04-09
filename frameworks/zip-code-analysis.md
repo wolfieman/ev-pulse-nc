@@ -1,5 +1,7 @@
 # Priority #2: ZIP Code Analysis - Complete Conceptual Framework
 
+> **Status update (Apr 2026):** The core analysis described below is complete and merged (Phase 3 ZIP). See `frameworks/analytical-pipeline.md` and `data/processed/phase3-*.csv`. The "Phase 2B" sub-section below describes potential future extensions and remains aspirational.
+
 ## Executive Summary
 
 ZIP code analysis offers selective magnification in urban areas where county-level aggregation obscures critical patterns. The framework identifies 5 decision nodes with clear analytical pathways and trade-offs.
