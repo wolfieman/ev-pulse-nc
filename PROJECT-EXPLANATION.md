@@ -1,68 +1,49 @@
 # EV Pulse NC: Project Explanation for Dr. Al-Ghandour
 
 **Audience:** Dr. Majed Al-Ghandour, BIDA 670 Instructor
-**Purpose:** Clarify project structure, baseline vs. extensions, and methodological innovation
-**Date:** February 1, 2026 (original); current-state banner added April 2026
+**Purpose:** Explain project structure, baseline vs. extensions, and methodological innovation
 
 ---
-
-## Current State (Apr 2026)
-
-All five project extensions are merged into `main`: Phase 1 (Validation), Phase 2 (AFDC Update), Phase 3 (ZIP Analysis), Phase 4 (Workplace Charging / LEHD), Phase 5 (CEJST Equity). The Phase 5 equity layer was implemented using CEJST tract-level Justice40 designations, not HEPGIS corridors. The current AFDC infrastructure baseline is 1,985 stations and 6,145 connectors (all levels L1/L2/DCFC, Feb 2026 API download); the earlier 355/1,725 numbers used below were later identified as a DCFC-only public extract, and the dual-snapshot growth framing described in this document was abandoned once that was discovered. For the current analytical pipeline and results narrative, see `frameworks/analytical-pipeline.md` and `paper/PAPER-NOTES.md`.
-
----
-
-## Historical Proposal (Feb 1, 2026)
-
-The sections below are preserved as the original proposal-stage explanation.
 
 ## Project Overview
 
-North Carolina faces a critical infrastructure challenge: electric vehicle (EV) adoption is outpacing the deployment of public charging infrastructure, creating geographic inequalities that threaten equitable access to electric mobility. Between September 2018 and June 2025, the state's battery electric vehicle (BEV) fleet exploded from 5,165 vehicles to 94,371—a 1,727% increase with a 53.8% compound annual growth rate. Meanwhile, public charging infrastructure has struggled to keep pace, with approximately 16.9 BEVs per charging port compared to the national benchmark of 10-15 BEVs per port.
+North Carolina faces a critical infrastructure challenge: electric vehicle (EV) adoption is outpacing the deployment of public charging infrastructure, creating geographic inequalities that threaten equitable access to electric mobility. Between September 2018 and June 2025, the state's battery electric vehicle (BEV) fleet expanded from 5,165 to 94,371 vehicles — a 1,727% increase at a 53.8% compound annual growth rate.
 
-This project analyzes the alignment between EV adoption and infrastructure deployment across all 100 North Carolina counties over 82 months of time series data (September 2018 through June 2025). The dataset comprises 8,200 county-month observations on the demand side (NCDOT BEV registration data) and 1,725 individual charging connectors across 355 stations on the supply side (AFDC infrastructure snapshot from July 2024). The core research question addresses resource allocation: where should North Carolina's $109 million in NEVI Formula Program funding be deployed to maximize infrastructure equity and efficiency?
+This project analyzes the alignment between EV adoption and infrastructure deployment across all 100 North Carolina counties over 82 months of time series data (September 2018 through June 2025). The demand side is an 8,200 county-month panel of NCDOT BEV registrations. The supply side is the full NREL AFDC infrastructure baseline: **1,985 stations and 6,145 connectors across all charging levels (L1, L2, DCFC) and all access types, covering 267 cities and 358 ZIPs (Feb 2026 API pull).** The core research question addresses resource allocation: where should North Carolina's $109 million in NEVI Formula Program funding be deployed to maximize infrastructure equity, utilization, and cost-effectiveness?
 
-What makes this analysis distinctive is its granularity and temporal depth. While most EV infrastructure studies operate at the state or metropolitan level using snapshot data, this project examines county-level dynamics over nearly seven years. The supply-side analysis operates at the connector level—1,725 individual charging units rather than 355 aggregate stations—providing 4.85 times more analytical precision. This combination of temporal breadth (82 months) and spatial detail (100 counties, 1,725 connectors) creates a uniquely comprehensive view of North Carolina's EV infrastructure landscape.
-
----
-
-## Baseline Analysis - Completed Last Semester
-
-The baseline analysis established the analytical foundation through a comprehensive five-phase framework: exploratory, descriptive, diagnostic, predictive, and prescriptive analysis. This work was completed during Fall 2025 and provides the validated foundation for this semester's extension work.
-
-> **Key statistics:** See [README.md — Key Findings](README.md#-key-findings) for the canonical demand-side, supply-side, and infrastructure gap metrics referenced throughout this section.
-
-On the demand side, the analysis processed NCDOT's complete time series of BEV registrations: 8,200 observations spanning 100 counties across 82 months. The data reveals extreme geographic concentration (Gini coefficient 0.805), creating a tension between efficiency (deploying infrastructure where demand already exists) and equity (ensuring rural and disadvantaged communities have access to charging infrastructure).
-
-On the supply side, the connector-level detail (1,725 individual ports vs. 355 aggregate stations) enables capacity-weighted analysis that accounts for charging power levels. This granularity matters because a station with two 7kW Level 2 chargers serves far fewer vehicles per day than a station with eight 250kW DC fast chargers.
-
-The predictive component employed county-level ARIMA forecasting to project BEV adoption through June 2028. Rather than building a single statewide model, the analysis fitted 100 separate models per county to capture heterogeneous adoption trajectories. The weighted MAPE across all counties was 2.73%, indicating strong historical predictive accuracy. These forecasts project that North Carolina's BEV fleet will reach approximately 150,000 vehicles by mid-2028, requiring an estimated 10,000-15,000 public charging ports.
-
-The gap analysis methodology compared demand (BEVs per county) to supply (charging ports per county) using both simple ratios (BEVs per port) and capacity-weighted metrics (BEVs per kilowatt of charging capacity). The statewide average of 16.9 BEVs per port exceeds the national benchmark range of 10-15 BEVs per port, but county-level variation is dramatic. Wake County hosts 54.7 BEVs per port while some rural counties have zero infrastructure despite modest BEV populations. This analysis classified counties into three tiers: well-aligned (adequate infrastructure for current demand), emerging strain (approaching capacity constraints), and high strain (demand significantly outpacing supply).
-
-The baseline analysis established several key findings. First, infrastructure deployment has dramatically accelerated, with 47.6% of all current infrastructure added during 2024-2025 alone—likely reflecting federal funding incentives including NEVI Formula Program dollars and Inflation Reduction Act tax credits. Second, geographic inequality in access is extreme, with the Gini coefficient of 0.805 comparable to highly unequal wealth distributions. Third, the infrastructure gap is widening despite rapid deployment, as demand growth (53.8% CAGR) consistently outpaces supply expansion. Fourth, zero-infrastructure counties—those with BEV registrations but no public charging stations—represent critical equity concerns, particularly in rural eastern North Carolina.
-
-This baseline work established credibility through methodological rigor, comprehensive data coverage, and validated forecasting accuracy. The predictive models performed well on historical backtesting, the data cleaning process documented and resolved inconsistencies, and the analytical framework progressed systematically from exploratory profiling through prescriptive recommendations. Having established this foundation, the extension work this semester adds strategic depth without replacing or undermining the baseline analysis.
+What makes this analysis distinctive is its granularity and temporal depth. Most EV infrastructure studies operate at the state or metropolitan level using snapshot data; this project examines county-level dynamics over nearly seven years, then decomposes the gap through sub-county, workplace, and equity lenses that feed a prescriptive NEVI scoring framework.
 
 ---
 
-## The Extension Framework - This Semester
+## Baseline Analysis — Completed Last Semester
 
-The baseline analysis proved the project's viability and established analytical credibility. This semester's work builds on that foundation through three targeted extensions that enhance rather than replace the county-level temporal analysis. The extension logic follows a clear principle: start with validation to confirm the baseline's accuracy, then add analytical dimensions that address stakeholder questions the baseline could not answer.
+The baseline analysis established the analytical foundation through a five-phase framework (exploratory, descriptive, diagnostic, predictive, prescriptive) completed during Fall 2025.
 
-The extensions are prioritized based on analytical value, data availability, and integration potential. Priority #1 (validation) was completed first, establishing confidence in the forecasting methodology (MAPE 4.36%) while revealing systematic underprediction (68.9% of forecasts below actuals). Priority #5 (infrastructure data update) provides the current baseline that Priorities #2 and #3 depend upon. Priority #2 (ZIP code analysis) and Priority #3 (workplace charging via CTPP) can proceed in parallel once the updated infrastructure baseline is available. This sequencing ensures that each extension builds logically on validated prior work.
+> **Key statistics:** See [README.md — Key Findings](README.md#-key-findings) for the canonical demand-side and supply-side metrics referenced throughout this section.
 
-The extensions share a common analytical philosophy: acknowledge limitations transparently, report ranges rather than false precision, and frame findings as proof-of-concept methodologies that future work can refine. Unlike the baseline analysis, which aimed for comprehensive state coverage, the extensions apply strategic selectivity—focusing analytical effort where data quality supports meaningful insights. For example, ZIP code analysis targets the top 100-120 urban ZIP codes rather than attempting to analyze all 800 statewide, and workplace charging analysis focuses on the top 15 employment centers rather than modeling all 10,000 possible county-to-county commute pairs.
+On the demand side, the analysis processed NCDOT's complete time series of BEV registrations: 8,200 observations spanning 100 counties across 82 months. The data reveals extreme geographic concentration (statewide connector Gini 0.805), creating a tension between efficiency (deploying infrastructure where demand already exists) and equity (ensuring rural and disadvantaged communities have access).
+
+The predictive component employed county-level ARIMA forecasting to project BEV adoption through June 2028. Rather than a single statewide model, 100 separate county models capture heterogeneous adoption trajectories. The weighted in-sample MAPE across all counties was 2.73%, indicating strong historical fit. The gap analysis compared BEVs per county to charging ports per county using both simple ratios and capacity-weighted metrics, and classified counties into well-aligned, emerging-strain, and high-strain tiers. Roughly 47.6% of current infrastructure was added during 2024-2025, reflecting NEVI Formula Program dollars and Inflation Reduction Act tax credits.
+
+This baseline established credibility through methodological rigor and comprehensive coverage. The extension work this semester adds strategic depth without replacing the baseline.
 
 ---
 
-## Extension Slice #1: Validation (Priority #1) - COMPLETE
+## The Extension Framework — This Semester
 
-The validation extension addressed a fundamental question: how accurate are the SAS Model Studio forecasts used to project future infrastructure needs? The baseline analysis reported strong historical fit (MAPE of 2.73%), but this measures in-sample performance—how well models fit the data used to train them. Out-of-sample validation tests whether models maintain accuracy when predicting genuinely new data they have never seen.
+This semester's work builds on the baseline through five targeted extensions that enhance rather than replace the county-level temporal analysis. The extensions follow a clear dependency chain: validation first, then a current infrastructure baseline, then three lenses (spatial, workplace, equity) that decompose the county-level gap. All five extensions are complete and merged into `main`, and their outputs feed a prescriptive NEVI scoring framework that translates findings into defensible county-level funding allocations.
+
+The extensions share a common analytical philosophy: acknowledge limitations transparently, report ranges rather than false precision, and frame findings as proof-of-concept methodologies that future work can refine.
+
+---
+
+## Extension Slice #1: Phase 1 — Predictive Validation
+
+The validation extension addressed a fundamental question: how accurate are the SAS Model Studio forecasts used to project future infrastructure needs? The baseline reported strong historical fit (MAPE 2.73%), but that is in-sample performance. Out-of-sample validation tests whether models maintain accuracy on genuinely new data.
 
 ### Validation Results
 
-The validation compared SAS Model Studio predictions against NCDOT actual data for July-October 2025 (4 months out-of-sample). Key findings:
+The validation compared SAS Model Studio predictions against NCDOT actual data for July-October 2025 (4 months out-of-sample).
 
 | Metric | Result | Interpretation |
 |--------|--------|----------------|
@@ -70,105 +51,123 @@ The validation compared SAS Model Studio predictions against NCDOT actual data f
 | MAE | 27.10 vehicles | Average absolute error per county-month |
 | RMSE | 114.11 vehicles | Root mean squared error |
 | Bias | +18.36 vehicles | Systematic underprediction |
-| Underprediction Rate | 68.9% | Majority of forecasts fell below actuals |
+| Underprediction Rate | 69.0% | Majority of forecasts fell below actuals |
 | 95% CI Coverage | 75.3% | Below nominal 95% due to bias |
 
-SAS Model Studio auto-selected different model types per county: ESM (82 counties), ARIMA (13 counties), and UCM (5 counties). ESM models performed best overall (MAPE 4.16%), while ARIMA models showed higher errors (MAPE 5.43%) reflecting their use in larger, more volatile urban counties.
+SAS Model Studio auto-selected different model types per county: ESM (82 counties), ARIMA (13 counties), and UCM (5 counties). ESM models performed best overall (MAPE 4.16%); ARIMA models showed higher errors (MAPE 5.43%), reflecting their use in larger, more volatile urban counties.
 
 ### Key Finding: Systematic Underprediction
 
-The most significant finding was systematic underprediction. Actual EV registrations exceeded forecasts in 68.9% of observations, with a mean bias of +18.4 vehicles per county-month. The 95% prediction interval coverage was only 75.3%, substantially below the nominal 95% level. This pattern was most pronounced in high-growth urban counties, where actual adoption outpaced predictions by up to 975 vehicles per month (Mecklenburg County, October 2025).
-
-This suggests EV adoption in North Carolina is accelerating faster than historical patterns predicted—likely driven by Inflation Reduction Act tax credits, Tesla price reductions, and expanding charging infrastructure. For policy planning, this finding indicates that forecast-based infrastructure allocations should include a 4-5% upward buffer to account for faster-than-predicted adoption.
+The most significant finding is systematic underprediction. Actual EV registrations exceeded forecasts in 69.0% of observations, with a mean bias of +18.4 vehicles per county-month. The 95% prediction interval coverage is only 75.3%. The pattern is most pronounced in high-growth urban counties — Mecklenburg County underpredicted by up to 975 vehicles in October 2025. EV adoption in North Carolina is accelerating faster than historical patterns predicted, likely driven by Inflation Reduction Act tax credits, Tesla price reductions, and expanding infrastructure. For policy planning, this finding justifies a **4-5% upward buffer on forecast-based infrastructure allocations**, which is applied in the Utilization Score of the NEVI scoring framework.
 
 ### Deliverables
 
-The validation produced 8 publication-quality figures (600 DPI, PDF exports):
-1. Predicted vs. actual scatter plot
-2. Error distribution histogram
-3. Metrics comparison by model type
-4. Confidence interval coverage analysis
-5. Time series examples with forecasts and actuals
-6. MAPE boxplot by model type
-7. County-level performance grids (5x5 and 10x10)
-
-With MAPE at 4.36% (below the 5% threshold), the validation confirms strong forecast accuracy. County-level forecasts can be used reliably as constraints for ZIP code allocation and workplace demand calculations, with appropriate acknowledgment of the systematic underprediction bias.
+Eight publication-quality figures (600 DPI, PDF): predicted-vs-actual scatter, error distribution histogram, metrics comparison by model type, CI coverage analysis, time series examples, MAPE boxplot by model type, and county-level performance grids (5x5 and 10x10).
 
 ---
 
-## Extension Slice #2: ZIP Code Analysis (Priority #2) + Infrastructure Update (Priority #5)
+## Extension Slice #2: Phase 2 — AFDC Infrastructure Baseline
 
-County-level aggregation obscures critical intra-county variation, particularly in large urban counties. Wake County, for example, spans 857 square miles and contains approximately 28 ZIP codes with dramatically different BEV adoption densities. Aggregating infrastructure needs to the county level is appropriate for state-level policy but inadequate for site selection—the specific question of where within Wake County to deploy the next 50 charging stations. ZIP code analysis provides sub-county precision that enables targeted deployment strategies.
+Phase 2 replaced the prior DCFC-only public extract with a full NREL AFDC API pull covering all charging levels (L1, L2, DCFC) and all access types. The current baseline is **1,985 stations and 6,145 connectors across 267 cities and 358 ZIP codes (Feb 2026 pull)**. This supersedes earlier station and connector counts that were later identified as DCFC-only.
 
-The challenge is data availability. While NCDOT publishes comprehensive county-level BEV registration data (the foundation of the baseline analysis), they do not publish ZIP code-level adoption statistics. This is a deliberate policy choice, likely reflecting privacy concerns (small geographic units risk revealing individual vehicle owners) and administrative convenience (ZIP codes change boundaries more frequently than counties, complicating time series analysis). Requests to NCDOT for ZIP-level data have been unsuccessful, and commercial alternatives (IHS Markit, Experian) require expensive licenses beyond project resources.
-
-The solution is an infrastructure-only ZIP code analysis for urban areas. While BEV adoption data is unavailable at the ZIP level, charging station data inherently contains ZIP codes (stations have street addresses). The extension geocodes all 1,725 charging connectors to their associated ZIP codes, then calculates infrastructure density metrics: ports per square mile, ports per capita, and spatial clustering patterns. This analysis identifies which ZIP codes within major urban counties have adequate charging coverage and which represent infrastructure deserts despite high population density.
-
-This work integrates tightly with Priority #5, the infrastructure data update. The baseline analysis used AFDC's July 2024 infrastructure snapshot, which is now six months stale. Recent deployment has been rapid—47.6% of all infrastructure was added during 2024-2025—so staleness creates meaningful distortion. A six-month lag means the numerator (current BEV population) is up-to-date while the denominator (infrastructure count) is outdated, systematically overstating gaps by 15-22%.
-
-Rather than simply replacing the July 2024 snapshot with a January 2026 update, the extension employs a dual-snapshot approach that transforms a data weakness into an analytical strength. By retaining both snapshots, the analysis calculates infrastructure growth rates: which counties saw the fastest deployment between July 2024 and January 2026, what types of chargers were added (Level 2 vs. DC fast charging), and whether new infrastructure went to gap counties or amplified existing disparities by concentrating in already well-served urban areas.
-
-The dual-snapshot methodology enables a unique research question that snapshot-only analyses cannot address: are market forces and existing public funding closing infrastructure gaps, or are they widening inequalities? If new stations disproportionately deployed in already-served counties (following market demand), this strengthens the equity case for targeted NEVI funding in underserved areas. If deployment preferentially targeted gap counties, this indicates that existing incentives are working and NEVI dollars can focus on maintenance and expansion rather than gap-filling.
-
-For ZIP code analysis, the January 2026 infrastructure snapshot provides current spatial distribution data essential for urban sub-county targeting. The analysis will focus on approximately 100-120 ZIP codes within the top 10 urban counties, representing roughly 80% of the state's BEV population. Rather than attempting to forecast ZIP-level adoption (data unavailable), the extension uses county-level forecasts as constraints and examines infrastructure distribution within those county totals. The value proposition is site selection precision: "deploy 50 stations in ZIP codes 27603, 27607, and 27615 in Wake County" provides actionable guidance that "deploy in Wake County" does not.
+The full-coverage pull matters because roughly half of North Carolina's workplace and destination charging infrastructure is Level 2, and a DCFC-only extract systematically understates the supply side — particularly in employment centers where L2 dominates. Phase 2 provides the complete infrastructure baseline that Phases 3, 4, and 5 all depend on. See `frameworks/afdc-dataset-reference.md` and `frameworks/afdc-data-structure.md` for the dataset reference and schema.
 
 ---
 
-## Extension Slice #3: Workplace Charging (Priority #3)
+## Extension Slice #3: Phase 3 — ZIP Code Analysis
 
-The baseline analysis treated BEV demand as a residential phenomenon—vehicles are registered to home addresses, and most charging occurs at home (approximately 80% of all EV charging). This residential focus is accurate but incomplete. Electric vehicles also require charging at workplaces, particularly for commuters with long distances or those living in multi-family housing without home charging access. The workplace charging extension adds a second analytical dimension by incorporating inter-county commuting patterns.
+County-level aggregation obscures critical intra-county variation, particularly in large urban counties. Wake County alone spans 857 square miles across roughly 28 ZIP codes with dramatically different BEV adoption densities. ZIP code analysis provides sub-county precision that enables targeted deployment strategies.
 
-The data source is the Census Transportation Planning Products (CTPP), a specialized dataset derived from the American Community Survey (ACS) that provides county-to-county commuting flow matrices. For each North Carolina county, CTPP reports how many workers commute in from every other county and how many residents commute out to work elsewhere. This creates a 100×100 matrix of commuting flows capturing approximately 1,500-2,500 meaningful pairs (flows with more than 100 workers).
+NCDOT does not publish ZIP-level BEV registration data, so Phase 3 focuses on the supply side: geocoding all 6,145 connectors to their ZIP codes and calculating infrastructure density metrics (ports per square mile, ports per capita, spatial clustering) across **134 ZIP codes in the top 10 urban counties**. These ZIPs capture roughly 80% of the state's BEV population. The analysis uses county-level BEV forecasts as constraints and examines within-county infrastructure distribution.
 
-The methodology identifies employment centers by calculating net commuting effects: inbound workers minus outbound residents. Wake County, for example, has approximately 450,000 total workers but only 350,000 residents employed within the county, indicating a net positive commuting effect—roughly 100,000 people commute into Wake County for work daily. These net inbound commuters represent workplace charging demand that residential analysis misses entirely.
+### Key Findings
 
-The inference chain applies EV adoption rates to commuting flows. If Wake County draws 10,000 daily commuters from Johnston County, and Johnston County's BEV adoption rate is 1.8%, this implies approximately 180 EV commuters traveling from Johnston to Wake daily. Applying a workplace charging propensity rate (30%, based on ChargePoint utilization data) suggests that roughly 54 of these commuters charge at work regularly. Aggregating across all inbound commuting pairs sizes Wake County's workplace infrastructure gap.
+- Statewide connector **Gini coefficient of 0.805** — comparable to highly unequal wealth distributions.
+- A **Theil decomposition attributes 84.5% of spatial inequality to within-county variation**, meaning most of the spatial inequality in charging access is hidden below the county level — exactly the kind of gap county-only analysis cannot see.
+- Within Charlotte alone, the port density gap between ZIP 28202 and ZIP 28215 is roughly **250-fold**.
+- The top-20 underserved ZIPs are concentrated in high-BEV urban counties with poor sub-county distribution — the clearest site-selection targets from the project.
 
-The key insight from this analysis is efficiency asymmetry: workplace charging infrastructure serves far more vehicles per port than residential public charging. The baseline analysis found that residential public chargers average 7.5 BEVs per port, while preliminary workplace estimates suggest 15 BEVs per port—double the efficiency. This occurs because workplace chargers have consistent demand (same commuters Monday through Friday) and long dwell times (8-hour workdays) that maximize utilization. A parking garage with 20 Level 2 workplace chargers can serve 300 regular users across the week, while a public charger in a retail area serves more variable, transient demand.
-
-The dual-dimension model reveals that employment centers need 2-3 times more infrastructure than residential analysis alone suggests. Wake County's residential demand (based on 25,000 registered BEVs) requires approximately 1,700-2,500 public residential ports. Adding workplace demand (approximately 8,400 net EV commuters) increases total needs to 2,200-3,100 ports. Without CTPP data, investment plans would systematically underfund employment centers and overfund bedroom communities.
-
-The challenge is data vintage. CTPP is based on 2016-2020 ACS data, making it 6-10 years old. More critically, these data predate COVID-19 remote work shifts that fundamentally altered commuting patterns. The solution applies sector-specific remote work adjustment factors: technology hubs like Wake County receive a 0.75 multiplier (25% reduction in commuting), traditional manufacturing counties like Guilford receive a 0.85 multiplier (15% reduction), and rural counties receive a 0.90 multiplier (10% reduction). These adjustments account for the reality that while remote work reduced commuting volumes, remaining commuters are charging more intensively at work (sessions per user increased 64% between 2023-2024 according to ChargePoint data).
-
-The workplace extension explicitly acknowledges uncertainty through sensitivity ranges rather than point estimates. Rather than claiming "Wake County needs exactly 158 workplace ports," the analysis reports "Wake County needs 90-239 workplace ports depending on remote work adjustment assumptions, EV adoption rate variation, and workplace charging propensity." This range-based reporting maintains analytical honesty while still providing actionable order-of-magnitude guidance for infrastructure planning.
+Outputs: `data/processed/phase3-county-gini.csv`, `phase3-theil-decomposition.csv`, `phase3-zip-density.csv`, `phase3-top20-underserved.csv`. These feed both the Utilization Score and the Equity Score of the NEVI scoring framework.
 
 ---
 
-## Integration Logic
+## Extension Slice #4: Phase 4 — Workplace Charging (LEHD/LODES)
 
-The extensions connect through a logical dependency chain. Validation (Priority #1) established confidence in the SAS Model Studio forecasting methodology that underpins the baseline analysis. With MAPE at 4.36% (below 5% threshold), the county-level forecasts can be used reliably as constraints for ZIP code allocation and workplace demand calculations. The systematic underprediction finding (68.9% of forecasts below actuals) indicates that a 4-5% upward buffer should be applied to forecast-based infrastructure planning.
+The baseline analysis treats BEV demand as a residential phenomenon (vehicles registered to home addresses, ~80% of charging at home). This is accurate but incomplete: EVs also need workplace charging, particularly for commuters with long distances or multi-family residents without home access. Phase 4 adds a second analytical dimension by incorporating inter-county commuting patterns.
 
-The AFDC infrastructure update (Priority #5) provides the current baseline that subsequent extensions require. ZIP code analysis needs January 2026 station locations to calculate sub-county infrastructure density. Workplace charging analysis needs current station type classifications (workplace-accessible vs. residential public) to measure existing workplace supply. Without updated infrastructure data, extensions would compound the 6-month staleness problem present in the baseline analysis.
+### Data and Method
 
-ZIP code analysis (Priority #2) and CTPP workplace charging (Priority #3) operate at different analytical scales but complement each other. ZIP code analysis provides intra-county spatial detail: within Wake County, which ZIP codes have the highest BEV density and lowest charging access? CTPP analysis provides inter-county commuting flows: how many EV drivers cross from Johnston County into Wake County for work, creating workplace charging demand that isn't visible in Wake County's residential registration data? Together, these extensions create a triple-layer analytical model: county-level totals (baseline), sub-county spatial patterns (ZIP codes), and cross-county commuting flows (CTPP).
+Phase 4 uses LEHD LODES (not CTPP, which was the originally planned source) — specifically the Origin-Destination (OD) tables, Workplace Area Characteristics (WAC), and the LODES geography crosswalk, corrected with ACS income tabulations. LODES gives near-current (2021) county-to-county commuter flow data at higher geographic fidelity than CTPP. The workplace-eligible flow is filtered to **SE03 (earnings > $3,333/month)** as a proxy for workers with income profiles consistent with EV ownership, then adjusted with a **0.85 multiplier for post-COVID remote work** sourced from Barrero, Bloom, and Davis (2023, "The Evolution of Work from Home"). EV adoption rates are applied at origin county (where commuters live, which determines home charging access), with a 1.25 commuter-income premium to reflect the higher average earnings of commuters vs. residents.
 
-The extensions are not replacing county-level work but adding strategic detail where it matters most. The baseline analysis remains the foundation: 100 counties, 82 months, 8,200 observations, validated ARIMA forecasts. Extensions enhance this by answering questions the baseline could not address: Where within Wake County? (ZIP code analysis) Who is charging at work? (CTPP analysis) How fast is infrastructure actually growing? (dual-snapshot AFDC update) How accurate are our forecasts? (validation analysis).
+### Key Findings
+
+- **Statewide adjusted workplace demand: 859,260** commuter-based EV charging events (post-remote-work adjustment, after SE03 income filter).
+- **Top net employment centers (net inbound commuters):** Mecklenburg +194,361, Wake +126,517, Durham +89,450. These are the counties where residential-only analysis systematically underfunds infrastructure.
+- **Workplace infrastructure efficiency is roughly 2x residential public:** ~15 BEVs/port vs. ~7.5 BEVs/port. Workplace chargers have consistent demand (same commuters Mon-Fri) and long dwell times (8-hour workdays) that maximize utilization. A parking garage with 20 L2 workplace chargers can serve ~300 regular users; a public charger in retail serves variable, transient demand.
+
+Phase 4 explicitly acknowledges uncertainty through sensitivity ranges rather than point estimates. Outputs: `data/processed/phase4-cost-effectiveness.csv`, `phase4-employment-centers.csv`. These feed the Cost-Effectiveness Score in the NEVI scoring framework.
+
+---
+
+## Extension Slice #5: Phase 5 — CEJST Equity Overlay
+
+Phase 5 delivers the equity layer of the project. It uses the Council on Environmental Quality's **Climate and Economic Justice Screening Tool (CEJST) v2.0** to identify federally-designated Justice40 disadvantaged communities in North Carolina. CEJST provides the official tract-level Justice40 designations that the NEVI program's 40%-to-disadvantaged-communities mandate is enforced against.
+
+### Data and Method
+
+- **934 of 2,170 NC census tracts (43%)** are CEJST-designated disadvantaged.
+- Tract-level flags are overlaid on counties and ZCTAs via **area-weighted interpolation** to produce a county-level and ZCTA-level disadvantaged community share.
+- A **climate-only subset sensitivity** tests whether results hold if only the climate indicators are used rather than the full CEJST indicator set.
+- A **weight sensitivity analysis** confirms that top-ranked counties in the NEVI scoring framework remain robust across +/-10% variations in the framework weights.
+- Figures fig-39 through fig-42 document the equity layer.
+
+Outputs: `data/processed/phase5-county-justice40.csv`, `phase5-zcta-justice40.csv`, `scoring-weight-sensitivity.csv`. Phase 5 produces the Equity Score, which carries the heaviest weight (0.40) in the NEVI scoring framework.
+
+---
+
+## Integration Logic — The NEVI Scoring Framework
+
+The extensions connect through a logical dependency chain, and they converge on a single deliverable: the NEVI Priority Score, a weighted composite that translates analytical findings into a ranked list of all 100 NC counties with defensible dollar allocations.
+
+```
+NEVI Priority Score(county) = 0.40 x Equity_Score
+                            + 0.35 x Utilization_Score
+                            + 0.25 x Cost_Effectiveness_Score
+```
+
+- **Equity Score (0.40)** from Phase 5 (Justice40 share) + Phase 3 (intra-county Gini). The 0.40 weight is aligned with the federal Justice40 mandate.
+- **Utilization Score (0.35)** from Phase 1 (validated BEV forecasts with the 4-5% underprediction buffer) + Phase 2 (BEVs-per-port across all charging levels) + Phase 3 (sub-county density).
+- **Cost-Effectiveness Score (0.25)** from Phase 4 (workplace-vs-residential efficiency, net commuter demand sizing).
+
+Phase 1 established confidence in the forecasting methodology. Phase 2 provided the complete infrastructure baseline that Phases 3, 4, and 5 all require. Phases 3, 4, and 5 operate at different analytical scales — sub-county spatial, cross-county workplace, tract-level equity — but complement each other to form a triple-layer analytical model on top of the baseline county-level gap analysis. See `frameworks/analytical-pipeline.md` for the full pipeline diagram and data flow matrix, and `data/processed/scoring-framework-final.csv` for the final ranked county output.
 
 ---
 
 ## Methodological Innovation Summary
 
-> **Summary version:** See [PROJECT-BRIEF.md — Methodological Innovation Summary](PROJECT-BRIEF.md#methodological-innovation-summary) for the condensed list. This section provides the expanded rationale for each innovation.
+> **Summary version:** See [PROJECT-BRIEF.md](PROJECT-BRIEF.md) for the condensed project brief. This section provides the expanded rationale for each innovation.
 
-This project introduces several analytical innovations that distinguish it from typical EV infrastructure studies:
+Several analytical innovations distinguish this project from typical EV infrastructure studies:
 
-**County-level granularity over 82 months:** Most EV infrastructure research operates at state or metropolitan levels using snapshot data. This project examines all 100 North Carolina counties across nearly seven years of monthly observations, enabling time series forecasting that captures heterogeneous adoption trajectories rather than assuming uniform statewide trends.
+**County-level granularity over 82 months.** All 100 NC counties across nearly seven years of monthly observations, enabling time series forecasting that captures heterogeneous adoption trajectories rather than assuming uniform statewide trends.
 
-**Connector-level infrastructure detail:** The supply-side analysis operates on 1,725 individual charging connectors rather than 355 aggregate stations—4.85 times more granular. This enables capacity-weighted analysis accounting for charging power levels (a 250kW DC fast charger serves far more vehicles daily than a 7kW Level 2 charger). Most studies treat all stations equally, ignoring capacity heterogeneity.
+**Connector-level infrastructure detail with full-coverage AFDC pull.** The supply-side analysis operates on 6,145 individual charging connectors across all levels and access types, rather than a DCFC-only extract. This enables capacity-weighted analysis accounting for charging power levels — a 250kW DCFC serves far more vehicles daily than a 7kW Level 2 charger — and ensures that employment centers dominated by L2 infrastructure are not systematically understated.
 
-**Dual-snapshot infrastructure growth analysis:** Rather than simply updating stale data, the dual-snapshot approach (July 2024 + January 2026) treats temporal evolution as a research question itself. Calculating infrastructure deployment rates and spatial patterns of growth reveals whether market forces are closing gaps or amplifying disparities—a unique analytical contribution enabled by retaining both baselines.
+**Triple-lens decomposition of the county-level gap.** Phase 3 (sub-county ZIP-level spatial), Phase 4 (cross-county workplace demand via LEHD LODES), and Phase 5 (tract-level Justice40 equity) decompose the county-level gap along three independent dimensions, producing insights that county-only analyses cannot see (Theil 84.5% within-county, 859,260 workplace demand events, 43% of NC tracts Justice40-designated).
 
-**Dual-dimension demand model:** Combining residential BEV registrations (baseline) with workplace commuting flows (CTPP extension) creates a more complete demand picture. Employment centers like Wake County serve both residents and net inbound commuters, while bedroom communities primarily serve residents. This distinction matters for infrastructure type allocation: workplace chargers in employment centers, residential public chargers in bedroom communities.
+**Dual-dimension demand model.** Combining residential BEV registrations with workplace commuting flows creates a more complete demand picture. Employment centers serve both residents and net inbound commuters; bedroom communities primarily serve residents. This distinction drives infrastructure type allocation.
 
-**Validation-first approach:** Explicitly testing forecast accuracy with out-of-sample data before making policy recommendations demonstrates scientific rigor uncommon in applied infrastructure planning. Most studies deploy forecasts without validation, assuming historical fit guarantees future accuracy. This project treated validation as a prerequisite, not an afterthought, and the results (MAPE 4.36%, systematic underprediction of 68.9%) inform how forecasts should be applied—with upward buffers to account for accelerating adoption.
+**Validation-first approach.** Explicit out-of-sample forecast validation (MAPE 4.36%, 69.0% underprediction) before any policy recommendation is made. Most applied infrastructure studies deploy forecasts without validation, assuming historical fit guarantees future accuracy. Here, the validation results directly inform how forecasts are applied — with a 4-5% upward buffer in the Utilization Score.
+
+**Prescriptive scoring framework with sensitivity analysis.** The five phases converge on a weighted scoring equation whose component weights are defended by federal policy context (Justice40 = 0.40), data-driven confidence (validated forecasts = 0.35), and analytical support (workplace efficiency = 0.25), and whose top-ranked counties are shown to be robust across +/-10% weight variations.
 
 ---
 
 ## Conclusion
 
-EV Pulse NC addresses a critical infrastructure planning challenge: how should North Carolina allocate $109 million in NEVI Formula Program funding to maximize both efficiency and equity? The baseline analysis completed last semester established a comprehensive county-level understanding of the demand-supply gap using 82 months of time series data and connector-level infrastructure detail. This semester's Phase 1 work validated forecast accuracy (Priority #1), achieving MAPE 4.36% while revealing systematic underprediction (68.9% of forecasts below actuals)—indicating EV adoption is accelerating faster than historical patterns predicted. Remaining extensions include updating infrastructure data with a dual-snapshot growth analysis (Priority #5), adding sub-county spatial precision in urban areas (Priority #2), and incorporating workplace charging demand through commuting flow analysis (Priority #3).
+EV Pulse NC addresses how North Carolina should allocate $109 million in NEVI Formula Program funding to maximize equity, utilization, and cost-effectiveness. The baseline analysis established a comprehensive county-level understanding of the demand-supply gap. This semester's five extensions validated forecast accuracy (Phase 1), rebuilt the infrastructure baseline with full-coverage AFDC data (Phase 2), decomposed the gap through sub-county (Phase 3), workplace (Phase 4), and equity (Phase 5) lenses, and converged on a prescriptive NEVI scoring framework that produces a ranked list of all 100 NC counties with defensible dollar allocations.
 
-The project's methodological innovations—temporal depth, connector-level granularity, dual-snapshot evolution tracking, and dual-dimension demand modeling—collectively provide stakeholders with actionable insights at multiple scales: statewide trends for policy, county-level forecasts for regional planning, ZIP code detail for site selection, and workplace demand sizing for employment center targeting. By combining comprehensive baseline analysis with strategically targeted extensions, the project delivers both breadth and depth without sacrificing analytical rigor.
+The project's methodological innovations — temporal depth, connector-level granularity with full-coverage AFDC data, triple-lens decomposition, dual-dimension demand modeling, validation-first forecasting, and the prescriptive scoring framework — collectively provide stakeholders with actionable insights at multiple scales: statewide trends for policy, county-level forecasts for regional planning, ZIP code detail for site selection, workplace demand sizing for employment centers, and Justice40 equity overlays for federal compliance. Two extensions are preserved as post-capstone roadmap items: Phase 6 (Buffer Analysis) for visual "charging desert" identification and Phase 7 (NCDOT NEVI Corridor Validation) for methodology validation against NCDOT's planned deployments.
 
 ---
 

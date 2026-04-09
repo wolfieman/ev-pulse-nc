@@ -1,14 +1,34 @@
-# Priority #2: ZIP Code Analysis - Complete Conceptual Framework
-
-> **Status update (Apr 2026):** The core analysis described below is complete and merged (Phase 3 ZIP). See `frameworks/analytical-pipeline.md` and `data/processed/phase3-*.csv`. The "Phase 2B" sub-section below describes potential future extensions and remains aspirational.
+# Phase 3: ZIP Code Analysis — Delivered Framework
 
 ## Executive Summary
 
-ZIP code analysis offers selective magnification in urban areas where county-level aggregation obscures critical patterns. The framework identifies 5 decision nodes with clear analytical pathways and trade-offs.
+Phase 3 delivered sub-county infrastructure magnification in North Carolina's urban counties, where county-level aggregation obscures critical spatial patterns. The analysis geocoded all 6,145 AFDC connectors to ZIP codes and calculated density, inequality, and underservice metrics across 134 ZIPs in the top 10 urban counties (roughly 80% of statewide BEV population).
 
-**Critical Insight**: This is NOT about replacing counties—it's about strategic sub-county detail where data quality supports it.
+**Critical finding:** A Theil decomposition attributes **84.5% of statewide spatial inequality to within-county variation** — meaning the bulk of the equity problem is hidden below the county level. Within Charlotte alone, the port density gap between ZIP 28202 and ZIP 28215 is roughly 250-fold. This is exactly the signal county-only analysis cannot see.
+
+Phase 3 outputs feed both the Utilization Score and the Equity Score of the NEVI scoring framework.
+
+## Results
+
+| Output | File | Description |
+|--------|------|-------------|
+| County Gini | `data/processed/phase3-county-gini.csv` | Within-county infrastructure Gini coefficients |
+| Statewide Gini | `data/processed/phase3-statewide-gini.csv` | Statewide connector Gini (0.805) |
+| Theil decomposition | `data/processed/phase3-theil-decomposition.csv` | Within vs. between county inequality (84.5% within) |
+| ZIP density | `data/processed/phase3-zip-density.csv` | Ports per sq mi, per capita, per BEV by ZIP |
+| Top-20 underserved | `data/processed/phase3-top20-underserved.csv` | Site-selection priority ZIPs |
+| Top 10 counties | `data/processed/phase3-top10-counties.csv` | Urban counties analyzed in Phase 3 |
+| Station-county mapping | `data/processed/phase3-station-county-mapping.csv` | Geocoded station-to-county join |
+
+Phase 3 produced 34 publication figures (fig-08 through fig-34) and populated the first 9 of 17 columns of the scoring framework skeleton. See `frameworks/analytical-pipeline.md` for how Phase 3 feeds the scoring framework.
 
 ---
+
+---
+
+## Framing and Decision Context (Retained from Planning)
+
+The sections below document the decision framework used to scope Phase 3. They are preserved as methodological rationale for the delivered analysis.
 
 ## Core Findings from Three Expert Perspectives
 
@@ -138,11 +158,11 @@ ZIP code analysis offers selective magnification in urban areas where county-lev
    - Deliverable: "Coverage analysis"
    - Effort: 4-6 hours
 
-2. **Phase 2B: Full ZIP adoption analysis (future)**
-   - Prerequisite: Acquire ZIP registration data
+2. **Phase 2B: Full ZIP adoption analysis (Future Direction)**
+   - Prerequisite: Acquire ZIP-level BEV registration data
    - FOI request to NCDOT (may be denied)
    - Commercial vendors (IHS Markit, requires license)
-   - Timeline: 2026-2027
+   - Post-capstone roadmap
 
 ---
 
@@ -225,13 +245,13 @@ ZIP code analysis offers selective magnification in urban areas where county-lev
 
 **Value**: High policy relevance, supports equity targeting, demonstrates analytical depth
 
-### Phase 2B: Full ZIP Adoption (Future - pending data acquisition)
+### Phase 2B: Full ZIP Adoption — Future Direction
 
 **Prerequisites:**
 - Obtain ZIP-level BEV registration data from NCDOT or vendor
 - Validate data quality and boundary stability
 
-**Timeline**: 2026-2027 (outside this capstone scope)
+Preserved as a post-capstone roadmap item. Unlikely within the BIDA 670 capstone timeframe given NCDOT's current publication policy, but a reasonable extension if data access changes.
 
 ---
 

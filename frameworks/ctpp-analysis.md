@@ -1,12 +1,36 @@
-# Priority #3: CTPP Commuting Data - Complete Conceptual Framework
-
-> **Status update (Apr 2026):** The core analysis described below is complete and merged (Phase 4 CTPP/LEHD). See `frameworks/analytical-pipeline.md` and `data/processed/phase4-*.csv`. The "Phase 3B" sub-section below describes potential future extensions and remains aspirational.
+# Phase 4: Workplace Charging (LEHD/LODES) — Delivered Framework
 
 ## Executive Summary
 
-CTPP integration transforms EV infrastructure analysis from a single-dimension residential model to a dual-dimension residential + workplace model. The current analysis misses a critical component: workplace charging demand driven by inter-county commuting patterns.
+Phase 4 transformed EV infrastructure analysis from a single-dimension residential model to a dual-dimension residential + workplace model by incorporating inter-county commuting flows. The delivered analysis used **LEHD LODES** (Origin-Destination, Workplace Area Characteristics, and geography crosswalk) rather than CTPP, which was the originally planned source. LODES provides more recent data (2021) and higher geographic fidelity than CTPP, and was cross-corrected with ACS income tabulations and a Barrero, Bloom & Davis (2023) 0.85 remote-work multiplier.
 
-**Critical Finding**: Employment centers like Wake County need 2-3× more infrastructure than residential analysis suggests. Without CTPP data, systematic underinvestment in workplace charging is inevitable.
+**Critical finding:** Employment centers need 2-3x more infrastructure than residential-only analysis suggests. Workplace infrastructure serves roughly **15 BEVs/port vs. 7.5 BEVs/port for residential public** — a 2x efficiency gain driven by consistent Mon-Fri demand and 8-hour dwell times. Statewide adjusted workplace demand is **859,260 commuter-based EV charging events**, with Mecklenburg (+194,361 net inbound commuters), Wake (+126,517), and Durham (+89,450) as the dominant net employment centers.
+
+Phase 4 outputs feed the Cost-Effectiveness Score of the NEVI scoring framework.
+
+## Results
+
+| Output | File | Description |
+|--------|------|-------------|
+| Cost-effectiveness | `data/processed/phase4-cost-effectiveness.csv` | Workplace vs. residential efficiency by county |
+| Employment centers | `data/processed/phase4-employment-centers.csv` | Net inbound/outbound commuter flows, adjusted EV workplace demand |
+
+### Key Findings
+
+- **Statewide adjusted workplace demand:** 859,260 EV commuter charging events (post-SE03 income filter, post-0.85 remote-work multiplier)
+- **Top net employment centers:** Mecklenburg +194,361, Wake +126,517, Durham +89,450
+- **Workplace efficiency:** ~15 BEVs/port vs. ~7.5 BEVs/port residential public (2x efficiency)
+- **Income filter:** LODES SE03 (earnings > $3,333/month) as proxy for workers with EV-consistent income profiles
+- **Remote work adjustment:** 0.85 multiplier, Barrero/Bloom/Davis (2023), "The Evolution of Work from Home"
+- **EV adoption rate:** Applied at origin county (determines home charging access), with 1.25 commuter-income premium
+
+Phase 4 produced figures fig-35 through fig-38. See `frameworks/analytical-pipeline.md` for integration with the scoring framework.
+
+---
+
+## Framing and Decision Context (Retained from Planning)
+
+The sections below document the decision framework used to scope Phase 4. They are preserved as methodological rationale for the delivered analysis. Note that where the original planning framework referenced "CTPP," the delivered implementation used LEHD LODES for the reasons described above; the decision-node logic still applies.
 
 ---
 
@@ -288,14 +312,14 @@ Workers (observed)
 
 **Value**: High policy relevance, justifies NEVI workplace funding, addresses equity
 
-### Phase 3B: Full Integration (Future - pending better data)
+### Phase 3B: Full Integration — Future Direction
 
-**Prerequisites:**
-- Obtain 2017-2021 CTPP (expected 2026, includes early pandemic)
+**Candidate enhancements:**
+- Incorporate updated CTPP 2017-2021 tabulations as a cross-check on LODES
 - Employer surveys to calibrate workplace charging propensity
-- Validate with 2024-2025 traffic counts
+- Validate against 2024-2025 traffic counts
 
-**Timeline**: 2026-2027 (outside capstone scope)
+Preserved as a post-capstone roadmap item.
 
 ---
 
