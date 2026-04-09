@@ -31,7 +31,6 @@ Shorter conceptual analyses and decision summaries from expert agent research.
 | **[zip-code-analysis.md](./zip-code-analysis.md)** | #2 | 11K | ✅ Complete | Sub-county spatial analysis framework, data availability constraints (NCDOT county-only), sparsity challenges |
 | **[ctpp-analysis.md](./ctpp-analysis.md)** | #3 | 15K | ✅ Complete | Workplace charging demand framework using Census Transportation Planning Products (2016-2020 ACS), remote work adjustments |
 | **[afdc-api-analysis.md](./afdc-api-analysis.md)** | #5 | 1.9K | ✅ Complete | NREL API technical specifications, rate limits, query parameters |
-| **[proposed-project-titles.md](./proposed-project-titles.md)** | — | — | ✅ Complete | Candidate project titles for paper and presentations |
 
 ---
 

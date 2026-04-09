@@ -93,22 +93,40 @@ Forecasts can be used for policy recommendations with the following caveats:
 
 ---
 
-## Original Framework (Pre-Execution)
+## Follow-On Phases (Delivered)
 
-The original decision framework defined 5 critical decision nodes:
+Phase 1's findings flowed forward into the four subsequent extensions and the prescriptive layer:
 
-1. **Validation Scope:** Out-of-sample accuracy (selected)
-2. **Segmentation Strategy:** Stratified by model type (selected)
-3. **Accuracy Thresholds:** MAPE < 5% = strong (achieved: 4.36%)
-4. **Assumption Testing:** Addressed via bias analysis
-5. **Interpretation Pathways:** Pathway A selected based on results
+- **Phase 2 — AFDC Infrastructure Update** (`frameworks/afdc-dataset-reference.md`):
+  Replaced the prior DCFC-only extract with a full Feb 2026 NREL AFDC API pull —
+  1,985 stations, 6,145 connectors covering all charging levels (L1/L2/DCFC) and
+  access types (public/private). The dual-snapshot approach originally considered
+  in Phase 1 was abandoned once the prior file was identified as a filtered extract.
 
----
+- **Phase 3 — ZIP Code Analysis** (`frameworks/zip-code-analysis.md`):
+  Decomposed infrastructure inequality at the sub-county level. Statewide Gini =
+  0.805; Theil decomposition attributed 84.5% of inequality to within-county
+  variation. Found a 250-fold port density gap between Charlotte ZIPs 28202 and
+  28215. Produced figures fig-08 through fig-34.
 
-## Next Steps (Phase 2)
+- **Phase 4 — Workplace Charging (LEHD/LODES)** (`frameworks/ctpp-analysis.md`):
+  Used LEHD LODES rather than the originally planned CTPP, with a Barrero/Bloom/
+  Davis (2023) 0.85 remote-work multiplier and an SE03 income filter. Estimated
+  859,260 statewide adjusted workplace charging events; identified Mecklenburg
+  (+194,361 net commuter inflow), Wake (+126,517), and Durham (+89,450) as the
+  dominant employment centers.
 
-Based on validation findings, Phase 2 should prioritize:
+- **Phase 5 — CEJST Equity Analysis** (`frameworks/stakeholder-value-analysis.md`):
+  Implemented Phase 5 equity using CEJST v2.0 tract-level Justice40 designations
+  (934/2,170 NC tracts flagged disadvantaged). Tract-to-ZCTA area-weighted overlay
+  in EPSG:32119 produced county and ZCTA-level Justice40 shares feeding the
+  Equity_Score pillar. Climate sensitivity and weight sensitivity sub-analyses
+  produced figures fig-39 through fig-42.
 
-1. **Diagnostic Analysis:** Root cause analysis of underprediction (IRA effects, Tesla pricing, infrastructure expansion)
-2. **Prescriptive Recommendations:** Policy recommendations with bias-corrected forecasts
-3. **Remaining Priorities:** ZIP code analysis (#2), CTPP workplace charging (#3), AFDC update (#5)
+- **Prescriptive Layer — NEVI Scoring Framework**:
+  All four extensions feed the composite formula
+  `NEVI Score = 0.40 · Equity_Score + 0.35 · Utilization_Score + 0.25 · Cost_Effectiveness_Score`,
+  with the Phase 1 underprediction-bias-derived ~4-5% buffer applied to the
+  Utilization pillar. See `frameworks/analytical-pipeline.md` for the full pipeline
+  integration and `frameworks/stakeholder-value-analysis.md` for delivered
+  stakeholder value.
