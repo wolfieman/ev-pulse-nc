@@ -9,12 +9,12 @@
 
 North Carolina's battery electric vehicle (BEV) fleet has experienced explosive growth, expanding from 5,165 vehicles in September 2018 to 94,371 in June 2025—a **1,727% increase** with a **53.8% compound annual growth rate (CAGR)**. However, public charging infrastructure has not kept pace, creating a widening gap that threatens the equitable transition to electric mobility.
 
-This project applies the standard 5-part analytics framework — exploratory, descriptive, diagnostic, predictive, and prescriptive — across the project's five merged extensions (see `frameworks/analytical-pipeline.md` for the extension-by-extension pipeline) to:
+This project applies the standard 5-part analytics framework — exploratory, descriptive, diagnostic, predictive, and prescriptive — across the project's five merged extensions (see `frameworks/analytical-pipeline.md` for the extension-by-extension pipeline) and:
 
-1. **Quantify infrastructure gaps** at the county level across North Carolina
-2. **Forecast future demand** using time series models
-3. **Identify high-priority deployment zones** through gap severity analysis
-4. **Optimize investment strategies** for the $109M NEVI Formula Program funding
+1. **Quantifies infrastructure gaps** at the county level across North Carolina
+2. **Forecasts BEV demand** using time series models
+3. **Identifies high-priority deployment zones** through gap severity analysis
+4. **Optimizes investment strategies** for the $109M NEVI Formula Program funding
 
 ---
 
@@ -123,7 +123,6 @@ ev-pulse-nc/
 | [PROJECT-BRIEF.md](PROJECT-BRIEF.md) | Executive summary for instructor (Dr. Al-Ghandour) |
 | [PROJECT-EXPLANATION.md](PROJECT-EXPLANATION.md) | Detailed project explanation with methodology deep-dive |
 | [data/processed/DATA-DICTIONARY.md](data/processed/DATA-DICTIONARY.md) | Detailed data dictionary for processed datasets |
-| [docs/research-notes.md](docs/research-notes.md) | Accumulated research findings and draft narrative |
 | [docs/BLOG-CREATION-PROTOCOL.md](docs/BLOG-CREATION-PROTOCOL.md) | Protocol for creating project blog posts |
 | [references/data-sources.md](references/data-sources.md) | Data source citations and reference links |
 | [frameworks/README.md](frameworks/README.md) | Analytical frameworks directory and priority map |
@@ -196,7 +195,7 @@ EV Pulse NC applies the standard 5-part analytics framework — exploratory, des
   - Zero-infrastructure county identification
 
 ### Predictive Analysis
-- **Objective:** Forecast future BEV adoption to anticipate infrastructure needs
+- **Objective:** Forecasted BEV adoption to anticipate infrastructure needs
 - **Methods:**
   - SAS Model Studio auto-selected models per county
   - ESM: 82 counties, ARIMA: 13 counties, UCM: 5 counties
