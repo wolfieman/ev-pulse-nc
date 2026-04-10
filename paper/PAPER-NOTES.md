@@ -233,6 +233,12 @@ Include a single sentence noting that the infrastructure captured in the snapsho
 
 Per expert panel recommendation: include a brief paragraph explaining why separate EDA was not required for the Phase 1 validation data — same data structure as baseline (profiled last semester), QA checks confirmed completeness, NCDOT methodology change documented via Methodology_PostMay2025 flag.
 
+### Methodology_PostMay2025 Flag — Limitation
+The `Methodology_PostMay2025` boolean is set in `ncdot_ev_pipeline.py` (line 407) for all rows with Date >= 2025-05-01. It marks data collected after NCDOT changed their registration counting methodology. **The flag is not consumed by any analysis script.** The entire holdout validation period (Jul-Oct 2025) is post-change, meaning the 69% underprediction rate could partly reflect the methodology change inflating reported counts relative to the models' training data. **Limitation:** We identified the methodology change and flagged it in the data, but did not formally test or adjust for its effect on forecast accuracy (e.g., Chow test, pre/post split). This should be disclosed in the paper's limitations section.
+
+### Data Pipeline Design Decision
+NCDOT is the only dataset with a full acquisition-to-processing pipeline (`ncdot_ev_pipeline.py`) because it arrives as multiple monthly Excel files requiring merge, derivation (TotalEV, EV_Share, Methodology_PostMay2025), and QA generation. All other datasets arrive as single files (or file sets) consumed directly by analysis scripts — a separate pipeline would add unnecessary abstraction. Download scripts exist for all 6 datasets (see `code/python/data-acquisition/`).
+
 ---
 
 ## Phase 4 Methodology Decisions (Expert Panel, March 12, 2026)
