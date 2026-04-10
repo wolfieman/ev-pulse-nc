@@ -38,20 +38,70 @@ data/
 
 ## Processed Data (`processed/`)
 
-### nc-ev-registrations-2025.csv
-- **Description:** Consolidated monthly EV registration counts by NC county for 2025
-- **Created By:** `code/python/data-acquisition/ncdot_ev_pipeline.py`
-- **Created:** 2026-02-01
-- **Rows:** 1,000 (100 counties × 10 months)
-- **Period:** January - October 2025
+### Phase 1 — NCDOT Registrations & Validation
 
-### nc-ev-registrations-2025.xlsx
-- **Description:** Excel version of the above for convenience
-- **Same structure as CSV**
+| File | Description | Rows |
+|------|-------------|------|
+| `nc-ev-registrations-2025.csv` | Consolidated 2025 registrations (100 counties x 10 months) | 1,000 |
+| `nc-ev-registrations-2025.xlsx` | Excel version of the above | 1,000 |
+| `nc-ev-registrations-2025.qa.txt` | QA report: coverage, missing values, statewide totals | — |
 
-### nc-ev-registrations-2025.qa.txt
-- **Description:** Quality assurance summary report
-- **Contents:** County coverage, missing value rates, statewide totals
+**Created by:** `ncdot_ev_pipeline.py` (2026-02-01)
+
+### Phase 3 — AFDC Infrastructure & ZIP Equity
+
+| File | Description | Rows |
+|------|-------------|------|
+| `afdc-eda-quality-flags.csv` | Station-level quality flags from EDA | 682 |
+| `afdc-eda-column-profile.csv` | Column-level profiling (dtype, missing rates) | 76 |
+| `afdc-eda-stations-by-level.csv` | Station count by charging level | 3 |
+| `afdc-eda-stations-by-network.csv` | Station count by network operator | ~20 |
+| `afdc-eda-stations-by-zip.csv` | Station count by ZIP code | ~500 |
+| `afdc-unmatched-zips.csv` | AFDC ZIPs not matching Census ZCTAs | 4 |
+| `afdc-zip-match-report.csv` | Full ZIP match report (AFDC vs Census) | ~500 |
+| `phase3-station-county-mapping.csv` | Station-to-county spatial join results | 1,983 |
+| `phase3-urban-zip-stations.csv` | Stations in urban ZIPs (top 10 counties) | ~1,200 |
+| `phase3-top10-counties.csv` | Top 10 counties by BEV count | 10 |
+| `phase3-all-zips-ranked.csv` | All ZIPs ranked by port density | ~500 |
+| `phase3-top20-underserved.csv` | Top 20 underserved ZIPs | 20 |
+| `phase3-underserved-summary.csv` | Underserved analysis summary | — |
+| `phase3-zip-density.csv` | ZIP-level charging density metrics | ~500 |
+| `phase3-zip-density-summary.csv` | County-level density summary | 10 |
+| `phase3-county-gini.csv` | Gini coefficients per county | 10 |
+| `phase3-statewide-gini.csv` | Statewide Gini coefficient | 1 |
+| `phase3-theil-decomposition.csv` | Theil index: total, between, within | 1 |
+| `phase3-theil-county-contributions.csv` | Per-county Theil contributions | 10 |
+
+**Created by:** `generate_phase3_afdc_eda.py`, `phase3_zip_mapping.py`, `phase3_zip_density.py`
+
+### Phase 4 — Workplace Charging Demand
+
+| File | Description | Rows |
+|------|-------------|------|
+| `phase4-employment-centers.csv` | Employment center analysis (all counties) | 100 |
+| `phase4-cost-effectiveness.csv` | Cost-effectiveness sub-metrics (top 10) | 10 |
+
+**Created by:** `phase4_workplace_charging.py`
+
+### Phase 5 — CEJST Justice40 Equity Overlay
+
+| File | Description | Rows |
+|------|-------------|------|
+| `phase5-zcta-justice40.csv` | ZCTA-level Justice40 percentages | ~500 |
+| `phase5-county-justice40.csv` | County-level Justice40 percentages | 10 |
+| `census-zcta-eda-summary.csv` | Census ZCTA EDA summary statistics | ~850 |
+
+**Created by:** `phase5_tract_zcta_crosswalk.py`, `eda_cejst_justice40.py`, `eda_census_zip_population.py`
+
+### Scoring Framework
+
+| File | Description | Rows |
+|------|-------------|------|
+| `scoring-framework-skeleton.csv` | Scoring framework with Phase 5 placeholders | 10 |
+| `scoring-framework-final.csv` | Fully populated scoring framework (top 10) | 10 |
+| `scoring-weight-sensitivity.csv` | Weight sensitivity analysis results | 50 |
+
+**Created by:** `scoring_framework_skeleton.py`, `scoring_framework_final.py`, `phase5_weight_sensitivity.py`
 
 ---
 
