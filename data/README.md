@@ -24,15 +24,73 @@ data/
 
 ## Raw Data (`raw/`)
 
-### ncdot-monthly/
-- **Source:** NCDOT Climate Change Documents
-- **URL:** https://www.ncdot.gov/initiatives-policies/environmental/climate-change/Pages/zev-registration-data.aspx
-- **Description:** Monthly ZEV registration Excel files by county
-- **Files:** `{year}-{month}-registration-data.xlsx`
-- **Download Script:** `code/python/data-acquisition/ncdot_ev_pipeline.py`
-- **Current Files:** July - October 2025 (4 validation-period files)
-
 **Important:** Raw files should NEVER be modified. All transformations happen via processing scripts.
+
+### NCDOT EV Registrations
+
+| File | Description |
+|------|-------------|
+| `ncdot-ev-phev-registrations-county-201809-202506.csv` | Full county-month panel (8,200 rows, Sep 2018 - Jun 2025) |
+| `ncdot-monthly/*.xlsx` (4 files) | Individual monthly workbooks (Jul - Oct 2025, validation period) |
+
+- **Source:** [NCDOT Climate Change Documents](https://www.ncdot.gov/initiatives-policies/environmental/climate-change/Pages/zev-registration-data.aspx)
+- **Script:** `ncdot_ev_pipeline.py`
+
+### NREL AFDC Charging Stations
+
+| File | Description |
+|------|-------------|
+| `afdc-charging-stations-connector-2026-02.csv` | Complete station-level API download (1,985 stations, 76 columns) — **primary** |
+| `afdc-charging-stations-connector-2024-07.csv` | DCFC-only, public-only extract (1,725 rows) — retained for comparison only |
+| `AFDC-DATA-COMPARISON.md` | Documents differences between old and new AFDC files |
+
+- **Source:** [NREL AFDC API](https://developer.nrel.gov/api/alt-fuel-stations/v1.json)
+- **Script:** `afdc_api_download.py`
+
+### LEHD LODES (Workplace Commuting)
+
+| File | Description |
+|------|-------------|
+| `lehd-nc-od-main-2021.csv.gz` | Origin-destination commuter flows (3.77M records) |
+| `lehd-nc-wac-2021.csv.gz` | Workplace area characteristics (71,921 blocks) |
+| `lehd-nc-xwalk.csv.gz` | Geography crosswalk (block to county/tract) |
+
+- **Source:** [Census LEHD](https://lehd.ces.census.gov/data/lodes/LODES8/nc/)
+- **Script:** `lehd_lodes_download.py`
+- **Vintage:** LODES8, 2021 (most recent public release)
+
+### CEJST Justice40
+
+| File | Description |
+|------|-------------|
+| `cejst-justice40-tracts-nc.csv` | NC tracts only (2,195 rows) |
+| `cejst-justice40-tracts-nc-border.csv` | NC + border-state tracts (8,671 rows) |
+| `cejst-justice40-tracts-nc-categories.csv` | Per-category burden flags (2,195 rows, 8 categories) |
+
+- **Source:** [EDGI/PEDP community archive](https://screening-tools.com) (original federal source offline since Jan 2025)
+- **Script:** `cejst_justice40_download.py`
+- **Vintage:** CEJST v2.0 (December 2024 federal release)
+
+### Census ACS
+
+| File | Description |
+|------|-------------|
+| `acs-nc-income-tenure-tracts.csv` | Tract-level income and tenure (2,672 NC tracts) |
+| `nc-zip-population-acs2022.csv` | ZCTA population (853 ZCTAs) |
+
+- **Source:** [Census ACS API](https://api.census.gov) (5-year estimates, 2018-2022)
+- **Script:** `census_zip_population.py`
+
+### Spatial Boundary Files
+
+| File | Description |
+|------|-------------|
+| `nc-county-boundaries.geojson` | County polygons (100 counties, 2020 TIGER) |
+| `nc-zcta-boundaries.geojson` | ZCTA polygons (2020 TIGER) |
+| `census-tracts-2010-study-area.geojson` | Tract polygons (2010 vintage, for CEJST alignment) |
+
+- **Source:** Census TIGER/Line
+- **Scripts:** `census_county_boundaries.py`, `census_zcta_boundaries.py`, `census_tract_boundaries_download.py`
 
 ---
 
