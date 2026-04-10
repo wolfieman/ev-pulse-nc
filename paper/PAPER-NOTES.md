@@ -402,6 +402,7 @@ Raw LODES commuter count
 - Border-state tract inclusion (GA, SC, TN, VA) ensures complete ZCTA coverage at state boundaries
 - Zero-population tract exclusion is consistent with CEJST methodology and Phase 3's treatment of uninhabited ZCTAs
 - Data preserved despite CEJST removal from government websites — demonstrates research resilience and data governance awareness
+- **Sliver threshold (100 sqm) validated by two checks:** Validation check #6 confirms overall area delta <5% between ZCTA totals and fragment totals. Check #7 confirms per-ZCTA area conservation within 1% (0 ZCTAs exceed threshold). Both passed (23/23 suite). The 100 sqm threshold (~10m x 10m) removes only geometric intersection artifacts, not meaningful land area. Standard GIS practice for polygon overlay cleanup.
 
 ### Step 5.3 Crosswalk — Limitations (for paper)
 - **2010-to-2020 boundary vintage mismatch:** Tract boundaries changed between Census decades; area-weighted interpolation assumes uniform population distribution within tracts, which introduces modest error in large, heterogeneous tracts. County-level aggregation is unaffected (NC county boundaries identical in both vintages).
