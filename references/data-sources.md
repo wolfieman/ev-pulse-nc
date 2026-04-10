@@ -1,6 +1,6 @@
 # Data Sources & References
 
-> **See also:** [data/README.md](../data/README.md) for data directory overview | [data/processed/DATA-DICTIONARY.md](../data/processed/DATA-DICTIONARY.md) for detailed field definitions
+> **See also:** [data/README.md](../data/README.md) for data directory overview | [data/DATA-DICTIONARY.md](../data/DATA-DICTIONARY.md) for detailed field definitions
 
 ## Primary Data Sources
 

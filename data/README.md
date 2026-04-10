@@ -41,7 +41,7 @@ data/
 - **Created:** 2026-02-01
 - **Rows:** 1,000 (100 counties × 10 months)
 - **Period:** January - October 2025
-- **Data Dictionary:** See `processed/DATA-DICTIONARY.md`
+- **Data Dictionary:** See `DATA-DICTIONARY.md`
 
 ### nc-ev-registrations-2025.xlsx
 - **Description:** Excel version of the above for convenience
@@ -57,29 +57,11 @@ data/
 
 SAS Model Studio exports from the original forecasting study.
 
-### sas-forecasts.csv
-- **Description:** Monthly predictions with confidence intervals
-- **Rows:** 9,400 (100 counties × 94 months)
-- **Period:** September 2018 - June 2026 (82 months training + 12 months forecast)
-- **Key Columns:**
-  - `County`: NC county name
-  - `MonthDate`: Month in "Mon YYYY" format
-  - `ACTUAL`: Historical actual values (NaN for forecast period)
-  - `PREDICT`: Model prediction
-  - `LOWER`, `UPPER`: 95% confidence interval bounds
-  - `_NAME_`: Variable name ("Electric" = BEV)
+- `sas-forecasts.csv` — Monthly predictions with confidence intervals (9,400 rows)
+- `sas-model-info.csv` — Model type per county (100 rows)
+- `sas-fit-statistics.csv` — In-sample fit statistics per county
 
-### sas-model-info.csv
-- **Description:** Model type selected by SAS Model Studio per county
-- **Rows:** 100 (one per county)
-- **Key Columns:**
-  - `County`: NC county name
-  - `_MODELTYPE_`: Model type (ESM, ARIMA, or UCM)
-  - `_MODEL_`: Specific model variant
-
-### sas-fit-statistics.csv
-- **Description:** In-sample fit statistics per county
-- **Key Columns:** County, MAPE, RMSE, AIC, etc.
+**Column definitions:** See `DATA-DICTIONARY.md` § 3.
 
 ---
 
