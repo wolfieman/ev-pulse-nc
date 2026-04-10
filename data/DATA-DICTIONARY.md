@@ -296,6 +296,6 @@ Not datasets per se, but used in spatial joins across multiple phases.
 |------|--------|---------|----------|-----|
 | `nc-county-boundaries.geojson` | Census TIGER | 2020 | MultiPolygon (100 counties) | EPSG:4269 → reprojected to 32119 |
 | `nc-zcta-boundaries.geojson` | Census TIGER | 2020 | MultiPolygon (ZCTAs) | EPSG:4269 → reprojected to 32119 |
-| `census-tracts-2010-study-area.geojson` | Census TIGER | 2010 | MultiPolygon (tracts) | Reprojected to EPSG:32119 |
+| `census-tracts-2010-study-area.geojson` | Census TIGER | 2010 | MultiPolygon (tracts) | EPSG:4269 → reprojected to 32119 |
 
 **Target CRS:** EPSG:32119 (NC State Plane, meters) used across all spatial operations.
