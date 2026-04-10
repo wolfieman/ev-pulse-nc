@@ -76,12 +76,27 @@ May be deprecated in future cleanup.
 
 ## Data Provenance
 
-| Dataset | Source | Script | Last Updated |
-|---------|--------|--------|--------------|
+| Dataset | Source | Script | Pull Date |
+|---------|--------|--------|-----------|
 | ncdot-monthly/*.xlsx (Jul-Oct) | NCDOT website | ncdot_ev_pipeline.py | 2026-02-01 |
-| nc-ev-registrations-2025.csv | ncdot-monthly/ | ncdot_ev_pipeline.py | 2026-02-01 |
+| ncdot-ev-phev-registrations-county-201809-202506.csv | NCDOT website | ncdot_ev_pipeline.py | 2026-02-01 |
+| nc-ev-registrations-2025.csv | Derived from above | ncdot_ev_pipeline.py | 2026-02-01 |
+| afdc-charging-stations-connector-2026-02.csv | NREL AFDC API | afdc_api_download.py | 2026-02 |
+| afdc-charging-stations-connector-2024-07.csv | NREL AFDC website | Manual download | ~2025-12 |
+| lehd-nc-od-main-2021.csv.gz | Census LEHD | lehd_lodes_download.py | 2026-02 |
+| lehd-nc-wac-2021.csv.gz | Census LEHD | lehd_lodes_download.py | 2026-02 |
+| lehd-nc-xwalk.csv.gz | Census LEHD | lehd_lodes_download.py | 2026-02 |
+| cejst-justice40-tracts-nc.csv | EDGI/PEDP archive | cejst_justice40_download.py | 2026-02 |
+| cejst-justice40-tracts-nc-border.csv | EDGI/PEDP archive | cejst_justice40_download.py | 2026-02 |
+| cejst-justice40-tracts-nc-categories.csv | EDGI/PEDP archive | cejst_justice40_download.py | 2026-02 |
+| acs-nc-income-tenure-tracts.csv | Census ACS API | Manual / census_zip_population.py | 2026-02 |
+| nc-zip-population-acs2022.csv | Census ACS API | census_zip_population.py | 2026-02 |
+| nc-county-boundaries.geojson | Census TIGER | census_county_boundaries.py | 2026-02 |
+| nc-zcta-boundaries.geojson | Census TIGER | census_zcta_boundaries.py | 2026-02 |
+| census-tracts-2010-study-area.geojson | Census TIGER | census_tract_boundaries_download.py | 2026-02 |
 | sas-forecasts.csv | SAS Model Studio | Manual export | 2025-06 |
 | sas-model-info.csv | SAS Model Studio | Manual export | 2025-06 |
+| sas-fit-statistics.csv | SAS Model Studio | Manual export | 2025-06 |
 
 ---
 
