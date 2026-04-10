@@ -243,6 +243,10 @@ Per expert panel recommendation: include a brief paragraph explaining why separa
 
 **Limitation:** We identified the methodology change and flagged it in the data, but did not formally test or adjust for its effect on forecast accuracy (e.g., Chow test, pre/post split). The direction of the change (dedup/removal of inactive = lower counts) means the methodology change works *against* the underprediction bias, not in its favor. This should be disclosed in the paper's limitations section.
 
+**For Discussion/Conclusion:** The methodology change actually makes the validation a stricter test. The holdout period (Jul-Oct 2025) uses cleaner, lower counts than the old methodology would have produced. The fact that 69% of forecasts still underpredicted against these *lower* numbers means the real EV adoption growth signal is even stronger than the raw numbers suggest. MAPE 4.34% against a stricter baseline reinforces confidence in the county rankings.
+
+**Future work recommendation:** A split validation — train on pre-May-2025 data only, validate on Jun-Oct 2025, then compare against the current full-training validation — would isolate the methodology change effect and quantify how much of the underprediction is growth vs. dedup artifact. This would also provide a natural Chow-test framework for the structural break. Not in scope for this capstone but a clean follow-up study.
+
 ### Data Pipeline Design Decision
 NCDOT is the only dataset with a full acquisition-to-processing pipeline (`ncdot_ev_pipeline.py`) because it arrives as multiple monthly Excel files requiring merge, derivation (TotalEV, EV_Share, Methodology_PostMay2025), and QA generation. All other datasets arrive as single files (or file sets) consumed directly by analysis scripts — a separate pipeline would add unnecessary abstraction. Download scripts exist for all 6 datasets (see `code/python/data-acquisition/`).
 
