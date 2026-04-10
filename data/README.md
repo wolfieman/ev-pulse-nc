@@ -12,11 +12,15 @@
 ```
 data/
 ├── raw/                    # Immutable source downloads (NEVER edit)
-│   └── ncdot-monthly/      # Monthly NCDOT Excel files
-├── processed/              # Analysis-ready datasets
-├── reference-forecasts/    # SAS Model Studio exports
-├── generated/              # Legacy/intermediate files
-├── DATA-DICTIONARY.md      # Column definitions for all datasets
+│   ├── ncdot-monthly/      # Monthly NCDOT Excel files (Jul-Oct 2025)
+│   ├── nc-regs-latest-data/# NCDOT latest registration data
+│   ├── *.csv / *.csv.gz    # AFDC, LEHD, CEJST, ACS datasets
+│   ├── *.geojson           # Spatial boundary files (counties, ZCTAs, tracts)
+│   └── AFDC-DATA-COMPARISON.md
+├── processed/              # Analysis-ready datasets (33 files, by phase)
+├── reference-forecasts/    # SAS Model Studio exports (forecasts, model info, fit stats)
+├── generated/              # Legacy intermediate files (may be deprecated)
+├── DATA-DICTIONARY.md      # Column definitions for all 6 datasets
 └── README.md               # This file
 ```
 
