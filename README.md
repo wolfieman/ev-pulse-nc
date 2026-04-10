@@ -122,7 +122,7 @@ ev-pulse-nc/
 | [STYLE-GUIDE.md](STYLE-GUIDE.md) | Code style, naming conventions, and formatting standards |
 | [PROJECT-BRIEF.md](PROJECT-BRIEF.md) | Executive summary for instructor (Dr. Al-Ghandour) |
 | [PROJECT-EXPLANATION.md](PROJECT-EXPLANATION.md) | Detailed project explanation with methodology deep-dive |
-| [data/processed/DATA-DICTIONARY.md](data/processed/DATA-DICTIONARY.md) | Detailed data dictionary for processed datasets |
+| [data/DATA-DICTIONARY.md](data/DATA-DICTIONARY.md) | Detailed data dictionary for processed datasets |
 | [docs/BLOG-CREATION-PROTOCOL.md](docs/BLOG-CREATION-PROTOCOL.md) | Protocol for creating project blog posts |
 | [references/data-sources.md](references/data-sources.md) | Data source citations and reference links |
 | [frameworks/README.md](frameworks/README.md) | Analytical frameworks directory and priority map |
