@@ -8,9 +8,11 @@
 - **Source:** North Carolina Department of Transportation (NCDOT)
 - **Dataset:** ncdot-ev-phev-registrations-county-201809-202506.csv
 - **Monthly Files URL:** https://www.ncdot.gov/initiatives-policies/environmental/climate-change/Documents/{year}-{month}-registration-data.xlsx
+- **ZEV Registration Data Page:** https://www.ncdot.gov/initiatives-policies/environmental/climate-change/Pages/zev-registration-data.aspx
 - **Coverage:** September 2018 - June 2025 (82 months)
 - **Granularity:** County-month panel data (100 counties × 82 months = 8,200 observations)
 - **Download Script:** `code/python/data-acquisition/ncdot_ev_pipeline.py`
+- **Methodology Change (May 2025):** NCDOT implemented a new tracking method that eliminates duplicate records and excludes vehicles with plates recently removed from circulation. Flagged in data as `Methodology_PostMay2025`. See PAPER-NOTES.md for impact analysis.
 
 ### 2. Alternative Fuel Stations - Electric Vehicle Charging
 - **Source:** U.S. Department of Energy, Alternative Fuels Data Center (AFDC)

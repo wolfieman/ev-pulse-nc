@@ -29,7 +29,7 @@ This document defines the project-used columns for each dataset. For full API sc
 | `Date` | date | First day of month (YYYY-MM-DD) | 2018-09-01 to 2025-06-01 |
 | `TotalEV` | integer | BEV + PHEV | Derived |
 | `EV_Share` | float | TotalEV / (TotalEV + Gas + Diesel) | 0.0 - 1.0 (typically 0.01 - 0.05) |
-| `Methodology_PostMay2025` | boolean | NCDOT methodology change flag | True if Date >= 2025-05-01 |
+| `Methodology_PostMay2025` | boolean | NCDOT methodology change flag: post-May 2025, NCDOT eliminated duplicate records and excluded vehicles with plates removed from circulation | True if Date >= 2025-05-01 |
 
 **Missing values:** 0.0% across all variables. 162 legitimate zeros (early-period rural counties with no BEV registrations).
 
