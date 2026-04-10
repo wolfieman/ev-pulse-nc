@@ -36,6 +36,7 @@ These must be incorporated into the final paper at the appropriate sections.
 - The out-of-bounds coordinate (lat 38.87) is the same station as ZIP 20020 — resolved by ZIP filter
 - 56 co-located stations (shared coordinates) confirmed as legitimate separate equipment — retained
 - High missingness fields (ev_pricing 86%, facility_type 71.5%, owner_type_code 70%) documented and excluded from density analysis — core location/port fields nearly complete
+- AFDC quality flags file (`afdc-eda-quality-flags.csv`): 682 stations flagged (34.4% of 1,985). 681 flagged as near_duplicate_address (co-located stations from different operators — confirmed correct, retained in analysis). 1 flagged as out_of_bounds_coords (removed by ZIP filter). Flags file is diagnostic only, not used as a filter downstream
 
 ### Join-Key Validation
 - 354 of 358 AFDC ZIPs match Census ZCTAs (98.9% match rate)
@@ -270,6 +271,8 @@ Per expert panel recommendation: include a brief paragraph explaining why separa
 - Statewide >$75K household income share: 44.4%; renter share: 33.8%
 - OD total workers (4,198,163) vs WAC total (4,400,986): 4.6% difference expected (OD Main = intra-state only)
 - Cross-file tract alignment: 100% overlap between crosswalk (2,672 tracts) and ACS (2,672 tracts)
+- OD-to-county crosswalk loss: 0 rows, 0% of S000 — every OD block (home and work) maps to a crosswalk block
+- ACS income imputation: 1,767 of 3,768,428 OD rows (0.05%) had missing income shares; filled with statewide median (41.2% households >$75k). Immaterial to any finding
 - Technical note: crosswalk trct is 11-digit full FIPS; ACS tract is 6-digit — must build full FIPS for joins
 
 ### Three-Layer Adjustment Pipeline (revised — renter adjustment removed)
