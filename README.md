@@ -85,7 +85,8 @@ ev-pulse-nc/
 │   ├── raw/                      # Original datasets
 │   ├── processed/                # Cleaned/transformed data
 │   ├── generated/                # Analysis outputs
-│   └── README.md                 # Data dictionary & sources
+│   ├── DATA-DICTIONARY.md         # Column definitions for all datasets
+│   └── README.md                 # Directory overview & provenance
 │
 ├── code/                         # Analysis code
 │   ├── python/                   # Python scripts
@@ -122,7 +123,7 @@ ev-pulse-nc/
 | [STYLE-GUIDE.md](STYLE-GUIDE.md) | Code style, naming conventions, and formatting standards |
 | [PROJECT-BRIEF.md](PROJECT-BRIEF.md) | Executive summary for instructor (Dr. Al-Ghandour) |
 | [PROJECT-EXPLANATION.md](PROJECT-EXPLANATION.md) | Detailed project explanation with methodology deep-dive |
-| [data/DATA-DICTIONARY.md](data/DATA-DICTIONARY.md) | Detailed data dictionary for processed datasets |
+| [data/DATA-DICTIONARY.md](data/DATA-DICTIONARY.md) | Column definitions for all 6 datasets (NCDOT, AFDC, SAS, LEHD, CEJST, ACS) |
 | [docs/BLOG-CREATION-PROTOCOL.md](docs/BLOG-CREATION-PROTOCOL.md) | Protocol for creating project blog posts |
 | [references/data-sources.md](references/data-sources.md) | Data source citations and reference links |
 | [frameworks/README.md](frameworks/README.md) | Analytical frameworks directory and priority map |

@@ -1,7 +1,9 @@
 # Data Directory
 
-**Last Updated:** 2026-02-21
+**Last Updated:** 2026-04-10
 **Project:** EV Pulse NC - North Carolina Electric Vehicle Analytics
+
+**Data Dictionary:** See [`DATA-DICTIONARY.md`](DATA-DICTIONARY.md) for column definitions, types, valid ranges, and missing value policies for all 6 datasets.
 
 ---
 
@@ -14,6 +16,7 @@ data/
 ├── processed/              # Analysis-ready datasets
 ├── reference-forecasts/    # SAS Model Studio exports
 ├── generated/              # Legacy/intermediate files
+├── DATA-DICTIONARY.md      # Column definitions for all datasets
 └── README.md               # This file
 ```
 
@@ -41,7 +44,6 @@ data/
 - **Created:** 2026-02-01
 - **Rows:** 1,000 (100 counties × 10 months)
 - **Period:** January - October 2025
-- **Data Dictionary:** See `DATA-DICTIONARY.md`
 
 ### nc-ev-registrations-2025.xlsx
 - **Description:** Excel version of the above for convenience
