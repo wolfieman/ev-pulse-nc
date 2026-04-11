@@ -247,7 +247,36 @@ Per expert panel recommendation: include a brief paragraph explaining why separa
 
 **MAPE weighting choice:** The overall MAPE (4.34%) is an unweighted flat average across all 400 county-month observations, giving equal importance to forecast accuracy in every county regardless of BEV fleet size. This is both the standard approach in time series forecasting literature and philosophically aligned with the equity-weighted scoring framework — a BEV-weighted MAPE would prioritize accuracy in high-adoption counties, contradicting the 0.40 equity weight that the scoring framework deliberately places on disadvantaged and underserved communities.
 
-**Future work recommendation:** A split validation — train on pre-May-2025 data only, validate on Jun-Oct 2025, then compare against the current full-training validation — would isolate the methodology change effect and quantify how much of the underprediction is growth vs. dedup artifact. This would also provide a natural Chow-test framework for the structural break. Not in scope for this capstone but a clean follow-up study.
+### Econometric Expert Assessment (Apr 10, 2026)
+
+**Methodology change magnitude:** Empirically minor. Statewide BEV counts continued to increase through the transition (Apr 2025: 90,025 → May 2025: 92,266 → Jun 2025: 94,371). Only 10 of 100 counties showed any month-over-month decrease at May 2025, none exceeding 5 vehicles. Estimated statewide correction: ~370 vehicles (0.4% of total), or ~3.7 per county.
+
+**Contribution to underprediction bias:** The methodology change accounts for approximately 20% of the observed +18.22 mean bias. The remaining 80% is genuine BEV growth exceeding historical trend projections. Same-methodology underprediction rate would be estimated at 72-76% (higher than observed 69.00%), because the methodology correction slightly masks the true growth acceleration.
+
+**CI coverage analysis:** The 75.50% raw coverage vs 93.75% county-specific bias-corrected coverage confirms the undercoverage is a centering (bias) problem, not a width problem. The methodology change contributes ~20% of the centering bias. Even under same-methodology conditions, CI coverage would still be below 95%.
+
+**Expert recommendation:** Option A (document as limitation). No corrections required for data quality or final report. The effect is empirically small (0.4%), and correcting would introduce assumptions harder to defend than the limitation itself.
+
+**Drop-in language for limitations section:**
+> Methodology Change (May 2025). Beginning May 2025, NCDOT implemented a revised tracking methodology that eliminates duplicate registration records and excludes vehicles with recently removed license plates. This change affects the final 2 of 82 training months and all 4 validation months. Empirical analysis indicates the effect is minor: statewide BEV counts continued to increase through the transition, with only 10 of 100 counties showing any month-over-month decrease, none exceeding 5 vehicles. The estimated statewide methodology correction is approximately 370 vehicles (0.4% of total). While the methodology change introduces a minor downward level adjustment in validation-period actuals, it does not materially affect model fit or validation conclusions. The 69.00% underprediction rate and +18.22 mean bias are predominantly attributable to BEV adoption growth exceeding historical trend projections.
+
+### Chow Test Results (Apr 10, 2026)
+
+**May 2025 break (methodology change): TEST IS DEGENERATE.** With only 2 post-break observations (May-Jun 2025) and 2 model parameters (intercept + slope), the post-break model fits perfectly (RSS = 0) and the F-statistic is mechanically inflated. The Chow test requires n₂ > k to have statistical meaning; with n₂ = k = 2, the result cannot be interpreted. **Future work:** Re-run when 12+ months of post-methodology data are available (by mid-2026).
+
+**August 2022 break (Inflation Reduction Act): STRONGLY SIGNIFICANT.** F = 1,268.35, p < 0.000001. There is a formal structural break at the IRA passage date. The BEV growth trajectory accelerated markedly after IRA tax credits took effect. This supports the "accelerating adoption" narrative and helps explain the systematic underprediction — models trained on the full 82-month series (including slower pre-IRA growth) systematically underestimate the post-IRA acceleration.
+
+**Interpretation for the paper:** The dominant structural break in NC BEV registrations is the IRA (Aug 2022), not the NCDOT methodology change (May 2025). The IRA break explains why 69.00% of forecasts underpredict — models fit to a blended pre/post-IRA trend systematically underestimate post-IRA growth. The methodology change is a minor perturbation (~0.4%) on top of this larger dynamic.
+
+### Future Work Recommendations (from econometric assessment)
+
+1. **Post-break model reestimation** — retrain county models on clean-methodology data only (12+ months available by May 2026)
+2. **Formal break testing** — re-run Chow test at May 2025 when sufficient post-break observations exist; apply Bai-Perron multiple break-point tests
+3. **Regime indicator models** — ARIMAX with binary methodology-regime indicator as exogenous variable
+4. **Growth-rate forecasting** — forecast month-over-month rates instead of levels (inherently robust to level shifts)
+5. **Extended validation window** — expand to 12-month holdout (Jul 2025 - Jun 2026) for more reliable MAPE estimates
+6. **County-level methodology heterogeneity** — investigate whether the 10 affected counties share characteristics
+7. **Ensemble approaches** — weighted combination of ESM/ARIMA/UCM forecasts across counties
 
 ### Data Pipeline Design Decision
 NCDOT is the only dataset with a full acquisition-to-processing pipeline (`ncdot_ev_pipeline.py`) because it arrives as multiple monthly Excel files requiring merge, derivation (TotalEV, EV_Share, Methodology_PostMay2025), and QA generation. All other datasets arrive as single files (or file sets) consumed directly by analysis scripts — a separate pipeline would add unnecessary abstraction. Download scripts exist for all 6 datasets (see `code/python/data-acquisition/`).
