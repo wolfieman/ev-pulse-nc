@@ -245,6 +245,8 @@ Per expert panel recommendation: include a brief paragraph explaining why separa
 
 **For Discussion/Conclusion:** The methodology change actually makes the validation a stricter test. The holdout period (Jul-Oct 2025) uses cleaner, lower counts than the old methodology would have produced. The fact that 69% of forecasts still underpredicted against these *lower* numbers means the real EV adoption growth signal is even stronger than the raw numbers suggest. MAPE 4.34% against a stricter baseline reinforces confidence in the county rankings.
 
+**MAPE weighting choice:** The overall MAPE (4.34%) is an unweighted flat average across all 400 county-month observations, giving equal importance to forecast accuracy in every county regardless of BEV fleet size. This is both the standard approach in time series forecasting literature and philosophically aligned with the equity-weighted scoring framework — a BEV-weighted MAPE would prioritize accuracy in high-adoption counties, contradicting the 0.40 equity weight that the scoring framework deliberately places on disadvantaged and underserved communities.
+
 **Future work recommendation:** A split validation — train on pre-May-2025 data only, validate on Jun-Oct 2025, then compare against the current full-training validation — would isolate the methodology change effect and quantify how much of the underprediction is growth vs. dedup artifact. This would also provide a natural Chow-test framework for the structural break. Not in scope for this capstone but a clean follow-up study.
 
 ### Data Pipeline Design Decision
