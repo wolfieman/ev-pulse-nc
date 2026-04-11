@@ -140,7 +140,7 @@ data/
 
 | File | Description | Rows |
 |------|-------------|------|
-| `phase4-employment-centers.csv` | Employment center analysis (all counties) | 100 |
+| `phase4-employment-centers.csv` | Employment center analysis (top 15 by inbound commuting) | 15 |
 | `phase4-cost-effectiveness.csv` | Cost-effectiveness sub-metrics (top 10) | 10 |
 
 **Created by:** `phase4_workplace_charging.py`
