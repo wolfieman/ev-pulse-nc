@@ -264,13 +264,13 @@ Based on data investigation (Feb 2026) — original 3-agent framework analysis h
 
 | Data Type | Max Staleness | Current Status | Action Required |
 |-----------|---------------|----------------|-----------------|
-| **Demand (BEV registrations)** | 6 months | ✅ 3 months (Oct 2025) | None |
-| **Supply (Infrastructure)** | 3 months | ✅ Current (Feb 2026 API) | Complete dataset acquired (1,985 stations, all levels) |
-| **Demographics** | 5 years | ✅ 4-6 years (2020 Census + ACS) | None |
-| **Traffic Volumes** | 3 years | ✅ 3 years (2023 HPMS) | None |
-| **Commuting Patterns** | 10 years | ✅ 6-10 years (CTPP 2016-2020) | None |
+| **Demand (BEV registrations)** | 6 months | ✅ 3 months (Oct 2025 actuals, as of Feb 2026) | None |
+| **Supply (Infrastructure)** | 3 months | ✅ Current (Feb 2026 API, 1,985 stations, all levels) | None |
+| **Demographics** | 5 years | ✅ 4 years (ACS 2018-2022 5-year estimates) | None |
+| **Commuting Patterns** | 10 years | ✅ 5 years (LEHD LODES 2021, most recent public release) | None |
+| **Equity Designations** | 5 years | ✅ Current (CEJST v2.0, December 2024 release) | None |
 
-**Rationale:** Infrastructure data is now current and complete. The Feb 2026 API download provides full coverage of 1,985 NC stations across all charging levels and access types, replacing the previous DCFC-only extract that covered only 355 stations. All data types now meet or exceed their staleness thresholds.
+**Rationale:** All data types meet or exceed their staleness thresholds. Infrastructure data is current and complete (Feb 2026 full API download). LEHD LODES 2021 replaces the originally planned CTPP 2016-2020; a 0.85 remote-work multiplier (Barrero/Bloom/Davis 2023) adjusts for post-COVID commuting shifts. Traffic Volumes (HPMS) removed — not used by this project.
 
 ---
 
