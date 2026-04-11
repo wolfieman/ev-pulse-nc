@@ -47,7 +47,7 @@ NEVI Priority Score(county) = w1 × Equity + w2 × Utilization + w3 × Cost-Effe
 **What they get:**
 - A reproducible methodology with documented data sources, schemas, and processing scripts
 - A publicly accessible scoring framework that other states can adapt
-- Validation work (MAPE 4.36%, 68.9% underprediction characterization) usable as a forecasting case study
+- Validation work (MAPE 4.34%, 69.00% underprediction characterization) usable as a forecasting case study
 - Integration of CEJST equity data with infrastructure analysis — a methodological contribution
 
 **Key value:** Reproducibility and methodological transparency for further research and peer review.

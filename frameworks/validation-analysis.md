@@ -4,7 +4,7 @@
 
 ## Executive Summary
 
-Phase 1 validation tested SAS Model Studio forecasts against out-of-sample NCDOT data (Jul-Oct 2025). The analysis revealed strong point accuracy (MAPE 4.36%) but systematic underprediction, with 68.9% of forecasts falling below actual values.
+Phase 1 validation tested SAS Model Studio forecasts against out-of-sample NCDOT data (Jul-Oct 2025). The analysis revealed strong point accuracy (MAPE 4.34%) but systematic underprediction, with 69.00% of forecasts falling below actual values.
 
 ---
 
@@ -32,16 +32,16 @@ Phase 1 validation tested SAS Model Studio forecasts against out-of-sample NCDOT
 
 | Metric | Overall | ESM | ARIMA | UCM |
 |--------|---------|-----|-------|-----|
-| MAPE | 4.36% | 4.16% | 5.43% | 4.87% |
-| MAE | 27.10 | 19.10 | 84.83 | 3.48 |
-| RMSE | 114.11 | 74.67 | 252.94 | 6.53 |
+| MAPE | 4.34% | 4.16% | 5.43% | 4.43% |
+| MAE | 26.88 | 19.10 | 84.83 | 3.71 |
+| RMSE | 113.54 | 74.67 | 252.94 | 6.36 |
 
 ### Bias Analysis
 
 | Metric | Value | Interpretation |
 |--------|-------|----------------|
-| Mean Bias | +18.36 vehicles | Forecasts systematically too LOW |
-| Underprediction Rate | 68.9% | Majority of forecasts exceeded by actuals |
+| Mean Bias | +18.22 vehicles | Forecasts systematically too LOW |
+| Underprediction Rate | 69.00% | Majority of forecasts exceeded by actuals |
 | Direction | UNDERPREDICTION | EV adoption outpaced predictions |
 
 ### Confidence Interval Coverage
@@ -64,12 +64,12 @@ Phase 1 validation tested SAS Model Studio forecasts against out-of-sample NCDOT
 
 3. **Evidence Supporting These Hypotheses:**
    - Urban concentration of errors (Mecklenburg and Wake showed largest underpredictions)
-   - Systematic direction (68.9% underprediction is not random)
+   - Systematic direction (69.00% underprediction is not random)
    - CI failure pattern (actuals fall ABOVE upper bounds, not below)
 
 ### Pathway Determination
 
-Based on MAPE 4.36% (below 5% threshold): **Pathway A (Strong Validation)**
+Based on MAPE 4.34% (below 5% threshold): **Pathway A (Strong Validation)**
 
 Forecasts can be used for policy recommendations with the following caveats:
 - Add 4-5% buffer to forecast-based allocations to account for faster-than-predicted adoption

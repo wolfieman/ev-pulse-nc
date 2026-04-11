@@ -531,8 +531,8 @@ that translates EV Pulse NC research findings into accessible, engaging content.
 - Gini coefficient of 0.805 (extreme geographic concentration)
 - Top 10 counties hold 72% of all BEVs
 - Bottom 50 counties hold only 4.8% of BEVs
-- Forecast validation MAPE: 4.36% (strong accuracy)
-- Systematic underprediction: 68.9% of forecasts below actuals
+- Forecast validation MAPE: 4.34% (strong accuracy)
+- Systematic underprediction: 69.00% of forecasts below actuals
 - $109 million NEVI funding allocation decision pending
 
 **Source Material:**
@@ -900,8 +900,8 @@ Use these in your posts:
 | Charging Connectors | 6,145 | Individual units (all levels L1/L2/DCFC, Feb 2026) |
 | Charging Stations | 1,985 | Physical locations (Feb 2026 AFDC API) |
 | NEVI Funding | $109M | Federal allocation for NC |
-| Forecast MAPE | 4.36% | Validation accuracy |
-| Underprediction Rate | 68.9% | Forecasts below actuals |
+| Forecast MAPE | 4.34% | Validation accuracy |
+| Underprediction Rate | 69.00% | Forecasts below actuals |
 
 ---
 

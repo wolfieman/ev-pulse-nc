@@ -42,7 +42,7 @@ EV Pulse NC research priorities and phases (aligned Feb 26, 2026):
 
 | Phase | Priority | Topic | Status | Key Decision |
 |:-----:|:--------:|-------|--------|--------------|
-| **1** | **1** | Predictive Analysis Validation | **Phase 1 Complete** | MAPE 4.36%, 68.9% underprediction, 8 publication figures |
+| **1** | **1** | Predictive Analysis Validation | **Phase 1 Complete** | MAPE 4.34%, 69.00% underprediction, 8 publication figures |
 | **2** | **2** (was #5) | AFDC Infrastructure Data | **Phase 2 Complete** | Complete API dataset replaces DCFC-only extract (1,985 stations, all levels) |
 | **3** | **3** (was #2) | ZIP Code Analysis | ✅ Framework Complete ([zip-code-analysis.md](./zip-code-analysis.md)) | Infrastructure-only (adoption data unavailable at ZIP level) |
 | **4** | **4** (was #3) | CTPP Commuting Data | ✅ Framework Complete ([ctpp-analysis.md](./ctpp-analysis.md)) | Top 15 employment centers, 30% workplace charging assumption |
@@ -99,10 +99,10 @@ NEVI Priority Score(county) = w1 × Equity_Score + w2 × Utilization_Score + w3 
 
 ### Priority #1 / Phase 1: Validation (COMPLETE)
 - **Core Question:** How accurate are SAS Model Studio forecasts for July-Oct 2025?
-- **Result:** MAPE 4.36% (strong validation), but systematic underprediction detected
-- **Key Finding:** 68.9% of forecasts fell below actual values (Bias: +18.36 vehicles)
+- **Result:** MAPE 4.34% (strong validation), but systematic underprediction detected
+- **Key Finding:** 69.00% of forecasts fell below actual values (Bias: +18.22 vehicles)
 - **Model Distribution:** ESM (82 counties), ARIMA (13 counties), UCM (5 counties)
-- **95% CI Coverage:** 75.3% (below nominal 95% due to bias)
+- **95% CI Coverage:** 75.50% (below nominal 95% due to bias)
 - **Deliverables:** 8 publication-quality figures (600 DPI, PDF exports)
 
 ### Priority #2 / Phase 2: AFDC Infrastructure Data (COMPLETE)
