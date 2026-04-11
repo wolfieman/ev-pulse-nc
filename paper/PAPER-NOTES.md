@@ -286,6 +286,9 @@ The 0.85 remote-work multiplier (Barrero/Bloom/Davis 2023) is applied uniformly 
 
 **Future research:** A county-specific remote-work rate would change rankings because different adjustments per county would not cancel in normalization. No public data source currently provides reliable NC county-level remote-work rates. When ACS post-COVID county-level remote-work estimates become available with acceptable margins of error, replacing the uniform national multiplier with county-specific rates would refine relative rankings.
 
+### Future Work: Confidence Intervals on Composite NEVI Scores
+Propagating uncertainty from multiple sources (SAS forecast CIs, LODES noise infusion, Gini sampling variability) into a single composite score CI would require Monte Carlo simulation or analytical error propagation. This is beyond MBA capstone scope but would strengthen the framework's decision-support value — stakeholders could see not just "Union ranks #1" but "Union ranks #1 with 90% probability." The current weight sensitivity analysis serves a similar purpose at the pillar-weight level but does not capture sub-metric uncertainty.
+
 ### Data Pipeline Design Decision
 NCDOT is the only dataset with a full acquisition-to-processing pipeline (`ncdot_ev_pipeline.py`) because it arrives as multiple monthly Excel files requiring merge, derivation (TotalEV, EV_Share, Methodology_PostMay2025), and QA generation. All other datasets arrive as single files (or file sets) consumed directly by analysis scripts — a separate pipeline would add unnecessary abstraction. Download scripts exist for all 6 datasets (see `code/python/data-acquisition/`).
 
