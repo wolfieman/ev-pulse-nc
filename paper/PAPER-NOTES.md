@@ -644,4 +644,12 @@ This lineage supports the "audit-ready justification" framing in the stakeholder
 
 ---
 
+### TODO: Fix Author Attribution in Analysis Scripts
+- **23 scripts** in `code/python/analysis/` have `Author: BIDA 670 EV-Pulse-NC Project` — should be `Author: Wolfgang Sanyer`
+- Identified during data quality review (Apr 10, 2026)
+- Not urgent — cosmetic, does not affect functionality or results
+- Fix during a maintenance pass before final report submission
+
+---
+
 *Last updated: March 13, 2026*
