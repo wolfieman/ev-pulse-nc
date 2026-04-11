@@ -286,7 +286,7 @@ NCDOT is the only dataset with a full acquisition-to-processing pipeline (`ncdot
 - Crosswalk: 100% coverage — every OD and WAC block maps to a county; all 100 NC counties present
 - ACS: 2,672 NC tracts; tenure identity confirmed (owner + renter = total) for all tracts
 - Statewide >$75K household income share: 44.4%; renter share: 33.8%
-- OD total workers (4,198,163) vs WAC total (4,400,986): 4.6% difference expected (OD Main = intra-state only)
+- OD total workers (4,198,163) vs WAC total (4,400,986): 4.6% difference expected (OD Main = intra-state only). This gap is concentrated in border counties — Mecklenburg (Charlotte-SC corridor) is the most affected study county. The direction is conservative: interstate commuter exclusion undercounts workplace demand, so the project's estimates are a floor, not a ceiling. **Future work:** Interstate LODES files (aux) could quantify cross-border demand for border counties where charging infrastructure serves both NC residents and interstate commuters.
 - Cross-file tract alignment: 100% overlap between crosswalk (2,672 tracts) and ACS (2,672 tracts)
 - OD-to-county crosswalk loss: 0 rows, 0% of S000 — every OD block (home and work) maps to a crosswalk block
 - ACS income imputation: 1,767 of 3,768,428 OD rows (0.05%) had missing income shares; filled with statewide median (41.2% households >$75k). Immaterial to any finding
