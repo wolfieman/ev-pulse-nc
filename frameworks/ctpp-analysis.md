@@ -4,7 +4,7 @@
 
 Phase 4 transformed EV infrastructure analysis from a single-dimension residential model to a dual-dimension residential + workplace model by incorporating inter-county commuting flows. The delivered analysis used **LEHD LODES** (Origin-Destination, Workplace Area Characteristics, and geography crosswalk) rather than CTPP, which was the originally planned source. LODES provides more recent data (2021) and higher geographic fidelity than CTPP, and was cross-corrected with ACS income tabulations and a Barrero, Bloom & Davis (2023) 0.85 remote-work multiplier.
 
-**Critical finding:** Employment centers need 2-3x more infrastructure than residential-only analysis suggests. Workplace infrastructure serves roughly **15 BEVs/port vs. 7.5 BEVs/port for residential public** — a 2x efficiency gain driven by consistent Mon-Fri demand and 8-hour dwell times. Statewide adjusted workplace demand is **859,260 commuter-based EV charging events**, with Mecklenburg (+194,361 net inbound commuters), Wake (+126,517), and Durham (+89,450) as the dominant net employment centers.
+**Critical finding:** NC's statewide ratio of 15.4 BEVs per port exceeds the IEA global benchmark of ~10 EVs per public charger (IEA Global EV Outlook, 2023-2024), and the top-10 urban county median of 20.6 indicates acute infrastructure strain in employment centers. Workplace chargers benefit from consistent Mon-Fri demand and 8-hour dwell times that maximize utilization. Statewide adjusted workplace demand is **859,260 commuter-based EV charging events**, with Mecklenburg (+194,361 net inbound commuters), Wake (+126,517), and Durham (+89,450) as the dominant net employment centers.
 
 Phase 4 outputs feed the Cost-Effectiveness Score of the NEVI scoring framework.
 
@@ -19,7 +19,7 @@ Phase 4 outputs feed the Cost-Effectiveness Score of the NEVI scoring framework.
 
 - **Statewide adjusted workplace demand:** 859,260 EV commuter charging events (post-SE03 income filter, post-0.85 remote-work multiplier)
 - **Top net employment centers:** Mecklenburg +194,361, Wake +126,517, Durham +89,450
-- **Workplace efficiency:** ~15 BEVs/port vs. ~7.5 BEVs/port residential public (2x efficiency)
+- **Infrastructure gap:** NC statewide 15.4 BEVs/port vs IEA global benchmark ~10; top-10 county median 20.6
 - **Income filter:** LODES SE03 (earnings > $3,333/month) as proxy for workers with EV-consistent income profiles
 - **Remote work adjustment:** 0.85 multiplier, Barrero/Bloom/Davis (2023), "The Evolution of Work from Home"
 - **EV adoption rate:** Applied at origin county (determines home charging access), with 1.25 commuter-income premium

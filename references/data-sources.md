@@ -36,8 +36,10 @@
 
 - Anyer et al. - EV adoption modeling methodologies
 - McKinsey & Company - Public EV charging station profitability analysis
-- NREL - 2030 National Charging Network projections
+- NREL - 2030 National Charging Network projections (Wood et al., 2023, NREL/TP-5400-85654)
 - NEVI Formula Program guidelines - Federal infrastructure funding
+- IEA Global EV Outlook (2023-2024) — EVs per public charger benchmarks: global average ~10, US ~24, Europe ~13. URL: https://www.iea.org/reports/global-ev-outlook-2024/trends-in-electric-vehicle-charging
+- Barrero, Bloom & Davis (2023) — "The Evolution of Work from Home" — remote work multiplier (0.85)
 
 ## Reference Materials
 
