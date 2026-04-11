@@ -278,6 +278,9 @@ Per expert panel recommendation: include a brief paragraph explaining why separa
 6. **County-level methodology heterogeneity** — investigate whether the 10 affected counties share characteristics
 7. **Ensemble approaches** — weighted combination of ESM/ARIMA/UCM forecasts across counties
 
+### CSS vs MLE Estimation Method Comparison (Apr 10, 2026)
+Verified on statewide ARIMA(1,1,1): MLE (Python default) vs CSS-like (SAS default) produce forecast differences of < 0.1% at all horizons (23-104 vehicles on a ~97,000 base). AR parameter difference 0.06%, MA difference 1.48%. Sigma² differs by 20% (affects CI width, not point forecasts). The estimation method choice does not materially affect any result. Python ARIMA is supplementary to the primary SAS county-level models.
+
 ### Data Pipeline Design Decision
 NCDOT is the only dataset with a full acquisition-to-processing pipeline (`ncdot_ev_pipeline.py`) because it arrives as multiple monthly Excel files requiring merge, derivation (TotalEV, EV_Share, Methodology_PostMay2025), and QA generation. All other datasets arrive as single files (or file sets) consumed directly by analysis scripts — a separate pipeline would add unnecessary abstraction. Download scripts exist for all 6 datasets (see `code/python/data-acquisition/`).
 
