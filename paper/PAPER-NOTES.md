@@ -370,6 +370,7 @@ Raw LODES commuter count
 - Buncombe: 0.034 (lowest — lower commuter volumes and density)
 - Scoring skeleton: 13/17 columns now populated (up from 9/17)
 - **Equal weighting rationale:** The three cost-effectiveness sub-metrics (commuter demand, workplace efficiency, population density) are weighted equally (1/3 each) because no empirical or policy basis exists to differentiate them — unlike the equity pillar where Justice40 provides a clear hierarchy. Equal weighting is the standard default in multi-criteria decision analysis when differential weights cannot be justified. The cost-effectiveness pillar carries only 0.25 of the total NEVI score, bounding the impact of any internal reweighting on final rankings.
+- **Empirical robustness test (Apr 10, 2026):** Tested extreme internal weight scenarios — commuter-heavy (0.60/0.20/0.20), 100% commuter demand, 100% workplace efficiency, 100% population density. Result: the top 3 counties (Union, Mecklenburg, Guilford) remain the same under ALL scenarios. Only internal ordering shifts (Union vs Mecklenburg swap #1/#2 depending on weights). Mid-range counties shift by at most 1 rank position. The equal weighting choice does not affect which counties are prioritized for NEVI funding.
 
 #### Figures
 - fig-35: Net commuter flow diverging bar (15 counties, green/red by typology)
