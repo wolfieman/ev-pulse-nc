@@ -15,7 +15,7 @@ NEVI Priority Score(county) = w1 × Equity + w2 × Utilization + w3 × Cost-Effe
 ### NEVI Formula Program Administrators (NCDOT, FHWA)
 
 **What they get:**
-- A defensible, weighted ranking of all 100 NC counties for NEVI dollar allocation
+- A defensible, weighted ranking of the top 10 NC counties (73% of statewide BEV fleet) for NEVI prioritization, with framework designed for statewide extension
 - Equity weighting aligned with the federal Justice40 initiative (CEJST tract-level designations)
 - Sensitivity analysis demonstrating that top-ranked counties are robust across reasonable weight variations
 - A methodology that translates findings into allocation decisions, directly responsive to the proposal feedback to "clearly define prioritization criteria within a scoring framework"
