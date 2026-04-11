@@ -538,6 +538,23 @@ Raw LODES commuter count
 
 ---
 
+## Data Governance Readiness
+
+The project's data lineage is structured to withstand federal-level data governance scrutiny. The complete chain from raw source to final NEVI score is traceable:
+
+1. **Raw data** — all source files committed to repo, directory marked immutable ("NEVER edit")
+2. **Acquisition** — dedicated download script for each of the 6 datasets (`code/python/data-acquisition/`)
+3. **Provenance** — 19-entry provenance table with source, script, and pull date (`data/README.md`)
+4. **Schema** — consolidated data dictionary covering all 6 datasets with column definitions, types, and valid ranges (`data/DATA-DICTIONARY.md`)
+5. **Processing** — 27 analysis scripts with explicit load paths and documented transforms
+6. **Validation** — SAS forecast validation (MAPE 4.34%, 400 observations), 12-check crosswalk suite (23/23 passed), Phase 4 EDA (59/59 passed)
+7. **Output** — scored county rankings with component decomposition (`scoring-framework-final.csv`)
+8. **Reproducibility** — all download commands documented, dependency lockfile (`uv.lock`), relative paths throughout
+
+This lineage supports the "audit-ready justification" framing in the stakeholder value analysis. While formal sign-off documentation and data flow diagrams are not included (enterprise governance artifacts beyond MBA capstone scope), the technical traceability is complete.
+
+---
+
 ## Conclusion Section — Draft Guidance
 
 ### Five Unique Contributions
