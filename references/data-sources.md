@@ -25,6 +25,13 @@
 - **Feb 2026 Stats:** 4,363 L2 EVSE + 1,747 DCFC + 35 L1 = 6,145 total connectors across 267 cities
 - **Data Comparison:** See [AFDC-DATA-COMPARISON.md](../data/raw/AFDC-DATA-COMPARISON.md) for detailed analysis of old vs. new file differences, including station overlap, composition breakdown, and redefined Priority 5 scope.
 
+### NEVI Formula Program — North Carolina Allocation
+- **Total Allocation:** $109 million (FY2022-FY2026, cumulative)
+- **Source:** NCDOT press release, March 27, 2026: "North Carolina received $109 million in NEVI funding to build out EV infrastructure along a network of approved interstates and highway corridors and in communities."
+- **URL:** https://www.ncdot.gov/news/press-releases/Pages/2026/2026-03-27-applications-open-second-wave-ev-charging-stations.aspx
+- **Program Authority:** Bipartisan Infrastructure Law (Infrastructure Investment and Jobs Act), National Electric Vehicle Infrastructure Formula Program
+- **Federal Program URL:** https://www.fhwa.dot.gov/environment/nevi/
+
 ## Supporting Research
 
 - Anyer et al. - EV adoption modeling methodologies
