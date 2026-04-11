@@ -194,11 +194,12 @@ NEVI Priority Score(county) = 0.40 x Equity_Score
 
 ### Output
 
-Ranked list of all 100 North Carolina counties with:
+Ranked list of top 10 North Carolina counties (by BEV registration count, capturing 73% of statewide BEV fleet) with:
 - Individual component scores (Equity, Utilization, Cost-Effectiveness)
 - Composite NEVI Priority Score
-- Recommended NEVI dollar allocation proportional to score
-- Confidence intervals reflecting forecast uncertainty
+- Weight sensitivity analysis across ±10pp equity variation
+
+**Future work:** Extend to all 100 counties; add dollar allocation proportional to score; add confidence intervals on composite scores.
 
 ---
 
@@ -245,7 +246,7 @@ This table maps each pipeline phase to the corresponding section of the BIDA 670
 | **Phase 3: ZIP Code Analysis** | Results | Sub-county gap analysis: top 20 underserved ZIPs, Wake County heat map, Gini coefficient for intra-county inequality |
 | **Phase 4: CTPP Workplace** | Results | Workplace charging demand: top 10 employment centers, commuter flow analysis, 3x efficiency finding (15 vs. 7.5 EVs/port) |
 | **Phase 5: CEJST Equity** | Results + Discussion | Results: CEJST tract-level Justice40 overlay, county + ZCTA disadvantaged community shares, climate-subset sensitivity, weight sensitivity. Discussion: policy implications for equitable NEVI deployment |
-| **Scoring Framework** | Discussion | NEVI recommendations: weighted scoring equation, ranked county list, dollar allocation model, sensitivity analysis |
+| **Scoring Framework** | Discussion | NEVI recommendations: weighted scoring equation, ranked county list (top 10), weight sensitivity analysis |
 | **Phase 7: NCDOT Validation** | Discussion | Methodology validation: do our equity-weighted scores independently recommend the same locations NCDOT chose in their Feb 18, 2026 rural deployment shift? |
 
 ---

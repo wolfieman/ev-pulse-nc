@@ -67,7 +67,7 @@ NEVI Priority Score(county) = w1 × Equity_Score + w2 × Utilization_Score + w3 
 
 **Weights:** Literature-driven from DOE/FHWA NEVI guidance (equity-heavy per Justice40: ~0.40/0.35/0.25) + sensitivity analysis showing top counties robust across weight variations.
 
-**Output:** Ranked list of 100 NC counties with defensible NEVI dollar allocations.
+**Output:** Ranked list of top 10 NC counties (73% of statewide BEV fleet) with component scores and weight sensitivity analysis. Framework designed for statewide extension to all 100 counties.
 
 ---
 
