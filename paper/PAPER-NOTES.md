@@ -369,6 +369,7 @@ Raw LODES commuter count
 - Mecklenburg: 0.801 (highest), Wake: 0.568, Forsyth: 0.467, Durham: 0.454
 - Buncombe: 0.034 (lowest — lower commuter volumes and density)
 - Scoring skeleton: 13/17 columns now populated (up from 9/17)
+- **Equal weighting rationale:** The three cost-effectiveness sub-metrics (commuter demand, workplace efficiency, population density) are weighted equally (1/3 each) because no empirical or policy basis exists to differentiate them — unlike the equity pillar where Justice40 provides a clear hierarchy. Equal weighting is the standard default in multi-criteria decision analysis when differential weights cannot be justified. The cost-effectiveness pillar carries only 0.25 of the total NEVI score, bounding the impact of any internal reweighting on final rankings.
 
 #### Figures
 - fig-35: Net commuter flow diverging bar (15 counties, green/red by typology)
