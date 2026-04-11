@@ -644,10 +644,15 @@ This lineage supports the "audit-ready justification" framing in the stakeholder
 
 ---
 
-### TODO: Fix Author Attribution in Analysis Scripts
-- **23 scripts** in `code/python/analysis/` have `Author: BIDA 670 EV-Pulse-NC Project` — should be `Author: Wolfgang Sanyer`
+### TODO: Full Code Standards Review — 23 Analysis Scripts
+- **23 scripts** in `code/python/analysis/` need review for:
+  - **Author attribution:** Currently `Author: BIDA 670 EV-Pulse-NC Project` — should be `Author: Wolfgang Sanyer`
+  - **Conventions:** `main()` + `if __name__ == "__main__"` pattern, `from __future__ import annotations`, `_SCRIPT_DIR` path resolution, type hints
+  - **Constants:** No hard-coded values — thresholds, column names, file paths as module-level constants
+  - **Refactoring:** Duplicated logic extracted into helper functions, no repeated code blocks
+  - **Docstrings:** Module-level docstring with usage, function-level docstrings with Args/Returns
+- **Reference implementation:** `scoring_framework_vif.py` (refactored Apr 10, 2026) follows all conventions
 - Identified during data quality review (Apr 10, 2026)
-- Not urgent — cosmetic, does not affect functionality or results
 - Fix during a maintenance pass before final report submission
 
 ---
