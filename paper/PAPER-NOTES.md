@@ -592,15 +592,29 @@ This lineage supports the "audit-ready justification" framing in the stakeholder
 - **Placement:** Final paper Results section, final presentation
 - **Priority:** LOW for progress report (table suffices), HIGH for final paper/presentation
 
-### TODO: VIF / Multicollinearity Check on Scoring Framework
-- **Status:** NOT YET IMPLEMENTED — action plan at `paper/vif-scoring-framework-action-plan.md`
-- **What:** Compute Variance Inflation Factors for the 3 scoring pillars (equity, utilization, cost-effectiveness) to verify they are sufficiently independent
-- **Why:** Addresses Dr. Al-Ghandour's defensibility feedback; standard check for weighted composites; SAS Training 2 Module 5 flagged this as critical
-- **When:** During paper writing, before finalizing Results section
-- **Script to create:** `code/python/analysis/scoring_framework_vif.py`
-- **Paper placement:** VIF table in Results; interpretation in Methodology/Discussion
+### DONE: VIF / Multicollinearity Check on Scoring Framework
+- **Status:** COMPLETE (Apr 10, 2026) — script at `code/python/analysis/scoring_framework_vif.py`, results at `data/processed/scoring-vif-check.csv`
+- **What:** Computed Variance Inflation Factors for the 3 scoring pillars (equity, utilization, cost-effectiveness)
+
+**Results:**
+| Pillar | VIF |
+|--------|-----|
+| Equity | 1.41 |
+| Utilization | 1.08 |
+| Cost-Effectiveness | 1.32 |
+
+**Pairwise correlations (Pearson):**
+| Pair | r |
+|------|---|
+| Equity ↔ Utilization | -0.26 |
+| Equity ↔ Cost-Effectiveness | +0.48 |
+| Utilization ↔ Cost-Effectiveness | -0.03 |
+
+**Interpretation:** Max VIF 1.41, well below the 5.0 concern threshold. All three pillars are sufficiently independent. The 0.40/0.35/0.25 weights are defensible — they represent three genuinely distinct dimensions (who needs it, how strained infrastructure is, where dollars go furthest). The moderate Equity ↔ Cost-Effectiveness correlation (0.48) is expected (disadvantaged counties also have workforce demand) but does not cause multicollinearity.
+
 - **Caveat:** n=10 counties limits statistical power; recompute if extended to 100
-- **Expected outcome:** VIF likely 1-3 (pillars are conceptually distinct), but must be verified
+- **Paper placement:** VIF table in Results; interpretation in Methodology/Discussion
+- **Addresses:** Dr. Al-Ghandour's defensibility feedback; SAS Training 2 Module 5 critical flag
 
 ---
 
