@@ -63,7 +63,7 @@ NEVI Priority Score(county) = w1 × Equity_Score + w2 × Utilization_Score + w3 
 |-----------|----------------|---------|
 | **Equity_Score** | CEJST Justice40 equity (Phase 5) + Phase 3 ZIP analysis | Justice40 disadvantaged community %, Gini coefficient, rural access gap, zero-infrastructure flag |
 | **Utilization_Score** | Validation (#1) + AFDC complete baseline (#2) | BEVs/port ratio across all charging levels (L1, L2, DCFC), 4-5% underprediction buffer |
-| **Cost_Effectiveness_Score** | CTPP workplace charging (#4) | Workplace efficiency (15 vs 7.5 BEVs/port), commuter demand sizing, population density |
+| **Cost_Effectiveness_Score** | LEHD/LODES workplace charging (#4) | Workplace commuter demand, workplace efficiency, population density |
 
 **Weights:** Literature-driven from DOE/FHWA NEVI guidance (equity-heavy per Justice40: ~0.40/0.35/0.25) + sensitivity analysis showing top counties robust across weight variations.
 
@@ -121,7 +121,7 @@ NEVI Priority Score(county) = w1 × Equity_Score + w2 × Utilization_Score + w3 
 ### Priority #4 / Phase 4: CTPP Workplace Charging
 - **Core Question:** Does workplace demand differ from residential patterns?
 - **Key Constraint:** CTPP data is 8-10 years old (2012-2016 ACS), requires remote work adjustments
-- **Key Insight:** Workplace infrastructure 3x more efficient (15 EVs/port) than residential (7.5 EVs/port) but smaller absolute gap
+- **Key Insight:** NC statewide ratio of 15.4 BEVs/port exceeds IEA global benchmark (~10); top-10 urban county median at 20.6 indicates acute strain
 - **Recommendation:** Focus on top 15 employment centers, not all 100 counties
 
 ### Priority #5 / Phase 5: CEJST Equity Analysis

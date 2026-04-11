@@ -36,7 +36,7 @@ This project applies the standard 5-part analytics framework — exploratory, de
 
 ### Infrastructure Gap
 - **Current Ratio:** ~16.9 BEVs per public charging port
-- **National Benchmark:** 10-15 BEVs per port (industry standard)
+- **Global Benchmark:** ~10 EVs per public charger (IEA Global EV Outlook, 2023-2024)
 - **Conclusion:** Infrastructure lagging demand by **13-40%** depending on county
 
 ---
