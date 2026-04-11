@@ -47,18 +47,18 @@ The validation compared SAS Model Studio predictions against NCDOT actual data f
 
 | Metric | Result | Interpretation |
 |--------|--------|----------------|
-| MAPE | 4.36% | Strong validation (below 5% threshold) |
-| MAE | 27.10 vehicles | Average absolute error per county-month |
-| RMSE | 114.11 vehicles | Root mean squared error |
-| Bias | +18.36 vehicles | Systematic underprediction |
-| Underprediction Rate | 69.0% | Majority of forecasts fell below actuals |
-| 95% CI Coverage | 75.3% | Below nominal 95% due to bias |
+| MAPE | 4.34% | Strong validation (below 5% threshold) |
+| MAE | 26.88 vehicles | Average absolute error per county-month |
+| RMSE | 113.54 vehicles | Root mean squared error |
+| Bias | +18.22 vehicles | Systematic underprediction |
+| Underprediction Rate | 69.00% | Majority of forecasts fell below actuals |
+| 95% CI Coverage | 75.50% | Below nominal 95% due to bias |
 
 SAS Model Studio auto-selected different model types per county: ESM (82 counties), ARIMA (13 counties), and UCM (5 counties). ESM models performed best overall (MAPE 4.16%); ARIMA models showed higher errors (MAPE 5.43%), reflecting their use in larger, more volatile urban counties.
 
 ### Key Finding: Systematic Underprediction
 
-The most significant finding is systematic underprediction. Actual EV registrations exceeded forecasts in 69.0% of observations, with a mean bias of +18.4 vehicles per county-month. The 95% prediction interval coverage is only 75.3%. The pattern is most pronounced in high-growth urban counties — Mecklenburg County underpredicted by up to 975 vehicles in October 2025. EV adoption in North Carolina is accelerating faster than historical patterns predicted, likely driven by Inflation Reduction Act tax credits, Tesla price reductions, and expanding infrastructure. For policy planning, this finding justifies a **4-5% upward buffer on forecast-based infrastructure allocations**, which is applied in the Utilization Score of the NEVI scoring framework.
+The most significant finding is systematic underprediction. Actual EV registrations exceeded forecasts in 69.00% of observations, with a mean bias of +18.22 vehicles per county-month. The 95% prediction interval coverage is only 75.50%. The pattern is most pronounced in high-growth urban counties — Mecklenburg County underpredicted by up to 975 vehicles in October 2025. EV adoption in North Carolina is accelerating faster than historical patterns predicted, likely driven by Inflation Reduction Act tax credits, Tesla price reductions, and expanding infrastructure. For policy planning, this finding justifies a **4-5% upward buffer on forecast-based infrastructure allocations**, which is applied in the Utilization Score of the NEVI scoring framework.
 
 ### Deliverables
 
@@ -157,7 +157,7 @@ Several analytical innovations distinguish this project from typical EV infrastr
 
 **Dual-dimension demand model.** Combining residential BEV registrations with workplace commuting flows creates a more complete demand picture. Employment centers serve both residents and net inbound commuters; bedroom communities primarily serve residents. This distinction drives infrastructure type allocation.
 
-**Validation-first approach.** Explicit out-of-sample forecast validation (MAPE 4.36%, 69.0% underprediction) before any policy recommendation is made. Most applied infrastructure studies deploy forecasts without validation, assuming historical fit guarantees future accuracy. Here, the validation results directly inform how forecasts are applied — with a 4-5% upward buffer in the Utilization Score.
+**Validation-first approach.** Explicit out-of-sample forecast validation (MAPE 4.34%, 69.00% underprediction) before any policy recommendation is made. Most applied infrastructure studies deploy forecasts without validation, assuming historical fit guarantees future accuracy. Here, the validation results directly inform how forecasts are applied — with a 4-5% upward buffer in the Utilization Score.
 
 **Prescriptive scoring framework with sensitivity analysis.** The five phases converge on a weighted scoring equation whose component weights are defended by federal policy context (Justice40 = 0.40), data-driven confidence (validated forecasts = 0.35), and analytical support (workplace efficiency = 0.25), and whose top-ranked counties are shown to be robust across +/-10% weight variations.
 
