@@ -35,7 +35,7 @@
 
 | Phase | Topic | Headline Finding |
 |-------|-------|-----------------|
-| **1: Predictive Validation** | Tested SAS Viya forecasts against Jan–Jun 2025 holdout data | MAPE 4.36%, 68.9% underprediction bias — demand growing faster than predicted |
+| **1: Predictive Validation** | Tested SAS Viya forecasts against Jan–Jun 2025 holdout data | MAPE 4.34%, 69.00% underprediction bias — demand growing faster than predicted |
 | **2: AFDC Infrastructure** | Complete supply-side baseline via NREL API | 1,985 stations, 6,145 connectors, full L1/L2/DCFC coverage |
 | **3: ZIP Code Analysis** | Sub-county infrastructure mapping, inequality measurement | Theil-T decomposition: 84.5% of inequality is WITHIN counties, not between. Gini 0.566. Novel contribution (no prior published study). |
 | **4: Workplace Charging** | LODES 2021 commuter flows + ACS income correction + remote work adjustment | Quantified workplace charging demand; renter equity dimension added |
@@ -160,7 +160,7 @@ Supports Mehta's 4-post structure with one modification: Post 4 title should NOT
 
 **Making Phase 1 and Phase 2 compelling:**
 - Phase 2 should NOT get its own post. Infrastructure data collection is a means, not a finding. Fold key numbers (1,985 stations, 6,145 connectors, Tesla's 60.5% connector share) into other posts as supporting context.
-- Phase 1 (validation) IS inherently dramatic if framed correctly. The finding is not "our MAPE was 4.36%." The finding is "our forecasts systematically underpredicted demand. In 68.9% of cases, reality outran the model. NC's EV growth is faster than the best available predictions." That is a story about a state outrunning its own planning tools.
+- Phase 1 (validation) IS inherently dramatic if framed correctly. The finding is not "our MAPE was 4.34%." The finding is "our forecasts systematically underpredicted demand. In 69.00% of cases, reality outran the model. NC's EV growth is faster than the best available predictions." That is a story about a state outrunning its own planning tools.
 
 **Theil finding — anchor or build toward?**
 Build toward it, but tease it early. Drop the 84.5% number in Post 1 as a one-sentence preview. Unpack fully in Post 2. The finding requires context to land. Recommended narrative arc for Post 2:

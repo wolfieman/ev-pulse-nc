@@ -202,11 +202,11 @@ EV Pulse NC applies the standard 5-part analytics framework — exploratory, des
   - ESM: 82 counties, ARIMA: 13 counties, UCM: 5 counties
   - Training period: Sep 2018 - Jun 2025 (82 months)
 - **Validation (Jul-Oct 2025, 4 months out-of-sample):**
-  - MAPE: 4.36% (strong accuracy)
-  - MAE: 27.10 vehicles, RMSE: 114.11 vehicles
-  - Bias: +18.36 (systematic underprediction)
-  - 95% CI Coverage: 75.3% (below nominal due to bias)
-  - Key Finding: 68.9% of forecasts underpredicted actuals
+  - MAPE: 4.34% (strong accuracy)
+  - MAE: 26.88 vehicles, RMSE: 113.54 vehicles
+  - Bias: +18.22 (systematic underprediction)
+  - 95% CI Coverage: 75.50% (below nominal due to bias)
+  - Key Finding: 69.00% of forecasts underpredicted actuals
 - **Outputs:**
   - Forecasted BEV registrations by county-month
   - 95% confidence intervals

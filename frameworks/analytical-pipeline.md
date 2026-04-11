@@ -31,8 +31,8 @@ The pipeline answers one question: **Where should North Carolina invest its fede
   |  [COMPLETE]                      |    |  [COMPLETE]                      |
   |                                  |    |                                  |
   |  SAS Model Studio BEV forecasts  |    |  NREL API: 1,985 NC stations     |
-  |  MAPE: 4.36%                     |    |  6,145 connectors                |
-  |  Bias: 68.9% underprediction     |    |  All levels: L1, L2, DCFC        |
+  |  MAPE: 4.34%                     |    |  6,145 connectors                |
+  |  Bias: 69.00% underprediction    |    |  All levels: L1, L2, DCFC        |
   |  8 publication figures           |    |  267 cities / 358 ZIP codes      |
   |                                  |    |                                  |
   |  Answers: "How many EVs will     |    |  Answers: "How many chargers     |
@@ -130,7 +130,7 @@ The pipeline answers one question: **Where should North Carolina invest its fede
 
 | Phase | Priority | Topic | Status | Time Est. | Key Deliverable | Scoring Component |
 |:-----:|:--------:|-------|--------|-----------|-----------------|-------------------|
-| **1** | 1 | Predictive Validation | **COMPLETE** | -- | 8 publication figures, MAPE 4.36%, bias analysis | Utilization Score (validated BEV forecasts) |
+| **1** | 1 | Predictive Validation | **COMPLETE** | -- | 8 publication figures, MAPE 4.34%, bias analysis | Utilization Score (validated BEV forecasts) |
 | **2** | 2 | AFDC Infrastructure Data | **COMPLETE** | -- | 1,985 stations, 6,145 connectors, all levels/access types | Utilization Score (BEVs-per-port ratios) |
 | **3** | 3 | ZIP Code Analysis (WHERE) | **COMPLETE** | Mar 2026 | Top 20 underserved ZIPs, Wake County heat map, Gini coefficient | Utilization Score + Equity Score |
 | **4** | 4 | CTPP Workplace Charging (WHO/WHEN) | **COMPLETE** | Mar 2026 | Top 10 employment centers, commuter flow map | Cost-Effectiveness Score |
@@ -147,7 +147,7 @@ This table shows what each phase produces and what downstream phases consume.
 | Source Phase | Data Produced | Consumed By | Purpose |
 |:------------:|---------------|-------------|---------|
 | **Phase 1** | Validated BEV forecasts by county (Jul-Oct 2025 holdout) | Gap Analysis, Phase 3, Scoring Framework | Demand-side numerator for BEVs-per-port ratios |
-| **Phase 1** | Underprediction bias estimate (68.9%, +18.36 vehicles) | Scoring Framework | 4-5% upward adjustment buffer in utilization scores |
+| **Phase 1** | Underprediction bias estimate (69.00%, +18.22 vehicles) | Scoring Framework | 4-5% upward adjustment buffer in utilization scores |
 | **Phase 2** | 1,985 station records with ZIP, lat/lon, facility type | Gap Analysis, Phase 3, Phase 4, Phase 6, Scoring Framework | Supply-side denominator; spatial distribution baseline |
 | **Phase 2** | Connector counts by level (L1, L2, DCFC) per station | Gap Analysis, Scoring Framework | Port-level utilization ratios by charging level |
 | **Phase 2** | Facility-type classification (workplace, retail, parking) | Phase 4 | Identifies existing workplace vs. residential infrastructure |
@@ -208,7 +208,7 @@ Ranked list of all 100 North Carolina counties with:
 
 | Phase | Completion Date | Key Results |
 |-------|----------------|-------------|
-| **Phase 1: Predictive Validation** | Feb 2026 | MAPE 4.36%, 68.9% underprediction bias, 8 publication figures (600 DPI, PDF) |
+| **Phase 1: Predictive Validation** | Feb 2026 | MAPE 4.34%, 69.00% underprediction bias, 8 publication figures (600 DPI, PDF) |
 | **Phase 2: AFDC Infrastructure Data** | Feb 2026 | Complete API download: 1,985 stations, 6,145 connectors, L1/L2/DCFC, all access types, 267 cities, 358 ZIPs |
 | **Phase 3: ZIP Code Analysis** | Mar 2026 | 134 ZIPs in 10 counties analyzed; Gini 0.566 statewide; Theil decomposition: 84.5% within-county inequality; 34 publication figures (fig-08 to fig-34); scoring framework skeleton (9/17 columns populated) |
 | **Phase 4: CTPP Workplace Charging** | Mar 2026 | LEHD/LODES employment centers, commuter flow analysis, workplace-vs-residential efficiency comparison, figures fig-35 to fig-38 |
@@ -239,7 +239,7 @@ This table maps each pipeline phase to the corresponding section of the BIDA 670
 
 | Pipeline Phase | Paper Section | Content Contribution |
 |----------------|---------------|---------------------|
-| **Phase 1: Predictive Validation** | Methods + Results | Methods: model selection (ESM/ARIMA/UCM), holdout design, accuracy metrics. Results: MAPE 4.36%, bias analysis, confidence interval coverage, 8 publication figures |
+| **Phase 1: Predictive Validation** | Methods + Results | Methods: model selection (ESM/ARIMA/UCM), holdout design, accuracy metrics. Results: MAPE 4.34%, bias analysis, confidence interval coverage, 8 publication figures |
 | **Phase 2: AFDC Infrastructure** | Data Description | Infrastructure landscape: 1,985 stations across L1/L2/DCFC, access type distribution, geographic coverage (267 cities, 358 ZIPs), comparison vs. prior DCFC-only extract |
 | **Gap Analysis** | Results | County-level demand-supply comparison, identification of highest-gap counties, BEVs-per-port ratios |
 | **Phase 3: ZIP Code Analysis** | Results | Sub-county gap analysis: top 20 underserved ZIPs, Wake County heat map, Gini coefficient for intra-county inequality |
