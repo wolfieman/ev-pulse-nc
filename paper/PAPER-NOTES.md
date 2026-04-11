@@ -281,6 +281,11 @@ Per expert panel recommendation: include a brief paragraph explaining why separa
 ### CSS vs MLE Estimation Method Comparison (Apr 10, 2026)
 Verified on statewide ARIMA(1,1,1): MLE (Python default) vs CSS-like (SAS default) produce forecast differences of < 0.1% at all horizons (23-104 vehicles on a ~97,000 base). AR parameter difference 0.06%, MA difference 1.48%. Sigma² differs by 20% (affects CI width, not point forecasts). The estimation method choice does not materially affect any result. Python ARIMA is supplementary to the primary SAS county-level models.
 
+### Remote-Work Multiplier — Ranking Impact Analysis (Apr 10, 2026)
+The 0.85 remote-work multiplier (Barrero/Bloom/Davis 2023) is applied uniformly to all counties. Because min-max normalization divides by the range, a uniform constant cancels out mathematically — normalized scores are identical at 0.75, 0.85, or 0.95. Verified empirically: max difference = 0.0, rankings identical. The multiplier affects absolute demand estimates (port sizing: 859,260 at 0.85 vs ~758,000 at 0.75 vs ~960,000 at 0.95) but not county rankings.
+
+**Future research:** A county-specific remote-work rate would change rankings because different adjustments per county would not cancel in normalization. No public data source currently provides reliable NC county-level remote-work rates. When ACS post-COVID county-level remote-work estimates become available with acceptable margins of error, replacing the uniform national multiplier with county-specific rates would refine relative rankings.
+
 ### Data Pipeline Design Decision
 NCDOT is the only dataset with a full acquisition-to-processing pipeline (`ncdot_ev_pipeline.py`) because it arrives as multiple monthly Excel files requiring merge, derivation (TotalEV, EV_Share, Methodology_PostMay2025), and QA generation. All other datasets arrive as single files (or file sets) consumed directly by analysis scripts — a separate pipeline would add unnecessary abstraction. Download scripts exist for all 6 datasets (see `code/python/data-acquisition/`).
 
