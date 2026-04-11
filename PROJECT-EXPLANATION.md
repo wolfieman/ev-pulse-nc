@@ -103,7 +103,7 @@ Phase 4 uses LEHD LODES (not CTPP, which was the originally planned source) — 
 
 - **Statewide adjusted workplace demand: 859,260** commuter-based EV charging events (post-remote-work adjustment, after SE03 income filter).
 - **Top net employment centers (net inbound commuters):** Mecklenburg +194,361, Wake +126,517, Durham +89,450. These are the counties where residential-only analysis systematically underfunds infrastructure.
-- **Workplace infrastructure efficiency is roughly 2x residential public:** ~15 BEVs/port vs. ~7.5 BEVs/port. Workplace chargers have consistent demand (same commuters Mon-Fri) and long dwell times (8-hour workdays) that maximize utilization. A parking garage with 20 L2 workplace chargers can serve ~300 regular users; a public charger in retail serves variable, transient demand.
+- **NC infrastructure gap:** The statewide ratio of 15.4 BEVs per port exceeds the IEA global benchmark of ~10 EVs per public charger (IEA Global EV Outlook, 2023-2024), and the top-10 urban county median of 20.6 indicates acute infrastructure strain. Workplace chargers have consistent demand (same commuters Mon-Fri) and long dwell times (8-hour workdays) that maximize utilization compared to variable, transient public retail demand.
 
 Phase 4 explicitly acknowledges uncertainty through sensitivity ranges rather than point estimates. Outputs: `data/processed/phase4-cost-effectiveness.csv`, `phase4-employment-centers.csv`. These feed the Cost-Effectiveness Score in the NEVI scoring framework.
 

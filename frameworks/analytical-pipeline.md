@@ -183,13 +183,13 @@ NEVI Priority Score(county) = 0.40 x Equity_Score
 |-----------|:------:|:------------:|-------------|
 | **Equity Score** | 0.40 | Phase 5 + Phase 3 | Justice40 disadvantaged community %, Gini coefficient, rural access gap, zero-infrastructure flag |
 | **Utilization Score** | 0.35 | Phase 1 + Phase 2 + Phase 3 | BEVs-per-port ratio across all charging levels (L1, L2, DCFC), forecast growth rate, 4-5% underprediction buffer |
-| **Cost-Effectiveness Score** | 0.25 | Phase 4 | Workplace efficiency (15 EVs/port vs. 7.5 residential), commuter demand sizing, population density |
+| **Cost-Effectiveness Score** | 0.25 | Phase 4 | Workplace commuter demand, workplace efficiency, population density |
 
 ### Weights Rationale
 
 - **Equity-heavy (0.40):** Aligned with federal Justice40 mandate requiring 40% of benefits to disadvantaged communities
 - **Utilization (0.35):** Largest data-driven component; validated BEV forecasts provide highest analytical confidence
-- **Cost-effectiveness (0.25):** Workplace charging is 3x more efficient but smaller absolute gap than residential
+- **Cost-effectiveness (0.25):** Workplace commuter demand and infrastructure efficiency; NC statewide 15.4 BEVs/port exceeds IEA global benchmark of ~10
 - **Sensitivity analysis:** Top-ranked counties should remain robust across +/-10% weight variations
 
 ### Output
@@ -244,7 +244,7 @@ This table maps each pipeline phase to the corresponding section of the BIDA 670
 | **Phase 2: AFDC Infrastructure** | Data Description | Infrastructure landscape: 1,985 stations across L1/L2/DCFC, access type distribution, geographic coverage (267 cities, 358 ZIPs), comparison vs. prior DCFC-only extract |
 | **Gap Analysis** | Results | County-level demand-supply comparison, identification of highest-gap counties, BEVs-per-port ratios |
 | **Phase 3: ZIP Code Analysis** | Results | Sub-county gap analysis: top 20 underserved ZIPs, Wake County heat map, Gini coefficient for intra-county inequality |
-| **Phase 4: CTPP Workplace** | Results | Workplace charging demand: top 10 employment centers, commuter flow analysis, 3x efficiency finding (15 vs. 7.5 EVs/port) |
+| **Phase 4: CTPP Workplace** | Results | Workplace charging demand: top 10 employment centers, commuter flow analysis, NC statewide 15.4 BEVs/port vs IEA ~10 benchmark |
 | **Phase 5: CEJST Equity** | Results + Discussion | Results: CEJST tract-level Justice40 overlay, county + ZCTA disadvantaged community shares, climate-subset sensitivity, weight sensitivity. Discussion: policy implications for equitable NEVI deployment |
 | **Scoring Framework** | Discussion | NEVI recommendations: weighted scoring equation, ranked county list (top 10), weight sensitivity analysis |
 | **Phase 7: NCDOT Validation** | Discussion | Methodology validation: do our equity-weighted scores independently recommend the same locations NCDOT chose in their Feb 18, 2026 rural deployment shift? |
