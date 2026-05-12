@@ -616,7 +616,7 @@ All key numerical claims systematically verified against source data during data
 
 > The Theil-T decomposition finding — that 84.5% of infrastructure inequality is within-county — carries direct implications for equity-focused investment. A county-level allocation formula alone would mask the ZIP-level disparities where disadvantaged communities cluster. For example, Mecklenburg County's aggregate ports-per-capita appears adequate, yet its Justice40 population-weighted burden (23.7%) reveals that disadvantaged tracts within the county are systematically underserved. This validates the project's two-tier scoring architecture: county-level rankings identify *where* to invest, while ZIP-level targeting identifies *for whom*.
 
-**Literature note:** Shorrocks (1980) established Theil decomposition methodology. The expert panel found **no prior published study** applying Theil decomposition to EV charging infrastructure inequality — this is a novel contribution.
+**Literature note (updated 2026-05-12 after pre-submission lit check):** Shorrocks (1980) established Theil decomposition methodology. **Choi, Xu & Jiao (2025)** applied the Theil index as a *scalar* inequality measure (alongside Lorenz, Gini, Palma) to EV charger accessibility in Austin, TX (*Transportation Research Part D*); this study extends entropy-based measures by performing a **full additive between/within-county Theil-T decomposition**, a form not, to our knowledge, previously applied to EV charging infrastructure. The contribution is narrower than "first Theil applied to EV charging" but more specific: first **decomposition** (vs. scalar) and first integration of that decomposition into an allocation framework. See `docs/research/prior-work-theil-ev-charging.md` for full citation, differentiation table, and suggested paper language.
 
 ### "Disadvantaged" Means Something Different Within vs Between Counties
 - Between counties: disadvantage tracks with rurality and poverty (eastern NC, Appalachia)
@@ -646,7 +646,7 @@ This lineage supports the "audit-ready justification" framing in the stakeholder
 ## Conclusion Section — Draft Guidance
 
 ### Five Unique Contributions
-1. First Theil decomposition of EV infrastructure inequality (novel methodology)
+1. First Theil-T **between/within decomposition** of EV charging infrastructure inequality (narrower than "first Theil" — Choi et al. 2025 used Theil as scalar in Austin; see `docs/research/prior-work-theil-ev-charging.md` for locked framing and required citation)
 2. Tract-to-ZCTA area-weighted crosswalk integrating federal equity data with local planning units
 3. Multi-dimensional NEVI scoring framework (equity + utilization + cost-effectiveness)
 4. Empirical validation that within-county inequality dominates between-county (84.5%)
