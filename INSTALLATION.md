@@ -66,21 +66,17 @@ git lfs version
 
 ### Step 2: Create Directory Structure
 
-**Option A: Automated**
-```bash
-chmod +x setup-repo-structure.sh
-bash setup-repo-structure.sh
-```
-
-**Option B: Manual**
 ```bash
 mkdir -p ev-pulse-nc && cd ev-pulse-nc
-mkdir -p data/{raw,processed,generated}
-mkdir -p code/python
-mkdir -p docs/{planning,eda-reports,research}
-mkdir -p output/{figures,tables,models}
-mkdir -p paper references
+mkdir -p data/{raw,processed,generated,reference-forecasts}
+mkdir -p code/python/{data-acquisition,data-cleaning,analysis,blog}
+mkdir -p docs/{eda-reports,research,internal}
+mkdir -p frameworks scripts references
+mkdir -p output/{figures,tables,models,validation}
+mkdir -p paper
 ```
+
+For the authoritative tree, see the **Repository Structure** section of [`README.md`](README.md).
 
 ### Step 3: Initialize Git
 
