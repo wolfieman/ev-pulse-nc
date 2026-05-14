@@ -1,79 +1,168 @@
-# EV Pulse NC: North Carolina Electric Vehicle Analytics
+# EV Pulse NC
 
-📊 **Focus:** Data-driven analysis of North Carolina's electric vehicle adoption and charging infrastructure
-🎯 **Objective:** Quantify the alignment between North Carolina's electric vehicle adoption growth and public charging infrastructure deployment
+> **North Carolina's battery-electric vehicle fleet grew 1,727% from September 2018 to June 2025 — public charging infrastructure didn't keep pace.** This project quantifies the gap county-by-county, applies a Justice40 equity overlay, and produces a NEVI Priority Score to help direct North Carolina's $109M federal NEVI Formula Program funding.
 
----
+![License: Polyform-NC](https://img.shields.io/badge/license-Polyform--NC--1.0-blue) ![Python 3.14+](https://img.shields.io/badge/python-3.14%2B-blue) ![Status: Research Complete](https://img.shields.io/badge/status-research--complete-brightgreen) ![Dependency Manager: uv](https://img.shields.io/badge/dependency-uv-purple)
 
-## 🚗 Project Overview
+![Underserved ZIP areas in North Carolina](output/figures/fig-25-underserved-choropleth.png)
 
-North Carolina's battery electric vehicle (BEV) fleet has experienced explosive growth, expanding from 5,165 vehicles in September 2018 to 94,371 in June 2025—a **1,727% increase** with a **53.8% compound annual growth rate (CAGR)**. However, public charging infrastructure has not kept pace, creating a widening gap that threatens the equitable transition to electric mobility.
-
-This project applies the standard 5-part analytics framework — exploratory, descriptive, diagnostic, predictive, and prescriptive — across the project's five merged extensions (see `frameworks/analytical-pipeline.md` for the extension-by-extension pipeline) and:
-
-1. **Quantifies infrastructure gaps** at the county level across North Carolina
-2. **Forecasts BEV demand** using time series models
-3. **Identifies high-priority deployment zones** through gap severity analysis
-4. **Optimizes investment strategies** for the $109M NEVI Formula Program funding
+*Statewide map of under-served ZIP areas. Darker shades = greater infrastructure gap relative to population. Phase 3 analysis identifies the 20 worst-served ZIPs for NEVI deployment targeting.*
 
 ---
 
-## 📈 Key Findings
+## Headline Findings
 
-### Demand-Side Analysis
-- **Explosive Growth:** 53.8% CAGR in BEV registrations (Sept 2018 - June 2025)
-- **Geographic Inequality:** Gini coefficient of **0.805** (extreme concentration)
-  - Top 10 counties: **72%** of all BEVs
-  - Top 5 counties: **57.4%** of all BEVs
-- **Urban Dominance:** 11 urban counties (11% of counties) account for **70%** of BEVs
-- **Research Triangle Leadership:** Wake + Durham + Orange counties = **35.2%** of state total
+- **Demand explosion** — BEV registrations grew **1,727%** (Sept 2018 → June 2025); 53.8% CAGR
+- **Extreme concentration** — Statewide Gini coefficient of **0.805**; top 10 counties hold 72% of all BEVs
+- **Within-county inequality dominates** — Theil-T decomposition: **84.5% of ZIP-level infrastructure inequality is within counties**, only 15.5% between
+- **Infrastructure scope** — 1,985 stations / 6,145 connectors (AFDC, Feb 2026; all levels L1/L2/DCFC)
+- **Justice40 overlay** — **43.0%** of NC census tracts disadvantaged per CEJST v2.0; 24.5% of stations sit in those tracts
+- **Forecasting validation** — Python-replicated ARIMA matches SAS Model Studio at **MAPE = 4.36%**
 
-### Supply-Side Analysis
-- **Infrastructure Snapshot (Feb 2026):** 1,985 charging stations, 6,145 charging connectors (all levels L1/L2/DCFC, 267 cities, 358 ZIPs)
-- **Tesla Dominance:** **60.5%** of all charging connectors despite only **24.8%** of stations
-- **High-Power Focus:** **80.5%** of units provide ≥150 kW charging capacity
-- **Recent Deployment Surge:** **47.6%** of all infrastructure added in 2024-2025 alone
+## NEVI Priority Top 3
 
-### Infrastructure Gap
-- **Current Ratio:** ~16.9 BEVs per public charging port
-- **Global Benchmark:** ~10 EVs per public charger (IEA Global EV Outlook, 2023-2024)
-- **Conclusion:** Infrastructure lagging demand by **13-40%** depending on county
+| Rank | County | NEVI Score | Archetype |
+|---:|---|---:|---|
+| 1 | Union | 0.561 | Utilization-driven (high BEV/port ratio) |
+| 2 | Mecklenburg | 0.548 | Equity-driven (Justice40 + Gini) |
+| 3 | Guilford | 0.465 | Balanced |
+
+*Full 100-county rankings: `data/processed/scoring-framework-final.csv` after running the pipeline. See [`frameworks/analytical-pipeline.md`](frameworks/analytical-pipeline.md) for the scoring formula (`0.40·Equity + 0.35·Utilization + 0.25·Cost-Effectiveness`).*
 
 ---
 
-## 🛠️ Tech Stack & Methodology
+## Featured Findings
 
-### Software & Tools
-- **Python** - Primary analytics platform
-  - pandas - Data manipulation and cleaning
-  - statsmodels - Time series forecasting (ARIMA/Exponential Smoothing)
-  - matplotlib/seaborn - Statistical visualization
-  - geopandas - Geographic analysis
-  - requests, openpyxl - Data acquisition
-- **Excel** - Initial data profiling and validation
+### Theil decomposition — where the inequality lives
 
-### Analytical Framework
-1. **Exploratory Analysis** - Data profiling, quality assessment, initial patterns
-2. **Descriptive Analysis** - Historical trends, distributions, geographic patterns
-3. **Diagnostic Analysis** - Gap identification, county classification, equity assessment
-4. **Predictive Analysis** - County-level BEV forecasting (Sept 2018 - June 2028)
-5. **Prescriptive Analysis** - Investment optimization, deployment prioritization
+![Theil decomposition](output/figures/fig-33-theil-decomposition.png)
 
-### Data Sources
-- **NC Department of Transportation (NCDOT)** - Vehicle registration time series
-  - 8,200 observations (100 counties × 82 months)
-  - September 2018 - June 2025
-- **Alternative Fuels Data Center (AFDC)** - U.S. Department of Energy
-  - 6,145 charging connector records across 1,985 stations (Feb 2026 API download; all levels L1/L2/DCFC)
-  - Detailed capacity and technology data
+*84.5% of NC's ZIP-level infrastructure inequality is within counties, not between them. **Policy implication:** county-level fund allocation alone won't close the gap — ZIP-level deployment targeting is required.*
+
+### Justice40 alignment
+
+![Stations vs Justice40 tracts](output/figures/fig-42-stations-justice40-overlay.png)
+
+*Charging stations overlaid on Justice40-disadvantaged census tracts. 24.5% of NC's mapped stations sit in disadvantaged tracts — close to proportional to the disadvantaged-tract share (43.0%) but with strong regional variation.*
 
 ---
 
-## 📁 Repository Structure
+## Methodology — 5-Phase Pipeline
+
+1. **Phase 1 — Validation:** Python ARIMA replication of SAS Model Studio county-level BEV forecasts (MAPE 4.36%; 100 counties; 8 publication figures)
+2. **Phase 2 — Infrastructure inventory:** Full AFDC API pull (Feb 2026); 1,985 stations, 6,145 connectors, all charging levels
+3. **Phase 3 — ZIP/County equity:** Gini coefficient (0.805 demand-side; 0.566 supply-side weighted) + Theil decomposition (84.5% within-county); 134 ZIPs ranked; 27 figures
+4. **Phase 4 — Workplace charging:** LEHD LODES 2021 commuting flows + ACS income/tenure; 859,260 adjusted statewide workplace-charging demand; Mecklenburg/Wake/Durham top 3
+5. **Phase 5 — Justice40 equity overlay:** CEJST v2.0 disadvantaged-community designation + climate-sensitivity check + weight-sensitivity grid
+6. **Scoring framework:** Composite NEVI Priority Score per county = `0.40·Equity + 0.35·Utilization + 0.25·Cost-Effectiveness`; VIF-checked for multicollinearity
+
+Full pipeline spec: [`frameworks/analytical-pipeline.md`](frameworks/analytical-pipeline.md). Per-dataset schema: [`data/DATA-DICTIONARY.md`](data/DATA-DICTIONARY.md). Model locations: [`output/models/README.md`](output/models/README.md).
+
+---
+
+## Quickstart — reproduce the top-3 NEVI ranking in under 5 minutes
+
+```bash
+# 1. Clone (requires Git LFS — see https://git-lfs.github.com/)
+git clone https://github.com/wolfieman/ev-pulse-nc.git
+cd ev-pulse-nc
+
+# 2. Pull LFS-managed datasets (~190 MB)
+git lfs pull
+
+# 3. Set up the Python environment (uses uv — install via https://docs.astral.sh/uv/)
+uv sync
+
+# 4. Run the scoring framework — produces the top-3 ranking shown above
+uv run code/python/analysis/scoring_framework_skeleton.py
+uv run code/python/analysis/scoring_framework_final.py
+```
+
+You've reproduced the headline finding if the final script prints:
+
+```
+[CHECK 5] Intuition checks:
+    Top 3: ['Union', 'Mecklenburg', 'Guilford']
+    PASS — Guilford/Mecklenburg in top 3 as expected
+```
+
+Total elapsed time: under 5 minutes on a modern laptop.
+
+---
+
+## Full Reproducibility
+
+To regenerate every output (all 42 figures, all CSVs, all phases) from raw inputs:
+
+```bash
+# Phase 1 — Validation
+uv run code/python/data-cleaning/consolidate_zev_monthly.py \
+    --indir data/raw/ncdot-monthly \
+    --out data/processed/nc-ev-registrations-2025.xlsx
+uv run code/python/analysis/validate_sas_forecasts.py
+uv run code/python/analysis/generate_phase1_figures.py
+uv run code/python/analysis/arima_bev_forecast.py
+
+# Phase 3 — ZIP/County equity
+uv run code/python/analysis/phase3_zip_mapping.py
+uv run code/python/analysis/phase3_zip_density.py
+uv run code/python/analysis/phase3_gini_inequality.py
+uv run code/python/analysis/phase3_theil_decomposition.py
+uv run code/python/analysis/phase3_top20_underserved.py
+uv run code/python/analysis/phase3_county_heatmaps.py
+uv run code/python/analysis/phase3_fig25_underserved_choropleth.py
+uv run code/python/analysis/phase3_fig26_to_fig29.py
+uv run code/python/analysis/phase3_fig30_to_fig32.py
+uv run code/python/analysis/phase3_fig33_fig34.py
+
+# Phase 4 — Workplace charging
+uv run code/python/analysis/phase4_workplace_charging.py
+uv run code/python/analysis/phase4_fig35_to_fig38.py
+
+# Phase 5 — Justice40
+uv run code/python/analysis/phase5_tract_zcta_crosswalk.py
+uv run code/python/analysis/phase5_climate_sensitivity.py
+uv run code/python/analysis/phase5_weight_sensitivity.py
+uv run code/python/analysis/phase5_fig39_to_fig42.py
+
+# Scoring framework (sequential — final reads skeleton's output, VIF reads final's output)
+uv run code/python/analysis/scoring_framework_skeleton.py
+uv run code/python/analysis/scoring_framework_final.py
+uv run code/python/analysis/scoring_framework_vif.py
+```
+
+**Notes:**
+
+- Raw data is fetched from `data/raw/` (LFS-tracked). To re-fetch from source APIs, see scripts in `code/python/data-acquisition/`.
+- `data/processed/` outputs are gitignored — they regenerate from the scripts above. The `phase3_zip_mapping.py` step depends on the consolidated AFDC CSV being present in `data/raw/`.
+- `output/figures/` is committed in the repo (PDF + PNG, 600 DPI). Re-running the figure scripts overwrites them in place.
+
+---
+
+## Tech Stack
+
+- **Python 3.14+** — primary analytics platform
+  - **pandas / numpy** — data manipulation
+  - **statsmodels** — ARIMA / SARIMA / exponential smoothing forecasts; VIF; Ljung-Box
+  - **geopandas / shapely** — spatial joins (NC State Plane EPSG:32119), choropleths
+  - **matplotlib / seaborn** — publication-quality figures (600 DPI, PDF + PNG)
+  - **requests / openpyxl** — API ingestion + Excel I/O
+- **SAS Model Studio** — reference forecasts (auto-selected ESM × 82, ARIMA × 13, UCM × 5 across 100 counties)
+- **Git LFS** — large data files (~190 MB total: CSVs, GeoJSONs, Excel)
+- **uv** — Python dependency manager (replaces pip + venv + pip-tools)
+
+### Analytical Framework (5-part)
+
+Exploratory → Descriptive → Diagnostic → Predictive → Prescriptive. Applied across the 5 phases above.
+
+---
+
+## Repository Structure
 
 ```
 ev-pulse-nc/
 ├── README.md                     # This file
+├── CITATION.cff                  # Machine-readable citation metadata
 ├── INSTALLATION.md               # Setup guide
 ├── QUICK-REFERENCE.md            # Daily workflow commands
 ├── LICENSE                       # Polyform Noncommercial License 1.0.0
@@ -83,33 +172,43 @@ ev-pulse-nc/
 │
 ├── data/                         # Dataset directory (Git LFS)
 │   ├── raw/                      # Original datasets
-│   ├── processed/                # Cleaned/transformed data
+│   ├── processed/                # Cleaned/transformed data (gitignored)
 │   ├── generated/                # Analysis outputs
+│   ├── reference-forecasts/      # SAS Model Studio outputs (LFS)
 │   ├── DATA-DICTIONARY.md         # Column definitions for all datasets
 │   └── README.md                 # Directory overview & provenance
 │
-├── code/                         # Analysis code
-│   ├── python/                   # Python scripts
-│   │   ├── data-acquisition/     # Data download scripts
-│   │   ├── data-cleaning/        # Data consolidation scripts
-│   │   ├── analysis/             # Time series modeling and validation
-│   │   └── blog/                 # Blog graphics package
-│   └── README.md                 # Code execution guide
+├── code/
+│   └── python/                   # Python scripts
+│       ├── data-acquisition/     # API ingestion scripts (AFDC, Census, LEHD, CEJST)
+│       ├── data-cleaning/        # Data consolidation
+│       ├── analysis/             # Phase 1-5 + scoring scripts
+│       └── blog/                 # Blog graphics package
 │
 ├── docs/                         # Project documentation
 │   ├── eda-reports/              # Exploratory data analysis reports
-│   └── research/                 # Supporting research papers
+│   ├── figures/                  # Pipeline diagram + thumbnails
+│   ├── internal/                 # Internal working artifacts (drift audits, AI logs)
+│   └── research/                 # Supporting research papers + literature checks
 │
-├── frameworks/                   # Analytical frameworks and decision docs
-│   └── README.md                 # Framework directory and priority map
+├── frameworks/                   # Analytical frameworks and methodology specs
+│   ├── analytical-pipeline.md    # Full 5-phase pipeline + scoring formula
+│   ├── afdc-dataset-reference.md # AFDC source, vintage, counts
+│   ├── afdc-data-structure.md    # AFDC field-level schema
+│   └── ...                       # Per-dataset and per-method docs
 │
 ├── output/                       # Generated outputs
-│   ├── figures/                  # Visualizations for paper
+│   ├── figures/                  # 42 publication-quality figures (PDF + PNG)
 │   ├── validation/               # Forecast validation results
 │   ├── tables/                   # Summary statistics tables
 │   └── models/                   # Model index — pointers to where each model lives
 │
-├── paper/                        # Research paper
+├── paper/                        # Research paper directory
+│   ├── README.md                 # Paper status + structure
+│   └── PAPER-BRIEF.md            # 1-page public summary (manuscript in prep)
+│
+├── scripts/                      # Standalone utility scripts
+│   └── generate_pipeline_diagram.py
 │
 └── references/                   # Supporting materials
     └── data-sources.md           # Citations & links
@@ -119,205 +218,42 @@ ev-pulse-nc/
 
 | Document | Description |
 |----------|-------------|
-| [CONTRIBUTING.md](CONTRIBUTING.md) | Contribution guidelines, branching model, and development setup |
-| [STYLE-GUIDE.md](STYLE-GUIDE.md) | Code style, naming conventions, and formatting standards |
+| [CITATION.cff](CITATION.cff) | Machine-readable citation metadata (powers GitHub's "Cite this repository" button) |
+| [paper/PAPER-BRIEF.md](paper/PAPER-BRIEF.md) | 1-page public summary of the in-preparation manuscript |
+| [frameworks/analytical-pipeline.md](frameworks/analytical-pipeline.md) | Full 5-phase pipeline and NEVI scoring formula |
+| [data/DATA-DICTIONARY.md](data/DATA-DICTIONARY.md) | Column definitions for all 6 datasets (NCDOT, AFDC, SAS, LEHD, CEJST, ACS) |
 | [PROJECT-BRIEF.md](PROJECT-BRIEF.md) | Executive summary for instructor (Dr. Al-Ghandour) |
 | [PROJECT-EXPLANATION.md](PROJECT-EXPLANATION.md) | Detailed project explanation with methodology deep-dive |
-| [data/DATA-DICTIONARY.md](data/DATA-DICTIONARY.md) | Column definitions for all 6 datasets (NCDOT, AFDC, SAS, LEHD, CEJST, ACS) |
-| [docs/internal/BLOG-CREATION-PROTOCOL.md](docs/internal/BLOG-CREATION-PROTOCOL.md) | Protocol for creating project blog posts |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | Contribution guidelines, branching model |
+| [STYLE-GUIDE.md](STYLE-GUIDE.md) | Code style, naming conventions, formatting |
+| [INSTALLATION.md](INSTALLATION.md) | Full setup guide (from clone or from scratch) |
+| [output/models/README.md](output/models/README.md) | Model index — where every model in the project lives |
+| [docs/internal/README.md](docs/internal/README.md) | Internal working artifacts (drift audits, content protocols) |
 | [references/data-sources.md](references/data-sources.md) | Data source citations and reference links |
-| [frameworks/README.md](frameworks/README.md) | Analytical frameworks directory and priority map |
-| [output/README.md](output/README.md) | Output directory guide (figures, tables, models) |
-| [paper/README.md](paper/README.md) | Research paper directory guide |
 
 ---
 
-## 🚀 Getting Started
+## Citation
 
-### Prerequisites
-- Python 3.14+
-- Git with Git LFS extension
+This work is citable. Click **"Cite this repository"** in the right-hand sidebar of the GitHub page, or open [`CITATION.cff`](CITATION.cff) directly for the raw metadata.
 
-### Setup Instructions
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/wolfieman/ev-pulse-nc.git
-   cd ev-pulse-nc
-   ```
-
-2. **Install Git LFS and pull data**
-   ```bash
-   git lfs install
-   git lfs pull
-   ```
-
-3. **Set up Python environment**
-   ```bash
-   python -m venv .venv
-   source .venv/bin/activate  # or .venv\Scripts\activate on Windows
-   pip install -e .
-   ```
-
-4. **Verify data files**
-   ```bash
-   ls -lh data/raw/
-   ```
+If you reference the methodology specifically, please cite the in-preparation manuscript using [`paper/PAPER-BRIEF.md`](paper/PAPER-BRIEF.md) until publication.
 
 ---
 
-## 📊 Analytical Approach
+## Acknowledgments
 
-EV Pulse NC applies the standard 5-part analytics framework — exploratory, descriptive, diagnostic, predictive, and prescriptive — across the project's five merged extensions (see `frameworks/analytical-pipeline.md` for the extension-by-extension pipeline).
-
-### Exploratory Analysis
-- **Objective:** Profile data quality, identify patterns, and assess completeness
-- **Outputs:**
-  - Data quality reports
-  - Missing value analysis
-  - Initial visualizations and distributions
-
-### Descriptive Analysis
-- **Objective:** Characterize historical BEV adoption and infrastructure deployment
-- **Outputs:**
-  - Time series trends (statewide and county-level)
-  - Geographic distribution maps
-  - Summary statistics by urban/rural classification
-
-### Diagnostic Analysis
-- **Objective:** Identify where infrastructure gaps exist and their severity
-- **Key Metrics:**
-  - BEVs per charging station (accessibility metric)
-  - BEVs per kW capacity (utilization pressure metric)
-  - County classification: Well-Aligned, Emerging Strain, High Strain
-- **Outputs:**
-  - County-level gap severity rankings
-  - Urban vs. rural disparity analysis
-  - Zero-infrastructure county identification
-
-### Predictive Analysis
-- **Objective:** Forecasted BEV adoption to anticipate infrastructure needs
-- **Methods:**
-  - SAS Model Studio auto-selected models per county
-  - ESM: 82 counties, ARIMA: 13 counties, UCM: 5 counties
-  - Training period: Sep 2018 - Jun 2025 (82 months)
-- **Validation (Jul-Oct 2025, 4 months out-of-sample):**
-  - MAPE: 4.34% (strong accuracy)
-  - MAE: 26.88 vehicles, RMSE: 113.54 vehicles
-  - Bias: +18.22 (systematic underprediction)
-  - 95% CI Coverage: 75.50% (below nominal due to bias)
-  - Key Finding: 69.00% of forecasts underpredicted actuals
-- **Outputs:**
-  - Forecasted BEV registrations by county-month
-  - 95% confidence intervals
-  - 8 publication-quality figures (600 DPI, PDF exports)
-
-### Prescriptive Analysis
-- **Objective:** Optimize infrastructure investment allocation
-- **Framework:**
-  - Composite scoring: Current gap + Forecasted growth + Equity considerations (CEJST Justice40)
-  - Investment strategies by county type (urban densification, rural corridor coverage)
-  - NEVI funding optimization (80/20 cost-share model)
-- **Outputs:**
-  - High-priority county rankings
-  - Deployment strategy recommendations
-  - Budget allocation scenarios
+- **Author:** Wolfgang Sanyer — sole author of the analysis, code, and manuscript
+- **Faculty Advisor:** Dr. Majed Al-Ghandour, Fayetteville State University, BIDA 670 Advanced Analytics Capstone
+- **Data Providers:**
+  - North Carolina Department of Transportation (NCDOT) — vehicle registrations
+  - U.S. Department of Energy / NREL — Alternative Fuels Data Center (AFDC) charging-station inventory
+  - U.S. Census Bureau — American Community Survey (ACS), TIGER boundaries, ZCTA crosswalks
+  - U.S. Census Bureau / Center for Economic Studies — LEHD LODES workplace commuting data
+  - Climate and Economic Justice Screening Tool (CEJST v2.0) — Justice40 disadvantaged-community designation; archived by Public Environmental Data Partners after the federal source went offline
 
 ---
 
-## 📄 Report Structure
+## License
 
-### Analysis Report Organization
-1. **Introduction** - Problem framing, stakes, preview
-2. **Problem Statement** - Research questions, significance
-3. **Data** - Sources, structure, scope
-4. **Data Cleaning & Validation** - Quality assessment, processing
-5. **Analysis** - Five-phase framework execution
-6. **Visualization** - Figures in appendix
-7. **Impact & Implications** - Policy relevance, stakeholder value
-8. **Suggestions for Future Study** - Extensions, limitations
-9. **Conclusion** - Key messages, call to action
-
-**Appendix** - Essential visualizations
-
----
-
-## 🎯 Key Differentiators
-
-This analysis stands out through:
-
-1. **Sophisticated Gap Metrics** - Capacity-weighted analysis (BEVs per kW) vs. simple station counts
-2. **County-Level Granularity** - 100 counties × 82 months = 8,200 observations
-3. **Connector-Level Detail** - 6,145 individual charging connectors analyzed (3.1x more granular than station-level)
-4. **Equity Focus** - Urban-rural disparity analysis with Gini coefficient quantification
-5. **5-Phase Completeness** - Full exploratory → descriptive → diagnostic → predictive → prescriptive workflow
-
----
-
-## 👥 Team
-
-**Wolfgang Sanyer**<br>
-MBA Candidate, Business & Data Analytics Concentration<br>
-Fayetteville State University<br>
-Background: Computer Science, 15+ years data analytics experience
-
-**Faculty Advisor:** Dr. Majed Al-Ghandour<br>
-**Course:** BIDA-670
-
----
-
-## 📚 References & Acknowledgments
-
-### Data Sources
-- North Carolina Department of Transportation (NCDOT) - Vehicle Registration Database
-- U.S. Department of Energy, Alternative Fuels Data Center (AFDC) - Charging Infrastructure Database
-
-### Research Support
-- Anyer et al. - EV adoption modeling methodologies
-- McKinsey & Company - Public EV charging station profitability analysis
-- NREL - 2030 National Charging Network projections
-
----
-
-## 📄 License
-
-This project is licensed under the **Polyform Noncommercial License 1.0.0**.
-
-You may use, copy, modify, and redistribute this software **only for non-commercial purposes**.
-
-See the [LICENSE](LICENSE) file for full terms.
-
-**Required Notice:**
-```
-Copyright © 2026 Wolfgang Sanyer
-Licensed under the Polyform Noncommercial License 1.0.0
-https://polyformproject.org/licenses/noncommercial/1.0.0
-```
-
----
-
-## Related Repositories
-
-| Repo | Purpose |
-|------|---------|
-| [spring-26-mba-orchestrator](https://github.com/wolfieman/spring-26-mba-orchestrator) | MBA multi-course hub |
-| [spring-26-bida670-advanced-analytics](https://github.com/wolfieman/spring-26-bida670-advanced-analytics) | BIDA 670 course logistics |
-
----
-
-## Links
-
-- **NCDOT Open Data:** https://ncdot.gov/data
-- **AFDC Station Locator:** https://afdc.energy.gov/stations
-
----
-
-## 📧 Contact
-
-For questions about this analysis or collaboration opportunities:
-- **GitHub Issues:** [Open an issue](https://github.com/wolfieman/ev-pulse-nc/issues)
-
----
-
-**Status:** All 5 phases complete (Phase 1 Validation, Phase 2 AFDC Update, Phase 3 ZIP Analysis, Phase 4 Workplace Charging, Phase 5 CEJST Equity)
-**Last Updated:** April 2026
+[Polyform Noncommercial License 1.0.0](LICENSE) — research, academic, and public-interest use permitted; commercial use restricted. See also [`NOTICE.md`](NOTICE.md).
