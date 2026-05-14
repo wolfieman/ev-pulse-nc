@@ -156,5 +156,10 @@ secrets/
 # Keep final report materials
 !paper/*.docx
 
+# ============================================================================
+# Paper Working Files (kept local while manuscript is in preparation)
+# ============================================================================
+paper/PAPER-NOTES.md
+
 # Claude local settings (machine-specific)
 .claude/settings.local.json

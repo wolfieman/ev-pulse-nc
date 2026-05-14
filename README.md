@@ -107,7 +107,7 @@ ev-pulse-nc/
 │   ├── figures/                  # Visualizations for paper
 │   ├── validation/               # Forecast validation results
 │   ├── tables/                   # Summary statistics tables
-│   └── models/                   # Saved forecasting artifacts
+│   └── models/                   # Model index — pointers to where each model lives
 │
 ├── paper/                        # Research paper
 │
@@ -124,7 +124,7 @@ ev-pulse-nc/
 | [PROJECT-BRIEF.md](PROJECT-BRIEF.md) | Executive summary for instructor (Dr. Al-Ghandour) |
 | [PROJECT-EXPLANATION.md](PROJECT-EXPLANATION.md) | Detailed project explanation with methodology deep-dive |
 | [data/DATA-DICTIONARY.md](data/DATA-DICTIONARY.md) | Column definitions for all 6 datasets (NCDOT, AFDC, SAS, LEHD, CEJST, ACS) |
-| [docs/BLOG-CREATION-PROTOCOL.md](docs/BLOG-CREATION-PROTOCOL.md) | Protocol for creating project blog posts |
+| [docs/internal/BLOG-CREATION-PROTOCOL.md](docs/internal/BLOG-CREATION-PROTOCOL.md) | Protocol for creating project blog posts |
 | [references/data-sources.md](references/data-sources.md) | Data source citations and reference links |
 | [frameworks/README.md](frameworks/README.md) | Analytical frameworks directory and priority map |
 | [output/README.md](output/README.md) | Output directory guide (figures, tables, models) |
