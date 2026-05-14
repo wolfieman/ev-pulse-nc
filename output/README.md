@@ -36,4 +36,4 @@ Summary statistics and results tables.
 
 ## Models (`models/`)
 
-Saved forecasting model artifacts and evaluation metrics.
+Model index — see [`models/README.md`](models/README.md) for a one-stop guide to where every model in the project lives (SAS reference forecasts in `data/reference-forecasts/`, Python ARIMA replication in `code/python/analysis/arima_bev_forecast.py`, NEVI scoring composite in `scoring_framework_final.py`). No `.pkl` artifacts are persisted — fits run at-runtime.
