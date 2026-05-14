@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "If you reference this work, please cite as below."
+title: "EV Pulse NC: Electric Vehicle Infrastructure Equity Analysis for North Carolina"
+abstract: >
+  A five-phase analytical pipeline that quantifies the gap between
+  North Carolina's exploding battery-electric vehicle (BEV) demand and
+  its public charging infrastructure. Applies a Justice40 equity
+  overlay (CEJST v2.0) and produces a NEVI Priority Score to inform
+  allocation of North Carolina's $109M federal NEVI Formula Program
+  funding. Headline finding: 84.5% of ZIP-level infrastructure
+  inequality is within counties, not between them — justifying a
+  two-tier scoring framework (county-level ranking for policymakers,
+  ZIP-level targeting for local planners).
+type: software
+authors:
+  - family-names: Sanyer
+    given-names: Wolfgang
+    affiliation: "Fayetteville State University, Broadwell College of Business and Economics"
+version: "1.0.0"
+date-released: "2026-05-14"
+license: Polyform-Noncommercial-1.0.0
+url: "https://github.com/wolfieman/ev-pulse-nc"
+repository-code: "https://github.com/wolfieman/ev-pulse-nc"
+keywords:
+  - electric-vehicles
+  - charging-infrastructure
+  - north-carolina
+  - nevi
+  - equity-analysis
+  - justice40
+  - transportation-analytics
+  - gini-coefficient
+  - theil-decomposition
+  - cejst
+  - python
+  - sas
