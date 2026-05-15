@@ -14,10 +14,10 @@ Project-level diagram assets used in top-level documentation and the paper brief
 Both PNGs are produced from a single matplotlib script. To regenerate after editing:
 
 ```bash
-uv run scripts/generate_pipeline_diagram.py
+uv run code/python/docs/generate_pipeline_diagram.py
 ```
 
-The generator lives at [`scripts/generate_pipeline_diagram.py`](../../scripts/generate_pipeline_diagram.py) and overwrites both files on each run.
+The generator lives at [`code/python/docs/generate_pipeline_diagram.py`](../../code/python/docs/generate_pipeline_diagram.py) and overwrites both files on each run.
 
 ## Scope
 
