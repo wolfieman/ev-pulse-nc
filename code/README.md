@@ -28,10 +28,10 @@ API ingestion. Each script writes to `data/raw/`. Two require credentials in `.e
 | `ncdot_ev_pipeline.py` | NCDOT registration spreadsheets | County-month panel CSV |
 | `afdc_api_download.py` | NREL Alternative Fuels Data Center API | Charging-station inventory CSV |
 | `census_county_boundaries.py` | Census TIGER | NC county boundary GeoJSON |
-| `census_tract_boundaries_download.py` | Census TIGER | NC tract boundaries (study area) |
+| `census_tract_boundaries.py` | Census TIGER | NC + 4 border states (GA, SC, TN, VA) tract boundaries — Phase 5 crosswalk |
 | `census_zcta_boundaries.py` | Census TIGER | NC ZCTA boundary GeoJSON |
 | `census_zip_population.py` | Census ACS 5-Year API | NC ZCTA population CSV |
-| `lehd_lodes_download.py` | Census LEHD LODES | NC commuter flow CSVs (gzipped) |
+| `lehd_lodes_download.py` | Census LEHD LODES + ACS | NC commuter flow CSVs (gzipped) + ACS income/tenure tract CSV |
 | `cejst_justice40_download.py` | Public Environmental Data Partners archive | NC Justice40 tract CSVs |
 
 **Run pattern:**

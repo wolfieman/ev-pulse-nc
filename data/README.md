@@ -94,7 +94,7 @@ data/
 | `census-tracts-2010-study-area.geojson` | Tract polygons (2010 vintage, for CEJST alignment) |
 
 - **Source:** Census TIGER/Line
-- **Scripts:** `census_county_boundaries.py`, `census_zcta_boundaries.py`, `census_tract_boundaries_download.py`
+- **Scripts:** `census_county_boundaries.py`, `census_zcta_boundaries.py`, `census_tract_boundaries.py`
 
 ---
 
@@ -205,7 +205,7 @@ May be deprecated in future cleanup.
 | nc-zip-population-acs2022.csv | Census ACS API | census_zip_population.py | 2026-02 |
 | nc-county-boundaries.geojson | Census TIGER | census_county_boundaries.py | 2026-02 |
 | nc-zcta-boundaries.geojson | Census TIGER | census_zcta_boundaries.py | 2026-02 |
-| census-tracts-2010-study-area.geojson | Census TIGER | census_tract_boundaries_download.py | 2026-02 |
+| census-tracts-2010-study-area.geojson | Census TIGER | census_tract_boundaries.py | 2026-02 |
 | sas-forecasts.csv | SAS Model Studio | Manual export | 2025-06 |
 | sas-model-info.csv | SAS Model Studio | Manual export | 2025-06 |
 | sas-fit-statistics.csv | SAS Model Studio | Manual export | 2025-06 |
@@ -241,7 +241,7 @@ uv run python code/python/data-acquisition/census_zip_population.py
 # 6. Spatial boundary files
 uv run python code/python/data-acquisition/census_county_boundaries.py
 uv run python code/python/data-acquisition/census_zcta_boundaries.py
-uv run python code/python/data-acquisition/census_tract_boundaries_download.py
+uv run python code/python/data-acquisition/census_tract_boundaries.py
 
 # 7. Validate SAS forecasts against actuals
 uv run python code/python/analysis/validate_sas_forecasts.py

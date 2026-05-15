@@ -123,7 +123,7 @@ def sanity_check(headers, rows):
         try:
             pop = int(row[pop_idx])
             populations.append((row[zcta_idx], row[name_idx], pop))
-        except ValueError, TypeError:
+        except (ValueError, TypeError):
             pass
 
     total_pop = sum(p[2] for p in populations)
