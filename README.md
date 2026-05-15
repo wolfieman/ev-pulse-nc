@@ -169,8 +169,7 @@ ev-pulse-nc/
 │
 ├── data/                         # Dataset directory (Git LFS)
 │   ├── raw/                      # Original datasets
-│   ├── processed/                # Cleaned/transformed data (gitignored)
-│   ├── generated/                # Analysis outputs
+│   ├── processed/                # Analysis-ready outputs (CSVs gitignored, regenerable)
 │   ├── reference-forecasts/      # SAS Model Studio outputs (LFS)
 │   ├── DATA-DICTIONARY.md         # Column definitions for all datasets
 │   └── README.md                 # Directory overview & provenance

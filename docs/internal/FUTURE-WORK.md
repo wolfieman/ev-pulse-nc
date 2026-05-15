@@ -65,6 +65,25 @@ Project standard template is `code/python/analysis/scoring_framework_vif.py` (re
 - **Status:** OPEN
 - **Priority:** Low
 
+### `.gitignore` inconsistency for `data/processed/`
+
+- **Source:** `data/` folder audit, 2026-05-14
+- **Scope:** `.gitignore:73-74` ignores `data/processed/*.csv` and `*.parquet` only. Project memory states intent is "all of `data/processed/` gitignored as regenerable from scripts" — but `*.xlsx` and `*.qa.txt` slip through. Three files are currently tracked that arguably shouldn't be: `nc-ev-registrations-2025.xlsx`, `nc-ev-registrations-2025.qa.txt`, `scoring-vif-check.csv` (the CSV was added before the ignore rule was tightened).
+- **Action:** Decide whether to (a) widen the ignore to include `*.xlsx` and `*.qa.txt` in `data/processed/` and `git rm --cached` the existing tracked files; or (b) keep these tracked because they encode paper-citable results (e.g., `scoring-vif-check.csv` contains the VIF=1.41 number referenced in PAPER-NOTES). Recommendation leans (b): tracked-but-regenerable is fine for paper-claim verification.
+- **Status:** OPEN
+- **Priority:** Low — no correctness impact, just a stated-intent vs. actual-state gap
+
+### AI / LLM workflow documentation (consolidation)
+
+- **Source:** Data audit conversation, 2026-05-14 — user noted they want to formally document their AI/LLM stack and how it integrates into their research/analytics workflows, frameworks, and pipelines
+- **Scope:** Documentation of the user's AI-assisted methodology (Claude Code, possibly other tools), where it sits in their pipeline (drafting, code review, doc generation, blog creation, etc.), and how it is/isn't credited in outputs. **A version of this may already exist in another repo** (user wasn't certain). The current `docs/internal/BLOG-CREATION-PROTOCOL.md` describes the blog-specific workflow but doesn't generalize.
+- **Action:**
+  1. Cross-check existing repos (course repos, personal/portfolio repos) for any prior AI-stack documentation. If it exists, link from this repo rather than duplicate.
+  2. If no canonical doc exists, write one — `docs/internal/AI-WORKFLOW.md` is the obvious home in this repo. Should cover: tools used, prompting patterns, when AI is/isn't applied, attribution policy (matching global CLAUDE.md: tools may be mentioned in workflow docs but never as co-author attribution in deliverables).
+  3. Update `BLOG-CREATION-PROTOCOL.md` to reference the AI-workflow doc rather than re-explaining the tool stack inline.
+- **Status:** OPEN
+- **Priority:** Medium — useful for transparency about methodology; not blocking public release
+
 ---
 
 ## Pending Folder Audits
@@ -77,7 +96,7 @@ Per-folder walkthrough for data duplication, restructuring needs, naming consist
 | `code/python/data-cleaning/` | DONE 2026-05-14 | Folder removed — both scripts were orphaned legacy (Option A: archive and accept) |
 | `code/python/analysis/` | DONE 2026-05-14 | Audit complete — only blocker was `publication_style.py:3` BIDA 670 title (fixed inline). Standards-template refactor (27 scripts) and figure-script naming polish moved to dedicated entries above. |
 | `code/python/blog/` | DONE 2026-05-14 | Audit complete — anticipatory infra for the 4 planned blog posts, well-structured. Removed misleading import-time Pillow warning (fallback works fine). Standards-template gaps folded into the analysis+blog refactor item above. |
-| `data/` | OPEN | raw / processed / reference-forecasts / generated subdirs |
+| `data/` | DONE 2026-05-14 | Removed orphaned `generated/` folder + `afdc-charging-units.xlsx` legacy file; fixed stale README diagram and ACS provenance attribution; removed last BIDA 670 reference (`AFDC-DATA-COMPARISON.md`) and the only AI co-attribution in the repo. Gitignore-consistency and AI-workflow-docs items moved to dedicated entries above. |
 | `docs/` | OPEN | research, internal, eda-reports subdirs |
 | `paper/` | OPEN | manuscript-in-prep area |
 | `frameworks/` | OPEN | methodology docs |
