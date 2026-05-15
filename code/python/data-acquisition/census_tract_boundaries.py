@@ -14,6 +14,9 @@ Usage:
 
 Output:
     data/raw/census-tracts-2010-study-area.geojson
+
+Author: Wolfgang Sanyer
+License: Polyform Noncommercial 1.0.0 (see LICENSE)
 """
 
 from __future__ import annotations

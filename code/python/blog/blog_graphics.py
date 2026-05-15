@@ -30,6 +30,7 @@ Usage:
     )
 
 Author: Wolfgang Sanyer
+License: Polyform Noncommercial 1.0.0 (see LICENSE)
 Project: EV Pulse NC
 Date: February 2026
 """

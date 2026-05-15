@@ -8,6 +8,9 @@ Overwrites the input file in place.
 Usage:
     python add_monthdate.py
     python add_monthdate.py --file ../../../data/generated/ncdot-ev-phev-latest.xlsx
+
+Author: Wolfgang Sanyer
+License: Polyform Noncommercial 1.0.0 (see LICENSE)
 """
 
 import argparse

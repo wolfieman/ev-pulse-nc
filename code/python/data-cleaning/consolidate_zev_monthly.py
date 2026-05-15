@@ -9,6 +9,9 @@ consolidated output matching the ncdot-ev-phev format.
 Usage:
     python consolidate_zev_monthly.py --indir ../../../data/raw/ncdot-monthly --out ../../../data/processed/nc_zev_consolidated.xlsx
     python consolidate_zev_monthly.py --files file1.xlsx file2.xlsx --out combined.xlsx
+
+Author: Wolfgang Sanyer
+License: Polyform Noncommercial 1.0.0 (see LICENSE)
 """
 
 import argparse

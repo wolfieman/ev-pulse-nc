@@ -16,6 +16,9 @@ Metrics calculated:
 Usage:
     python validate_sas_forecasts.py
     python validate_sas_forecasts.py --output ../../../output/validation
+
+Author: Wolfgang Sanyer
+License: Polyform Noncommercial 1.0.0 (see LICENSE)
 """
 
 import argparse

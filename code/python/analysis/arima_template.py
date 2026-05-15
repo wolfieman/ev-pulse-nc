@@ -7,6 +7,9 @@ a SAS ARIMA model in Python. Use this as a quick reference.
 
 For full implementation with diagnostics and validation, see:
     arima_bev_forecast.py
+
+Author: Wolfgang Sanyer
+License: Polyform Noncommercial 1.0.0 (see LICENSE)
 """
 
 import numpy as np

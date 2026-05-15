@@ -15,6 +15,9 @@ Requires:
 
 Output:
     data/raw/nc-zip-population-acs2022.csv
+
+Author: Wolfgang Sanyer
+License: Polyform Noncommercial 1.0.0 (see LICENSE)
 """
 
 import csv

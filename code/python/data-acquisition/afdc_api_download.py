@@ -15,6 +15,9 @@ Requires:
 
 Output:
     data/raw/afdc-charging-stations-connector-YYYY-MM.csv
+
+Author: Wolfgang Sanyer
+License: Polyform Noncommercial 1.0.0 (see LICENSE)
 """
 
 import csv

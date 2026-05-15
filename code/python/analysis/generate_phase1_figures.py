@@ -15,6 +15,9 @@ Usage:
     python generate_phase1_figures.py
     python generate_phase1_figures.py --output ../../../output/figures
     python generate_phase1_figures.py --nice-to-have
+
+Author: Wolfgang Sanyer
+License: Polyform Noncommercial 1.0.0 (see LICENSE)
 """
 
 import argparse
