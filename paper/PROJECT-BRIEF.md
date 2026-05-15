@@ -1,7 +1,5 @@
 # EV Pulse NC: Project Brief
 
-**Audience:** Dr. Majed Al-Ghandour, BIDA 670 Instructor
-
 ---
 
 ## Project Overview
@@ -36,7 +34,7 @@ NEVI Priority Score(county) = 0.40 x Equity_Score
 - **Utilization Score (0.35)** draws from Phase 1 (validated BEV forecasts with a 4-5% upward buffer for the systematic underprediction bias), Phase 2 (BEVs-per-port across all levels), and Phase 3 (sub-county density).
 - **Cost-Effectiveness Score (0.25)** draws from Phase 4 (workplace-vs-residential efficiency, commuter demand sizing).
 
-The output is a ranked list of all 100 NC counties with component scores, a composite NEVI Priority Score, and proportional NEVI dollar allocations. See `data/processed/scoring-framework-final.csv`.
+The output is a ranked list of all 100 NC counties with component scores, a composite NEVI Priority Score, and proportional NEVI dollar allocations. See `../data/processed/scoring-framework-final.csv`.
 
 ---
 
@@ -51,15 +49,12 @@ Two extensions are preserved as post-capstone roadmap items:
 
 ## Live References
 
-For the detailed pipeline architecture and scoring framework, see `frameworks/analytical-pipeline.md`. For the live research narrative and paper-in-progress, see `paper/PAPER-NOTES.md`. For the current AFDC dataset reference, see `frameworks/afdc-dataset-reference.md` and `frameworks/afdc-data-structure.md`.
+For the detailed pipeline architecture and scoring framework, see `../frameworks/analytical-pipeline.md`. For the live research narrative and paper-in-progress, see `PAPER-NOTES.md`. For the current AFDC dataset reference, see `../frameworks/afdc-dataset-reference.md` and `../frameworks/afdc-data-structure.md`.
 
 ---
 
-**Project Team:**
+**Author:**
 Wolfgang Sanyer<BR>
 MBA Candidate, Business & Data Analytics Concentration<BR>
-Fayetteville State University
-
-**Faculty Advisor:** Dr. Majed Al-Ghandour<BR>
-**Course:** BIDA 670 - Advanced Analytics Capstone<BR>
-**Semester:** Spring 2026
+Fayetteville State University<BR>
+Spring 2026

@@ -6,7 +6,8 @@ Produces figures fig-08 through fig-17 and supporting CSV tables for the
 EV Pulse NC analytical pipeline. Covers missingness, distributions,
 geographic coverage, temporal growth, and data quality flagging.
 
-Author: BIDA 670 EV-Pulse-NC Project
+Author: Wolfgang Sanyer
+License: Polyform Noncommercial 1.0.0 (see LICENSE)
 Date: 2026
 """
 

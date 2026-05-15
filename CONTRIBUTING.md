@@ -34,8 +34,10 @@ The VS Code ruff extension handles this automatically on save.
 
 **Format:**
 ```
-[EVPULS] Brief description of change
+[EVPULSE][TYPE] Brief description of change
 ```
+
+`TYPE` is one of: `FEAT` (new feature), `FIX` (bug fix), `DOCS` (documentation), `CHORE` (housekeeping), `REFACTOR`, `TEST`, `STYLE`.
 
 **Guidelines:**
 - Write clear, descriptive commit messages
@@ -101,30 +103,20 @@ A change is complete when:
    git lfs pull
    ```
 
-3. **Create virtual environment**
+3. **Install dependencies with uv**
    ```bash
-   python -m venv .venv
+   # Install uv if needed: https://docs.astral.sh/uv/
+   uv sync                # runtime dependencies
+   uv sync --extra dev    # also includes ruff + pytest
    ```
 
-4. **Activate environment**
-   - Windows: `.venv\Scripts\activate`
-   - Unix/macOS: `source .venv/bin/activate`
-
-5. **Install project and dependencies**
+4. **Verify setup**
    ```bash
-   pip install -e .
+   uv run ruff check code/python/
+   uv run pytest
    ```
 
-6. **Install dev dependencies**
-   ```bash
-   pip install ruff pytest
-   ```
-
-7. **Verify setup**
-   ```bash
-   ruff check code/python/
-   pytest
-   ```
+> **Run everything via `uv run`** — never invoke `.venv/Scripts/python.exe` or system `python` directly. See [`STYLE-GUIDE.md`](STYLE-GUIDE.md) for the full convention list.
 
 ## Questions?
 

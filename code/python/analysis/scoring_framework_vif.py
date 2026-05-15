@@ -19,6 +19,7 @@ Usage:
     uv run code/python/analysis/scoring_framework_vif.py
 
 Author: Wolfgang Sanyer
+License: Polyform Noncommercial 1.0.0 (see LICENSE)
 Date: 2026
 """
 

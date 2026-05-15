@@ -1,8 +1,7 @@
 # EV Pulse NC - Analytical Pipeline Architecture
 
-**Project:** EV Pulse NC — BIDA 670 Advanced Analytics Capstone
+**Project:** EV Pulse NC — North Carolina Electric Vehicle Analytics
 **Author:** Wolfgang Sanyer, Fayetteville State University
-**Advisor:** Dr. Majed Al-Ghandour
 **Date:** April 2026 (last updated)
 
 ---
@@ -175,7 +174,7 @@ NEVI Priority Score(county) = 0.40 x Equity_Score
                             + 0.25 x Cost_Effectiveness_Score
 ```
 
-**Source:** Dr. Al-Ghandour's proposal feedback -- "clearly defining prioritization criteria (equity, utilization, cost-effectiveness) within a scoring framework to translate findings into defensible NEVI allocation decisions."
+**Source:** Advisor proposal feedback -- "clearly defining prioritization criteria (equity, utilization, cost-effectiveness) within a scoring framework to translate findings into defensible NEVI allocation decisions."
 
 ### Component Definitions
 
@@ -236,7 +235,7 @@ All core phases complete.
 
 ## Paper Alignment
 
-This table maps each pipeline phase to the corresponding section of the BIDA 670 research paper.
+This table maps each pipeline phase to the corresponding section of the EV Pulse NC research paper.
 
 | Pipeline Phase | Paper Section | Content Contribution |
 |----------------|---------------|---------------------|
@@ -257,8 +256,7 @@ This table maps each pipeline phase to the corresponding section of the BIDA 670
 |----------|:-----:|-------------|
 | [validation-analysis.md](./validation-analysis.md) | 1 | ARIMA/ESM/UCM validation framework, out-of-sample accuracy metrics |
 | [zip-code-analysis.md](./zip-code-analysis.md) | 3 | Sub-county spatial analysis framework, data availability constraints |
-| [ctpp-analysis.md](./ctpp-analysis.md) | 4 | Workplace charging demand framework, CTPP data structure, remote work adjustments |
-| [afdc-api-analysis.md](./afdc-api-analysis.md) | 2 | NREL API technical specifications, query parameters |
+| [phase4-workplace-charging.md](./phase4-workplace-charging.md) | 4 | Phase 4 workplace charging demand framework, LEHD LODES + ACS income, 0.85 remote-work multiplier |
 | [afdc-dataset-reference.md](./afdc-dataset-reference.md) | 2 | AFDC dataset source, vintage, current counts |
 | [afdc-data-structure.md](./afdc-data-structure.md) | 2 | AFDC schema reference (76 fields), infrastructure classification |
 | [stakeholder-value-analysis.md](./stakeholder-value-analysis.md) | All | Stakeholder value of the delivered scoring framework |
@@ -271,4 +269,4 @@ This table maps each pipeline phase to the corresponding section of the BIDA 670
 - **Last Updated:** April 2026
 - **Version:** 1.1
 - **Repository:** `C:\projects\ev-pulse-nc`
-- **Purpose:** Standalone reference for BIDA 670 capstone paper and advisor review
+- **Purpose:** Standalone reference for the EV Pulse NC research paper and advisor review

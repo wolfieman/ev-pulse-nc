@@ -13,7 +13,8 @@ Output:
 Usage:
     uv run code/python/analysis/phase5_weight_sensitivity.py
 
-Author: BIDA 670 EV-Pulse-NC Project
+Author: Wolfgang Sanyer
+License: Polyform Noncommercial 1.0.0 (see LICENSE)
 Date: 2026
 """
 

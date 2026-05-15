@@ -11,7 +11,8 @@ Outputs:
 - phase3-theil-decomposition.csv   (3 rows: total, between, within)
 - phase3-theil-county-contributions.csv  (10 rows, one per county)
 
-Author: BIDA 670 EV-Pulse-NC Project
+Author: Wolfgang Sanyer
+License: Polyform Noncommercial 1.0.0 (see LICENSE)
 Date: 2026
 """
 

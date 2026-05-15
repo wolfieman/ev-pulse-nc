@@ -1,6 +1,6 @@
 # EV Pulse NC - Analytical Frameworks Directory
 
-**Purpose:** This directory contains conceptual frameworks and decision analyses for the EV Pulse NC BIDA 670 capstone project. These documents define WHAT to analyze and WHY, not HOW to implement.
+**Purpose:** This directory contains conceptual frameworks and decision analyses for the EV Pulse NC project. These documents define WHAT to analyze and WHY, not HOW to implement.
 
 **Status:** All 5 phases complete (Apr 2026)
 **Scope:** Research priorities, decision trees, integration strategies
@@ -27,10 +27,9 @@ Shorter conceptual analyses and decision summaries from expert agent research.
 
 | Analysis | Priority | Size | Status | Description |
 |----------|----------|------|--------|-------------|
-| **[validation-analysis.md](./validation-analysis.md)** | #1 | 3.5K | ✅ Complete | ARIMA validation framework (July-Oct 2025 BEV data), out-of-sample accuracy testing |
-| **[zip-code-analysis.md](./zip-code-analysis.md)** | #2 | 11K | ✅ Complete | Sub-county spatial analysis framework, data availability constraints (NCDOT county-only), sparsity challenges |
-| **[ctpp-analysis.md](./ctpp-analysis.md)** | #3 | 15K | ✅ Complete | Workplace charging demand framework using Census Transportation Planning Products (2016-2020 ACS), remote work adjustments |
-| **[afdc-api-analysis.md](./afdc-api-analysis.md)** | #5 | 1.9K | ✅ Complete | NREL API technical specifications, rate limits, query parameters |
+| **[validation-analysis.md](./validation-analysis.md)** | #1 | — | ✅ Complete | ARIMA validation framework (July-Oct 2025 BEV data), out-of-sample accuracy testing |
+| **[zip-code-analysis.md](./zip-code-analysis.md)** | #3 | — | ✅ Complete | Sub-county spatial analysis framework, data availability constraints (NCDOT county-only), sparsity challenges |
+| **[phase4-workplace-charging.md](./phase4-workplace-charging.md)** | #4 | — | ✅ Complete | Phase 4 workplace charging demand framework using LEHD LODES (2021) + ACS income corrections + 0.85 remote-work multiplier (Barrero/Bloom/Davis 2023) |
 
 ---
 
@@ -45,14 +44,14 @@ EV Pulse NC research priorities and phases (aligned Feb 26, 2026):
 | **1** | **1** | Predictive Analysis Validation | **Phase 1 Complete** | MAPE 4.34%, 69.00% underprediction, 8 publication figures |
 | **2** | **2** (was #5) | AFDC Infrastructure Data | **Phase 2 Complete** | Complete API dataset replaces DCFC-only extract (1,985 stations, all levels) |
 | **3** | **3** (was #2) | ZIP Code Analysis | ✅ Framework Complete ([zip-code-analysis.md](./zip-code-analysis.md)) | Infrastructure-only (adoption data unavailable at ZIP level) |
-| **4** | **4** (was #3) | CTPP Commuting Data | ✅ Framework Complete ([ctpp-analysis.md](./ctpp-analysis.md)) | Top 15 employment centers, 30% workplace charging assumption |
+| **4** | **4** (was #3) | LEHD/LODES Workplace Charging | ✅ Framework Complete ([phase4-workplace-charging.md](./phase4-workplace-charging.md)) | Top 15 employment centers, SE03 income filter, 0.85 remote-work multiplier |
 | **5** | **5** (was #4) | CEJST Equity Analysis | **Phase 5 Complete** | CEJST Justice40 tract overlay; county + ZCTA Justice40 shares; climate sensitivity; weight sensitivity; figures 39–42 |
 | **6** | **6** | Buffer Analysis | **Future Direction** | Coverage zones — preserved for post-capstone roadmap |
 | **7** | **7** | NCDOT NEVI Corridor Validation | **Future Direction** | Compare scoring framework output vs. NCDOT planned deployments — post-capstone roadmap |
 
 ### Phase 5: Prescriptive Scoring Framework (Integration Layer)
 
-**Source:** Dr. Al-Ghandour's proposal feedback — "clearly defining prioritization criteria (equity, utilization, cost-effectiveness) within a scoring framework to translate findings into defensible NEVI allocation decisions."
+**Source:** Advisor proposal feedback — "clearly defining prioritization criteria (equity, utilization, cost-effectiveness) within a scoring framework to translate findings into defensible NEVI allocation decisions."
 
 **Formula:**
 ```
@@ -130,13 +129,13 @@ NEVI Priority Score(county) = w1 × Equity_Score + w2 × Utilization_Score + w3 
 - **Status:** Complete (Mar–Apr 2026). Delivered: county + ZCTA Justice40 shares, climate-subset sensitivity, weight sensitivity, publication figures 39–42
 
 ### Priority #7 / Phase 7: NCDOT NEVI Corridor Validation (OPTIONAL)
-- **Source:** Dr. Al-Ghandour introduced the NCDOT NEVI Mapping Tool during Week 6 check-in (Feb 20, 2026)
+- **Source:** Advisor introduced the NCDOT NEVI Mapping Tool during Week 6 check-in (Feb 20, 2026)
 - **Tool:** https://experience.arcgis.com/experience/a1e1459fffee4ccbafaf888f838dcac6/page/NCDOT-NEVI-Mapping-Tool
 - **What it is:** ArcGIS map of NCDOT's planned NEVI station deployments along Alternative Fuel Corridors (AFCs)
 - **Breaking development (Feb 18, 2026):** NCDOT announced shift from corridor-only to rural/community deployment — from 50 corridor stations to 16 rural locations. RFP coming late March 2026.
 - **Alignment:** This is NOT part of the three proposed extensions. It's a **validation benchmark** — do our equity-weighted scores recommend the same locations NCDOT just chose?
 - **Work estimate:** 3-5 hours if folded into scoring framework as validation layer
-- **Professor offering:** Dr. Al-Ghandour (former DOT/CDOT) offered to help obtain NCDOT planning data directly
+- **Advisor offering:** Advisor (former DOT/CDOT) offered to help obtain NCDOT planning data directly
 - **Strategic value:** If our scoring framework independently recommends rural deployment, it validates both our methodology AND NCDOT's Feb 18 policy shift
 
 ---
@@ -276,31 +275,11 @@ Based on data investigation (Feb 2026) — original 3-agent framework analysis h
 
 ## Document Metadata
 
-### Framework Authorship
-
-All frameworks created by expert agent analysis (Jan 30, 2026) for EV Pulse NC BIDA 670 capstone project.
-
-**Agent Contributors:**
-- Decision Framework Agent (a18649a): 5-node decision tree analysis
-- Data Structure Agent (ab08c82): AFDC API research, snapshot comparison methodology
-- Stakeholder Value Agent (a6086db): Differential value matrix, integration analysis
-
 ### Version Control
 
 - **Created:** January 30, 2026
 - **Last Updated:** April 2026
 - **Status:** All 5 core phases complete (Phase 1 Validation, Phase 2 AFDC Update, Phase 3 ZIP Analysis, Phase 4 Workplace Charging, Phase 5 CEJST Equity). Phases 6 (Buffer) and 7 (NCDOT Corridor Validation) preserved as Future Directions for the post-capstone roadmap.
-
-### Related Documentation
-
-**Research Files:**
-- `/research/ev-pulse-nc/ev-pulse-nc-current-state-analysis.md` - Baseline analysis (82 months BEV data, 355 DCFC-only stations — superseded by Feb 2026 complete API dataset: 1,985 stations across all levels)
-- `/research/ev-pulse-nc/ev-pulse-nc-recommendations-RANKED.md` - Original 25 recommendations (pre-SAS Cup removal)
-- `/research/ev-pulse-nc/top-priorities.txt` - Post-redefinition top 6 priorities
-
-**Project Repository:**
-- `C:\projects\spring-26-bida670-advanced-analytics\` - Root directory
-- `C:\projects\spring-26-mba-orchestrator\` - Cross-course hub (templates, prompts, resources)
 
 ---
 

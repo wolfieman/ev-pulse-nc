@@ -13,13 +13,11 @@
 data/
 ├── raw/                    # Immutable source downloads (NEVER edit)
 │   ├── ncdot-monthly/      # Monthly NCDOT Excel files (Jul-Oct 2025)
-│   ├── nc-regs-latest-data/# NCDOT latest registration data
 │   ├── *.csv / *.csv.gz    # AFDC, LEHD, CEJST, ACS datasets
 │   ├── *.geojson           # Spatial boundary files (counties, ZCTAs, tracts)
 │   └── AFDC-DATA-COMPARISON.md
-├── processed/              # Analysis-ready datasets (33 files, by phase)
+├── processed/              # Analysis-ready datasets (organized by phase)
 ├── reference-forecasts/    # SAS Model Studio exports (forecasts, model info, fit stats)
-├── generated/              # Legacy intermediate files (may be deprecated)
 ├── DATA-DICTIONARY.md      # Column definitions for all 6 datasets
 └── README.md               # This file
 ```
@@ -94,7 +92,7 @@ data/
 | `census-tracts-2010-study-area.geojson` | Tract polygons (2010 vintage, for CEJST alignment) |
 
 - **Source:** Census TIGER/Line
-- **Scripts:** `census_county_boundaries.py`, `census_zcta_boundaries.py`, `census_tract_boundaries_download.py`
+- **Scripts:** `census_county_boundaries.py`, `census_zcta_boundaries.py`, `census_tract_boundaries.py`
 
 ---
 
@@ -179,13 +177,6 @@ SAS Model Studio exports from the original forecasting study.
 
 ---
 
-## Generated Data (`generated/`)
-
-Legacy folder containing intermediate files from earlier processing stages.
-May be deprecated in future cleanup.
-
----
-
 ## Data Provenance
 
 | Dataset | Source | Script | Pull Date |
@@ -201,11 +192,11 @@ May be deprecated in future cleanup.
 | cejst-justice40-tracts-nc.csv | EDGI/PEDP archive | cejst_justice40_download.py | 2026-02 |
 | cejst-justice40-tracts-nc-border.csv | EDGI/PEDP archive | cejst_justice40_download.py | 2026-02 |
 | cejst-justice40-tracts-nc-categories.csv | EDGI/PEDP archive | cejst_justice40_download.py | 2026-02 |
-| acs-nc-income-tenure-tracts.csv | Census ACS API | Manual / census_zip_population.py | 2026-02 |
+| acs-nc-income-tenure-tracts.csv | Census ACS API | lehd_lodes_download.py | 2026-02 |
 | nc-zip-population-acs2022.csv | Census ACS API | census_zip_population.py | 2026-02 |
 | nc-county-boundaries.geojson | Census TIGER | census_county_boundaries.py | 2026-02 |
 | nc-zcta-boundaries.geojson | Census TIGER | census_zcta_boundaries.py | 2026-02 |
-| census-tracts-2010-study-area.geojson | Census TIGER | census_tract_boundaries_download.py | 2026-02 |
+| census-tracts-2010-study-area.geojson | Census TIGER | census_tract_boundaries.py | 2026-02 |
 | sas-forecasts.csv | SAS Model Studio | Manual export | 2025-06 |
 | sas-model-info.csv | SAS Model Studio | Manual export | 2025-06 |
 | sas-fit-statistics.csv | SAS Model Studio | Manual export | 2025-06 |
@@ -241,7 +232,7 @@ uv run python code/python/data-acquisition/census_zip_population.py
 # 6. Spatial boundary files
 uv run python code/python/data-acquisition/census_county_boundaries.py
 uv run python code/python/data-acquisition/census_zcta_boundaries.py
-uv run python code/python/data-acquisition/census_tract_boundaries_download.py
+uv run python code/python/data-acquisition/census_tract_boundaries.py
 
 # 7. Validate SAS forecasts against actuals
 uv run python code/python/analysis/validate_sas_forecasts.py

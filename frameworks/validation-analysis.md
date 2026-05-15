@@ -109,7 +109,7 @@ Phase 1's findings flowed forward into the four subsequent extensions and the pr
   variation. Found a 250-fold port density gap between Charlotte ZIPs 28202 and
   28215. Produced figures fig-08 through fig-34.
 
-- **Phase 4 — Workplace Charging (LEHD/LODES)** (`frameworks/ctpp-analysis.md`):
+- **Phase 4 — Workplace Charging (LEHD/LODES)** (`frameworks/phase4-workplace-charging.md`):
   Used LEHD LODES rather than the originally planned CTPP, with a Barrero/Bloom/
   Davis (2023) 0.85 remote-work multiplier and an SE03 income filter. Estimated
   859,260 statewide adjusted workplace charging events; identified Mecklenburg

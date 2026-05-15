@@ -49,6 +49,10 @@
 
 ## Methodology — 5-Phase Pipeline
 
+![EV Pulse NC Analytical Pipeline Architecture](docs/figures/analytical-pipeline.png)
+
+*Two foundation phases (Phase 1 demand validation + Phase 2 infrastructure inventory) converge at Gap Analysis. Three analytical lenses (Phase 3 ZIP-level, Phase 4 workplace, Phase 5 equity) then feed a prescriptive NEVI scoring framework that produces ranked county allocations.*
+
 1. **Phase 1 — Validation:** Python ARIMA replication of SAS Model Studio county-level BEV forecasts (MAPE 4.36%; 100 counties; 8 publication figures)
 2. **Phase 2 — Infrastructure inventory:** Full AFDC API pull (Feb 2026); 1,985 stations, 6,145 connectors, all charging levels
 3. **Phase 3 — ZIP/County equity:** Gini coefficient (0.805 demand-side; 0.566 supply-side weighted) + Theil decomposition (84.5% within-county); 134 ZIPs ranked; 27 figures
@@ -96,9 +100,6 @@ To regenerate every output (all 42 figures, all CSVs, all phases) from raw input
 
 ```bash
 # Phase 1 — Validation
-uv run code/python/data-cleaning/consolidate_zev_monthly.py \
-    --indir data/raw/ncdot-monthly \
-    --out data/processed/nc-ev-registrations-2025.xlsx
 uv run code/python/analysis/validate_sas_forecasts.py
 uv run code/python/analysis/generate_phase1_figures.py
 uv run code/python/analysis/arima_bev_forecast.py
@@ -172,8 +173,7 @@ ev-pulse-nc/
 │
 ├── data/                         # Dataset directory (Git LFS)
 │   ├── raw/                      # Original datasets
-│   ├── processed/                # Cleaned/transformed data (gitignored)
-│   ├── generated/                # Analysis outputs
+│   ├── processed/                # Analysis-ready outputs (CSVs gitignored, regenerable)
 │   ├── reference-forecasts/      # SAS Model Studio outputs (LFS)
 │   ├── DATA-DICTIONARY.md         # Column definitions for all datasets
 │   └── README.md                 # Directory overview & provenance
@@ -181,7 +181,6 @@ ev-pulse-nc/
 ├── code/
 │   └── python/                   # Python scripts
 │       ├── data-acquisition/     # API ingestion scripts (AFDC, Census, LEHD, CEJST)
-│       ├── data-cleaning/        # Data consolidation
 │       ├── analysis/             # Phase 1-5 + scoring scripts
 │       └── blog/                 # Blog graphics package
 │
@@ -200,7 +199,6 @@ ev-pulse-nc/
 ├── output/                       # Generated outputs
 │   ├── figures/                  # 42 publication-quality figures (PDF + PNG)
 │   ├── validation/               # Forecast validation results
-│   ├── tables/                   # Summary statistics tables
 │   └── models/                   # Model index — pointers to where each model lives
 │
 ├── paper/                        # Research paper directory
@@ -222,8 +220,8 @@ ev-pulse-nc/
 | [paper/PAPER-BRIEF.md](paper/PAPER-BRIEF.md) | 1-page public summary of the in-preparation manuscript |
 | [frameworks/analytical-pipeline.md](frameworks/analytical-pipeline.md) | Full 5-phase pipeline and NEVI scoring formula |
 | [data/DATA-DICTIONARY.md](data/DATA-DICTIONARY.md) | Column definitions for all 6 datasets (NCDOT, AFDC, SAS, LEHD, CEJST, ACS) |
-| [PROJECT-BRIEF.md](PROJECT-BRIEF.md) | Executive summary for instructor (Dr. Al-Ghandour) |
-| [PROJECT-EXPLANATION.md](PROJECT-EXPLANATION.md) | Detailed project explanation with methodology deep-dive |
+| [paper/PROJECT-BRIEF.md](paper/PROJECT-BRIEF.md) | Executive project summary |
+| [paper/PROJECT-EXPLANATION.md](paper/PROJECT-EXPLANATION.md) | Detailed project explanation with methodology deep-dive |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Contribution guidelines, branching model |
 | [STYLE-GUIDE.md](STYLE-GUIDE.md) | Code style, naming conventions, formatting |
 | [INSTALLATION.md](INSTALLATION.md) | Full setup guide (from clone or from scratch) |
@@ -244,7 +242,7 @@ If you reference the methodology specifically, please cite the in-preparation ma
 ## Acknowledgments
 
 - **Author:** Wolfgang Sanyer — sole author of the analysis, code, and manuscript
-- **Faculty Advisor:** Dr. Majed Al-Ghandour, Fayetteville State University, BIDA 670 Advanced Analytics Capstone
+- **Faculty Advisor:** Dr. Majed Al-Ghandour, Fayetteville State University
 - **Data Providers:**
   - North Carolina Department of Transportation (NCDOT) — vehicle registrations
   - U.S. Department of Energy / NREL — Alternative Fuels Data Center (AFDC) charging-station inventory
