@@ -1,7 +1,5 @@
 # EV Pulse NC: Project Brief
 
-**Audience:** Dr. Majed Al-Ghandour, BIDA 670 Instructor
-
 ---
 
 ## Project Overview
@@ -55,11 +53,8 @@ For the detailed pipeline architecture and scoring framework, see `frameworks/an
 
 ---
 
-**Project Team:**
+**Author:**
 Wolfgang Sanyer<BR>
 MBA Candidate, Business & Data Analytics Concentration<BR>
-Fayetteville State University
-
-**Faculty Advisor:** Dr. Majed Al-Ghandour<BR>
-**Course:** BIDA 670 - Advanced Analytics Capstone<BR>
-**Semester:** Spring 2026
+Fayetteville State University<BR>
+Spring 2026

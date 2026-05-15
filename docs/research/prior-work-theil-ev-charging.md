@@ -1,7 +1,7 @@
 # Prior Work — Theil Index in EV Charging Infrastructure Literature
 
 **Created:** 2026-05-12
-**Context:** Pre-submission literature check on the novelty claim that the EV Pulse NC project's Theil-T decomposition is the first applied to EV charging infrastructure. Findings drive the lit review and contribution framing in the final BIDA 670 paper and the SEINFORMS 2026 conference submission.
+**Context:** Pre-submission literature check on the novelty claim that the EV Pulse NC project's Theil-T decomposition is the first applied to EV charging infrastructure. Findings drive the lit review and contribution framing in the EV Pulse NC paper and the SEINFORMS 2026 conference submission.
 
 ---
 
@@ -117,7 +117,7 @@ These applications establish that Theil decomposition is methodologically accept
 
 ## Source — Research Provenance
 
-This file consolidates findings from a 2026-05-12 literature check triggered by Dr. Al-Ghandour's offer to support a conference submission. Search strategy:
+This file consolidates findings from a 2026-05-12 literature check triggered by the advisor's offer to support a conference submission. Search strategy:
 - Google Scholar queries on "Theil" + "EV charging" / "electric vehicle charging" / "charging infrastructure"
 - SSRN, ResearchGate, arXiv preprint searches
 - Past 5 years emphasized

@@ -1,6 +1,5 @@
-# EV Pulse NC: Project Explanation for Dr. Al-Ghandour
+# EV Pulse NC: Project Explanation
 
-**Audience:** Dr. Majed Al-Ghandour, BIDA 670 Instructor
 **Purpose:** Explain project structure, baseline vs. extensions, and methodological innovation
 
 ---
@@ -171,11 +170,8 @@ The project's methodological innovations — temporal depth, connector-level gra
 
 ---
 
-**Project Team:**
+**Author:**
 Wolfgang Sanyer<BR>
 MBA Candidate, Business & Data Analytics Concentration<BR>
-Fayetteville State University
-
-**Faculty Advisor:** Dr. Majed Al-Ghandour<BR>
-**Course:** BIDA 670 - Advanced Analytics Capstone<BR>
-**Semester:** Spring 2026
+Fayetteville State University<BR>
+Spring 2026

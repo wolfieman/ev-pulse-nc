@@ -97,7 +97,7 @@ Per-folder walkthrough for data duplication, restructuring needs, naming consist
 | `code/python/analysis/` | DONE 2026-05-14 | Audit complete — only blocker was `publication_style.py:3` BIDA 670 title (fixed inline). Standards-template refactor (27 scripts) and figure-script naming polish moved to dedicated entries above. |
 | `code/python/blog/` | DONE 2026-05-14 | Audit complete — anticipatory infra for the 4 planned blog posts, well-structured. Removed misleading import-time Pillow warning (fallback works fine). Standards-template gaps folded into the analysis+blog refactor item above. |
 | `data/` | DONE 2026-05-14 | Removed orphaned `generated/` folder + `afdc-charging-units.xlsx` legacy file; fixed stale README diagram and ACS provenance attribution; removed last BIDA 670 reference (`AFDC-DATA-COMPARISON.md`) and the only AI co-attribution in the repo. Gitignore-consistency and AI-workflow-docs items moved to dedicated entries above. |
-| `docs/` | OPEN | research, internal, eda-reports subdirs |
+| `docs/` | DONE 2026-05-14 | Comprehensive BIDA 670 + Dr. Al-Ghandour sweep across the public-facing repo (30 edits across 13 files); regenerated pipeline diagram PNG with clean institutional subtitle and generic framework caption; embedded the regenerated pipeline figure in root README and `paper/PAPER-BRIEF.md`; created `docs/figures/README.md` provenance doc; moved blog consultation from `docs/internal/` to new `docs/blog/`. Advisor name retained in academic-attribution contexts (root README:242 Acknowledgments, NOTICE.md:14). |
 | `paper/` | OPEN | manuscript-in-prep area |
 | `frameworks/` | OPEN | methodology docs |
 | `output/` | OPEN | figures + tables (mostly gitignored) |

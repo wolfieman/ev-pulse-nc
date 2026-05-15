@@ -142,7 +142,7 @@ Looking at the actual data (10 counties, `scoring-framework-final.csv`):
 These are conceptually distinct. However, there could be moderate correlation between cost-effectiveness and utilization (both relate to population density and economic activity).
 
 **Even if VIF is low, reporting it is valuable** because:
-- It directly addresses Dr. Al-Ghandour's feedback about defensibility
+- It directly addresses advisor feedback about defensibility
 - It shows methodological rigor (the student didn't just assume independence)
 - It's a standard check that reviewers expect when using weighted composites
 

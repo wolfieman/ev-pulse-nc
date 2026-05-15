@@ -1,6 +1,6 @@
 # EV Pulse NC - Analytical Frameworks Directory
 
-**Purpose:** This directory contains conceptual frameworks and decision analyses for the EV Pulse NC BIDA 670 capstone project. These documents define WHAT to analyze and WHY, not HOW to implement.
+**Purpose:** This directory contains conceptual frameworks and decision analyses for the EV Pulse NC project. These documents define WHAT to analyze and WHY, not HOW to implement.
 
 **Status:** All 5 phases complete (Apr 2026)
 **Scope:** Research priorities, decision trees, integration strategies
@@ -52,7 +52,7 @@ EV Pulse NC research priorities and phases (aligned Feb 26, 2026):
 
 ### Phase 5: Prescriptive Scoring Framework (Integration Layer)
 
-**Source:** Dr. Al-Ghandour's proposal feedback — "clearly defining prioritization criteria (equity, utilization, cost-effectiveness) within a scoring framework to translate findings into defensible NEVI allocation decisions."
+**Source:** Advisor proposal feedback — "clearly defining prioritization criteria (equity, utilization, cost-effectiveness) within a scoring framework to translate findings into defensible NEVI allocation decisions."
 
 **Formula:**
 ```
@@ -130,13 +130,13 @@ NEVI Priority Score(county) = w1 × Equity_Score + w2 × Utilization_Score + w3 
 - **Status:** Complete (Mar–Apr 2026). Delivered: county + ZCTA Justice40 shares, climate-subset sensitivity, weight sensitivity, publication figures 39–42
 
 ### Priority #7 / Phase 7: NCDOT NEVI Corridor Validation (OPTIONAL)
-- **Source:** Dr. Al-Ghandour introduced the NCDOT NEVI Mapping Tool during Week 6 check-in (Feb 20, 2026)
+- **Source:** Advisor introduced the NCDOT NEVI Mapping Tool during Week 6 check-in (Feb 20, 2026)
 - **Tool:** https://experience.arcgis.com/experience/a1e1459fffee4ccbafaf888f838dcac6/page/NCDOT-NEVI-Mapping-Tool
 - **What it is:** ArcGIS map of NCDOT's planned NEVI station deployments along Alternative Fuel Corridors (AFCs)
 - **Breaking development (Feb 18, 2026):** NCDOT announced shift from corridor-only to rural/community deployment — from 50 corridor stations to 16 rural locations. RFP coming late March 2026.
 - **Alignment:** This is NOT part of the three proposed extensions. It's a **validation benchmark** — do our equity-weighted scores recommend the same locations NCDOT just chose?
 - **Work estimate:** 3-5 hours if folded into scoring framework as validation layer
-- **Professor offering:** Dr. Al-Ghandour (former DOT/CDOT) offered to help obtain NCDOT planning data directly
+- **Advisor offering:** Advisor (former DOT/CDOT) offered to help obtain NCDOT planning data directly
 - **Strategic value:** If our scoring framework independently recommends rural deployment, it validates both our methodology AND NCDOT's Feb 18 policy shift
 
 ---
@@ -278,7 +278,7 @@ Based on data investigation (Feb 2026) — original 3-agent framework analysis h
 
 ### Framework Authorship
 
-All frameworks created by expert agent analysis (Jan 30, 2026) for EV Pulse NC BIDA 670 capstone project.
+All frameworks created by expert agent analysis (Jan 30, 2026) for the EV Pulse NC project.
 
 **Agent Contributors:**
 - Decision Framework Agent (a18649a): 5-node decision tree analysis

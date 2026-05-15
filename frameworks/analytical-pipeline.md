@@ -1,8 +1,7 @@
 # EV Pulse NC - Analytical Pipeline Architecture
 
-**Project:** EV Pulse NC — BIDA 670 Advanced Analytics Capstone
+**Project:** EV Pulse NC — North Carolina Electric Vehicle Analytics
 **Author:** Wolfgang Sanyer, Fayetteville State University
-**Advisor:** Dr. Majed Al-Ghandour
 **Date:** April 2026 (last updated)
 
 ---
@@ -175,7 +174,7 @@ NEVI Priority Score(county) = 0.40 x Equity_Score
                             + 0.25 x Cost_Effectiveness_Score
 ```
 
-**Source:** Dr. Al-Ghandour's proposal feedback -- "clearly defining prioritization criteria (equity, utilization, cost-effectiveness) within a scoring framework to translate findings into defensible NEVI allocation decisions."
+**Source:** Advisor proposal feedback -- "clearly defining prioritization criteria (equity, utilization, cost-effectiveness) within a scoring framework to translate findings into defensible NEVI allocation decisions."
 
 ### Component Definitions
 
@@ -236,7 +235,7 @@ All core phases complete.
 
 ## Paper Alignment
 
-This table maps each pipeline phase to the corresponding section of the BIDA 670 research paper.
+This table maps each pipeline phase to the corresponding section of the EV Pulse NC research paper.
 
 | Pipeline Phase | Paper Section | Content Contribution |
 |----------------|---------------|---------------------|
@@ -271,4 +270,4 @@ This table maps each pipeline phase to the corresponding section of the BIDA 670
 - **Last Updated:** April 2026
 - **Version:** 1.1
 - **Repository:** `C:\projects\ev-pulse-nc`
-- **Purpose:** Standalone reference for BIDA 670 capstone paper and advisor review
+- **Purpose:** Standalone reference for the EV Pulse NC research paper and advisor review

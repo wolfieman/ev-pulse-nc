@@ -49,6 +49,10 @@
 
 ## Methodology — 5-Phase Pipeline
 
+![EV Pulse NC Analytical Pipeline Architecture](docs/figures/analytical-pipeline.png)
+
+*Two foundation phases (Phase 1 demand validation + Phase 2 infrastructure inventory) converge at Gap Analysis. Three analytical lenses (Phase 3 ZIP-level, Phase 4 workplace, Phase 5 equity) then feed a prescriptive NEVI scoring framework that produces ranked county allocations.*
+
 1. **Phase 1 — Validation:** Python ARIMA replication of SAS Model Studio county-level BEV forecasts (MAPE 4.36%; 100 counties; 8 publication figures)
 2. **Phase 2 — Infrastructure inventory:** Full AFDC API pull (Feb 2026); 1,985 stations, 6,145 connectors, all charging levels
 3. **Phase 3 — ZIP/County equity:** Gini coefficient (0.805 demand-side; 0.566 supply-side weighted) + Theil decomposition (84.5% within-county); 134 ZIPs ranked; 27 figures
@@ -217,7 +221,7 @@ ev-pulse-nc/
 | [paper/PAPER-BRIEF.md](paper/PAPER-BRIEF.md) | 1-page public summary of the in-preparation manuscript |
 | [frameworks/analytical-pipeline.md](frameworks/analytical-pipeline.md) | Full 5-phase pipeline and NEVI scoring formula |
 | [data/DATA-DICTIONARY.md](data/DATA-DICTIONARY.md) | Column definitions for all 6 datasets (NCDOT, AFDC, SAS, LEHD, CEJST, ACS) |
-| [PROJECT-BRIEF.md](PROJECT-BRIEF.md) | Executive summary for instructor (Dr. Al-Ghandour) |
+| [PROJECT-BRIEF.md](PROJECT-BRIEF.md) | Executive project summary |
 | [PROJECT-EXPLANATION.md](PROJECT-EXPLANATION.md) | Detailed project explanation with methodology deep-dive |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Contribution guidelines, branching model |
 | [STYLE-GUIDE.md](STYLE-GUIDE.md) | Code style, naming conventions, formatting |
@@ -239,7 +243,7 @@ If you reference the methodology specifically, please cite the in-preparation ma
 ## Acknowledgments
 
 - **Author:** Wolfgang Sanyer — sole author of the analysis, code, and manuscript
-- **Faculty Advisor:** Dr. Majed Al-Ghandour, Fayetteville State University, BIDA 670 Advanced Analytics Capstone
+- **Faculty Advisor:** Dr. Majed Al-Ghandour, Fayetteville State University
 - **Data Providers:**
   - North Carolina Department of Transportation (NCDOT) — vehicle registrations
   - U.S. Department of Energy / NREL — Alternative Fuels Data Center (AFDC) charging-station inventory
