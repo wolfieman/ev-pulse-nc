@@ -13,6 +13,9 @@ Usage:
     python ncdot_ev_pipeline.py --start-month 2025-07 --end-month 2025-10
     python ncdot_ev_pipeline.py --outdir ../../../data/raw/ncdot-monthly
     python ncdot_ev_pipeline.py --skip-download --out ../../../data/processed/master
+
+Author: Wolfgang Sanyer
+License: Polyform Noncommercial 1.0.0 (see LICENSE)
 """
 
 import argparse

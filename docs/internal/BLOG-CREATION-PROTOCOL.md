@@ -464,8 +464,8 @@ NotebookLM excels at:
 ### BACKGROUND
 
 **Who I Am:**
-I'm Wolfgang Sanyer, a data analyst and BIDA 670 (Applied Business
-Intelligence & Data Analytics) graduate student at Fayetteville State
+I'm Wolfgang Sanyer, a data analyst and graduate student in applied
+business intelligence & data analytics at Fayetteville State
 University. I'm completing my MBA with a concentration in data analytics.
 My project (EV Pulse NC) uses Python, statistical modeling, and geographic
 analysis to study North Carolina's electric vehicle infrastructure gap.
@@ -644,7 +644,7 @@ that translates EV Pulse NC research findings into accessible, engaging content.
 - [ ] Professional but conversational tone
 - [ ] Data-driven but not dry
 - [ ] Confident but humble about limitations
-- [ ] Builds toward BIDA 670 final presentation by establishing credibility
+- [ ] Builds toward the EV Pulse NC research presentation by establishing credibility
 
 ---
 

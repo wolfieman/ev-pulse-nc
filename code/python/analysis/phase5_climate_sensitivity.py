@@ -16,6 +16,9 @@ existing data files or scripts.
 
 Usage:
     uv run code/python/analysis/phase5_climate_sensitivity.py
+
+Author: Wolfgang Sanyer
+License: Polyform Noncommercial 1.0.0 (see LICENSE)
 """
 
 import csv

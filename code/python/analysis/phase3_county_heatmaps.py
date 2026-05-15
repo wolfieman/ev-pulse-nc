@@ -15,7 +15,8 @@ Output figures (600 DPI, PDF + PNG):
     fig-23-heatmap-guilford      / fig-23s-heatmap-guilford-local
     fig-24-heatmap-mecklenburg   / fig-24s-heatmap-mecklenburg-local
 
-Author: BIDA 670 EV-Pulse-NC Project
+Author: Wolfgang Sanyer
+License: Polyform Noncommercial 1.0.0 (see LICENSE)
 Date: 2026
 """
 

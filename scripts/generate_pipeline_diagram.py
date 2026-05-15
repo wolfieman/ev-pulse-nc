@@ -1,6 +1,6 @@
 """
 EV Pulse NC — Analytical Pipeline Architecture Diagram
-BIDA 670 Capstone Project — Fayetteville State University
+Fayetteville State University
 
 Generates a publication-quality pipeline visualization using matplotlib.
 Output: docs/figures/analytical-pipeline.png (600 DPI)
@@ -132,7 +132,7 @@ def create_pipeline_diagram():
               weight="bold")
     draw_text(ax, 5, 15.45, "Analytical Pipeline Architecture", fontsize=16,
               color="#366092", weight="semibold")
-    draw_text(ax, 5, 15.05, "BIDA 670 Capstone Project  \u2014  Fayetteville State University",
+    draw_text(ax, 5, 15.05, "Fayetteville State University  \u2014  Broadwell College of Business & Economics",
               fontsize=10, color=C_SUBTITLE)
 
     # Thin separator line
@@ -320,7 +320,7 @@ def create_pipeline_diagram():
               "Score = 0.40 \u00d7 Equity + 0.35 \u00d7 Utilization + 0.25 \u00d7 Cost-Eff.",
               fontsize=8.5, color="#D5E8C5", weight="semibold")
     draw_text(ax, 5.0, y_score - 0.30,
-              "Dr. Al-Ghandour\u2019s prescriptive framework",
+              "Prescriptive scoring framework",
               fontsize=7.5, color="#B8D4A0", fontstyle="italic")
 
     # ════════════════════════════════════════════════════════════════════════

@@ -13,7 +13,8 @@ Usage:
     python arima_bev_forecast.py --order 1 1 1
     python arima_bev_forecast.py --auto-select
 
-Author: EV-Pulse-NC Project
+Author: Wolfgang Sanyer
+License: Polyform Noncommercial 1.0.0 (see LICENSE)
 """
 
 import argparse

@@ -7,7 +7,8 @@ counts, per-capita density metrics, DC-fast share, network diversity,
 and public-access subtotals. Produces a ZIP-level density CSV and a
 county-level summary CSV for downstream modelling and visualisation.
 
-Author: BIDA 670 EV-Pulse-NC Project
+Author: Wolfgang Sanyer
+License: Polyform Noncommercial 1.0.0 (see LICENSE)
 Date: 2026
 """
 

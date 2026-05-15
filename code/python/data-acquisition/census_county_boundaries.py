@@ -13,6 +13,9 @@ Requires:
 
 Output:
     data/raw/nc-county-boundaries.geojson
+
+Author: Wolfgang Sanyer
+License: Polyform Noncommercial 1.0.0 (see LICENSE)
 """
 
 import os

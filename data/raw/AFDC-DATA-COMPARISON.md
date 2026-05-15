@@ -1,8 +1,8 @@
 # AFDC Data Comparison: Old Extract vs. New API Download
 
 > **Date:** February 26, 2026
-> **Author:** Wolfgang Sanyer (with Claude Opus 4.6)
-> **Project:** EV Pulse NC -- BIDA 670 Advanced Analytics Capstone
+> **Author:** Wolfgang Sanyer
+> **Project:** EV Pulse NC — North Carolina Electric Vehicle Analytics
 
 ---
 

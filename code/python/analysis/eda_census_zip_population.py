@@ -12,7 +12,8 @@ Figures produced:
     fig-20: AFDC ZIP match summary (matched / AFDC-only / Census-only)
     fig-21: ZCTA population bands with station count overlay
 
-Author: BIDA 670 EV-Pulse-NC Project
+Author: Wolfgang Sanyer
+License: Polyform Noncommercial 1.0.0 (see LICENSE)
 Date: 2026
 """
 

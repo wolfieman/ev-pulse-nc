@@ -13,7 +13,8 @@ Output figures (600 DPI, PDF + PNG):
     fig-25-underserved-choropleth.png
     fig-25-underserved-choropleth.pdf
 
-Author: BIDA 670 EV-Pulse-NC Project
+Author: Wolfgang Sanyer
+License: Polyform Noncommercial 1.0.0 (see LICENSE)
 Date: 2026
 """
 

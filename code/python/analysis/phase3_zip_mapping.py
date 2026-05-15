@@ -7,7 +7,8 @@ polygon), selects the top 10 counties by BEV registration count, filters
 to ZIPs within those counties, and joins Census ZCTA population data.
 Produces three analysis-ready CSVs for downstream Steps 4-9.
 
-Author: BIDA 670 EV-Pulse-NC Project
+Author: Wolfgang Sanyer
+License: Polyform Noncommercial 1.0.0 (see LICENSE)
 Date: 2026
 """
 

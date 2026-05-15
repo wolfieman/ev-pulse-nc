@@ -6,7 +6,10 @@ This folder holds internal working artifacts produced during the EV Pulse NC pro
 
 | File | Purpose |
 |------|---------|
+| `FUTURE-WORK.md` | Open items, deferred refactors, and pending folder audits — the durable backlog |
 | `documentation-drift-report.md` | Audit comparing project documentation against the current code and data state |
 | `tonal-drift-audit.md` | Voice/style audit to keep narrative consistent across docs |
 | `BLOG-CREATION-PROTOCOL.md` | Working protocol used to produce project blog posts |
-| `consultation.md` | Expert-panel consultation log used during planning |
+| `sas-screenshots/` | SAS Model Studio screenshots documenting the Phase 1 reference forecasts |
+
+> Blog-content working artifacts (panel consultations, drafts) live in [`../blog/`](../blog/), not here.

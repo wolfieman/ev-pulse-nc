@@ -11,7 +11,8 @@ Files checked:
     3. lehd-nc-xwalk.csv.gz         (geographic crosswalk)
     4. acs-nc-income-tenure-tracts.csv (ACS tract-level income + tenure)
 
-Author: BIDA 670 EV-Pulse-NC Project
+Author: Wolfgang Sanyer
+License: Polyform Noncommercial 1.0.0 (see LICENSE)
 Date: 2026
 """
 

@@ -10,7 +10,6 @@ https://polyformproject.org/licenses/noncommercial/1.0.0
 
 **Project:** EV Pulse NC - North Carolina Electric Vehicle Analytics<br>
 **Institution:** Fayetteville State University<br>
-**Course:** BIDA-670<br>
 **Faculty Advisor:** Dr. Majed Al-Ghandour
 
 ---

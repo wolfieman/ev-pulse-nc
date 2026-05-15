@@ -19,7 +19,8 @@ Outputs:
 - phase3-county-gini.csv  (10 rows, one per county)
 - phase3-statewide-gini.csv  (1 row)
 
-Author: BIDA 670 EV-Pulse-NC Project
+Author: Wolfgang Sanyer
+License: Polyform Noncommercial 1.0.0 (see LICENSE)
 Date: 2026
 """
 

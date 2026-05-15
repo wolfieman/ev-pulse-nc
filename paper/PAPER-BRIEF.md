@@ -5,7 +5,7 @@
 **Working title:** EV Pulse NC — Quantifying and Closing the EV Infrastructure Gap in North Carolina
 **Author:** Wolfgang Sanyer (sole author)
 **Affiliation:** Fayetteville State University, Broadwell College of Business and Economics
-**Course context:** BIDA 670 Advanced Analytics Capstone, Spring 2026
+**Semester:** Spring 2026
 
 ---
 
@@ -27,6 +27,8 @@ North Carolina's battery-electric vehicle (BEV) fleet grew 1,727% over seven yea
 ---
 
 ## Methods at a Glance
+
+![Analytical pipeline architecture](../docs/figures/analytical-pipeline.png)
 
 - **Data:** NCDOT vehicle registrations (Sept 2018 – June 2025, 8,200 obs); AFDC charging-station API (Feb 2026, 1,985 stations); ACS 2018–2022 (income, tenure); LEHD LODES 2021 (commuting flows); CEJST v2.0 (Justice40 designation); SAS Model Studio reference forecasts (auto-selected ESM × 82, ARIMA × 13, UCM × 5).
 - **Pipeline:** 5 sequential analytical phases, each producing publication-quality figures (42 total, 600 DPI PDF + PNG).

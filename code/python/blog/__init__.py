@@ -16,6 +16,9 @@ Usage:
         create_ev_pulse_hero,
         create_ev_pulse_stats,
     )
+
+Author: Wolfgang Sanyer
+License: Polyform Noncommercial 1.0.0 (see LICENSE)
 """
 
 from . import blog_graphics

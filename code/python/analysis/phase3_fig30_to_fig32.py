@@ -10,7 +10,8 @@ Generates three publication-ready figures for the EV Pulse NC capstone:
 
 Output figures (600 DPI, PDF + PNG) are saved to output/figures/.
 
-Author: BIDA 670 EV-Pulse-NC Project
+Author: Wolfgang Sanyer
+License: Polyform Noncommercial 1.0.0 (see LICENSE)
 Date: 2026
 """
 

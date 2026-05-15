@@ -15,6 +15,9 @@ Requires:
 
 Output:
     data/raw/nc-zip-population-acs2022.csv
+
+Author: Wolfgang Sanyer
+License: Polyform Noncommercial 1.0.0 (see LICENSE)
 """
 
 import csv
@@ -123,7 +126,7 @@ def sanity_check(headers, rows):
         try:
             pop = int(row[pop_idx])
             populations.append((row[zcta_idx], row[name_idx], pop))
-        except ValueError, TypeError:
+        except (ValueError, TypeError):
             pass
 
     total_pop = sum(p[2] for p in populations)

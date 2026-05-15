@@ -55,7 +55,7 @@ The `code/python/` subdirectories use kebab-case because they contain standalone
 
 ### Encouraged
 
-- **Type hints** at public function signatures (see `ncdot_ev_pipeline.py`)
+- **Type hints** at public function signatures (see `scoring_framework_vif.py` or `census_tract_boundaries.py` for fully-annotated exemplars)
 - **dataclasses** for structured data with behavior
 - **NamedTuple** for simple immutable record types
 - **Generators** for streaming and pagination
@@ -202,13 +202,18 @@ This project uses a simple, explicit configuration approach:
 
 - Use CLI arguments for parameters users might customize
 - Use constants for fixed values (URLs, formats, thresholds)
-- Use `.env` files only if external API keys are ever needed (currently not applicable)
+- Use `.env` files for external API keys (see below)
 
-### No API Keys Required
+### API Keys Required
 
-Current data sources (NCDOT and AFDC) require no authentication:
-- NCDOT: Public website downloads
-- AFDC: Pre-downloaded CSV data in Git LFS
+Two data-acquisition scripts require API keys, loaded from a project-root `.env` file via `python-dotenv`:
+
+| Key | Used by | Get one |
+|---|---|---|
+| `NREL_API_KEY` | `code/python/data-acquisition/afdc_api_download.py` (AFDC charging stations) | https://developer.nrel.gov/signup/ (free, instant) |
+| `CENSUS_API_KEY` | `code/python/data-acquisition/census_zip_population.py` (ACS ZCTA populations) | https://api.census.gov/data/key_signup.html (free) |
+
+`.env` is gitignored — never commit credentials. NCDOT data is fetched via public web scraping (no key needed); LEHD/CEJST/Census boundaries use no-auth public endpoints.
 
 ---
 

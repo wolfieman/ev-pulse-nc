@@ -9,7 +9,8 @@ ranks all 130 eligible ZIPs by ascending ports_per_10k (tie-break by
 population descending), and outputs the top-20 underserved list, a
 county-level breakdown, and a full ranked list for downstream use.
 
-Author: BIDA 670 EV-Pulse-NC Project
+Author: Wolfgang Sanyer
+License: Polyform Noncommercial 1.0.0 (see LICENSE)
 Date: 2026
 """
 

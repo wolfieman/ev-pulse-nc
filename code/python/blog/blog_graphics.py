@@ -30,6 +30,7 @@ Usage:
     )
 
 Author: Wolfgang Sanyer
+License: Polyform Noncommercial 1.0.0 (see LICENSE)
 Project: EV Pulse NC
 Date: February 2026
 """
@@ -41,14 +42,14 @@ import numpy as np
 from pathlib import Path
 from typing import Optional, Union, Literal
 
-# Try to import Pillow for social previews
+# Pillow is an optional enhancement for higher-quality social-preview images.
+# When missing, create_social_preview() transparently falls back to matplotlib
+# (see _create_preview_matplotlib). No warning needed at import time.
 try:
     from PIL import Image, ImageDraw, ImageFont
     HAS_PILLOW = True
 except ImportError:
     HAS_PILLOW = False
-    print("Warning: Pillow not installed. Social preview images unavailable.")
-    print("Install with: pip install pillow")
 
 # Try to import Plotly for interactive charts
 try:

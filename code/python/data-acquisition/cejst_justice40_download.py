@@ -18,6 +18,9 @@ Requires:
 Output:
     data/raw/cejst-justice40-tracts-nc.csv
     data/raw/cejst-justice40-tracts-nc-border.csv
+
+Author: Wolfgang Sanyer
+License: Polyform Noncommercial 1.0.0 (see LICENSE)
 """
 
 import csv

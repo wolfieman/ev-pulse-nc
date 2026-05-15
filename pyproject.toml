@@ -4,6 +4,13 @@ version = "0.1.0"
 description = "North Carolina Electric Vehicle Analytics - Data-driven analysis of EV adoption and charging infrastructure"
 readme = "README.md"
 requires-python = ">=3.14"
+license = {file = "LICENSE"}
+authors = [
+    {name = "Wolfgang Sanyer", email = "wolfgang.sanyer@gmail.com"},
+]
+maintainers = [
+    {name = "Wolfgang Sanyer", email = "wolfgang.sanyer@gmail.com"},
+]
 dependencies = [
     "beautifulsoup4>=4.12.0",
     "folium>=0.20.0",

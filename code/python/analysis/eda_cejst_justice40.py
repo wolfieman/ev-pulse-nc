@@ -10,7 +10,8 @@ Files checked:
     2. cejst-justice40-tracts-nc-border.csv   (NC + border tracts, 8,671 rows)
     3. lehd-nc-xwalk.csv.gz                  (LEHD crosswalk for tract matching)
 
-Author: BIDA 670 EV-Pulse-NC Project
+Author: Wolfgang Sanyer
+License: Polyform Noncommercial 1.0.0 (see LICENSE)
 Date: 2026
 """
 

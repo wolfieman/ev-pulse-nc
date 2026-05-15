@@ -10,10 +10,13 @@ Source: Census TIGER FTP
     https://www2.census.gov/geo/tiger/TIGER2010/TRACT/2010/
 
 Usage:
-    uv run code/python/data-acquisition/census_tract_boundaries_download.py
+    uv run code/python/data-acquisition/census_tract_boundaries.py
 
 Output:
     data/raw/census-tracts-2010-study-area.geojson
+
+Author: Wolfgang Sanyer
+License: Polyform Noncommercial 1.0.0 (see LICENSE)
 """
 
 from __future__ import annotations
