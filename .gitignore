@@ -160,6 +160,7 @@ secrets/
 # Paper Working Files (kept local while manuscript is in preparation)
 # ============================================================================
 paper/PAPER-NOTES.md
+paper/SOURCE-INVENTORY.md
 
 # Claude local settings (machine-specific)
 .claude/settings.local.json
