@@ -111,13 +111,32 @@ Per-folder walkthrough for data duplication, restructuring needs, naming consist
 ## Public Release Preparation ("Part D")
 
 - **Source:** Public-prep sprint plan, 2026-05-14
-- **Scope:** Final step in the GitHub Portal Link submission flow. PRs #2 (`bac7cd9`) and #3 (`db2a725`) covered the portfolio cleanup (Phase A) and portfolio polish (Phase C). The remaining work is the folder-by-folder audit (in progress, this document) and then the actual visibility flip.
-- **Action:** Once all folder audits land:
-  1. Final README link-check
-  2. Verify `CITATION.cff` parses (GitHub "Cite this repository" button)
-  3. Confirm `LICENSE` is present and current
-  4. Confirm no secrets or `.env` files are tracked
-  5. `gh repo edit --visibility public`
-  6. Sanity-check `paper/PAPER-NOTES.md` is gitignored before the flip (it contains private peer-review and consultation notes)
-- **Status:** BLOCKED on folder-audit completion
-- **Priority:** High — this is the goal of the current sprint
+- **Scope:** Final step in the GitHub Portal Link submission flow. PRs #2 (`bac7cd9`) and #3 (`db2a725`) covered the portfolio cleanup (Phase A) and portfolio polish (Phase C). PR #4 (`420b66c`) bundled the folder-by-folder audit + repo-wide attribution sweep + uv migration + root-file cleanup.
+- **Result:**
+  - PR #4 squash-merged 2026-05-15
+  - Visibility flipped to public via `gh repo edit --visibility public` immediately after merge
+  - `chore/tidy-walkthrough` branch deleted (local + remote) — audit trail lives in the squashed `420b66c` commit body
+  - All pre-flip safety items verified: `paper/PAPER-NOTES.md` gitignored, no tracked `.env`, `CITATION.cff` valid, `LICENSE` current
+- **Status:** DONE 2026-05-15
+
+---
+
+## Post-Launch: Convert highest-value FUTURE-WORK entries to GitHub Issues
+
+- **Source:** Decision conversation, 2026-05-15 (post-launch reflection)
+- **Scope:** Now that the repo is public, an empty Issues tab reads as "static / abandoned." A handful of well-scoped Issues signals active maintenance and gives each item its own discoverable URL for resume/portfolio linking.
+- **Timing:** **Defer until after paper + presentation deadlines clear.** Paper has a fixed deadline; portfolio polish does not. Don't trade focus on the deliverable for Issues triage.
+- **Hybrid approach** (do not replace this doc with Issues):
+  - `FUTURE-WORK.md` remains the canonical master log — full `Source` / `Scope` / `Action` / `Status` context, links to source commits
+  - GitHub Issues track only items being actively worked or that benefit from public visibility
+  - Cross-link both ways: Issue body links back to its FUTURE-WORK section; the FUTURE-WORK Status field references the Issue number (e.g., "OPEN — see #5")
+- **Recommended candidates for issue conversion** (priority order):
+  1. **Standards-template refactor** (28 scripts in `code/python/analysis/` + `code/python/blog/blog_graphics.py`) — concrete scope, could be tagged `good first issue` for external contributors
+  2. **AI / LLM workflow documentation consolidation** — useful for portfolio transparency; agent-attribution raw material is preserved in this doc
+  3. **Figure-script naming polish** (5 range-based filenames → content-descriptive) — small, well-scoped, easy "completed" win
+- **NOT recommended for issue conversion** (keep here only):
+  - `.gitignore` consistency for `data/processed/*.xlsx` and `*.qa.txt` — low priority, stated-intent gap only
+  - The per-folder audit table — historical record, not actionable work
+- **Optional polish:** a simple GitHub Project (Kanban board) once 3-5 issues are open, for visual portfolio screenshots.
+- **Status:** OPEN — deferred to post-paper-deadline
+- **Priority:** Low — repo is shipped and healthy; this is portfolio polish, not blocking
