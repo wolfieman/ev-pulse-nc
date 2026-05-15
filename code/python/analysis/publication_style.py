@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Publication-Ready Figure Styling for BIDA 670 EV Forecast Validation Paper
+Publication-Ready Figure Styling for EV Pulse NC
 
 This module provides a comprehensive matplotlib/seaborn styling configuration
 optimized for academic publication standards. Import and call setup_publication_style()

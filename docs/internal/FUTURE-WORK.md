@@ -26,13 +26,21 @@ Project standard template is `code/python/analysis/scoring_framework_vif.py` (re
 - **Action:** Refactor each to match the template. Highest-value shared change: replace the 4-nested `os.path.dirname(...)` REPO_ROOT block (duplicated in 6 of 7 files) with the 2-line `_SCRIPT_DIR / PROJECT_ROOT` pattern.
 - **Status:** OPEN
 
-### Analysis scripts (23 non-compliant)
+### Analysis scripts (27 non-compliant)
 
-- **Source:** `paper/PAPER-NOTES.md` ~line 733 (TODO opened 2026-04-10 after VIF refactor)
-- **Scope:** `code/python/analysis/` — 23 scripts not yet matching the template
-- **Action:** Same template alignment as above. Author attribution is the original trigger (most still say `Author: BIDA 670 EV-Pulse-NC Project`; should be `Author: Wolfgang Sanyer`).
+- **Source:** `paper/PAPER-NOTES.md` ~line 733 (TODO opened 2026-04-10 after VIF refactor); folder audit 2026-05-14 confirmed scope and updated count
+- **Scope:** `code/python/analysis/` — 27 of 28 scripts not yet matching the template (only `phase5_climate_sensitivity.py` uses the `_SCRIPT_DIR` pattern, and even it pre-dates the full template). All 28 already have the corrected `Author: Wolfgang Sanyer` + `License:` lines as of commit `75acdf6` — that part is no longer pending.
+- **Action:** Bring each script up to the `scoring_framework_vif.py` template: `from __future__ import annotations` (6 scripts missing it), `_SCRIPT_DIR` path pattern (27 scripts missing it), full function-signature type hints, module-level constants for thresholds/columns/paths, Google-style docstrings.
 - **Status:** OPEN
-- **Private notes:** see PAPER-NOTES.md "TODO: Full Code Standards Review — 23 Analysis Scripts"
+- **Private notes:** see PAPER-NOTES.md "TODO: Full Code Standards Review — 23 Analysis Scripts" (the count there is pre-audit; the real count is 27 once `phase5_climate_sensitivity.py` is excluded)
+
+### Figure-script naming inconsistency (post-public-release polish)
+
+- **Source:** `code/python/analysis/` folder audit, 2026-05-14
+- **Scope:** 5 figure-batch scripts use abstract range-based names (`phase3_fig26_to_fig29.py`, `phase3_fig30_to_fig32.py`, `phase3_fig33_fig34.py`, `phase4_fig35_to_fig38.py`, `phase5_fig39_to_fig42.py`) while 1 uses content-descriptive naming (`phase3_fig25_underserved_choropleth.py`). Range-based names require opening the file to know what it does, which is reviewer-unfriendly for a portfolio/academic repo.
+- **Action:** Rename each range-based script to a content-descriptive form (e.g., `phase3_fig26_to_fig29.py` → `phase3_equity_inequality_figures.py`). Update references in `code/README.md`, root `README.md`, and `paper/PAPER-NOTES.md`.
+- **Status:** OPEN
+- **Priority:** Low — polish item, not correctness. Defer to post-public-release.
 
 ---
 
@@ -67,7 +75,7 @@ Per-folder walkthrough for data duplication, restructuring needs, naming consist
 |---|---|---|
 | `code/python/data-acquisition/` | DONE 2026-05-14 | Commit `4ec7622` — 2 bug fixes, 1 rename, README patches |
 | `code/python/data-cleaning/` | DONE 2026-05-14 | Folder removed — both scripts were orphaned legacy (Option A: archive and accept) |
-| `code/python/analysis/` | OPEN | 28 scripts queued; overlaps with standards-refactor item above |
+| `code/python/analysis/` | DONE 2026-05-14 | Audit complete — only blocker was `publication_style.py:3` BIDA 670 title (fixed inline). Standards-template refactor (27 scripts) and figure-script naming polish moved to dedicated entries above. |
 | `code/python/blog/` | OPEN | Importable package, 2 files |
 | `data/` | OPEN | raw / processed / reference-forecasts / generated subdirs |
 | `docs/` | OPEN | research, internal, eda-reports subdirs |
