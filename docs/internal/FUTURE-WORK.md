@@ -26,13 +26,13 @@ Project standard template is `code/python/analysis/scoring_framework_vif.py` (re
 - **Action:** Refactor each to match the template. Highest-value shared change: replace the 4-nested `os.path.dirname(...)` REPO_ROOT block (duplicated in 6 of 7 files) with the 2-line `_SCRIPT_DIR / PROJECT_ROOT` pattern.
 - **Status:** OPEN
 
-### Analysis scripts (27 non-compliant)
+### Analysis + blog scripts (28 non-compliant)
 
-- **Source:** `paper/PAPER-NOTES.md` ~line 733 (TODO opened 2026-04-10 after VIF refactor); folder audit 2026-05-14 confirmed scope and updated count
-- **Scope:** `code/python/analysis/` — 27 of 28 scripts not yet matching the template (only `phase5_climate_sensitivity.py` uses the `_SCRIPT_DIR` pattern, and even it pre-dates the full template). All 28 already have the corrected `Author: Wolfgang Sanyer` + `License:` lines as of commit `75acdf6` — that part is no longer pending.
-- **Action:** Bring each script up to the `scoring_framework_vif.py` template: `from __future__ import annotations` (6 scripts missing it), `_SCRIPT_DIR` path pattern (27 scripts missing it), full function-signature type hints, module-level constants for thresholds/columns/paths, Google-style docstrings.
+- **Source:** `paper/PAPER-NOTES.md` ~line 733 (TODO opened 2026-04-10 after VIF refactor); analysis folder audit 2026-05-14 confirmed scope and updated count; blog folder audit 2026-05-14 extended scope to include `blog_graphics.py`
+- **Scope:** 27 of 28 scripts in `code/python/analysis/` + `code/python/blog/blog_graphics.py` not yet matching the template. Only `phase5_climate_sensitivity.py` uses the `_SCRIPT_DIR` pattern, and even it pre-dates the full template. All affected scripts already have the corrected `Author: Wolfgang Sanyer` + `License:` lines as of commit `75acdf6` — that part is no longer pending.
+- **Action:** Bring each script up to the `scoring_framework_vif.py` template: `from __future__ import annotations`, `_SCRIPT_DIR` path pattern, full function-signature type hints, modern union syntax (`X | Y` over `Union[X, Y]` for py3.14), module-level constants for thresholds/columns/paths, Google-style docstrings.
 - **Status:** OPEN
-- **Private notes:** see PAPER-NOTES.md "TODO: Full Code Standards Review — 23 Analysis Scripts" (the count there is pre-audit; the real count is 27 once `phase5_climate_sensitivity.py` is excluded)
+- **Private notes:** see PAPER-NOTES.md "TODO: Full Code Standards Review — 23 Analysis Scripts" (the count there is pre-audit; the real count is 28 once `phase5_climate_sensitivity.py` is excluded and `blog_graphics.py` is added)
 
 ### Figure-script naming inconsistency (post-public-release polish)
 
@@ -76,7 +76,7 @@ Per-folder walkthrough for data duplication, restructuring needs, naming consist
 | `code/python/data-acquisition/` | DONE 2026-05-14 | Commit `4ec7622` — 2 bug fixes, 1 rename, README patches |
 | `code/python/data-cleaning/` | DONE 2026-05-14 | Folder removed — both scripts were orphaned legacy (Option A: archive and accept) |
 | `code/python/analysis/` | DONE 2026-05-14 | Audit complete — only blocker was `publication_style.py:3` BIDA 670 title (fixed inline). Standards-template refactor (27 scripts) and figure-script naming polish moved to dedicated entries above. |
-| `code/python/blog/` | OPEN | Importable package, 2 files |
+| `code/python/blog/` | DONE 2026-05-14 | Audit complete — anticipatory infra for the 4 planned blog posts, well-structured. Removed misleading import-time Pillow warning (fallback works fine). Standards-template gaps folded into the analysis+blog refactor item above. |
 | `data/` | OPEN | raw / processed / reference-forecasts / generated subdirs |
 | `docs/` | OPEN | research, internal, eda-reports subdirs |
 | `paper/` | OPEN | manuscript-in-prep area |
