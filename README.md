@@ -96,9 +96,6 @@ To regenerate every output (all 42 figures, all CSVs, all phases) from raw input
 
 ```bash
 # Phase 1 — Validation
-uv run code/python/data-cleaning/consolidate_zev_monthly.py \
-    --indir data/raw/ncdot-monthly \
-    --out data/processed/nc-ev-registrations-2025.xlsx
 uv run code/python/analysis/validate_sas_forecasts.py
 uv run code/python/analysis/generate_phase1_figures.py
 uv run code/python/analysis/arima_bev_forecast.py
@@ -181,7 +178,6 @@ ev-pulse-nc/
 ├── code/
 │   └── python/                   # Python scripts
 │       ├── data-acquisition/     # API ingestion scripts (AFDC, Census, LEHD, CEJST)
-│       ├── data-cleaning/        # Data consolidation
 │       ├── analysis/             # Phase 1-5 + scoring scripts
 │       └── blog/                 # Blog graphics package
 │

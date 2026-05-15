@@ -66,7 +66,7 @@ Per-folder walkthrough for data duplication, restructuring needs, naming consist
 | Folder | Status | Outcome |
 |---|---|---|
 | `code/python/data-acquisition/` | DONE 2026-05-14 | Commit `4ec7622` — 2 bug fixes, 1 rename, README patches |
-| `code/python/data-cleaning/` | OPEN | 2 scripts queued |
+| `code/python/data-cleaning/` | DONE 2026-05-14 | Folder removed — both scripts were orphaned legacy (Option A: archive and accept) |
 | `code/python/analysis/` | OPEN | 28 scripts queued; overlaps with standards-refactor item above |
 | `code/python/blog/` | OPEN | Importable package, 2 files |
 | `data/` | OPEN | raw / processed / reference-forecasts / generated subdirs |

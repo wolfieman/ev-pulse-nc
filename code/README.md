@@ -9,7 +9,6 @@ All analysis code is Python. **Run everything via `uv run`** — never invoke `.
 ```
 code/python/
 ├── data-acquisition/   # API downloads (NCDOT, AFDC, Census, CEJST, LEHD)
-├── data-cleaning/      # Consolidation and date utilities
 ├── analysis/           # Phase 1-5 analytics + scoring framework + ARIMA + EDA
 └── blog/               # Importable package for blog graphics
 ```
@@ -38,25 +37,6 @@ API ingestion. Each script writes to `data/raw/`. Two require credentials in `.e
 
 ```bash
 uv run code/python/data-acquisition/afdc_api_download.py
-```
-
----
-
-## `data-cleaning/` — 2 scripts
-
-Lightweight transformation.
-
-| Script | Purpose |
-|---|---|
-| `consolidate_zev_monthly.py` | Combine monthly NCDOT Excel exports into one consolidated dataset |
-| `add_monthdate.py` | Add a `MonthDate` (YYYYMM) column derived from the `Month` column |
-
-**Run pattern:**
-
-```bash
-uv run code/python/data-cleaning/consolidate_zev_monthly.py \
-    --indir data/raw/ncdot-monthly \
-    --out data/processed/nc-ev-registrations-2025.xlsx
 ```
 
 ---
