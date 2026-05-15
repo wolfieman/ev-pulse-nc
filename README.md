@@ -182,7 +182,8 @@ ev-pulse-nc/
 │   └── python/                   # Python scripts
 │       ├── data-acquisition/     # API ingestion scripts (AFDC, Census, LEHD, CEJST)
 │       ├── analysis/             # Phase 1-5 + scoring scripts
-│       └── blog/                 # Blog graphics package
+│       ├── blog/                 # Blog graphics package
+│       └── docs/                 # Documentation-asset generators (e.g. pipeline diagram)
 │
 ├── docs/                         # Project documentation
 │   ├── eda-reports/              # Exploratory data analysis reports
@@ -204,9 +205,6 @@ ev-pulse-nc/
 ├── paper/                        # Research paper directory
 │   ├── README.md                 # Paper status + structure
 │   └── PAPER-BRIEF.md            # 1-page public summary (manuscript in prep)
-│
-├── scripts/                      # Standalone utility scripts
-│   └── generate_pipeline_diagram.py
 │
 └── references/                   # Supporting materials
     └── data-sources.md           # Citations & links
