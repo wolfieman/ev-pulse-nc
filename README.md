@@ -199,7 +199,6 @@ ev-pulse-nc/
 ├── output/                       # Generated outputs
 │   ├── figures/                  # 42 publication-quality figures (PDF + PNG)
 │   ├── validation/               # Forecast validation results
-│   ├── tables/                   # Summary statistics tables
 │   └── models/                   # Model index — pointers to where each model lives
 │
 ├── paper/                        # Research paper directory
@@ -221,8 +220,8 @@ ev-pulse-nc/
 | [paper/PAPER-BRIEF.md](paper/PAPER-BRIEF.md) | 1-page public summary of the in-preparation manuscript |
 | [frameworks/analytical-pipeline.md](frameworks/analytical-pipeline.md) | Full 5-phase pipeline and NEVI scoring formula |
 | [data/DATA-DICTIONARY.md](data/DATA-DICTIONARY.md) | Column definitions for all 6 datasets (NCDOT, AFDC, SAS, LEHD, CEJST, ACS) |
-| [PROJECT-BRIEF.md](PROJECT-BRIEF.md) | Executive project summary |
-| [PROJECT-EXPLANATION.md](PROJECT-EXPLANATION.md) | Detailed project explanation with methodology deep-dive |
+| [paper/PROJECT-BRIEF.md](paper/PROJECT-BRIEF.md) | Executive project summary |
+| [paper/PROJECT-EXPLANATION.md](paper/PROJECT-EXPLANATION.md) | Detailed project explanation with methodology deep-dive |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Contribution guidelines, branching model |
 | [STYLE-GUIDE.md](STYLE-GUIDE.md) | Code style, naming conventions, formatting |
 | [INSTALLATION.md](INSTALLATION.md) | Full setup guide (from clone or from scratch) |

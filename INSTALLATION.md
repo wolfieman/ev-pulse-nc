@@ -31,13 +31,12 @@ ls -lh data/raw/
 ```
 
 ```bash
-# 4. Set up Python environment
-python -m venv .venv
-source .venv/bin/activate  # or .venv\Scripts\activate on Windows
-pip install -e .
+# 4. Set up Python environment with uv
+#    (Install uv first if needed: https://docs.astral.sh/uv/)
+uv sync
 
 # 5. Verify
-python -c "import pandas; print('Ready')"
+uv run python -c "import pandas; print('Ready')"
 ```
 
 **Done!** You now have the full project with all data files and dependencies.
@@ -68,11 +67,11 @@ git lfs version
 
 ```bash
 mkdir -p ev-pulse-nc && cd ev-pulse-nc
-mkdir -p data/{raw,processed,generated,reference-forecasts}
+mkdir -p data/{raw,processed,reference-forecasts}
 mkdir -p code/python/{data-acquisition,analysis,blog}
-mkdir -p docs/{eda-reports,research,internal}
+mkdir -p docs/{eda-reports,research,internal,figures,blog}
 mkdir -p frameworks scripts references
-mkdir -p output/{figures,tables,models,validation}
+mkdir -p output/{figures,models,validation}
 mkdir -p paper
 ```
 
@@ -144,4 +143,4 @@ See [QUICK-REFERENCE.md](QUICK-REFERENCE.md) for daily commands.
 
 ---
 
-**Last Updated:** April 2026
+**Last Updated:** May 2026

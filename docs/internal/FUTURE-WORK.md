@@ -49,21 +49,14 @@ Project standard template is `code/python/analysis/scoring_framework_vif.py` (re
 ### STYLE-GUIDE.md authentication claim is stale
 
 - **Source:** `STYLE-GUIDE.md:209-211` — flagged in commit `4ec7622` (2026-05-14)
-- **Scope:** The section "No API Keys Required" states current data sources require no authentication and that AFDC is "pre-downloaded CSV data in Git LFS." Both are wrong as of Phase 2+:
-  - `NREL_API_KEY` is required by `afdc_api_download.py`
-  - `CENSUS_API_KEY` is required by `census_zip_population.py`
-  - AFDC data is now pulled live via the API, not from a static LFS file
-- **Action:** Rewrite the section to (a) list the two required env keys with their `.env` setup, (b) point to `code/README.md` for the canonical "two require credentials" reference, (c) update or remove the "When external API keys are ever needed (currently not applicable)" line in the Configuration Strategy section above it.
-- **Status:** OPEN
-- **Priority:** Medium — affects new-contributor onboarding accuracy
+- **Action:** Rewrote the "No API Keys Required" section to accurately list `NREL_API_KEY` and `CENSUS_API_KEY` requirements with their `.env` source links. Also updated the Configuration Strategy guideline above it from "currently not applicable" to "see below."
+- **Status:** DONE 2026-05-14 (root audit)
 
 ### STYLE-GUIDE.md type-hints example reference
 
 - **Source:** `STYLE-GUIDE.md:58` — flagged 2026-05-14 during data-acquisition audit
-- **Scope:** Says "Type hints at public function signatures (see `ncdot_ev_pipeline.py`)" — but `ncdot_ev_pipeline.py` has only *partial* type hints, not full coverage. Better exemplar would be `census_tract_boundaries.py` or `scoring_framework_vif.py`, both fully annotated.
-- **Action:** Update the cross-reference to point at one of the fully-annotated scripts.
-- **Status:** OPEN
-- **Priority:** Low
+- **Action:** Updated the exemplar reference from `ncdot_ev_pipeline.py` (partial coverage) to `scoring_framework_vif.py` and `census_tract_boundaries.py` (both fully annotated).
+- **Status:** DONE 2026-05-14 (root audit)
 
 ### `.gitignore` inconsistency for `data/processed/`
 
@@ -111,6 +104,7 @@ Per-folder walkthrough for data duplication, restructuring needs, naming consist
 | `paper/` | DONE 2026-05-14 | Removed stale pre-implementation planning doc (`vif-scoring-framework-action-plan.md`) — work it described is complete (script + results + PAPER-NOTES writeup all live elsewhere). PAPER-BRIEF.md, README.md, and the gitignored PAPER-NOTES.md verified clean. |
 | `frameworks/` | DONE 2026-05-14 | Removed references to nonexistent `afdc-api-analysis.md` (3 sites); renamed `ctpp-analysis.md` → `phase4-workplace-charging.md` to match its actual LEHD/LODES content (filename was legacy from the abandoned CTPP plan); stripped stale Size column values in the README table; removed AI agent-attribution section (preserved in the AI-workflow FUTURE-WORK entry above as raw material); removed local-filesystem-path sections that leaked the user's directory layout. |
 | `output/` | DONE 2026-05-14 | Removed obsolete placeholders (`PLACEHOLDER-figures-here.txt` + the empty `output/tables/` subdir with its placeholder — all tabular outputs land in `data/processed/`). Rewrote `output/README.md` figures section to cover all 5 phases (it had only documented Phase 1, missing 35 figures). Validation outputs + models README verified clean. |
+| **Root files** | DONE 2026-05-14 | Cross-folder audit of top-level files + subfolder READMEs. Fixed stale references in root README (`output/tables/` tree entry), `INSTALLATION.md` (pre-uv setup commands + stale mkdir paths for removed `data/generated/` and `output/tables/`), and `CONTRIBUTING.md` (wrong commit format `[EVPULS]` + pre-uv dev setup). Fixed STYLE-GUIDE drift (auth-claim + type-hints exemplar). Moved `PROJECT-BRIEF.md` and `PROJECT-EXPLANATION.md` from root to `paper/` to colocate project-narrative-tier docs; updated all internal cross-references and the root README documentation table. |
 
 ---
 

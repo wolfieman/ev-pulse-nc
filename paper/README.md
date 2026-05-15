@@ -2,6 +2,15 @@
 
 > **Manuscript in preparation.** The working draft is maintained privately as `PAPER-NOTES.md` (gitignored) and is not committed to the public repository while peer review is pending. A 1-page public summary of the question, headline findings, and policy implications is available at [`PAPER-BRIEF.md`](PAPER-BRIEF.md). The published version will be added to this directory once peer review concludes.
 
+## Directory Contents
+
+| File | Purpose |
+|---|---|
+| [`PAPER-BRIEF.md`](PAPER-BRIEF.md) | 1-page public summary of the in-preparation manuscript |
+| [`PROJECT-BRIEF.md`](PROJECT-BRIEF.md) | Executive project summary — overview, completed extensions, scoring framework, future directions |
+| [`PROJECT-EXPLANATION.md`](PROJECT-EXPLANATION.md) | Detailed project explanation — baseline + extensions, methodological innovation summary, integration logic |
+| `PAPER-NOTES.md` | **Gitignored** — private working draft of the manuscript |
+
 ## Requirements (internal)
 - **Main Text:** 2-5 pages (target: 4 pages)
 - **Appendix:** Optional, up to 2 pages for visualizations

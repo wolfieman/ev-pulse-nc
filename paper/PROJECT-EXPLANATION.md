@@ -18,7 +18,7 @@ What makes this analysis distinctive is its granularity and temporal depth. Most
 
 The baseline analysis established the analytical foundation through a five-phase framework (exploratory, descriptive, diagnostic, predictive, prescriptive) completed during Fall 2025.
 
-> **Key statistics:** See [README.md — Key Findings](README.md#-key-findings) for the canonical demand-side and supply-side metrics referenced throughout this section.
+> **Key statistics:** See [README.md — Key Findings](../README.md#-key-findings) for the canonical demand-side and supply-side metrics referenced throughout this section.
 
 On the demand side, the analysis processed NCDOT's complete time series of BEV registrations: 8,200 observations spanning 100 counties across 82 months. The data reveals extreme geographic concentration (statewide connector Gini 0.805), creating a tension between efficiency (deploying infrastructure where demand already exists) and equity (ensuring rural and disadvantaged communities have access).
 
@@ -69,7 +69,7 @@ Eight publication-quality figures (600 DPI, PDF): predicted-vs-actual scatter, e
 
 Phase 2 replaced the prior DCFC-only public extract with a full NREL AFDC API pull covering all charging levels (L1, L2, DCFC) and all access types. The current baseline is **1,985 stations and 6,145 connectors across 267 cities and 358 ZIP codes (Feb 2026 pull)**. This supersedes earlier station and connector counts that were later identified as DCFC-only.
 
-The full-coverage pull matters because roughly half of North Carolina's workplace and destination charging infrastructure is Level 2, and a DCFC-only extract systematically understates the supply side — particularly in employment centers where L2 dominates. Phase 2 provides the complete infrastructure baseline that Phases 3, 4, and 5 all depend on. See `frameworks/afdc-dataset-reference.md` and `frameworks/afdc-data-structure.md` for the dataset reference and schema.
+The full-coverage pull matters because roughly half of North Carolina's workplace and destination charging infrastructure is Level 2, and a DCFC-only extract systematically understates the supply side — particularly in employment centers where L2 dominates. Phase 2 provides the complete infrastructure baseline that Phases 3, 4, and 5 all depend on. See `../frameworks/afdc-dataset-reference.md` and `../frameworks/afdc-data-structure.md` for the dataset reference and schema.
 
 ---
 
@@ -86,7 +86,7 @@ NCDOT does not publish ZIP-level BEV registration data, so Phase 3 focuses on th
 - Within Charlotte alone, the port density gap between ZIP 28202 and ZIP 28215 is roughly **250-fold**.
 - The top-20 underserved ZIPs are concentrated in high-BEV urban counties with poor sub-county distribution — the clearest site-selection targets from the project.
 
-Outputs: `data/processed/phase3-county-gini.csv`, `phase3-theil-decomposition.csv`, `phase3-zip-density.csv`, `phase3-top20-underserved.csv`. These feed both the Utilization Score and the Equity Score of the NEVI scoring framework.
+Outputs: `../data/processed/phase3-county-gini.csv`, `phase3-theil-decomposition.csv`, `phase3-zip-density.csv`, `phase3-top20-underserved.csv`. These feed both the Utilization Score and the Equity Score of the NEVI scoring framework.
 
 ---
 
@@ -104,7 +104,7 @@ Phase 4 uses LEHD LODES (not CTPP, which was the originally planned source) — 
 - **Top net employment centers (net inbound commuters):** Mecklenburg +194,361, Wake +126,517, Durham +89,450. These are the counties where residential-only analysis systematically underfunds infrastructure.
 - **NC infrastructure gap:** The statewide ratio of 15.4 BEVs per port exceeds the IEA global benchmark of ~10 EVs per public charger (IEA Global EV Outlook, 2023-2024), and the top-10 urban county median of 20.6 indicates acute infrastructure strain. Workplace chargers have consistent demand (same commuters Mon-Fri) and long dwell times (8-hour workdays) that maximize utilization compared to variable, transient public retail demand.
 
-Phase 4 explicitly acknowledges uncertainty through sensitivity ranges rather than point estimates. Outputs: `data/processed/phase4-cost-effectiveness.csv`, `phase4-employment-centers.csv`. These feed the Cost-Effectiveness Score in the NEVI scoring framework.
+Phase 4 explicitly acknowledges uncertainty through sensitivity ranges rather than point estimates. Outputs: `../data/processed/phase4-cost-effectiveness.csv`, `phase4-employment-centers.csv`. These feed the Cost-Effectiveness Score in the NEVI scoring framework.
 
 ---
 
@@ -120,7 +120,7 @@ Phase 5 delivers the equity layer of the project. It uses the Council on Environ
 - A **weight sensitivity analysis** confirms that top-ranked counties in the NEVI scoring framework remain robust across +/-10% variations in the framework weights.
 - Figures fig-39 through fig-42 document the equity layer.
 
-Outputs: `data/processed/phase5-county-justice40.csv`, `phase5-zcta-justice40.csv`, `scoring-weight-sensitivity.csv`. Phase 5 produces the Equity Score, which carries the heaviest weight (0.40) in the NEVI scoring framework.
+Outputs: `../data/processed/phase5-county-justice40.csv`, `phase5-zcta-justice40.csv`, `scoring-weight-sensitivity.csv`. Phase 5 produces the Equity Score, which carries the heaviest weight (0.40) in the NEVI scoring framework.
 
 ---
 
@@ -138,7 +138,7 @@ NEVI Priority Score(county) = 0.40 x Equity_Score
 - **Utilization Score (0.35)** from Phase 1 (validated BEV forecasts with the 4-5% underprediction buffer) + Phase 2 (BEVs-per-port across all charging levels) + Phase 3 (sub-county density).
 - **Cost-Effectiveness Score (0.25)** from Phase 4 (workplace-vs-residential efficiency, net commuter demand sizing).
 
-Phase 1 established confidence in the forecasting methodology. Phase 2 provided the complete infrastructure baseline that Phases 3, 4, and 5 all require. Phases 3, 4, and 5 operate at different analytical scales — sub-county spatial, cross-county workplace, tract-level equity — but complement each other to form a triple-layer analytical model on top of the baseline county-level gap analysis. See `frameworks/analytical-pipeline.md` for the full pipeline diagram and data flow matrix, and `data/processed/scoring-framework-final.csv` for the final ranked county output.
+Phase 1 established confidence in the forecasting methodology. Phase 2 provided the complete infrastructure baseline that Phases 3, 4, and 5 all require. Phases 3, 4, and 5 operate at different analytical scales — sub-county spatial, cross-county workplace, tract-level equity — but complement each other to form a triple-layer analytical model on top of the baseline county-level gap analysis. See `../frameworks/analytical-pipeline.md` for the full pipeline diagram and data flow matrix, and `../data/processed/scoring-framework-final.csv` for the final ranked county output.
 
 ---
 
