@@ -83,6 +83,16 @@ Project standard template is `code/python/analysis/scoring_framework_vif.py` (re
   3. Update `BLOG-CREATION-PROTOCOL.md` to reference the AI-workflow doc rather than re-explaining the tool stack inline.
 - **Status:** OPEN
 - **Priority:** Medium — useful for transparency about methodology; not blocking public release
+- **Preserved raw material for the eventual doc** (removed from `frameworks/README.md` during the frameworks/ folder audit, 2026-05-14):
+
+  > All frameworks created by expert agent analysis (Jan 30, 2026) for the EV Pulse NC project.
+  >
+  > **Agent Contributors:**
+  > - Decision Framework Agent (a18649a): 5-node decision tree analysis
+  > - Data Structure Agent (ab08c82): AFDC API research, snapshot comparison methodology
+  > - Stakeholder Value Agent (a6086db): Differential value matrix, integration analysis
+
+  These are task-specific Claude Code subagent contributions from the Jan 30 framework-design session. Useful as concrete examples in the "specific contributions" section of the eventual AI-WORKFLOW.md — the agent IDs are session hashes that can be looked up in the user's Claude Code transcript archive if more context is needed.
 
 ---
 
@@ -99,7 +109,7 @@ Per-folder walkthrough for data duplication, restructuring needs, naming consist
 | `data/` | DONE 2026-05-14 | Removed orphaned `generated/` folder + `afdc-charging-units.xlsx` legacy file; fixed stale README diagram and ACS provenance attribution; removed last BIDA 670 reference (`AFDC-DATA-COMPARISON.md`) and the only AI co-attribution in the repo. Gitignore-consistency and AI-workflow-docs items moved to dedicated entries above. |
 | `docs/` | DONE 2026-05-14 | Comprehensive BIDA 670 + Dr. Al-Ghandour sweep across the public-facing repo (30 edits across 13 files); regenerated pipeline diagram PNG with clean institutional subtitle and generic framework caption; embedded the regenerated pipeline figure in root README and `paper/PAPER-BRIEF.md`; created `docs/figures/README.md` provenance doc; moved blog consultation from `docs/internal/` to new `docs/blog/`. Advisor name retained in academic-attribution contexts (root README:242 Acknowledgments, NOTICE.md:14). |
 | `paper/` | DONE 2026-05-14 | Removed stale pre-implementation planning doc (`vif-scoring-framework-action-plan.md`) — work it described is complete (script + results + PAPER-NOTES writeup all live elsewhere). PAPER-BRIEF.md, README.md, and the gitignored PAPER-NOTES.md verified clean. |
-| `frameworks/` | OPEN | methodology docs |
+| `frameworks/` | DONE 2026-05-14 | Removed references to nonexistent `afdc-api-analysis.md` (3 sites); renamed `ctpp-analysis.md` → `phase4-workplace-charging.md` to match its actual LEHD/LODES content (filename was legacy from the abandoned CTPP plan); stripped stale Size column values in the README table; removed AI agent-attribution section (preserved in the AI-workflow FUTURE-WORK entry above as raw material); removed local-filesystem-path sections that leaked the user's directory layout. |
 | `output/` | OPEN | figures + tables (mostly gitignored) |
 
 ---

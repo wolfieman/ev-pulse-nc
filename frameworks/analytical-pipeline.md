@@ -256,8 +256,7 @@ This table maps each pipeline phase to the corresponding section of the EV Pulse
 |----------|:-----:|-------------|
 | [validation-analysis.md](./validation-analysis.md) | 1 | ARIMA/ESM/UCM validation framework, out-of-sample accuracy metrics |
 | [zip-code-analysis.md](./zip-code-analysis.md) | 3 | Sub-county spatial analysis framework, data availability constraints |
-| [ctpp-analysis.md](./ctpp-analysis.md) | 4 | Workplace charging demand framework, CTPP data structure, remote work adjustments |
-| [afdc-api-analysis.md](./afdc-api-analysis.md) | 2 | NREL API technical specifications, query parameters |
+| [phase4-workplace-charging.md](./phase4-workplace-charging.md) | 4 | Phase 4 workplace charging demand framework, LEHD LODES + ACS income, 0.85 remote-work multiplier |
 | [afdc-dataset-reference.md](./afdc-dataset-reference.md) | 2 | AFDC dataset source, vintage, current counts |
 | [afdc-data-structure.md](./afdc-data-structure.md) | 2 | AFDC schema reference (76 fields), infrastructure classification |
 | [stakeholder-value-analysis.md](./stakeholder-value-analysis.md) | All | Stakeholder value of the delivered scoring framework |
