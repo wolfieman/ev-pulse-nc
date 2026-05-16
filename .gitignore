@@ -153,7 +153,9 @@ secrets/
 # ============================================================================
 # Report Deliverables
 # ============================================================================
-# Keep final report materials
+# Word documents are editable sources for PDF supplementary materials,
+# kept local-only. PDFs are the canonical public artifact.
+*.docx
 !paper/*.docx
 
 # ============================================================================
