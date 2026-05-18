@@ -52,14 +52,14 @@ FONT_SIZE = Pt(12)
 # Each figure is embedded immediately after the FIRST paragraph that cites it
 # (matched via the regex \bFigure N\b). Subsequent references to the same
 # figure number do not trigger another embed.
-FIGURE_CAPTIONS = {
-    24: "Figure 24. Mecklenburg County: charging-station density heat map.",
-    33: "Figure 33. Theil-T decomposition of EV charging infrastructure inequality: within-county vs between-county.",
-    36: "Figure 36. Workplace charging demand: LODES-adjusted vs unadjusted estimates.",
-    42: "Figure 42. Charging stations overlaid on Justice40-designated disadvantaged tracts.",
-    43: "Figure 43. NEVI Priority Scores: top-10 NC counties.",
-    44: "Figure 44. Forecast validation: actual versus predicted BEV registrations across 400 county-month observations.",
-    45: "Figure 45. Equity-utilization quadrant: three county archetypes.",
+FIGURE_TITLES = {
+    24: "Mecklenburg County: Charging-Station Density Heat Map",
+    33: "Theil-T Decomposition of EV Charging Infrastructure Inequality: Within-County vs Between-County",
+    36: "Workplace Charging Demand: LODES-Adjusted vs Unadjusted Estimates",
+    42: "Charging Stations Overlaid on Justice40-Designated Disadvantaged Tracts",
+    43: "NEVI Priority Scores: Top-10 NC Counties",
+    44: "Forecast Validation: Actual Versus Predicted BEV Registrations Across 400 County-Month Observations",
+    45: "Equity-Utilization Quadrant: Three County Archetypes",
 }
 
 FIGURE_FILES = {
@@ -247,16 +247,16 @@ def add_reference_paragraph(doc: Document, text: str) -> None:
 
 
 def add_figure(doc: Document, fig_num: int) -> bool:
-    """Embed a figure image and its centered italic caption.
+    """Embed a figure image with APA 7 caption.
 
     Returns True if the image was embedded, False if the PNG was missing.
     The image is added as a centered paragraph at 6.0" width (height
-    auto-scales). The caption paragraph follows, centered + italic, with no
-    first-line indent.
+    auto-scales). The APA 7 caption follows in two centered paragraphs:
+    (1) bold "Figure N" label, (2) italic title.
     """
     png_name = FIGURE_FILES.get(fig_num)
-    caption_text = FIGURE_CAPTIONS.get(fig_num)
-    if not png_name or not caption_text:
+    title_text = FIGURE_TITLES.get(fig_num)
+    if not png_name or not title_text:
         print(f"WARNING: no figure mapping for Figure {fig_num}, skipping")
         return False
 
@@ -276,14 +276,23 @@ def add_figure(doc: Document, fig_num: int) -> bool:
     run = img_para.add_run()
     run.add_picture(str(png_path), width=FIGURE_WIDTH)
 
-    # Caption paragraph: italic, centered, no indent.
-    cap_para = doc.add_paragraph()
-    cap_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    cap_para.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
-    cap_para.paragraph_format.first_line_indent = Inches(0)
-    cap_para.paragraph_format.space_before = Pt(2)
-    cap_para.paragraph_format.space_after = Pt(6)
-    _add_run(cap_para, caption_text, italic=True)
+    # APA 7 caption — "Figure N" label paragraph: centered, bold, no indent
+    label_para = doc.add_paragraph()
+    label_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    label_para.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
+    label_para.paragraph_format.first_line_indent = Inches(0)
+    label_para.paragraph_format.space_before = Pt(2)
+    label_para.paragraph_format.space_after = Pt(0)
+    _add_run(label_para, f"Figure {fig_num}", bold=True)
+
+    # APA 7 caption — title paragraph: centered, italic, no indent
+    title_para = doc.add_paragraph()
+    title_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    title_para.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
+    title_para.paragraph_format.first_line_indent = Inches(0)
+    title_para.paragraph_format.space_before = Pt(0)
+    title_para.paragraph_format.space_after = Pt(6)
+    _add_run(title_para, title_text, italic=True)
     return True
 
 
@@ -513,7 +522,7 @@ def render_blocks(doc: Document, blocks: list[dict]) -> dict:
     # Track which figures have already been embedded so subsequent textual
     # references don't trigger a duplicate insertion.
     embedded_figures: set[int] = set()
-    pending_figures: set[int] = set(FIGURE_CAPTIONS.keys())
+    pending_figures: set[int] = set(FIGURE_TITLES.keys())
 
     KEYWORDS_PREFIX = "Keywords:"
     KEYWORDS_TEXT = (
@@ -674,7 +683,7 @@ def main() -> None:
     print("Block stats:")
     for k, v in stats.items():
         print(f"  {k:>12}: {v}")
-    expected_figs = len(FIGURE_CAPTIONS)
+    expected_figs = len(FIGURE_TITLES)
     print(f"  figures embedded: {stats.get('figures', 0)} / {expected_figs}")
 
 
