@@ -157,6 +157,15 @@ secrets/
 # kept local-only. PDFs are the canonical public artifact.
 *.docx
 !paper/*.docx
+# Manuscript .docx is regenerable from paper/build_docx.py; the PDF
+# (paper/ev-pulse-nc-sanyer.pdf) is the canonical public artifact.
+paper/manuscript.docx
+
+# PowerPoint presentation decks are deliverables for Canvas/email but
+# not pushed to the public repo (heavy binaries, regenerable from the
+# Gamma source via deliverables/final-presentation/presentation-outline.txt
+# in the BIDA 670 repo).
+*.pptx
 
 # ============================================================================
 # Paper Working Files (kept local while manuscript is in preparation)
