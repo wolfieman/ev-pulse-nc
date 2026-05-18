@@ -39,10 +39,39 @@ from docx.shared import Inches, Pt
 HERE = Path(__file__).resolve().parent
 SRC = HERE / "manuscript.md"
 OUT = HERE / "manuscript.docx"
+FIGURES_DIR = HERE.parent / "output" / "figures"
 
 FONT_NAME = "Times New Roman"
 MONO_FONT = "Consolas"
 FONT_SIZE = Pt(12)
+
+# ---------------------------------------------------------------------------
+# Figure embedding configuration
+# ---------------------------------------------------------------------------
+# Map figure number -> (PNG filename, italic caption text).
+# Each figure is embedded immediately after the FIRST paragraph that cites it
+# (matched via the regex \bFigure N\b). Subsequent references to the same
+# figure number do not trigger another embed.
+FIGURE_CAPTIONS = {
+    24: "Figure 24. Mecklenburg County: charging-station density heat map.",
+    33: "Figure 33. Theil-T decomposition of EV charging infrastructure inequality: within-county vs between-county.",
+    36: "Figure 36. Workplace charging demand: LODES-adjusted vs unadjusted estimates.",
+    42: "Figure 42. Charging stations overlaid on Justice40-designated disadvantaged tracts.",
+    43: "Figure 43. NEVI Priority Scores: top-10 NC counties.",
+    45: "Figure 45. Equity-utilization quadrant: three county archetypes.",
+}
+
+FIGURE_FILES = {
+    24: "fig-24-heatmap-mecklenburg.png",
+    33: "fig-33-theil-decomposition.png",
+    36: "fig-36-demand-comparison.png",
+    42: "fig-42-stations-justice40-overlay.png",
+    43: "fig-43-nevi-priority-scores.png",
+    45: "fig-45-equity-utilization-archetypes.png",
+}
+
+FIGURE_REF_RE = re.compile(r"\bFigure (\d+)\b")
+FIGURE_WIDTH = Inches(6.0)
 
 
 # ---------------------------------------------------------------------------
@@ -213,6 +242,47 @@ def add_reference_paragraph(doc: Document, text: str) -> None:
     pf.space_after = Pt(0)
     p.alignment = WD_ALIGN_PARAGRAPH.LEFT
     add_inline_runs(p, text)
+
+
+def add_figure(doc: Document, fig_num: int) -> bool:
+    """Embed a figure image and its centered italic caption.
+
+    Returns True if the image was embedded, False if the PNG was missing.
+    The image is added as a centered paragraph at 6.0" width (height
+    auto-scales). The caption paragraph follows, centered + italic, with no
+    first-line indent.
+    """
+    png_name = FIGURE_FILES.get(fig_num)
+    caption_text = FIGURE_CAPTIONS.get(fig_num)
+    if not png_name or not caption_text:
+        print(f"WARNING: no figure mapping for Figure {fig_num}, skipping")
+        return False
+
+    png_path = FIGURES_DIR / png_name
+    if not png_path.is_file():
+        print(f"WARNING: figure {png_path} not found, skipping")
+        return False
+
+    # Image paragraph: centered, no indent, single-spaced so the caption hugs
+    # the image rather than floating a full double-spaced gap below it.
+    img_para = doc.add_paragraph()
+    img_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    img_para.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
+    img_para.paragraph_format.first_line_indent = Inches(0)
+    img_para.paragraph_format.space_before = Pt(6)
+    img_para.paragraph_format.space_after = Pt(0)
+    run = img_para.add_run()
+    run.add_picture(str(png_path), width=FIGURE_WIDTH)
+
+    # Caption paragraph: italic, centered, no indent.
+    cap_para = doc.add_paragraph()
+    cap_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    cap_para.paragraph_format.line_spacing_rule = WD_LINE_SPACING.SINGLE
+    cap_para.paragraph_format.first_line_indent = Inches(0)
+    cap_para.paragraph_format.space_before = Pt(2)
+    cap_para.paragraph_format.space_after = Pt(6)
+    _add_run(cap_para, caption_text, italic=True)
+    return True
 
 
 # ---------------------------------------------------------------------------
@@ -427,13 +497,21 @@ def render_blocks(doc: Document, blocks: list[dict]) -> dict:
 
     Returns a stats dict with counts for the build report.
     """
-    stats = {"tables": 0, "bullets": 0, "h1": 0, "h2": 0, "h3": 0, "paragraphs": 0}
+    stats = {
+        "tables": 0, "bullets": 0, "h1": 0, "h2": 0, "h3": 0,
+        "paragraphs": 0, "figures": 0,
+    }
 
     in_references = False
     in_appendix = False
     in_abstract = False
     keywords_inserted = False
     prev_block_type: str | None = None
+
+    # Track which figures have already been embedded so subsequent textual
+    # references don't trigger a duplicate insertion.
+    embedded_figures: set[int] = set()
+    pending_figures: set[int] = set(FIGURE_CAPTIONS.keys())
 
     KEYWORDS_PREFIX = "Keywords:"
     KEYWORDS_TEXT = (
@@ -538,6 +616,26 @@ def render_blocks(doc: Document, blocks: list[dict]) -> dict:
                 add_body_paragraph(doc, text)
                 stats["paragraphs"] += 1
 
+                # After rendering the paragraph, check whether it cites any
+                # of the still-pending figures. Insert each one immediately
+                # after the paragraph (in the order they first appear in the
+                # text), then mark them as embedded so duplicate citations
+                # downstream are ignored.
+                if pending_figures:
+                    seen_here: list[int] = []
+                    for m in FIGURE_REF_RE.finditer(text):
+                        fig_num = int(m.group(1))
+                        if fig_num in pending_figures and fig_num not in seen_here:
+                            seen_here.append(fig_num)
+                    for fig_num in seen_here:
+                        if add_figure(doc, fig_num):
+                            stats["figures"] += 1
+                            embedded_figures.add(fig_num)
+                        # Whether the image embedded or not (e.g. missing
+                        # PNG), drop it from the pending set so we don't
+                        # retry on every subsequent citation.
+                        pending_figures.discard(fig_num)
+
         prev_block_type = btype
 
     return stats
@@ -574,6 +672,8 @@ def main() -> None:
     print("Block stats:")
     for k, v in stats.items():
         print(f"  {k:>12}: {v}")
+    expected_figs = len(FIGURE_CAPTIONS)
+    print(f"  figures embedded: {stats.get('figures', 0)} / {expected_figs}")
 
 
 if __name__ == "__main__":
