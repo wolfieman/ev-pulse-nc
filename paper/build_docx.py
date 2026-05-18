@@ -58,6 +58,7 @@ FIGURE_CAPTIONS = {
     36: "Figure 36. Workplace charging demand: LODES-adjusted vs unadjusted estimates.",
     42: "Figure 42. Charging stations overlaid on Justice40-designated disadvantaged tracts.",
     43: "Figure 43. NEVI Priority Scores: top-10 NC counties.",
+    44: "Figure 44. Forecast validation: actual versus predicted BEV registrations across 400 county-month observations.",
     45: "Figure 45. Equity-utilization quadrant: three county archetypes.",
 }
 
@@ -67,6 +68,7 @@ FIGURE_FILES = {
     36: "fig-36-demand-comparison.png",
     42: "fig-42-stations-justice40-overlay.png",
     43: "fig-43-nevi-priority-scores.png",
+    44: "fig-44-validation-scatter.png",
     45: "fig-45-equity-utilization-archetypes.png",
 }
 
