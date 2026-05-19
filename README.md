@@ -63,7 +63,7 @@ Five contributions to the EV-infrastructure-allocation literature, each substant
 
 4. **Empirical demonstration that within-county inequality dominates.** Most state NEVI programs allocate at county level; this study quantifies that county-level allocation alone would miss **84.5%** of the equity problem within NC's top-10 cohort.
 
-5. **Direction-of-bias limitations framing + AI-assisted role-play methodology review panels.** A sole-author project formalizing multi-perspective review through pre-registered claims matrices and panel-anchored repository commits — documented in Appendices A and B of the paper.
+5. **Direction-of-bias limitations framing + AI-assisted role-play methodology review panels.** A sole-author project formalizing multi-perspective review through pre-registered claims matrices and panel-anchored repository commits. Standalone artifacts: [`data-quality-review.pdf`](docs/research/data-quality-review.pdf) (short) · [`data-quality-review-full.pdf`](docs/research/data-quality-review-full.pdf) (full) · [`ai-methodology-disclosure.pdf`](docs/research/ai-methodology-disclosure.pdf). Integrated treatment in paper Appendices A & B.
 
 ---
 
@@ -283,6 +283,9 @@ ev-pulse-nc/
 | Document | Description |
 |----------|-------------|
 | 📄 [paper/ev-pulse-nc-sanyer.pdf](paper/ev-pulse-nc-sanyer.pdf) | **The full research paper** — 108 pages, includes Claims-to-Evidence Matrix (App. A) and AI methodology disclosure (App. B) |
+| [docs/research/ai-methodology-disclosure.pdf](docs/research/ai-methodology-disclosure.pdf) | Standalone **AI methodology disclosure** (also paper Appendix B) |
+| [docs/research/data-quality-review.pdf](docs/research/data-quality-review.pdf) | Standalone **data quality review** — short version (also paper Appendix A) |
+| [docs/research/data-quality-review-full.pdf](docs/research/data-quality-review-full.pdf) | Standalone **data quality review** — full version with all panel transcripts |
 | [CITATION.cff](CITATION.cff) | Machine-readable citation metadata (powers GitHub's "Cite this repository" button) |
 | [paper/PAPER-BRIEF.md](paper/PAPER-BRIEF.md) | 1-page public summary of the in-preparation manuscript |
 | [frameworks/analytical-pipeline.md](frameworks/analytical-pipeline.md) | Full 5-phase pipeline and NEVI scoring formula |
@@ -317,9 +320,14 @@ If you reference the methodology specifically, please cite the in-preparation ma
   - U.S. Census Bureau / Center for Economic Studies — LEHD LODES workplace commuting data
   - Climate and Economic Justice Screening Tool (CEJST v2.0) — Justice40 disadvantaged-community designation; archived by Public Environmental Data Partners after the federal source went offline
 
-### AI Methodology Disclosure
+### Methodology Review & AI Disclosure
 
-AI tools (Claude Code with role-play methodology review panels) were used in the analytical pipeline, methodology review processes, and manuscript preparation. The author retains sole authorship and verification responsibility for every claim. Full disclosure in paper Appendix B.
+Two methodology review processes were executed for this project, both formalized as AI-assisted role-play panels anchored to fixed repository commits and pre-registered claims matrices:
+
+- **Data quality review** — structured panel review of data provenance, processing integrity, and reproducibility across all five analytical phases. Standalone: [`docs/research/data-quality-review.pdf`](docs/research/data-quality-review.pdf) (short) and [`docs/research/data-quality-review-full.pdf`](docs/research/data-quality-review-full.pdf) (full). Integrated treatment in paper Appendix A.
+- **AI methodology disclosure** — full disclosure of AI tool usage across the analytical pipeline, methodology review processes, and manuscript preparation. Standalone: [`docs/research/ai-methodology-disclosure.pdf`](docs/research/ai-methodology-disclosure.pdf). Integrated treatment in paper Appendix B.
+
+The author retains sole authorship and verification responsibility for every claim in this project.
 
 ---
 
