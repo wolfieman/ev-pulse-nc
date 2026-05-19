@@ -157,8 +157,8 @@ secrets/
 # kept local-only. PDFs are the canonical public artifact.
 *.docx
 !paper/*.docx
-# Manuscript .docx is regenerable from paper/build_docx.py; the PDF
-# (paper/ev-pulse-nc-sanyer.pdf) is the canonical public artifact.
+# Manuscript .docx is regenerable from code/python/paper/build_docx.py;
+# the PDF (paper/ev-pulse-nc-sanyer.pdf) is the canonical public artifact.
 paper/manuscript.docx
 
 # PowerPoint presentation decks are deliverables for Canvas/email but

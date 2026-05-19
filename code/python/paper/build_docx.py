@@ -2,7 +2,7 @@
 
 Run from the repo root with the project's uv environment:
 
-    uv run python paper/build_docx.py
+    uv run python code/python/paper/build_docx.py
 
 Reads paper/manuscript.md and produces paper/manuscript.docx. The .docx is
 gitignored (`*.docx`); only this script is intended to live under version
@@ -36,10 +36,12 @@ from docx.shared import Inches, Pt
 # ---------------------------------------------------------------------------
 # Paths
 # ---------------------------------------------------------------------------
-HERE = Path(__file__).resolve().parent
-SRC = HERE / "manuscript.md"
-OUT = HERE / "manuscript.docx"
-FIGURES_DIR = HERE.parent / "output" / "figures"
+# Script lives at <repo>/code/python/paper/build_docx.py; walk up 3 parents
+# to reach the repo root, then point at the paper/ and output/ siblings.
+REPO_ROOT = Path(__file__).resolve().parents[3]
+SRC = REPO_ROOT / "paper" / "manuscript.md"
+OUT = REPO_ROOT / "paper" / "manuscript.docx"
+FIGURES_DIR = REPO_ROOT / "output" / "figures"
 
 FONT_NAME = "Times New Roman"
 MONO_FONT = "Consolas"
