@@ -1,30 +1,39 @@
 # Research Paper
 
-> **Manuscript in preparation.** The working draft is maintained privately as `PAPER-NOTES.md` (gitignored) and is not committed to the public repository while peer review is pending. A 1-page public summary of the question, headline findings, and policy implications is available at [`PAPER-BRIEF.md`](PAPER-BRIEF.md). The published version will be added to this directory once peer review concludes.
+> **EV Pulse NC: A Data-Driven Framework for North Carolina's NEVI Funding Allocation** — the BIDA 670 capstone research paper. Sole author: Wolfgang Sanyer. Faculty advisor: Dr. Majed Al-Ghandour. Spring 2026.
 
-## Directory Contents
+## Canonical Artifact
 
-| File | Purpose |
-|---|---|
-| [`PAPER-BRIEF.md`](PAPER-BRIEF.md) | 1-page public summary of the in-preparation manuscript |
-| [`PROJECT-BRIEF.md`](PROJECT-BRIEF.md) | Executive project summary — overview, completed extensions, scoring framework, future directions |
-| [`PROJECT-EXPLANATION.md`](PROJECT-EXPLANATION.md) | Detailed project explanation — baseline + extensions, methodological innovation summary, integration logic |
-| `PAPER-NOTES.md` | **Gitignored** — private working draft of the manuscript |
+📄 **[ev-pulse-nc-sanyer.pdf](ev-pulse-nc-sanyer.pdf)** — 108 pages, 4.6 MB, all figures embedded, full APA 7 formatting
 
-## Requirements (internal)
-- **Main Text:** 2-5 pages (target: 4 pages)
-- **Appendix:** Optional, up to 2 pages for visualizations
-- **Format:** Word document (.docx) or PDF
+The PDF is the canonical public artifact. See the [repo-root README](../README.md) for the project at-a-glance, executive summary, and the 5 novel contributions enumerated.
 
-## Structure
-1. Introduction (½ page)
-2. Problem Statement (½ page)
-3. Data (½ page)
-4. Data Cleaning & Validation (½ page)
-5. Analysis (1½-2 pages) ⭐ CORE SECTION
-6. Visualization (brief text reference)
-7. Impact & Implications (½ page)
-8. Suggestions for Future Study (¼-½ page)
-9. Conclusion (¼-½ page)
+## Build Pipeline
 
-**Appendix A:** Supporting visualizations (1-2 pages max)
+```
+paper/manuscript.md  →  code/python/paper/build_docx.py  →  paper/manuscript.docx  →  (manual export)  →  paper/ev-pulse-nc-sanyer.pdf
+```
+
+Only the final PDF and this README are tracked in git. The markdown source (`manuscript.md`), intermediate `.docx`, the presentation `.pptx`, and the local `sources/` library are all gitignored — they're regenerable from the analytical pipeline and the build script.
+
+To rebuild the .docx from source:
+
+```bash
+uv run python code/python/paper/build_docx.py
+```
+
+The script reads `paper/manuscript.md`, embeds figures from `output/figures/`, and writes `paper/manuscript.docx`. From there, Word's *File → Save As PDF* produces the canonical PDF.
+
+## Standalone methodology artifacts
+
+The two methodology reviews are integrated into the paper as Appendices A and B, and are also available as standalone PDFs in [`docs/research/`](../docs/research/):
+
+- `ai-methodology-disclosure.pdf` — AI methodology disclosure (paper App. B)
+- `data-quality-review.pdf` — Data quality review, short version (paper App. A)
+- `data-quality-review-full.pdf` — Data quality review, full version with all panel transcripts
+
+## See also
+
+- **[Repo-root README](../README.md)** — project at-a-glance, executive summary, 5 novel contributions, who-this-is-for, beyond NC
+- **[CITATION.cff](../CITATION.cff)** — machine-readable citation metadata
+- **[code/python/paper/build_docx.py](../code/python/paper/build_docx.py)** — manuscript .docx build script

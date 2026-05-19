@@ -271,8 +271,8 @@ ev-pulse-nc/
 │   └── models/                   # Model index — pointers to where each model lives
 │
 ├── paper/                        # Research paper directory
-│   ├── README.md                 # Paper status + structure
-│   └── PAPER-BRIEF.md            # 1-page public summary (manuscript in prep)
+│   ├── README.md                 # Build pipeline + canonical artifact pointer
+│   └── ev-pulse-nc-sanyer.pdf    # The full research paper (108 pages)
 │
 └── references/                   # Supporting materials
     └── data-sources.md           # Citations & links
@@ -287,11 +287,8 @@ ev-pulse-nc/
 | [docs/research/data-quality-review.pdf](docs/research/data-quality-review.pdf) | Standalone **data quality review** — short version (also paper Appendix A) |
 | [docs/research/data-quality-review-full.pdf](docs/research/data-quality-review-full.pdf) | Standalone **data quality review** — full version with all panel transcripts |
 | [CITATION.cff](CITATION.cff) | Machine-readable citation metadata (powers GitHub's "Cite this repository" button) |
-| [paper/PAPER-BRIEF.md](paper/PAPER-BRIEF.md) | 1-page public summary of the in-preparation manuscript |
 | [frameworks/analytical-pipeline.md](frameworks/analytical-pipeline.md) | Full 5-phase pipeline and NEVI scoring formula |
 | [data/DATA-DICTIONARY.md](data/DATA-DICTIONARY.md) | Column definitions for all 6 datasets (NCDOT, AFDC, SAS, LEHD, CEJST, ACS) |
-| [paper/PROJECT-BRIEF.md](paper/PROJECT-BRIEF.md) | Executive project summary |
-| [paper/PROJECT-EXPLANATION.md](paper/PROJECT-EXPLANATION.md) | Detailed project explanation with methodology deep-dive |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Contribution guidelines, branching model |
 | [STYLE-GUIDE.md](STYLE-GUIDE.md) | Code style, naming conventions, formatting |
 | [INSTALLATION.md](INSTALLATION.md) | Full setup guide (from clone or from scratch) |
@@ -305,7 +302,7 @@ ev-pulse-nc/
 
 This work is citable. Click **"Cite this repository"** in the right-hand sidebar of the GitHub page, or open [`CITATION.cff`](CITATION.cff) directly for the raw metadata.
 
-If you reference the methodology specifically, please cite the in-preparation manuscript using [`paper/PAPER-BRIEF.md`](paper/PAPER-BRIEF.md) until publication.
+If you reference the methodology, cite the full paper at [`paper/ev-pulse-nc-sanyer.pdf`](paper/ev-pulse-nc-sanyer.pdf) or use the [`CITATION.cff`](CITATION.cff) metadata above.
 
 ---
 
