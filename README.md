@@ -10,6 +10,26 @@
 
 ---
 
+> **At a glance:** 100 counties · 853 ZCTAs · 1,985 stations · 6,145 connectors · 27 documented Python scripts · 47 publication-grade figures · 108-page manuscript · 100% public data
+
+## Read the Full Paper
+
+The full research paper is committed to this repository as a single artifact:
+
+📄 **[ev-pulse-nc-sanyer.pdf](paper/ev-pulse-nc-sanyer.pdf)** — 108 pages, ~4.6 MB
+
+The README below is the project at-a-glance; the paper is the full record — 5-phase analytical pipeline, NEVI scoring framework, methodology review documentation, and 47 publication-grade figures with full APA 7 attribution.
+
+---
+
+## Executive Summary
+
+North Carolina holds **$109M in federal NEVI Formula Program funding** for EV charging infrastructure, with no publicly available, data-driven method for prioritizing county-level allocation against the program's dual mandate of utilization efficiency and Justice40 equity. This project supplies the missing method: a 5-phase analytical pipeline that integrates NCDOT registration data, NREL AFDC infrastructure inventory, U.S. Census demographics, LEHD LODES commuter flows, and CEJST v2.0 Justice40 designations into a composite NEVI Priority Score per county.
+
+The headline finding — that **84.5% of EV-infrastructure inequality across the top 10 NC counties lives *within* counties, not between them** — drives a two-tier scoring architecture: a county ranking, plus ZIP-level equity targeting. The top three priority counties are **Union, Mecklenburg, and Guilford**, with the ranking robust to equity-weight sensitivity, cost-effectiveness sub-weight perturbation, and remote-work multiplier cancellation. The methodology is reproducible from public data, generalizes to all 50 NEVI-funded states, and is documented for audit by federal program reviewers.
+
+---
+
 ## Headline Findings
 
 - **Demand explosion** — BEV registrations grew **1,727%** (Sept 2018 → June 2025); 53.8% CAGR
@@ -28,6 +48,22 @@
 | 3 | Guilford | 0.465 | Balanced |
 
 *Full 100-county rankings: `data/processed/scoring-framework-final.csv` after running the pipeline. See [`frameworks/analytical-pipeline.md`](frameworks/analytical-pipeline.md) for the scoring formula (`0.40·Equity + 0.35·Utilization + 0.25·Cost-Effectiveness`).*
+
+---
+
+## What This Work Contributes
+
+Five contributions to the EV-infrastructure-allocation literature, each substantiated in the paper:
+
+1. **Additive Theil-T decomposition applied to EV equity.** Where prior work (e.g., Choi, Xu & Jiao 2025) uses the Theil index as a single scalar alongside Gini and Lorenz, this study exploits the additive decomposability of the GE(1) class (Bourguignon 1979; Shorrocks 1980) to partition inequality into between-county (15.5%) and within-county (84.5%) components — verified to machine precision via a Theil-L robustness check (82.5%).
+
+2. **First HUD USPS × CEJST integration at ZCTA resolution in NC.** Area-weighted spatial crosswalk between Census tracts and ZCTAs, aligned with EPA EJScreen and HUD USPS federal-standard methodology, integrated with CEJST v2.0 Justice40 designations. Passes 23 of 23 federal-standard validation checks.
+
+3. **NEVI-specific scoring formulation with documented orthogonality and triple robustness.** Composite score `0.40·Equity + 0.35·Utilization + 0.25·Cost-Effectiveness`, with statistically independent pillars (max VIF = 1.41 vs. conventional concern threshold 5.0) and a top-3 ranking that survives equity-weight sensitivity (0.30–0.50 range), cost-effectiveness sub-weight perturbation, and the mathematically demonstrated cancellation of the remote-work multiplier.
+
+4. **Empirical demonstration that within-county inequality dominates.** Most state NEVI programs allocate at county level; this study quantifies that county-level allocation alone would miss **84.5%** of the equity problem within NC's top-10 cohort.
+
+5. **Direction-of-bias limitations framing + AI-assisted role-play methodology review panels.** A sole-author project formalizing multi-perspective review through pre-registered claims matrices and panel-anchored repository commits — documented in Appendices A and B of the paper.
 
 ---
 
@@ -61,6 +97,38 @@
 6. **Scoring framework:** Composite NEVI Priority Score per county = `0.40·Equity + 0.35·Utilization + 0.25·Cost-Effectiveness`; VIF-checked for multicollinearity
 
 Full pipeline spec: [`frameworks/analytical-pipeline.md`](frameworks/analytical-pipeline.md). Per-dataset schema: [`data/DATA-DICTIONARY.md`](data/DATA-DICTIONARY.md). Model locations: [`output/models/README.md`](output/models/README.md).
+
+---
+
+## What This Study Does NOT Claim
+
+In the spirit of the paper's direction-of-bias limitations framing:
+
+- **This is decision-support, not decision-making.** NCDOT will and should incorporate factors this study does not model — right-of-way constraints, utility coordination, supply-chain timing, and political prioritization.
+- **Rankings are within-cohort, not statewide.** The composite NEVI Priority Score is calibrated to the top 10 NC counties (~73% of statewide BEV fleet). All-100-county application is the most immediate within-state extension.
+- **Justice40 data is archived against a decommissioned federal source.** CEJST v2.0 was decommissioned by the federal government in January 2025; this study works against the community archive maintained by the Environmental Data and Governance Initiative (EDGI). A CEJST successor re-analysis is on the future-work list.
+- **Workplace charging demand is estimated, not measured.** Phase 4 uses LEHD LODES 2021 commuter flow data; session-level charging utilization data was not available. Estimates are bounded in the paper.
+
+---
+
+## Who This Is For
+
+Six audiences, each with categorically distinct contributions:
+
+- **NCDOT and FHWA reviewers** — a ranked priority list whose statistical defensibility matches the federal-funding decision it informs
+- **Justice40 auditors** — a 23-of-23 crosswalk validation suite paired with the CEJST archival pathway disclosure
+- **County and regional planners** — sub-county (ZIP-level) granularity for site selection
+- **Private-sector charging operators** — a competitive baseline at ZIP resolution, with infrastructure gap analysis
+- **The academic community** — a reproducible analytical pipeline, a Claims-to-Evidence Matrix (paper Appendix A), and two methodology review processes (paper Appendices A & B)
+- **Justice40-eligible communities** — procedural transparency: the methodology is public, the equity weight is the largest of the three pillars, and every claim is reproducible from this repository
+
+---
+
+## Beyond North Carolina
+
+The federal NEVI Formula Program is a national $5B program across all 50 states. Every state has the same data inputs available: a state DOT registration analog, the NREL AFDC API, Census LEHD LODES commuter flows, and CEJST v2.0 Justice40 designations. State-by-state calibration would tune the equity weight against each state's specific Justice40 priorities, but **the analytical pipeline transfers without modification.**
+
+The methodology is the deliverable; North Carolina is the proof. Other states can apply the same architecture to their own NEVI allocation decisions, and the framework is engineered for the all-100-NC-counties extension that is the most immediate within-state next step.
 
 ---
 
@@ -214,6 +282,7 @@ ev-pulse-nc/
 
 | Document | Description |
 |----------|-------------|
+| 📄 [paper/ev-pulse-nc-sanyer.pdf](paper/ev-pulse-nc-sanyer.pdf) | **The full research paper** — 108 pages, includes Claims-to-Evidence Matrix (App. A) and AI methodology disclosure (App. B) |
 | [CITATION.cff](CITATION.cff) | Machine-readable citation metadata (powers GitHub's "Cite this repository" button) |
 | [paper/PAPER-BRIEF.md](paper/PAPER-BRIEF.md) | 1-page public summary of the in-preparation manuscript |
 | [frameworks/analytical-pipeline.md](frameworks/analytical-pipeline.md) | Full 5-phase pipeline and NEVI scoring formula |
@@ -247,6 +316,10 @@ If you reference the methodology specifically, please cite the in-preparation ma
   - U.S. Census Bureau — American Community Survey (ACS), TIGER boundaries, ZCTA crosswalks
   - U.S. Census Bureau / Center for Economic Studies — LEHD LODES workplace commuting data
   - Climate and Economic Justice Screening Tool (CEJST v2.0) — Justice40 disadvantaged-community designation; archived by Public Environmental Data Partners after the federal source went offline
+
+### AI Methodology Disclosure
+
+AI tools (Claude Code with role-play methodology review panels) were used in the analytical pipeline, methodology review processes, and manuscript preparation. The author retains sole authorship and verification responsibility for every claim. Full disclosure in paper Appendix B.
 
 ---
 
