@@ -168,6 +168,10 @@ paper/manuscript.docx
 # in the BIDA 670 repo).
 *.pptx
 
+# Video recordings of presentations / demos — heavy binaries, kept
+# local-only. PDF of the presentation is the canonical pushed artifact.
+*.mp4
+
 # ============================================================================
 # Paper Working Files (kept local while manuscript is in preparation)
 # ============================================================================
