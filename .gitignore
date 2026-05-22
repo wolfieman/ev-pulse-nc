@@ -179,5 +179,14 @@ paper/consultation-manuscript-outline.md
 paper/manuscript.md
 paper/sources/
 
+# ============================================================================
+# Conference Working Files (kept local — never tracked or pushed)
+# ============================================================================
+# conferences/ allows tracked PDFs (CFPs, programs, accepted-paper PDFs),
+# but draft submissions, scratch work, and reviewer correspondence should
+# stay local. These subdirectory names are reserved for that purpose.
+conferences/**/drafts/
+conferences/**/scratch/
+
 # Claude local settings (machine-specific)
 .claude/settings.local.json
