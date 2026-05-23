@@ -92,8 +92,9 @@ data/processed/*.parquet
 .idea/
 *.iml
 
-# Claude Code
-.claude/
+# Claude Code — track CLAUDE.md, keep local settings/state ignored
+.claude/*
+!.claude/CLAUDE.md
 
 # SAS Studio / Enterprise Guide
 *.egp
