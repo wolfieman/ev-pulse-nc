@@ -36,6 +36,7 @@ SASWORK*/
 !docs/**/*.pdf
 !output/figures/*.pdf
 !conferences/**/*.pdf
+!competitions/**/*.pdf
 
 # ============================================================================
 # Python
