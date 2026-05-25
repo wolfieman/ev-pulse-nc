@@ -1,6 +1,6 @@
 # EV Pulse NC - EV Infrastructure Analytics
 
-Project context for in-repo Claude sessions. EV Pulse is the BIDA 670 capstone — analytics work lives here; course administration lives in `../[private course repo]/`. Cross-course conventions live in `../[private orchestrator repo]/`.
+Project context for in-repo Claude sessions. EV Pulse is the BIDA 670 capstone — analytics work lives here; course administration lives in `../[private course repo]/`. Cross-course conventions live in `../orchestrator/`.
 
 ## Project basics
 
@@ -15,4 +15,4 @@ Backstory, methodology, and results are documented in this repo's own files (REA
 
 ## Commit convention
 
-Use `[EVPULS][TYPE]` prefix. Full convention: `../[private orchestrator repo]/.claude/CLAUDE.md`.
+Use `[EVPULS][TYPE]` prefix. Full convention: `../orchestrator/.claude/CLAUDE.md`.
