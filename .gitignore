@@ -75,6 +75,12 @@ ENV/
 data/processed/*.csv
 data/processed/*.parquet
 
+# Regenerable script outputs. The canonical deliverables are tracked under
+# output/figures (publication figures) and output/validation; anything a
+# script recreates on its next run stays out of Git.
+output/arima/
+data/generated/
+
 # Model artifacts
 *.pkl
 *.pickle
