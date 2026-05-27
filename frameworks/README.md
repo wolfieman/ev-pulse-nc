@@ -19,7 +19,7 @@ Comprehensive decision frameworks with trade-off analyses, stakeholder assessmen
 | **[afdc-dataset-reference.md](./afdc-dataset-reference.md)** | #2 | — | ✅ Current | AFDC dataset source, vintage, file paths, current counts (1,985 stations / 6,145 connectors / 267 cities / 358 ZIPs), refresh cadence, downstream usage |
 | **[afdc-data-structure.md](./afdc-data-structure.md)** | #2 | — | ✅ Current | Field-level schema reference for the 76-column AFDC station-level CSV; identification, geography, charging, facility, temporal fields |
 | **[stakeholder-value-analysis.md](./stakeholder-value-analysis.md)** | All | — | ✅ Current | Stakeholder value of the delivered NEVI scoring framework (NEVI admins, county planners, private operators, academic, public/Justice40 communities) |
-| **[analytical-pipeline.md](./analytical-pipeline.md)** | All | — | ✅ Complete | Project analytical pipeline architecture: foundation (demand + supply) → gap analysis → three lenses (ZIP, CTPP, equity) → scoring framework → NEVI rankings |
+| **[analytical-pipeline.md](./analytical-pipeline.md)** | All | — | ✅ Complete | Project analytical pipeline architecture: foundation (demand + supply) → gap analysis → three lenses (ZIP, LEHD/LODES, equity) → scoring framework → NEVI rankings |
 
 ### Analysis Notes (Text)
 
@@ -117,9 +117,9 @@ NEVI Priority Score(county) = w1 × Equity_Score + w2 × Utilization_Score + w3 
 - **Key Insight:** Infrastructure-only ZIP analysis possible (AFDC has ZIP codes), adoption requires allocation heuristics
 - **Expected Finding:** 400-500 ZIPs with <10 BEVs (50-60% of 800 ZIPs) — severe sparsity
 
-### Priority #4 / Phase 4: CTPP Workplace Charging
+### Priority #4 / Phase 4: LEHD/LODES Workplace Charging
 - **Core Question:** Does workplace demand differ from residential patterns?
-- **Key Constraint:** CTPP data is 8-10 years old (2012-2016 ACS), requires remote work adjustments
+- **Key Constraint:** LEHD/LODES 2021 reflects elevated post-COVID remote work; requires a remote-work adjustment (0.85 multiplier). Replaced the originally planned CTPP 2012-2016, which was older and county-level only.
 - **Key Insight:** NC statewide ratio of 15.4 BEVs/port exceeds IEA global benchmark (~10); top-10 urban county median at 20.6 indicates acute strain
 - **Recommendation:** Focus on top 15 employment centers, not all 100 counties
 
@@ -151,7 +151,7 @@ Phase 1: Priority #1 (Validation) ✅ COMPLETE
 Phase 2: Priority #2 (AFDC Data) ✅ COMPLETE ← complete infrastructure baseline (1,985 stations, all levels)
     ↓ provides supply-side foundation
     ↓
-Phase 3: Priority #3 (ZIP) + Phase 4: Priority #4 (CTPP) ← use Feb 2026 complete spatial data
+Phase 3: Priority #3 (ZIP) + Phase 4: Priority #4 (LEHD/LODES) ← use Feb 2026 complete spatial data
     ↓ identify gaps → feed into
     ↓
 Scoring Framework ← integrates equity + utilization + cost-effectiveness
@@ -163,13 +163,13 @@ Phase 6: Priority #6 (Buffer) ← requires Feb 2026 complete station locations
 
 ### Synergy Analysis
 
-**Scenario 1:** Use complete AFDC data (#2) but NOT ZIP (#3) or CTPP (#4)
+**Scenario 1:** Use complete AFDC data (#2) but NOT ZIP (#3) or LEHD/LODES (#4)
 - Value: 40% of potential impact (complete infrastructure baseline, but county-level only)
 
-**Scenario 2:** Pursue ZIP (#3) + CTPP (#4) but with incomplete DCFC-only data
+**Scenario 2:** Pursue ZIP (#3) + LEHD/LODES (#4) but with incomplete DCFC-only data
 - Value: 60% of potential impact (sub-county insights, but missing L1/L2 stations and non-public access points)
 
-**Scenario 3:** Use complete AFDC data (#2) AND pursue ZIP (#3) + CTPP (#4)
+**Scenario 3:** Use complete AFDC data (#2) AND pursue ZIP (#3) + LEHD/LODES (#4)
 - Value: **100% of potential impact** (complete all-levels baseline + spatial granularity)
 
 ---
@@ -202,7 +202,7 @@ Based on data investigation (Feb 2026) — original 3-agent framework analysis h
 **Integration:**
 - Priority #1 (Validation): Independent — BEV forecast validation unaffected
 - Priority #2 (ZIP): Enhanced by complete spatial distribution across all levels
-- Priority #3 (CTPP): Facility-type data enables workplace vs. residential infrastructure classification
+- Priority #3 (LEHD/LODES): Facility-type data enables workplace vs. residential infrastructure classification
 - Priority #6 (Buffer): Complete station locations enable accurate coverage zone analysis
 - Scoring Framework: BEVs/port ratios now calculated against full infrastructure inventory
 
@@ -236,7 +236,7 @@ Based on data investigation (Feb 2026) — original 3-agent framework analysis h
 
 ### AFDC API Details
 
-**Endpoint:** `https://developer.nlr.gov/api/alt-fuel-stations/v1.json`
+**Endpoint:** `https://developer.nrel.gov/api/alt-fuel-stations/v1.json`
 
 **NC Query Parameters:**
 - `state=NC`
@@ -246,7 +246,7 @@ Based on data investigation (Feb 2026) — original 3-agent framework analysis h
 
 **Rate Limits:** 1,000 requests/hour (rolling 60-min window)
 **EV Pulse NC Need:** 1 request per snapshot (well within limits)
-**API Key:** Free, instant approval at https://developer.nlr.gov/signup/
+**API Key:** Free, instant approval at https://developer.nrel.gov/signup/
 
 **Key Fields (50+ total):**
 - `id`, `station_name`, `zip`, `latitude`, `longitude`

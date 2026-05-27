@@ -2,7 +2,7 @@
 
 ## Figures (`figures/`)
 
-42 publication-quality figures spanning all 5 analytical phases. Dual export: PNG (web/preview) + PDF (publication, 600 DPI).
+45 publication-quality figures (`fig-01` – `fig-45`) spanning all 5 analytical phases plus the NEVI scoring integration layer, plus 4 supplementary variants (`fig-07-…-5x5`, `fig-22s`, `fig-23s`, `fig-24s`). Dual export: PNG (web/preview) + PDF (publication, 600 DPI).
 
 | Phase | Range | Topic |
 |---|---|---|
@@ -10,6 +10,7 @@
 | **Phase 2 / 3 — AFDC + ZIP equity** | `fig-08` – `fig-34` (plus `fig-22s` / `fig-23s` / `fig-24s` supplementary heatmaps) | AFDC EDA (missing values, levels, networks, geographic coverage), Lorenz / Gini / Theil inequality, county heatmaps (Wake / Guilford / Mecklenburg), underserved-ZIP choropleth |
 | **Phase 4 — Workplace charging** | `fig-35` – `fig-38` | Net commuter flow, residential vs. residential+workplace demand, county commuter-typology choropleth, port scenario range |
 | **Phase 5 — Justice40 equity** | `fig-39` – `fig-42` | CEJST disadvantaged tracts, ZCTA / county Justice40 overlays, stations-on-Justice40 overlay |
+| **Scoring integration** | `fig-43` – `fig-45` | NEVI priority scores, validation scatter, equity-utilization archetypes |
 
 Methodology and which script produces which figure: [`../frameworks/analytical-pipeline.md`](../frameworks/analytical-pipeline.md) and [`../code/README.md`](../code/README.md).
 

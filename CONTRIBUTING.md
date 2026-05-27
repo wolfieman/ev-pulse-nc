@@ -37,7 +37,7 @@ The VS Code ruff extension handles this automatically on save.
 [EVPULSE][TYPE] Brief description of change
 ```
 
-`TYPE` is one of: `FEAT` (new feature), `FIX` (bug fix), `DOCS` (documentation), `CHORE` (housekeeping), `REFACTOR`, `TEST`, `STYLE`.
+`TYPE` is one of: `FEAT` (new feature), `FIX` (bug fix), `DOCS` (documentation), `REFAC` (refactor), `CHORE` (housekeeping), `META` (project/repo metadata).
 
 **Guidelines:**
 - Write clear, descriptive commit messages

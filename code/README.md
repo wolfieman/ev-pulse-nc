@@ -41,7 +41,7 @@ uv run code/python/data-acquisition/afdc_api_download.py
 
 ---
 
-## `analysis/` — 28 scripts
+## `analysis/` — 31 scripts
 
 Phase-prefixed naming gives consistent grouping. See [`../frameworks/analytical-pipeline.md`](../frameworks/analytical-pipeline.md) for the methodology and the root [`../README.md`](../README.md) "Full Reproducibility" section for the canonical run order.
 

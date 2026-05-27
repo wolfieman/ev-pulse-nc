@@ -2,7 +2,7 @@
 
 **Purpose:** Identifies the stakeholders served by the EV Pulse NC scoring framework and summarizes what each gets from the delivered NEVI county-allocation methodology and underlying analyses.
 
-The framework integrates a complete AFDC infrastructure baseline (1,985 stations, 6,145 connectors, all charging levels and access types — Feb 2026 API pull), validated BEV demand forecasts, ZIP-level spatial analysis, CTPP workplace-charging classification, and CEJST Justice40 equity overlays into a single weighted county score:
+The framework integrates a complete AFDC infrastructure baseline (1,985 stations, 6,145 connectors, all charging levels and access types — Feb 2026 API pull), validated BEV demand forecasts, ZIP-level spatial analysis, LEHD/LODES workplace-charging classification, and CEJST Justice40 equity overlays into a single weighted county score:
 
 ```
 NEVI Priority Score(county) = w1 × Equity + w2 × Utilization + w3 × Cost-Effectiveness
@@ -27,7 +27,7 @@ NEVI Priority Score(county) = w1 × Equity + w2 × Utilization + w3 × Cost-Effe
 **What they get:**
 - County-level utilization metrics (BEVs per port across all charging levels, not just DCFC)
 - ZIP-level infrastructure distribution identifying intra-county gaps (Phase 3)
-- Workplace-vs-residential demand context from CTPP commuting flows (Phase 4)
+- Workplace-vs-residential demand context from LEHD/LODES commuting flows (Phase 4)
 - Identification of zero-infrastructure ZIPs and rural-access gaps
 
 **Key value:** Sub-county granularity to inform local site selection and grant applications.
@@ -38,7 +38,7 @@ NEVI Priority Score(county) = w1 × Equity + w2 × Utilization + w3 × Cost-Effe
 - Complete competitive baseline of NC charging infrastructure including all networks and access types
 - Network-level market share data (`ev_network` field) across L1, L2, and DCFC
 - Identification of underserved geographies where additional public or private investment would relieve demand pressure
-- Workplace-charging market sizing from CTPP commuting flows
+- Workplace-charging market sizing from LEHD/LODES commuting flows
 
 **Key value:** Market intelligence and white-space identification for capital deployment decisions.
 
@@ -70,7 +70,7 @@ NEVI Priority Score(county) = w1 × Equity + w2 × Utilization + w3 × Cost-Effe
 |---|---|---|
 | **Equity** (Justice40 %, Gini, rural-access gap) | Phase 5 (CEJST) + Phase 3 (ZIP) | Public communities, NEVI administrators |
 | **Utilization** (BEVs/port across all levels) | Phase 1 (Validation) + Phase 2 (AFDC) | County planners, private operators |
-| **Cost-Effectiveness** (workplace efficiency, density) | Phase 4 (CTPP) | Private operators, county planners |
+| **Cost-Effectiveness** (workplace efficiency, density) | Phase 4 (LEHD/LODES) | Private operators, county planners |
 
 The single weighted score reconciles these stakeholder perspectives rather than producing separate rankings for each. Sensitivity analysis on the weights (w1, w2, w3) shows that the top-priority counties remain stable across the literature-supported range (equity-heavy ~0.40 / 0.35 / 0.25), giving administrators confidence that the ranking does not depend on a single defensible weight choice.
 

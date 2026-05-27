@@ -61,7 +61,7 @@ The pipeline answers one question: **Where should North Carolina invest its fede
                  v                   v                   v
  +--------------+--+  +-------------+---+  +------------+-----+
  | PHASE 3         |  | PHASE 4         |  | PHASE 5          |
- | ZIP Code        |  | CTPP Workplace  |  | CEJST Equity     |
+ | ZIP Code        |  | LEHD/LODES Wkpl |  | CEJST Equity     |
  | Analysis        |  | Charging        |  | Analysis         |
  | [COMPLETE]      |  | [COMPLETE]      |  | [COMPLETE]       |
  |                 |  |                 |  |                  |
@@ -96,7 +96,8 @@ The pipeline answers one question: **Where should North Carolina invest its fede
  +------------------------------+-------------------------------+
                                 |
                                 | Ranked list of
-                                | 100 NC counties
+                                | top-10 NC counties
+                                | (all-100 = future work)
                                 v
                  +--------------+--------------+
                  |                             |
@@ -132,7 +133,7 @@ The pipeline answers one question: **Where should North Carolina invest its fede
 | **1** | 1 | Predictive Validation | **COMPLETE** | -- | 8 publication figures, MAPE 4.34%, bias analysis | Utilization Score (validated BEV forecasts) |
 | **2** | 2 | AFDC Infrastructure Data | **COMPLETE** | -- | 1,985 stations, 6,145 connectors, all levels/access types | Utilization Score (BEVs-per-port ratios) |
 | **3** | 3 | ZIP Code Analysis (WHERE) | **COMPLETE** | Mar 2026 | Top 20 underserved ZIPs, Wake County heat map, Gini coefficient | Utilization Score + Equity Score |
-| **4** | 4 | CTPP Workplace Charging (WHO/WHEN) | **COMPLETE** | Mar 2026 | Top 10 employment centers, commuter flow map | Cost-Effectiveness Score |
+| **4** | 4 | LEHD/LODES Workplace Charging (WHO/WHEN) | **COMPLETE** | Mar 2026 | Top 10 employment centers, commuter flow map | Cost-Effectiveness Score |
 | **5** | 5 | CEJST Equity Analysis (EQUITY) | **COMPLETE** | Apr 2026 | CEJST tract-level Justice40 overlay, county + ZCTA disadvantaged community shares, climate sensitivity, weight sensitivity, figures 39–42 | Equity Score (weight: 0.40) |
 | **6** | 6 | Buffer Analysis | Future Direction | — | Coverage zone maps, "charging desert" identification | Post-capstone roadmap |
 | **7** | 7 | NCDOT NEVI Corridor Validation | Future Direction | — | Comparison of scores vs. NCDOT planned deployments | Post-capstone roadmap |
@@ -158,7 +159,7 @@ This table shows what each phase produces and what downstream phases consume.
 | **Phase 4** | Bidirectional commuter flows for top 15 counties | Scoring Framework | Adjusts county-level demand to include non-residents |
 | **Phase 5** | Justice40 disadvantaged community overlay | Scoring Framework | Equity Score (heaviest weight: 0.40) |
 | **Phase 5** | Community-level equity flags | Scoring Framework | NEVI compliance (40% of benefits to disadvantaged communities) |
-| **Scoring** | Ranked list of 100 NC counties with NEVI scores | Phase 7 (optional) | Validation against NCDOT planned deployments |
+| **Scoring** | Ranked list of top-10 NC counties with NEVI scores (all-100 extension = future work) | Phase 7 (optional) | Validation against NCDOT planned deployments |
 | **Phase 6** | Coverage zone maps (optional) | Final paper | Visual enhancement for "charging deserts" |
 | **Phase 7** | Score-vs-deployment comparison (optional) | Final paper | Methodology validation |
 
@@ -211,7 +212,7 @@ Ranked list of top 10 North Carolina counties (by BEV registration count, captur
 | **Phase 1: Predictive Validation** | Feb 2026 | MAPE 4.34%, 69.00% underprediction bias, 8 publication figures (600 DPI, PDF) |
 | **Phase 2: AFDC Infrastructure Data** | Feb 2026 | Complete API download: 1,985 stations, 6,145 connectors, L1/L2/DCFC, all access types, 267 cities, 358 ZIPs |
 | **Phase 3: ZIP Code Analysis** | Mar 2026 | 134 ZIPs in 10 counties analyzed; Gini 0.566 statewide; Theil decomposition: 84.5% within-county inequality; 34 publication figures (fig-08 to fig-34); scoring framework skeleton (9/17 columns populated) |
-| **Phase 4: CTPP Workplace Charging** | Mar 2026 | LEHD/LODES employment centers, commuter flow analysis, workplace-vs-residential efficiency comparison, figures fig-35 to fig-38 |
+| **Phase 4: LEHD/LODES Workplace Charging** | Mar 2026 | LEHD/LODES employment centers, commuter flow analysis, workplace-vs-residential efficiency comparison, figures fig-35 to fig-38 |
 | **Phase 5: CEJST Equity Analysis** | Apr 2026 | CEJST tract-level Justice40 overlay, county + ZCTA Justice40 shares, climate-subset sensitivity, weight sensitivity, figures fig-39 to fig-42 |
 
 ### Future Directions
@@ -243,7 +244,7 @@ This table maps each pipeline phase to the corresponding section of the EV Pulse
 | **Phase 2: AFDC Infrastructure** | Data Description | Infrastructure landscape: 1,985 stations across L1/L2/DCFC, access type distribution, geographic coverage (267 cities, 358 ZIPs), comparison vs. prior DCFC-only extract |
 | **Gap Analysis** | Results | County-level demand-supply comparison, identification of highest-gap counties, BEVs-per-port ratios |
 | **Phase 3: ZIP Code Analysis** | Results | Sub-county gap analysis: top 20 underserved ZIPs, Wake County heat map, Gini coefficient for intra-county inequality |
-| **Phase 4: CTPP Workplace** | Results | Workplace charging demand: top 10 employment centers, commuter flow analysis, NC statewide 15.4 BEVs/port vs IEA ~10 benchmark |
+| **Phase 4: LEHD/LODES Workplace** | Results | Workplace charging demand: top 10 employment centers, commuter flow analysis, NC statewide 15.4 BEVs/port vs IEA ~10 benchmark |
 | **Phase 5: CEJST Equity** | Results + Discussion | Results: CEJST tract-level Justice40 overlay, county + ZCTA disadvantaged community shares, climate-subset sensitivity, weight sensitivity. Discussion: policy implications for equitable NEVI deployment |
 | **Scoring Framework** | Discussion | NEVI recommendations: weighted scoring equation, ranked county list (top 10), weight sensitivity analysis |
 | **Phase 7: NCDOT Validation** | Discussion | Methodology validation: do our equity-weighted scores independently recommend the same locations NCDOT chose in their Feb 18, 2026 rural deployment shift? |

@@ -23,4 +23,4 @@ The generator lives at [`code/python/docs/generate_pipeline_diagram.py`](../../c
 
 This directory holds **project-level architectural diagrams only** — pipeline overview, framework illustrations, and similar meta-figures.
 
-Publication-quality figures produced by the analysis pipeline (fig-01 through fig-42, referenced in the paper) live in [`output/figures/`](../../output/figures/), not here.
+Publication-quality figures produced by the analysis pipeline (fig-01 through fig-45, plus 4 supplementary variants, referenced in the paper) live in [`output/figures/`](../../output/figures/), not here.

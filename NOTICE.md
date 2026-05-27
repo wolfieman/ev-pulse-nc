@@ -26,7 +26,7 @@ This project uses publicly available datasets:
 
 2. **Alternative Fuel Stations - North Carolina**
    - Source: U.S. Department of Energy, Alternative Fuels Data Center (AFDC)
-   - Updated: July 2024 / January 2026 (dual snapshot)
+   - Snapshot: February 2026 AFDC API pull (primary infrastructure dataset); a legacy DCFC-only extract is retained for reference only
    - License: Public domain / U.S. government work
 
 ---

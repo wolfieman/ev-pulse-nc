@@ -10,7 +10,7 @@
 
 ---
 
-> **At a glance:** 100 counties · 853 ZCTAs · 1,985 stations · 6,145 connectors · 27 documented Python scripts · 47 publication-grade figures · 108-page manuscript · 100% public data
+> **At a glance:** 100 counties · 853 ZCTAs · 1,985 stations · 6,145 connectors · 43 documented Python scripts · 45 publication-grade figures (plus 4 supplementary variants) · 108-page manuscript · 100% public data
 
 ## Read the Full Paper
 
@@ -18,7 +18,7 @@ The full research paper is committed to this repository as a single artifact:
 
 📄 **[ev-pulse-nc-sanyer-paper.pdf](paper/ev-pulse-nc-sanyer-paper.pdf)** — 108 pages, ~4.6 MB
 
-The README below is the project at-a-glance; the paper is the full record — 5-phase analytical pipeline, NEVI scoring framework, methodology review documentation, and 47 publication-grade figures with full APA 7 attribution.
+The README below is the project at-a-glance; the paper is the full record — 5-phase analytical pipeline, NEVI scoring framework, methodology review documentation, and 45 publication-grade figures (plus 4 supplementary variants) with full APA 7 attribution.
 
 ---
 
@@ -164,7 +164,7 @@ Total elapsed time: under 5 minutes on a modern laptop.
 
 ## Full Reproducibility
 
-To regenerate every output (all 42 figures, all CSVs, all phases) from raw inputs:
+To regenerate every output (all 45 figures plus supplementary variants, all CSVs, all phases) from raw inputs:
 
 ```bash
 # Phase 1 — Validation
@@ -266,7 +266,7 @@ ev-pulse-nc/
 │   └── ...                       # Per-dataset and per-method docs
 │
 ├── output/                       # Generated outputs
-│   ├── figures/                  # 42 publication-quality figures (PDF + PNG)
+│   ├── figures/                  # 45 publication-quality figures + supplementary variants (PDF + PNG)
 │   ├── validation/               # Forecast validation results
 │   └── models/                   # Model index — pointers to where each model lives
 │

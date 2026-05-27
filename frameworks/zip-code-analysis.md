@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-Phase 3 delivered sub-county infrastructure magnification in North Carolina's urban counties, where county-level aggregation obscures critical spatial patterns. The analysis geocoded all 6,145 AFDC connectors to ZIP codes and calculated density, inequality, and underservice metrics across 134 ZIPs in the top 10 urban counties (roughly 80% of statewide BEV population).
+Phase 3 delivered sub-county infrastructure magnification in North Carolina's urban counties, where county-level aggregation obscures critical spatial patterns. The analysis geocoded all 6,145 AFDC connectors to ZIP codes and calculated density, inequality, and underservice metrics across 134 ZIPs in the top 10 urban counties (73% of the statewide BEV fleet).
 
 **Critical finding:** A Theil decomposition attributes **84.5% of statewide spatial inequality to within-county variation** — meaning the bulk of the equity problem is hidden below the county level. Within Charlotte alone, the port density gap between ZIP 28202 and ZIP 28215 is roughly 250-fold. This is exactly the signal county-only analysis cannot see.
 
@@ -26,7 +26,7 @@ Phase 3 produced 34 publication figures (fig-08 through fig-34) and populated th
 
 ## Methodology Notes
 
-- **Scope:** Phase 3 analyzed 134 ZIP codes within North Carolina's top 10 urban counties, capturing roughly 80% of statewide BEV population. The full-state ZIP scope (~800 ZIPs) was excluded because data sparsity below the top urban counties yields unreliable inequality measurements.
+- **Scope:** Phase 3 analyzed 134 ZIP codes within North Carolina's top 10 urban counties, capturing 73% of the statewide BEV fleet. The full-state ZIP scope (~800 ZIPs) was excluded because data sparsity below the top urban counties yields unreliable inequality measurements.
 - **Approach:** The analysis was descriptive only — no ZIP-level forecasting was attempted, since NCDOT does not publish ZIP-level BEV registration data and per-ZIP time-series modeling would have introduced sparsity-driven noise without analytical benefit.
 - **Spatial join:** ZIP↔tract overlays use area-weighted interpolation in EPSG:32119 (NC State Plane, meters) rather than degree-space, avoiding distortion.
 - **ZCTA caveat:** Sub-county geometries are reported as ZCTAs (Census areal approximations of USPS ZIP codes); a small share of addresses may fall outside their nominal ZCTA polygon.
