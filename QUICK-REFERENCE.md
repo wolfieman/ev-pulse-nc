@@ -44,7 +44,7 @@ git pull
 ```
 data/raw/          <- Raw datasets (CSV, XLSX)
 data/processed/    <- Cleaned data
-code/python/       <- Python scripts
+src/       <- Python scripts
 docs/              <- Documentation
 output/figures/    <- Generated visualizations
 paper/             <- Research paper

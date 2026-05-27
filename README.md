@@ -156,8 +156,8 @@ git lfs pull
 uv sync
 
 # 4. Run the scoring framework — produces the top-3 ranking shown above
-uv run code/python/analysis/scoring_framework_skeleton.py
-uv run code/python/analysis/scoring_framework_final.py
+uv run src/analysis/scoring_framework_skeleton.py
+uv run src/analysis/scoring_framework_final.py
 ```
 
 You've reproduced the headline finding if the final script prints:
@@ -178,41 +178,41 @@ To regenerate every output (all 45 figures plus supplementary variants, all CSVs
 
 ```bash
 # Phase 1 — Validation
-uv run code/python/analysis/validate_sas_forecasts.py
-uv run code/python/analysis/generate_phase1_figures.py
-uv run code/python/analysis/arima_bev_forecast.py
+uv run src/analysis/validate_sas_forecasts.py
+uv run src/analysis/generate_phase1_figures.py
+uv run src/analysis/arima_bev_forecast.py
 
 # Phase 3 — ZIP/County equity
-uv run code/python/analysis/phase3_zip_mapping.py
-uv run code/python/analysis/phase3_zip_density.py
-uv run code/python/analysis/phase3_gini_inequality.py
-uv run code/python/analysis/phase3_theil_decomposition.py
-uv run code/python/analysis/phase3_top20_underserved.py
-uv run code/python/analysis/phase3_county_heatmaps.py
-uv run code/python/analysis/phase3_fig25_underserved_choropleth.py
-uv run code/python/analysis/phase3_fig26_to_fig29.py
-uv run code/python/analysis/phase3_fig30_to_fig32.py
-uv run code/python/analysis/phase3_fig33_fig34.py
+uv run src/analysis/phase3_zip_mapping.py
+uv run src/analysis/phase3_zip_density.py
+uv run src/analysis/phase3_gini_inequality.py
+uv run src/analysis/phase3_theil_decomposition.py
+uv run src/analysis/phase3_top20_underserved.py
+uv run src/analysis/phase3_county_heatmaps.py
+uv run src/analysis/phase3_fig25_underserved_choropleth.py
+uv run src/analysis/phase3_fig26_to_fig29.py
+uv run src/analysis/phase3_fig30_to_fig32.py
+uv run src/analysis/phase3_fig33_fig34.py
 
 # Phase 4 — Workplace charging
-uv run code/python/analysis/phase4_workplace_charging.py
-uv run code/python/analysis/phase4_fig35_to_fig38.py
+uv run src/analysis/phase4_workplace_charging.py
+uv run src/analysis/phase4_fig35_to_fig38.py
 
 # Phase 5 — Justice40
-uv run code/python/analysis/phase5_tract_zcta_crosswalk.py
-uv run code/python/analysis/phase5_climate_sensitivity.py
-uv run code/python/analysis/phase5_weight_sensitivity.py
-uv run code/python/analysis/phase5_fig39_to_fig42.py
+uv run src/analysis/phase5_tract_zcta_crosswalk.py
+uv run src/analysis/phase5_climate_sensitivity.py
+uv run src/analysis/phase5_weight_sensitivity.py
+uv run src/analysis/phase5_fig39_to_fig42.py
 
 # Scoring framework (sequential — final reads skeleton's output, VIF reads final's output)
-uv run code/python/analysis/scoring_framework_skeleton.py
-uv run code/python/analysis/scoring_framework_final.py
-uv run code/python/analysis/scoring_framework_vif.py
+uv run src/analysis/scoring_framework_skeleton.py
+uv run src/analysis/scoring_framework_final.py
+uv run src/analysis/scoring_framework_vif.py
 ```
 
 **Notes:**
 
-- Raw data is fetched from `data/raw/` (LFS-tracked). To re-fetch from source APIs, see scripts in `code/python/data-acquisition/`.
+- Raw data is fetched from `data/raw/` (LFS-tracked). To re-fetch from source APIs, see scripts in `src/data-acquisition/`.
 - `data/processed/` outputs are gitignored — they regenerate from the scripts above. The `phase3_zip_mapping.py` step depends on the consolidated AFDC CSV being present in `data/raw/`.
 - `output/figures/` is committed in the repo (PDF + PNG, 600 DPI). Re-running the figure scripts overwrites them in place.
 

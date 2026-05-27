@@ -6,7 +6,7 @@ Downloads current NC electric vehicle charging station data
 from the NREL Alternative Fuels Station Locator API.
 
 Usage:
-    py code/python/data-acquisition/afdc_api_download.py
+    py src/data-acquisition/afdc_api_download.py
 
 Requires:
     - NREL API key in .env file (NREL_API_KEY=your_key)

@@ -15,7 +15,7 @@ The AFDC dataset was originally planned as a dual-snapshot comparison between a 
 | **Query parameters** | `state=NC`, `fuel_type=ELEC` |
 | **API key** | Free, instant approval at `https://developer.nrel.gov/signup/` |
 | **Rate limit** | 1,000 requests/hour |
-| **Download script** | `code/python/data-acquisition/afdc_api_download.py` |
+| **Download script** | `src/data-acquisition/afdc_api_download.py` |
 
 ## Authoritative File
 

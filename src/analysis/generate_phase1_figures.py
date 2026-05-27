@@ -28,6 +28,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+from evpulse.paths import PROJECT_ROOT
 from evpulse.style import (
     COLORS,
     FIGURE_SIZES,
@@ -672,12 +673,12 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Generate Phase 1 validation figures")
     parser.add_argument(
         "--output",
-        default="../../../output/figures",
+        default=str(PROJECT_ROOT / "output" / "figures"),
         help="Output directory for figures",
     )
     parser.add_argument(
         "--data",
-        default="../../../output/validation",
+        default=str(PROJECT_ROOT / "output" / "validation"),
         help="Input directory with validation CSVs",
     )
     parser.add_argument(

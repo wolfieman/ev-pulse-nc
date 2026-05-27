@@ -30,7 +30,7 @@ Input:  output/validation/sas-validation-comparison.csv
 Output: output/figures/fig-44-validation-scatter.{png,pdf}
 
 Usage:
-    uv run code/python/analysis/phase1_fig44_validation_scatter.py
+    uv run src/analysis/phase1_fig44_validation_scatter.py
 
 Author: Wolfgang Sanyer
 License: Polyform Noncommercial 1.0.0 (see LICENSE)

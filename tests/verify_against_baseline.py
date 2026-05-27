@@ -185,7 +185,7 @@ def main() -> None:
     if args.list_order:
         print("Canonical pipeline run order:")
         for i, script in enumerate(RUN_ORDER, 1):
-            print(f"  {i:2d}. uv run code/python/{script}")
+            print(f"  {i:2d}. uv run src/{script}")
         return
 
     if not args.baseline or not args.baseline.is_dir():

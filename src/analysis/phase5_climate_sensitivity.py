@@ -15,7 +15,7 @@ This is a standalone sensitivity script -- it writes one regenerable
 output to data/processed and modifies no raw inputs or other scripts.
 
 Usage:
-    uv run code/python/analysis/phase5_climate_sensitivity.py
+    uv run src/analysis/phase5_climate_sensitivity.py
 
 Author: Wolfgang Sanyer
 License: Polyform Noncommercial 1.0.0 (see LICENSE)

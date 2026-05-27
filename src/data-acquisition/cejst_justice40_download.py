@@ -10,7 +10,7 @@ offline January 2025.  This script uses the community archive mirror
 hosted via the PEDP (Public Environmental Data Partners) CloudFront CDN.
 
 Usage:
-    uv run code/python/data-acquisition/cejst_justice40_download.py
+    uv run src/data-acquisition/cejst_justice40_download.py
 
 Requires:
     - requests library

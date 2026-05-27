@@ -11,7 +11,7 @@ Output:
     Console summary table
 
 Usage:
-    uv run code/python/analysis/phase5_weight_sensitivity.py
+    uv run src/analysis/phase5_weight_sensitivity.py
 
 Author: Wolfgang Sanyer
 License: Polyform Noncommercial 1.0.0 (see LICENSE)

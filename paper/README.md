@@ -11,7 +11,7 @@ The PDF is the canonical public artifact. See the [repo-root README](../README.m
 ## Build Pipeline
 
 ```
-paper/manuscript.md  →  code/python/paper/build_docx.py  →  paper/manuscript.docx  →  (manual export)  →  paper/ev-pulse-nc-sanyer-paper.pdf
+paper/manuscript.md  →  src/paper/build_docx.py  →  paper/manuscript.docx  →  (manual export)  →  paper/ev-pulse-nc-sanyer-paper.pdf
 ```
 
 Only the final PDF and this README are tracked in git. The markdown source (`manuscript.md`), intermediate `.docx`, the presentation `.pptx`, and the local `sources/` library are all gitignored — they're regenerable from the analytical pipeline and the build script.
@@ -19,7 +19,7 @@ Only the final PDF and this README are tracked in git. The markdown source (`man
 To rebuild the .docx from source:
 
 ```bash
-uv run python code/python/paper/build_docx.py
+uv run python src/paper/build_docx.py
 ```
 
 The script reads `paper/manuscript.md`, embeds figures from `output/figures/`, and writes `paper/manuscript.docx`. From there, Word's *File → Save As PDF* produces the canonical PDF.
@@ -36,4 +36,4 @@ The two methodology reviews are integrated into the paper as Appendices A and B,
 
 - **[Repo-root README](../README.md)** — project at-a-glance, executive summary, 5 novel contributions, who-this-is-for, beyond NC
 - **[CITATION.cff](../CITATION.cff)** — machine-readable citation metadata
-- **[code/python/paper/build_docx.py](../code/python/paper/build_docx.py)** — manuscript .docx build script
+- **[src/paper/build_docx.py](../src/paper/build_docx.py)** — manuscript .docx build script

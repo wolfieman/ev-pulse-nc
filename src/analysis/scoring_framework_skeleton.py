@@ -18,7 +18,7 @@ Output:
     data/processed/scoring-framework-skeleton.csv
 
 Usage:
-    uv run code/python/analysis/scoring_framework_skeleton.py
+    uv run src/analysis/scoring_framework_skeleton.py
 
 Author: Wolfgang Sanyer
 License: Polyform Noncommercial 1.0.0 (see LICENSE)

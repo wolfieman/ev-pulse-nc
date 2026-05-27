@@ -15,8 +15,8 @@ All contributions must follow [STYLE-GUIDE.md](STYLE-GUIDE.md).
 **Linting:** Run `ruff check` and `ruff format` before committing.
 
 ```bash
-ruff check code/python/
-ruff format code/python/
+ruff check src/
+ruff format src/
 ```
 
 The VS Code ruff extension handles this automatically on save.
@@ -112,7 +112,7 @@ A change is complete when:
 
 4. **Verify setup**
    ```bash
-   uv run ruff check code/python/
+   uv run ruff check src/
    uv run pytest
    ```
 

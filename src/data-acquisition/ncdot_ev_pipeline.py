@@ -29,6 +29,8 @@ import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 
+from evpulse.paths import PROJECT_ROOT
+
 BASE_URL = "https://www.ncdot.gov/initiatives-policies/environmental/climate-change/Pages/zev-registration-data.aspx"
 YEAR_URL_TEMPLATE = "https://www.ncdot.gov/initiatives-policies/environmental/climate-change/Pages/{year}-zev-registration-data.aspx"
 YEAR_URL_OVERRIDES = {
@@ -465,12 +467,12 @@ Examples:
     )
     parser.add_argument(
         "--outdir",
-        default="../../../data/raw/ncdot-monthly",
+        default=str(PROJECT_ROOT / "data" / "raw" / "ncdot-monthly"),
         help="Directory for raw xlsx downloads",
     )
     parser.add_argument(
         "--out",
-        default="../../../data/processed/nc-ev-registrations-master",
+        default=str(PROJECT_ROOT / "data" / "processed" / "nc-ev-registrations-master"),
         help="Output path for master dataset (without extension)",
     )
     parser.add_argument(

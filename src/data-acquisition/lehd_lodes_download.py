@@ -12,7 +12,7 @@ Data sources:
   4. ACS B19001 (income distribution) + B25003 (tenure) by tract
 
 Usage:
-    uv run code/python/data-acquisition/lehd_lodes_download.py
+    uv run src/data-acquisition/lehd_lodes_download.py
 
 Requires:
     - requests library

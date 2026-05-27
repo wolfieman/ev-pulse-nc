@@ -27,4 +27,4 @@ Output from `validate_sas_forecasts.py` — SAS Model Studio forecast accuracy a
 
 ## Models (`models/`)
 
-Index doc only — see [`models/README.md`](models/README.md). The project's models live elsewhere: SAS reference forecasts in `data/reference-forecasts/`, Python ARIMA replication in `code/python/analysis/arima_bev_forecast.py`, NEVI scoring composite in `scoring_framework_final.py`. No `.pkl` artifacts are persisted — fits run at-runtime.
+Index doc only — see [`models/README.md`](models/README.md). The project's models live elsewhere: SAS reference forecasts in `data/reference-forecasts/`, Python ARIMA replication in `src/analysis/arima_bev_forecast.py`, NEVI scoring composite in `scoring_framework_final.py`. No `.pkl` artifacts are persisted — fits run at-runtime.

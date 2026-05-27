@@ -212,31 +212,31 @@ Large files (>100KB CSV/XLSX) are tracked via Git LFS. See `.gitattributes` for 
 
 ## Reproducibility
 
-Every raw dataset has a dedicated download script in `code/python/data-acquisition/`. To regenerate from source:
+Every raw dataset has a dedicated download script in `src/data-acquisition/`. To regenerate from source:
 
 ```bash
 # 1. NCDOT EV registrations (monthly county-level)
-uv run python code/python/data-acquisition/ncdot_ev_pipeline.py --years 2025
+uv run python src/data-acquisition/ncdot_ev_pipeline.py --years 2025
 
 # 2. AFDC charging stations (requires NREL API key in environment)
-uv run python code/python/data-acquisition/afdc_api_download.py
+uv run python src/data-acquisition/afdc_api_download.py
 
 # 3. LEHD LODES (OD, WAC, crosswalk — NC, 2021 vintage)
-uv run python code/python/data-acquisition/lehd_lodes_download.py
+uv run python src/data-acquisition/lehd_lodes_download.py
 
 # 4. CEJST Justice40 tracts (from EDGI/PEDP community archive)
-uv run python code/python/data-acquisition/cejst_justice40_download.py
+uv run python src/data-acquisition/cejst_justice40_download.py
 
 # 5. Census ACS ZIP population
-uv run python code/python/data-acquisition/census_zip_population.py
+uv run python src/data-acquisition/census_zip_population.py
 
 # 6. Spatial boundary files
-uv run python code/python/data-acquisition/census_county_boundaries.py
-uv run python code/python/data-acquisition/census_zcta_boundaries.py
-uv run python code/python/data-acquisition/census_tract_boundaries.py
+uv run python src/data-acquisition/census_county_boundaries.py
+uv run python src/data-acquisition/census_zcta_boundaries.py
+uv run python src/data-acquisition/census_tract_boundaries.py
 
 # 7. Validate SAS forecasts against actuals
-uv run python code/python/analysis/validate_sas_forecasts.py
+uv run python src/analysis/validate_sas_forecasts.py
 ```
 
 **Note:** SAS forecast files (`data/reference-forecasts/`) were manually exported from SAS Model Studio and are not re-downloadable via script. The raw exports are committed to the repo.

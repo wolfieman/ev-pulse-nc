@@ -17,7 +17,7 @@ This document defines the project-used columns for each dataset. For full API sc
 **Granularity:** One row per county per month
 **Rows:** 8,200 (100 counties x 82 months)
 **Period:** September 2018 - June 2025
-**Pipeline:** `code/python/data-acquisition/ncdot_ev_pipeline.py`
+**Pipeline:** `src/data-acquisition/ncdot_ev_pipeline.py`
 
 | Variable | Type | Description | Valid Values / Range |
 |----------|------|-------------|---------------------|

@@ -16,7 +16,7 @@ Output:
     data/processed/scoring-vif-check.csv
 
 Usage:
-    uv run code/python/analysis/scoring_framework_vif.py
+    uv run src/analysis/scoring_framework_vif.py
 
 Author: Wolfgang Sanyer
 License: Polyform Noncommercial 1.0.0 (see LICENSE)

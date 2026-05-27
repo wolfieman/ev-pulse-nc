@@ -34,7 +34,7 @@ Input:  data/processed/scoring-framework-final.csv
 Output: output/figures/fig-45-equity-utilization-archetypes.{png,pdf}
 
 Usage:
-    uv run code/python/analysis/phase5_fig45_archetype_scatter.py
+    uv run src/analysis/phase5_fig45_archetype_scatter.py
 
 Author: Wolfgang Sanyer
 License: Polyform Noncommercial 1.0.0 (see LICENSE)

@@ -47,7 +47,7 @@ ncdot-ev-registrations-county-202506.csv
 
 ### Directory Structure Note
 
-The `code/python/` subdirectories use kebab-case because they contain standalone scripts run directly, not importable modules. If importable packages are needed later, they must use snake_case per Python requirements.
+The `src/` subdirectories use kebab-case because they contain standalone scripts run directly, not importable modules. If importable packages are needed later, they must use snake_case per Python requirements.
 
 ---
 
@@ -89,7 +89,7 @@ class DownloadResult(NamedTuple):
 
 - Use VS Code notebooks (`.ipynb`) for exploratory data analysis only
 - Notebooks are for discovery, not authoritative code
-- Stabilized logic must be promoted to Python modules in `code/python/`
+- Stabilized logic must be promoted to Python modules in `src/`
 - Promote quickly; do not let notebooks become a shadow codebase
 
 ---
@@ -210,8 +210,8 @@ Two data-acquisition scripts require API keys, loaded from a project-root `.env`
 
 | Key | Used by | Get one |
 |---|---|---|
-| `NREL_API_KEY` | `code/python/data-acquisition/afdc_api_download.py` (AFDC charging stations) | https://developer.nrel.gov/signup/ (free, instant) |
-| `CENSUS_API_KEY` | `code/python/data-acquisition/census_zip_population.py` (ACS ZCTA populations) | https://api.census.gov/data/key_signup.html (free) |
+| `NREL_API_KEY` | `src/data-acquisition/afdc_api_download.py` (AFDC charging stations) | https://developer.nrel.gov/signup/ (free, instant) |
+| `CENSUS_API_KEY` | `src/data-acquisition/census_zip_population.py` (ACS ZCTA populations) | https://api.census.gov/data/key_signup.html (free) |
 
 `.env` is gitignored — never commit credentials. NCDOT data is fetched via public web scraping (no key needed); LEHD/CEJST/Census boundaries use no-auth public endpoints.
 
@@ -240,8 +240,8 @@ select = ["E", "F", "W", "I"]
 Run the linter before committing:
 
 ```bash
-ruff check code/python/
-ruff format code/python/
+ruff check src/
+ruff format src/
 ```
 
 ---

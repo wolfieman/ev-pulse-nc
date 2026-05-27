@@ -7,7 +7,7 @@ All analysis code is Python. **Run everything via `uv run`** — never invoke `.
 ## Layout
 
 ```
-code/python/
+src/
 ├── data-acquisition/   # API downloads (NCDOT, AFDC, Census, CEJST, LEHD)
 ├── analysis/           # Phase 1-5 analytics + scoring framework + ARIMA + EDA
 └── blog/               # Importable package for blog graphics
@@ -36,7 +36,7 @@ API ingestion. Each script writes to `data/raw/`. Two require credentials in `.e
 **Run pattern:**
 
 ```bash
-uv run code/python/data-acquisition/afdc_api_download.py
+uv run src/data-acquisition/afdc_api_download.py
 ```
 
 ---
@@ -58,7 +58,7 @@ Phase-prefixed naming gives consistent grouping. See [`../frameworks/analytical-
 **Run pattern:**
 
 ```bash
-uv run code/python/analysis/scoring_framework_final.py
+uv run src/analysis/scoring_framework_final.py
 ```
 
 ---

@@ -20,4 +20,4 @@ matplotlib.use("Agg")
 
 _ROOT = Path(__file__).resolve().parent.parent
 for _area in ("analysis", "data-acquisition"):
-    sys.path.insert(0, str(_ROOT / "code" / "python" / _area))
+    sys.path.insert(0, str(_ROOT / "src" / _area))

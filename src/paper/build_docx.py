@@ -2,7 +2,7 @@
 
 Run from the repo root with the project's uv environment:
 
-    uv run python code/python/paper/build_docx.py
+    uv run python src/paper/build_docx.py
 
 Reads paper/manuscript.md and produces paper/manuscript.docx. The .docx is
 gitignored (`*.docx`); only this script is intended to live under version

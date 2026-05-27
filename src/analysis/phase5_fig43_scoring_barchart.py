@@ -24,7 +24,7 @@ Input:  data/processed/scoring-framework-final.csv
 Output: output/figures/fig-43-nevi-priority-scores.{png,pdf}
 
 Usage:
-    uv run code/python/analysis/phase5_fig43_scoring_barchart.py
+    uv run src/analysis/phase5_fig43_scoring_barchart.py
 
 Author: Wolfgang Sanyer
 License: Polyform Noncommercial 1.0.0 (see LICENSE)

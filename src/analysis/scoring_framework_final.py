@@ -37,7 +37,7 @@ Output:
     data/processed/scoring-framework-final.csv
 
 Usage:
-    uv run code/python/analysis/scoring_framework_final.py
+    uv run src/analysis/scoring_framework_final.py
 
 Author: Wolfgang Sanyer
 License: Polyform Noncommercial 1.0.0 (see LICENSE)

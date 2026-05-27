@@ -51,7 +51,7 @@ This finding fundamentally redefines Priority 5 of the project. The task is no l
 | **Download Date** | February 2026 |
 
 **Key Observations:**
-- Downloaded programmatically via the AFDC API using `code/python/data-acquisition/afdc_api_download.py`.
+- Downloaded programmatically via the AFDC API using `src/data-acquisition/afdc_api_download.py`.
 - Station-level granularity: one row per station, with port counts stored in aggregate columns (`ev_level1_evse_num`, `ev_level2_evse_num`, `ev_dc_fast_num`).
 - Includes all access types: public, private, and restricted stations.
 - Two additional columns compared to the old file (76 vs. 74).

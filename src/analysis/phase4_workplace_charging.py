@@ -13,7 +13,7 @@ Outputs:
     data/processed/phase4-cost-effectiveness.csv
 
 Usage:
-    uv run code/python/analysis/phase4_workplace_charging.py
+    uv run src/analysis/phase4_workplace_charging.py
 
 Author: Wolfgang Sanyer
 License: Polyform Noncommercial 1.0.0 (see LICENSE)

@@ -28,6 +28,8 @@ from pathlib import Path
 
 import pandas as pd
 
+from evpulse.paths import PROJECT_ROOT
+
 # Validation period: July-October 2025
 VALIDATION_START = "2025-07-01"
 VALIDATION_END = "2025-10-01"
@@ -367,13 +369,13 @@ def main() -> None:
     )
     parser.add_argument(
         "--output",
-        default="../../../output/validation",
+        default=str(PROJECT_ROOT / "output" / "validation"),
         help="Output directory for validation results",
     )
     args = parser.parse_args()
 
     script_dir = Path(__file__).parent
-    data_dir = script_dir / "../../../data"
+    data_dir = PROJECT_ROOT / "data"
     output_dir = Path(args.output)
     if not output_dir.is_absolute():
         output_dir = script_dir / output_dir
