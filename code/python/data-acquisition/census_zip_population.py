@@ -28,6 +28,8 @@ from datetime import datetime
 import requests
 from dotenv import load_dotenv
 
+from evpulse.paths import PROJECT_ROOT
+
 # Load API key from .env
 load_dotenv()
 API_KEY = os.getenv("CENSUS_API_KEY")
@@ -50,10 +52,7 @@ PARAMS = {
 }
 
 # Output path
-REPO_ROOT = os.path.dirname(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-)
-OUTPUT_FILE = os.path.join(REPO_ROOT, "data", "raw", "nc-zip-population-acs2022.csv")
+OUTPUT_FILE = os.path.join(PROJECT_ROOT, "data", "raw", "nc-zip-population-acs2022.csv")
 
 
 def download_population():

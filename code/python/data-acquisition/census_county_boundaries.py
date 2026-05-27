@@ -24,6 +24,8 @@ from datetime import datetime
 
 import geopandas as gpd
 
+from evpulse.paths import PROJECT_ROOT
+
 # Census Bureau cartographic boundary file (500k resolution, 2020 vintage)
 BOUNDARY_URL = (
     "https://www2.census.gov/geo/tiger/GENZ2020/shp/cb_2020_us_county_500k.zip"
@@ -33,10 +35,7 @@ BOUNDARY_URL = (
 NC_FIPS = "37"
 
 # Output path
-REPO_ROOT = os.path.dirname(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-)
-OUTPUT_FILE = os.path.join(REPO_ROOT, "data", "raw", "nc-county-boundaries.geojson")
+OUTPUT_FILE = os.path.join(PROJECT_ROOT, "data", "raw", "nc-county-boundaries.geojson")
 
 
 def download_boundaries():

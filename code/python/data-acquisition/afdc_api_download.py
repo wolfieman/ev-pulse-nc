@@ -28,6 +28,8 @@ from datetime import datetime
 import requests
 from dotenv import load_dotenv
 
+from evpulse.paths import PROJECT_ROOT
+
 # Load API key from .env
 load_dotenv()
 API_KEY = os.getenv("NREL_API_KEY")
@@ -49,12 +51,9 @@ PARAMS = {
 }
 
 # Output path
-REPO_ROOT = os.path.dirname(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-)
 DATE_STAMP = datetime.now().strftime("%Y-%m")
 OUTPUT_FILE = os.path.join(
-    REPO_ROOT, "data", "raw", f"afdc-charging-stations-connector-{DATE_STAMP}.csv"
+    PROJECT_ROOT, "data", "raw", f"afdc-charging-stations-connector-{DATE_STAMP}.csv"
 )
 
 

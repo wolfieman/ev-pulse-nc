@@ -25,6 +25,8 @@ from datetime import datetime
 
 import geopandas as gpd
 
+from evpulse.paths import PROJECT_ROOT
+
 # Census Bureau ZCTA cartographic boundary file (500k resolution, 2020)
 ZCTA_URL = (
     "https://www2.census.gov/geo/tiger/GENZ2020/shp/"
@@ -39,18 +41,11 @@ EXPECTED_MIN = 700
 EXPECTED_MAX = 900
 
 # Paths
-REPO_ROOT = os.path.dirname(
-    os.path.dirname(
-        os.path.dirname(
-            os.path.dirname(os.path.abspath(__file__))
-        )
-    )
-)
 NC_COUNTY_FILE = os.path.join(
-    REPO_ROOT, "data", "raw", "nc-county-boundaries.geojson"
+    PROJECT_ROOT, "data", "raw", "nc-county-boundaries.geojson"
 )
 OUTPUT_FILE = os.path.join(
-    REPO_ROOT, "data", "raw", "nc-zcta-boundaries.geojson"
+    PROJECT_ROOT, "data", "raw", "nc-zcta-boundaries.geojson"
 )
 
 

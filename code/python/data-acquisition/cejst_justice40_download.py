@@ -31,15 +31,12 @@ from datetime import datetime
 
 import requests
 
+from evpulse.paths import PROJECT_ROOT
+
 # ---------------------------------------------------------------------------
 # Paths
 # ---------------------------------------------------------------------------
-REPO_ROOT = os.path.dirname(
-    os.path.dirname(
-        os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    )
-)
-RAW_DIR = os.path.join(REPO_ROOT, "data", "raw")
+RAW_DIR = os.path.join(PROJECT_ROOT, "data", "raw")
 NC_OUTPUT = os.path.join(RAW_DIR, "cejst-justice40-tracts-nc.csv")
 BORDER_OUTPUT = os.path.join(
     RAW_DIR, "cejst-justice40-tracts-nc-border.csv"

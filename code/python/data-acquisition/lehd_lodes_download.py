@@ -34,13 +34,12 @@ from datetime import datetime
 
 import requests
 
+from evpulse.paths import PROJECT_ROOT
+
 # ---------------------------------------------------------------------------
 # Paths
 # ---------------------------------------------------------------------------
-REPO_ROOT = os.path.dirname(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-)
-RAW_DIR = os.path.join(REPO_ROOT, "data", "raw")
+RAW_DIR = os.path.join(PROJECT_ROOT, "data", "raw")
 
 # ---------------------------------------------------------------------------
 # LEHD LODES URLs  (LODES 8, NC, 2021, all job types)
