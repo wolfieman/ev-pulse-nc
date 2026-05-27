@@ -103,7 +103,8 @@ def load_training_data(filepath: Path = MAIN_DATA_FILE) -> pd.DataFrame:
 
     print(f"  Loaded {len(statewide)} monthly observations")
     print(
-        f"  Date range: {statewide.index.min().strftime('%Y-%m')} to {statewide.index.max().strftime('%Y-%m')}"
+        f"  Date range: {statewide.index.min().strftime('%Y-%m')} "
+        f"to {statewide.index.max().strftime('%Y-%m')}"
     )
     print(f"  BEV range: {statewide['BEV'].min():,} to {statewide['BEV'].max():,}")
 
@@ -379,7 +380,8 @@ def print_model_summary(fitted_model, sas_comparison: dict | None = None) -> Non
     print("COEFFICIENT ESTIMATES")
     print("-" * 40)
     print(
-        f"{'Parameter':<15} {'Estimate':>12} {'Std Error':>12} {'z-stat':>10} {'p-value':>10}"
+        f"{'Parameter':<15} {'Estimate':>12} {'Std Error':>12} "
+        f"{'z-stat':>10} {'p-value':>10}"
     )
     print("-" * 60)
 
@@ -402,7 +404,8 @@ def print_model_summary(fitted_model, sas_comparison: dict | None = None) -> Non
         if "aic" in sas_comparison:
             diff = abs(fitted_model.aic - sas_comparison["aic"])
             print(
-                f"  AIC - SAS: {sas_comparison['aic']:.4f}, Python: {fitted_model.aic:.4f}, Diff: {diff:.4f}"
+                f"  AIC - SAS: {sas_comparison['aic']:.4f}, "
+                f"Python: {fitted_model.aic:.4f}, Diff: {diff:.4f}"
             )
         if "params" in sas_comparison:
             print("\n  Coefficient Differences:")
@@ -411,7 +414,8 @@ def print_model_summary(fitted_model, sas_comparison: dict | None = None) -> Non
                     py_val = params[param]
                     diff = abs(py_val - sas_val)
                     print(
-                        f"    {param}: SAS={sas_val:.4f}, Python={py_val:.4f}, Diff={diff:.4f}"
+                        f"    {param}: SAS={sas_val:.4f}, "
+                        f"Python={py_val:.4f}, Diff={diff:.4f}"
                     )
 
 
@@ -518,7 +522,8 @@ def generate_forecast(
     print("\nForecast Results:")
     print("-" * 70)
     print(
-        f"{'Month':<12} {'Forecast':>12} {'Lower CI':>12} {'Upper CI':>12} {'CI Width':>12}"
+        f"{'Month':<12} {'Forecast':>12} {'Lower CI':>12} "
+        f"{'Upper CI':>12} {'CI Width':>12}"
     )
     print("-" * 70)
 
@@ -582,7 +587,8 @@ def validate_forecast(
     }
 
     print(
-        f"\nValidation Period: {common_idx.min().strftime('%Y-%m')} to {common_idx.max().strftime('%Y-%m')}"
+        f"\nValidation Period: {common_idx.min().strftime('%Y-%m')} "
+        f"to {common_idx.max().strftime('%Y-%m')}"
     )
     print(f"Number of Periods: {metrics['n_periods']}")
 
@@ -598,7 +604,8 @@ def validate_forecast(
     print("\nPeriod-by-Period Comparison:")
     print("-" * 80)
     print(
-        f"{'Month':<12} {'Actual':>12} {'Forecast':>12} {'Error':>12} {'APE %':>10} {'In CI?':>10}"
+        f"{'Month':<12} {'Actual':>12} {'Forecast':>12} "
+        f"{'Error':>12} {'APE %':>10} {'In CI?':>10}"
     )
     print("-" * 80)
 
@@ -615,7 +622,8 @@ def validate_forecast(
 
         month_str = idx.strftime("%Y-%m")
         print(
-            f"{month_str:<12} {actual:>12,.0f} {forecast:>12,.0f} {error:>12,.0f} {ape:>10.2f} {in_ci:>10}"
+            f"{month_str:<12} {actual:>12,.0f} {forecast:>12,.0f} "
+            f"{error:>12,.0f} {ape:>10.2f} {in_ci:>10}"
         )
 
     # CI coverage
@@ -628,7 +636,8 @@ def validate_forecast(
     )
     metrics["CI_Coverage"] = in_ci_count / len(common_idx) * 100
     print(
-        f"\nConfidence Interval Coverage: {metrics['CI_Coverage']:.1f}% ({in_ci_count}/{len(common_idx)} periods)"
+        f"\nConfidence Interval Coverage: {metrics['CI_Coverage']:.1f}% "
+        f"({in_ci_count}/{len(common_idx)} periods)"
     )
 
     # Create validation plot
@@ -656,10 +665,6 @@ def validate_forecast(
         )
 
         # Add error bars for CI
-        ci_errors = [
-            [forecast_values.values - forecast_df.loc[common_idx, "Lower_CI"].values],
-            [forecast_df.loc[common_idx, "Upper_CI"].values - forecast_values.values],
-        ]
         ax.errorbar(
             [i + 0.4 for i in x],
             forecast_values.values,
@@ -934,7 +939,7 @@ def main() -> None:
 
     # Validate against holdout if available
     if not holdout_data.empty:
-        metrics = validate_forecast(forecast_df, holdout_data, output_dir)
+        validate_forecast(forecast_df, holdout_data, output_dir)
 
     # Create forecast plot
     if output_dir:

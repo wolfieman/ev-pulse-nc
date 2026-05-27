@@ -223,13 +223,14 @@ def fig03_metrics_by_model(model_metrics: pd.DataFrame, output_dir: Path) -> Non
 
     # Create x-axis labels with county counts
     labels = [
-        f"{m}\n(n={int(model_metrics[model_metrics['ModelType'] == m]['Counties'].values[0])})"
+        f"{m}\n(n="
+        f"{int(model_metrics[model_metrics['ModelType'] == m]['Counties'].values[0])})"
         for m in models
     ]
 
     # Panel A: MAPE
     mape_values = model_metrics["MAPE"].values
-    bars_a = axes[0].bar(
+    axes[0].bar(
         x, mape_values, width=bar_width, color=colors, edgecolor="white"
     )
     axes[0].set_ylabel("MAPE (%)")
@@ -253,7 +254,7 @@ def fig03_metrics_by_model(model_metrics: pd.DataFrame, output_dir: Path) -> Non
 
     # Panel B: Mean Bias
     bias_values = model_metrics["MeanBias"].values
-    bars_b = axes[1].bar(
+    axes[1].bar(
         x, bias_values, width=bar_width, color=colors, edgecolor="white"
     )
     axes[1].set_ylabel("Mean Bias (vehicles)")
@@ -275,7 +276,7 @@ def fig03_metrics_by_model(model_metrics: pd.DataFrame, output_dir: Path) -> Non
 
     # Panel C: Underprediction Rate
     underpred = model_metrics["PctUnderpredicted"].values * 100
-    bars_c = axes[2].bar(x, underpred, width=bar_width, color=colors, edgecolor="white")
+    axes[2].bar(x, underpred, width=bar_width, color=colors, edgecolor="white")
     axes[2].set_ylabel("Underprediction Rate (%)")
     axes[2].set_title("Bias Direction")
     axes[2].set_xticks(x)
@@ -333,12 +334,13 @@ def fig04_ci_coverage(model_metrics: pd.DataFrame, output_dir: Path) -> None:
 
     # Create x-axis labels with county counts
     labels = [
-        f"{m}\n(n={int(model_metrics[model_metrics['ModelType'] == m]['Counties'].values[0])})"
+        f"{m}\n(n="
+        f"{int(model_metrics[model_metrics['ModelType'] == m]['Counties'].values[0])})"
         for m in models
     ]
 
     # Bars
-    bars = ax.bar(
+    ax.bar(
         x, coverage, width=bar_width, color=colors, alpha=0.85, edgecolor="white"
     )
 

@@ -292,7 +292,8 @@ def generate_report(
         "",
         "  Bias Analysis:",
         f"    Mean Bias:         {overall['MeanBias']:+.2f} vehicles",
-        f"    Direction:         {'UNDERPREDICTION' if overall['MeanBias'] > 0 else 'OVERPREDICTION'}",
+        f"    Direction:         "
+        f"{'UNDERPREDICTION' if overall['MeanBias'] > 0 else 'OVERPREDICTION'}",
         f"    Underprediction %: {overall['PctUnderpredicted']:.1f}%",
         "",
         "  Uncertainty Quantification:",

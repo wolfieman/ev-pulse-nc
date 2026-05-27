@@ -308,7 +308,7 @@ SAS Output vs Python:
 Common order specifications:
   ARIMA(1,1,1)  - order=(1,1,1)         One AR, one difference, one MA
   ARIMA(2,1,0)  - order=(2,1,0)         Two AR, one difference, no MA
-  ARIMA(0,1,1)  - order=(0,1,1)         No AR, one difference, one MA (random walk + noise)
+  ARIMA(0,1,1)  - order=(0,1,1)         Random walk + noise (no AR, one MA)
   ARIMA(1,2,1)  - order=(1,2,1)         One AR, two differences, one MA
 
 Seasonal ARIMA (SARIMA):

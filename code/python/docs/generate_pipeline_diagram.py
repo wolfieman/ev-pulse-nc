@@ -8,13 +8,12 @@ Output: docs/figures/analytical-pipeline.png (600 DPI)
 """
 
 import os
+
 import matplotlib
+
 matplotlib.use('Agg')  # Non-interactive backend
 import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
-from matplotlib.patches import FancyBboxPatch, FancyArrowPatch
-import matplotlib.patheffects as pe
-import numpy as np
+from matplotlib.patches import FancyArrowPatch, FancyBboxPatch
 
 # ─── Configuration ─────────────────────────────────────────────────────────────
 
@@ -132,7 +131,9 @@ def create_pipeline_diagram():
               weight="bold")
     draw_text(ax, 5, 15.45, "Analytical Pipeline Architecture", fontsize=16,
               color="#366092", weight="semibold")
-    draw_text(ax, 5, 15.05, "Fayetteville State University  \u2014  Broadwell College of Business & Economics",
+    draw_text(ax, 5, 15.05,
+              "Fayetteville State University  \u2014  "
+              "Broadwell College of Business & Economics",
               fontsize=10, color=C_SUBTITLE)
 
     # Thin separator line
@@ -161,7 +162,9 @@ def create_pipeline_diagram():
 
     # Phase 1 — Demand Validation (LEFT)
     x1_left = 2.6
-    draw_rounded_box(ax, x1_left, y1, box_w, box_h, C_COMPLETE, C_BORDER_COMPLETE, linewidth=2)
+    draw_rounded_box(
+        ax, x1_left, y1, box_w, box_h, C_COMPLETE, C_BORDER_COMPLETE, linewidth=2
+    )
     draw_text(ax, x1_left, y1 + 0.28, "Phase 1: Demand Validation", fontsize=9.5,
               color=C_TEXT_LIGHT, weight="bold")
     draw_text(ax, x1_left, y1 - 0.05, "BEV forecasts verified", fontsize=8,
@@ -172,21 +175,27 @@ def create_pipeline_diagram():
 
     # Phase 2 — Infrastructure Data (RIGHT)
     x1_right = 7.4
-    draw_rounded_box(ax, x1_right, y1, box_w, box_h, C_COMPLETE, C_BORDER_COMPLETE, linewidth=2)
+    draw_rounded_box(
+        ax, x1_right, y1, box_w, box_h, C_COMPLETE, C_BORDER_COMPLETE, linewidth=2
+    )
     draw_text(ax, x1_right, y1 + 0.28, "Phase 2: Infrastructure Data", fontsize=9.5,
               color=C_TEXT_LIGHT, weight="bold")
     draw_text(ax, x1_right, y1 - 0.05, "NC stations via AFDC API", fontsize=8,
               color="#B4C7E0")
     draw_text(ax, x1_right, y1 - 0.28, "1,985 stations", fontsize=8.5,
               color="#D4E4F7", weight="semibold")
-    draw_status_badge(ax, x1_right + box_w / 2 - 0.55, y1 + box_h / 2 + 0.22, "COMPLETE")
+    draw_status_badge(
+        ax, x1_right + box_w / 2 - 0.55, y1 + box_h / 2 + 0.22, "COMPLETE"
+    )
 
     # ════════════════════════════════════════════════════════════════════════
     # Data flow labels from Layer 1
     # ════════════════════════════════════════════════════════════════════════
 
     draw_data_label(ax, 1.3, 13.0, "Validated BEV forecasts\nUnderprediction bias")
-    draw_data_label(ax, 8.7, 13.0, "Station locations, ZIP codes\nCharging levels, facility types")
+    draw_data_label(
+        ax, 8.7, 13.0, "Station locations, ZIP codes\nCharging levels, facility types"
+    )
 
     # ════════════════════════════════════════════════════════════════════════
     # LAYER 2: CONVERGENCE — Gap Analysis
@@ -198,12 +207,18 @@ def create_pipeline_diagram():
     x_gap = 5.0
 
     # Arrows from Phase 1 & 2 down to Gap Analysis
-    draw_arrow(ax, x1_left + 0.3, y1 - box_h / 2, x_gap - gap_w / 2 + 0.6, y_gap + gap_h / 2,
-               linewidth=2.0, color="#4A6D8C")
-    draw_arrow(ax, x1_right - 0.3, y1 - box_h / 2, x_gap + gap_w / 2 - 0.6, y_gap + gap_h / 2,
-               linewidth=2.0, color="#4A6D8C")
+    draw_arrow(
+        ax, x1_left + 0.3, y1 - box_h / 2, x_gap - gap_w / 2 + 0.6, y_gap + gap_h / 2,
+        linewidth=2.0, color="#4A6D8C",
+    )
+    draw_arrow(
+        ax, x1_right - 0.3, y1 - box_h / 2, x_gap + gap_w / 2 - 0.6, y_gap + gap_h / 2,
+        linewidth=2.0, color="#4A6D8C",
+    )
 
-    draw_rounded_box(ax, x_gap, y_gap, gap_w, gap_h, C_CONVERGE, C_BORDER_CONVERGE, linewidth=2.2)
+    draw_rounded_box(
+        ax, x_gap, y_gap, gap_w, gap_h, C_CONVERGE, C_BORDER_CONVERGE, linewidth=2.2
+    )
     draw_text(ax, x_gap, y_gap + 0.12, "GAP ANALYSIS", fontsize=12,
               color=C_TEXT_LIGHT, weight="bold")
     draw_text(ax, x_gap, y_gap - 0.18, "Demand vs. Supply", fontsize=8,
@@ -239,7 +254,9 @@ def create_pipeline_diagram():
               color="#B4C7E0")
     draw_text(ax, x_lens[0], y_lenses - 0.58, "Mar 2026", fontsize=7,
               color="#A0B8D0")
-    draw_status_badge(ax, x_lens[0] + lens_w / 2 - 0.55, y_lenses + lens_box_h / 2 + 0.22, "COMPLETE")
+    draw_status_badge(
+        ax, x_lens[0] + lens_w / 2 - 0.55, y_lenses + lens_box_h / 2 + 0.22, "COMPLETE"
+    )
 
     # Phase 4 — CTPP Workplace (WHO) — COMPLETE
     draw_rounded_box(ax, x_lens[1], y_lenses, lens_w, lens_box_h, C_COMPLETE,
@@ -254,7 +271,9 @@ def create_pipeline_diagram():
               color="#C0D4E8")
     draw_text(ax, x_lens[1], y_lenses - 0.58, "Mar 2026", fontsize=7,
               color="#A8C4DC")
-    draw_status_badge(ax, x_lens[1] + lens_w / 2 - 0.55, y_lenses + lens_box_h / 2 + 0.22, "COMPLETE")
+    draw_status_badge(
+        ax, x_lens[1] + lens_w / 2 - 0.55, y_lenses + lens_box_h / 2 + 0.22, "COMPLETE"
+    )
 
     # Phase 5 — CEJST Equity (EQUITY) — COMPLETE
     draw_rounded_box(ax, x_lens[2], y_lenses, lens_w, lens_box_h, C_COMPLETE,
@@ -269,7 +288,9 @@ def create_pipeline_diagram():
               color="#C0D4E8")
     draw_text(ax, x_lens[2], y_lenses - 0.58, "Apr 2026", fontsize=7,
               color="#A8C4DC")
-    draw_status_badge(ax, x_lens[2] + lens_w / 2 - 0.55, y_lenses + lens_box_h / 2 + 0.22, "COMPLETE")
+    draw_status_badge(
+        ax, x_lens[2] + lens_w / 2 - 0.55, y_lenses + lens_box_h / 2 + 0.22, "COMPLETE"
+    )
 
     # ════════════════════════════════════════════════════════════════════════
     # Cross-feed arrows (secondary data flows)
@@ -317,7 +338,8 @@ def create_pipeline_diagram():
     draw_text(ax, 5.0, y_score + 0.45, "NEVI Scoring Framework", fontsize=13,
               color=C_TEXT_LIGHT, weight="bold")
     draw_text(ax, 5.0, y_score + 0.05,
-              "Score = 0.40 \u00d7 Equity + 0.35 \u00d7 Utilization + 0.25 \u00d7 Cost-Eff.",
+              "Score = 0.40 \u00d7 Equity + 0.35 \u00d7 Utilization "
+              "+ 0.25 \u00d7 Cost-Eff.",
               fontsize=8.5, color="#D5E8C5", weight="semibold")
     draw_text(ax, 5.0, y_score - 0.30,
               "Prescriptive scoring framework",
@@ -441,7 +463,8 @@ def create_pipeline_diagram():
     # ════════════════════════════════════════════════════════════════════════
 
     ax.text(5.0, 0.3,
-            "Wolfgang Sanyer  |  Broadwell College of Business & Economics  |  Spring 2026",
+            "Wolfgang Sanyer  |  Broadwell College of Business & Economics  "
+            "|  Spring 2026",
             fontsize=7.5, color="#AAAAAA", ha="center", va="center",
             fontfamily=FONT_FAMILY)
 

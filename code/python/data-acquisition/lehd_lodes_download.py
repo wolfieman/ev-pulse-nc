@@ -29,9 +29,7 @@ License: Polyform Noncommercial 1.0.0 (see LICENSE)
 
 import csv
 import gzip
-import io
 import os
-import sys
 from datetime import datetime
 
 import requests
@@ -142,7 +140,10 @@ def peek_gz_csv(path, required_cols=None):
         header = next(reader)
         row_count = sum(1 for _ in reader)
 
-    print(f"[INFO]   Columns ({len(header)}): {header[:10]}{'...' if len(header) > 10 else ''}")
+    print(
+        f"[INFO]   Columns ({len(header)}): "
+        f"{header[:10]}{'...' if len(header) > 10 else ''}"
+    )
     print(f"[INFO]   Row count: {row_count:,}")
 
     if required_cols:

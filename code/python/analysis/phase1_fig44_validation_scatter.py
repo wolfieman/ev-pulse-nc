@@ -207,7 +207,8 @@ def create_fig44(df: pd.DataFrame) -> plt.Figure:
     ax.set_ylabel("Actual BEV count (log scale)")
     ax.set_title(
         "Forecast Validation: Actual vs Predicted BEV Counts\n"
-        "n = 400 county-month observations, four-month out-of-sample holdout (Jul-Oct 2025)",
+        "n = 400 county-month observations, "
+        "four-month out-of-sample holdout (Jul-Oct 2025)",
         loc="left",
     )
 
@@ -216,7 +217,8 @@ def create_fig44(df: pd.DataFrame) -> plt.Figure:
         f"MAPE: {MAPE_PCT:.2f}%\n"
         f"Underprediction rate: {UNDERPREDICTION_PCT:.2f}%\n"
         f"Mean bias: +{MEAN_BIAS:.2f} vehicles\n"
-        f"CI coverage (raw / bias-corrected): {CI_COVERAGE_RAW_PCT:.2f}% / {CI_COVERAGE_CORRECTED_PCT:.2f}%\n"
+        f"CI coverage (raw / bias-corrected): "
+        f"{CI_COVERAGE_RAW_PCT:.2f}% / {CI_COVERAGE_CORRECTED_PCT:.2f}%\n"
         f"Chow F (IRA Aug 2022 break): {CHOW_F:,.2f} (p < 1e-6)"
     )
     ax.text(

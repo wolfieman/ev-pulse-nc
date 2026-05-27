@@ -104,8 +104,8 @@ def main() -> None:
     print("=" * 80)
     print("RANK STABILITY ACROSS EQUITY WEIGHT SCENARIOS")
     print("=" * 80)
-    print(f"\n  Util:Cost ratio held constant at 7:5")
-    print(f"  Baseline equity weight = 0.40 (column rank_eq_40)\n")
+    print("\n  Util:Cost ratio held constant at 7:5")
+    print("  Baseline equity weight = 0.40 (column rank_eq_40)\n")
     print(rank_table.to_string(index=False))
 
     # Print score table

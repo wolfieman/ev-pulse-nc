@@ -35,12 +35,14 @@ Project: EV Pulse NC
 Date: February 2026
 """
 
-import matplotlib.pyplot as plt
-import matplotlib.patches as patches
-from matplotlib.patheffects import withStroke
-import numpy as np
 from pathlib import Path
-from typing import Optional, Union, Literal
+from typing import Literal, Optional, Union
+
+import matplotlib.patches as patches
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+from matplotlib.patheffects import withStroke
 
 # Pillow is an optional enhancement for higher-quality social-preview images.
 # When missing, create_social_preview() transparently falls back to matplotlib
@@ -54,7 +56,6 @@ except ImportError:
 # Try to import Plotly for interactive charts
 try:
     import plotly.express as px
-    import plotly.graph_objects as go
     HAS_PLOTLY = True
 except ImportError:
     HAS_PLOTLY = False
@@ -377,8 +378,12 @@ def _create_preview_pillow(
     except OSError:
         try:
             # Linux fallback
-            title_font = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf', 52)
-            subtitle_font = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf', 26)
+            title_font = ImageFont.truetype(
+                '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf', 52
+            )
+            subtitle_font = ImageFont.truetype(
+                '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf', 26
+            )
         except OSError:
             title_font = ImageFont.load_default()
             subtitle_font = ImageFont.load_default()

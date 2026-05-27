@@ -496,7 +496,8 @@ def main() -> None:
         f"{WEIGHT_COST_EFFECTIVENESS:.2f} x Cost_Effectiveness_Score"
     )
     print(
-        "\n  Status: Superseded by scoring_framework_final.py (Phase 5 CEJST implementation)\n"
+        "\n  Status: Superseded by scoring_framework_final.py "
+        "(Phase 5 CEJST implementation)\n"
     )
 
 

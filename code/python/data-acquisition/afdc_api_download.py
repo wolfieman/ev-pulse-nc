@@ -60,9 +60,9 @@ OUTPUT_FILE = os.path.join(
 
 def download_stations():
     """Download all NC electric charging stations from AFDC API."""
-    print(f"[INFO] Querying AFDC API for NC electric stations...")
+    print("[INFO] Querying AFDC API for NC electric stations...")
     print(f"[INFO] Endpoint: {API_URL}")
-    print(f"[INFO] Parameters: state=NC, fuel_type=ELEC, status=E, limit=all")
+    print("[INFO] Parameters: state=NC, fuel_type=ELEC, status=E, limit=all")
 
     response = requests.get(API_URL, params=PARAMS, timeout=60)
     response.raise_for_status()

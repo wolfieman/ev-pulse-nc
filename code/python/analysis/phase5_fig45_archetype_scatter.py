@@ -8,9 +8,9 @@ composite NEVI Priority Score. Four quadrants visually identify the three
 named archetypes that organize the Discussion section:
 
     Top-left  (low equity, high utilization)  Utilization-driven   - Union
-    Bottom-right (high equity, low utilization) Equity-driven      - Mecklenburg, Guilford
+    Bottom-right (high equity, low utilization) Equity-driven  - Mecklenburg, Guilford
     Bottom-left (low equity, low utilization) Low across pillars   - Orange
-    Top-right (high equity, high utilization) Dual-driver          - (empty in this cohort)
+    Top-right (high equity, high utilization) Dual-driver  - (empty in this cohort)
 
 Design rationale (per Pereira panel recommendation):
     The three-archetype framing in PAPER-NOTES L542-550 organizes the entire
@@ -46,7 +46,6 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
 import pandas as pd
 

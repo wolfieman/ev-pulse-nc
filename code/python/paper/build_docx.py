@@ -29,8 +29,8 @@ from pathlib import Path
 
 from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_BREAK, WD_LINE_SPACING
-from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
+from docx.oxml.ns import qn
 from docx.shared import Inches, Pt
 
 # ---------------------------------------------------------------------------
@@ -56,11 +56,17 @@ FONT_SIZE = Pt(12)
 # figure number do not trigger another embed.
 FIGURE_TITLES = {
     24: "Mecklenburg County: Charging-Station Density Heat Map",
-    33: "Theil-T Decomposition of EV Charging Infrastructure Inequality: Within-County vs Between-County",
+    33: (
+        "Theil-T Decomposition of EV Charging Infrastructure Inequality: "
+        "Within-County vs Between-County"
+    ),
     36: "Workplace Charging Demand: LODES-Adjusted vs Unadjusted Estimates",
     42: "Charging Stations Overlaid on Justice40-Designated Disadvantaged Tracts",
     43: "NEVI Priority Scores: Top-10 NC Counties",
-    44: "Forecast Validation: Actual Versus Predicted BEV Registrations Across 400 County-Month Observations",
+    44: (
+        "Forecast Validation: Actual Versus Predicted BEV Registrations "
+        "Across 400 County-Month Observations"
+    ),
     45: "Equity-Utilization Quadrant: Three County Archetypes",
 }
 
@@ -411,7 +417,8 @@ def parse_markdown(md_text: str) -> list[dict]:
             # Lookahead: confirm next line is a separator (---|---|...)
             if i + 1 < n:
                 sep = lines[i + 1].strip()
-                if sep.startswith("|") and set(sep.replace("|", "").strip()) <= set("-: "):
+                sep_chars = set(sep.replace("|", "").strip())
+                if sep.startswith("|") and sep_chars <= set("-: "):
                     # Collect rows
                     table_rows: list[list[str]] = []
                     # Header
@@ -516,17 +523,14 @@ def render_blocks(doc: Document, blocks: list[dict]) -> dict:
     }
 
     in_references = False
-    in_appendix = False
     in_abstract = False
     keywords_inserted = False
-    prev_block_type: str | None = None
 
     # Track which figures have already been embedded so subsequent textual
     # references don't trigger a duplicate insertion.
     embedded_figures: set[int] = set()
     pending_figures: set[int] = set(FIGURE_TITLES.keys())
 
-    KEYWORDS_PREFIX = "Keywords:"
     KEYWORDS_TEXT = (
         "**Keywords:** EV charging infrastructure, NEVI Formula Program, "
         "Justice40, Theil decomposition, infrastructure equity, North Carolina"
@@ -550,7 +554,6 @@ def render_blocks(doc: Document, blocks: list[dict]) -> dict:
             # Treat top-level horizontal rules as section separators rather
             # than page breaks; they appear between every major section in the
             # manuscript and a page break per rule would balloon the page count.
-            prev_block_type = btype
             continue
 
         if btype == "h1":
@@ -558,12 +561,10 @@ def render_blocks(doc: Document, blocks: list[dict]) -> dict:
             # `# Appendices` is a section divider before the two appendices.
             text = block["text"]
             if text.startswith("EV Pulse NC"):
-                prev_block_type = btype
                 continue
             if text == "Appendices":
                 # Start a fresh page; the appendix H2 below will be on its own page
                 add_page_break(doc)
-                prev_block_type = btype
                 continue
             # Other H1 (none expected) — render as L1 heading
             add_h1(doc, text)
@@ -586,7 +587,6 @@ def render_blocks(doc: Document, blocks: list[dict]) -> dict:
                     in_abstract = False
                 if text.startswith("Appendix"):
                     add_page_break(doc)
-                    in_appendix = True
                 elif text == "12. References":
                     add_page_break(doc)
                     in_references = True
@@ -649,7 +649,6 @@ def render_blocks(doc: Document, blocks: list[dict]) -> dict:
                         # retry on every subsequent citation.
                         pending_figures.discard(fig_num)
 
-        prev_block_type = btype
 
     return stats
 
