@@ -11,9 +11,8 @@ Files checked:
     3. lehd-nc-xwalk.csv.gz         (geographic crosswalk)
     4. acs-nc-income-tenure-tracts.csv (ACS tract-level income + tenure)
 
-Author: Wolfgang Sanyer
-License: Polyform Noncommercial 1.0.0 (see LICENSE)
-Date: 2026
+Copyright © 2026 Wolfgang Sanyer
+Licensed under the Polyform Noncommercial License 1.0.0 (see LICENSE).
 """
 
 from __future__ import annotations

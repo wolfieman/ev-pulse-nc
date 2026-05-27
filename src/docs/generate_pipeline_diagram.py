@@ -5,6 +5,9 @@ Fayetteville State University
 Generates a publication-quality pipeline visualization using matplotlib.
 Output: docs/figures/analytical-pipeline.png (600 DPI)
         docs/figures/analytical-pipeline-thumb.png (150 DPI)
+
+Copyright © 2026 Wolfgang Sanyer
+Licensed under the Polyform Noncommercial License 1.0.0 (see LICENSE).
 """
 from __future__ import annotations
 

@@ -9,13 +9,15 @@ across different time periods, and produces a consolidated master dataset.
 Originally developed for nc-ev-atlas project.
 
 Usage:
-    python ncdot_ev_pipeline.py --years 2025
-    python ncdot_ev_pipeline.py --start-month 2025-07 --end-month 2025-10
-    python ncdot_ev_pipeline.py --outdir ../../../data/raw/ncdot-monthly
-    python ncdot_ev_pipeline.py --skip-download --out ../../../data/processed/master
+    uv run src/data-acquisition/ncdot_ev_pipeline.py --years 2025
+    uv run src/data-acquisition/ncdot_ev_pipeline.py \
+        --start-month 2025-07 --end-month 2025-10
+    uv run src/data-acquisition/ncdot_ev_pipeline.py --outdir data/raw/ncdot-monthly
+    uv run src/data-acquisition/ncdot_ev_pipeline.py \
+        --skip-download --out data/processed/master
 
-Author: Wolfgang Sanyer
-License: Polyform Noncommercial 1.0.0 (see LICENSE)
+Copyright © 2026 Wolfgang Sanyer
+Licensed under the Polyform Noncommercial License 1.0.0 (see LICENSE).
 """
 from __future__ import annotations
 
@@ -462,8 +464,8 @@ Examples:
   %(prog)s --years 2025
   %(prog)s --start-month 2025-07 --end-month 2025-10
   %(prog)s --years 2024 2025 --start-month 2024-06
-  %(prog)s --outdir ../../../data/raw/ncdot-monthly
-  %(prog)s --skip-download --out ../../../data/processed/master
+  %(prog)s --outdir data/raw/ncdot-monthly
+  %(prog)s --skip-download --out data/processed/master
         """,
     )
     parser.add_argument(

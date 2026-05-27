@@ -20,6 +20,9 @@ Manuscript features handled:
   - APA 7 student-paper title page (centered + bold title, byline, advisor, date)
   - Abstract and Keywords on the page following the title page
   - Page numbers in the top-right header on every page
+
+Copyright © 2026 Wolfgang Sanyer
+Licensed under the Polyform Noncommercial License 1.0.0 (see LICENSE).
 """
 
 from __future__ import annotations

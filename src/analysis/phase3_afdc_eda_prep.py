@@ -6,9 +6,8 @@ the charging-level classification, and parsing the string-encoded connector
 and charging-unit fields. The tables and figures modules build on the prepared
 DataFrame produced here. Run via generate_phase3_afdc_eda.py.
 
-Author: Wolfgang Sanyer
-License: Polyform Noncommercial 1.0.0 (see LICENSE)
-Date: 2026
+Copyright © 2026 Wolfgang Sanyer
+Licensed under the Polyform Noncommercial License 1.0.0 (see LICENSE).
 """
 
 from __future__ import annotations

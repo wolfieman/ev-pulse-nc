@@ -17,8 +17,8 @@ output to data/processed and modifies no raw inputs or other scripts.
 Usage:
     uv run src/analysis/phase5_climate_sensitivity.py
 
-Author: Wolfgang Sanyer
-License: Polyform Noncommercial 1.0.0 (see LICENSE)
+Copyright © 2026 Wolfgang Sanyer
+Licensed under the Polyform Noncommercial License 1.0.0 (see LICENSE).
 """
 
 from __future__ import annotations

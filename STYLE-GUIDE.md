@@ -19,6 +19,20 @@ This document defines the coding standards and design philosophy for the EV Puls
 
 ---
 
+## Readability & Narrative Style
+
+Code should read top-to-bottom like prose; a reader should rarely have to jump around to follow what a script does.
+
+- **Narrative ordering.** `main()` reads like a table of contents. Order helper functions by the sequence in which they are first called, not alphabetically.
+- **Naming is documentation.** A well-named function rarely needs a comment — prefer `load_training_data()` over `load()` plus a comment. If you reach for a comment to explain *what* a line does, rename instead.
+- **Comments earn their place.** Comment the *why* — a non-obvious threshold, a data quirk, a SAS-vs-Python difference — never the *what*. Delete comments that merely restate the code.
+- **Section banners** (`# === Section ===`) split a long script into chapters (data loading / computation / output). Banner the phases, not every function.
+- **Function size.** When a function outgrows a screen or mixes computation with I/O and plotting, split it along those seams. The ARIMA and AFDC-EDA splits are the worked examples: a reusable compute core in `evpulse/`, plotting and CLI in the script.
+
+> Read these first as exemplars: `phase3_zip_density.py` (clean compute), `scoring_framework_vif.py` (narrative `main()`), `census_tract_boundaries.py` (boundary I/O with validation).
+
+---
+
 ## Naming Conventions
 
 | Element | Convention | Example |
@@ -29,6 +43,17 @@ This document defines the coding standards and design philosophy for the EV Puls
 | Functions/variables | snake_case | `download_month()`, `month_label` |
 | Classes | PascalCase | `DownloadResult` |
 | Constants | UPPER_SNAKE_CASE | `BASE_URL`, `USER_AGENT` |
+| DataFrames | `df`, `gdf` (GeoDataFrame), `<grain>_df` | `county_df`, `zip_df`, `tract_gdf` |
+| Figure functions | `figNN_<subject>` | `fig09_stations_by_level()` |
+| Private helpers | leading underscore | `_parse()`, `_extract()` |
+
+### Abbreviations
+
+Use the established domain abbreviations consistently, and spell out anything not on this list — clarity beats brevity:
+
+`df` (DataFrame), `gdf` (GeoDataFrame), `fips`, `zcta`, `bev` / `phev`, `l2` / `dcfc`, `ci` (confidence interval), `crs`.
+
+When more than one DataFrame is in scope, suffix it with its grain (`county_df`, `zip_df`) rather than relying on a bare `df`.
 
 ### Data File Naming Pattern
 
@@ -47,7 +72,12 @@ ncdot-ev-registrations-county-202506.csv
 
 ### Directory Structure Note
 
-The `src/` subdirectories use kebab-case because they contain standalone scripts run directly, not importable modules. If importable packages are needed later, they must use snake_case per Python requirements.
+Two strata live under `src/`:
+
+- **`src/evpulse/`** — the importable shared package (snake_case, per Python's import rules): paths, constants, IO/geo loaders, plotting style, and the ARIMA model core. Imported as `from evpulse.x import ...`.
+- **`src/<area>/`** (`analysis/`, `data-acquisition/`, …) — standalone scripts run directly via `uv run`. These directories use kebab-case because they hold scripts, not importable modules. Scripts import sibling scripts by bare module name, resolved by the script's own directory on `sys.path`; they import shared logic from `evpulse`.
+
+The only deliberate `sys.path` manipulation is in `tests/conftest.py`, which adds the script directories so the test suite can import scripts by bare name.
 
 ---
 
@@ -237,12 +267,27 @@ select = ["E", "F", "W", "I"]
 | W | pycodestyle warnings |
 | I | isort (import ordering) |
 
-Run the linter before committing:
+Run the linter before committing (always via `uv run`, never a bare `ruff`):
 
 ```bash
-ruff check src/
-ruff format src/
+uv run ruff check src/
+uv run ruff format src/
 ```
+
+---
+
+## Console Output Conventions
+
+Scripts print progress and results to stdout. Standardize the tag vocabulary so output is scannable and greppable:
+
+| Tag | Meaning | Stream |
+|-----|---------|--------|
+| `[ok]` | A step succeeded | stdout |
+| `[warn]` | Recoverable problem; processing continues (e.g. a skipped malformed row) | stderr |
+| `[SKIP]` | A step was deliberately skipped (e.g. coverage below a threshold) | stdout |
+| `[PASS]` / `[FAIL]` | A verification or test assertion result | stdout |
+
+Reserve `[PASS]` / `[FAIL]` for pass/fail checks (e.g. the baseline verifier); use `[ok]` / `[warn]` / `[SKIP]` for ordinary progress. Send `[warn]` to stderr so warnings survive stdout redirection.
 
 ---
 
@@ -252,12 +297,16 @@ ruff format src/
 
 ```python
 #!/usr/bin/env python3
-"""
-Module docstring explaining purpose and usage.
+"""Module docstring explaining purpose and usage.
 
 Usage:
-    python script.py --arg value
+    uv run src/<area>/script.py --arg value
+
+Copyright © 2026 Wolfgang Sanyer
+Licensed under the Polyform Noncommercial License 1.0.0 (see LICENSE).
 """
+
+from __future__ import annotations
 
 # Standard library imports
 import argparse
@@ -266,7 +315,8 @@ from pathlib import Path
 # Third-party imports
 import requests
 
-# Local imports (if any)
+# First-party imports
+from evpulse.paths import PROJECT_ROOT
 
 # Constants
 BASE_URL = "https://example.com"
@@ -277,12 +327,31 @@ class Result(NamedTuple):
     message: str
 
 # Functions (ordered by call hierarchy or logical grouping)
-def main():
+def main() -> None:
     ...
 
 if __name__ == "__main__":
     main()
 ```
+
+Mandatory in every module:
+
+- **`from __future__ import annotations`** as the first statement after the docstring (one blank line below it). This keeps annotations zero-cost and lets `X | None` / `list[str]` be used freely.
+- **The 2-line `Copyright ©` banner** as the last lines of the module docstring (see below).
+- **`pathlib.Path`**, never `os.path` string juggling. Derive the repo root from `evpulse.paths.PROJECT_ROOT`, never from `__file__` parent-walking.
+- **Double quotes** for strings (ruff-formatted).
+- **Type hints** on public function signatures; modern syntax (`X | None`, `list[str]`, `dict[str, int]`) over `typing.Optional` / `Union` / `Dict` / `List`.
+
+### Authorship & License Banner (required)
+
+Every module's docstring **must end** with the binding two-line notice:
+
+```text
+Copyright © 2026 Wolfgang Sanyer
+Licensed under the Polyform Noncommercial License 1.0.0 (see LICENSE).
+```
+
+This is the required-notice line for the Polyform Noncommercial license; an `Author:` line is not a substitute. There is no SPDX identifier — Polyform Noncommercial has none registered, so the plain copyright banner is canonical.
 
 ### Function Docstrings
 
@@ -334,4 +403,4 @@ Don't:
 
 ---
 
-*Last updated: April 2026*
+*Last updated: May 2026*

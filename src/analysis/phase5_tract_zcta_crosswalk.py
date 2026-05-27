@@ -9,9 +9,8 @@ county-level summary CSVs for downstream scoring.
 
 Method follows the EPA EJScreen area-weighted interpolation standard.
 
-Author: Wolfgang Sanyer
-License: Polyform Noncommercial 1.0.0 (see LICENSE)
-Date: 2026
+Copyright © 2026 Wolfgang Sanyer
+Licensed under the Polyform Noncommercial License 1.0.0 (see LICENSE).
 """
 
 from __future__ import annotations

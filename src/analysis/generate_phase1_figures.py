@@ -12,12 +12,12 @@ Creates publication-ready visualizations for Phase 1 validation:
 7. County performance lollipop chart
 
 Usage:
-    python generate_phase1_figures.py
-    python generate_phase1_figures.py --output ../../../output/figures
-    python generate_phase1_figures.py --nice-to-have
+    uv run src/analysis/generate_phase1_figures.py
+    uv run src/analysis/generate_phase1_figures.py --output output/figures
+    uv run src/analysis/generate_phase1_figures.py --nice-to-have
 
-Author: Wolfgang Sanyer
-License: Polyform Noncommercial 1.0.0 (see LICENSE)
+Copyright © 2026 Wolfgang Sanyer
+Licensed under the Polyform Noncommercial License 1.0.0 (see LICENSE).
 """
 from __future__ import annotations
 

@@ -15,4 +15,4 @@ Backstory, methodology, and results are documented in this repo's own files (REA
 
 ## Commit convention
 
-Use `[EVPULSE][TYPE]` prefix. Full convention documented in a private cross-course conventions repository.
+Use `[EVPULSE][TYPE]` prefix. Full convention in [CONTRIBUTING.md](../CONTRIBUTING.md).

@@ -39,9 +39,8 @@ Output:
 Usage:
     uv run src/analysis/scoring_framework_final.py
 
-Author: Wolfgang Sanyer
-License: Polyform Noncommercial 1.0.0 (see LICENSE)
-Date: 2026
+Copyright © 2026 Wolfgang Sanyer
+Licensed under the Polyform Noncommercial License 1.0.0 (see LICENSE).
 """
 
 from __future__ import annotations

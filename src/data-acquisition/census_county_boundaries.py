@@ -6,7 +6,7 @@ Downloads NC county boundary geometries from the US Census Bureau
 cartographic boundary files for spatial joins.
 
 Usage:
-    py src/data-acquisition/census_county_boundaries.py
+    uv run src/data-acquisition/census_county_boundaries.py
 
 Requires:
     - geopandas library (pip install geopandas)
@@ -14,8 +14,8 @@ Requires:
 Output:
     data/raw/nc-county-boundaries.geojson
 
-Author: Wolfgang Sanyer
-License: Polyform Noncommercial 1.0.0 (see LICENSE)
+Copyright © 2026 Wolfgang Sanyer
+Licensed under the Polyform Noncommercial License 1.0.0 (see LICENSE).
 """
 
 from __future__ import annotations

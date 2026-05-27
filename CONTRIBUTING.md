@@ -12,11 +12,11 @@ Guidelines for contributing to the North Carolina Electric Vehicle Analytics pro
 
 All contributions must follow [STYLE-GUIDE.md](STYLE-GUIDE.md).
 
-**Linting:** Run `ruff check` and `ruff format` before committing.
+**Linting:** Run `uv run ruff check` and `uv run ruff format` before committing.
 
 ```bash
-ruff check src/
-ruff format src/
+uv run ruff check src/
+uv run ruff format src/
 ```
 
 The VS Code ruff extension handles this automatically on save.
@@ -34,15 +34,31 @@ The VS Code ruff extension handles this automatically on save.
 
 **Format:**
 ```
-[EVPULSE][TYPE] Brief description of change
+[EVPULSE][TYPE] Imperative subject, ≤72 characters
 ```
 
-`TYPE` is one of: `FEAT` (new feature), `FIX` (bug fix), `DOCS` (documentation), `REFAC` (refactor), `CHORE` (housekeeping), `META` (project/repo metadata).
+The project tag is always `[EVPULSE]` — never `[EVPULS]`, `[EV-PULSE]`, or any other variant. `TYPE` is one of:
+
+| TYPE | Use for |
+|------|---------|
+| `FEAT` | New feature or analysis capability |
+| `FIX` | Bug fix or data correction |
+| `DOCS` | Documentation |
+| `REFAC` | Refactor (no behaviour change) |
+| `TEST` | Tests or test infrastructure |
+| `CHORE` | Housekeeping (dependencies, gitignore, tooling) |
+| `META` | Project / repo metadata |
 
 **Guidelines:**
-- Write clear, descriptive commit messages
-- Each commit should represent one logical change
-- Use present tense ("Add forecast model" not "Added forecast model")
+- Use the imperative mood ("Add forecast model", not "Added" or "Adds").
+- Each commit should represent one logical change.
+- An optional body explains *why*, not *what* — the diff already shows the what.
+
+**Never include in a commit message:**
+- AI or AI-tool attribution of any kind (no `Co-Authored-By`, no "Generated with …").
+- Private references — internal repositories, course names, advisor or teammate names.
+- Secrets, email addresses, or absolute filesystem paths (`C:\Users\…`).
+- File-by-file dumps — summarize the change rather than listing every touched file.
 
 ## Testing Requirements
 
@@ -66,7 +82,7 @@ Update documentation when changes:
 Key files to update:
 - `data/README.md` - Data directory overview and sources
 - `data/DATA-DICTIONARY.md` - Detailed data dictionary
-- `code/README.md` - Code execution guide
+- `src/README.md` - Code execution guide
 - `README.md` - Project overview (major changes only)
 
 ## Phase Transition Protocol

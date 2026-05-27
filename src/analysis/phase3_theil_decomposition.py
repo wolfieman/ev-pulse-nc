@@ -11,9 +11,8 @@ Outputs:
 - phase3-theil-decomposition.csv   (3 rows: total, between, within)
 - phase3-theil-county-contributions.csv  (10 rows, one per county)
 
-Author: Wolfgang Sanyer
-License: Polyform Noncommercial 1.0.0 (see LICENSE)
-Date: 2026
+Copyright © 2026 Wolfgang Sanyer
+Licensed under the Polyform Noncommercial License 1.0.0 (see LICENSE).
 """
 
 from __future__ import annotations

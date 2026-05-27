@@ -19,9 +19,8 @@ Outputs:
 - phase3-county-gini.csv  (10 rows, one per county)
 - phase3-statewide-gini.csv  (1 row)
 
-Author: Wolfgang Sanyer
-License: Polyform Noncommercial 1.0.0 (see LICENSE)
-Date: 2026
+Copyright © 2026 Wolfgang Sanyer
+Licensed under the Polyform Noncommercial License 1.0.0 (see LICENSE).
 """
 
 from __future__ import annotations

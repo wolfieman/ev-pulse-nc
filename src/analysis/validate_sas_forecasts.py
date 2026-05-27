@@ -14,11 +14,11 @@ Metrics calculated:
 - Systematic bias: Mean error, underprediction rate
 
 Usage:
-    python validate_sas_forecasts.py
-    python validate_sas_forecasts.py --output ../../../output/validation
+    uv run src/analysis/validate_sas_forecasts.py
+    uv run src/analysis/validate_sas_forecasts.py --output output/validation
 
-Author: Wolfgang Sanyer
-License: Polyform Noncommercial 1.0.0 (see LICENSE)
+Copyright © 2026 Wolfgang Sanyer
+Licensed under the Polyform Noncommercial License 1.0.0 (see LICENSE).
 """
 from __future__ import annotations
 

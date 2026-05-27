@@ -9,16 +9,16 @@ Data:
     - Validation: July-Oct 2025 (4 months holdout)
 
 Usage:
-    python arima_bev_forecast.py
-    python arima_bev_forecast.py --order 1 1 1
-    python arima_bev_forecast.py --auto-select
+    uv run src/analysis/arima_bev_forecast.py
+    uv run src/analysis/arima_bev_forecast.py --order 1 1 1
+    uv run src/analysis/arima_bev_forecast.py --auto-select
 
 The data loading, stationarity tests, model fitting, forecasting, and order
 selection live in evpulse.arima; this script handles console reporting,
 diagnostics/forecast plotting, and the command-line interface.
 
-Author: Wolfgang Sanyer
-License: Polyform Noncommercial 1.0.0 (see LICENSE)
+Copyright © 2026 Wolfgang Sanyer
+Licensed under the Polyform Noncommercial License 1.0.0 (see LICENSE).
 """
 
 from __future__ import annotations

@@ -5,9 +5,8 @@ Produces figures fig-08 through fig-17 from the prepared AFDC DataFrame:
 missingness, charging-level and network distributions, geographic coverage,
 temporal growth, and connector types. Run via generate_phase3_afdc_eda.py.
 
-Author: Wolfgang Sanyer
-License: Polyform Noncommercial 1.0.0 (see LICENSE)
-Date: 2026
+Copyright © 2026 Wolfgang Sanyer
+Licensed under the Polyform Noncommercial License 1.0.0 (see LICENSE).
 """
 
 from __future__ import annotations

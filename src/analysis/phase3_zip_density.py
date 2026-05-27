@@ -7,9 +7,8 @@ counts, per-capita density metrics, DC-fast share, network diversity,
 and public-access subtotals. Produces a ZIP-level density CSV and a
 county-level summary CSV for downstream modelling and visualisation.
 
-Author: Wolfgang Sanyer
-License: Polyform Noncommercial 1.0.0 (see LICENSE)
-Date: 2026
+Copyright © 2026 Wolfgang Sanyer
+Licensed under the Polyform Noncommercial License 1.0.0 (see LICENSE).
 """
 
 from __future__ import annotations

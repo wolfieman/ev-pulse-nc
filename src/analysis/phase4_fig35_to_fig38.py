@@ -12,9 +12,8 @@ Generates four publication-ready figures for the EV Pulse NC capstone:
 Input data produced by Phase 4 LODES/CTPP pipeline.
 Output: 600 DPI, PDF + PNG dual export via save_figure().
 
-Author: Wolfgang Sanyer
-License: Polyform Noncommercial 1.0.0 (see LICENSE)
-Date: 2026
+Copyright © 2026 Wolfgang Sanyer
+Licensed under the Polyform Noncommercial License 1.0.0 (see LICENSE).
 """
 
 from __future__ import annotations

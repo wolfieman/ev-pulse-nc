@@ -5,9 +5,8 @@ Aggregation tables derived from the prepared AFDC DataFrame: per-column
 profile, station/port counts by charging level, network, and ZIP, plus a
 data-quality flag list. Run via generate_phase3_afdc_eda.py.
 
-Author: Wolfgang Sanyer
-License: Polyform Noncommercial 1.0.0 (see LICENSE)
-Date: 2026
+Copyright © 2026 Wolfgang Sanyer
+Licensed under the Polyform Noncommercial License 1.0.0 (see LICENSE).
 """
 
 from __future__ import annotations

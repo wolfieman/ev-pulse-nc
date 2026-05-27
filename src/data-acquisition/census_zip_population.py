@@ -6,7 +6,7 @@ Downloads ZIP code (ZCTA) population estimates from the
 Census Bureau American Community Survey (ACS) 5-year API.
 
 Usage:
-    py src/data-acquisition/census_zip_population.py
+    uv run src/data-acquisition/census_zip_population.py
 
 Requires:
     - Census API key in .env file (CENSUS_API_KEY=your_key)
@@ -16,8 +16,8 @@ Requires:
 Output:
     data/raw/nc-zip-population-acs2022.csv
 
-Author: Wolfgang Sanyer
-License: Polyform Noncommercial 1.0.0 (see LICENSE)
+Copyright © 2026 Wolfgang Sanyer
+Licensed under the Polyform Noncommercial License 1.0.0 (see LICENSE).
 """
 
 from __future__ import annotations

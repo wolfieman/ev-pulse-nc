@@ -7,7 +7,7 @@ US Census Bureau cartographic boundary files, filtered to the North
 Carolina region using a spatial bounding-box approach.
 
 Usage:
-    py src/data-acquisition/census_zcta_boundaries.py
+    uv run src/data-acquisition/census_zcta_boundaries.py
 
 Requires:
     - geopandas library (pip install geopandas)
@@ -15,8 +15,8 @@ Requires:
 Output:
     data/raw/nc-zcta-boundaries.geojson
 
-Author: Wolfgang Sanyer
-License: Polyform Noncommercial 1.0.0 (see LICENSE)
+Copyright © 2026 Wolfgang Sanyer
+Licensed under the Polyform Noncommercial License 1.0.0 (see LICENSE).
 """
 
 from __future__ import annotations

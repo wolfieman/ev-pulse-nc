@@ -8,8 +8,8 @@ a SAS ARIMA model in Python. Use this as a quick reference.
 For full implementation with diagnostics and validation, see:
     arima_bev_forecast.py
 
-Author: Wolfgang Sanyer
-License: Polyform Noncommercial 1.0.0 (see LICENSE)
+Copyright © 2026 Wolfgang Sanyer
+Licensed under the Polyform Noncommercial License 1.0.0 (see LICENSE).
 """
 from __future__ import annotations
 

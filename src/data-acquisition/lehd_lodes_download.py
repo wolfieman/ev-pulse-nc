@@ -23,8 +23,8 @@ Output:
     data/raw/lehd-nc-xwalk.csv.gz
     data/raw/acs-nc-income-tenure-tracts.csv
 
-Author: Wolfgang Sanyer
-License: Polyform Noncommercial 1.0.0 (see LICENSE)
+Copyright © 2026 Wolfgang Sanyer
+Licensed under the Polyform Noncommercial License 1.0.0 (see LICENSE).
 """
 
 from __future__ import annotations

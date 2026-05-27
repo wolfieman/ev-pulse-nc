@@ -29,8 +29,8 @@ Usage:
         "preview.png"
     )
 
-Author: Wolfgang Sanyer
-License: Polyform Noncommercial 1.0.0 (see LICENSE)
+Copyright © 2026 Wolfgang Sanyer
+Licensed under the Polyform Noncommercial License 1.0.0 (see LICENSE).
 Project: EV Pulse NC
 Date: February 2026
 """
