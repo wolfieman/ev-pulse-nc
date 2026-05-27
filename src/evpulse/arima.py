@@ -10,14 +10,22 @@ Copyright © 2026 Wolfgang Sanyer
 Licensed under the Polyform Noncommercial License 1.0.0 (see LICENSE).
 """
 
+# statsmodels ships no type stubs and pandas-stubs types time-series reductions
+# (.sum() on a possibly-scalar Series, int() of a reduction, dynamic-label
+# df[col] access) as scalar|Series unions. Basic-mode pyright reports those as
+# attribute/argument errors that are not real bugs; suppress just those two
+# categories for this statistics-wrapper module. All other checks stay on.
+# pyright: reportAttributeAccessIssue=false, reportArgumentType=false
+
 from __future__ import annotations
 
 import warnings
 from pathlib import Path
+from typing import cast
 
 import numpy as np
 import pandas as pd
-from statsmodels.tsa.arima.model import ARIMA
+from statsmodels.tsa.arima.model import ARIMA, ARIMAResults
 from statsmodels.tsa.statespace.sarimax import SARIMAX
 from statsmodels.tsa.stattools import adfuller, kpss
 
@@ -214,7 +222,7 @@ def test_stationarity(series: pd.Series, name: str = "Series") -> dict:
     results = {}
 
     # ADF Test (H0: unit root exists, series is non-stationary)
-    adf_result = adfuller(series.dropna(), autolag="AIC")
+    adf_result: tuple = adfuller(series.dropna(), autolag="AIC")
     results["adf"] = {
         "statistic": adf_result[0],
         "pvalue": adf_result[1],
@@ -273,7 +281,7 @@ def fit_arima_model(
     order: tuple = DEFAULT_ORDER,
     seasonal_order: tuple | None = None,
     trend: str = "n",
-) -> ARIMA:
+) -> ARIMAResults:
     """
     Fit ARIMA or SARIMAX model to the time series.
 
@@ -327,7 +335,7 @@ def fit_arima_model(
     # For closer SAS match, you might try different methods
     fitted = model.fit(method_kwargs={"warn_convergence": False})
 
-    return fitted
+    return cast(ARIMAResults, fitted)
 
 
 # =============================================================================

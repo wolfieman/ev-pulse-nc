@@ -33,6 +33,7 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+    "pyright>=1.1.400",
     "pytest>=7.0",
     "pytest-cov>=4.0",
     "ruff>=0.3.0",
@@ -56,6 +57,14 @@ allowed-confusables = ["–", "×"]
 
 [tool.ruff.lint.isort]
 known-first-party = ["evpulse"]
+
+[tool.pyright]
+# Scoped to the reusable package: the analysis scripts lean on untyped
+# geopandas/matplotlib returns that would drown real findings in noise.
+include = ["src/evpulse"]
+typeCheckingMode = "basic"
+# statsmodels (and geopandas) ship no type stubs; do not flag their absence.
+reportMissingTypeStubs = false
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

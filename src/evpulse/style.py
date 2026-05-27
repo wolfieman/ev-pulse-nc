@@ -29,6 +29,9 @@ from pathlib import Path
 from typing import Literal
 
 import matplotlib.pyplot as plt
+from cycler import cycler
+from matplotlib.axes import Axes
+from matplotlib.figure import Figure
 
 # =============================================================================
 # COLOR PALETTE - IBM Design Library (Colorblind Safe)
@@ -184,7 +187,7 @@ def get_publication_rcparams(
         "axes.axisbelow": True,  # Grid behind data
         "axes.spines.top": False,
         "axes.spines.right": False,
-        "axes.prop_cycle": plt.cycler(color=MODEL_COLORS),
+        "axes.prop_cycle": cycler(color=MODEL_COLORS),
         # =====================================================================
         # GRID
         # =====================================================================
@@ -349,7 +352,7 @@ def setup_publication_style(
 
 
 def save_figure(
-    fig: plt.Figure,
+    fig: Figure,
     filename: str,
     output_dir: Path,
     formats: list[str] | None = None,
@@ -431,7 +434,7 @@ def save_figure(
 
 
 def add_panel_label(
-    ax: plt.Axes,
+    ax: Axes,
     label: str,
     loc: Literal[
         "upper left", "upper right", "lower left", "lower right"
@@ -493,7 +496,7 @@ def add_panel_label(
 
 
 def add_stats_annotation(
-    ax: plt.Axes,
+    ax: Axes,
     text: str,
     loc: Literal[
         "upper left", "upper right", "lower left", "lower right"
