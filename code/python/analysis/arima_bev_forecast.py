@@ -24,11 +24,11 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from scipy import stats
 
 # statsmodels imports
 from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
 from statsmodels.stats.diagnostic import acorr_ljungbox
+from statsmodels.stats.stattools import jarque_bera
 from statsmodels.tsa.arima.model import ARIMA
 from statsmodels.tsa.statespace.sarimax import SARIMAX
 from statsmodels.tsa.stattools import adfuller, kpss
@@ -442,8 +442,8 @@ def run_diagnostics(fitted_model, output_dir: Path | None = None) -> None:
     lb_results = acorr_ljungbox(resid, lags=[10, 20], return_df=True)
     print(lb_results)
 
-    # Jarque-Bera test for normality
-    jb_stat, jb_pvalue, skew, kurtosis = stats.jarque_bera(resid)
+    # Jarque-Bera test for normality (statsmodels returns skew & kurtosis too)
+    jb_stat, jb_pvalue, skew, kurtosis = jarque_bera(resid)
     print("\nJarque-Bera Normality Test:")
     print(f"  Statistic: {jb_stat:.4f}")
     print(f"  p-value: {jb_pvalue:.4f}")
