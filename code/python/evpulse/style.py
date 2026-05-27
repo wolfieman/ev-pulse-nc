@@ -14,7 +14,7 @@ Features:
 - Consistent typography hierarchy
 
 Usage:
-    from publication_style import setup_publication_style, COLORS, save_figure
+    from evpulse.style import setup_publication_style, COLORS, save_figure
     setup_publication_style()
     # ... create your figures ...
     save_figure(fig, "my-figure", output_dir)
@@ -28,8 +28,6 @@ from pathlib import Path
 from typing import Literal, Optional
 
 import matplotlib.pyplot as plt
-
-from evpulse.paths import PROJECT_ROOT
 
 # =============================================================================
 # COLOR PALETTE - IBM Design Library (Colorblind Safe)
@@ -67,19 +65,6 @@ PALETTE_SEQUENTIAL = [
     "#034E7B",
 ]
 
-# Diverging palette for error visualization (colorblind safe)
-PALETTE_DIVERGING = [
-    "#D73027",
-    "#F46D43",
-    "#FDAE61",
-    "#FEE090",
-    "#FFFFBF",
-    "#E0F3F8",
-    "#ABD9E9",
-    "#74ADD1",
-    "#4575B4",
-]
-
 # Model color list for iteration
 MODEL_COLORS = [COLORS["ESM"], COLORS["ARIMA"], COLORS["UCM"]]
 
@@ -87,14 +72,6 @@ MODEL_COLORS = [COLORS["ESM"], COLORS["ARIMA"], COLORS["UCM"]]
 # =============================================================================
 # PUBLICATION STANDARDS
 # =============================================================================
-
-# Common journal figure width requirements (in inches)
-FIGURE_WIDTHS = {
-    "single_column": 3.5,  # Most journals single column
-    "one_half_column": 5.5,  # 1.5 column width
-    "double_column": 7.0,  # Full page width
-    "presentation": 10.0,  # For slides/posters
-}
 
 # Standard figure dimensions (width, height) in inches
 FIGURE_SIZES = {
@@ -512,66 +489,6 @@ def add_panel_label(
     )
 
 
-def create_color_legend(
-    ax: plt.Axes,
-    labels: list[str] = ["ESM", "ARIMA", "UCM"],
-    loc: str = "best",
-    **kwargs,
-) -> None:
-    """
-    Create a color legend for model types.
-
-    Args:
-        ax: Matplotlib axes.
-        labels: Labels matching COLORS keys.
-        loc: Legend location.
-        **kwargs: Additional legend kwargs.
-    """
-    from matplotlib.patches import Patch
-
-    handles = [
-        Patch(facecolor=COLORS.get(label, COLORS["neutral"]), label=label)
-        for label in labels
-    ]
-    ax.legend(handles=handles, loc=loc, **kwargs)
-
-
-def format_axis_labels(
-    ax: plt.Axes,
-    xlabel: Optional[str] = None,
-    ylabel: Optional[str] = None,
-    title: Optional[str] = None,
-    xlabel_kwargs: Optional[dict] = None,
-    ylabel_kwargs: Optional[dict] = None,
-    title_kwargs: Optional[dict] = None,
-) -> None:
-    """
-    Apply consistent formatting to axis labels and title.
-
-    Args:
-        ax: Matplotlib axes.
-        xlabel: X-axis label text.
-        ylabel: Y-axis label text.
-        title: Axes title text.
-        xlabel_kwargs: Additional kwargs for xlabel.
-        ylabel_kwargs: Additional kwargs for ylabel.
-        title_kwargs: Additional kwargs for title.
-    """
-    default_label_kwargs = {"fontsize": FONT_SIZES["axis_label"]}
-    default_title_kwargs = {
-        "fontsize": FONT_SIZES["title"],
-        "fontweight": "bold",
-        "pad": 12,
-    }
-
-    if xlabel:
-        ax.set_xlabel(xlabel, **(xlabel_kwargs or default_label_kwargs))
-    if ylabel:
-        ax.set_ylabel(ylabel, **(ylabel_kwargs or default_label_kwargs))
-    if title:
-        ax.set_title(title, **(title_kwargs or default_title_kwargs))
-
-
 def add_stats_annotation(
     ax: plt.Axes,
     text: str,
@@ -642,117 +559,6 @@ def add_stats_annotation(
 # =============================================================================
 
 
-def style_scatter_plot(
-    ax: plt.Axes,
-    add_identity_line: bool = True,
-    identity_color: str = "black",
-    identity_style: str = "--",
-    identity_label: str = "Perfect prediction",
-) -> None:
-    """
-    Apply styling specific to scatter plots (predicted vs actual).
-
-    Args:
-        ax: Matplotlib axes.
-        add_identity_line: Whether to add y=x reference line.
-        identity_color: Color of identity line.
-        identity_style: Line style for identity line.
-        identity_label: Label for identity line in legend.
-    """
-    if add_identity_line:
-        xlim = ax.get_xlim()
-        ylim = ax.get_ylim()
-        max_val = max(xlim[1], ylim[1])
-        ax.plot(
-            [0, max_val],
-            [0, max_val],
-            color=identity_color,
-            linestyle=identity_style,
-            linewidth=1.5,
-            label=identity_label,
-            zorder=1,
-        )
-        ax.set_xlim(0, max_val)
-        ax.set_ylim(0, max_val)
-
-    # Equal aspect ratio for predicted vs actual
-    ax.set_aspect("equal", adjustable="box")
-
-
-def style_histogram(
-    ax: plt.Axes,
-    add_zero_line: bool = True,
-    add_mean_line: bool = True,
-    data_mean: Optional[float] = None,
-    zero_color: str = "black",
-    mean_color: str = "#DC267F",
-) -> None:
-    """
-    Apply styling specific to histograms (error distributions).
-
-    Args:
-        ax: Matplotlib axes.
-        add_zero_line: Whether to add vertical line at x=0.
-        add_mean_line: Whether to add vertical line at mean.
-        data_mean: Mean value for mean line (required if add_mean_line=True).
-        zero_color: Color of zero reference line.
-        mean_color: Color of mean line.
-    """
-    if add_zero_line:
-        ax.axvline(
-            x=0,
-            color=zero_color,
-            linestyle="-",
-            linewidth=2,
-            label="Zero (unbiased)",
-            zorder=10,
-        )
-
-    if add_mean_line and data_mean is not None:
-        ax.axvline(
-            x=data_mean,
-            color=mean_color,
-            linestyle="--",
-            linewidth=2,
-            label=f"Mean: {data_mean:+.1f}",
-            zorder=10,
-        )
-
-
-def style_bar_chart(
-    ax: plt.Axes,
-    add_value_labels: bool = True,
-    values: Optional[list] = None,
-    label_format: str = "{:.1f}",
-    label_offset: float = 0.02,
-) -> None:
-    """
-    Apply styling specific to bar charts.
-
-    Args:
-        ax: Matplotlib axes.
-        add_value_labels: Whether to add value labels above bars.
-        values: Values to label (if different from bar heights).
-        label_format: Format string for value labels.
-        label_offset: Offset of labels from bar tops (in axis fraction).
-    """
-    if add_value_labels and values is not None:
-        ylim = ax.get_ylim()
-        offset = (ylim[1] - ylim[0]) * label_offset
-
-        for i, (patch, val) in enumerate(zip(ax.patches, values)):
-            x = patch.get_x() + patch.get_width() / 2
-            y = patch.get_height() + offset
-            ax.text(
-                x,
-                y,
-                label_format.format(val),
-                ha="center",
-                va="bottom",
-                fontsize=FONT_SIZES["annotation"],
-            )
-
-
 def style_boxplot(
     bp: dict,
     colors: Optional[list[str]] = None,
@@ -783,171 +589,3 @@ def style_boxplot(
     for median in bp["medians"]:
         median.set_color(COLORS["negative"])
         median.set_linewidth(2)
-
-
-def style_lollipop_chart(
-    ax: plt.Axes,
-    stem_width: float = 2,
-    marker_size: float = 100,
-    alpha: float = 0.8,
-) -> None:
-    """
-    Apply styling specific to lollipop charts.
-
-    Args:
-        ax: Matplotlib axes with lollipop chart.
-        stem_width: Width of lollipop stems.
-        marker_size: Size of lollipop markers.
-        alpha: Transparency.
-    """
-    # Style is applied during creation, this is for reference
-    # Lollipop best practices:
-    # - Horizontal orientation for category names
-    # - Sorted by value
-    # - Consistent stem starting point (usually 0)
-    # - Clear separation between groups
-    pass
-
-
-def style_time_series(
-    ax: plt.Axes,
-    add_legend: bool = True,
-    legend_loc: str = "upper left",
-) -> None:
-    """
-    Apply styling specific to time series plots with confidence bands.
-
-    Args:
-        ax: Matplotlib axes.
-        add_legend: Whether to add legend.
-        legend_loc: Legend location.
-    """
-    # Ensure proper z-ordering
-    # CI bands should be behind lines, lines behind points
-    if add_legend:
-        ax.legend(loc=legend_loc, framealpha=0.95)
-
-
-# =============================================================================
-# QUICK SETUP FOR COMMON SCENARIOS
-# =============================================================================
-
-
-def quick_setup_paper():
-    """Quick setup for academic paper figures (serif fonts, 600 DPI)."""
-    setup_publication_style(use_serif=True, context="paper")
-
-
-def quick_setup_presentation():
-    """Quick setup for presentation slides (sans-serif, larger fonts)."""
-    setup_publication_style(use_serif=False, context="talk")
-
-
-def quick_setup_poster():
-    """Quick setup for poster figures (sans-serif, largest fonts)."""
-    setup_publication_style(use_serif=False, context="poster")
-
-
-# =============================================================================
-# VALIDATION / DIAGNOSTIC
-# =============================================================================
-
-
-def print_current_settings():
-    """Print current matplotlib settings for debugging."""
-    print("=" * 60)
-    print("Current Publication Style Settings")
-    print("=" * 60)
-
-    settings = [
-        ("Figure DPI", plt.rcParams["figure.dpi"]),
-        ("Save DPI", plt.rcParams["savefig.dpi"]),
-        ("Figure size", plt.rcParams["figure.figsize"]),
-        ("Font family", plt.rcParams["font.family"]),
-        ("Font size (base)", plt.rcParams["font.size"]),
-        ("Title size", plt.rcParams["axes.titlesize"]),
-        ("Label size", plt.rcParams["axes.labelsize"]),
-        ("Legend size", plt.rcParams["legend.fontsize"]),
-        ("Grid visible", plt.rcParams["axes.grid"]),
-        (
-            "Spines (top/right)",
-            f"{plt.rcParams['axes.spines.top']}/{plt.rcParams['axes.spines.right']}",
-        ),
-    ]
-
-    for name, value in settings:
-        print(f"  {name}: {value}")
-
-    print("=" * 60)
-
-
-# =============================================================================
-# MAIN - Example usage
-# =============================================================================
-
-if __name__ == "__main__":
-    # Demo the styling
-    import numpy as np
-
-    # Apply publication style
-    setup_publication_style()
-    print_current_settings()
-
-    # Create example figure
-    fig, axes = plt.subplots(2, 2, figsize=FIGURE_SIZES["large_square"])
-
-    # Example scatter plot
-    x = np.random.randn(100)
-    y = x + np.random.randn(100) * 0.3
-    axes[0, 0].scatter(x, y, c=COLORS["ESM"], alpha=0.6, s=40)
-    axes[0, 0].set_xlabel("Predicted")
-    axes[0, 0].set_ylabel("Actual")
-    axes[0, 0].set_title("Scatter Plot Example")
-    add_panel_label(axes[0, 0], "A")
-
-    # Example histogram
-    data = np.random.randn(500)
-    axes[0, 1].hist(data, bins=30, color=COLORS["ARIMA"], alpha=0.7, edgecolor="white")
-    axes[0, 1].set_xlabel("Value")
-    axes[0, 1].set_ylabel("Frequency")
-    axes[0, 1].set_title("Histogram Example")
-    add_panel_label(axes[0, 1], "B")
-
-    # Example bar chart
-    categories = ["ESM", "ARIMA", "UCM"]
-    values = [4.2, 5.4, 4.4]
-    bars = axes[1, 0].bar(categories, values, color=[COLORS[c] for c in categories])
-    axes[1, 0].set_xlabel("Model Type")
-    axes[1, 0].set_ylabel("MAPE (%)")
-    axes[1, 0].set_title("Bar Chart Example")
-    add_panel_label(axes[1, 0], "C")
-
-    # Example time series
-    t = np.arange(10)
-    y_pred = 100 + 10 * t + np.random.randn(10) * 5
-    y_actual = y_pred + np.random.randn(10) * 10
-    y_lower = y_pred - 15
-    y_upper = y_pred + 15
-
-    axes[1, 1].fill_between(
-        t, y_lower, y_upper, alpha=0.3, color=COLORS["ESM"], label="95% CI"
-    )
-    axes[1, 1].plot(t, y_pred, color=COLORS["ESM"], marker="s", label="Predicted")
-    axes[1, 1].scatter(
-        t, y_actual, color=COLORS["negative"], s=60, zorder=5, label="Actual"
-    )
-    axes[1, 1].set_xlabel("Time")
-    axes[1, 1].set_ylabel("Value")
-    axes[1, 1].set_title("Time Series Example")
-    axes[1, 1].legend()
-    add_panel_label(axes[1, 1], "D")
-
-    plt.suptitle("Publication Style Demo", fontsize=12, fontweight="bold", y=1.02)
-
-    # Save example
-    output_path = PROJECT_ROOT / "output" / "figures"
-    output_path.mkdir(parents=True, exist_ok=True)
-    save_figure(fig, "style-demo", output_path, formats=["png"])
-    plt.close(fig)
-
-    print(f"\nDemo figure saved to: {output_path / 'style-demo.png'}")
