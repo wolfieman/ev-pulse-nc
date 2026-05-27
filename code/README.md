@@ -47,7 +47,7 @@ Phase-prefixed naming gives consistent grouping. See [`../frameworks/analytical-
 
 | Group | Pattern | Role |
 |---|---|---|
-| **Phase 1 — Validation** | `validate_sas_forecasts.py`, `arima_bev_forecast.py`, `arima_template.py`, `generate_phase1_figures.py` | Cross-validate SAS forecasts in Python (MAPE 4.36%) |
+| **Phase 1 — Validation** | `validate_sas_forecasts.py`, `arima_bev_forecast.py`, `arima_template.py`, `generate_phase1_figures.py` | Cross-validate SAS forecasts in Python (MAPE 4.34%) |
 | **Phase 3 — ZIP/County equity** | `phase3_zip_mapping.py`, `phase3_zip_density.py`, `phase3_gini_inequality.py`, `phase3_theil_decomposition.py`, `phase3_top20_underserved.py`, `phase3_county_heatmaps.py`, `phase3_fig25_underserved_choropleth.py`, `phase3_fig26_to_fig29.py`, `phase3_fig30_to_fig32.py`, `phase3_fig33_fig34.py` | Gini, Theil decomposition, choropleth, county heatmaps |
 | **Phase 4 — Workplace charging** | `phase4_workplace_charging.py`, `phase4_fig35_to_fig38.py` | LEHD LODES + ACS workplace-demand model |
 | **Phase 5 — Justice40** | `phase5_tract_zcta_crosswalk.py`, `phase5_climate_sensitivity.py`, `phase5_weight_sensitivity.py`, `phase5_fig39_to_fig42.py` | CEJST overlay + climate / weight sensitivity |

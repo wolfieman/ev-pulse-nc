@@ -1,6 +1,6 @@
 # EV Pulse NC
 
-![License](https://img.shields.io/github/license/wolfieman/ev-pulse-nc)
+![License](https://img.shields.io/badge/license-Polyform%20Noncommercial%201.0.0-blue)
 ![Python](https://img.shields.io/badge/Python-3.14-3776AB?logo=python&logoColor=white)
 ![pandas](https://img.shields.io/badge/pandas-data-150458?logo=pandas&logoColor=white)
 ![GeoPandas](https://img.shields.io/badge/GeoPandas-geospatial-139C5A)
@@ -47,7 +47,7 @@ The headline finding — that **84.5% of EV-infrastructure inequality across the
 - **Within-county inequality dominates** — Theil-T decomposition: **84.5% of ZIP-level infrastructure inequality is within counties**, only 15.5% between
 - **Infrastructure scope** — 1,985 stations / 6,145 connectors (AFDC, Feb 2026; all levels L1/L2/DCFC)
 - **Justice40 overlay** — **43.0%** of NC census tracts disadvantaged per CEJST v2.0; 24.5% of stations sit in those tracts
-- **Forecasting validation** — Python-replicated ARIMA matches SAS Model Studio at **MAPE = 4.36%**
+- **Forecasting validation** — Python-replicated ARIMA matches SAS Model Studio at **MAPE = 4.34%**
 
 ## NEVI Priority Top 3
 
@@ -99,7 +99,7 @@ Five contributions to the EV-infrastructure-allocation literature, each substant
 
 *Two foundation phases (Phase 1 demand validation + Phase 2 infrastructure inventory) converge at Gap Analysis. Three analytical lenses (Phase 3 ZIP-level, Phase 4 workplace, Phase 5 equity) then feed a prescriptive NEVI scoring framework that produces ranked county allocations.*
 
-1. **Phase 1 — Validation:** Python ARIMA replication of SAS Model Studio county-level BEV forecasts (MAPE 4.36%; 100 counties; 8 publication figures)
+1. **Phase 1 — Validation:** Python ARIMA replication of SAS Model Studio county-level BEV forecasts (MAPE 4.34%; 100 counties; 8 publication figures)
 2. **Phase 2 — Infrastructure inventory:** Full AFDC API pull (Feb 2026); 1,985 stations, 6,145 connectors, all charging levels
 3. **Phase 3 — ZIP/County equity:** Gini coefficient (0.805 demand-side; 0.566 supply-side weighted) + Theil decomposition (84.5% within-county); 134 ZIPs ranked; 27 figures
 4. **Phase 4 — Workplace charging:** LEHD LODES 2021 commuting flows + ACS income/tenure; 859,260 adjusted statewide workplace-charging demand; Mecklenburg/Wake/Durham top 3

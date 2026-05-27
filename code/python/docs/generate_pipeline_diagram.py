@@ -166,7 +166,7 @@ def create_pipeline_diagram():
               color=C_TEXT_LIGHT, weight="bold")
     draw_text(ax, x1_left, y1 - 0.05, "BEV forecasts verified", fontsize=8,
               color="#B4C7E0")
-    draw_text(ax, x1_left, y1 - 0.28, "MAPE 4.36%", fontsize=8.5,
+    draw_text(ax, x1_left, y1 - 0.28, "MAPE 4.34%", fontsize=8.5,
               color="#D4E4F7", weight="semibold")
     draw_status_badge(ax, x1_left + box_w / 2 - 0.55, y1 + box_h / 2 + 0.22, "COMPLETE")
 
