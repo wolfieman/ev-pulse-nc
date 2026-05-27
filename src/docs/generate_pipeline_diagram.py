@@ -6,6 +6,7 @@ Generates a publication-quality pipeline visualization using matplotlib.
 Output: docs/figures/analytical-pipeline.png (600 DPI)
         docs/figures/analytical-pipeline-thumb.png (150 DPI)
 """
+from __future__ import annotations
 
 import os
 

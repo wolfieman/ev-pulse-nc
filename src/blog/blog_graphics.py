@@ -34,9 +34,10 @@ License: Polyform Noncommercial 1.0.0 (see LICENSE)
 Project: EV Pulse NC
 Date: February 2026
 """
+from __future__ import annotations
 
 from pathlib import Path
-from typing import Literal, Optional, Union
+from typing import Literal
 
 import matplotlib.patches as patches
 import matplotlib.pyplot as plt
@@ -99,7 +100,7 @@ BLOG_COLORS = {
 def create_stat_card(
     value: str,
     label: str,
-    output_path: Union[str, Path],
+    output_path: str | Path,
     color: str = BLOG_COLORS["primary"],
     size: tuple[float, float] = (3, 2.5),
     dpi: int = 300,
@@ -181,8 +182,8 @@ def create_stat_card(
 def create_stat_grid(
     stats: dict[str, str],
     title: str,
-    output_path: Union[str, Path],
-    colors: Optional[list[str]] = None,
+    output_path: str | Path,
+    colors: list[str] | None = None,
     dpi: int = 300,
 ) -> Path:
     """
@@ -311,7 +312,7 @@ def create_stat_grid(
 def create_social_preview(
     title: str,
     subtitle: str,
-    output_path: Union[str, Path],
+    output_path: str | Path,
     platform: Literal["linkedin", "twitter", "substack"] = "linkedin",
     bg_color: str = BLOG_COLORS["dark_bg"],
     accent_color: str = BLOG_COLORS["primary"],
@@ -362,7 +363,7 @@ def create_social_preview(
 def _create_preview_pillow(
     title: str,
     subtitle: str,
-    output_path: Union[str, Path],
+    output_path: str | Path,
     size: tuple[int, int],
     bg_color: str,
     accent_color: str,
@@ -420,7 +421,7 @@ def _create_preview_pillow(
 def _create_preview_matplotlib(
     title: str,
     subtitle: str,
-    output_path: Union[str, Path],
+    output_path: str | Path,
     size: tuple[int, int],
     bg_color: str,
     accent_color: str,
@@ -482,12 +483,12 @@ def _create_preview_matplotlib(
 def create_comparison_bar(
     labels: list[str],
     values: list[float],
-    output_path: Union[str, Path],
+    output_path: str | Path,
     title: str = "",
     ylabel: str = "",
-    reference_line: Optional[float] = None,
+    reference_line: float | None = None,
     reference_label: str = "",
-    colors: Optional[list[str]] = None,
+    colors: list[str] | None = None,
     dpi: int = 300,
 ) -> Path:
     """
@@ -558,13 +559,13 @@ def create_comparison_bar(
 # =============================================================================
 
 def create_interactive_line(
-    data: "pd.DataFrame",
+    data: pd.DataFrame,
     x_col: str,
     y_col: str,
-    output_path: Union[str, Path],
+    output_path: str | Path,
     title: str = "",
-    color_col: Optional[str] = None,
-) -> Optional[Path]:
+    color_col: str | None = None,
+) -> Path | None:
     """
     Create an interactive Plotly line chart.
 
@@ -613,7 +614,7 @@ def create_interactive_line(
 # QUICK TEMPLATES - EV PULSE NC SPECIFIC
 # =============================================================================
 
-def create_ev_pulse_hero(output_path: Union[str, Path]) -> Path:
+def create_ev_pulse_hero(output_path: str | Path) -> Path:
     """Create the standard EV Pulse NC hero/preview image."""
     return create_social_preview(
         "NC's EV Infrastructure Gap",
@@ -623,7 +624,7 @@ def create_ev_pulse_hero(output_path: Union[str, Path]) -> Path:
     )
 
 
-def create_ev_pulse_stats(output_path: Union[str, Path]) -> Path:
+def create_ev_pulse_stats(output_path: str | Path) -> Path:
     """Create the standard EV Pulse NC statistics infographic."""
     return create_stat_grid(
         {

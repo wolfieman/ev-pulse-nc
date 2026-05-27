@@ -23,9 +23,10 @@ Author: Wolfgang Sanyer
 License: Polyform Noncommercial 1.0.0 (see LICENSE)
 Date: 2026
 """
+from __future__ import annotations
 
 from pathlib import Path
-from typing import Literal, Optional
+from typing import Literal
 
 import matplotlib.pyplot as plt
 
@@ -352,7 +353,7 @@ def save_figure(
     filename: str,
     output_dir: Path,
     formats: list[str] = ["png", "pdf"],
-    dpi: Optional[int] = None,
+    dpi: int | None = None,
 ) -> list[Path]:
     """
     Save figure in multiple formats with publication-quality settings.
@@ -433,7 +434,7 @@ def add_panel_label(
     loc: Literal[
         "upper left", "upper right", "lower left", "lower right"
     ] = "upper left",
-    fontsize: Optional[int] = None,
+    fontsize: int | None = None,
     fontweight: str = "bold",
     offset: tuple[float, float] = (0.02, 0.98),
 ) -> None:
@@ -495,7 +496,7 @@ def add_stats_annotation(
     loc: Literal[
         "upper left", "upper right", "lower left", "lower right"
     ] = "upper right",
-    fontsize: Optional[int] = None,
+    fontsize: int | None = None,
     boxstyle: str = "round,pad=0.4",
     facecolor: str = "#FFFDE7",  # Light yellow
     alpha: float = 0.9,
@@ -561,7 +562,7 @@ def add_stats_annotation(
 
 def style_boxplot(
     bp: dict,
-    colors: Optional[list[str]] = None,
+    colors: list[str] | None = None,
     alpha: float = 0.7,
 ) -> None:
     """

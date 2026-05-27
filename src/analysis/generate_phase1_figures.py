@@ -19,6 +19,7 @@ Usage:
 Author: Wolfgang Sanyer
 License: Polyform Noncommercial 1.0.0 (see LICENSE)
 """
+from __future__ import annotations
 
 import argparse
 import sys

@@ -11,6 +11,7 @@ For full implementation with diagnostics and validation, see:
 Author: Wolfgang Sanyer
 License: Polyform Noncommercial 1.0.0 (see LICENSE)
 """
+from __future__ import annotations
 
 import numpy as np
 import pandas as pd
