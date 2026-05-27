@@ -34,6 +34,12 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from evpulse.constants import (
+    WEIGHT_COST_EFFECTIVENESS,
+    WEIGHT_EQUITY,
+    WEIGHT_UTILIZATION,
+)
+
 # ---------------------------------------------------------------------------
 # Resolve project paths
 # ---------------------------------------------------------------------------
@@ -65,11 +71,6 @@ OUTPUT_CSV = PROJECT_ROOT / "data" / "processed" / "scoring-framework-skeleton.c
 
 # Phase 1 underprediction bias constant (4.5% upward adjustment)
 FORECAST_BUFFER = 0.045
-
-# NEVI scoring weights (for documentation; not used in computation yet)
-WEIGHT_EQUITY = 0.40
-WEIGHT_UTILIZATION = 0.35
-WEIGHT_COST_EFFECTIVENESS = 0.25
 
 # Column ordering for the final output
 OUTPUT_COLUMNS = [

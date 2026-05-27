@@ -53,6 +53,12 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from evpulse.constants import (
+    WEIGHT_COST_EFFECTIVENESS,
+    WEIGHT_EQUITY,
+    WEIGHT_UTILIZATION,
+)
+
 # ---------------------------------------------------------------------------
 # Resolve project paths
 # ---------------------------------------------------------------------------
@@ -77,11 +83,6 @@ JUSTICE40_CSV = (
 OUTPUT_CSV = (
     PROJECT_ROOT / "data" / "processed" / "scoring-framework-final.csv"
 )
-
-# NEVI scoring weights
-WEIGHT_EQUITY = 0.40
-WEIGHT_UTILIZATION = 0.35
-WEIGHT_COST_EFFECTIVENESS = 0.25
 
 # Equity sub-metric weights
 EQUITY_W_J40 = 0.40

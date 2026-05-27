@@ -39,6 +39,12 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import pandas as pd
 
+from evpulse.constants import (
+    WEIGHT_COST_EFFECTIVENESS,
+    WEIGHT_EQUITY,
+    WEIGHT_UTILIZATION,
+)
+
 # ---------------------------------------------------------------------------
 # Resolve project paths and import publication style
 # ---------------------------------------------------------------------------
@@ -65,11 +71,6 @@ FINAL_CSV = _DATA_DIR / "scoring-framework-final.csv"
 
 # Output
 FIG_NAME = "fig-43-nevi-priority-scores"
-
-# Pillar weights (per NEVI scoring framework, Section 2.3 of manuscript)
-WEIGHT_EQUITY = 0.40
-WEIGHT_UTILIZATION = 0.35
-WEIGHT_COST_EFFECTIVENESS = 0.25
 
 # Okabe-Ito colorblind-safe palette (per Pereira panel recommendation)
 # Distinguishable for deuteranopia, protanopia, and tritanopia
