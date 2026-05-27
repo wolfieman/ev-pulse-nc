@@ -11,7 +11,7 @@ The **bare claim** "first application of the Theil index to EV charging infrastr
 
 The **narrower claim** — "first Theil-T (GE(1)) **between-county / within-county decomposition** applied to EV charging infrastructure inequality" — remains defensible. Choi et al. used the Theil index as a **scalar** inequality measure alongside Lorenz, Gini, Palma, etc., not as a decomposition.
 
-**Locked framing (use this in the paper, email, and any future submissions):**
+**Recommended framing for the literature review:**
 
 > "While prior EV charging equity studies have used the Theil index as a scalar inequality measure (Choi et al. 2025), this study is, to the authors' knowledge, the first to exploit the decomposability of Theil's T to separate within-county and between-county components of EV charging infrastructure inequality, using those components to motivate a two-tier prioritization framework."
 
@@ -97,8 +97,8 @@ These applications establish that Theil decomposition is methodologically accept
 ## Caveats and Open Risks
 
 1. **Chinese-language literature (CNKI) not searched.** China is the most active region for EV charging spatial analytics. Before publishing the narrowed novelty claim, an advisor or research librarian should spot-check CNKI for prior Theil decomposition work on EV charging in Chinese journals.
-2. **The "to our knowledge" hedge is non-optional.** Any "first" claim must be hedged. A future reviewer with a different search strategy could surface prior work.
-3. **Methodology section must explicitly cite Choi et al.** as the comparable prior work using Theil-as-scalar. Failing to cite a paper that came up in 30 seconds of Google Scholar will damage the submission's credibility.
+2. **The "to our knowledge" hedge is non-optional.** Any "first" claim should be hedged, since a different search strategy could surface additional prior work.
+3. **The methodology section should explicitly cite Choi et al.** as the comparable prior work using Theil-as-scalar, since it is the most directly relevant precedent for the Theil-based approach used here.
 
 ---
 

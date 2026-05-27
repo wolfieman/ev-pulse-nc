@@ -142,6 +142,16 @@ scratch/
 temp/
 tmp/
 
+# Internal working docs — kept local, not published to the public repo
+docs/internal/
+
+# Private LinkedIn-strategy consultation — kept local
+docs/blog/consultation.md
+
+# AI methodology disclosure PDF — kept local pending a scrubbed regeneration.
+# Placed after the `!docs/**/*.pdf` whitelist (above) so this re-ignore wins.
+docs/research/ai-methodology-disclosure.pdf
+
 # Credentials (if any API keys used)
 .env
 .env.local

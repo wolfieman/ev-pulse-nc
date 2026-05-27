@@ -63,7 +63,7 @@ Five contributions to the EV-infrastructure-allocation literature, each substant
 
 4. **Empirical demonstration that within-county inequality dominates.** Most state NEVI programs allocate at county level; this study quantifies that county-level allocation alone would miss **84.5%** of the equity problem within NC's top-10 cohort.
 
-5. **Direction-of-bias limitations framing + AI-assisted role-play methodology review panels.** A sole-author project formalizing multi-perspective review through pre-registered claims matrices and panel-anchored repository commits. Standalone artifacts: [`data-quality-review.pdf`](docs/research/data-quality-review.pdf) (short) · [`data-quality-review-full.pdf`](docs/research/data-quality-review-full.pdf) (full) · [`ai-methodology-disclosure.pdf`](docs/research/ai-methodology-disclosure.pdf). Integrated treatment in paper Appendices A & B.
+5. **Direction-of-bias limitations framing + AI-assisted role-play methodology review panels.** A sole-author project formalizing multi-perspective review through pre-registered claims matrices and panel-anchored repository commits. Standalone artifacts: [`data-quality-review.pdf`](docs/research/data-quality-review.pdf) (short) · [`data-quality-review-full.pdf`](docs/research/data-quality-review-full.pdf) (full). The AI methodology disclosure is included in the paper as Appendix B. Integrated treatment in paper Appendices A & B.
 
 ---
 
@@ -283,7 +283,6 @@ ev-pulse-nc/
 | Document | Description |
 |----------|-------------|
 | 📄 [paper/ev-pulse-nc-sanyer.pdf](paper/ev-pulse-nc-sanyer.pdf) | **The full research paper** — 108 pages, includes Claims-to-Evidence Matrix (App. A) and AI methodology disclosure (App. B) |
-| [docs/research/ai-methodology-disclosure.pdf](docs/research/ai-methodology-disclosure.pdf) | Standalone **AI methodology disclosure** (also paper Appendix B) |
 | [docs/research/data-quality-review.pdf](docs/research/data-quality-review.pdf) | Standalone **data quality review** — short version (also paper Appendix A) |
 | [docs/research/data-quality-review-full.pdf](docs/research/data-quality-review-full.pdf) | Standalone **data quality review** — full version with all panel transcripts |
 | [CITATION.cff](CITATION.cff) | Machine-readable citation metadata (powers GitHub's "Cite this repository" button) |
@@ -293,7 +292,6 @@ ev-pulse-nc/
 | [STYLE-GUIDE.md](STYLE-GUIDE.md) | Code style, naming conventions, formatting |
 | [INSTALLATION.md](INSTALLATION.md) | Full setup guide (from clone or from scratch) |
 | [output/models/README.md](output/models/README.md) | Model index — where every model in the project lives |
-| [docs/internal/README.md](docs/internal/README.md) | Internal working artifacts (drift audits, content protocols) |
 | [references/data-sources.md](references/data-sources.md) | Data source citations and reference links |
 
 ---
@@ -322,7 +320,7 @@ If you reference the methodology, cite the full paper at [`paper/ev-pulse-nc-san
 Two methodology review processes were executed for this project, both formalized as AI-assisted role-play panels anchored to fixed repository commits and pre-registered claims matrices:
 
 - **Data quality review** — structured panel review of data provenance, processing integrity, and reproducibility across all five analytical phases. Standalone: [`docs/research/data-quality-review.pdf`](docs/research/data-quality-review.pdf) (short) and [`docs/research/data-quality-review-full.pdf`](docs/research/data-quality-review-full.pdf) (full). Integrated treatment in paper Appendix A.
-- **AI methodology disclosure** — full disclosure of AI tool usage across the analytical pipeline, methodology review processes, and manuscript preparation. Standalone: [`docs/research/ai-methodology-disclosure.pdf`](docs/research/ai-methodology-disclosure.pdf). Integrated treatment in paper Appendix B.
+- **AI methodology disclosure** — full disclosure of AI tool usage across the analytical pipeline, methodology review processes, and manuscript preparation. Included in the paper as Appendix B.
 
 The author retains sole authorship and verification responsibility for every claim in this project.
 
