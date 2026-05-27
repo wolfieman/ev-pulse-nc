@@ -405,12 +405,17 @@ def save_figure(
 
         # Format-specific settings
         if fmt == "pdf":
+            # Omit the CreationDate metadata, which matplotlib otherwise stamps
+            # with the wall clock. Without this every regeneration rewrites the
+            # tracked output/figures/*.pdf with a new timestamp, producing
+            # spurious diffs even when the figure is byte-identical otherwise.
             fig.savefig(
                 filepath,
                 format="pdf",
                 dpi=export_dpi,
                 bbox_inches="tight",
                 pad_inches=0.1,
+                metadata={"CreationDate": None},
             )
         elif fmt == "svg":
             fig.savefig(filepath, format="svg", bbox_inches="tight", pad_inches=0.1)
