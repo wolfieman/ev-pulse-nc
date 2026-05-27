@@ -128,15 +128,15 @@ NEVI Priority Score(county) = w1 × Equity_Score + w2 × Utilization_Score + w3 
 - **Key Framework:** CEJST tract-level Justice40 designations — 40% of benefits to disadvantaged communities
 - **Status:** Complete (Mar–Apr 2026). Delivered: county + ZCTA Justice40 shares, climate-subset sensitivity, weight sensitivity, publication figures 39–42
 
-### Priority #7 / Phase 7: NCDOT NEVI Corridor Validation (OPTIONAL)
-- **Source:** Advisor introduced the NCDOT NEVI Mapping Tool during Week 6 check-in (Feb 20, 2026)
+### Priority #7 / Phase 7: NCDOT NEVI Corridor Validation (FUTURE DIRECTION)
+- **Source:** The NCDOT NEVI Mapping Tool surfaced during the project's Week 6 advisor check-in (Feb 20, 2026) and is preserved here as a post-capstone roadmap item.
 - **Tool:** https://experience.arcgis.com/experience/a1e1459fffee4ccbafaf888f838dcac6/page/NCDOT-NEVI-Mapping-Tool
 - **What it is:** ArcGIS map of NCDOT's planned NEVI station deployments along Alternative Fuel Corridors (AFCs)
-- **Breaking development (Feb 18, 2026):** NCDOT announced shift from corridor-only to rural/community deployment — from 50 corridor stations to 16 rural locations. RFP coming late March 2026.
-- **Alignment:** This is NOT part of the three proposed extensions. It's a **validation benchmark** — do our equity-weighted scores recommend the same locations NCDOT just chose?
-- **Work estimate:** 3-5 hours if folded into scoring framework as validation layer
-- **Advisor offering:** Advisor (former DOT/CDOT) offered to help obtain NCDOT planning data directly
-- **Strategic value:** If our scoring framework independently recommends rural deployment, it validates both our methodology AND NCDOT's Feb 18 policy shift
+- **Policy context (Feb 18, 2026):** NCDOT announced a shift from corridor-only to rural/community deployment — from 50 corridor stations to 16 rural locations, with a second-wave RFP that opened in late March 2026.
+- **Alignment:** This is NOT part of the three proposed extensions. It's a **validation benchmark** — would the equity-weighted scores recommend the same locations NCDOT chose?
+- **Work estimate:** 3-5 hours if folded into the scoring framework as a validation layer (not undertaken within the capstone window).
+- **Advisor input:** The advisor (former DOT/CDOT) noted that NCDOT planning data could potentially be obtained directly to support this benchmark.
+- **Strategic value:** If the scoring framework were to independently recommend rural deployment, it would validate both the methodology AND NCDOT's Feb 18 policy shift.
 
 ---
 
@@ -278,7 +278,7 @@ Based on data investigation (Feb 2026) — original 3-agent framework analysis h
 ### Version Control
 
 - **Created:** January 30, 2026
-- **Last Updated:** April 2026
+- **Last Updated:** May 26, 2026
 - **Status:** All 5 core phases complete (Phase 1 Validation, Phase 2 AFDC Update, Phase 3 ZIP Analysis, Phase 4 Workplace Charging, Phase 5 CEJST Equity). Phases 6 (Buffer) and 7 (NCDOT Corridor Validation) preserved as Future Directions for the post-capstone roadmap.
 
 ---

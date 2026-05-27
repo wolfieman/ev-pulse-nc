@@ -117,7 +117,7 @@ Phase 1's findings flowed forward into the four subsequent extensions and the pr
   (+194,361 net commuter inflow), Wake (+126,517), and Durham (+89,450) as the
   dominant employment centers.
 
-- **Phase 5 — CEJST Equity Analysis** (`frameworks/stakeholder-value-analysis.md`):
+- **Phase 5 — CEJST Equity Analysis** (no dedicated framework doc; stakeholder value summarized in `frameworks/stakeholder-value-analysis.md`):
   Implemented Phase 5 equity using CEJST v2.0 tract-level Justice40 designations
   (934/2,170 NC tracts flagged disadvantaged). Tract-to-ZCTA area-weighted overlay
   in EPSG:32119 produced county and ZCTA-level Justice40 shares feeding the

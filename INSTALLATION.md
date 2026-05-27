@@ -68,9 +68,9 @@ git lfs version
 ```bash
 mkdir -p ev-pulse-nc && cd ev-pulse-nc
 mkdir -p data/{raw,processed,reference-forecasts}
-mkdir -p code/python/{data-acquisition,analysis,blog}
-mkdir -p docs/{eda-reports,research,internal,figures,blog}
-mkdir -p frameworks scripts references
+mkdir -p code/python/{data-acquisition,analysis,blog,docs,paper}
+mkdir -p docs/{eda-reports,research,figures}
+mkdir -p frameworks references
 mkdir -p output/{figures,models,validation}
 mkdir -p paper
 ```

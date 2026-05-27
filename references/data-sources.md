@@ -12,7 +12,7 @@
 - **Coverage:** September 2018 - June 2025 (82 months)
 - **Granularity:** County-month panel data (100 counties × 82 months = 8,200 observations)
 - **Download Script:** `code/python/data-acquisition/ncdot_ev_pipeline.py`
-- **Methodology Change (May 2025):** NCDOT implemented a new tracking method that eliminates duplicate records and excludes vehicles with plates recently removed from circulation. Flagged in data as `Methodology_PostMay2025`. See PAPER-NOTES.md for impact analysis.
+- **Methodology Change (May 2025):** NCDOT implemented a new tracking method that eliminates duplicate records and excludes vehicles with plates recently removed from circulation. Flagged in data as `Methodology_PostMay2025`. See the published paper (`paper/manuscript.md`, §4.9 structural-break analysis) for impact analysis.
 
 ### 2. Alternative Fuel Stations - Electric Vehicle Charging
 - **Source:** U.S. Department of Energy, Alternative Fuels Data Center (AFDC)
@@ -34,14 +34,10 @@
 
 ## Supporting Research
 
-- Anyer et al. - EV adoption modeling methodologies
 - McKinsey & Company - Public EV charging station profitability analysis
-- NREL - 2030 National Charging Network projections (Wood et al., 2023, NREL/TP-5400-85654)
+- NREL - National plug-in electric vehicle infrastructure analysis (Wood, Rames, Muratori, Srinivasa Raghavan & Melaina, 2017, NREL/TP-5400-69031)
 - NEVI Formula Program guidelines - Federal infrastructure funding
 - IEA Global EV Outlook (2023-2024) — EVs per public charger benchmarks: global average ~10, US ~24, Europe ~13. URL: https://www.iea.org/reports/global-ev-outlook-2024/trends-in-electric-vehicle-charging
 - Barrero, Bloom & Davis (2023) — "The Evolution of Work from Home" — remote work multiplier (0.85)
 
-## Reference Materials
-
-- Reference analytics papers and case studies
-- Industry research and best practices
+For the full, citation-formatted reference list, see the published paper at `paper/manuscript.md` (§12 References).

@@ -1,6 +1,6 @@
 # Data Directory
 
-**Last Updated:** 2026-04-10
+**Last Updated:** 2026-05-26
 **Project:** EV Pulse NC - North Carolina Electric Vehicle Analytics
 
 **Data Dictionary:** See [`DATA-DICTIONARY.md`](DATA-DICTIONARY.md) for column definitions, types, valid ranges, and missing value policies for all 6 datasets.
@@ -97,6 +97,8 @@ data/
 ---
 
 ## Processed Data (`processed/`)
+
+> **Note — processed outputs are generated locally, not committed.** With three exceptions, the `data/processed/*.csv` files cataloged below are gitignored: they are intermediate and final analysis outputs that are fully reproducible by running the pipeline scripts (see [Reproducibility](#reproducibility)), so they are not tracked in the repository. A public checkout of `data/processed/` will therefore be nearly empty. The only tracked processed artifacts are `nc-ev-registrations-2025.xlsx`, `nc-ev-registrations-2025.qa.txt`, and `scoring-vif-check.csv`. The tables below document the full set of outputs the scripts emit so the schema and provenance are discoverable without running the code.
 
 ### Phase 1 — NCDOT Registrations & Validation
 

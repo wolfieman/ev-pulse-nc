@@ -10,6 +10,8 @@ Phase 4 outputs feed the Cost-Effectiveness Score of the NEVI scoring framework.
 
 ## Results
 
+> **Note:** The `data/processed/phase4-*.csv` outputs below are generated locally by `phase4_workplace_charging.py` and are gitignored — reproducible from the pipeline, not committed to the repository (see `data/README.md` § Processed Data).
+
 | Output | File | Description |
 |--------|------|-------------|
 | Cost-effectiveness | `data/processed/phase4-cost-effectiveness.csv` | Workplace vs. residential efficiency by county |

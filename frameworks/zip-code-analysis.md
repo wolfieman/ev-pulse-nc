@@ -10,6 +10,8 @@ Phase 3 outputs feed both the Utilization Score and the Equity Score of the NEVI
 
 ## Results
 
+> **Note:** The `data/processed/phase3-*.csv` outputs listed below are generated locally by the Phase 3 scripts and are gitignored — they are reproducible from the pipeline, not committed to the repository (see `data/README.md` § Processed Data).
+
 | Output | File | Description |
 |--------|------|-------------|
 | County Gini | `data/processed/phase3-county-gini.csv` | Within-county infrastructure Gini coefficients |

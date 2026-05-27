@@ -1,8 +1,10 @@
 # Data Dictionary — EV Pulse NC
 
 **Project:** EV Pulse NC — EV Infrastructure Gap Analysis for North Carolina
-**Last Updated:** 2026-04-10
+**Last Updated:** 2026-05-26
 **Scope:** All datasets actively used in the analytical pipeline (Phases 1-5)
+
+> **Note:** Most `data/processed/*.csv` files referenced below are gitignored — they are reproducible script outputs, not committed artifacts (see `data/README.md` § Processed Data). The schema definitions here document those outputs regardless of whether a given file is present in a fresh checkout.
 
 This document defines the project-used columns for each dataset. For full API schemas (e.g., the complete 76-column AFDC structure), see `frameworks/afdc-data-structure.md`. For file locations and provenance, see `data/README.md` and `references/data-sources.md`.
 

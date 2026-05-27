@@ -47,7 +47,7 @@ The headline finding — that **84.5% of EV-infrastructure inequality across the
 | 2 | Mecklenburg | 0.548 | Equity-driven (Justice40 + Gini) |
 | 3 | Guilford | 0.465 | Balanced |
 
-*Full 100-county rankings: `data/processed/scoring-framework-final.csv` after running the pipeline. See [`frameworks/analytical-pipeline.md`](frameworks/analytical-pipeline.md) for the scoring formula (`0.40·Equity + 0.35·Utilization + 0.25·Cost-Effectiveness`).*
+*The full top-10 scoring output (`scoring-framework-final.csv`) is generated locally by running the pipeline and is not committed to the repository (it is reproducible from the scripts; statewide all-100-county scoring is future work). See [`frameworks/analytical-pipeline.md`](frameworks/analytical-pipeline.md) for the scoring formula (`0.40·Equity + 0.35·Utilization + 0.25·Cost-Effectiveness`).*
 
 ---
 
