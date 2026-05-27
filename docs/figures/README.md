@@ -1,12 +1,12 @@
 # Figures
 
-Project-level diagram assets used in top-level documentation and the paper brief.
+Project-level diagram assets used in top-level documentation.
 
 ## Contents
 
 | File | DPI | Purpose |
 |------|-----|---------|
-| `analytical-pipeline.png` | 600 | Full-resolution pipeline architecture diagram. Embedded in root [`README.md`](../../README.md) and [`paper/PAPER-BRIEF.md`](../../paper/PAPER-BRIEF.md) |
+| `analytical-pipeline.png` | 600 | Full-resolution pipeline architecture diagram. Embedded in root [`README.md`](../../README.md) |
 | `analytical-pipeline-thumb.png` | 150 | Thumbnail for inline previews / lightweight contexts |
 
 ## Regenerating

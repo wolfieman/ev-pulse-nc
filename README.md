@@ -16,7 +16,7 @@
 
 The full research paper is committed to this repository as a single artifact:
 
-📄 **[ev-pulse-nc-sanyer.pdf](paper/ev-pulse-nc-sanyer.pdf)** — 108 pages, ~4.6 MB
+📄 **[ev-pulse-nc-sanyer-paper.pdf](paper/ev-pulse-nc-sanyer-paper.pdf)** — 108 pages, ~4.6 MB
 
 The README below is the project at-a-glance; the paper is the full record — 5-phase analytical pipeline, NEVI scoring framework, methodology review documentation, and 47 publication-grade figures with full APA 7 attribution.
 
@@ -272,7 +272,7 @@ ev-pulse-nc/
 │
 ├── paper/                        # Research paper directory
 │   ├── README.md                 # Build pipeline + canonical artifact pointer
-│   └── ev-pulse-nc-sanyer.pdf    # The full research paper (108 pages)
+│   └── ev-pulse-nc-sanyer-paper.pdf  # The full research paper (108 pages)
 │
 └── references/                   # Supporting materials
     └── data-sources.md           # Citations & links
@@ -282,7 +282,7 @@ ev-pulse-nc/
 
 | Document | Description |
 |----------|-------------|
-| 📄 [paper/ev-pulse-nc-sanyer.pdf](paper/ev-pulse-nc-sanyer.pdf) | **The full research paper** — 108 pages, includes Claims-to-Evidence Matrix (App. A) and AI methodology disclosure (App. B) |
+| 📄 [paper/ev-pulse-nc-sanyer-paper.pdf](paper/ev-pulse-nc-sanyer-paper.pdf) | **The full research paper** — 108 pages, includes Claims-to-Evidence Matrix (App. A) and AI methodology disclosure (App. B) |
 | [docs/research/data-quality-review.pdf](docs/research/data-quality-review.pdf) | Standalone **data quality review** — short version (also paper Appendix A) |
 | [docs/research/data-quality-review-full.pdf](docs/research/data-quality-review-full.pdf) | Standalone **data quality review** — full version with all panel transcripts |
 | [CITATION.cff](CITATION.cff) | Machine-readable citation metadata (powers GitHub's "Cite this repository" button) |
@@ -300,7 +300,7 @@ ev-pulse-nc/
 
 This work is citable. Click **"Cite this repository"** in the right-hand sidebar of the GitHub page, or open [`CITATION.cff`](CITATION.cff) directly for the raw metadata.
 
-If you reference the methodology, cite the full paper at [`paper/ev-pulse-nc-sanyer.pdf`](paper/ev-pulse-nc-sanyer.pdf) or use the [`CITATION.cff`](CITATION.cff) metadata above.
+If you reference the methodology, cite the full paper at [`paper/ev-pulse-nc-sanyer-paper.pdf`](paper/ev-pulse-nc-sanyer-paper.pdf) or use the [`CITATION.cff`](CITATION.cff) metadata above.
 
 ---
 

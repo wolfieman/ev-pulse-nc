@@ -104,9 +104,10 @@ Phase 1's findings flowed forward into the four subsequent extensions and the pr
   in Phase 1 was abandoned once the prior file was identified as a filtered extract.
 
 - **Phase 3 — ZIP Code Analysis** (`frameworks/zip-code-analysis.md`):
-  Decomposed infrastructure inequality at the sub-county level. Statewide Gini =
-  0.805; Theil decomposition attributed 84.5% of inequality to within-county
-  variation. Found a 250-fold port density gap between Charlotte ZIPs 28202 and
+  Decomposed infrastructure inequality at the sub-county level. Statewide
+  population-weighted infrastructure Gini = 0.566 (ports per 10,000 population
+  across ZCTAs); Theil decomposition attributed 84.5% of inequality to
+  within-county variation. Found a 250-fold port density gap between Charlotte ZIPs 28202 and
   28215. Produced figures fig-08 through fig-34.
 
 - **Phase 4 — Workplace Charging (LEHD/LODES)** (`frameworks/phase4-workplace-charging.md`):

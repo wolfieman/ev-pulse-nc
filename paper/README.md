@@ -4,14 +4,14 @@
 
 ## Canonical Artifact
 
-📄 **[ev-pulse-nc-sanyer.pdf](ev-pulse-nc-sanyer.pdf)** — 108 pages, 4.6 MB, all figures embedded, full APA 7 formatting
+📄 **[ev-pulse-nc-sanyer-paper.pdf](ev-pulse-nc-sanyer-paper.pdf)** — 108 pages, 4.6 MB, all figures embedded, full APA 7 formatting
 
 The PDF is the canonical public artifact. See the [repo-root README](../README.md) for the project at-a-glance, executive summary, and the 5 novel contributions enumerated.
 
 ## Build Pipeline
 
 ```
-paper/manuscript.md  →  code/python/paper/build_docx.py  →  paper/manuscript.docx  →  (manual export)  →  paper/ev-pulse-nc-sanyer.pdf
+paper/manuscript.md  →  code/python/paper/build_docx.py  →  paper/manuscript.docx  →  (manual export)  →  paper/ev-pulse-nc-sanyer-paper.pdf
 ```
 
 Only the final PDF and this README are tracked in git. The markdown source (`manuscript.md`), intermediate `.docx`, the presentation `.pptx`, and the local `sources/` library are all gitignored — they're regenerable from the analytical pipeline and the build script.

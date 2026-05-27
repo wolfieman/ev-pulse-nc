@@ -13,7 +13,7 @@ Phase 3 outputs feed both the Utilization Score and the Equity Score of the NEVI
 | Output | File | Description |
 |--------|------|-------------|
 | County Gini | `data/processed/phase3-county-gini.csv` | Within-county infrastructure Gini coefficients |
-| Statewide Gini | `data/processed/phase3-statewide-gini.csv` | Statewide connector Gini (0.805) |
+| Statewide Gini | `data/processed/phase3-statewide-gini.csv` | Statewide population-weighted infrastructure Gini (0.566) |
 | Theil decomposition | `data/processed/phase3-theil-decomposition.csv` | Within vs. between county inequality (84.5% within) |
 | ZIP density | `data/processed/phase3-zip-density.csv` | Ports per sq mi, per capita, per BEV by ZIP |
 | Top-20 underserved | `data/processed/phase3-top20-underserved.csv` | Site-selection priority ZIPs |
