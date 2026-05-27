@@ -25,6 +25,9 @@ import geopandas as gpd
 import numpy as np
 import pandas as pd
 
+from evpulse.constants import TARGET_CRS
+from evpulse.io import load_fips_csv
+
 # Suppress shapely/geopandas deprecation noise during overlay
 warnings.filterwarnings("ignore", category=FutureWarning)
 
@@ -46,7 +49,6 @@ OUT_ZCTA = PROCESSED_DIR / "phase5-zcta-justice40.csv"
 OUT_COUNTY = PROCESSED_DIR / "phase5-county-justice40.csv"
 
 # Area-weighted overlay parameters
-TARGET_CRS = "EPSG:32119"  # NC State Plane
 SLIVER_THRESHOLD_SQM = 100  # minimum fragment area
 
 
@@ -64,14 +66,11 @@ def load_study_zips(path: Path) -> pd.DataFrame:
     Returns:
         DataFrame with zip, county_name, county_fips, population.
     """
-    df = pd.read_csv(
+    return load_fips_csv(
         path,
-        dtype={"zip": str, "county_fips": str},
+        {"zip": 5, "county_fips": 5},
         usecols=["zip", "county_name", "county_fips", "population"],
     )
-    df["zip"] = df["zip"].str.zfill(5)
-    df["county_fips"] = df["county_fips"].str.zfill(5)
-    return df
 
 
 def load_zcta_boundaries(

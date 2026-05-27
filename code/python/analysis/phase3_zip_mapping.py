@@ -21,6 +21,8 @@ from pathlib import Path
 import geopandas as gpd
 import pandas as pd
 
+from evpulse.io import load_fips_csv
+
 # ---------------------------------------------------------------------------
 # Resolve project paths so the sibling module import works
 # ---------------------------------------------------------------------------
@@ -63,8 +65,7 @@ def load_afdc(path: Path) -> pd.DataFrame:
     Returns:
         DataFrame with basic type casts applied.
     """
-    df = pd.read_csv(path, dtype={"zip": str})
-    df["zip"] = df["zip"].astype(str).str.zfill(5)
+    df = load_fips_csv(path, {"zip": 5})
     for col in ("ev_level1_evse_num", "ev_level2_evse_num", "ev_dc_fast_num"):
         df[col] = pd.to_numeric(df[col], errors="coerce").fillna(0).astype(int)
     df["total_ports"] = (
@@ -82,8 +83,7 @@ def load_census(path: Path) -> pd.DataFrame:
     Returns:
         DataFrame with columns [name, population, zcta].
     """
-    df = pd.read_csv(path, dtype={"zcta": str})
-    df["zcta"] = df["zcta"].astype(str).str.zfill(5)
+    df = load_fips_csv(path, {"zcta": 5})
     df["population"] = df["population"].astype(int)
     return df
 

@@ -21,6 +21,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from evpulse.io import load_fips_csv
+
 # ---------------------------------------------------------------------------
 # Resolve project paths
 # ---------------------------------------------------------------------------
@@ -54,9 +56,7 @@ def load_stations(path: Path) -> pd.DataFrame:
     Returns:
         DataFrame with correct dtypes applied.
     """
-    df = pd.read_csv(path, dtype={"zip": str, "county_fips": str})
-    df["zip"] = df["zip"].str.zfill(5)
-    df["county_fips"] = df["county_fips"].str.zfill(5)
+    df = load_fips_csv(path, {"zip": 5, "county_fips": 5})
     for col in ("ev_level1_evse_num", "ev_level2_evse_num", "ev_dc_fast_num"):
         df[col] = pd.to_numeric(df[col], errors="coerce").fillna(0).astype(int)
     df["total_ports"] = (

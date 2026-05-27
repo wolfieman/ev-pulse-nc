@@ -22,6 +22,8 @@ from pathlib import Path
 
 import pandas as pd
 
+from evpulse.io import load_fips_csv
+
 # ---------------------------------------------------------------------------
 # Resolve project paths
 # ---------------------------------------------------------------------------
@@ -58,13 +60,7 @@ def load_density(path: Path) -> pd.DataFrame:
     Returns:
         DataFrame with correct dtypes applied.
     """
-    df = pd.read_csv(
-        path,
-        dtype={"zip": str, "county_fips": str},
-    )
-    df["zip"] = df["zip"].str.zfill(5)
-    df["county_fips"] = df["county_fips"].str.zfill(5)
-    return df
+    return load_fips_csv(path, {"zip": 5, "county_fips": 5})
 
 
 # =============================================================================

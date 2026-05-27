@@ -33,6 +33,10 @@ import pandas as pd
 from matplotlib.lines import Line2D
 from matplotlib.patches import Patch
 
+from evpulse.constants import COLORMAP, TARGET_CRS
+from evpulse.geo import load_boundaries, reproject_gdf
+from evpulse.io import load_fips_csv
+
 # ---------------------------------------------------------------------------
 # Resolve project paths and import publication style
 # ---------------------------------------------------------------------------
@@ -64,14 +68,8 @@ OUTPUT_DIR = PROJECT_ROOT / "output" / "figures"
 # Export formats
 EXPORT_FORMATS = ["png", "pdf"]
 
-# Target CRS: NC State Plane (meters)
-TARGET_CRS = "EPSG:32119"
-
 # Figure dimensions
 FIGURE_SIZE = (7.0, 6.0)
-
-# Colormap
-COLORMAP = "YlGnBu"
 
 # LogNorm lower bound
 LOGNORM_VMIN = 0.1
@@ -122,34 +120,6 @@ COUNTIES = [
 # =============================================================================
 
 
-def load_zcta_boundaries(path: Path) -> gpd.GeoDataFrame:
-    """Load ZCTA boundary polygons from GeoJSON.
-
-    Args:
-        path: Path to nc-zcta-boundaries.geojson.
-
-    Returns:
-        GeoDataFrame with ZCTA geometries.
-    """
-    gdf = gpd.read_file(path)
-    gdf["ZCTA5CE20"] = gdf["ZCTA5CE20"].astype(str).str.zfill(5)
-    return gdf
-
-
-def load_county_boundaries(path: Path) -> gpd.GeoDataFrame:
-    """Load county boundary polygons from GeoJSON.
-
-    Args:
-        path: Path to nc-county-boundaries.geojson.
-
-    Returns:
-        GeoDataFrame with county geometries.
-    """
-    gdf = gpd.read_file(path)
-    gdf["GEOID"] = gdf["GEOID"].astype(str).str.zfill(5)
-    return gdf
-
-
 def load_density_data(path: Path) -> pd.DataFrame:
     """Load ZIP-level density CSV.
 
@@ -159,10 +129,7 @@ def load_density_data(path: Path) -> pd.DataFrame:
     Returns:
         DataFrame with zip as zero-padded string.
     """
-    df = pd.read_csv(path, dtype={"zip": str, "county_fips": str})
-    df["zip"] = df["zip"].str.zfill(5)
-    df["county_fips"] = df["county_fips"].str.zfill(5)
-    return df
+    return load_fips_csv(path, {"zip": 5, "county_fips": 5})
 
 
 def load_stations(path: Path) -> pd.DataFrame:
@@ -174,9 +141,7 @@ def load_stations(path: Path) -> pd.DataFrame:
     Returns:
         DataFrame with station locations.
     """
-    df = pd.read_csv(path, dtype={"zip": str, "county_fips": str})
-    df["zip"] = df["zip"].str.zfill(5)
-    df["county_fips"] = df["county_fips"].str.zfill(5)
+    df = load_fips_csv(path, {"zip": 5, "county_fips": 5})
     df["ev_dc_fast_num"] = (
         pd.to_numeric(df["ev_dc_fast_num"], errors="coerce").fillna(0).astype(int)
     )
@@ -192,29 +157,12 @@ def load_gini_data(path: Path) -> pd.DataFrame:
     Returns:
         DataFrame with county-level Gini values.
     """
-    df = pd.read_csv(path, dtype={"county_fips": str})
-    df["county_fips"] = df["county_fips"].str.zfill(5)
-    return df
+    return load_fips_csv(path, {"county_fips": 5})
 
 
 # =============================================================================
 # GEOMETRY HELPERS
 # =============================================================================
-
-
-def reproject_gdf(gdf: gpd.GeoDataFrame, crs: str) -> gpd.GeoDataFrame:
-    """Reproject a GeoDataFrame to the target CRS.
-
-    Args:
-        gdf: Input GeoDataFrame.
-        crs: Target CRS string.
-
-    Returns:
-        Reprojected GeoDataFrame.
-    """
-    if gdf.crs is None:
-        gdf = gdf.set_crs("EPSG:4326")
-    return gdf.to_crs(crs)
 
 
 def clip_and_clean(
@@ -465,11 +413,11 @@ def main() -> None:
     print("[INFO] Loading input data...")
 
     print(f"  Loading ZCTA boundaries: {ZCTA_GEOJSON.name}")
-    zcta_gdf = load_zcta_boundaries(ZCTA_GEOJSON)
+    zcta_gdf = load_boundaries(ZCTA_GEOJSON, "ZCTA5CE20")
     print(f"    {len(zcta_gdf)} ZCTA polygons loaded")
 
     print(f"  Loading county boundaries: {COUNTY_GEOJSON.name}")
-    county_gdf = load_county_boundaries(COUNTY_GEOJSON)
+    county_gdf = load_boundaries(COUNTY_GEOJSON, "GEOID")
     print(f"    {len(county_gdf)} county polygons loaded")
 
     print(f"  Loading density data: {DENSITY_CSV.name}")

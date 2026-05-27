@@ -31,6 +31,10 @@ from matplotlib.lines import Line2D
 from matplotlib.patches import Patch
 from shapely.geometry import Point
 
+from evpulse.constants import TARGET_CRS
+from evpulse.geo import load_boundaries
+from evpulse.io import load_fips_csv
+
 # ---------------------------------------------------------------------------
 # Resolve project paths and import publication style
 # ---------------------------------------------------------------------------
@@ -53,7 +57,6 @@ from publication_style import (  # noqa: E402
 # Constants
 # ---------------------------------------------------------------------------
 EXPORT_FORMATS = ["png", "pdf"]
-TARGET_CRS = "EPSG:32119"
 
 # 10 study counties by FIPS
 STUDY_COUNTY_FIPS = [
@@ -93,44 +96,27 @@ _AFDC_CSV = _RAW_DIR / "afdc-charging-stations-connector-2026-02.csv"
 
 def _load_tracts() -> gpd.GeoDataFrame:
     """Load census tract polygons."""
-    gdf = gpd.read_file(_TRACT_GEOJSON)
-    gdf["tract_fips"] = gdf["tract_fips"].astype(str).str.zfill(11)
-    return gdf
+    return load_boundaries(_TRACT_GEOJSON, "tract_fips", 11)
 
 
 def _load_cejst() -> pd.DataFrame:
     """Load CEJST disadvantaged flag data."""
-    df = pd.read_csv(
-        _CEJST_CSV,
-        dtype={"tract_fips": str},
-    )
-    df["tract_fips"] = df["tract_fips"].str.zfill(11)
-    return df
+    return load_fips_csv(_CEJST_CSV, {"tract_fips": 11})
 
 
 def _load_counties() -> gpd.GeoDataFrame:
     """Load county boundary polygons."""
-    gdf = gpd.read_file(_COUNTY_GEOJSON)
-    gdf["GEOID"] = gdf["GEOID"].astype(str).str.zfill(5)
-    return gdf
+    return load_boundaries(_COUNTY_GEOJSON, "GEOID")
 
 
 def _load_zcta_boundaries() -> gpd.GeoDataFrame:
     """Load ZCTA boundary polygons."""
-    gdf = gpd.read_file(_ZCTA_GEOJSON)
-    gdf["ZCTA5CE20"] = gdf["ZCTA5CE20"].astype(str).str.zfill(5)
-    return gdf
+    return load_boundaries(_ZCTA_GEOJSON, "ZCTA5CE20")
 
 
 def _load_zcta_justice40() -> pd.DataFrame:
     """Load ZCTA-level Justice40 data."""
-    df = pd.read_csv(
-        _ZCTA_J40_CSV,
-        dtype={"zip": str, "county_fips": str},
-    )
-    df["zip"] = df["zip"].str.zfill(5)
-    df["county_fips"] = df["county_fips"].str.zfill(5)
-    return df
+    return load_fips_csv(_ZCTA_J40_CSV, {"zip": 5, "county_fips": 5})
 
 
 def _load_county_justice40() -> pd.DataFrame:
