@@ -15,3 +15,20 @@ from __future__ import annotations
 WEIGHT_EQUITY = 0.40
 WEIGHT_UTILIZATION = 0.35
 WEIGHT_COST_EFFECTIVENESS = 0.25
+
+# The ten study counties (top-10 by BEV registration) that the analysis scores.
+# Bare county names; consumers that match census-style "X County" labels append
+# the suffix. The scoring pipeline derives its working cohort from the data, so
+# this list is the canonical set of names, not a computational input.
+STUDY_COUNTIES = [
+    "Wake",
+    "Mecklenburg",
+    "Durham",
+    "Guilford",
+    "Union",
+    "Buncombe",
+    "Cabarrus",
+    "Orange",
+    "Forsyth",
+    "New Hanover",
+]

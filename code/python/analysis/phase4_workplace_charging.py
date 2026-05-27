@@ -28,6 +28,8 @@ import geopandas as gpd
 import numpy as np
 import pandas as pd
 
+from evpulse.constants import STUDY_COUNTIES as SCORING_COUNTIES
+
 # -------------------------------------------------------------------
 # Project paths
 # -------------------------------------------------------------------
@@ -54,20 +56,6 @@ CHARGING_RATE_SCENARIOS = {
 }
 L2_PORT_SHARE = 0.80
 DCFC_PORT_SHARE = 0.20
-
-# Top-10 BEV counties for scoring output
-SCORING_COUNTIES = [
-    "Wake",
-    "Mecklenburg",
-    "Durham",
-    "Guilford",
-    "Union",
-    "Buncombe",
-    "Cabarrus",
-    "Orange",
-    "Forsyth",
-    "New Hanover",
-]
 
 # County typology thresholds
 EMPLOYMENT_CENTER_THRESHOLD = 10_000

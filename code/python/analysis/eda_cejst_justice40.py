@@ -21,6 +21,8 @@ from pathlib import Path
 
 import pandas as pd
 
+from evpulse.constants import STUDY_COUNTIES as STUDY_COUNTY_NAMES
+
 # ---------------------------------------------------------------------------
 # Project paths
 # ---------------------------------------------------------------------------
@@ -32,19 +34,10 @@ NC_PATH = RAW / "cejst-justice40-tracts-nc.csv"
 BORDER_PATH = RAW / "cejst-justice40-tracts-nc-border.csv"
 XW_PATH = RAW / "lehd-nc-xwalk.csv.gz"
 
-# 10 study counties used throughout the project
-STUDY_COUNTIES = [
-    "Wake County",
-    "Mecklenburg County",
-    "Guilford County",
-    "Durham County",
-    "Forsyth County",
-    "Buncombe County",
-    "Cumberland County",
-    "New Hanover County",
-    "Cabarrus County",
-    "Union County",
-]
+# Census-style labels for the canonical study counties (see evpulse.constants).
+# This now tracks the scoring cohort (includes Orange), correcting a stale list
+# that previously highlighted Cumberland in this QA report.
+STUDY_COUNTIES = [f"{name} County" for name in STUDY_COUNTY_NAMES]
 
 # ---------------------------------------------------------------------------
 # Tracking helpers
