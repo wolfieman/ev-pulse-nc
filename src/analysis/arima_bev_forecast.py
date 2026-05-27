@@ -505,10 +505,7 @@ def main() -> None:
     test_stationarity(bev_series.diff().dropna(), "BEV (First Difference)")
 
     # Determine ARIMA order
-    if args.auto_select:
-        order = auto_select_order(bev_series)
-    else:
-        order = tuple(args.order)
+    order = auto_select_order(bev_series) if args.auto_select else tuple(args.order)
 
     # Fit model
     fitted_model = fit_arima_model(bev_series, order=order)

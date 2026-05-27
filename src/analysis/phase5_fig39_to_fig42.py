@@ -143,7 +143,7 @@ def _load_afdc_stations() -> gpd.GeoDataFrame:
     ).fillna(0)
     geometry = [
         Point(lon, lat)
-        for lon, lat in zip(df["longitude"], df["latitude"])
+        for lon, lat in zip(df["longitude"], df["latitude"], strict=True)
     ]
     gdf = gpd.GeoDataFrame(df, geometry=geometry, crs="EPSG:4326")
     return gdf

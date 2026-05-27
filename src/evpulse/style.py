@@ -351,7 +351,7 @@ def save_figure(
     fig: plt.Figure,
     filename: str,
     output_dir: Path,
-    formats: list[str] = ["png", "pdf"],
+    formats: list[str] | None = None,
     dpi: int | None = None,
 ) -> list[Path]:
     """
@@ -371,6 +371,8 @@ def save_figure(
         >>> save_figure(fig, "fig-01-scatter", Path("./figures"))
         [Path('./figures/fig-01-scatter.png'), Path('./figures/fig-01-scatter.pdf')]
     """
+    if formats is None:
+        formats = ["png", "pdf"]
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -575,7 +577,7 @@ def style_boxplot(
     if colors is None:
         colors = MODEL_COLORS
 
-    for i, (box, color) in enumerate(zip(bp["boxes"], colors)):
+    for _i, (box, color) in enumerate(zip(bp["boxes"], colors, strict=False)):
         box.set_facecolor(color)
         box.set_alpha(alpha)
         box.set_edgecolor(COLORS["gray_dark"])

@@ -245,7 +245,9 @@ def create_stat_grid(
 
     axes_flat = axes.flatten()
 
-    for idx, ((label, value), ax) in enumerate(zip(stats.items(), axes_flat)):
+    for idx, ((label, value), ax) in enumerate(
+        zip(stats.items(), axes_flat, strict=False)
+    ):
         color = colors[idx % len(colors)]
 
         ax.set_xlim(0, 1)
@@ -527,7 +529,7 @@ def create_comparison_bar(
         )
 
     # Value labels
-    for bar, val in zip(bars, values):
+    for bar, val in zip(bars, values, strict=True):
         ax.text(
             val + max(values) * 0.02,
             bar.get_y() + bar.get_height() / 2,

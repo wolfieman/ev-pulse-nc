@@ -255,7 +255,7 @@ def sanity_check_nc(nc_path, nc_count):
         )
 
     # Read back the file for detailed checks
-    with open(nc_path, "r", encoding="utf-8") as fh:
+    with open(nc_path, encoding="utf-8") as fh:
         reader = csv.DictReader(fh)
         rows = list(reader)
 
@@ -339,7 +339,7 @@ def sanity_check_border(border_path, border_count):
             f"(expected {BORDER_ROWS_MIN:,}-{BORDER_ROWS_MAX:,})"
         )
 
-    with open(border_path, "r", encoding="utf-8") as fh:
+    with open(border_path, encoding="utf-8") as fh:
         reader = csv.DictReader(fh)
         rows = list(reader)
 

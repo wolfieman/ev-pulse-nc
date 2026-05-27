@@ -87,7 +87,7 @@ def stations_to_csv(stations, output_path):
         return
 
     # Collect all unique keys across all stations (not all records have same fields)
-    fieldnames = list(dict.fromkeys(k for s in stations for k in s.keys()))
+    fieldnames = list(dict.fromkeys(k for s in stations for k in s))
 
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
 

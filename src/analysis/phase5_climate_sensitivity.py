@@ -306,7 +306,8 @@ def _save_nc_categories_csv(nc_tracts):
         "disadvantaged",
         "threshold_count",
         "population",
-    ] + list(CATEGORY_SNAKE.values())
+        *list(CATEGORY_SNAKE.values()),
+    ]
 
     with open(NC_CATEGORIES_PATH, "w", newline="", encoding="utf-8") as fh:
         writer = csv.DictWriter(fh, fieldnames=fieldnames)

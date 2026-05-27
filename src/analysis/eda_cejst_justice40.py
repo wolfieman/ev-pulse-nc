@@ -136,7 +136,7 @@ def check_completeness(nc: pd.DataFrame) -> None:
 
     # 4 disadvantaged binary check
     vals = set(nc["disadvantaged"].unique())
-    binary_ok = vals.issubset({0, 1, 0.0, 1.0})
+    binary_ok = vals.issubset({0, 1})
     (PASS if binary_ok else FAIL)(
         SEC,
         f"disadvantaged values: {sorted(vals)} (expect only 0 and 1)",

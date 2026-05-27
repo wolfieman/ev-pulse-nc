@@ -92,9 +92,7 @@ def is_in_month_range(
         return True  # Include files with unknown dates
     if start and (year, month) < start:
         return False
-    if end and (year, month) > end:
-        return False
-    return True
+    return not (end and (year, month) > end)
 
 
 def parse_year_month_from_filename(name: str) -> tuple[int | None, int | None]:

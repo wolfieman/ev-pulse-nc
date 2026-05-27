@@ -74,7 +74,7 @@ def generate_fig30() -> None:
 
     # Histogram on log scale — use log-spaced bins
     bins = np.linspace(log_density.min(), log_density.max(), 25)
-    counts, _, patches = ax.hist(
+    _counts, _, _patches = ax.hist(
         log_density,
         bins=bins,
         color=COLORS["neutral"],

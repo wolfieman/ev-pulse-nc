@@ -298,7 +298,7 @@ def generate_fig34(
     )
 
     # Add percentage labels on each bar
-    for i, (bar, pct) in enumerate(zip(bars, pct_values)):
+    for _i, (bar, pct) in enumerate(zip(bars, pct_values, strict=True)):
         width = bar.get_width()
         label_x = width + max(values) * 0.01
         ax.text(

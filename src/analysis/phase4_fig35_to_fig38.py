@@ -132,9 +132,7 @@ def generate_fig35(df: pd.DataFrame) -> None:
     # Color-coded y-axis labels by typology
     ax.set_yticks(y_pos)
     ax.set_yticklabels(counties, fontsize=FONT_SIZES["tick_label"])
-    for i, (label, typ) in enumerate(
-        zip(ax.get_yticklabels(), typologies)
-    ):
+    for label, typ in zip(ax.get_yticklabels(), typologies, strict=True):
         if typ == "Employment Center":
             label.set_color(_CLR_EMP)
         elif typ == "Bedroom Community":

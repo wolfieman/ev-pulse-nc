@@ -103,7 +103,7 @@ def fig09_stations_by_level(df: pd.DataFrame, out_dir: Path) -> Path:
     fig, ax = plt.subplots(figsize=FIGURE_SIZES["wide"])
     colors = [LEVEL_COLORS.get(lv, COLORS["neutral"]) for lv in order]
     bars = ax.bar(order, counts.values, color=colors, edgecolor="white", linewidth=0.8)
-    for bar, port in zip(bars, port_totals.values):
+    for bar, port in zip(bars, port_totals.values, strict=True):
         ax.text(
             bar.get_x() + bar.get_width() / 2,
             bar.get_height() + 8,
@@ -136,7 +136,7 @@ def fig10_stations_by_network(df: pd.DataFrame, out_dir: Path) -> Path:
     fig, ax = plt.subplots(figsize=(7.0, 5.0))
     palette = sns.color_palette(PALETTE_SEQUENTIAL[2:], n_colors=len(top15))
     ax.barh(top15.index, top15.values, color=palette, edgecolor="white", linewidth=0.8)
-    for i, (val, name) in enumerate(zip(top15.values, top15.index)):
+    for i, (val, _name) in enumerate(zip(top15.values, top15.index, strict=True)):
         ax.text(val + 3, i, str(val), va="center", fontsize=FONT_SIZES["annotation"])
     ax.set_xlabel("Station Count")
     ax.set_title("Top 15 EV Charging Networks in NC", fontweight="bold")
@@ -401,7 +401,7 @@ def fig16_zip_coverage_gap(df: pd.DataFrame, census_path: Path, out_dir: Path) -
     labels_z = ["With Station(s)", "No Station"]
     sizes_z = [len(covered), len(gap)]
     colors_z = [COLORS["ARIMA"], COLORS["negative"]]
-    wedges, texts, autotexts = ax_a.pie(
+    _wedges, _texts, _autotexts = ax_a.pie(
         sizes_z,
         labels=labels_z,
         colors=colors_z,
@@ -415,7 +415,7 @@ def fig16_zip_coverage_gap(df: pd.DataFrame, census_path: Path, out_dir: Path) -
     # Panel B — Population
     labels_p = ["Covered Pop.", "Gap Pop."]
     sizes_p = [pop_covered, pop_gap]
-    wedges2, texts2, autotexts2 = ax_b.pie(
+    _wedges2, _texts2, _autotexts2 = ax_b.pie(
         sizes_p,
         labels=labels_p,
         colors=colors_z,

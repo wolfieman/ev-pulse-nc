@@ -173,7 +173,7 @@ def create_fig44(df: pd.DataFrame) -> plt.Figure:
         zorder=4,
     )
     ax.annotate(
-        f"{HIGHLIGHT_COUNTY} {HIGHLIGHT_MONTH}\n+{int(round(h_error))} vehicles",
+        f"{HIGHLIGHT_COUNTY} {HIGHLIGHT_MONTH}\n+{round(h_error)} vehicles",
         xy=(h_pred, h_actual),
         xytext=(h_pred * 0.35, h_actual * 1.6),
         fontsize=FONT_SIZES["annotation"],

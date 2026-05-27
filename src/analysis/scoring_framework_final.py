@@ -240,7 +240,7 @@ def validate(
     ]
     for col in score_cols:
         lo, hi = final[col].min(), final[col].max()
-        assert 0.0 <= lo and hi <= 1.0, (
+        assert lo >= 0.0 and hi <= 1.0, (
             f"{col} out of range: [{lo}, {hi}]"
         )
         print(f"  [CHECK 2] {col}: [{lo:.4f}, {hi:.4f}] — PASS")

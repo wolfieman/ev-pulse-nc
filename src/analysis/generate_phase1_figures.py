@@ -155,7 +155,7 @@ def fig02_error_distribution(df: pd.DataFrame, output_dir: Path) -> None:
     n_bins = min(50, max(15, int((errors.max() - errors.min()) / bin_width)))
 
     # Histogram with improved styling
-    n, bins, patches = ax.hist(
+    _n, _bins, _patches = ax.hist(
         errors,
         bins=n_bins,
         color=COLORS["ESM"],
@@ -360,7 +360,7 @@ def fig04_ci_coverage(model_metrics: pd.DataFrame, output_dir: Path) -> None:
     ax.legend(loc="upper right", framealpha=0.95)
 
     # Value labels with gap annotation
-    for i, (v, m) in enumerate(zip(coverage, models)):
+    for i, (v, _m) in enumerate(zip(coverage, models, strict=True)):
         # Main value label
         ax.text(
             i,
@@ -419,7 +419,9 @@ def fig05_time_series_examples(comparison: pd.DataFrame, output_dir: Path) -> No
     titles = ["Best Performer: Caldwell (0.30% MAPE)", "Largest Miss: Wake County"]
     panel_labels = ["A", "B"]
 
-    for ax, county, title, panel in zip(axes, counties, titles, panel_labels):
+    for ax, county, title, panel in zip(
+        axes, counties, titles, panel_labels, strict=True
+    ):
         subset = comparison[comparison["County"] == county].copy()
 
         # Sort by month
@@ -593,7 +595,7 @@ def fig07_county_performance(
     colors = [COLORS.get(m, COLORS["neutral"]) for m in combined["ModelType"]]
 
     # Lollipop stems
-    for i, (idx, row) in enumerate(combined.iterrows()):
+    for i, (_idx, row) in enumerate(combined.iterrows()):
         ax.hlines(
             y=i,
             xmin=0,

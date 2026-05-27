@@ -414,26 +414,25 @@ def parse_markdown(md_text: str) -> list[dict]:
             continue
 
         # Pipe table: header row + separator row + body rows
-        if stripped.startswith("|") and stripped.endswith("|"):
-            # Lookahead: confirm next line is a separator (---|---|...)
-            if i + 1 < n:
-                sep = lines[i + 1].strip()
-                sep_chars = set(sep.replace("|", "").strip())
-                if sep.startswith("|") and sep_chars <= set("-: "):
-                    # Collect rows
-                    table_rows: list[list[str]] = []
-                    # Header
-                    table_rows.append(_split_table_row(stripped))
-                    i += 2  # skip header + separator
-                    while i < n:
-                        row_line = lines[i].strip()
-                        if row_line.startswith("|") and row_line.endswith("|"):
-                            table_rows.append(_split_table_row(row_line))
-                            i += 1
-                        else:
-                            break
-                    blocks.append({"type": "table", "rows": table_rows})
-                    continue
+        # Lookahead: confirm next line is a separator (---|---|...)
+        if stripped.startswith("|") and stripped.endswith("|") and i + 1 < n:
+            sep = lines[i + 1].strip()
+            sep_chars = set(sep.replace("|", "").strip())
+            if sep.startswith("|") and sep_chars <= set("-: "):
+                # Collect rows
+                table_rows: list[list[str]] = []
+                # Header
+                table_rows.append(_split_table_row(stripped))
+                i += 2  # skip header + separator
+                while i < n:
+                    row_line = lines[i].strip()
+                    if row_line.startswith("|") and row_line.endswith("|"):
+                        table_rows.append(_split_table_row(row_line))
+                        i += 1
+                    else:
+                        break
+                blocks.append({"type": "table", "rows": table_rows})
+                continue
 
         # Bullet list item
         if stripped.startswith("- "):
@@ -548,7 +547,7 @@ def render_blocks(doc: Document, blocks: list[dict]) -> dict:
     # hanging-indent too, so we apply hanging indent uniformly to all
     # paragraphs under §12 except the first explanatory paragraph.
 
-    for idx, block in enumerate(blocks):
+    for _idx, block in enumerate(blocks):
         btype = block["type"]
 
         if btype == "hr":
