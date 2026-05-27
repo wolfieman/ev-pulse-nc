@@ -1,5 +1,6 @@
 # EV Pulse NC
 
+[![CI](https://github.com/wolfieman/ev-pulse-nc/actions/workflows/ci.yml/badge.svg)](https://github.com/wolfieman/ev-pulse-nc/actions/workflows/ci.yml)
 ![License](https://img.shields.io/badge/license-Polyform%20Noncommercial%201.0.0-blue)
 ![Python](https://img.shields.io/badge/Python-3.14-3776AB?logo=python&logoColor=white)
 ![pandas](https://img.shields.io/badge/pandas-data-150458?logo=pandas&logoColor=white)

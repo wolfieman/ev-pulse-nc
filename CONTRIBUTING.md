@@ -60,6 +60,12 @@ The project tag is always `[EVPULSE]` — never `[EVPULS]`, `[EV-PULSE]`, or any
 - Secrets, email addresses, or absolute filesystem paths (`C:\Users\…`).
 - File-by-file dumps — summarize the change rather than listing every touched file.
 
+**Enable the commit-message guard** (a dependency-free hook that enforces the format and blocks the items above):
+
+```bash
+git config core.hooksPath .githooks
+```
+
 ## Testing Requirements
 
 - **Add or update unit tests** when logic changes

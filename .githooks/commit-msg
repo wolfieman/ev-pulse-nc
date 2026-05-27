@@ -1,0 +1,43 @@
+#!/usr/bin/env sh
+# EV Pulse NC commit-message guard (dependency-free, POSIX sh).
+#
+# Enforces the convention documented in CONTRIBUTING.md and blocks the
+# leakage classes listed there. Enable with:
+#
+#     git config core.hooksPath .githooks
+#
+# Copyright (c) 2026 Wolfgang Sanyer
+# Licensed under the Polyform Noncommercial License 1.0.0 (see LICENSE).
+
+msg_file="$1"
+subject="$(sed -n '1p' "$msg_file")"
+
+fail() {
+    echo "commit-msg: $1" >&2
+    exit 1
+}
+
+# Allow merge/revert commits to bypass the subject-format rule.
+case "$subject" in
+    "Merge "* | "Revert "*) exit 0 ;;
+esac
+
+# 1. No AI / AI-tool attribution.
+if grep -qiE 'co-authored-by:.*(claude|anthropic|copilot|gpt)|generated with|🤖' "$msg_file"; then
+    fail "remove AI / AI-tool attribution"
+fi
+
+# 2. No absolute filesystem paths.
+if grep -qiE 'c:\\\\users|/users/|/home/[a-z]' "$msg_file"; then
+    fail "remove absolute filesystem paths"
+fi
+
+# 3. Subject must match [EVPULSE][TYPE] <description>.
+if ! printf '%s' "$subject" | grep -qE '^\[EVPULSE\]\[(FEAT|FIX|DOCS|REFAC|TEST|CHORE|META)\] .+'; then
+    fail "subject must be [EVPULSE][TYPE] <description> (TYPE: FEAT|FIX|DOCS|REFAC|TEST|CHORE|META)"
+fi
+
+# 4. Subject length <= 72 characters.
+if [ "$(printf '%s' "$subject" | wc -m)" -gt 72 ]; then
+    fail "subject exceeds 72 characters"
+fi
