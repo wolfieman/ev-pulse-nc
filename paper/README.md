@@ -26,10 +26,11 @@ The script reads `paper/manuscript.md`, embeds figures from `output/figures/`, a
 
 ## Standalone methodology artifacts
 
-The two methodology reviews are integrated into the paper as Appendices A and B. The AI methodology disclosure is available as paper Appendix B; the data quality review is also available as standalone PDFs in [`docs/research/`](../docs/research/):
+The two methodology reviews are integrated into the paper as Appendices A and B, and are also available as standalone PDFs in [`docs/research/`](../docs/research/):
 
-- `data-quality-review.pdf` — Data quality review, short version (paper App. A)
-- `data-quality-review-full.pdf` — Data quality review, full version with all panel transcripts
+- [`data-quality-review.pdf`](../docs/research/data-quality-review.pdf) — Data quality review, short version (paper App. A)
+- [`data-quality-review-full.pdf`](../docs/research/data-quality-review-full.pdf) — Data quality review, full version with all panel transcripts
+- [`ai-methodology-disclosure.pdf`](../docs/research/ai-methodology-disclosure.pdf) — AI methodology disclosure (paper App. B)
 
 ## See also
 

@@ -1,8 +1,18 @@
 # EV Pulse NC
 
-> **North Carolina's battery-electric vehicle fleet grew 1,727% from September 2018 to June 2025 — public charging infrastructure didn't keep pace.** This project quantifies the gap county-by-county, applies a Justice40 equity overlay, and produces a NEVI Priority Score to help direct North Carolina's $109M federal NEVI Formula Program funding.
+![License](https://img.shields.io/github/license/wolfieman/ev-pulse-nc)
+![Python](https://img.shields.io/badge/Python-3.14-3776AB?logo=python&logoColor=white)
+![pandas](https://img.shields.io/badge/pandas-data-150458?logo=pandas&logoColor=white)
+![GeoPandas](https://img.shields.io/badge/GeoPandas-geospatial-139C5A)
+![SAS](https://img.shields.io/badge/SAS-Model%20Studio-0766D1)
+![Last commit](https://img.shields.io/github/last-commit/wolfieman/ev-pulse-nc)
 
-![License: Polyform-NC](https://img.shields.io/badge/license-Polyform--NC--1.0-blue) ![Python 3.14+](https://img.shields.io/badge/python-3.14%2B-blue) ![Status: Research Complete](https://img.shields.io/badge/status-research--complete-brightgreen) ![Dependency Manager: uv](https://img.shields.io/badge/dependency-uv-purple)
+![Coverage](https://img.shields.io/badge/coverage-100%20NC%20counties-2E7D32)
+![NEVI](https://img.shields.io/badge/NEVI-%24109M-1565C0)
+![Forecast MAPE](https://img.shields.io/badge/forecast%20MAPE-4.34%25-2E7D32)
+![MBA Showcase 2026](https://img.shields.io/badge/MBA%20Showcase%202026-2nd%20place-FFB300)
+
+> **North Carolina's battery-electric vehicle fleet grew 1,727% from September 2018 to June 2025 — public charging infrastructure didn't keep pace.** This project quantifies the gap county-by-county, applies a Justice40 equity overlay, and produces a NEVI Priority Score to help direct North Carolina's $109M federal NEVI Formula Program funding.
 
 ![Underserved ZIP areas in North Carolina](output/figures/fig-25-underserved-choropleth.png)
 
@@ -63,7 +73,7 @@ Five contributions to the EV-infrastructure-allocation literature, each substant
 
 4. **Empirical demonstration that within-county inequality dominates.** Most state NEVI programs allocate at county level; this study quantifies that county-level allocation alone would miss **84.5%** of the equity problem within NC's top-10 cohort.
 
-5. **Direction-of-bias limitations framing + AI-assisted role-play methodology review panels.** A sole-author project formalizing multi-perspective review through pre-registered claims matrices and panel-anchored repository commits. Standalone artifacts: [`data-quality-review.pdf`](docs/research/data-quality-review.pdf) (short) · [`data-quality-review-full.pdf`](docs/research/data-quality-review-full.pdf) (full). The AI methodology disclosure is included in the paper as Appendix B. Integrated treatment in paper Appendices A & B.
+5. **Direction-of-bias limitations framing + AI-assisted role-play methodology review panels.** A sole-author project formalizing multi-perspective review through pre-registered claims matrices and panel-anchored repository commits. Standalone artifacts: [`data-quality-review.pdf`](docs/research/data-quality-review.pdf) (short) · [`data-quality-review-full.pdf`](docs/research/data-quality-review-full.pdf) (full) · [`ai-methodology-disclosure.pdf`](docs/research/ai-methodology-disclosure.pdf). The AI methodology disclosure is also included in the paper as Appendix B. Integrated treatment in paper Appendices A & B.
 
 ---
 
@@ -285,6 +295,7 @@ ev-pulse-nc/
 | 📄 [paper/ev-pulse-nc-sanyer-paper.pdf](paper/ev-pulse-nc-sanyer-paper.pdf) | **The full research paper** — 108 pages, includes Claims-to-Evidence Matrix (App. A) and AI methodology disclosure (App. B) |
 | [docs/research/data-quality-review.pdf](docs/research/data-quality-review.pdf) | Standalone **data quality review** — short version (also paper Appendix A) |
 | [docs/research/data-quality-review-full.pdf](docs/research/data-quality-review-full.pdf) | Standalone **data quality review** — full version with all panel transcripts |
+| [docs/research/ai-methodology-disclosure.pdf](docs/research/ai-methodology-disclosure.pdf) | Standalone **AI methodology disclosure** — full AI-tool usage disclosure (also paper Appendix B) |
 | [CITATION.cff](CITATION.cff) | Machine-readable citation metadata (powers GitHub's "Cite this repository" button) |
 | [frameworks/analytical-pipeline.md](frameworks/analytical-pipeline.md) | Full 5-phase pipeline and NEVI scoring formula |
 | [data/DATA-DICTIONARY.md](data/DATA-DICTIONARY.md) | Column definitions for all 6 datasets (NCDOT, AFDC, SAS, LEHD, CEJST, ACS) |
@@ -320,7 +331,7 @@ If you reference the methodology, cite the full paper at [`paper/ev-pulse-nc-san
 Two methodology review processes were executed for this project, both formalized as AI-assisted role-play panels anchored to fixed repository commits and pre-registered claims matrices:
 
 - **Data quality review** — structured panel review of data provenance, processing integrity, and reproducibility across all five analytical phases. Standalone: [`docs/research/data-quality-review.pdf`](docs/research/data-quality-review.pdf) (short) and [`docs/research/data-quality-review-full.pdf`](docs/research/data-quality-review-full.pdf) (full). Integrated treatment in paper Appendix A.
-- **AI methodology disclosure** — full disclosure of AI tool usage across the analytical pipeline, methodology review processes, and manuscript preparation. Included in the paper as Appendix B.
+- **AI methodology disclosure** — full disclosure of AI tool usage across the analytical pipeline, methodology review processes, and manuscript preparation. Standalone: [`docs/research/ai-methodology-disclosure.pdf`](docs/research/ai-methodology-disclosure.pdf). Also included in the paper as Appendix B.
 
 The author retains sole authorship and verification responsibility for every claim in this project.
 
