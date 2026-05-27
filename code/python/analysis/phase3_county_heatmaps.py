@@ -23,7 +23,6 @@ Date: 2026
 from __future__ import annotations
 
 import math
-import sys
 from pathlib import Path
 
 import geopandas as gpd
@@ -37,14 +36,7 @@ from evpulse.constants import COLORMAP, TARGET_CRS
 from evpulse.geo import load_boundaries, reproject_gdf
 from evpulse.io import load_fips_csv
 from evpulse.paths import PROJECT_ROOT
-
-# ---------------------------------------------------------------------------
-# Resolve project paths and import publication style
-# ---------------------------------------------------------------------------
-_SCRIPT_DIR = Path(__file__).resolve().parent
-sys.path.insert(0, str(_SCRIPT_DIR))
-
-from publication_style import (  # noqa: E402
+from evpulse.style import (
     FONT_SIZES,
     save_figure,
     setup_publication_style,

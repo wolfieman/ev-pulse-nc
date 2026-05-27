@@ -20,7 +20,6 @@ Date: 2026
 from __future__ import annotations
 
 import argparse
-import sys
 from pathlib import Path
 
 import geopandas as gpd
@@ -30,14 +29,7 @@ import numpy as np
 import pandas as pd
 
 from evpulse.paths import PROJECT_ROOT
-
-# ---------------------------------------------------------------------------
-# Resolve project paths so imports work regardless of cwd
-# ---------------------------------------------------------------------------
-_SCRIPT_DIR = Path(__file__).resolve().parent
-sys.path.insert(0, str(_SCRIPT_DIR))
-
-from publication_style import (  # noqa: E402
+from evpulse.style import (
     COLORS,
     FIGURE_SIZES,
     FONT_SIZES,

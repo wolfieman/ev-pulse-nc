@@ -16,7 +16,6 @@ from __future__ import annotations
 import argparse
 import ast
 import json
-import sys
 from pathlib import Path
 
 import geopandas as gpd
@@ -26,14 +25,7 @@ import pandas as pd
 import seaborn as sns
 
 from evpulse.paths import PROJECT_ROOT
-
-# ---------------------------------------------------------------------------
-# Resolve project paths so the sibling module import works
-# ---------------------------------------------------------------------------
-_SCRIPT_DIR = Path(__file__).resolve().parent
-sys.path.insert(0, str(_SCRIPT_DIR))
-
-from publication_style import (  # noqa: E402
+from evpulse.style import (
     COLORS,
     FIGURE_SIZES,
     FONT_SIZES,

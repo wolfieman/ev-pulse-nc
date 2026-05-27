@@ -28,8 +28,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-# Import publication styling
-from publication_style import (
+from evpulse.style import (
     COLORS,
     FIGURE_SIZES,
     FONT_SIZES,

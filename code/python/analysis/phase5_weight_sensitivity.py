@@ -20,18 +20,9 @@ Date: 2026
 
 from __future__ import annotations
 
-import sys
-from pathlib import Path
-
 import pandas as pd
 
 from evpulse.paths import PROJECT_ROOT
-
-# ---------------------------------------------------------------------------
-# Resolve project paths
-# ---------------------------------------------------------------------------
-_SCRIPT_DIR = Path(__file__).resolve().parent
-sys.path.insert(0, str(_SCRIPT_DIR))
 
 FINAL_CSV = PROJECT_ROOT / "data" / "processed" / "scoring-framework-final.csv"
 OUTPUT_CSV = PROJECT_ROOT / "data" / "processed" / "scoring-weight-sensitivity.csv"

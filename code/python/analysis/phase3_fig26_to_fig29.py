@@ -19,22 +19,12 @@ Date: 2026
 
 from __future__ import annotations
 
-import sys
-from pathlib import Path
-
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
 from evpulse.paths import PROJECT_ROOT as _PROJECT_ROOT
-
-# ---------------------------------------------------------------------------
-# Resolve project paths and import publication style
-# ---------------------------------------------------------------------------
-_SCRIPT_DIR = Path(__file__).resolve().parent
-sys.path.insert(0, str(_SCRIPT_DIR))
-
-from publication_style import (  # noqa: E402
+from evpulse.style import (
     COLORS,
     FONT_SIZES,
     save_figure,

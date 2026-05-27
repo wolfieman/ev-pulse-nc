@@ -28,7 +28,6 @@ Date: 2026
 from __future__ import annotations
 
 import argparse
-import sys
 from pathlib import Path
 
 import numpy as np
@@ -40,12 +39,6 @@ from evpulse.constants import (
     WEIGHT_UTILIZATION,
 )
 from evpulse.paths import PROJECT_ROOT
-
-# ---------------------------------------------------------------------------
-# Resolve project paths
-# ---------------------------------------------------------------------------
-_SCRIPT_DIR = Path(__file__).resolve().parent
-sys.path.insert(0, str(_SCRIPT_DIR))
 
 # =============================================================================
 # MODULE-LEVEL CONSTANTS

@@ -25,20 +25,11 @@ Date: 2026
 
 from __future__ import annotations
 
-import sys
-from pathlib import Path
-
 import pandas as pd
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 from statsmodels.tools import add_constant
 
 from evpulse.paths import PROJECT_ROOT
-
-# ---------------------------------------------------------------------------
-# Resolve project paths
-# ---------------------------------------------------------------------------
-_SCRIPT_DIR = Path(__file__).resolve().parent
-sys.path.insert(0, str(_SCRIPT_DIR))
 
 # =============================================================================
 # MODULE-LEVEL CONSTANTS
