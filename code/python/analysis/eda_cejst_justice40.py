@@ -17,17 +17,14 @@ Date: 2026
 
 from __future__ import annotations
 
-from pathlib import Path
-
 import pandas as pd
 
 from evpulse.constants import STUDY_COUNTIES as STUDY_COUNTY_NAMES
+from evpulse.paths import PROJECT_ROOT
 
 # ---------------------------------------------------------------------------
 # Project paths
 # ---------------------------------------------------------------------------
-_SCRIPT_DIR = Path(__file__).resolve().parent
-PROJECT_ROOT = _SCRIPT_DIR.parent.parent.parent
 RAW = PROJECT_ROOT / "data" / "raw"
 
 NC_PATH = RAW / "cejst-justice40-tracts-nc.csv"

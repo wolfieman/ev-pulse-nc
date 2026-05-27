@@ -25,6 +25,8 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 
+from evpulse.paths import PROJECT_ROOT
+
 # ---------------------------------------------------------------------------
 # Resolve project paths so the sibling module import works
 # ---------------------------------------------------------------------------
@@ -44,8 +46,6 @@ from publication_style import (  # noqa: E402
 # =============================================================================
 # MODULE-LEVEL CONSTANTS
 # =============================================================================
-
-PROJECT_ROOT = _SCRIPT_DIR.parent.parent.parent
 
 AFDC_CSV = (
     PROJECT_ROOT / "data" / "raw" / "afdc-charging-stations-connector-2026-02.csv"

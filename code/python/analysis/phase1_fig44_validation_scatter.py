@@ -46,13 +46,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+from evpulse.paths import PROJECT_ROOT as _PROJECT_ROOT
+
 # ---------------------------------------------------------------------------
 # Resolve project paths and import publication style
 # ---------------------------------------------------------------------------
 _SCRIPT_DIR = Path(__file__).resolve().parent
-_PROJECT_ROOT = _SCRIPT_DIR.parent.parent.parent
-_VALIDATION_DIR = _PROJECT_ROOT / "output" / "validation"
-_OUTPUT_DIR = _PROJECT_ROOT / "output" / "figures"
 
 sys.path.insert(0, str(_SCRIPT_DIR))
 
@@ -66,6 +65,9 @@ from publication_style import (  # noqa: E402
 # =============================================================================
 # CONSTANTS
 # =============================================================================
+
+_VALIDATION_DIR = _PROJECT_ROOT / "output" / "validation"
+_OUTPUT_DIR = _PROJECT_ROOT / "output" / "figures"
 
 # Input
 VALIDATION_CSV = _VALIDATION_DIR / "sas-validation-comparison.csv"

@@ -24,6 +24,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+from evpulse.paths import PROJECT_ROOT
+
 # ---------------------------------------------------------------------------
 # Resolve project paths and import publication style
 # ---------------------------------------------------------------------------
@@ -40,8 +42,6 @@ from publication_style import (  # noqa: E402
 # =============================================================================
 # MODULE-LEVEL CONSTANTS
 # =============================================================================
-
-PROJECT_ROOT = _SCRIPT_DIR.parent.parent.parent
 
 # Input paths
 DENSITY_CSV = PROJECT_ROOT / "data" / "processed" / "phase3-zip-density.csv"

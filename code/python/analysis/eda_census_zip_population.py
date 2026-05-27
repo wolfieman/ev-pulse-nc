@@ -29,6 +29,8 @@ import matplotlib.ticker as mticker
 import numpy as np
 import pandas as pd
 
+from evpulse.paths import PROJECT_ROOT
+
 # ---------------------------------------------------------------------------
 # Resolve project paths so imports work regardless of cwd
 # ---------------------------------------------------------------------------
@@ -47,8 +49,6 @@ from publication_style import (  # noqa: E402
 # =============================================================================
 # CONSTANTS
 # =============================================================================
-
-PROJECT_ROOT = _SCRIPT_DIR.parent.parent.parent
 
 DEFAULT_CENSUS_CSV = PROJECT_ROOT / "data" / "raw" / "nc-zip-population-acs2022.csv"
 DEFAULT_AFDC_CSV = (

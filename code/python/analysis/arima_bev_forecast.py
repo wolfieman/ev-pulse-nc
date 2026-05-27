@@ -33,17 +33,16 @@ from statsmodels.tsa.arima.model import ARIMA
 from statsmodels.tsa.statespace.sarimax import SARIMAX
 from statsmodels.tsa.stattools import adfuller, kpss
 
+from evpulse.paths import PROJECT_ROOT
+
 warnings.filterwarnings("ignore", category=FutureWarning)
 warnings.filterwarnings("ignore", category=UserWarning, module="statsmodels")
-
 
 # =============================================================================
 # Configuration
 # =============================================================================
 
 # Project paths (relative to this script)
-SCRIPT_DIR = Path(__file__).parent.resolve()
-PROJECT_ROOT = SCRIPT_DIR.parent.parent.parent
 DATA_RAW = PROJECT_ROOT / "data" / "raw"
 DATA_GENERATED = PROJECT_ROOT / "data" / "generated"
 OUTPUT_DIR = PROJECT_ROOT / "output" / "arima"

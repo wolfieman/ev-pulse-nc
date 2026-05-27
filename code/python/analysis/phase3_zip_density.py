@@ -22,6 +22,7 @@ import numpy as np
 import pandas as pd
 
 from evpulse.io import load_fips_csv
+from evpulse.paths import PROJECT_ROOT
 
 # ---------------------------------------------------------------------------
 # Resolve project paths
@@ -32,8 +33,6 @@ sys.path.insert(0, str(_SCRIPT_DIR))
 # =============================================================================
 # MODULE-LEVEL CONSTANTS
 # =============================================================================
-
-PROJECT_ROOT = _SCRIPT_DIR.parent.parent.parent
 
 INPUT_CSV = PROJECT_ROOT / "data" / "processed" / "phase3-urban-zip-stations.csv"
 PROCESSED_DIR = PROJECT_ROOT / "data" / "processed"

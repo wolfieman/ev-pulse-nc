@@ -27,6 +27,7 @@ import pandas as pd
 
 from evpulse.constants import TARGET_CRS
 from evpulse.io import load_fips_csv
+from evpulse.paths import PROJECT_ROOT
 
 # Suppress shapely/geopandas deprecation noise during overlay
 warnings.filterwarnings("ignore", category=FutureWarning)
@@ -34,9 +35,6 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 # ---------------------------------------------------------------------------
 # Resolve project paths
 # ---------------------------------------------------------------------------
-_SCRIPT_DIR = Path(__file__).resolve().parent
-PROJECT_ROOT = _SCRIPT_DIR.parent.parent.parent
-
 RAW_DIR = PROJECT_ROOT / "data" / "raw"
 PROCESSED_DIR = PROJECT_ROOT / "data" / "processed"
 

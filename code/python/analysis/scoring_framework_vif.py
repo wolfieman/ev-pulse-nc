@@ -32,6 +32,8 @@ import pandas as pd
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 from statsmodels.tools import add_constant
 
+from evpulse.paths import PROJECT_ROOT
+
 # ---------------------------------------------------------------------------
 # Resolve project paths
 # ---------------------------------------------------------------------------
@@ -41,8 +43,6 @@ sys.path.insert(0, str(_SCRIPT_DIR))
 # =============================================================================
 # MODULE-LEVEL CONSTANTS
 # =============================================================================
-
-PROJECT_ROOT = _SCRIPT_DIR.parent.parent.parent
 
 # Input
 FINAL_CSV = PROJECT_ROOT / "data" / "processed" / "scoring-framework-final.csv"

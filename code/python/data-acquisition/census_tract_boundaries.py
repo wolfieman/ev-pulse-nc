@@ -32,12 +32,11 @@ import geopandas as gpd
 import pandas as pd
 import requests
 
+from evpulse.paths import PROJECT_ROOT
+
 # ---------------------------------------------------------------------------
 # Resolve project paths
 # ---------------------------------------------------------------------------
-_SCRIPT_DIR = Path(__file__).resolve().parent
-PROJECT_ROOT = _SCRIPT_DIR.parent.parent.parent
-
 RAW_DIR = PROJECT_ROOT / "data" / "raw"
 OUTPUT_PATH = RAW_DIR / "census-tracts-2010-study-area.geojson"
 

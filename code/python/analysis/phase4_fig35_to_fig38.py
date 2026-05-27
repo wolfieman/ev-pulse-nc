@@ -27,11 +27,12 @@ import matplotlib.ticker as mticker
 import numpy as np
 import pandas as pd
 
+from evpulse.paths import PROJECT_ROOT as _PROJECT_ROOT
+
 # ---------------------------------------------------------------------------
 # Resolve project paths and import publication style
 # ---------------------------------------------------------------------------
 _SCRIPT_DIR = Path(__file__).resolve().parent
-_PROJECT_ROOT = _SCRIPT_DIR.parent.parent.parent
 _DATA_DIR = _PROJECT_ROOT / "data" / "processed"
 _RAW_DIR = _PROJECT_ROOT / "data" / "raw"
 _OUTPUT_DIR = _PROJECT_ROOT / "output" / "figures"

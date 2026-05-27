@@ -22,6 +22,7 @@ import geopandas as gpd
 import pandas as pd
 
 from evpulse.io import load_fips_csv
+from evpulse.paths import PROJECT_ROOT
 
 # ---------------------------------------------------------------------------
 # Resolve project paths so the sibling module import works
@@ -32,8 +33,6 @@ sys.path.insert(0, str(_SCRIPT_DIR))
 # =============================================================================
 # MODULE-LEVEL CONSTANTS
 # =============================================================================
-
-PROJECT_ROOT = _SCRIPT_DIR.parent.parent.parent
 
 AFDC_CSV = (
     PROJECT_ROOT / "data" / "raw" / "afdc-charging-stations-connector-2026-02.csv"

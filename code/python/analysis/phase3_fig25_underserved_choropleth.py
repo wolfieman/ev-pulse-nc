@@ -32,6 +32,7 @@ from matplotlib.patches import Patch
 from evpulse.constants import COLORMAP, TARGET_CRS
 from evpulse.geo import load_boundaries, reproject_gdf
 from evpulse.io import load_fips_csv
+from evpulse.paths import PROJECT_ROOT
 
 # ---------------------------------------------------------------------------
 # Resolve project paths and import publication style
@@ -48,8 +49,6 @@ from publication_style import (  # noqa: E402
 # =============================================================================
 # MODULE-LEVEL CONSTANTS
 # =============================================================================
-
-PROJECT_ROOT = _SCRIPT_DIR.parent.parent.parent
 
 # Input paths
 ZCTA_GEOJSON = PROJECT_ROOT / "data" / "raw" / "nc-zcta-boundaries.geojson"

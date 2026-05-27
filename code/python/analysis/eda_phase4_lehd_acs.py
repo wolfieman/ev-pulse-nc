@@ -18,15 +18,13 @@ Date: 2026
 
 from __future__ import annotations
 
-from pathlib import Path
-
 import pandas as pd
+
+from evpulse.paths import PROJECT_ROOT
 
 # ---------------------------------------------------------------------------
 # Project paths
 # ---------------------------------------------------------------------------
-_SCRIPT_DIR = Path(__file__).resolve().parent
-PROJECT_ROOT = _SCRIPT_DIR.parent.parent.parent
 RAW = PROJECT_ROOT / "data" / "raw"
 
 OD_PATH = RAW / "lehd-nc-od-main-2021.csv.gz"

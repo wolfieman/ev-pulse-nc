@@ -22,19 +22,16 @@ Date: 2026
 
 from __future__ import annotations
 
-from pathlib import Path
-
 import geopandas as gpd
 import numpy as np
 import pandas as pd
 
 from evpulse.constants import STUDY_COUNTIES as SCORING_COUNTIES
+from evpulse.paths import PROJECT_ROOT
 
 # -------------------------------------------------------------------
 # Project paths
 # -------------------------------------------------------------------
-_SCRIPT_DIR = Path(__file__).resolve().parent
-PROJECT_ROOT = _SCRIPT_DIR.parent.parent.parent
 RAW = PROJECT_ROOT / "data" / "raw"
 PROCESSED = PROJECT_ROOT / "data" / "processed"
 

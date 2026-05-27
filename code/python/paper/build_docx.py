@@ -25,7 +25,6 @@ Manuscript features handled:
 from __future__ import annotations
 
 import re
-from pathlib import Path
 
 from docx import Document
 from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_BREAK, WD_LINE_SPACING
@@ -33,12 +32,11 @@ from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.shared import Inches, Pt
 
+from evpulse.paths import PROJECT_ROOT as REPO_ROOT
+
 # ---------------------------------------------------------------------------
 # Paths
 # ---------------------------------------------------------------------------
-# Script lives at <repo>/code/python/paper/build_docx.py; walk up 3 parents
-# to reach the repo root, then point at the paper/ and output/ siblings.
-REPO_ROOT = Path(__file__).resolve().parents[3]
 SRC = REPO_ROOT / "paper" / "manuscript.md"
 OUT = REPO_ROOT / "paper" / "manuscript.docx"
 FIGURES_DIR = REPO_ROOT / "output" / "figures"

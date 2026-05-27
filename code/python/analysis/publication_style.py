@@ -29,6 +29,8 @@ from typing import Literal, Optional
 
 import matplotlib.pyplot as plt
 
+from evpulse.paths import PROJECT_ROOT
+
 # =============================================================================
 # COLOR PALETTE - IBM Design Library (Colorblind Safe)
 # =============================================================================
@@ -938,7 +940,7 @@ if __name__ == "__main__":
     plt.suptitle("Publication Style Demo", fontsize=12, fontweight="bold", y=1.02)
 
     # Save example
-    output_path = Path(__file__).parent.parent.parent.parent / "output" / "figures"
+    output_path = PROJECT_ROOT / "output" / "figures"
     output_path.mkdir(parents=True, exist_ok=True)
     save_figure(fig, "style-demo", output_path, formats=["png"])
     plt.close(fig)

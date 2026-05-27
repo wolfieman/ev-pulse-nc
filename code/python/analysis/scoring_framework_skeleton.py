@@ -39,6 +39,7 @@ from evpulse.constants import (
     WEIGHT_EQUITY,
     WEIGHT_UTILIZATION,
 )
+from evpulse.paths import PROJECT_ROOT
 
 # ---------------------------------------------------------------------------
 # Resolve project paths
@@ -49,8 +50,6 @@ sys.path.insert(0, str(_SCRIPT_DIR))
 # =============================================================================
 # MODULE-LEVEL CONSTANTS
 # =============================================================================
-
-PROJECT_ROOT = _SCRIPT_DIR.parent.parent.parent
 
 # Input files (Phase 3 processed outputs)
 TOP10_COUNTIES_CSV = PROJECT_ROOT / "data" / "processed" / "phase3-top10-counties.csv"

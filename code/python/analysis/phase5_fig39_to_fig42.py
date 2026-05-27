@@ -34,12 +34,12 @@ from shapely.geometry import Point
 from evpulse.constants import TARGET_CRS
 from evpulse.geo import load_boundaries
 from evpulse.io import load_fips_csv
+from evpulse.paths import PROJECT_ROOT as _PROJECT_ROOT
 
 # ---------------------------------------------------------------------------
 # Resolve project paths and import publication style
 # ---------------------------------------------------------------------------
 _SCRIPT_DIR = Path(__file__).resolve().parent
-_PROJECT_ROOT = _SCRIPT_DIR.parent.parent.parent
 _DATA_DIR = _PROJECT_ROOT / "data" / "processed"
 _RAW_DIR = _PROJECT_ROOT / "data" / "raw"
 _OUTPUT_DIR = _PROJECT_ROOT / "output" / "figures"

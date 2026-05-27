@@ -15,11 +15,10 @@ matplotlib.use('Agg')  # Non-interactive backend
 import matplotlib.pyplot as plt
 from matplotlib.patches import FancyArrowPatch, FancyBboxPatch
 
+from evpulse.paths import PROJECT_ROOT
+
 # ─── Configuration ─────────────────────────────────────────────────────────────
 
-# Output paths — script lives at code/python/docs/, so PROJECT_ROOT is 3 levels up
-SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(SCRIPT_DIR)))
 OUTPUT_DIR = os.path.join(PROJECT_ROOT, "docs", "figures")
 
 # Colors

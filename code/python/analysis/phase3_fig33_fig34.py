@@ -26,6 +26,8 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import pandas as pd
 
+from evpulse.paths import PROJECT_ROOT as _PROJECT_ROOT
+
 # ---------------------------------------------------------------------------
 # Resolve project paths and import publication style
 # ---------------------------------------------------------------------------
@@ -42,8 +44,6 @@ from publication_style import (  # noqa: E402
 # =============================================================================
 # MODULE-LEVEL CONSTANTS
 # =============================================================================
-
-_PROJECT_ROOT = _SCRIPT_DIR.parent.parent.parent
 _DATA_DIR = _PROJECT_ROOT / "data" / "processed"
 _OUTPUT_DIR = _PROJECT_ROOT / "output" / "figures"
 

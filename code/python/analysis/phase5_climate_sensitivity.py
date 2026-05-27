@@ -28,14 +28,11 @@ import sys
 
 import requests
 
+from evpulse.paths import PROJECT_ROOT as REPO_ROOT
+
 # ---------------------------------------------------------------------------
 # Paths
 # ---------------------------------------------------------------------------
-REPO_ROOT = os.path.dirname(
-    os.path.dirname(
-        os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    )
-)
 PROCESSED_DIR = os.path.join(REPO_ROOT, "data", "processed")
 # Derived analysis output (per-category Boolean flags) -- a regenerable
 # product written to data/processed, never to the immutable data/raw.
