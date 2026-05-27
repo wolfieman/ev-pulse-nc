@@ -63,17 +63,11 @@ from evpulse.paths import PROJECT_ROOT
 # =============================================================================
 
 # Input files
-SKELETON_CSV = (
-    PROJECT_ROOT / "data" / "processed" / "scoring-framework-skeleton.csv"
-)
-JUSTICE40_CSV = (
-    PROJECT_ROOT / "data" / "processed" / "phase5-county-justice40.csv"
-)
+SKELETON_CSV = PROJECT_ROOT / "data" / "processed" / "scoring-framework-skeleton.csv"
+JUSTICE40_CSV = PROJECT_ROOT / "data" / "processed" / "phase5-county-justice40.csv"
 
 # Output
-OUTPUT_CSV = (
-    PROJECT_ROOT / "data" / "processed" / "scoring-framework-final.csv"
-)
+OUTPUT_CSV = PROJECT_ROOT / "data" / "processed" / "scoring-framework-final.csv"
 
 # Equity sub-metric weights
 EQUITY_W_J40 = 0.40
@@ -209,9 +203,7 @@ def fill_scores(skeleton: pd.DataFrame, j40: pd.DataFrame) -> pd.DataFrame:
 # =============================================================================
 
 
-def validate(
-    final: pd.DataFrame, skeleton: pd.DataFrame
-) -> None:
+def validate(final: pd.DataFrame, skeleton: pd.DataFrame) -> None:
     """Run all validation checks on the final scoring framework.
 
     Args:
@@ -240,9 +232,7 @@ def validate(
     ]
     for col in score_cols:
         lo, hi = final[col].min(), final[col].max()
-        assert lo >= 0.0 and hi <= 1.0, (
-            f"{col} out of range: [{lo}, {hi}]"
-        )
+        assert lo >= 0.0 and hi <= 1.0, f"{col} out of range: [{lo}, {hi}]"
         print(f"  [CHECK 2] {col}: [{lo:.4f}, {hi:.4f}] — PASS")
 
     # 3. Arithmetic verification: nevi = 0.40*equity + 0.35*util + 0.25*cost
@@ -394,11 +384,7 @@ def print_score_decomposition(df: pd.DataFrame) -> None:
             f" + {WEIGHT_UTILIZATION:.2f} x util({row['util_score']:.4f})"
             f" + {WEIGHT_COST_EFFECTIVENESS:.2f} x cost({row['cost_score']:.4f})"
         )
-        print(
-            f"    = {equity_contrib:.4f}"
-            f" + {util_contrib:.4f}"
-            f" + {cost_contrib:.4f}"
-        )
+        print(f"    = {equity_contrib:.4f} + {util_contrib:.4f} + {cost_contrib:.4f}")
         print(
             f"    Equity sub-metrics: J40={row['equity_justice40_pct']:.1f}%,"
             f" Gini={row['equity_gini_weighted']:.4f},"
@@ -421,8 +407,10 @@ def print_top_county_analysis(df: pd.DataFrame) -> None:
     top = ranked.iloc[0]
     second = ranked.iloc[1]
 
-    print(f"\n  #1 County: {top['county_name']} "
-          f"(NEVI Score = {top['nevi_priority_score']:.4f})")
+    print(
+        f"\n  #1 County: {top['county_name']} "
+        f"(NEVI Score = {top['nevi_priority_score']:.4f})"
+    )
     print()
     print(f"  Why {top['county_name']} ranks first:")
     print(
@@ -435,9 +423,7 @@ def print_top_county_analysis(df: pd.DataFrame) -> None:
         f"    - Util Score:    {top['util_score']:.4f}"
         f" (BEV/port: {top['util_bev_per_port']:.1f})"
     )
-    print(
-        f"    - Cost Score:    {top['cost_score']:.4f}"
-    )
+    print(f"    - Cost Score:    {top['cost_score']:.4f}")
     print(
         f"\n  Runner-up: {second['county_name']} "
         f"(NEVI Score = {second['nevi_priority_score']:.4f})"
@@ -454,18 +440,13 @@ def print_top_county_analysis(df: pd.DataFrame) -> None:
 def main() -> None:
     """Build the final NEVI scoring framework with all columns populated."""
     parser = argparse.ArgumentParser(
-        description=(
-            "Fill remaining NaN columns and compute NEVI Priority Score."
-        )
+        description=("Fill remaining NaN columns and compute NEVI Priority Score.")
     )
     parser.add_argument(
         "--output",
         type=Path,
         default=OUTPUT_CSV,
-        help=(
-            f"Output CSV path "
-            f"(default: {OUTPUT_CSV.relative_to(PROJECT_ROOT)})"
-        ),
+        help=(f"Output CSV path (default: {OUTPUT_CSV.relative_to(PROJECT_ROOT)})"),
     )
     args = parser.parse_args()
 
@@ -488,9 +469,7 @@ def main() -> None:
     output_path.parent.mkdir(parents=True, exist_ok=True)
     final.to_csv(output_path, index=False)
     print(f"\n[SUCCESS] Final scoring framework saved to {output_path}")
-    print(
-        f"[INFO] Shape: {final.shape[0]} counties x {final.shape[1]} columns"
-    )
+    print(f"[INFO] Shape: {final.shape[0]} counties x {final.shape[1]} columns")
 
     # --- Console reporting ---
     print_final_table(final)

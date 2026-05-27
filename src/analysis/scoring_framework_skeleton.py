@@ -53,9 +53,7 @@ ZIP_DENSITY_SUMMARY_CSV = (
 TOP20_UNDERSERVED_CSV = (
     PROJECT_ROOT / "data" / "processed" / "phase3-top20-underserved.csv"
 )
-PHASE4_COST_CSV = (
-    PROJECT_ROOT / "data" / "processed" / "phase4-cost-effectiveness.csv"
-)
+PHASE4_COST_CSV = PROJECT_ROOT / "data" / "processed" / "phase4-cost-effectiveness.csv"
 
 # Output
 OUTPUT_CSV = PROJECT_ROOT / "data" / "processed" / "scoring-framework-skeleton.csv"
@@ -290,18 +288,16 @@ def build_skeleton(
         "cost_workplace_efficiency",
         "cost_pop_density",
     ]
-    assert (
-        skeleton[cost_cols].notna().all().all()
-    ), "Phase 4 merge left NaN in cost columns"
+    assert skeleton[cost_cols].notna().all().all(), (
+        "Phase 4 merge left NaN in cost columns"
+    )
 
     # Min-max normalize each sub-metric
     for col in cost_cols:
         col_min = skeleton[col].min()
         col_max = skeleton[col].max()
         if col_max != col_min:
-            skeleton[f"{col}_norm"] = (
-                (skeleton[col] - col_min) / (col_max - col_min)
-            )
+            skeleton[f"{col}_norm"] = (skeleton[col] - col_min) / (col_max - col_min)
         else:
             skeleton[f"{col}_norm"] = 0.0
 
@@ -461,9 +457,7 @@ def main() -> None:
     phase4_cost = load_phase4_cost(PHASE4_COST_CSV)
 
     # --- Build skeleton ---
-    skeleton = build_skeleton(
-        top10, gini, zip_density, underserved, phase4_cost
-    )
+    skeleton = build_skeleton(top10, gini, zip_density, underserved, phase4_cost)
 
     # --- Save ---
     output_path = Path(args.output)

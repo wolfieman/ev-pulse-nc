@@ -72,10 +72,10 @@ UTIL_DIVIDER = 0.5
 
 # Archetype colors (Okabe-Ito, matching fig-43)
 ARCHETYPE_COLORS = {
-    "utilization": "#E69F00",         # Orange (Union)
-    "equity": "#0072B2",              # Blue (Mecklenburg, Guilford)
-    "low": COLORS["gray_medium"],     # Gray (Orange, low across pillars)
-    "default": "#56B4E9",             # Light blue for other counties
+    "utilization": "#E69F00",  # Orange (Union)
+    "equity": "#0072B2",  # Blue (Mecklenburg, Guilford)
+    "low": COLORS["gray_medium"],  # Gray (Orange, low across pillars)
+    "default": "#56B4E9",  # Light blue for other counties
 }
 
 # Highlighted counties (matching fig-43)
@@ -111,10 +111,10 @@ QUADRANT_LABELS = {
 
 # Quadrant background tints (very subtle)
 QUADRANT_TINTS = {
-    "top_left": "#FFF4E0",        # Faint orange
-    "top_right": "#F4F4F4",       # Faint gray
-    "bottom_right": "#E6F0F8",    # Faint blue
-    "bottom_left": "#F4F4F4",     # Faint gray
+    "top_left": "#FFF4E0",  # Faint orange
+    "top_right": "#F4F4F4",  # Faint gray
+    "bottom_right": "#E6F0F8",  # Faint blue
+    "bottom_left": "#F4F4F4",  # Faint gray
 }
 
 # Bubble size scaling (matplotlib scatter `s` is in points^2)
@@ -170,20 +170,56 @@ def create_fig45(df: pd.DataFrame) -> plt.Figure:
     ax.set_ylim(-0.04, 1.05)
 
     # Quadrant background shading
-    ax.axvspan(-0.04, EQUITY_DIVIDER, ymin=0, ymax=UTIL_DIVIDER / 1.09,
-               facecolor=QUADRANT_TINTS["bottom_left"], zorder=0)
-    ax.axvspan(EQUITY_DIVIDER, 1.02, ymin=0, ymax=UTIL_DIVIDER / 1.09,
-               facecolor=QUADRANT_TINTS["bottom_right"], zorder=0)
-    ax.axvspan(-0.04, EQUITY_DIVIDER, ymin=UTIL_DIVIDER / 1.09, ymax=1,
-               facecolor=QUADRANT_TINTS["top_left"], zorder=0)
-    ax.axvspan(EQUITY_DIVIDER, 1.02, ymin=UTIL_DIVIDER / 1.09, ymax=1,
-               facecolor=QUADRANT_TINTS["top_right"], zorder=0)
+    ax.axvspan(
+        -0.04,
+        EQUITY_DIVIDER,
+        ymin=0,
+        ymax=UTIL_DIVIDER / 1.09,
+        facecolor=QUADRANT_TINTS["bottom_left"],
+        zorder=0,
+    )
+    ax.axvspan(
+        EQUITY_DIVIDER,
+        1.02,
+        ymin=0,
+        ymax=UTIL_DIVIDER / 1.09,
+        facecolor=QUADRANT_TINTS["bottom_right"],
+        zorder=0,
+    )
+    ax.axvspan(
+        -0.04,
+        EQUITY_DIVIDER,
+        ymin=UTIL_DIVIDER / 1.09,
+        ymax=1,
+        facecolor=QUADRANT_TINTS["top_left"],
+        zorder=0,
+    )
+    ax.axvspan(
+        EQUITY_DIVIDER,
+        1.02,
+        ymin=UTIL_DIVIDER / 1.09,
+        ymax=1,
+        facecolor=QUADRANT_TINTS["top_right"],
+        zorder=0,
+    )
 
     # Quadrant dividing lines (subtle gray)
-    ax.axvline(EQUITY_DIVIDER, color=COLORS["gray_medium"], linestyle=":",
-               linewidth=0.8, alpha=0.6, zorder=1)
-    ax.axhline(UTIL_DIVIDER, color=COLORS["gray_medium"], linestyle=":",
-               linewidth=0.8, alpha=0.6, zorder=1)
+    ax.axvline(
+        EQUITY_DIVIDER,
+        color=COLORS["gray_medium"],
+        linestyle=":",
+        linewidth=0.8,
+        alpha=0.6,
+        zorder=1,
+    )
+    ax.axhline(
+        UTIL_DIVIDER,
+        color=COLORS["gray_medium"],
+        linestyle=":",
+        linewidth=0.8,
+        alpha=0.6,
+        zorder=1,
+    )
 
     # Bubble sizes from NEVI score
     df = df.copy()
@@ -285,7 +321,8 @@ def create_fig45(df: pd.DataFrame) -> plt.Figure:
         s = max(s, BUBBLE_SIZE_MIN)
         legend_handles.append(
             plt.scatter(
-                [], [],
+                [],
+                [],
                 s=s,
                 facecolor=ARCHETYPE_COLORS["default"],
                 edgecolor=COLORS["gray_dark"],

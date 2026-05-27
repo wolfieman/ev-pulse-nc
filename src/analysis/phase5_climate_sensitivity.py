@@ -41,9 +41,7 @@ PROCESSED_DIR = os.path.join(REPO_ROOT, "data", "processed")
 NC_CATEGORIES_PATH = os.path.join(
     PROCESSED_DIR, "cejst-justice40-tracts-nc-categories.csv"
 )
-COUNTY_J40_PATH = os.path.join(
-    PROCESSED_DIR, "phase5-county-justice40.csv"
-)
+COUNTY_J40_PATH = os.path.join(PROCESSED_DIR, "phase5-county-justice40.csv")
 
 # ---------------------------------------------------------------------------
 # CEJST download URL (same as acquisition script)
@@ -131,10 +129,7 @@ CATEGORY_INDICATORS = {
             "lead paint, the median house value is less than "
             "90th percentile and is low income?"
         ),
-        (
-            "Tract experienced historic underinvestment and "
-            "remains low income"
-        ),
+        ("Tract experienced historic underinvestment and remains low income"),
         (
             "Greater than or equal to the 90th percentile for "
             "share of the tract's land area that is covered by "
@@ -176,10 +171,7 @@ CATEGORY_INDICATORS = {
         ),
     ],
     "Health": [
-        (
-            "Greater than or equal to the 90th percentile for "
-            "asthma and is low income?"
-        ),
+        ("Greater than or equal to the 90th percentile for asthma and is low income?"),
         (
             "Greater than or equal to the 90th percentile for "
             "diabetes and is low income?"
@@ -389,20 +381,14 @@ def _validate_nc_categories(nc_tracts, disadv_tracts):
     for t in disadv_tracts:
         if not t["cat_flags"]["Climate change"]:
             continue
-        other_cats = any(
-            v for k, v in t["cat_flags"].items()
-            if k != "Climate change"
-        )
+        other_cats = any(v for k, v in t["cat_flags"].items() if k != "Climate change")
         if not other_cats and not t["tribal"]:
             climate_only.append(t)
         elif not other_cats and t["tribal"]:
             climate_only_with_tribal += 1
     # Verify climate-only tracts truly have no other flags
     for t in climate_only:
-        other = any(
-            v for k, v in t["cat_flags"].items()
-            if k != "Climate change"
-        )
+        other = any(v for k, v in t["cat_flags"].items() if k != "Climate change")
         if other:
             climate_only_with_other += 1
     n_co = len(climate_only)
@@ -422,8 +408,7 @@ def _validate_nc_categories(nc_tracts, disadv_tracts):
     # Actually: sum of category flags <= sum of threshold counts
     # because categories collapse multiple indicators
     total_cat_flags = sum(
-        sum(1 for v in t["cat_flags"].values() if v)
-        for t in disadv_tracts
+        sum(1 for v in t["cat_flags"].values() if v) for t in disadv_tracts
     )
     total_thresholds = sum(t["threshold"] for t in disadv_tracts)
     ok5 = total_cat_flags <= total_thresholds
@@ -503,15 +488,11 @@ def main():
 
         disadvantaged = row.get(disadv_col, "") == "True"
         try:
-            threshold = int(
-                float(row.get(threshold_col, "0") or "0")
-            )
+            threshold = int(float(row.get(threshold_col, "0") or "0"))
         except (ValueError, TypeError):
             threshold = 0
         try:
-            cat_count = int(
-                float(row.get(categories_col, "0") or "0")
-            )
+            cat_count = int(float(row.get(categories_col, "0") or "0"))
         except (ValueError, TypeError):
             cat_count = 0
         try:
@@ -522,15 +503,11 @@ def main():
         # Reconstruct which categories this tract exceeds
         cat_flags = {}
         for cat_name, indicators in CATEGORY_INDICATORS.items():
-            exceeded = any(
-                row.get(col, "") == "True" for col in indicators
-            )
+            exceeded = any(row.get(col, "") == "True" for col in indicators)
             cat_flags[cat_name] = exceeded
 
         # Tribal overlap is a separate pathway
-        tribal = (
-            row.get(tribal_col, "") == "True" if has_tribal else False
-        )
+        tribal = row.get(tribal_col, "") == "True" if has_tribal else False
 
         nc_tracts.append(
             {
@@ -557,10 +534,7 @@ def main():
     print(f"[INFO] NC tracts evaluable:     {total_evaluable}")
     print(f"[INFO] NC tracts disadvantaged: {n_disadv}")
     orig_rate = n_disadv * 100 / total_evaluable
-    print(
-        f"[INFO] Statewide rate: "
-        f"{n_disadv}/{total_evaluable} = {orig_rate:.1f}%"
-    )
+    print(f"[INFO] Statewide rate: {n_disadv}/{total_evaluable} = {orig_rate:.1f}%")
 
     # ------------------------------------------------------------------
     # 4b. Save NC-filtered per-category data to disk
@@ -594,9 +568,7 @@ def main():
     # 6a. Category frequency among disadvantaged tracts
     print("\nCategory frequency among disadvantaged tracts:")
     for cat_name in CATEGORY_INDICATORS:
-        count = sum(
-            1 for t in disadv_tracts if t["cat_flags"][cat_name]
-        )
+        count = sum(1 for t in disadv_tracts if t["cat_flags"][cat_name])
         pct = count * 100 / n_disadv if n_disadv else 0
         print(f"  {cat_name:<25s}: {count:>4d} ({pct:>5.1f}%)")
 
@@ -613,10 +585,7 @@ def main():
     for t in disadv_tracts:
         if not t["cat_flags"]["Climate change"]:
             continue
-        other_cats = any(
-            v for k, v in t["cat_flags"].items()
-            if k != "Climate change"
-        )
+        other_cats = any(v for k, v in t["cat_flags"].items() if k != "Climate change")
         if not other_cats and not t["tribal"]:
             climate_only.append(t)
 
@@ -631,9 +600,7 @@ def main():
     # Breakdown of single-category tracts by which category
     print("\nSingle-category disadvantaged tracts by category:")
     for cat_name in CATEGORY_INDICATORS:
-        sc = [
-            t for t in single_cat if t["cat_flags"][cat_name]
-        ]
+        sc = [t for t in single_cat if t["cat_flags"][cat_name]]
         print(f"  {cat_name:<25s}: {len(sc):>4d}")
 
     print(
@@ -649,10 +616,7 @@ def main():
 
     print("\n--- Impact of Removing Climate Change Category ---")
     print(f"Tracts that would LOSE disadvantaged status: {n_lost}")
-    print(
-        f"Original disadvantaged:  {n_disadv} / {total_evaluable} "
-        f"= {orig_rate:.1f}%"
-    )
+    print(f"Original disadvantaged:  {n_disadv} / {total_evaluable} = {orig_rate:.1f}%")
     print(
         f"Adjusted disadvantaged:  {adjusted_disadv} / "
         f"{total_evaluable} = {adjusted_rate:.1f}%"
@@ -660,20 +624,13 @@ def main():
     print(f"Delta: {delta:+.1f} percentage points")
 
     # 6d. How many disadvantaged tracts have climate change as ANY flag?
-    climate_any = [
-        t for t in disadv_tracts if t["cat_flags"]["Climate change"]
-    ]
+    climate_any = [t for t in disadv_tracts if t["cat_flags"]["Climate change"]]
     print(
         f"\nDisadvantaged tracts with Climate change as ANY "
         f"category: {len(climate_any)}"
     )
-    print(
-        f"  of which sole-category (would lose status): {n_lost}"
-    )
-    print(
-        f"  of which multi-category (would keep status): "
-        f"{len(climate_any) - n_lost}"
-    )
+    print(f"  of which sole-category (would lose status): {n_lost}")
+    print(f"  of which multi-category (would keep status): {len(climate_any) - n_lost}")
 
     # ------------------------------------------------------------------
     # 7. Study-county breakdown
@@ -699,10 +656,7 @@ def main():
         for t in c_disadv:
             if not t["cat_flags"]["Climate change"]:
                 continue
-            other = any(
-                v for k, v in t["cat_flags"].items()
-                if k != "Climate change"
-            )
+            other = any(v for k, v in t["cat_flags"].items() if k != "Climate change")
             if not other and not t["tribal"]:
                 c_climate_only.append(t)
 

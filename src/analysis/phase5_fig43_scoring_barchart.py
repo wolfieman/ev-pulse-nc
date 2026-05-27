@@ -65,8 +65,8 @@ FIG_NAME = "fig-43-nevi-priority-scores"
 # Distinguishable for deuteranopia, protanopia, and tritanopia
 # Survives grayscale print as three distinct lightness levels
 OKABE_ITO = {
-    "equity": "#0072B2",              # Blue
-    "utilization": "#E69F00",         # Orange
+    "equity": "#0072B2",  # Blue
+    "utilization": "#E69F00",  # Orange
     "cost_effectiveness": "#009E73",  # Green
 }
 
@@ -114,9 +114,7 @@ def load_scoring_data() -> pd.DataFrame:
 
     # Verify decomposition matches stored NEVI score within tolerance
     df["recomputed_nevi"] = (
-        df["equity_contribution"]
-        + df["util_contribution"]
-        + df["cost_contribution"]
+        df["equity_contribution"] + df["util_contribution"] + df["cost_contribution"]
     )
     max_diff = (df["recomputed_nevi"] - df["nevi_priority_score"]).abs().max()
     if max_diff > 1e-9:
@@ -126,9 +124,7 @@ def load_scoring_data() -> pd.DataFrame:
         )
 
     # Sort by total NEVI score descending
-    df = df.sort_values("nevi_priority_score", ascending=False).reset_index(
-        drop=True
-    )
+    df = df.sort_values("nevi_priority_score", ascending=False).reset_index(drop=True)
     return df
 
 

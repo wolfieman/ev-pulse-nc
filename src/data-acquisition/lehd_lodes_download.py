@@ -152,9 +152,7 @@ def peek_gz_csv(path, required_cols=None):
         if missing:
             print(f"[WARNING] Missing expected columns: {missing}")
         else:
-            print(
-                f"[INFO]   Required columns verified: {required_cols}"
-            )
+            print(f"[INFO]   Required columns verified: {required_cols}")
 
     return header, row_count
 

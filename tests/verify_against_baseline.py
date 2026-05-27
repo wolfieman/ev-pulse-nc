@@ -202,8 +202,14 @@ def main() -> None:
     print(f"\nTop-3 NEVI canary: {top3} -> {'PASS' if canary_ok else 'FAIL'}")
     passed &= canary_ok
 
-    print("\n" + ("RESULT: PASS -- outputs match baseline" if passed
-                  else "RESULT: FAIL -- outputs diverged from baseline"))
+    print(
+        "\n"
+        + (
+            "RESULT: PASS -- outputs match baseline"
+            if passed
+            else "RESULT: FAIL -- outputs diverged from baseline"
+        )
+    )
     sys.exit(0 if passed else 1)
 
 

@@ -61,13 +61,21 @@ def WARN(section: str, msg: str) -> None:
 # ===================================================================
 def check_od() -> pd.DataFrame:
     SEC = "LODES OD"
-    print(f"\n{'='*60}\n  {SEC}\n{'='*60}")
+    print(f"\n{'=' * 60}\n  {SEC}\n{'=' * 60}")
 
     od_cols_needed = [
-        "w_geocode", "h_geocode",
-        "S000", "SA01", "SA02", "SA03",
-        "SE01", "SE02", "SE03",
-        "SI01", "SI02", "SI03",
+        "w_geocode",
+        "h_geocode",
+        "S000",
+        "SA01",
+        "SA02",
+        "SA03",
+        "SE01",
+        "SE02",
+        "SE03",
+        "SI01",
+        "SI02",
+        "SI03",
         "createdate",
     ]
     df = pd.read_csv(
@@ -82,8 +90,20 @@ def check_od() -> pd.DataFrame:
     _record(SEC, tag, f"Row count: {n:,} (expect ~3,768,428)")
 
     # 2 columns
-    expected = {"w_geocode", "h_geocode", "S000", "SA01", "SA02", "SA03",
-                "SE01", "SE02", "SE03", "SI01", "SI02", "SI03"}
+    expected = {
+        "w_geocode",
+        "h_geocode",
+        "S000",
+        "SA01",
+        "SA02",
+        "SA03",
+        "SE01",
+        "SE02",
+        "SE03",
+        "SI01",
+        "SI02",
+        "SI03",
+    }
     present = expected.issubset(set(df.columns))
     (PASS if present else FAIL)(SEC, f"Expected columns present: {present}")
 
@@ -115,9 +135,7 @@ def check_od() -> pd.DataFrame:
 
     # 7 S000 range
     s_min, s_max = df["S000"].min(), df["S000"].max()
-    (PASS if s_min >= 1 else FAIL)(
-        SEC, f"S000 range: min={s_min}, max={s_max:,}"
-    )
+    (PASS if s_min >= 1 else FAIL)(SEC, f"S000 range: min={s_min}, max={s_max:,}")
 
     # 8 additive checks
     sa_ok = (df["SA01"] + df["SA02"] + df["SA03"] == df["S000"]).all()
@@ -142,9 +160,7 @@ def check_od() -> pd.DataFrame:
     # 11 geocode length
     w_len = (df["w_geocode"].str.len() == 15).all()
     h_len = (df["h_geocode"].str.len() == 15).all()
-    (PASS if w_len and h_len else FAIL)(
-        SEC, f"Geocode length 15: w={w_len}, h={h_len}"
-    )
+    (PASS if w_len and h_len else FAIL)(SEC, f"Geocode length 15: w={w_len}, h={h_len}")
 
     # 12 createdate
     cd = df["createdate"].unique()
@@ -158,7 +174,7 @@ def check_od() -> pd.DataFrame:
 # ===================================================================
 def check_wac() -> pd.DataFrame:
     SEC = "LODES WAC"
-    print(f"\n{'='*60}\n  {SEC}\n{'='*60}")
+    print(f"\n{'=' * 60}\n  {SEC}\n{'=' * 60}")
 
     df = pd.read_csv(WAC_PATH, dtype={"w_geocode": str})
 
@@ -226,7 +242,7 @@ def check_wac() -> pd.DataFrame:
 # ===================================================================
 def check_xwalk(od_df: pd.DataFrame, wac_df: pd.DataFrame) -> pd.DataFrame:
     SEC = "Crosswalk"
-    print(f"\n{'='*60}\n  {SEC}\n{'='*60}")
+    print(f"\n{'=' * 60}\n  {SEC}\n{'=' * 60}")
 
     xw = pd.read_csv(
         XW_PATH,
@@ -295,9 +311,7 @@ def check_xwalk(od_df: pd.DataFrame, wac_df: pd.DataFrame) -> pd.DataFrame:
     wac_w = set(wac_df["w_geocode"].unique())
     orphan_wac = wac_w - xw_blocks
     n_orph_w = len(orphan_wac)
-    (PASS if n_orph_w == 0 else WARN)(
-        SEC, f"WAC w_geocode orphans: {n_orph_w:,}"
-    )
+    (PASS if n_orph_w == 0 else WARN)(SEC, f"WAC w_geocode orphans: {n_orph_w:,}")
 
     # 11 duplicate tabblk2020
     dup = xw["tabblk2020"].duplicated().sum()
@@ -316,7 +330,7 @@ def check_xwalk(od_df: pd.DataFrame, wac_df: pd.DataFrame) -> pd.DataFrame:
 # ===================================================================
 def check_acs() -> pd.DataFrame:
     SEC = "ACS Income/Tenure"
-    print(f"\n{'='*60}\n  {SEC}\n{'='*60}")
+    print(f"\n{'=' * 60}\n  {SEC}\n{'=' * 60}")
 
     df = pd.read_csv(
         ACS_PATH,
@@ -330,7 +344,10 @@ def check_acs() -> pd.DataFrame:
     # Check for Census API header row (strings in numeric columns)
     first = df.iloc[0]
     numeric_cols = [
-        "B19001_001E", "B25003_001E", "B25003_002E", "B25003_003E",
+        "B19001_001E",
+        "B25003_001E",
+        "B25003_002E",
+        "B25003_003E",
     ]
     header_row = False
     for c in numeric_cols:
@@ -357,9 +374,7 @@ def check_acs() -> pd.DataFrame:
 
     # 3 unique counties
     n_cty = df37["county"].nunique()
-    (PASS if n_cty == 100 else FAIL)(
-        SEC, f"Unique counties: {n_cty} (expect 100)"
-    )
+    (PASS if n_cty == 100 else FAIL)(SEC, f"Unique counties: {n_cty} (expect 100)")
 
     # 4 unique tracts
     n_trct = df37["tract"].nunique()
@@ -376,23 +391,22 @@ def check_acs() -> pd.DataFrame:
     (PASS if total_null == 0 else WARN)(SEC, f"Total nulls: {total_null}")
 
     # 7 tenure additive
-    tenure_ok = (
-        df37["B25003_002E"] + df37["B25003_003E"] == df37["B25003_001E"]
-    ).all()
+    tenure_ok = (df37["B25003_002E"] + df37["B25003_003E"] == df37["B25003_001E"]).all()
     (PASS if tenure_ok else FAIL)(
         SEC, f"B25003_002E + 003E == 001E (owner+renter=total): {tenure_ok}"
     )
 
     # 8 income bins sum <= total
     inc_cols = [
-        "B19001_013E", "B19001_014E", "B19001_015E",
-        "B19001_016E", "B19001_017E",
+        "B19001_013E",
+        "B19001_014E",
+        "B19001_015E",
+        "B19001_016E",
+        "B19001_017E",
     ]
     bin_sum = df37[inc_cols].sum(axis=1)
     inc_ok = (bin_sum <= df37["B19001_001E"]).all()
-    (PASS if inc_ok else FAIL)(
-        SEC, f"Income bins 013-017 sum <= B19001_001E: {inc_ok}"
-    )
+    (PASS if inc_ok else FAIL)(SEC, f"Income bins 013-017 sum <= B19001_001E: {inc_ok}")
 
     # 9 >$75K share
     high_inc = df37[inc_cols].sum().sum()
@@ -400,7 +414,8 @@ def check_acs() -> pd.DataFrame:
     high_share = high_inc / total_hh * 100
     tag = "PASS" if 30 <= high_share <= 50 else "WARN"
     _record(
-        SEC, tag,
+        SEC,
+        tag,
         f"Statewide >$75K share: {high_share:.1f}% (expect ~35-45%)",
     )
 
@@ -410,7 +425,8 @@ def check_acs() -> pd.DataFrame:
     renter_share = renter / tenure_total * 100
     tag = "PASS" if 28 <= renter_share <= 42 else "WARN"
     _record(
-        SEC, tag,
+        SEC,
+        tag,
         f"Statewide renter share: {renter_share:.1f}% (expect ~33-37%)",
     )
 
@@ -418,7 +434,8 @@ def check_acs() -> pd.DataFrame:
     ratio = tenure_total / total_hh
     tag = "PASS" if 0.90 <= ratio <= 1.10 else "WARN"
     _record(
-        SEC, tag,
+        SEC,
+        tag,
         f"B25003_001E / B19001_001E ratio: {ratio:.4f} "
         f"(tenure total {tenure_total:,} vs income total {total_hh:,})",
     )
@@ -440,7 +457,7 @@ def check_cross(
     acs: pd.DataFrame,
 ) -> None:
     SEC = "Cross-File"
-    print(f"\n{'='*60}\n  {SEC} Consistency\n{'='*60}")
+    print(f"\n{'=' * 60}\n  {SEC} Consistency\n{'=' * 60}")
 
     # 1 OD total S000 ≈ WAC total C000
     od_s000 = od["S000"].sum()
@@ -448,9 +465,9 @@ def check_cross(
     pct_diff = abs(od_s000 - wac_c000) / wac_c000 * 100
     tag = "PASS" if pct_diff < 5 else "WARN"
     _record(
-        SEC, tag,
-        f"OD S000={od_s000:,} vs WAC C000={wac_c000:,} "
-        f"(diff {pct_diff:.2f}%)",
+        SEC,
+        tag,
+        f"OD S000={od_s000:,} vs WAC C000={wac_c000:,} (diff {pct_diff:.2f}%)",
     )
 
     # 2 OD SE03 ≈ WAC CE03
@@ -459,27 +476,28 @@ def check_cross(
     pct_diff2 = abs(od_se3 - wac_ce3) / wac_ce3 * 100
     tag = "PASS" if pct_diff2 < 5 else "WARN"
     _record(
-        SEC, tag,
-        f"OD SE03={od_se3:,} vs WAC CE03={wac_ce3:,} "
-        f"(diff {pct_diff2:.2f}%)",
+        SEC,
+        tag,
+        f"OD SE03={od_se3:,} vs WAC CE03={wac_ce3:,} (diff {pct_diff2:.2f}%)",
     )
 
     # 3 crosswalk tracts vs ACS tracts
     # Crosswalk trct is 11-digit (state+county+tract), ACS has separate
     # state/county/tract columns. Build full FIPS from ACS for comparison.
     xw_trcts = set(xw["trct"].unique())
-    acs_trcts = set(
-        (acs["state"] + acs["county"] + acs["tract"]).unique()
+    acs_trcts = set((acs["state"] + acs["county"] + acs["tract"]).unique())
+    print(
+        f"    (xw trct sample: {next(iter(xw_trcts))}, "
+        f"ACS built sample: {next(iter(acs_trcts))})"
     )
-    print(f"    (xw trct sample: {next(iter(xw_trcts))}, "
-          f"ACS built sample: {next(iter(acs_trcts))})")
     overlap = xw_trcts & acs_trcts
     xw_only = xw_trcts - acs_trcts
     acs_only = acs_trcts - xw_trcts
     overlap_pct = len(overlap) / max(len(xw_trcts), len(acs_trcts)) * 100
     tag = "PASS" if overlap_pct >= 95 else "WARN"
     _record(
-        SEC, tag,
+        SEC,
+        tag,
         f"Tract overlap: {len(overlap):,} shared, "
         f"{len(xw_only):,} xwalk-only, {len(acs_only):,} ACS-only "
         f"({overlap_pct:.1f}%)",
@@ -499,17 +517,20 @@ def check_cross(
 # SUMMARY TABLE
 # ===================================================================
 def print_summary() -> None:
-    print(f"\n{'='*60}")
+    print(f"\n{'=' * 60}")
     print("  PHASE 4 EDA SUMMARY")
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
     header = f"{'File':<22} {'Checks':>7} {'Passed':>7} {'Failed':>7} {'Warnings':>9}"
     print(header)
     print("-" * len(header))
 
     grand = {"checks": 0, "passed": 0, "failed": 0, "warnings": 0}
     for section in [
-        "LODES OD", "LODES WAC", "Crosswalk",
-        "ACS Income/Tenure", "Cross-File",
+        "LODES OD",
+        "LODES WAC",
+        "Crosswalk",
+        "ACS Income/Tenure",
+        "Cross-File",
     ]:
         items = _results.get(section, [])
         checks = len(items)
@@ -520,9 +541,7 @@ def print_summary() -> None:
         grand["passed"] += passed
         grand["failed"] += failed
         grand["warnings"] += warnings
-        print(
-            f"{section:<22} {checks:>7} {passed:>7} {failed:>7} {warnings:>9}"
-        )
+        print(f"{section:<22} {checks:>7} {passed:>7} {failed:>7} {warnings:>9}")
 
     print("-" * len(header))
     print(
@@ -538,9 +557,7 @@ def print_summary() -> None:
             "likely safe to proceed"
         )
     else:
-        print(
-            f"\n  {grand['failed']} FAILURE(s) -- investigate before proceeding"
-        )
+        print(f"\n  {grand['failed']} FAILURE(s) -- investigate before proceeding")
 
 
 # ===================================================================

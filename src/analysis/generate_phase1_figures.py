@@ -19,6 +19,7 @@ Usage:
 Copyright © 2026 Wolfgang Sanyer
 Licensed under the Polyform Noncommercial License 1.0.0 (see LICENSE).
 """
+
 from __future__ import annotations
 
 import argparse
@@ -231,9 +232,7 @@ def fig03_metrics_by_model(model_metrics: pd.DataFrame, output_dir: Path) -> Non
 
     # Panel A: MAPE
     mape_values = model_metrics["MAPE"].values
-    axes[0].bar(
-        x, mape_values, width=bar_width, color=colors, edgecolor="white"
-    )
+    axes[0].bar(x, mape_values, width=bar_width, color=colors, edgecolor="white")
     axes[0].set_ylabel("MAPE (%)")
     axes[0].set_title("Point Forecast Accuracy")
     axes[0].set_xticks(x)
@@ -255,9 +254,7 @@ def fig03_metrics_by_model(model_metrics: pd.DataFrame, output_dir: Path) -> Non
 
     # Panel B: Mean Bias
     bias_values = model_metrics["MeanBias"].values
-    axes[1].bar(
-        x, bias_values, width=bar_width, color=colors, edgecolor="white"
-    )
+    axes[1].bar(x, bias_values, width=bar_width, color=colors, edgecolor="white")
     axes[1].set_ylabel("Mean Bias (vehicles)")
     axes[1].set_title("Systematic Bias")
     axes[1].set_xticks(x)
@@ -341,9 +338,7 @@ def fig04_ci_coverage(model_metrics: pd.DataFrame, output_dir: Path) -> None:
     ]
 
     # Bars
-    ax.bar(
-        x, coverage, width=bar_width, color=colors, alpha=0.85, edgecolor="white"
-    )
+    ax.bar(x, coverage, width=bar_width, color=colors, alpha=0.85, edgecolor="white")
 
     # 95% target line
     ax.axhline(y=95, color=COLORS["negative"], linestyle="--", lw=2, label="95% Target")

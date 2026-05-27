@@ -82,13 +82,15 @@ def compute_vif(scores: pd.DataFrame) -> pd.DataFrame:
     """
     _print_header("VARIANCE INFLATION FACTORS")
     design = add_constant(scores)
-    vif_data = pd.DataFrame({
-        "Variable": scores.columns,
-        "VIF": [
-            variance_inflation_factor(design.values, i + 1)
-            for i in range(len(scores.columns))
-        ],
-    })
+    vif_data = pd.DataFrame(
+        {
+            "Variable": scores.columns,
+            "VIF": [
+                variance_inflation_factor(design.values, i + 1)
+                for i in range(len(scores.columns))
+            ],
+        }
+    )
     print(vif_data.to_string(index=False))
     return vif_data
 

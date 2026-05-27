@@ -64,9 +64,9 @@ SQ_METERS_TO_SQ_MILES = 1 / 2_589_988.11
 # ===================================================================
 # SUB-STEP 1: Load All Data
 # ===================================================================
-def load_data() -> (
-    tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame, gpd.GeoDataFrame]
-):
+def load_data() -> tuple[
+    pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame, gpd.GeoDataFrame
+]:
     """Load all input datasets with string dtypes for FIPS codes."""
     print("=" * 70)
     print("  SUB-STEP 1: Load All Data")
@@ -138,9 +138,7 @@ def build_crosswalk(xw: pd.DataFrame) -> pd.DataFrame:
 # ===================================================================
 # SUB-STEP 3: Harmonize ACS Tract FIPS
 # ===================================================================
-def harmonize_acs_tracts(
-    acs: pd.DataFrame, xw: pd.DataFrame
-) -> pd.DataFrame:
+def harmonize_acs_tracts(acs: pd.DataFrame, xw: pd.DataFrame) -> pd.DataFrame:
     """Construct 11-digit FIPS and verify alignment with crosswalk."""
     print("\n" + "=" * 70)
     print("  SUB-STEP 3: Harmonize ACS Tract FIPS")
@@ -230,9 +228,7 @@ def compute_acs_indicators(acs: pd.DataFrame) -> pd.DataFrame:
 # ===================================================================
 # SUB-STEP 5: Map OD Flows to Counties and Origin Tracts
 # ===================================================================
-def map_od_flows(
-    od: pd.DataFrame, xw: pd.DataFrame
-) -> pd.DataFrame:
+def map_od_flows(od: pd.DataFrame, xw: pd.DataFrame) -> pd.DataFrame:
     """Join OD flows to destination county and origin tract."""
     print("\n" + "=" * 70)
     print("  SUB-STEP 5: Map OD Flows to Counties and Origin Tracts")
@@ -272,18 +268,16 @@ def map_od_flows(
 
     # Drop rows where crosswalk lookup failed (should be very few)
     if n_dest_null > 0 or n_orig_null > 0:
-        s000_lost = od[
-            od["dest_county_fips"].isna() | od["orig_county_fips"].isna()
-        ]["S000"].sum()
+        s000_lost = od[od["dest_county_fips"].isna() | od["orig_county_fips"].isna()][
+            "S000"
+        ].sum()
         s000_total = od["S000"].sum()
         pct_lost = s000_lost / s000_total * 100
         print(
             f"  WARNING: dropping {n_dest_null + n_orig_null:,} "
             f"unmatched rows ({pct_lost:.2f}% of S000)"
         )
-        od = od.dropna(
-            subset=["dest_county_fips", "orig_county_fips"]
-        ).copy()
+        od = od.dropna(subset=["dest_county_fips", "orig_county_fips"]).copy()
 
     # Verify Main type (all h_geocode start with 37)
     all_nc = od["h_geocode"].str[:2].eq("37").all()
@@ -316,9 +310,7 @@ def layer1_se03_filter(od: pd.DataFrame) -> pd.DataFrame:
 # ===================================================================
 # SUB-STEP 7: Layer 2 — ACS Income Correction
 # ===================================================================
-def layer2_income_correction(
-    od: pd.DataFrame, acs: pd.DataFrame
-) -> pd.DataFrame:
+def layer2_income_correction(od: pd.DataFrame, acs: pd.DataFrame) -> pd.DataFrame:
     """Apply ACS high-income share to SE03 flows."""
     print("\n" + "=" * 70)
     print("  SUB-STEP 7: Layer 2 -- ACS Income Correction")
@@ -327,9 +319,7 @@ def layer2_income_correction(
     acs_lookup = acs[
         ["tract_fips", "high_income_share_75k", "high_income_share_100k"]
     ].copy()
-    acs_lookup = acs_lookup.rename(
-        columns={"tract_fips": "orig_tract"}
-    )
+    acs_lookup = acs_lookup.rename(columns={"tract_fips": "orig_tract"})
 
     n_before = len(od)
     od = od.merge(acs_lookup, on="orig_tract", how="left")
@@ -344,17 +334,11 @@ def layer2_income_correction(
             f"  Filling {n_missing:,} missing income shares "
             f"with median ({median_75k:.3f})"
         )
-    od["high_income_share_75k"] = od["high_income_share_75k"].fillna(
-        median_75k
-    )
-    od["high_income_share_100k"] = od["high_income_share_100k"].fillna(
-        median_100k
-    )
+    od["high_income_share_75k"] = od["high_income_share_75k"].fillna(median_75k)
+    od["high_income_share_100k"] = od["high_income_share_100k"].fillna(median_100k)
 
     od["flow_income_adj_75k"] = od["flow_se03"] * od["high_income_share_75k"]
-    od["flow_income_adj_100k"] = (
-        od["flow_se03"] * od["high_income_share_100k"]
-    )
+    od["flow_income_adj_100k"] = od["flow_se03"] * od["high_income_share_100k"]
 
     total_se03 = od["flow_se03"].sum()
     total_adj_75k = od["flow_income_adj_75k"].sum()
@@ -395,9 +379,7 @@ def layer3_remote_work(od: pd.DataFrame) -> pd.DataFrame:
 # ===================================================================
 # SUB-STEP 9: Aggregate to County Level
 # ===================================================================
-def aggregate_counties(
-    od: pd.DataFrame, acs: pd.DataFrame
-) -> pd.DataFrame:
+def aggregate_counties(od: pd.DataFrame, acs: pd.DataFrame) -> pd.DataFrame:
     """Aggregate flows to destination county level."""
     print("\n" + "=" * 70)
     print("  SUB-STEP 9: Aggregate to County Level")
@@ -443,9 +425,8 @@ def aggregate_counties(
 
     # Normalize county names: "Wake County, NC" -> "Wake"
     county["county_name_full"] = county["county_name"]
-    county["county_name"] = (
-        county["county_name"]
-        .str.replace(r"\s+County,\s*NC$", "", regex=True)
+    county["county_name"] = county["county_name"].str.replace(
+        r"\s+County,\s*NC$", "", regex=True
     )
 
     # Renter-origin descriptive stats for top-15
@@ -455,12 +436,8 @@ def aggregate_counties(
         columns={"tract_fips": "orig_tract"}
     )
     od_with_renter = od.merge(acs_renter, on="orig_tract", how="left")
-    od_with_renter["renter_share_y"] = od_with_renter[
-        "renter_share"
-    ].fillna(0)
-    od_with_renter["from_renter_heavy"] = (
-        od_with_renter["renter_share_y"] > 0.50
-    )
+    od_with_renter["renter_share_y"] = od_with_renter["renter_share"].fillna(0)
+    od_with_renter["from_renter_heavy"] = od_with_renter["renter_share_y"] > 0.50
     od_with_renter["s000_renter_heavy"] = (
         od_with_renter["S000"] * od_with_renter["from_renter_heavy"]
     )
@@ -475,9 +452,7 @@ def aggregate_counties(
         .rename(columns={"dest_county_fips": "county_fips"})
     )
     renter_agg["pct_from_renter_heavy_tracts"] = (
-        renter_agg["s000_from_renter_heavy"]
-        / renter_agg["total_s000_for_renter"]
-        * 100
+        renter_agg["s000_from_renter_heavy"] / renter_agg["total_s000_for_renter"] * 100
     )
 
     county = county.merge(
@@ -487,16 +462,18 @@ def aggregate_counties(
     )
 
     # Sort and identify top 15
-    county = county.sort_values(
-        "adjusted_demand_75k", ascending=False
-    ).reset_index(drop=True)
+    county = county.sort_values("adjusted_demand_75k", ascending=False).reset_index(
+        drop=True
+    )
 
     top15 = county.head(15).copy()
 
     print(f"  Total counties: {len(county):,}")
     print("\n  Top 15 Employment Centers by Adjusted Demand (75k):")
-    print(f"  {'County':<22} {'Inbound':>10} {'Outbound':>10} "
-          f"{'Net':>10} {'Adj Demand':>12}")
+    print(
+        f"  {'County':<22} {'Inbound':>10} {'Outbound':>10} "
+        f"{'Net':>10} {'Adj Demand':>12}"
+    )
     print("  " + "-" * 66)
     for _, row in top15.iterrows():
         print(
@@ -549,18 +526,14 @@ def estimate_ports(county: pd.DataFrame) -> pd.DataFrame:
         col_l2 = f"ports_l2_{scenario}"
         col_dcfc = f"ports_dcfc_{scenario}"
 
-        county[col_total] = (
-            county["adjusted_demand_75k"] * cr / epp
-        )
+        county[col_total] = county["adjusted_demand_75k"] * cr / epp
         county[col_l2] = county[col_total] * L2_PORT_SHARE
         county[col_dcfc] = county[col_total] * DCFC_PORT_SHARE
 
     # Print baseline for top 15
     top15 = county.head(15)
     print("\n  Baseline Port Estimates (top 15):")
-    print(
-        f"  {'County':<22} {'Total':>8} {'L2':>8} {'DCFC':>8}"
-    )
+    print(f"  {'County':<22} {'Total':>8} {'L2':>8} {'DCFC':>8}")
     print("  " + "-" * 48)
     for _, row in top15.iterrows():
         print(
@@ -626,13 +599,9 @@ def compute_scoring_columns(
     geo_area = geo_area.rename(
         columns={"GEOID": "county_fips", "ALAND": "land_area_sqm"}
     )
-    geo_area["land_area_sqmi"] = (
-        geo_area["land_area_sqm"] * SQ_METERS_TO_SQ_MILES
-    )
+    geo_area["land_area_sqmi"] = geo_area["land_area_sqm"] * SQ_METERS_TO_SQ_MILES
 
-    county = county.merge(
-        county_pop_proxy, on="county_fips", how="left"
-    )
+    county = county.merge(county_pop_proxy, on="county_fips", how="left")
     county = county.merge(
         geo_area[["county_fips", "land_area_sqmi"]],
         on="county_fips",
@@ -646,9 +615,7 @@ def compute_scoring_columns(
 
     # Print scoring columns for the 10 target counties
     scoring = county[county["county_name"].isin(SCORING_COUNTIES)].copy()
-    scoring = scoring.sort_values(
-        "cost_commuter_demand", ascending=False
-    )
+    scoring = scoring.sort_values("cost_commuter_demand", ascending=False)
 
     print("\n  Scoring Columns for Top-10 BEV Counties:")
     print(
@@ -719,9 +686,7 @@ def export_results(county: pd.DataFrame) -> None:
 
     # --- phase4-cost-effectiveness.csv (10 scoring counties) ---
     scoring = county[county["county_name"].isin(SCORING_COUNTIES)].copy()
-    scoring = scoring.sort_values(
-        "cost_commuter_demand", ascending=False
-    )
+    scoring = scoring.sort_values("cost_commuter_demand", ascending=False)
     cost_cols = [
         "county_fips",
         "county_name",
@@ -751,12 +716,18 @@ def print_diagnostic_summary(od: pd.DataFrame, county: pd.DataFrame) -> None:
     total_final_75k = od["flow_final_75k"].sum()
 
     print(f"  Stage 0 (Raw S000):       {total_s000:>14,.0f}")
-    print(f"  Stage 1 (SE03 filter):    {total_se03:>14,.0f}  "
-          f"({total_se03 / total_s000 * 100:.1f}% of S000)")
-    print(f"  Stage 2 (Income adj 75k): {total_inc_75k:>14,.0f}  "
-          f"({total_inc_75k / total_se03 * 100:.1f}% of SE03)")
-    print(f"  Stage 3 (Remote work):    {total_final_75k:>14,.0f}  "
-          f"({total_final_75k / total_inc_75k * 100:.1f}% of Stage 2)")
+    print(
+        f"  Stage 1 (SE03 filter):    {total_se03:>14,.0f}  "
+        f"({total_se03 / total_s000 * 100:.1f}% of S000)"
+    )
+    print(
+        f"  Stage 2 (Income adj 75k): {total_inc_75k:>14,.0f}  "
+        f"({total_inc_75k / total_se03 * 100:.1f}% of SE03)"
+    )
+    print(
+        f"  Stage 3 (Remote work):    {total_final_75k:>14,.0f}  "
+        f"({total_final_75k / total_inc_75k * 100:.1f}% of Stage 2)"
+    )
 
     print(f"\n  Statewide adjusted demand (75k): {total_final_75k:,.0f}")
 

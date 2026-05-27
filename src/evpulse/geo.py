@@ -33,9 +33,7 @@ def reproject_gdf(gdf: gpd.GeoDataFrame, crs: str) -> gpd.GeoDataFrame:
     return gdf.to_crs(crs)
 
 
-def load_boundaries(
-    path: Path, fips_col: str, width: int = 5
-) -> gpd.GeoDataFrame:
+def load_boundaries(path: Path, fips_col: str, width: int = 5) -> gpd.GeoDataFrame:
     """Load a boundary GeoJSON, zero-padding its identifier column to a string.
 
     Census shapefiles store GEOID/ZCTA/tract codes as integers, dropping the

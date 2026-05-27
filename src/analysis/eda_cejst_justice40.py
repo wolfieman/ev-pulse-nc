@@ -65,13 +65,11 @@ def WARN(section: str, msg: str) -> None:
 # ===================================================================
 def check_volume_shape(nc: pd.DataFrame, border: pd.DataFrame) -> None:
     SEC = "Volume & Shape"
-    print(f"\n{'='*60}\n  {SEC}\n{'='*60}")
+    print(f"\n{'=' * 60}\n  {SEC}\n{'=' * 60}")
 
     # 1 NC row count
     n_nc = len(nc)
-    (PASS if n_nc == 2195 else FAIL)(
-        SEC, f"NC row count: {n_nc:,} (expect 2,195)"
-    )
+    (PASS if n_nc == 2195 else FAIL)(SEC, f"NC row count: {n_nc:,} (expect 2,195)")
 
     # 2 Border row count
     n_border = len(border)
@@ -81,9 +79,7 @@ def check_volume_shape(nc: pd.DataFrame, border: pd.DataFrame) -> None:
 
     # 3 Column count
     n_cols = len(nc.columns)
-    (PASS if n_cols == 6 else FAIL)(
-        SEC, f"Column count: {n_cols} (expect 6)"
-    )
+    (PASS if n_cols == 6 else FAIL)(SEC, f"Column count: {n_cols} (expect 6)")
     print(f"    Columns: {list(nc.columns)}")
 
     # 4 Dtypes
@@ -106,14 +102,12 @@ def check_volume_shape(nc: pd.DataFrame, border: pd.DataFrame) -> None:
 # ===================================================================
 def check_completeness(nc: pd.DataFrame) -> None:
     SEC = "Completeness & Quality"
-    print(f"\n{'='*60}\n  {SEC}\n{'='*60}")
+    print(f"\n{'=' * 60}\n  {SEC}\n{'=' * 60}")
 
     # 1 Nulls per column
     nulls = nc.isnull().sum()
     total_null = nulls.sum()
-    (PASS if total_null == 0 else FAIL)(
-        SEC, f"Total nulls: {total_null}"
-    )
+    (PASS if total_null == 0 else FAIL)(SEC, f"Total nulls: {total_null}")
     if total_null > 0:
         for col, cnt in nulls.items():
             if cnt > 0:
@@ -148,14 +142,13 @@ def check_completeness(nc: pd.DataFrame) -> None:
 # ===================================================================
 def check_distributions(nc: pd.DataFrame) -> None:
     SEC = "Distributions"
-    print(f"\n{'='*60}\n  {SEC}\n{'='*60}")
+    print(f"\n{'=' * 60}\n  {SEC}\n{'=' * 60}")
 
     # Evaluable tracts (population > 0)
     evaluable = nc[nc["population"] > 0].copy()
     n_eval = len(evaluable)
     n_excluded = len(nc) - n_eval
-    print(f"    Evaluable tracts: {n_eval:,} (excluded {n_excluded} "
-          f"with population=0)")
+    print(f"    Evaluable tracts: {n_eval:,} (excluded {n_excluded} with population=0)")
 
     # 1 Disadvantaged flag split on evaluable tracts
     n_disadv = int(evaluable["disadvantaged"].sum())
@@ -195,12 +188,8 @@ def check_distributions(nc: pd.DataFrame) -> None:
     )
 
     # 4 Population vs disadvantaged cross-tab
-    mean_disadv = evaluable.loc[
-        evaluable["disadvantaged"] == 1, "population"
-    ].mean()
-    mean_non = evaluable.loc[
-        evaluable["disadvantaged"] == 0, "population"
-    ].mean()
+    mean_disadv = evaluable.loc[evaluable["disadvantaged"] == 1, "population"].mean()
+    mean_non = evaluable.loc[evaluable["disadvantaged"] == 0, "population"].mean()
     PASS(
         SEC,
         f"Mean pop: disadvantaged={mean_disadv:,.0f}, "
@@ -213,7 +202,7 @@ def check_distributions(nc: pd.DataFrame) -> None:
 # ===================================================================
 def check_county_aggregation(nc: pd.DataFrame) -> None:
     SEC = "County Aggregation"
-    print(f"\n{'='*60}\n  {SEC}\n{'='*60}")
+    print(f"\n{'=' * 60}\n  {SEC}\n{'=' * 60}")
 
     # Evaluable tracts only
     evaluable = nc[nc["population"] > 0].copy()
@@ -225,9 +214,10 @@ def check_county_aggregation(nc: pd.DataFrame) -> None:
             total_tracts=("tract_fips", "count"),
             disadv_tracts=("disadvantaged", "sum"),
             total_pop=("population", "sum"),
-            disadv_pop=("population", lambda x: x[
-                evaluable.loc[x.index, "disadvantaged"] == 1
-            ].sum()),
+            disadv_pop=(
+                "population",
+                lambda x: x[evaluable.loc[x.index, "disadvantaged"] == 1].sum(),
+            ),
         )
         .reset_index()
     )
@@ -242,18 +232,16 @@ def check_county_aggregation(nc: pd.DataFrame) -> None:
     )
 
     # 2 Highlight 10 study counties
-    study = county_stats[
-        county_stats["county_name"].isin(STUDY_COUNTIES)
-    ].sort_values("pct_disadv_tracts", ascending=False)
+    study = county_stats[county_stats["county_name"].isin(STUDY_COUNTIES)].sort_values(
+        "pct_disadv_tracts", ascending=False
+    )
 
     n_study = len(study)
-    (PASS if n_study == 10 else FAIL)(
-        SEC, f"Study counties found: {n_study}/10"
-    )
+    (PASS if n_study == 10 else FAIL)(SEC, f"Study counties found: {n_study}/10")
 
     print("    Study county disadvantaged rates (evaluable tracts):")
     print(f"    {'County':<25} {'Tracts':>7} {'Disadv':>7} {'Pct':>7}")
-    print(f"    {'-'*46}")
+    print(f"    {'-' * 46}")
     for _, row in study.iterrows():
         print(
             f"    {row['county_name']:<25} "
@@ -264,10 +252,8 @@ def check_county_aggregation(nc: pd.DataFrame) -> None:
 
     # 3 Population-weighted % vs simple tract-count %
     print("\n    Population-weighted vs tract-count % for study counties:")
-    print(
-        f"    {'County':<25} {'Tract%':>8} {'PopWt%':>8} {'Diff':>7}"
-    )
-    print(f"    {'-'*48}")
+    print(f"    {'County':<25} {'Tract%':>8} {'PopWt%':>8} {'Diff':>7}")
+    print(f"    {'-' * 48}")
     for _, row in study.iterrows():
         cty = row["county_name"]
         cty_eval = evaluable[evaluable["county_name"] == cty]
@@ -279,10 +265,7 @@ def check_county_aggregation(nc: pd.DataFrame) -> None:
         )
         tract_pct = row["pct_disadv_tracts"]
         diff = pop_wt_pct - tract_pct
-        print(
-            f"    {cty:<25} {tract_pct:>7.1f}% "
-            f"{pop_wt_pct:>7.1f}% {diff:>+6.1f}%"
-        )
+        print(f"    {cty:<25} {tract_pct:>7.1f}% {pop_wt_pct:>7.1f}% {diff:>+6.1f}%")
 
     PASS(SEC, "County-level aggregation complete")
 
@@ -292,7 +275,7 @@ def check_county_aggregation(nc: pd.DataFrame) -> None:
 # ===================================================================
 def check_crosswalk_match(nc: pd.DataFrame) -> None:
     SEC = "Crosswalk Match"
-    print(f"\n{'='*60}\n  {SEC}\n{'='*60}")
+    print(f"\n{'=' * 60}\n  {SEC}\n{'=' * 60}")
 
     # 1 Extract unique NC tract FIPS from LEHD crosswalk
     xw = pd.read_csv(XW_PATH, dtype={"trct": str}, usecols=["trct"])
@@ -316,7 +299,8 @@ def check_crosswalk_match(nc: pd.DataFrame) -> None:
 
     tag = "PASS" if n_cejst_only == 0 else "WARN"
     _record(
-        SEC, tag,
+        SEC,
+        tag,
         f"Tracts in CEJST but not crosswalk: {n_cejst_only}",
     )
     if n_cejst_only > 0 and n_cejst_only <= 20:
@@ -329,7 +313,8 @@ def check_crosswalk_match(nc: pd.DataFrame) -> None:
 
     tag = "PASS" if n_xw_only == 0 else "WARN"
     _record(
-        SEC, tag,
+        SEC,
+        tag,
         f"Tracts in crosswalk but not CEJST: {n_xw_only}",
     )
     if n_xw_only > 0 and n_xw_only <= 20:
@@ -358,11 +343,9 @@ def check_crosswalk_match(nc: pd.DataFrame) -> None:
 # ===================================================================
 # SECTION 6: Border File Consistency
 # ===================================================================
-def check_border_consistency(
-    nc: pd.DataFrame, border: pd.DataFrame
-) -> None:
+def check_border_consistency(nc: pd.DataFrame, border: pd.DataFrame) -> None:
     SEC = "Border Consistency"
-    print(f"\n{'='*60}\n  {SEC}\n{'='*60}")
+    print(f"\n{'=' * 60}\n  {SEC}\n{'=' * 60}")
 
     # 1 Verify border file contains all NC tracts
     nc_tracts = set(nc["tract_fips"])
@@ -373,8 +356,7 @@ def check_border_consistency(
     missing = nc_tracts - border_nc_tracts
     (PASS if all_present else FAIL)(
         SEC,
-        f"All NC tracts in border file: {all_present} "
-        f"(missing: {len(missing)})",
+        f"All NC tracts in border file: {all_present} (missing: {len(missing)})",
     )
 
     # 2 State distribution of border-only (non-NC) tracts
@@ -391,7 +373,7 @@ def check_border_consistency(
 # ===================================================================
 def check_cumberland(nc: pd.DataFrame) -> None:
     SEC = "Cumberland (Whitfield)"
-    print(f"\n{'='*60}\n  {SEC}\n{'='*60}")
+    print(f"\n{'=' * 60}\n  {SEC}\n{'=' * 60}")
 
     cumb_all = nc[nc["county_name"] == "Cumberland County"]
     cumb_eval = cumb_all[cumb_all["population"] > 0]
@@ -449,12 +431,11 @@ def print_summary() -> None:
         "Cumberland (Whitfield)",
     ]
 
-    print(f"\n{'='*60}")
+    print(f"\n{'=' * 60}")
     print("  PHASE 5 CEJST JUSTICE40 EDA SUMMARY")
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
     header = (
-        f"{'Section':<26} {'Checks':>7} {'Passed':>7} "
-        f"{'Failed':>7} {'Warnings':>9}"
+        f"{'Section':<26} {'Checks':>7} {'Passed':>7} {'Failed':>7} {'Warnings':>9}"
     )
     print(header)
     print("-" * len(header))
@@ -470,10 +451,7 @@ def print_summary() -> None:
         grand["passed"] += passed
         grand["failed"] += failed
         grand["warnings"] += warnings
-        print(
-            f"{section:<26} {checks:>7} {passed:>7} "
-            f"{failed:>7} {warnings:>9}"
-        )
+        print(f"{section:<26} {checks:>7} {passed:>7} {failed:>7} {warnings:>9}")
 
     print("-" * len(header))
     print(
@@ -482,19 +460,14 @@ def print_summary() -> None:
     )
 
     if grand["failed"] == 0 and grand["warnings"] == 0:
-        print(
-            "\n  ALL GREEN -- safe to proceed to equity overlay analysis"
-        )
+        print("\n  ALL GREEN -- safe to proceed to equity overlay analysis")
     elif grand["failed"] == 0:
         print(
             f"\n  {grand['warnings']} WARNING(s) -- review above, "
             "likely safe to proceed"
         )
     else:
-        print(
-            f"\n  {grand['failed']} FAILURE(s) -- "
-            "investigate before proceeding"
-        )
+        print(f"\n  {grand['failed']} FAILURE(s) -- investigate before proceeding")
 
 
 # ===================================================================

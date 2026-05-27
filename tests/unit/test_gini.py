@@ -28,9 +28,9 @@ def test_gini_two_point_is_one_half():
 
 
 def test_gini_unweighted_nan_guards():
-    assert math.isnan(gini.gini_unweighted(np.array([5.0])))         # n < 2
-    assert math.isnan(gini.gini_unweighted(np.array([])))            # empty
-    assert math.isnan(gini.gini_unweighted(np.array([0.0, 0.0])))    # all zero
+    assert math.isnan(gini.gini_unweighted(np.array([5.0])))  # n < 2
+    assert math.isnan(gini.gini_unweighted(np.array([])))  # empty
+    assert math.isnan(gini.gini_unweighted(np.array([0.0, 0.0])))  # all zero
 
 
 def test_gini_stays_in_unit_interval():
@@ -49,9 +49,7 @@ def test_gini_weighted_equal_weights_matches_unweighted():
 
 def test_gini_weighted_nan_guards():
     assert math.isnan(gini.gini_weighted(np.array([1.0]), np.array([1.0])))
-    assert math.isnan(
-        gini.gini_weighted(np.array([1.0, 2.0]), np.array([0.0, 0.0]))
-    )
+    assert math.isnan(gini.gini_weighted(np.array([1.0, 2.0]), np.array([0.0, 0.0])))
 
 
 def test_ratio_max_min_is_inf_when_min_is_zero():

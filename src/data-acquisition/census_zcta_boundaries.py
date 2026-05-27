@@ -30,10 +30,7 @@ import geopandas as gpd
 from evpulse.paths import PROJECT_ROOT
 
 # Census Bureau ZCTA cartographic boundary file (500k resolution, 2020)
-ZCTA_URL = (
-    "https://www2.census.gov/geo/tiger/GENZ2020/shp/"
-    "cb_2020_us_zcta520_500k.zip"
-)
+ZCTA_URL = "https://www2.census.gov/geo/tiger/GENZ2020/shp/cb_2020_us_zcta520_500k.zip"
 
 # Bounding-box buffer in degrees (~0.1 deg ~ 11 km)
 BBOX_BUFFER_DEG = 0.1
@@ -46,9 +43,7 @@ EXPECTED_MAX = 900
 NC_COUNTY_FILE = os.path.join(
     PROJECT_ROOT, "data", "raw", "nc-county-boundaries.geojson"
 )
-OUTPUT_FILE = os.path.join(
-    PROJECT_ROOT, "data", "raw", "nc-zcta-boundaries.geojson"
-)
+OUTPUT_FILE = os.path.join(PROJECT_ROOT, "data", "raw", "nc-zcta-boundaries.geojson")
 
 
 def load_nc_bbox():
@@ -85,9 +80,7 @@ def download_zcta_boundaries(bbox):
 
     print("[INFO] Downloading US ZCTA boundaries from Census Bureau...")
     print(f"[INFO] URL: {ZCTA_URL}")
-    print(
-        "[INFO] This may take a moment (downloading ~80 MB shapefile)..."
-    )
+    print("[INFO] This may take a moment (downloading ~80 MB shapefile)...")
 
     try:
         gdf = gpd.read_file(ZCTA_URL)
@@ -129,9 +122,7 @@ def sanity_check(gdf):
     """Print summary statistics for verification."""
     print("\n--- Sanity Check ---")
     print(f"Total ZCTAs: {len(gdf)}")
-    print(
-        f"Geometry type: {gdf.geometry.geom_type.unique().tolist()}"
-    )
+    print(f"Geometry type: {gdf.geometry.geom_type.unique().tolist()}")
     print(f"CRS: {gdf.crs}")
     print(f"\nColumns: {list(gdf.columns)}")
 
@@ -147,8 +138,7 @@ def sanity_check(gdf):
         )
     else:
         print(
-            f"\n[WARNING] Expected {EXPECTED_MIN}-{EXPECTED_MAX} "
-            f"ZCTAs, got {len(gdf)}"
+            f"\n[WARNING] Expected {EXPECTED_MIN}-{EXPECTED_MAX} ZCTAs, got {len(gdf)}"
         )
 
 

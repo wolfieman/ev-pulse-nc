@@ -132,15 +132,13 @@ def _load_afdc_stations() -> gpd.GeoDataFrame:
         ],
     )
     # Filter to electric, open stations
-    df = df[
-        (df["fuel_type_code"] == "ELEC") & (df["status_code"] == "E")
-    ].copy()
+    df = df[(df["fuel_type_code"] == "ELEC") & (df["status_code"] == "E")].copy()
     df["latitude"] = pd.to_numeric(df["latitude"], errors="coerce")
     df["longitude"] = pd.to_numeric(df["longitude"], errors="coerce")
     df = df.dropna(subset=["latitude", "longitude"])
-    df["ev_dc_fast_num"] = pd.to_numeric(
-        df["ev_dc_fast_num"], errors="coerce"
-    ).fillna(0)
+    df["ev_dc_fast_num"] = pd.to_numeric(df["ev_dc_fast_num"], errors="coerce").fillna(
+        0
+    )
     geometry = [
         Point(lon, lat)
         for lon, lat in zip(df["longitude"], df["latitude"], strict=True)
@@ -158,9 +156,7 @@ def _get_study_counties(
     county_gdf: gpd.GeoDataFrame,
 ) -> gpd.GeoDataFrame:
     """Filter county GeoDataFrame to 10 study counties."""
-    return county_gdf[
-        county_gdf["GEOID"].isin(STUDY_COUNTY_FIPS)
-    ].copy()
+    return county_gdf[county_gdf["GEOID"].isin(STUDY_COUNTY_FIPS)].copy()
 
 
 def _prepare_tract_basemap(
@@ -176,15 +172,11 @@ def _prepare_tract_basemap(
     tract_gdf["county_fips"] = tract_gdf["tract_fips"].str[:5]
 
     # Filter to study counties
-    tract_gdf = tract_gdf[
-        tract_gdf["county_fips"].isin(STUDY_COUNTY_FIPS)
-    ].copy()
+    tract_gdf = tract_gdf[tract_gdf["county_fips"].isin(STUDY_COUNTY_FIPS)].copy()
 
     # Join CEJST data
     cejst_slim = cejst_df[["tract_fips", "disadvantaged"]].copy()
-    tract_gdf = tract_gdf.merge(
-        cejst_slim, on="tract_fips", how="left"
-    )
+    tract_gdf = tract_gdf.merge(cejst_slim, on="tract_fips", how="left")
     tract_gdf["disadvantaged"] = tract_gdf["disadvantaged"].fillna(0)
 
     # Reproject
@@ -225,9 +217,7 @@ def _add_county_boundaries(
     county_gdf: gpd.GeoDataFrame,
 ) -> None:
     """Plot county boundary outlines in black."""
-    county_gdf.boundary.plot(
-        ax=ax, color="black", linewidth=1.0, zorder=5
-    )
+    county_gdf.boundary.plot(ax=ax, color="black", linewidth=1.0, zorder=5)
 
 
 # ===================================================================
@@ -348,10 +338,7 @@ def generate_fig40(
     county_gdf: gpd.GeoDataFrame,
 ) -> None:
     """ZCTA-level Justice40 disadvantaged area choropleth."""
-    print(
-        "[INFO] Generating fig-40: "
-        "ZCTA-Level Justice40 Choropleth ..."
-    )
+    print("[INFO] Generating fig-40: ZCTA-Level Justice40 Choropleth ...")
 
     study_counties = _get_study_counties(county_gdf)
     study_counties = study_counties.to_crs(TARGET_CRS)
@@ -366,9 +353,7 @@ def generate_fig40(
     clipped = gpd.clip(zcta_proj, study_counties)
     clipped = clipped[~clipped.geometry.is_empty].copy()
     clipped = clipped[clipped.geometry.notna()].copy()
-    clipped = clipped[
-        clipped.geometry.area >= SLIVER_THRESHOLD
-    ].copy()
+    clipped = clipped[clipped.geometry.area >= SLIVER_THRESHOLD].copy()
 
     # Join justice40 data
     clipped = clipped.merge(
@@ -486,14 +471,9 @@ def generate_fig40(
 
 def generate_fig41(county_j40_df: pd.DataFrame) -> None:
     """Horizontal bar chart comparing county Justice40 burden."""
-    print(
-        "[INFO] Generating fig-41: "
-        "County-Level Justice40 Comparison ..."
-    )
+    print("[INFO] Generating fig-41: County-Level Justice40 Comparison ...")
 
-    df = county_j40_df.sort_values(
-        "justice40_pct_popweighted", ascending=True
-    ).copy()
+    df = county_j40_df.sort_values("justice40_pct_popweighted", ascending=True).copy()
 
     counties = df["county_name"].values
     pct_vals = df["justice40_pct_popweighted"].values
@@ -573,8 +553,7 @@ def generate_fig41(county_j40_df: pd.DataFrame) -> None:
     )
 
     ax.set_title(
-        "County-Level Justice40 Comparison"
-        " \u2014 10 Study Counties",
+        "County-Level Justice40 Comparison \u2014 10 Study Counties",
         fontsize=FONT_SIZES["title"],
         fontweight="bold",
     )
@@ -605,10 +584,7 @@ def generate_fig42(
 
     Returns a dict with key statistics for reporting.
     """
-    print(
-        "[INFO] Generating fig-42: "
-        "Stations on Justice40 Tracts ..."
-    )
+    print("[INFO] Generating fig-42: Stations on Justice40 Tracts ...")
 
     tracts = _prepare_tract_basemap(tract_gdf, cejst_df)
     study_counties = _get_study_counties(county_gdf)
@@ -624,9 +600,7 @@ def generate_fig42(
 
     # Spatial join: filter stations to study area
     study_union = study_counties.union_all()
-    stations_in_area = stations_proj[
-        stations_proj.geometry.within(study_union)
-    ].copy()
+    stations_in_area = stations_proj[stations_proj.geometry.within(study_union)].copy()
 
     n_stations = len(stations_in_area)
     print(f"  {n_stations} stations in study area")
@@ -643,16 +617,10 @@ def generate_fig42(
         how="left",
         predicate="within",
     )
-    n_in_disadv = int(
-        stations_with_tract["disadvantaged"].sum()
-    )
+    n_in_disadv = int(stations_with_tract["disadvantaged"].sum())
     n_in_non = n_stations - n_in_disadv
-    pct_in_disadv = (
-        n_in_disadv / n_stations * 100 if n_stations > 0 else 0.0
-    )
-    pct_in_non = (
-        n_in_non / n_stations * 100 if n_stations > 0 else 0.0
-    )
+    pct_in_disadv = n_in_disadv / n_stations * 100 if n_stations > 0 else 0.0
+    pct_in_non = n_in_non / n_stations * 100 if n_stations > 0 else 0.0
 
     fig, ax = plt.subplots(figsize=(10.0, 8.0))
     ax.set_axis_off()
@@ -763,8 +731,7 @@ def generate_fig42(
     )
 
     ax.set_title(
-        "EV Charging Stations on Justice40 Tracts"
-        " \u2014 10-County Study Area",
+        "EV Charging Stations on Justice40 Tracts \u2014 10-County Study Area",
         fontsize=FONT_SIZES["title"],
         fontweight="bold",
         pad=12,
@@ -813,9 +780,7 @@ def main() -> None:
     generate_fig39(tract_gdf, cejst_df, county_gdf)
     generate_fig40(zcta_gdf, zcta_j40_df, county_gdf)
     generate_fig41(county_j40_df)
-    stats = generate_fig42(
-        tract_gdf, cejst_df, county_gdf, stations_gdf
-    )
+    stats = generate_fig42(tract_gdf, cejst_df, county_gdf, stations_gdf)
 
     print(f"\n{'=' * 60}")
     print("[INFO] All Phase 5 figures complete.")

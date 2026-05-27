@@ -102,8 +102,14 @@ def _set_run_font(run, name: str = FONT_NAME) -> None:
     rfonts.set(qn("w:eastAsia"), name)
 
 
-def _add_run(paragraph, text: str, *, bold: bool = False, italic: bool = False,
-             mono: bool = False) -> None:
+def _add_run(
+    paragraph,
+    text: str,
+    *,
+    bold: bool = False,
+    italic: bool = False,
+    mono: bool = False,
+) -> None:
     run = paragraph.add_run(text)
     run.bold = bold
     run.italic = italic
@@ -124,7 +130,7 @@ def add_inline_runs(paragraph, text: str, *, base_italic: bool = False) -> None:
     pos = 0
     for m in _INLINE_RE.finditer(text):
         if m.start() > pos:
-            _add_run(paragraph, text[pos:m.start()], italic=base_italic)
+            _add_run(paragraph, text[pos : m.start()], italic=base_italic)
         if m.group("bold") is not None:
             _add_run(paragraph, m.group("bold"), bold=True, italic=base_italic)
         elif m.group("italic") is not None:
@@ -369,7 +375,7 @@ def parse_markdown(md_text: str) -> list[dict]:
         (idx for idx, ln in enumerate(all_lines) if ln.strip() == "---"),
         None,
     )
-    lines = all_lines[first_hr + 1:] if first_hr is not None else all_lines
+    lines = all_lines[first_hr + 1 :] if first_hr is not None else all_lines
     blocks: list[dict] = []
     i = 0
     n = len(lines)
@@ -448,9 +454,12 @@ def parse_markdown(md_text: str) -> list[dict]:
             nxt_stripped = nxt.strip()
             if not nxt_stripped:
                 break
-            if (nxt_stripped.startswith("#") or nxt_stripped == "---"
-                    or nxt_stripped.startswith("- ")
-                    or (nxt_stripped.startswith("|") and nxt_stripped.endswith("|"))):
+            if (
+                nxt_stripped.startswith("#")
+                or nxt_stripped == "---"
+                or nxt_stripped.startswith("- ")
+                or (nxt_stripped.startswith("|") and nxt_stripped.endswith("|"))
+            ):
                 break
             para_lines.append(nxt_stripped)
             i += 1
@@ -518,8 +527,13 @@ def render_blocks(doc: Document, blocks: list[dict]) -> dict:
     Returns a stats dict with counts for the build report.
     """
     stats = {
-        "tables": 0, "bullets": 0, "h1": 0, "h2": 0, "h3": 0,
-        "paragraphs": 0, "figures": 0,
+        "tables": 0,
+        "bullets": 0,
+        "h1": 0,
+        "h2": 0,
+        "h3": 0,
+        "paragraphs": 0,
+        "figures": 0,
     }
 
     in_references = False
@@ -648,7 +662,6 @@ def render_blocks(doc: Document, blocks: list[dict]) -> dict:
                         # PNG), drop it from the pending set so we don't
                         # retry on every subsequent citation.
                         pending_figures.discard(fig_num)
-
 
     return stats
 

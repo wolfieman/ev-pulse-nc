@@ -51,9 +51,7 @@ STUDY_STATES: dict[str, str] = {
     "51": "Virginia",
 }
 
-TIGER_BASE_URL = (
-    "https://www2.census.gov/geo/tiger/TIGER2010/TRACT/2010"
-)
+TIGER_BASE_URL = "https://www2.census.gov/geo/tiger/TIGER2010/TRACT/2010"
 
 # Expected NC tract count (from CEJST)
 EXPECTED_NC_TRACTS = 2195
@@ -110,9 +108,7 @@ def download_all_states() -> gpd.GeoDataFrame:
     for fips, name in STUDY_STATES.items():
         gdf = _download_state_tracts(fips, name)
         # Standardise to a minimal schema
-        gdf = gdf.rename(columns={"GEOID10": "tract_fips"})[
-            ["tract_fips", "geometry"]
-        ]
+        gdf = gdf.rename(columns={"GEOID10": "tract_fips"})[["tract_fips", "geometry"]]
         gdf["state_fips"] = fips
         frames.append(gdf)
 
@@ -120,8 +116,7 @@ def download_all_states() -> gpd.GeoDataFrame:
         pd.concat(frames, ignore_index=True),
         crs=frames[0].crs,
     )
-    print(f"\n  Merged: {len(merged):,} tracts across "
-          f"{len(STUDY_STATES)} states")
+    print(f"\n  Merged: {len(merged):,} tracts across {len(STUDY_STATES)} states")
     return merged
 
 

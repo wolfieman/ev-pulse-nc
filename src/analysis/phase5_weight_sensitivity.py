@@ -30,9 +30,7 @@ OUTPUT_CSV = PROJECT_ROOT / "data" / "processed" / "scoring-weight-sensitivity.c
 EQUITY_WEIGHTS = [0.30, 0.35, 0.40, 0.45, 0.50]
 
 
-def compute_scenario(
-    df: pd.DataFrame, w_equity: float
-) -> pd.DataFrame:
+def compute_scenario(df: pd.DataFrame, w_equity: float) -> pd.DataFrame:
     """Recompute NEVI scores under a given equity weight.
 
     Args:
@@ -111,15 +109,11 @@ def main() -> None:
     print("=" * 80)
 
     rank_cols = [c for c in rank_table.columns if c.startswith("rank_")]
-    baseline_top3 = set(
-        rank_table.nsmallest(3, "rank_eq_40")["county_name"].tolist()
-    )
+    baseline_top3 = set(rank_table.nsmallest(3, "rank_eq_40")["county_name"].tolist())
 
     all_stable = True
     for col in rank_cols:
-        scenario_top3 = set(
-            rank_table.nsmallest(3, col)["county_name"].tolist()
-        )
+        scenario_top3 = set(rank_table.nsmallest(3, col)["county_name"].tolist())
         match = scenario_top3 == baseline_top3
         status = "STABLE" if match else "CHANGED"
         if not match:
@@ -137,9 +131,7 @@ def main() -> None:
             "variation in equity weight.'"
         )
     else:
-        print(
-            "  RESULT: Top-3 rankings CHANGE under some weight scenarios."
-        )
+        print("  RESULT: Top-3 rankings CHANGE under some weight scenarios.")
         print("  Document which scenarios cause rank changes.")
 
     # Per-county rank range

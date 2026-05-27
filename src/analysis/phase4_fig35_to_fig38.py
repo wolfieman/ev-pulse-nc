@@ -60,17 +60,13 @@ _CLR_BED = COLORS["negative"]  # red
 
 def _load_employment_centers() -> pd.DataFrame:
     """Load the 15-row employment-centers CSV."""
-    df = pd.read_csv(
-        _EMPLOYMENT_CSV, dtype={"county_fips": str}
-    )
+    df = pd.read_csv(_EMPLOYMENT_CSV, dtype={"county_fips": str})
     return df
 
 
 def _load_cost_effectiveness() -> pd.DataFrame:
     """Load the 10-row cost-effectiveness CSV."""
-    df = pd.read_csv(
-        _COST_CSV, dtype={"county_fips": str}
-    )
+    df = pd.read_csv(_COST_CSV, dtype={"county_fips": str})
     return df
 
 
@@ -98,9 +94,7 @@ def generate_fig35(df: pd.DataFrame) -> None:
     fig, ax = plt.subplots(figsize=(7.0, 5.5))
 
     y_pos = np.arange(len(counties))
-    bar_colors = [
-        _CLR_EMP if v > 0 else _CLR_BED for v in net
-    ]
+    bar_colors = [_CLR_EMP if v > 0 else _CLR_BED for v in net]
 
     ax.barh(
         y_pos,
@@ -142,8 +136,7 @@ def generate_fig35(df: pd.DataFrame) -> None:
 
     # Stats annotation
     ax.annotate(
-        "8 Employment Centers | 75 Balanced"
-        " | 17 Bedroom Communities\n(statewide)",
+        "8 Employment Centers | 75 Balanced | 17 Bedroom Communities\n(statewide)",
         xy=(0.02, 0.02),
         xycoords="axes fraction",
         fontsize=FONT_SIZES["annotation"],
@@ -158,8 +151,7 @@ def generate_fig35(df: pd.DataFrame) -> None:
     )
 
     ax.set_title(
-        "Net Commuter Flow by County"
-        " \u2014 Top 15 Employment Destinations",
+        "Net Commuter Flow by County \u2014 Top 15 Employment Destinations",
         fontsize=FONT_SIZES["title"],
         fontweight="bold",
     )
@@ -167,9 +159,7 @@ def generate_fig35(df: pd.DataFrame) -> None:
         "Net Commuting (Inbound minus Outbound Workers)",
         fontsize=FONT_SIZES["axis_label"],
     )
-    ax.xaxis.set_major_formatter(
-        mticker.FuncFormatter(lambda x, _: f"{x:,.0f}")
-    )
+    ax.xaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f"{x:,.0f}"))
 
     paths = save_figure(
         fig,
@@ -193,10 +183,7 @@ def generate_fig36(
     cost_df: pd.DataFrame,
 ) -> None:
     """Grouped horizontal bar: residential BEV vs workplace-adjusted."""
-    print(
-        "[INFO] Generating fig-36: "
-        "Residential vs Workplace Demand ..."
-    )
+    print("[INFO] Generating fig-36: Residential vs Workplace Demand ...")
 
     # Merge BEV counts onto employment-centers for scoring counties
     scoring_counties = cost_df["county_name"].tolist()
@@ -209,9 +196,7 @@ def generate_fig36(
         how="left",
     )
 
-    df_10 = df_10.sort_values(
-        "adjusted_demand_75k", ascending=True
-    ).copy()
+    df_10 = df_10.sort_values("adjusted_demand_75k", ascending=True).copy()
 
     counties = df_10["county_name"].values
     bev_vals = df_10["BEV"].values.astype(float)
@@ -281,8 +266,7 @@ def generate_fig36(
     )
 
     ax.set_title(
-        "Residential-Only vs. Workplace-Adjusted"
-        " Charging Demand",
+        "Residential-Only vs. Workplace-Adjusted Charging Demand",
         fontsize=FONT_SIZES["title"],
         fontweight="bold",
     )
@@ -290,12 +274,8 @@ def generate_fig36(
         "Estimated Charging Demand (Vehicles)",
         fontsize=FONT_SIZES["axis_label"],
     )
-    ax.xaxis.set_major_formatter(
-        mticker.FuncFormatter(lambda x, _: f"{x:,.0f}")
-    )
-    ax.legend(
-        fontsize=FONT_SIZES["legend"], loc="lower right"
-    )
+    ax.xaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f"{x:,.0f}"))
+    ax.legend(fontsize=FONT_SIZES["legend"], loc="lower right")
 
     paths = save_figure(
         fig,
@@ -320,17 +300,11 @@ def generate_fig37(
     county_shp_path: Path,
 ) -> None:
     """Choropleth of all 100 NC counties by commuter typology."""
-    print(
-        "[INFO] Generating fig-37: "
-        "County Commuter Typology Choropleth ..."
-    )
+    print("[INFO] Generating fig-37: County Commuter Typology Choropleth ...")
     try:
         import geopandas as gpd
     except ImportError:
-        print(
-            "[WARN] geopandas not available; "
-            "skipping fig-37 choropleth."
-        )
+        print("[WARN] geopandas not available; skipping fig-37 choropleth.")
         return
 
     try:
@@ -341,9 +315,7 @@ def generate_fig37(
             dtype=str,
             usecols=["tabblk2020", "cty"],
         )
-        xwalk = xwalk.rename(
-            columns={"tabblk2020": "block", "cty": "county_fips"}
-        )
+        xwalk = xwalk.rename(columns={"tabblk2020": "block", "cty": "county_fips"})
 
         # --- Load OD flows (memory-efficient) ---
         od = pd.read_csv(
@@ -399,9 +371,7 @@ def generate_fig37(
             )
         )
 
-        flows = inbound.merge(
-            outbound, on="county_fips", how="outer"
-        ).fillna(0)
+        flows = inbound.merge(outbound, on="county_fips", how="outer").fillna(0)
         flows["net"] = flows["inbound"] - flows["outbound"]
 
         # Classify typology
@@ -435,10 +405,7 @@ def generate_fig37(
                     fips_col = col
                     break
         if fips_col is None:
-            print(
-                "[WARN] Cannot identify FIPS column in "
-                "GeoJSON; skipping fig-37."
-            )
+            print("[WARN] Cannot identify FIPS column in GeoJSON; skipping fig-37.")
             return
 
         gdf[fips_col] = gdf[fips_col].astype(str)
@@ -493,11 +460,7 @@ def generate_fig37(
 
         if name_col:
             for label in top5_labels:
-                match = gdf[
-                    gdf[name_col].str.contains(
-                        label, case=False, na=False
-                    )
-                ]
+                match = gdf[gdf[name_col].str.contains(label, case=False, na=False)]
                 if not match.empty:
                     centroid = match.geometry.centroid.iloc[0]
                     ax.annotate(
@@ -579,9 +542,7 @@ def generate_fig37(
             print(f"[SUCCESS] Saved {p}")
 
     except Exception as exc:
-        print(
-            f"[WARN] fig-37 generation failed: {exc}. Skipping."
-        )
+        print(f"[WARN] fig-37 generation failed: {exc}. Skipping.")
 
 
 # ===================================================================
@@ -589,20 +550,13 @@ def generate_fig37(
 # ===================================================================
 
 
-def generate_fig38(
-    df: pd.DataFrame, cost_df: pd.DataFrame
-) -> None:
+def generate_fig38(df: pd.DataFrame, cost_df: pd.DataFrame) -> None:
     """Dot-and-whisker plot of port scenario ranges."""
-    print(
-        "[INFO] Generating fig-38: "
-        "Workplace Port Scenario Range ..."
-    )
+    print("[INFO] Generating fig-38: Workplace Port Scenario Range ...")
 
     scoring_counties = cost_df["county_name"].tolist()
     df_10 = df[df["county_name"].isin(scoring_counties)].copy()
-    df_10 = df_10.sort_values(
-        "ports_total_baseline", ascending=True
-    )
+    df_10 = df_10.sort_values("ports_total_baseline", ascending=True)
 
     counties = df_10["county_name"].values
     baseline = df_10["ports_total_baseline"].values
@@ -669,12 +623,9 @@ def generate_fig38(
     )
 
     ax.set_yticks(y_pos)
-    ax.set_yticklabels(
-        counties, fontsize=FONT_SIZES["tick_label"]
-    )
+    ax.set_yticklabels(counties, fontsize=FONT_SIZES["tick_label"])
     ax.set_title(
-        "Workplace Charging Port Estimates"
-        " \u2014 Low, Baseline, and High Scenarios",
+        "Workplace Charging Port Estimates \u2014 Low, Baseline, and High Scenarios",
         fontsize=FONT_SIZES["title"],
         fontweight="bold",
     )
@@ -682,9 +633,7 @@ def generate_fig38(
         "Estimated Workplace Ports Needed",
         fontsize=FONT_SIZES["axis_label"],
     )
-    ax.xaxis.set_major_formatter(
-        mticker.FuncFormatter(lambda x, _: f"{x:,.0f}")
-    )
+    ax.xaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f"{x:,.0f}"))
 
     paths = save_figure(
         fig,

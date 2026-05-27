@@ -34,6 +34,7 @@ Licensed under the Polyform Noncommercial License 1.0.0 (see LICENSE).
 Project: EV Pulse NC
 Date: February 2026
 """
+
 from __future__ import annotations
 
 from pathlib import Path
@@ -50,6 +51,7 @@ from matplotlib.patheffects import withStroke
 # (see _create_preview_matplotlib). No warning needed at import time.
 try:
     from PIL import Image, ImageDraw, ImageFont
+
     HAS_PILLOW = True
 except ImportError:
     HAS_PILLOW = False
@@ -57,6 +59,7 @@ except ImportError:
 # Try to import Plotly for interactive charts
 try:
     import plotly.express as px
+
     HAS_PLOTLY = True
 except ImportError:
     HAS_PLOTLY = False
@@ -68,22 +71,19 @@ except ImportError:
 
 BLOG_COLORS = {
     # Primary accent colors
-    "primary": "#2ecc71",      # Emerald green (EV/sustainability)
-    "secondary": "#3498db",    # Blue (trust/data)
-    "accent": "#9b59b6",       # Purple (insight/premium)
-    "warning": "#f39c12",      # Orange (attention)
-    "alert": "#e74c3c",        # Red (urgency/gap)
-
+    "primary": "#2ecc71",  # Emerald green (EV/sustainability)
+    "secondary": "#3498db",  # Blue (trust/data)
+    "accent": "#9b59b6",  # Purple (insight/premium)
+    "warning": "#f39c12",  # Orange (attention)
+    "alert": "#e74c3c",  # Red (urgency/gap)
     # Backgrounds
-    "dark_bg": "#1a365d",      # Dark blue (professional)
-    "light_bg": "#f7fafc",     # Off-white
-    "card_bg": "#ffffff",      # White
-
+    "dark_bg": "#1a365d",  # Dark blue (professional)
+    "light_bg": "#f7fafc",  # Off-white
+    "card_bg": "#ffffff",  # White
     # Text
-    "text_dark": "#2d3748",    # Near-black
-    "text_light": "#718096",   # Gray
-    "text_white": "#ffffff",   # White
-
+    "text_dark": "#2d3748",  # Near-black
+    "text_light": "#718096",  # Gray
+    "text_white": "#ffffff",  # White
     # Chart colors (ordered for comparison)
     "chart_1": "#2ecc71",
     "chart_2": "#3498db",
@@ -96,6 +96,7 @@ BLOG_COLORS = {
 # =============================================================================
 # STAT CARDS
 # =============================================================================
+
 
 def create_stat_card(
     value: str,
@@ -125,55 +126,61 @@ def create_stat_card(
     fig, ax = plt.subplots(figsize=size)
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1)
-    ax.axis('off')
-    fig.patch.set_facecolor('white')
+    ax.axis("off")
+    fig.patch.set_facecolor("white")
 
     # Card background with rounded corners
     card = patches.FancyBboxPatch(
-        (0.05, 0.05), 0.9, 0.9,
+        (0.05, 0.05),
+        0.9,
+        0.9,
         boxstyle="round,pad=0.02,rounding_size=0.08",
         facecolor=color,
         alpha=0.12,
         edgecolor=color,
-        linewidth=3
+        linewidth=3,
     )
     ax.add_patch(card)
 
     # Top accent bar
-    accent_bar = patches.Rectangle(
-        (0.05, 0.85), 0.9, 0.1,
-        facecolor=color,
-        alpha=0.9
-    )
+    accent_bar = patches.Rectangle((0.05, 0.85), 0.9, 0.1, facecolor=color, alpha=0.9)
     ax.add_patch(accent_bar)
 
     # Large stat value
     ax.text(
-        0.5, 0.52,
+        0.5,
+        0.52,
         value,
         fontsize=42,
-        fontweight='bold',
-        ha='center',
-        va='center',
+        fontweight="bold",
+        ha="center",
+        va="center",
         color=color,
-        path_effects=[withStroke(linewidth=1, foreground='white')]
+        path_effects=[withStroke(linewidth=1, foreground="white")],
     )
 
     # Label below
     ax.text(
-        0.5, 0.18,
+        0.5,
+        0.18,
         label,
         fontsize=11,
-        ha='center',
-        va='center',
+        ha="center",
+        va="center",
         color=BLOG_COLORS["text_dark"],
-        linespacing=1.3
+        linespacing=1.3,
     )
 
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(output_path, dpi=dpi, bbox_inches='tight',
-                facecolor='white', edgecolor='none', pad_inches=0.1)
+    fig.savefig(
+        output_path,
+        dpi=dpi,
+        bbox_inches="tight",
+        facecolor="white",
+        edgecolor="none",
+        pad_inches=0.1,
+    )
     plt.close(fig)
 
     return output_path
@@ -235,7 +242,7 @@ def create_stat_grid(
     fig_height = n_rows * 2.2 + 0.8  # Extra for title
 
     fig, axes = plt.subplots(n_rows, n_cols, figsize=(fig_width, fig_height))
-    fig.patch.set_facecolor('white')
+    fig.patch.set_facecolor("white")
 
     # Flatten axes for iteration
     if n_stats == 1:
@@ -252,56 +259,54 @@ def create_stat_grid(
 
         ax.set_xlim(0, 1)
         ax.set_ylim(0, 1)
-        ax.axis('off')
+        ax.axis("off")
 
         # Circular background
         circle = plt.Circle((0.5, 0.55), 0.35, color=color, alpha=0.15)
         ax.add_patch(circle)
         circle_border = plt.Circle(
-            (0.5, 0.55), 0.35,
-            fill=False, color=color, linewidth=3
+            (0.5, 0.55), 0.35, fill=False, color=color, linewidth=3
         )
         ax.add_patch(circle_border)
 
         # Value
         ax.text(
-            0.5, 0.55,
+            0.5,
+            0.55,
             value,
             fontsize=24,
-            fontweight='bold',
-            ha='center',
-            va='center',
-            color=color
+            fontweight="bold",
+            ha="center",
+            va="center",
+            color=color,
         )
 
         # Label
         ax.text(
-            0.5, 0.08,
+            0.5,
+            0.08,
             label,
             fontsize=9,
-            ha='center',
-            va='center',
+            ha="center",
+            va="center",
             color=BLOG_COLORS["text_dark"],
-            wrap=True
+            wrap=True,
         )
 
     # Hide unused axes
     for ax in axes_flat[n_stats:]:
-        ax.axis('off')
+        ax.axis("off")
 
     # Title
     fig.suptitle(
-        title,
-        fontsize=14,
-        fontweight='bold',
-        color=BLOG_COLORS["text_dark"],
-        y=0.98
+        title, fontsize=14, fontweight="bold", color=BLOG_COLORS["text_dark"], y=0.98
     )
 
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(output_path, dpi=dpi, bbox_inches='tight',
-                facecolor='white', pad_inches=0.3)
+    fig.savefig(
+        output_path, dpi=dpi, bbox_inches="tight", facecolor="white", pad_inches=0.3
+    )
     plt.close(fig)
 
     return output_path
@@ -310,6 +315,7 @@ def create_stat_grid(
 # =============================================================================
 # SOCIAL MEDIA PREVIEW IMAGES
 # =============================================================================
+
 
 def create_social_preview(
     title: str,
@@ -371,21 +377,21 @@ def _create_preview_pillow(
     accent_color: str,
 ) -> Path:
     """Create preview using Pillow (preferred)."""
-    img = Image.new('RGB', size, color=bg_color)
+    img = Image.new("RGB", size, color=bg_color)
     draw = ImageDraw.Draw(img)
 
     # Try to load fonts
     try:
-        title_font = ImageFont.truetype('arial.ttf', 52)
-        subtitle_font = ImageFont.truetype('arial.ttf', 26)
+        title_font = ImageFont.truetype("arial.ttf", 52)
+        subtitle_font = ImageFont.truetype("arial.ttf", 26)
     except OSError:
         try:
             # Linux fallback
             title_font = ImageFont.truetype(
-                '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf', 52
+                "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 52
             )
             subtitle_font = ImageFont.truetype(
-                '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf', 26
+                "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 26
             )
         except OSError:
             title_font = ImageFont.load_default()
@@ -398,20 +404,17 @@ def _create_preview_pillow(
 
     # Title
     title_y = size[1] // 2 - 50
-    draw.text((60, title_y), title, font=title_font, fill='white')
+    draw.text((60, title_y), title, font=title_font, fill="white")
 
     # Subtitle
     subtitle_y = size[1] // 2 + 30
-    draw.text((60, subtitle_y), subtitle, font=subtitle_font, fill='#a0aec0')
+    draw.text((60, subtitle_y), subtitle, font=subtitle_font, fill="#a0aec0")
 
     # Accent bar at bottom
     bar_height = 8
     # Convert hex to RGB
-    accent_rgb = tuple(int(accent_color.lstrip('#')[i:i+2], 16) for i in (0, 2, 4))
-    draw.rectangle(
-        [(0, size[1] - bar_height), (size[0], size[1])],
-        fill=accent_rgb
-    )
+    accent_rgb = tuple(int(accent_color.lstrip("#")[i : i + 2], 16) for i in (0, 2, 4))
+    draw.rectangle([(0, size[1] - bar_height), (size[0], size[1])], fill=accent_rgb)
 
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -436,42 +439,28 @@ def _create_preview_matplotlib(
     fig, ax = plt.subplots(figsize=(fig_width, fig_height))
     ax.set_xlim(0, 1)
     ax.set_ylim(0, 1)
-    ax.axis('off')
+    ax.axis("off")
     fig.patch.set_facecolor(bg_color)
     ax.set_facecolor(bg_color)
 
     # Title
     ax.text(
-        0.05, 0.55,
-        title,
-        fontsize=28,
-        fontweight='bold',
-        color='white',
-        va='center'
+        0.05, 0.55, title, fontsize=28, fontweight="bold", color="white", va="center"
     )
 
     # Subtitle
-    ax.text(
-        0.05, 0.4,
-        subtitle,
-        fontsize=14,
-        color='#a0aec0',
-        va='center'
-    )
+    ax.text(0.05, 0.4, subtitle, fontsize=14, color="#a0aec0", va="center")
 
     # Accent bar
     bar = patches.Rectangle(
-        (0, 0), 1, 0.02,
-        facecolor=accent_color,
-        transform=ax.transAxes
+        (0, 0), 1, 0.02, facecolor=accent_color, transform=ax.transAxes
     )
     ax.add_patch(bar)
 
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(
-        output_path, dpi=dpi, bbox_inches='tight',
-        facecolor=bg_color, pad_inches=0
+        output_path, dpi=dpi, bbox_inches="tight", facecolor=bg_color, pad_inches=0
     )
     plt.close(fig)
 
@@ -481,6 +470,7 @@ def _create_preview_matplotlib(
 # =============================================================================
 # COMPARISON CHARTS
 # =============================================================================
+
 
 def create_comparison_bar(
     labels: list[str],
@@ -516,16 +506,16 @@ def create_comparison_bar(
     fig, ax = plt.subplots(figsize=(8, max(4, len(labels) * 0.5)))
 
     y_pos = np.arange(len(labels))
-    bars = ax.barh(y_pos, values, color=colors, edgecolor='white', height=0.6)
+    bars = ax.barh(y_pos, values, color=colors, edgecolor="white", height=0.6)
 
     # Reference line
     if reference_line is not None:
         ax.axvline(
             x=reference_line,
             color=BLOG_COLORS["alert"],
-            linestyle='--',
+            linestyle="--",
             linewidth=2,
-            label=reference_label
+            label=reference_label,
         )
 
     # Value labels
@@ -533,24 +523,24 @@ def create_comparison_bar(
         ax.text(
             val + max(values) * 0.02,
             bar.get_y() + bar.get_height() / 2,
-            f'{val:,.1f}' if isinstance(val, float) else str(val),
-            va='center',
-            fontsize=9
+            f"{val:,.1f}" if isinstance(val, float) else str(val),
+            va="center",
+            fontsize=9,
         )
 
     ax.set_yticks(y_pos)
     ax.set_yticklabels(labels)
     ax.set_xlabel(ylabel)
-    ax.set_title(title, fontweight='bold', pad=10)
-    ax.spines['top'].set_visible(False)
-    ax.spines['right'].set_visible(False)
+    ax.set_title(title, fontweight="bold", pad=10)
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
 
     if reference_line is not None:
-        ax.legend(loc='lower right')
+        ax.legend(loc="lower right")
 
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(output_path, dpi=dpi, bbox_inches='tight', facecolor='white')
+    fig.savefig(output_path, dpi=dpi, bbox_inches="tight", facecolor="white")
     plt.close(fig)
 
     return output_path
@@ -559,6 +549,7 @@ def create_comparison_bar(
 # =============================================================================
 # INTERACTIVE CHARTS (PLOTLY)
 # =============================================================================
+
 
 def create_interactive_line(
     data: pd.DataFrame,
@@ -587,24 +578,15 @@ def create_interactive_line(
         return None
 
     fig = px.line(
-        data,
-        x=x_col,
-        y=y_col,
-        color=color_col,
-        title=title,
-        template='plotly_white'
+        data, x=x_col, y=y_col, color=color_col, title=title, template="plotly_white"
     )
 
-    fig.update_layout(
-        font_family="Arial",
-        title_font_size=16,
-        hovermode='x unified'
-    )
+    fig.update_layout(font_family="Arial", title_font_size=16, hovermode="x unified")
 
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
-    if output_path.suffix == '.html':
+    if output_path.suffix == ".html":
         fig.write_html(output_path)
     else:
         fig.write_image(output_path, scale=2)
@@ -616,13 +598,14 @@ def create_interactive_line(
 # QUICK TEMPLATES - EV PULSE NC SPECIFIC
 # =============================================================================
 
+
 def create_ev_pulse_hero(output_path: str | Path) -> Path:
     """Create the standard EV Pulse NC hero/preview image."""
     return create_social_preview(
         "NC's EV Infrastructure Gap",
         "94,371 EVs. 1,725 chargers. Where should $109M go?",
         output_path,
-        platform="linkedin"
+        platform="linkedin",
     )
 
 
@@ -630,13 +613,13 @@ def create_ev_pulse_stats(output_path: str | Path) -> Path:
     """Create the standard EV Pulse NC statistics infographic."""
     return create_stat_grid(
         {
-            'BEV Growth': '1,727%',
-            'Total BEVs': '94,371',
-            'BEVs/Port': '16.9',
-            'NEVI Funding': '$109M'
+            "BEV Growth": "1,727%",
+            "Total BEVs": "94,371",
+            "BEVs/Port": "16.9",
+            "NEVI Funding": "$109M",
         },
-        'North Carolina EV Infrastructure: Key Numbers',
-        output_path
+        "North Carolina EV Infrastructure: Key Numbers",
+        output_path,
     )
 
 
@@ -652,22 +635,20 @@ if __name__ == "__main__":
 
     # Stat card
     path = create_stat_card(
-        '1,727%',
-        'BEV Growth\n(2018-2025)',
-        output_dir / 'demo-stat-card.png'
+        "1,727%", "BEV Growth\n(2018-2025)", output_dir / "demo-stat-card.png"
     )
     print(f"  Created: {path}")
 
     # Stat grid
     path = create_stat_grid(
         {
-            'BEV Growth': '1,727%',
-            'Total BEVs': '94,371',
-            'BEVs/Port': '16.9',
-            'NEVI Funding': '$109M'
+            "BEV Growth": "1,727%",
+            "Total BEVs": "94,371",
+            "BEVs/Port": "16.9",
+            "NEVI Funding": "$109M",
         },
-        'North Carolina EV Infrastructure Snapshot',
-        output_dir / 'demo-stat-grid.png'
+        "North Carolina EV Infrastructure Snapshot",
+        output_dir / "demo-stat-grid.png",
     )
     print(f"  Created: {path}")
 
@@ -675,20 +656,20 @@ if __name__ == "__main__":
     path = create_social_preview(
         "NC's EV Revolution: 1,727% Growth",
         "How 94,000 electric vehicles are reshaping infrastructure needs",
-        output_dir / 'demo-linkedin-preview.png',
-        platform='linkedin'
+        output_dir / "demo-linkedin-preview.png",
+        platform="linkedin",
     )
     print(f"  Created: {path}")
 
     # Comparison bar
     path = create_comparison_bar(
-        labels=['Wake', 'Mecklenburg', 'Durham', 'Guilford', 'Forsyth'],
+        labels=["Wake", "Mecklenburg", "Durham", "Guilford", "Forsyth"],
         values=[18500, 12300, 8200, 4100, 3200],
-        output_path=output_dir / 'demo-comparison-bar.png',
-        title='Top 5 Counties by BEV Registrations',
-        ylabel='BEV Count',
+        output_path=output_dir / "demo-comparison-bar.png",
+        title="Top 5 Counties by BEV Registrations",
+        ylabel="BEV Count",
         reference_line=10000,
-        reference_label='10K threshold'
+        reference_label="10K threshold",
     )
     print(f"  Created: {path}")
 

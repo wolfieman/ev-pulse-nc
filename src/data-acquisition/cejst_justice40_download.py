@@ -40,9 +40,7 @@ from evpulse.paths import PROJECT_ROOT
 # ---------------------------------------------------------------------------
 RAW_DIR = os.path.join(PROJECT_ROOT, "data", "raw")
 NC_OUTPUT = os.path.join(RAW_DIR, "cejst-justice40-tracts-nc.csv")
-BORDER_OUTPUT = os.path.join(
-    RAW_DIR, "cejst-justice40-tracts-nc-border.csv"
-)
+BORDER_OUTPUT = os.path.join(RAW_DIR, "cejst-justice40-tracts-nc-border.csv")
 
 # ---------------------------------------------------------------------------
 # Data source URLs (try in order)
@@ -193,8 +191,7 @@ def parse_national_csv(text):
 
     if not (US_ROWS_MIN <= total <= US_ROWS_MAX):
         print(
-            f"[WARNING] Expected {US_ROWS_MIN:,}-{US_ROWS_MAX:,} "
-            f"US rows, got {total:,}"
+            f"[WARNING] Expected {US_ROWS_MIN:,}-{US_ROWS_MAX:,} US rows, got {total:,}"
         )
 
     return output_header, rows, total
@@ -263,8 +260,7 @@ def sanity_check_nc(nc_path, nc_count):
     bad_fips = [r["tract_fips"] for r in rows if len(r["tract_fips"]) != 11]
     if bad_fips:
         print(
-            f"[ERROR]   {len(bad_fips)} tracts with non-11-digit FIPS: "
-            f"{bad_fips[:5]}"
+            f"[ERROR]   {len(bad_fips)} tracts with non-11-digit FIPS: {bad_fips[:5]}"
         )
         ok = False
     else:
@@ -278,9 +274,7 @@ def sanity_check_nc(nc_path, nc_count):
         print(f"[WARNING] Unexpected state values: {states}")
 
     # --- Null disadvantaged ---
-    null_disadv = sum(
-        1 for r in rows if r["disadvantaged"] not in ("0", "1")
-    )
+    null_disadv = sum(1 for r in rows if r["disadvantaged"] not in ("0", "1"))
     if null_disadv == 0:
         print("[OK]      No null 'disadvantaged' values")
     elif null_disadv <= 5:
@@ -348,9 +342,7 @@ def sanity_check_border(border_path, border_count):
 
     bad_fips = [r["tract_fips"] for r in rows if len(r["tract_fips"]) != 11]
     if bad_fips:
-        print(
-            f"[ERROR]   {len(bad_fips)} tracts with non-11-digit FIPS"
-        )
+        print(f"[ERROR]   {len(bad_fips)} tracts with non-11-digit FIPS")
     else:
         print("[OK]      All tract FIPS are 11 characters")
 
@@ -372,9 +364,7 @@ def main():
     header, rows, us_total = parse_national_csv(text)
 
     # 3. Filter NC -> save
-    nc_count = filter_and_save(
-        header, rows, [NC_FIPS], NC_OUTPUT, "NC tracts"
-    )
+    nc_count = filter_and_save(header, rows, [NC_FIPS], NC_OUTPUT, "NC tracts")
 
     # 4. Filter NC + border states -> save
     border_count = filter_and_save(

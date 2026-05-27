@@ -71,7 +71,8 @@ def load_study_zips(path: Path) -> pd.DataFrame:
 
 
 def load_zcta_boundaries(
-    path: Path, study_zips: set[str],
+    path: Path,
+    study_zips: set[str],
 ) -> gpd.GeoDataFrame:
     """Load ZCTA boundaries and filter to study ZCTAs.
 
@@ -151,7 +152,7 @@ def load_and_prepare(
         Tuple of (ZCTA GeoDataFrame, tract GeoDataFrame, study ZIP DataFrame).
     """
     sec = "5.3.2 Load & Prepare"
-    print(f"\n{'='*60}\n  {sec}\n{'='*60}")
+    print(f"\n{'=' * 60}\n  {sec}\n{'=' * 60}")
 
     # Study ZIPs
     study_df = load_study_zips(STUDY_ZIPS_CSV)
@@ -166,7 +167,9 @@ def load_and_prepare(
 
     # Tracts + CEJST
     tract_gdf = load_tracts_with_cejst(
-        TRACT_BOUNDARIES, CEJST_BORDER_CSV, zcta_gdf,
+        TRACT_BOUNDARIES,
+        CEJST_BORDER_CSV,
+        zcta_gdf,
     )
     if verbose:
         n_matched = int(tract_gdf["disadvantaged"].notna().sum())
@@ -198,7 +201,7 @@ def compute_overlay(
         GeoDataFrame of intersection fragments with area_sqm column.
     """
     sec = "5.3.3 Compute Overlay"
-    print(f"\n{'='*60}\n  {sec}\n{'='*60}")
+    print(f"\n{'=' * 60}\n  {sec}\n{'=' * 60}")
 
     print("  Running gpd.overlay (intersection) ...")
     fragments = gpd.overlay(zcta_gdf, tract_gdf, how="intersection")
@@ -214,8 +217,9 @@ def compute_overlay(
     pct_removed = (area_before - area_after) / area_before * 100
 
     print(f"  After sliver removal (>= {SLIVER_THRESHOLD_SQM} sqm):")
-    print(f"    Fragments: {n_before:,} -> {n_after:,} "
-          f"(removed {n_before - n_after:,})")
+    print(
+        f"    Fragments: {n_before:,} -> {n_after:,} (removed {n_before - n_after:,})"
+    )
     print(f"    Area lost: {pct_removed:.4f}%")
 
     return fragments
@@ -240,14 +244,10 @@ def compute_zcta_justice40(
         DataFrame with 134 rows, one per study ZCTA.
     """
     sec = "5.3.4 Area-Weighted Justice40 % per ZCTA"
-    print(f"\n{'='*60}\n  {sec}\n{'='*60}")
+    print(f"\n{'=' * 60}\n  {sec}\n{'=' * 60}")
 
     # Total area per ZCTA
-    total_area = (
-        fragments.groupby("zip")["area_sqm"]
-        .sum()
-        .rename("total_area_sqm")
-    )
+    total_area = fragments.groupby("zip")["area_sqm"].sum().rename("total_area_sqm")
 
     # Disadvantaged area per ZCTA
     disadv_area = (
@@ -258,11 +258,7 @@ def compute_zcta_justice40(
     )
 
     # Tract counts
-    tract_count = (
-        fragments.groupby("zip")["tract_fips"]
-        .nunique()
-        .rename("tract_count")
-    )
+    tract_count = fragments.groupby("zip")["tract_fips"].nunique().rename("tract_count")
     disadv_tract_count = (
         fragments[fragments["disadvantaged"] == 1]
         .groupby("zip")["tract_fips"]
@@ -297,9 +293,7 @@ def compute_zcta_justice40(
     # ZCTAs that had no overlay fragments (shouldn't happen but be safe)
     result["justice40_pct"] = result["justice40_pct"].fillna(0.0)
     result["total_area_sqm"] = result["total_area_sqm"].fillna(0.0)
-    result["disadvantaged_area_sqm"] = result[
-        "disadvantaged_area_sqm"
-    ].fillna(0.0)
+    result["disadvantaged_area_sqm"] = result["disadvantaged_area_sqm"].fillna(0.0)
     result["tract_count"] = result["tract_count"].fillna(0).astype(int)
     result["disadvantaged_tract_count"] = (
         result["disadvantaged_tract_count"].fillna(0).astype(int)
@@ -321,9 +315,11 @@ def compute_zcta_justice40(
     ].sort_values("zip")
 
     print(f"  ZCTA-level results: {len(result)} rows")
-    print(f"  justice40_pct range: "
-          f"{result['justice40_pct'].min():.1f}% - "
-          f"{result['justice40_pct'].max():.1f}%")
+    print(
+        f"  justice40_pct range: "
+        f"{result['justice40_pct'].min():.1f}% - "
+        f"{result['justice40_pct'].max():.1f}%"
+    )
     print(f"  Mean justice40_pct: {result['justice40_pct'].mean():.1f}%")
 
     return result
@@ -344,16 +340,14 @@ def compute_county_justice40(zcta_df: pd.DataFrame) -> pd.DataFrame:
         DataFrame with 10 rows, one per study county.
     """
     sec = "5.3.5 County Aggregation"
-    print(f"\n{'='*60}\n  {sec}\n{'='*60}")
+    print(f"\n{'=' * 60}\n  {sec}\n{'=' * 60}")
 
     # Exclude zero-population ZCTAs from weighting
     df = zcta_df[zcta_df["population"] > 0].copy()
 
     def _pop_weighted_mean(group: pd.DataFrame) -> float:
         """Population-weighted mean of justice40_pct."""
-        return float(
-            np.average(group["justice40_pct"], weights=group["population"])
-        )
+        return float(np.average(group["justice40_pct"], weights=group["population"]))
 
     county_agg = (
         df.groupby(["county_name", "county_fips"])
@@ -375,7 +369,8 @@ def compute_county_justice40(zcta_df: pd.DataFrame) -> pd.DataFrame:
         .reset_index()
     )
     county_agg = county_agg.merge(
-        pop_wt, on=["county_name", "county_fips"],
+        pop_wt,
+        on=["county_name", "county_fips"],
     )
 
     # Final column order
@@ -394,9 +389,8 @@ def compute_county_justice40(zcta_df: pd.DataFrame) -> pd.DataFrame:
 
     print(f"  County-level results: {len(county_agg)} rows")
     print("\n  County Justice40 Summary:")
-    print(f"  {'County':<22} {'PopWt%':>8} {'Mean%':>8} "
-          f"{'Min%':>7} {'Max%':>7}")
-    print(f"  {'-'*52}")
+    print(f"  {'County':<22} {'PopWt%':>8} {'Mean%':>8} {'Min%':>7} {'Max%':>7}")
+    print(f"  {'-' * 52}")
     for _, row in county_agg.iterrows():
         print(
             f"  {row['county_name']:<22} "
@@ -425,7 +419,7 @@ def write_outputs(
         county_df: County-level Justice40 results.
     """
     sec = "5.3.6 Write Outputs"
-    print(f"\n{'='*60}\n  {sec}\n{'='*60}")
+    print(f"\n{'=' * 60}\n  {sec}\n{'=' * 60}")
 
     PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -463,7 +457,7 @@ def run_validation(
         Number of failed checks.
     """
     sec = "5.3.7 Validation (12 checks)"
-    print(f"\n{'='*60}\n  {sec}\n{'='*60}")
+    print(f"\n{'=' * 60}\n  {sec}\n{'=' * 60}")
     failures = 0
 
     def _check(num: int, ok: bool, msg: str) -> None:
@@ -486,18 +480,14 @@ def run_validation(
     )
     cejst_fips = set(cejst["tract_fips"].str.zfill(11))
     full_tracts = gpd.read_file(TRACT_BOUNDARIES, ignore_geometry=True)
-    full_tract_fips = set(
-        full_tracts["tract_fips"].astype(str).str.zfill(11)
-    )
+    full_tract_fips = set(full_tracts["tract_fips"].astype(str).str.zfill(11))
     join_rate = len(cejst_fips & full_tract_fips) / len(cejst_fips) * 100
-    _check(1, join_rate >= 99.0,
-           f"Tract FIPS join rate: {join_rate:.1f}% (>= 99%)")
+    _check(1, join_rate >= 99.0, f"Tract FIPS join rate: {join_rate:.1f}% (>= 99%)")
 
     # 2. Study ZCTAs loaded (134 study ZIPs; some may be PO Boxes
     #    without ZCTA geometry, so accept 133-134)
     n_zcta = len(zcta_gdf)
-    _check(2, 133 <= n_zcta <= 134,
-           f"Study ZCTAs loaded: {n_zcta} (expect 133-134)")
+    _check(2, 133 <= n_zcta <= 134, f"Study ZCTAs loaded: {n_zcta} (expect 133-134)")
 
     # 3. CRS EPSG:32119
     crs_ok = (
@@ -506,18 +496,18 @@ def run_validation(
         and zcta_gdf.crs.to_epsg() == 32119
         and tract_gdf.crs.to_epsg() == 32119
     )
-    _check(3, crs_ok,
-           f"CRS: ZCTA={zcta_gdf.crs}, Tract={tract_gdf.crs}")
+    _check(3, crs_ok, f"CRS: ZCTA={zcta_gdf.crs}, Tract={tract_gdf.crs}")
 
     # 4. No null geometries
-    null_zcta = int(
-        zcta_gdf.geometry.is_empty.sum() + zcta_gdf.geometry.isna().sum()
-    )
+    null_zcta = int(zcta_gdf.geometry.is_empty.sum() + zcta_gdf.geometry.isna().sum())
     null_tract = int(
         tract_gdf.geometry.is_empty.sum() + tract_gdf.geometry.isna().sum()
     )
-    _check(4, null_zcta == 0 and null_tract == 0,
-           f"Null geometries: ZCTA={null_zcta}, Tract={null_tract}")
+    _check(
+        4,
+        null_zcta == 0 and null_tract == 0,
+        f"Null geometries: ZCTA={null_zcta}, Tract={null_tract}",
+    )
 
     # --- Tier 2: Overlay Integrity ---
     print("\n  Tier 2 - Overlay Integrity")
@@ -525,25 +515,24 @@ def run_validation(
 
     # 5. Fragment count > 0
     n_frags = len(fragments)
-    _check(5, n_frags > 0,
-           f"Fragment count: {n_frags:,}")
+    _check(5, n_frags > 0, f"Fragment count: {n_frags:,}")
 
     # 6. Sliver removal stats
     # (already printed during overlay; just confirm < 1% area loss)
     total_frag_area = fragments["area_sqm"].sum()
     total_zcta_area = zcta_gdf["original_area_sqm"].sum()
     area_loss_pct = abs(total_zcta_area - total_frag_area) / total_zcta_area * 100
-    _check(6, area_loss_pct < 5.0,
-           f"Overall area delta: {area_loss_pct:.2f}% "
-           f"(ZCTA total vs fragment total)")
+    _check(
+        6,
+        area_loss_pct < 5.0,
+        f"Overall area delta: {area_loss_pct:.2f}% (ZCTA total vs fragment total)",
+    )
 
     # 7. Area conservation per ZCTA (within 1%)
     frag_area_by_zcta = fragments.groupby("zip")["area_sqm"].sum()
     orig_area_by_zcta = zcta_gdf.set_index("zip")["original_area_sqm"]
     area_pct_diff = (
-        (frag_area_by_zcta - orig_area_by_zcta).abs()
-        / orig_area_by_zcta
-        * 100
+        (frag_area_by_zcta - orig_area_by_zcta).abs() / orig_area_by_zcta * 100
     )
     # Only check ZCTAs present in both
     area_pct_diff = area_pct_diff.dropna()
@@ -552,8 +541,7 @@ def run_validation(
     _check(
         7,
         n_over_1pct == 0,
-        f"Area conservation: max diff={max_area_diff:.2f}%, "
-        f"{n_over_1pct} ZCTAs > 1%",
+        f"Area conservation: max diff={max_area_diff:.2f}%, {n_over_1pct} ZCTAs > 1%",
     )
     if n_over_1pct > 0:
         worst = area_pct_diff.nlargest(5)
@@ -564,9 +552,12 @@ def run_validation(
     zcta_in_output = set(zcta_df["zip"])
     zcta_with_geom = set(zcta_gdf["zip"])
     all_present = zcta_with_geom.issubset(zcta_in_output)
-    _check(8, all_present,
-           f"ZCTAs in output: {len(zcta_in_output)} "
-           f"(all {len(zcta_with_geom)} with geometry present)")
+    _check(
+        8,
+        all_present,
+        f"ZCTAs in output: {len(zcta_in_output)} "
+        f"(all {len(zcta_with_geom)} with geometry present)",
+    )
 
     # --- Tier 3: Result Plausibility ---
     print("\n  Tier 3 - Result Plausibility")
@@ -575,8 +566,7 @@ def run_validation(
     # 9. All justice40_pct between 0 and 100
     j40 = zcta_df["justice40_pct"]
     range_ok = float(j40.min()) >= 0.0 and float(j40.max()) <= 100.0
-    _check(9, range_ok,
-           f"justice40_pct range: [{j40.min():.1f}, {j40.max():.1f}]")
+    _check(9, range_ok, f"justice40_pct range: [{j40.min():.1f}, {j40.max():.1f}]")
 
     # 10. County pattern: Durham/Guilford higher, Cabarrus/Union lower
     #     (matches EDA tract-level patterns for the 10 study counties)
@@ -615,16 +605,16 @@ def run_validation(
         )
     else:
         overall_pw = 0.0
-    _check(11, 10.0 <= overall_pw <= 70.0,
-           f"Overall pop-weighted average: {overall_pw:.1f}% "
-           f"(expect 10-70%)")
+    _check(
+        11,
+        10.0 <= overall_pw <= 70.0,
+        f"Overall pop-weighted average: {overall_pw:.1f}% (expect 10-70%)",
+    )
 
     # 12. Zero-population ZCTAs excluded from county weighting
     n_zero_pop = int((zcta_df["population"] == 0).sum())
     total_county_pop = county_df["total_population"].sum()
-    total_zcta_pop = zcta_df.loc[
-        zcta_df["population"] > 0, "population"
-    ].sum()
+    total_zcta_pop = zcta_df.loc[zcta_df["population"] > 0, "population"].sum()
     pop_match = abs(total_county_pop - total_zcta_pop) < 1.0
     _check(
         12,
@@ -684,7 +674,11 @@ def main() -> None:
     # 5.3.7 Validation
     if not args.skip_validation:
         n_fail = run_validation(
-            zcta_gdf, tract_gdf, fragments, zcta_df, county_df,
+            zcta_gdf,
+            tract_gdf,
+            fragments,
+            zcta_df,
+            county_df,
         )
         if n_fail > 0:
             print(f"\n  WARNING: {n_fail} validation check(s) failed.")
