@@ -198,14 +198,27 @@ paper/manuscript.md
 paper/sources/
 
 # ============================================================================
-# Conference Working Files (kept local — never tracked or pushed)
+# Conference & competition working files (kept local — never tracked or pushed)
 # ============================================================================
-# conferences/ allows tracked PDFs (CFPs, programs, accepted-paper PDFs),
-# but draft submissions, scratch work, and reviewer correspondence should
-# stay local. These subdirectory names are reserved for that purpose.
+# Each conference/competition folder exposes only a short curated README plus
+# its public deliverable (the submitted paper/deck as PDF, and an abstract).
+# Planning notes, drafts, scratch work, correspondence, and pre-deck source
+# materials stay local. Editable Office binaries are covered by the *.pptx /
+# *.docx rules above.
 conferences/**/drafts/
 conferences/**/scratch/
 conferences/**/correspondence/
+conferences/seinforms-2026/PLANNING.md
+conferences/seinforms-2026/figure-manifest.md
+conferences/seinforms-2026/call-for-papers.pdf
+
+competitions/**/drafts/
+competitions/**/scratch/
+competitions/mba-showcase-2026/showcase-outline.md
+competitions/mba-showcase-2026/speaker-notes.txt
+competitions/mba-showcase-2026/gamma-prompt.txt
+competitions/mba-showcase-2026/nomination-email-draft.md
+competitions/mba-showcase-2026/figures/
 
 # Claude local settings (machine-specific)
 .claude/settings.local.json
