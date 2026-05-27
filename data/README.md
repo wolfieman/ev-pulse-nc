@@ -67,11 +67,11 @@ data/
 |------|-------------|
 | `cejst-justice40-tracts-nc.csv` | NC tracts only (2,195 rows) |
 | `cejst-justice40-tracts-nc-border.csv` | NC + border-state tracts (8,671 rows) |
-| `cejst-justice40-tracts-nc-categories.csv` | Per-category burden flags (2,195 rows, 8 categories) |
 
 - **Source:** [EDGI/PEDP community archive](https://screening-tools.com) (original federal source offline since Jan 2025)
 - **Script:** `cejst_justice40_download.py`
 - **Vintage:** CEJST v2.0 (December 2024 federal release)
+- **Note:** the per-category burden file `cejst-justice40-tracts-nc-categories.csv` is a **derived** Phase 5 output (written to `data/processed/` by `phase5_climate_sensitivity.py`), not a raw input.
 
 ### Census ACS
 
@@ -193,7 +193,6 @@ SAS Model Studio exports from the original forecasting study.
 | lehd-nc-xwalk.csv.gz | Census LEHD | lehd_lodes_download.py | 2026-02 |
 | cejst-justice40-tracts-nc.csv | EDGI/PEDP archive | cejst_justice40_download.py | 2026-02 |
 | cejst-justice40-tracts-nc-border.csv | EDGI/PEDP archive | cejst_justice40_download.py | 2026-02 |
-| cejst-justice40-tracts-nc-categories.csv | EDGI/PEDP archive | cejst_justice40_download.py | 2026-02 |
 | acs-nc-income-tenure-tracts.csv | Census ACS API | lehd_lodes_download.py | 2026-02 |
 | nc-zip-population-acs2022.csv | Census ACS API | census_zip_population.py | 2026-02 |
 | nc-county-boundaries.geojson | Census TIGER | census_county_boundaries.py | 2026-02 |

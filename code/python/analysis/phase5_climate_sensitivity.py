@@ -11,8 +11,8 @@ one indicator threshold AND is low-income (or low-HS-attainment for
 workforce). This script reconstructs per-category flags from the
 individual indicator columns.
 
-This is a standalone sensitivity script -- it does NOT modify any
-existing data files or scripts.
+This is a standalone sensitivity script -- it writes one regenerable
+output to data/processed and modifies no raw inputs or other scripts.
 
 Usage:
     uv run code/python/analysis/phase5_climate_sensitivity.py
@@ -36,12 +36,14 @@ REPO_ROOT = os.path.dirname(
         os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     )
 )
-RAW_DIR = os.path.join(REPO_ROOT, "data", "raw")
+PROCESSED_DIR = os.path.join(REPO_ROOT, "data", "processed")
+# Derived analysis output (per-category Boolean flags) -- a regenerable
+# product written to data/processed, never to the immutable data/raw.
 NC_CATEGORIES_PATH = os.path.join(
-    RAW_DIR, "cejst-justice40-tracts-nc-categories.csv"
+    PROCESSED_DIR, "cejst-justice40-tracts-nc-categories.csv"
 )
 COUNTY_J40_PATH = os.path.join(
-    REPO_ROOT, "data", "processed", "phase5-county-justice40.csv"
+    PROCESSED_DIR, "phase5-county-justice40.csv"
 )
 
 # ---------------------------------------------------------------------------

@@ -214,7 +214,8 @@ This document defines the project-used columns for each dataset. For full API sc
 
 ### cejst-justice40-tracts-nc-categories.csv (Category Indicators)
 
-**File:** `data/raw/cejst-justice40-tracts-nc-categories.csv`
+**File:** `data/processed/cejst-justice40-tracts-nc-categories.csv`
+**Type:** Derived output (regenerable) — produced by `phase5_climate_sensitivity.py`; not a raw input
 **Rows:** 2,195 NC tracts
 **Purpose:** Per-category burden flags for climate sensitivity analysis (Phase 5)
 
