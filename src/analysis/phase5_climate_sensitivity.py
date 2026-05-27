@@ -25,7 +25,6 @@ from __future__ import annotations
 
 import csv
 import io
-import os
 import sys
 
 import requests
@@ -35,13 +34,11 @@ from evpulse.paths import PROJECT_ROOT as REPO_ROOT
 # ---------------------------------------------------------------------------
 # Paths
 # ---------------------------------------------------------------------------
-PROCESSED_DIR = os.path.join(REPO_ROOT, "data", "processed")
+PROCESSED_DIR = REPO_ROOT / "data" / "processed"
 # Derived analysis output (per-category Boolean flags) -- a regenerable
 # product written to data/processed, never to the immutable data/raw.
-NC_CATEGORIES_PATH = os.path.join(
-    PROCESSED_DIR, "cejst-justice40-tracts-nc-categories.csv"
-)
-COUNTY_J40_PATH = os.path.join(PROCESSED_DIR, "phase5-county-justice40.csv")
+NC_CATEGORIES_PATH = PROCESSED_DIR / "cejst-justice40-tracts-nc-categories.csv"
+COUNTY_J40_PATH = PROCESSED_DIR / "phase5-county-justice40.csv"
 
 # ---------------------------------------------------------------------------
 # CEJST download URL (same as acquisition script)
@@ -263,7 +260,7 @@ def download_cejst_full():
 def load_study_counties():
     """Load the 10 study-county FIPS from the Phase 5 county file."""
     counties = {}
-    with open(COUNTY_J40_PATH, encoding="utf-8") as fh:
+    with COUNTY_J40_PATH.open(encoding="utf-8") as fh:
         reader = csv.DictReader(fh)
         for row in reader:
             fips = str(row["county_fips"]).strip()
@@ -289,7 +286,7 @@ CATEGORY_SNAKE = {
 def _save_nc_categories_csv(nc_tracts):
     """Save NC rows with 8 per-category Boolean flags to CSV."""
     print("\n--- Saving NC per-category CSV ---")
-    os.makedirs(os.path.dirname(NC_CATEGORIES_PATH), exist_ok=True)
+    NC_CATEGORIES_PATH.parent.mkdir(parents=True, exist_ok=True)
 
     fieldnames = [
         "tract_fips",
@@ -301,7 +298,7 @@ def _save_nc_categories_csv(nc_tracts):
         *list(CATEGORY_SNAKE.values()),
     ]
 
-    with open(NC_CATEGORIES_PATH, "w", newline="", encoding="utf-8") as fh:
+    with NC_CATEGORIES_PATH.open("w", newline="", encoding="utf-8") as fh:
         writer = csv.DictWriter(fh, fieldnames=fieldnames)
         writer.writeheader()
         for t in nc_tracts:

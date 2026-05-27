@@ -54,7 +54,7 @@ PARAMS = {
 }
 
 # Output path
-OUTPUT_FILE = os.path.join(PROJECT_ROOT, "data", "raw", "nc-zip-population-acs2022.csv")
+OUTPUT_FILE = PROJECT_ROOT / "data" / "raw" / "nc-zip-population-acs2022.csv"
 
 
 def download_population():
@@ -90,7 +90,7 @@ def download_population():
 
 def save_csv(headers, rows, output_path):
     """Write population data to CSV with clean column names."""
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
 
     # Map API field names to readable names
     column_map = {
@@ -102,7 +102,7 @@ def save_csv(headers, rows, output_path):
 
     clean_headers = [column_map.get(h, h) for h in headers]
 
-    with open(output_path, "w", newline="", encoding="utf-8") as f:
+    with output_path.open("w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
         writer.writerow(clean_headers)
         writer.writerows(rows)

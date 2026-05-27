@@ -31,7 +31,6 @@ from __future__ import annotations
 
 import csv
 import gzip
-import os
 from datetime import datetime
 
 import requests
@@ -41,7 +40,7 @@ from evpulse.paths import PROJECT_ROOT
 # ---------------------------------------------------------------------------
 # Paths
 # ---------------------------------------------------------------------------
-RAW_DIR = os.path.join(PROJECT_ROOT, "data", "raw")
+RAW_DIR = PROJECT_ROOT / "data" / "raw"
 
 # ---------------------------------------------------------------------------
 # LEHD LODES URLs  (LODES 8, NC, 2021, all job types)
@@ -107,9 +106,9 @@ def download_gz_file(url, dest_path, label):
     downloaded = 0
     chunk_size = 1024 * 256  # 256 KB chunks
 
-    os.makedirs(os.path.dirname(dest_path), exist_ok=True)
+    dest_path.parent.mkdir(parents=True, exist_ok=True)
 
-    with open(dest_path, "wb") as f:
+    with dest_path.open("wb") as f:
         for chunk in resp.iter_content(chunk_size=chunk_size):
             f.write(chunk)
             downloaded += len(chunk)
@@ -129,7 +128,7 @@ def download_gz_file(url, dest_path, label):
                     flush=True,
                 )
 
-    size_mb = os.path.getsize(dest_path) / (1024 * 1024)
+    size_mb = dest_path.stat().st_size / (1024 * 1024)
     print(f"\n[SUCCESS] Saved {dest_path} ({size_mb:.1f} MB)")
     return True
 
@@ -207,14 +206,14 @@ def download_acs_tracts():
 
 def save_acs_csv(headers, rows, output_path):
     """Write ACS data to CSV."""
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
 
-    with open(output_path, "w", newline="", encoding="utf-8") as f:
+    with output_path.open("w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
         writer.writerow(headers)
         writer.writerows(rows)
 
-    size_kb = os.path.getsize(output_path) / 1024
+    size_kb = output_path.stat().st_size / 1024
     print(f"[SUCCESS] Saved {len(rows)} tracts to {output_path} ({size_kb:.0f} KB)")
 
 
@@ -228,8 +227,8 @@ def sanity_check_lodes():
     print("=" * 60)
 
     # OD Main
-    od_path = os.path.join(RAW_DIR, LODES_FILES["od"]["dest"])
-    if os.path.exists(od_path):
+    od_path = RAW_DIR / LODES_FILES["od"]["dest"]
+    if od_path.exists():
         print(f"\n--- {LODES_FILES['od']['label']} ---")
         peek_gz_csv(
             od_path,
@@ -246,8 +245,8 @@ def sanity_check_lodes():
         print(f"[WARNING] OD file not found: {od_path}")
 
     # WAC
-    wac_path = os.path.join(RAW_DIR, LODES_FILES["wac"]["dest"])
-    if os.path.exists(wac_path):
+    wac_path = RAW_DIR / LODES_FILES["wac"]["dest"]
+    if wac_path.exists():
         print(f"\n--- {LODES_FILES['wac']['label']} ---")
         peek_gz_csv(
             wac_path,
@@ -257,8 +256,8 @@ def sanity_check_lodes():
         print(f"[WARNING] WAC file not found: {wac_path}")
 
     # Crosswalk
-    xwalk_path = os.path.join(RAW_DIR, LODES_FILES["xwalk"]["dest"])
-    if os.path.exists(xwalk_path):
+    xwalk_path = RAW_DIR / LODES_FILES["xwalk"]["dest"]
+    if xwalk_path.exists():
         print(f"\n--- {LODES_FILES['xwalk']['label']} ---")
         peek_gz_csv(xwalk_path, required_cols=["cty"])
     else:
@@ -307,9 +306,9 @@ def print_file_sizes():
     ]
 
     for fname in files:
-        fpath = os.path.join(RAW_DIR, fname)
-        if os.path.exists(fpath):
-            size = os.path.getsize(fpath)
+        fpath = RAW_DIR / fname
+        if fpath.exists():
+            size = fpath.stat().st_size
             if size > 1024 * 1024:
                 print(f"  {fname}: {size / (1024 * 1024):.1f} MB")
             else:
@@ -332,7 +331,7 @@ def main():
     # ------------------------------------------------------------------
     for key in ("od", "wac", "xwalk"):
         info = LODES_FILES[key]
-        dest = os.path.join(RAW_DIR, info["dest"])
+        dest = RAW_DIR / info["dest"]
         ok = download_gz_file(info["url"], dest, info["label"])
         if not ok:
             print(f"[ERROR] Could not download {info['label']}. Continuing...")
@@ -342,7 +341,7 @@ def main():
     # ------------------------------------------------------------------
     acs_headers, acs_rows = download_acs_tracts()
     if acs_headers and acs_rows:
-        acs_path = os.path.join(RAW_DIR, ACS_OUTPUT)
+        acs_path = RAW_DIR / ACS_OUTPUT
         save_acs_csv(acs_headers, acs_rows, acs_path)
 
     # ------------------------------------------------------------------

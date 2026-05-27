@@ -54,8 +54,8 @@ PARAMS = {
 
 # Output path
 DATE_STAMP = datetime.now().strftime("%Y-%m")
-OUTPUT_FILE = os.path.join(
-    PROJECT_ROOT, "data", "raw", f"afdc-charging-stations-connector-{DATE_STAMP}.csv"
+OUTPUT_FILE = (
+    PROJECT_ROOT / "data" / "raw" / f"afdc-charging-stations-connector-{DATE_STAMP}.csv"
 )
 
 
@@ -89,9 +89,9 @@ def stations_to_csv(stations, output_path):
     # Collect all unique keys across all stations (not all records have same fields)
     fieldnames = list(dict.fromkeys(k for s in stations for k in s))
 
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
 
-    with open(output_path, "w", newline="", encoding="utf-8") as f:
+    with output_path.open("w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(stations)

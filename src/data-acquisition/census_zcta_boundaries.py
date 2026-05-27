@@ -21,7 +21,6 @@ Licensed under the Polyform Noncommercial License 1.0.0 (see LICENSE).
 
 from __future__ import annotations
 
-import os
 import sys
 from datetime import datetime
 
@@ -40,17 +39,15 @@ EXPECTED_MIN = 700
 EXPECTED_MAX = 900
 
 # Paths
-NC_COUNTY_FILE = os.path.join(
-    PROJECT_ROOT, "data", "raw", "nc-county-boundaries.geojson"
-)
-OUTPUT_FILE = os.path.join(PROJECT_ROOT, "data", "raw", "nc-zcta-boundaries.geojson")
+NC_COUNTY_FILE = PROJECT_ROOT / "data" / "raw" / "nc-county-boundaries.geojson"
+OUTPUT_FILE = PROJECT_ROOT / "data" / "raw" / "nc-zcta-boundaries.geojson"
 
 
 def load_nc_bbox():
     """Load NC county boundaries and return a buffered bounding box."""
     print(f"[INFO] Loading NC county boundaries from {NC_COUNTY_FILE}")
 
-    if not os.path.exists(NC_COUNTY_FILE):
+    if not NC_COUNTY_FILE.exists():
         print(
             "[ERROR] NC county boundaries not found. "
             "Run census_county_boundaries.py first."
@@ -113,7 +110,7 @@ def download_zcta_boundaries(bbox):
 
 def save_geojson(gdf, output_path):
     """Save GeoDataFrame as GeoJSON."""
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
     gdf.to_file(output_path, driver="GeoJSON")
     print(f"[SUCCESS] Saved {len(gdf)} ZCTAs to {output_path}")
 

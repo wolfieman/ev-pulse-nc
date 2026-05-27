@@ -49,11 +49,10 @@ exclude = [".venv"]
 src = ["src"]
 
 [tool.ruff.lint]
-select = ["E", "F", "W", "I", "UP", "B", "SIM", "RUF"]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "PTH", "RUF"]
 # en-dash and multiplication-sign are intentional typography in labels and
 # docstrings; whitelist them so RUF001-003 still catch unexpected confusables.
 allowed-confusables = ["–", "×"]
-# PTH (os.path -> pathlib) is deferred to its own focused batch.
 
 [tool.ruff.lint.isort]
 known-first-party = ["evpulse"]

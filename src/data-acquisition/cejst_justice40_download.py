@@ -27,7 +27,6 @@ from __future__ import annotations
 
 import csv
 import io
-import os
 import sys
 from datetime import datetime
 
@@ -38,9 +37,9 @@ from evpulse.paths import PROJECT_ROOT
 # ---------------------------------------------------------------------------
 # Paths
 # ---------------------------------------------------------------------------
-RAW_DIR = os.path.join(PROJECT_ROOT, "data", "raw")
-NC_OUTPUT = os.path.join(RAW_DIR, "cejst-justice40-tracts-nc.csv")
-BORDER_OUTPUT = os.path.join(RAW_DIR, "cejst-justice40-tracts-nc-border.csv")
+RAW_DIR = PROJECT_ROOT / "data" / "raw"
+NC_OUTPUT = RAW_DIR / "cejst-justice40-tracts-nc.csv"
+BORDER_OUTPUT = RAW_DIR / "cejst-justice40-tracts-nc-border.csv"
 
 # ---------------------------------------------------------------------------
 # Data source URLs (try in order)
@@ -209,17 +208,17 @@ def filter_and_save(header, rows, fips_prefixes, output_path, label):
     count = len(filtered)
     print(f"\n[INFO] {label}: {count:,} rows")
 
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
-    with open(output_path, "w", newline="", encoding="utf-8") as fh:
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with output_path.open("w", newline="", encoding="utf-8") as fh:
         writer = csv.DictWriter(fh, fieldnames=header)
         writer.writeheader()
         writer.writerows(filtered)
 
-    size_kb = os.path.getsize(output_path) / 1024
+    size_kb = output_path.stat().st_size / 1024
     print(f"[SUCCESS] Saved {output_path} ({size_kb:.0f} KB)")
 
     # Verify non-empty
-    if os.path.getsize(output_path) == 0:
+    if output_path.stat().st_size == 0:
         print(f"[ERROR] Output file is empty: {output_path}")
         sys.exit(1)
 
@@ -252,7 +251,7 @@ def sanity_check_nc(nc_path, nc_count):
         )
 
     # Read back the file for detailed checks
-    with open(nc_path, encoding="utf-8") as fh:
+    with nc_path.open(encoding="utf-8") as fh:
         reader = csv.DictReader(fh)
         rows = list(reader)
 
@@ -333,7 +332,7 @@ def sanity_check_border(border_path, border_count):
             f"(expected {BORDER_ROWS_MIN:,}-{BORDER_ROWS_MAX:,})"
         )
 
-    with open(border_path, encoding="utf-8") as fh:
+    with border_path.open(encoding="utf-8") as fh:
         reader = csv.DictReader(fh)
         rows = list(reader)
 
@@ -383,8 +382,8 @@ def main():
     print(f"  NC tracts:            {nc_count:,}")
     print(f"  Border-states tracts: {border_count:,}")
     for path in (NC_OUTPUT, BORDER_OUTPUT):
-        size_kb = os.path.getsize(path) / 1024
-        print(f"  {os.path.basename(path)}: {size_kb:.0f} KB")
+        size_kb = path.stat().st_size / 1024
+        print(f"  {path.name}: {size_kb:.0f} KB")
 
     print("\n[DONE] CEJST Justice40 data acquisition complete.")
 

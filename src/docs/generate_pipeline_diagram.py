@@ -12,8 +12,6 @@ Licensed under the Polyform Noncommercial License 1.0.0 (see LICENSE).
 
 from __future__ import annotations
 
-import os
-
 import matplotlib
 
 matplotlib.use("Agg")  # Non-interactive backend
@@ -24,7 +22,7 @@ from evpulse.paths import PROJECT_ROOT
 
 # ─── Configuration ─────────────────────────────────────────────────────────────
 
-OUTPUT_DIR = os.path.join(PROJECT_ROOT, "docs", "figures")
+OUTPUT_DIR = PROJECT_ROOT / "docs" / "figures"
 
 # Colors
 C_COMPLETE = "#366092"  # Dark blue — complete phases
@@ -886,10 +884,10 @@ def create_pipeline_diagram():
     # Save
     # ════════════════════════════════════════════════════════════════════════
 
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
     # Full resolution (600 DPI)
-    full_path = os.path.join(OUTPUT_DIR, "analytical-pipeline.png")
+    full_path = OUTPUT_DIR / "analytical-pipeline.png"
     fig.savefig(
         full_path,
         dpi=600,
@@ -901,7 +899,7 @@ def create_pipeline_diagram():
     print(f"Saved: {full_path} (600 DPI)")
 
     # Thumbnail (150 DPI)
-    thumb_path = os.path.join(OUTPUT_DIR, "analytical-pipeline-thumb.png")
+    thumb_path = OUTPUT_DIR / "analytical-pipeline-thumb.png"
     fig.savefig(
         thumb_path,
         dpi=150,
@@ -916,8 +914,8 @@ def create_pipeline_diagram():
 
     # Report file sizes
     for path in [full_path, thumb_path]:
-        size_mb = os.path.getsize(path) / (1024 * 1024)
-        print(f"  {os.path.basename(path)}: {size_mb:.2f} MB")
+        size_mb = path.stat().st_size / (1024 * 1024)
+        print(f"  {path.name}: {size_mb:.2f} MB")
 
 
 if __name__ == "__main__":

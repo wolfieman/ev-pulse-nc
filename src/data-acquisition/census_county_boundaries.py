@@ -20,7 +20,6 @@ Licensed under the Polyform Noncommercial License 1.0.0 (see LICENSE).
 
 from __future__ import annotations
 
-import os
 import sys
 from datetime import datetime
 
@@ -37,7 +36,7 @@ BOUNDARY_URL = (
 NC_FIPS = "37"
 
 # Output path
-OUTPUT_FILE = os.path.join(PROJECT_ROOT, "data", "raw", "nc-county-boundaries.geojson")
+OUTPUT_FILE = PROJECT_ROOT / "data" / "raw" / "nc-county-boundaries.geojson"
 
 
 def download_boundaries():
@@ -67,7 +66,7 @@ def download_boundaries():
 
 def save_geojson(gdf, output_path):
     """Save GeoDataFrame as GeoJSON."""
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
     gdf.to_file(output_path, driver="GeoJSON")
     print(f"[SUCCESS] Saved {len(gdf)} counties to {output_path}")
 
