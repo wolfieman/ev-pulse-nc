@@ -25,6 +25,7 @@ from phase3_afdc_eda_prep import (
     NC_LON_MIN,
 )
 
+from evpulse.io import load_fips_csv
 from evpulse.style import (
     COLORS,
     FIGURE_SIZES,
@@ -383,8 +384,7 @@ def fig16_zip_coverage_gap(df: pd.DataFrame, census_path: Path, out_dir: Path) -
     Returns:
         Path to the saved figure.
     """
-    census = pd.read_csv(census_path, dtype={"zcta": str})
-    census["zcta"] = census["zcta"].astype(str).str.zfill(5)
+    census = load_fips_csv(census_path, {"zcta": 5})
 
     station_zips = set(df["zip"].unique())
     census_zips = set(census["zcta"].unique())

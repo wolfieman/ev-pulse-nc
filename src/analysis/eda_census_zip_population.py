@@ -27,6 +27,7 @@ import matplotlib.ticker as mticker
 import numpy as np
 import pandas as pd
 
+from evpulse.io import load_fips_csv
 from evpulse.paths import PROJECT_ROOT
 from evpulse.style import (
     COLORS,
@@ -78,9 +79,8 @@ def load_census_data(path: Path) -> pd.DataFrame:
     Returns:
         Validated DataFrame with columns [name, population, zcta].
     """
-    df = pd.read_csv(path, dtype={"zcta": str})
+    df = load_fips_csv(path, {"zcta": 5})
     df["population"] = df["population"].astype(int)
-    df["zcta"] = df["zcta"].astype(str).str.zfill(5)
     return df
 
 
@@ -94,8 +94,7 @@ def load_afdc_data(path: Path) -> pd.DataFrame:
         DataFrame with at least the 'zip' column (plus city, id for diagnostics).
     """
     cols = ["id", "zip", "city", "state"]
-    df = pd.read_csv(path, usecols=cols, dtype={"zip": str})
-    df["zip"] = df["zip"].astype(str).str.zfill(5)
+    df = load_fips_csv(path, {"zip": 5}, usecols=cols)
     return df
 
 

@@ -19,6 +19,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from evpulse.io import load_fips_csv
 from evpulse.paths import PROJECT_ROOT
 
 # =============================================================================
@@ -98,9 +99,7 @@ def load_afdc(path: Path) -> pd.DataFrame:
     Returns:
         DataFrame with basic type casts applied.
     """
-    df = pd.read_csv(path, dtype={"zip": str})
-    # Ensure zip is zero-padded 5-digit string
-    df["zip"] = df["zip"].astype(str).str.zfill(5)
+    df = load_fips_csv(path, {"zip": 5})
     # Parse open_date
     df["open_date"] = pd.to_datetime(df["open_date"], errors="coerce")
     # Fill NaN port counts with 0 for numeric convenience
