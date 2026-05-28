@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ev-pulse-nc"
-version = "0.1.0"
+version = "1.0.0"
 description = "North Carolina Electric Vehicle Analytics - Data-driven analysis of EV adoption and charging infrastructure"
 readme = "README.md"
 requires-python = ">=3.14"
