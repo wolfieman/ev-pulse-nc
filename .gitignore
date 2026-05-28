@@ -175,6 +175,9 @@ secrets/
 # Manuscript .docx is regenerable from src/paper/build_docx.py;
 # the PDF (paper/ev-pulse-nc-sanyer-paper.pdf) is the canonical public artifact.
 paper/manuscript.docx
+# Word owner/lock files (~$...) -- the !paper/*.docx negation above would
+# otherwise re-include them under paper/; re-ignore so they never hit git status.
+paper/~$*.docx
 
 # PowerPoint presentation decks are deliverables for Canvas/email but
 # not pushed to the public repo (heavy binaries, regenerable from the
