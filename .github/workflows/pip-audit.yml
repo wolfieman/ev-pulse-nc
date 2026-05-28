@@ -1,0 +1,57 @@
+name: pip-audit
+
+# Monthly, non-blocking dependency vulnerability scan.
+#
+# By design this never fails CI: a finding does not turn the repo red. Instead
+# the report is published to the run's job summary and uploaded as a dated
+# artifact, so advisories accumulate into a reviewable backlog that can be
+# triaged in a batch. Run it on demand from the Actions tab via "Run workflow".
+
+on:
+  schedule:
+    - cron: "0 6 1 * *" # 06:00 UTC on the 1st of each month
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Sync dependencies
+        run: uv sync
+
+      - name: Run pip-audit (non-blocking)
+        continue-on-error: true
+        run: |
+          uv run --with pip-audit pip-audit --format markdown --output pip-audit-report.md || true
+          uv run --with pip-audit pip-audit --format json --output pip-audit-report.json || true
+
+      - name: Publish findings to job summary
+        if: always()
+        run: |
+          {
+            echo "# pip-audit — $(date -u +%Y-%m-%d)"
+            echo
+            if [ -s pip-audit-report.md ]; then
+              cat pip-audit-report.md
+            else
+              echo "No known vulnerabilities found in the locked dependencies."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload report artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pip-audit-report-${{ github.run_id }}
+          path: |
+            pip-audit-report.md
+            pip-audit-report.json
+          if-no-files-found: ignore
+          retention-days: 90
