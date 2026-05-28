@@ -28,7 +28,7 @@ if grep -qiE 'co-authored-by:.*(claude|anthropic|copilot|gpt)|generated with|ðŸ¤
 fi
 
 # 2. No absolute filesystem paths.
-if grep -qiE 'c:\\\\users|/users/|/home/[a-z]' "$msg_file"; then
+if grep -qiE 'c:\\users|/users/|/home/[a-z]' "$msg_file"; then
     fail "remove absolute filesystem paths"
 fi
 
