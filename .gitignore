@@ -168,16 +168,11 @@ secrets/
 # ============================================================================
 # Report Deliverables
 # ============================================================================
-# Word documents are editable sources for PDF supplementary materials,
-# kept local-only. PDFs are the canonical public artifact.
+# Word documents are editable sources for PDF deliverables, kept local-only;
+# the PDF export is the canonical public artifact (per the repo binary policy).
+# A plain *.docx covers everything -- manuscript.docx, supplements, and Word
+# ~$ owner/lock files alike -- so no per-file exceptions are needed.
 *.docx
-!paper/*.docx
-# Manuscript .docx is regenerable from src/paper/build_docx.py;
-# the PDF (paper/ev-pulse-nc-sanyer-paper.pdf) is the canonical public artifact.
-paper/manuscript.docx
-# Word owner/lock files (~$...) -- the !paper/*.docx negation above would
-# otherwise re-include them under paper/; re-ignore so they never hit git status.
-paper/~$*.docx
 
 # PowerPoint presentation decks are deliverables for Canvas/email but
 # not pushed to the public repo (heavy binaries, regenerable from the
