@@ -44,6 +44,9 @@ SRC = REPO_ROOT / "paper" / "manuscript.md"
 OUT = REPO_ROOT / "paper" / "manuscript.docx"
 FIGURES_DIR = REPO_ROOT / "output" / "figures"
 
+# Title-page date -- the one title-page value that changes per submission.
+SUBMISSION_DATE = "May 27, 2026"
+
 FONT_NAME = "Times New Roman"
 MONO_FONT = "Consolas"
 FONT_SIZE = Pt(12)
@@ -515,7 +518,7 @@ def add_title_page(doc: Document) -> None:
     date_p = doc.add_paragraph()
     date_p.alignment = WD_ALIGN_PARAGRAPH.CENTER
     date_p.paragraph_format.line_spacing_rule = WD_LINE_SPACING.DOUBLE
-    _add_run(date_p, "Date: [Stage 1 submission date]", italic=True)
+    _add_run(date_p, f"Date: {SUBMISSION_DATE}", italic=True)
 
 
 # ---------------------------------------------------------------------------

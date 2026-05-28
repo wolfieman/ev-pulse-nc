@@ -21,13 +21,13 @@
 
 ---
 
-> **At a glance:** 100 counties · 853 ZCTAs · 1,985 stations · 6,145 connectors · 43 documented Python scripts · 45 publication-grade figures (plus 4 supplementary variants) · 108-page manuscript · 100% public data
+> **At a glance:** 100 counties · 853 ZCTAs · 1,985 stations · 6,145 connectors · 43 documented Python scripts · 45 publication-grade figures (plus 4 supplementary variants) · 109-page manuscript · 100% public data
 
 ## Read the Full Paper
 
 The full research paper is committed to this repository as a single artifact:
 
-📄 **[ev-pulse-nc-sanyer-paper.pdf](paper/ev-pulse-nc-sanyer-paper.pdf)** — 108 pages, ~4.6 MB
+📄 **[ev-pulse-nc-sanyer-paper.pdf](paper/ev-pulse-nc-sanyer-paper.pdf)** — 109 pages, ~1.2 MB
 
 The README below is the project at-a-glance; the paper is the full record — 5-phase analytical pipeline, NEVI scoring framework, methodology review documentation, and 45 publication-grade figures (plus 4 supplementary variants) with full APA 7 attribution.
 
@@ -320,7 +320,7 @@ ev-pulse-nc/
 │
 ├── paper/                        # Research paper (canonical PDF)
 │   ├── README.md                 # Build pipeline + artifact pointer
-│   └── ev-pulse-nc-sanyer-paper.pdf  # The full paper (108 pages)
+│   └── ev-pulse-nc-sanyer-paper.pdf  # The full paper (109 pages)
 │
 ├── competitions/, conferences/   # MBA Showcase + SEINFORMS submission materials
 └── references/                   # Supporting materials
@@ -331,7 +331,7 @@ ev-pulse-nc/
 
 | Document | Description |
 |----------|-------------|
-| 📄 [paper/ev-pulse-nc-sanyer-paper.pdf](paper/ev-pulse-nc-sanyer-paper.pdf) | **The full research paper** — 108 pages, includes Claims-to-Evidence Matrix (App. A) and AI methodology disclosure (App. B) |
+| 📄 [paper/ev-pulse-nc-sanyer-paper.pdf](paper/ev-pulse-nc-sanyer-paper.pdf) | **The full research paper** — 109 pages, includes Claims-to-Evidence Matrix (App. A) and AI methodology disclosure (App. B) |
 | [docs/research/data-quality-review.pdf](docs/research/data-quality-review.pdf) | Standalone **data quality review** — short version (also paper Appendix A) |
 | [docs/research/data-quality-review-full.pdf](docs/research/data-quality-review-full.pdf) | Standalone **data quality review** — full version with all panel transcripts |
 | [docs/research/ai-methodology-disclosure.pdf](docs/research/ai-methodology-disclosure.pdf) | Standalone **AI methodology disclosure** — full AI-tool usage disclosure (also paper Appendix B) |

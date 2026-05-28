@@ -4,7 +4,7 @@
 
 ## Canonical Artifact
 
-📄 **[ev-pulse-nc-sanyer-paper.pdf](ev-pulse-nc-sanyer-paper.pdf)** — 108 pages, 4.6 MB, all figures embedded, full APA 7 formatting
+📄 **[ev-pulse-nc-sanyer-paper.pdf](ev-pulse-nc-sanyer-paper.pdf)** — 109 pages, ~1.2 MB, all figures embedded, full APA 7 formatting
 
 The PDF is the canonical public artifact. See the [repo-root README](../README.md) for the project at-a-glance, executive summary, and the 5 novel contributions enumerated.
 
