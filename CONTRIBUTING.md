@@ -12,14 +12,15 @@ Guidelines for contributing to the North Carolina Electric Vehicle Analytics pro
 
 All contributions must follow [STYLE-GUIDE.md](STYLE-GUIDE.md).
 
-**Linting:** Run `uv run ruff check` and `uv run ruff format` before committing.
+**Lint, format, and type-check** before committing:
 
 ```bash
-uv run ruff check src/
-uv run ruff format src/
+uv run ruff check src/ tests/
+uv run ruff format src/ tests/
+uv run pyright
 ```
 
-The VS Code ruff extension handles this automatically on save.
+The VS Code ruff extension handles lint/format automatically on save. `pyright` runs in basic mode, scoped to the `evpulse/` package (see `pyproject.toml`).
 
 ## Branching Model
 
@@ -68,13 +69,13 @@ git config core.hooksPath .githooks
 
 ## Testing Requirements
 
-- **Add or update unit tests** when logic changes
-- **Ensure existing tests pass** before merging: `pytest`
-- **Integration tests must pass** for pipeline-affecting changes
+- **Add or update unit tests** when logic changes.
+- **Ensure existing tests pass** before merging: `uv run pytest`.
+- **Run the reproducibility guardrail** for any pipeline- or figure-affecting change: regenerate the affected outputs, then run the verifier below. It value-compares CSVs (exact for integer/string columns, `rtol=1e-9` for floats), pixel-compares figures, and checks the Top-3 NEVI canary against a golden baseline kept outside the repo.
 
-Run tests:
 ```bash
-pytest tests/
+uv run pytest
+uv run tests/verify_against_baseline.py --baseline <path-to-baseline>
 ```
 
 ## Documentation Updates
@@ -91,15 +92,27 @@ Key files to update:
 - `src/README.md` - Code execution guide
 - `README.md` - Project overview (major changes only)
 
-## Phase Transition Protocol
+## Extension Protocol
 
-At the end of each analytical phase (e.g., Phase 1 → Phase 2), run these three maintenance tasks in order before beginning the next phase:
+Adding a new analysis, phase, or feature follows the same right-sized loop the project was built and standardized with — scoped to the one change:
 
-1. **Structure Optimization & Deduplication** — Consolidate any files added during the phase, remove duplicates, and ensure the directory layout matches `README.md`.
-2. **Staleness Audit** — Verify all timestamps, dates, and status markers in documentation reflect the work just completed.
-3. **Code & Structure Cleanup** — Add missing boundary validations, complete documentation for new scripts, and resolve any naming or style inconsistencies.
+1. **Plan** — state the change and its expected effect on outputs (none, or a specific, justified change).
+2. **Baseline** — if results could move, snapshot the current outputs (a golden baseline kept *outside* the repo) so "did it move?" is answerable.
+3. **Tests** — add or update unit tests for any new closed-form logic *before* implementing.
+4. **Implement** — small, focused `[EVPULSE][TYPE]` commits, one logical change each.
+5. **Verify** — `uv run ruff check`, `uv run pyright`, `uv run pytest`; for pipeline- or figure-affecting changes, regenerate and run `verify_against_baseline.py` (CSV value-equality + figure pixels + Top-3 NEVI canary).
+6. **Clean up** — the three phase-transition tasks below.
+7. **Re-baseline** — when a change *intentionally* moves results (or the hardware/dependencies change), regenerate the golden baseline and reconcile it to the paper's published numbers, so it stays the source of truth.
 
-> **Timing:** Run at phase boundaries only, not mid-phase. Each task builds on the previous one's output, so execute them sequentially.
+### Phase-transition cleanup
+
+At the end of each analytical phase (the clean-up sub-step above), run these three in order:
+
+1. **Structure optimization & deduplication** — consolidate files added during the phase, remove duplicates, and ensure the directory layout matches `README.md`.
+2. **Staleness audit** — verify all timestamps, dates, and status markers in documentation reflect the work just completed.
+3. **Code & structure cleanup** — add missing boundary validations, complete docstrings for new scripts, and resolve any naming or style inconsistencies.
+
+> **Timing:** Run at phase boundaries, not mid-phase. Each task builds on the previous one's output, so execute them sequentially.
 
 ## Definition of Done
 
@@ -128,13 +141,13 @@ A change is complete when:
 3. **Install dependencies with uv**
    ```bash
    # Install uv if needed: https://docs.astral.sh/uv/
-   uv sync                # runtime dependencies
-   uv sync --extra dev    # also includes ruff + pytest
+   uv sync                # runtime + dev deps (the dev group syncs by default)
    ```
 
 4. **Verify setup**
    ```bash
-   uv run ruff check src/
+   uv run ruff check src/ tests/
+   uv run pyright
    uv run pytest
    ```
 

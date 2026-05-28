@@ -33,6 +33,34 @@ The README below is the project at-a-glance; the paper is the full record — 5-
 
 ---
 
+## Start Here
+
+New to the repository? Follow this path top to bottom, or use the map to jump to what you need.
+
+```mermaid
+flowchart LR
+    A([Start]) --> B["The paper<br/>full record + results"]
+    A --> C["Quickstart<br/>reproduce the top-3"]
+    C --> D["src/<br/>scripts + evpulse package"]
+    D --> E["frameworks/<br/>5-phase methodology"]
+    E --> F["data/<br/>sources + schema"]
+    F --> G["output/<br/>figures + validation"]
+    D --> H["CONTRIBUTING + STYLE-GUIDE<br/>conventions"]
+```
+
+| Step | Read | For |
+|---|---|---|
+| 1 | [The paper](paper/ev-pulse-nc-sanyer-paper.pdf) | The complete record — methodology, results, 45 figures |
+| 2 | [Quickstart](#quickstart--reproduce-the-top-3-nevi-ranking-in-under-5-minutes) | Reproduce the headline top-3 ranking in under 5 minutes |
+| 3 | [`src/README.md`](src/README.md) | What each script and the `evpulse` package do, plus run order |
+| 4 | [`frameworks/analytical-pipeline.md`](frameworks/analytical-pipeline.md) | The 5-phase methodology and NEVI scoring formula |
+| 5 | [`data/DATA-DICTIONARY.md`](data/DATA-DICTIONARY.md) | Every dataset's source, vintage, and column definitions |
+| 6 | [CONTRIBUTING](CONTRIBUTING.md) · [STYLE-GUIDE](STYLE-GUIDE.md) | Conventions, commit format, and the extension protocol |
+
+The complete document index is under [Key Documentation](#key-documentation); the full file tree is under [Repository Structure](#repository-structure).
+
+---
+
 ## Executive Summary
 
 North Carolina holds **$109M in federal NEVI Formula Program funding** for EV charging infrastructure, with no publicly available, data-driven method for prioritizing county-level allocation against the program's dual mandate of utilization efficiency and Justice40 equity. This project supplies the missing method: a 5-phase analytical pipeline that integrates NCDOT registration data, NREL AFDC infrastructure inventory, U.S. Census demographics, LEHD LODES commuter flows, and CEJST v2.0 Justice40 designations into a composite NEVI Priority Score per county.
@@ -245,46 +273,56 @@ ev-pulse-nc/
 ├── CITATION.cff                  # Machine-readable citation metadata
 ├── INSTALLATION.md               # Setup guide
 ├── QUICK-REFERENCE.md            # Daily workflow commands
+├── CONTRIBUTING.md               # Workflow, commit convention, extension protocol
+├── STYLE-GUIDE.md                # Code style & naming conventions
 ├── LICENSE                       # Polyform Noncommercial License 1.0.0
 ├── NOTICE.md                     # Copyright notice
-├── .gitignore                    # Git ignore patterns
-├── .gitattributes                # Git LFS tracking rules
+├── pyproject.toml                # Metadata, dependencies, ruff/pytest/pyright config
+├── uv.lock                       # Pinned dependency lockfile
+├── .editorconfig                 # Cross-editor whitespace rules
+├── .githooks/                    # commit-msg guard (git config core.hooksPath .githooks)
+├── .github/workflows/            # CI: ruff, pyright, pytest, import smoke
 │
 ├── data/                         # Dataset directory (Git LFS)
-│   ├── raw/                      # Original datasets
-│   ├── processed/                # Analysis-ready outputs (CSVs gitignored, regenerable)
+│   ├── raw/                      # Original datasets (immutable)
+│   ├── processed/                # Analysis-ready outputs (gitignored, regenerable)
 │   ├── reference-forecasts/      # SAS Model Studio outputs (LFS)
-│   ├── DATA-DICTIONARY.md         # Column definitions for all datasets
+│   ├── DATA-DICTIONARY.md        # Column definitions for all datasets
 │   └── README.md                 # Directory overview & provenance
 │
-├── code/
-│   └── python/                   # Python scripts
-│       ├── data-acquisition/     # API ingestion scripts (AFDC, Census, LEHD, CEJST)
-│       ├── analysis/             # Phase 1-5 + scoring scripts
-│       ├── blog/                 # Blog graphics package
-│       └── docs/                 # Documentation-asset generators (e.g. pipeline diagram)
+├── src/                          # All project code
+│   ├── evpulse/                  # Reusable package: paths, constants, style, io, geo, arima
+│   ├── analysis/                 # Phase 1-5 + scoring + EDA scripts
+│   ├── data-acquisition/         # API ingestion (AFDC, Census, LEHD, CEJST)
+│   ├── blog/                     # Blog graphics package
+│   ├── docs/                     # Doc-asset generators (pipeline diagram)
+│   ├── paper/                    # Manuscript build script
+│   └── README.md                 # Code execution guide
+│
+├── tests/                        # Test suite + reproducibility guardrail
+│   ├── unit/                     # Closed-form math tests (gini, theil, scoring)
+│   ├── conftest.py               # Agg backend + import-path bootstrap
+│   └── verify_against_baseline.py # Regenerate-and-compare guardrail + canonical run order
 │
 ├── docs/                         # Project documentation
 │   ├── eda-reports/              # Exploratory data analysis reports
 │   ├── figures/                  # Pipeline diagram + thumbnails
-│   ├── internal/                 # Internal working artifacts (drift audits, AI logs)
-│   └── research/                 # Supporting research papers + literature checks
+│   └── research/                 # Methodology review PDFs + literature checks
 │
 ├── frameworks/                   # Analytical frameworks and methodology specs
 │   ├── analytical-pipeline.md    # Full 5-phase pipeline + scoring formula
-│   ├── afdc-dataset-reference.md # AFDC source, vintage, counts
-│   ├── afdc-data-structure.md    # AFDC field-level schema
 │   └── ...                       # Per-dataset and per-method docs
 │
 ├── output/                       # Generated outputs
-│   ├── figures/                  # 45 publication-quality figures + supplementary variants (PDF + PNG)
+│   ├── figures/                  # 45 figures + 4 supplementary variants (PDF + PNG)
 │   ├── validation/               # Forecast validation results
 │   └── models/                   # Model index — pointers to where each model lives
 │
-├── paper/                        # Research paper directory
-│   ├── README.md                 # Build pipeline + canonical artifact pointer
-│   └── ev-pulse-nc-sanyer-paper.pdf  # The full research paper (108 pages)
+├── paper/                        # Research paper (canonical PDF)
+│   ├── README.md                 # Build pipeline + artifact pointer
+│   └── ev-pulse-nc-sanyer-paper.pdf  # The full paper (108 pages)
 │
+├── competitions/, conferences/   # MBA Showcase + SEINFORMS submission materials
 └── references/                   # Supporting materials
     └── data-sources.md           # Citations & links
 ```
