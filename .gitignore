@@ -151,8 +151,14 @@ tmp/
 # Internal working docs — kept local, not published to the public repo
 docs/internal/
 
-# Private LinkedIn-strategy consultation — kept local
-docs/blog/consultation.md
+# Blog production workspace — kept local. The series bible, panel consultations,
+# the verification review, the dual-version drafts, and scratch figures stay
+# private; only the finished articles under docs/blog/series/ are published.
+docs/blog/workspace/
+
+# Blog figure-generation code — kept local. We publish the posts, not the code
+# that produces them. (The paper-figure generators in src/analysis/ stay public.)
+src/blog/
 
 # Credentials (if any API keys used)
 .env
