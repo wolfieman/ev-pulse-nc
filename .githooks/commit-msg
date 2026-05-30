@@ -2,9 +2,10 @@
 # EV Pulse NC commit-message guard (dependency-free, POSIX sh).
 #
 # Enforces the convention documented in CONTRIBUTING.md and blocks the
-# leakage classes listed there. Enable with:
-#
-#     git config core.hooksPath .githooks
+# leakage classes listed there. Install PER-REPO into .git/hooks/ via the
+# orchestrator installer (sh standards/hooks/install.sh) so it coexists with the
+# git-lfs hooks. Do NOT set core.hooksPath — it replaces .git/hooks/ wholesale and
+# disables the LFS post-checkout/post-merge/pre-push hooks.
 #
 # Copyright (c) 2026 Wolfgang Sanyer
 # Licensed under the Polyform Noncommercial License 1.0.0 (see LICENSE).
