@@ -1,7 +1,7 @@
 # EV Pulse NC - Analytical Pipeline Architecture
 
 **Project:** EV Pulse NC — North Carolina Electric Vehicle Analytics
-**Author:** Wolfgang Sanyer, Fayetteville State University
+**Author:** Wolfgang Sanyer
 **Date:** April 2026 (last updated)
 
 ---
@@ -221,6 +221,8 @@ Ranked list of top 10 North Carolina counties (by BEV registration count, captur
 |-------|-------|
 | **Phase 6: Buffer Analysis** | Visual identification of "charging deserts" by distance — preserved for post-capstone roadmap |
 | **Phase 7: NCDOT Validation** | Validates methodology against NCDOT's planned NEVI deployments — preserved for post-capstone roadmap |
+
+> **Consolidated roadmap:** Phases 6 and 7, plus newer post-capstone directions (a grid-readiness layer, an interactive dashboard, and methodological polish), are gathered with an expert-review handoff brief in [post-capstone-roadmap.md](./post-capstone-roadmap.md).
 
 ### Critical Path
 

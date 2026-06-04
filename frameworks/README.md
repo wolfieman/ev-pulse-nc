@@ -20,6 +20,7 @@ Comprehensive decision frameworks with trade-off analyses, stakeholder assessmen
 | **[afdc-data-structure.md](./afdc-data-structure.md)** | #2 | — | ✅ Current | Field-level schema reference for the 76-column AFDC station-level CSV; identification, geography, charging, facility, temporal fields |
 | **[stakeholder-value-analysis.md](./stakeholder-value-analysis.md)** | All | — | ✅ Current | Stakeholder value of the delivered NEVI scoring framework (NEVI admins, county planners, private operators, academic, public/Justice40 communities) |
 | **[analytical-pipeline.md](./analytical-pipeline.md)** | All | — | ✅ Complete | Project analytical pipeline architecture: foundation (demand + supply) → gap analysis → three lenses (ZIP, LEHD/LODES, equity) → scoring framework → NEVI rankings |
+| **[post-capstone-roadmap.md](./post-capstone-roadmap.md)** | All | — | 🗺️ Roadmap | Post-capstone future-direction roadmap + expert-review handoff brief: grid-readiness layer, interactive dashboard, Phase 6/7 items, methodological polish. Slated for the second week of July 2026. |
 
 ### Analysis Notes (Text)
 
