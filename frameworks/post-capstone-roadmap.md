@@ -3,7 +3,7 @@
 **Project:** EV Pulse NC — North Carolina Electric Vehicle Analytics
 **Owner:** Wolfgang Sanyer — personal portfolio project (no institutional affiliation)
 **Created:** June 4, 2026
-**Status:** Roadmap / not started — slated to be picked up the second week of July 2026 (target ~Mon July 13)
+**Status:** Roadmap / not started — slated to be picked up the second week of July 2026 (target ~Mon July 13). **Exception: Direction 6 (Fayetteville/Cumberland stakeholder brief, added 2026-06-04) is near-term** — picked up after the owner's exam / next week, ahead of the July grid work.
 **Purpose:** A self-contained brief that an expert panel (run in plan mode) can read cold and turn into a prioritized, sequenced implementation plan.
 
 ---
@@ -17,7 +17,7 @@ The document has four parts:
 | Part | What it is | Audience |
 |------|-----------|----------|
 | **A. Context snapshot** | What EV Pulse NC is today + the gap that motivates this roadmap | Anyone picking this up cold |
-| **B. Candidate directions** | Five candidate additions, each with rationale, data, integration, effort, risk, acceptance criteria, and open questions | The expert panel |
+| **B. Candidate directions** | Six candidate additions, each with rationale, data, integration, effort, risk, acceptance criteria, and open questions | The expert panel |
 | **C. Open questions & decision points** | The cross-cutting decisions the panel must resolve before sequencing | The expert panel |
 | **D. Expert-panel handoff brief** | A ready-to-paste prompt for running the review in plan mode | Whoever kicks off the review |
 
@@ -67,7 +67,7 @@ This context determines which grid data is even *available* for NC, and it is a 
 
 ## Part B — Candidate directions
 
-Five candidate additions, grouped. Direction 1 (grid-readiness) and Direction 2 (dashboard) are the headline additions; Direction 3 collects already-roadmapped items; Directions 4–5 are methodological polish. The panel should treat ordering here as *proposed*, not fixed.
+Six candidate additions, grouped. Direction 1 (grid-readiness) and Direction 2 (dashboard) are the headline additions; Direction 3 collects already-roadmapped items; Directions 4–5 are methodological polish; Direction 6 (added 2026-06-04) is a near-term, stakeholder-facing deliverable that leapfrogs the others in urgency. The panel should treat ordering here as *proposed*, not fixed.
 
 ---
 
@@ -170,6 +170,48 @@ These are documented in [`analytical-pipeline.md`](./analytical-pipeline.md) as 
 
 ---
 
+### Direction 6 — Fayetteville / Cumberland stakeholder brief ⭐ (near-term; stakeholder-facing, no new analytical dimension)
+
+**Status & priority.** Added 2026-06-04. Unlike Directions 1–5 (parked for ~July), this is the **most immediate** extension — picked up after the owner's exam / next week. Motivated by a concrete opportunity: a prospective meeting with the **Fayetteville mayor's office** about collaborating on EV-charging deployment. Near-term sequencing: (1) paper publishing / SEINFORMS, (2) **this brief**, (3) grid extension (Direction 1).
+
+**What.** A self-contained, stakeholder-facing analytical brief applying the existing EV Pulse methodology to **Cumberland County and Fayetteville specifically** — a place the statewide study covered in its base layers but never *scored* (Cumberland is #11 by BEV count, just outside the scored top-10). Two-tier, matching the project's core method:
+- **Tier 1 — county score (context):** compute Cumberland's NEVI Priority Score (util / cost / equity) on the same framework as the top-10, on a comparable scale. Computed **standalone** — does **not** edit the locked 10-county manuscript table.
+- **Tier 2 — Fayetteville ZIP/tract targeting (the deployment ask):** Phase-3 underserved-ZIP ranking + Phase-5 Justice40 overlay, filtered to Fayetteville's ZIPs, producing specific "deploy here" targets. Full Cumberland County framing kept available for parallel **county-level** engagement (a combined city + county effort).
+
+**Why it's useful.** The data tells a compelling stakeholder story: Cumberland is a **high-equity-need county the demand-ranking skipped** — exactly the population NEVI's equity provisions exist to catch. Headline signals (from repo data, June 2026):
+- BEV registrations **1,584** (Oct 2025), **#11 statewide** — just outside the scored top-10.
+- EV share of fleet **0.96%** vs Wake 4.0% / Mecklenburg 3.0% — low adoption; a charging chicken-and-egg gap.
+- **34/68 tracts (50%) Justice40-disadvantaged** vs 43% statewide — among the most disadvantaged study areas.
+- **Fort Bragg** proximity (note: the base was redesignated from "Fort Liberty" **back to Fort Bragg in Feb 2025** — use *Fort Bragg*) — a distinct military/veteran demand pool and a federal-alignment angle.
+- **I-95 corridor** — economic-development / through-traffic charging case.
+
+**Four framing angles** (all four in scope): Equity / Justice40 · Economic development (I-95) · Military / Fort Bragg · NEVI funding readiness.
+
+**Integration.** Read-only consumer of existing processed outputs plus the existing scoring / Phase-3 / Phase-5 methods. Does **not** disturb the validated weights or the locked 10-county manuscript table. New artifacts only: a standalone Cumberland score table, Fayetteville ZIP targets, ~3 figures, and a brief doc (markdown → PDF).
+
+**Data & sources.**
+- *Existing (sufficient for 3 of 4 angles):* NCDOT registrations, AFDC stations, CEJST/Justice40 tracts, ACS income/tenure, the scoring-framework method.
+- *New / optional — military quantification (Fort Bragg):* combination approach — **(a)** qualitative proximity framing (always), plus **(b)** a Census/DoD source to quantify *if clean data is obtainable* (e.g., ACS military-employment / veteran-population tables for Cumberland; DoD installation personnel). Fall back to qualitative-only if no defensible source exists. This is the only angle requiring data outside the repo.
+
+**Effort (rough).** Low–moderate — reuses existing methods; new work is filtering to one county / ZIP set, a standalone score, ~3 figures, the brief doc, and the optional military data pull.
+
+**Panel.** Reviewed by the **standard advisory panel (Reyes / Okonkwo / Whitfield)** — *not* the grid-specific Part-D panel — expandable if a gap surfaces. Per workflow, the plan goes to the panel for approval before execution.
+
+**Acceptance criteria.**
+- A standalone Cumberland NEVI score on the same scale as the top-10, with components shown.
+- A ranked list of underserved Fayetteville ZIPs with Justice40 overlay.
+- ≥3 figures (Cumberland-in-context score; Fayetteville underserved map; equity overlay with existing stations).
+- A stakeholder brief (PDF) organized around the four angles, readable by a non-technical mayor's office.
+- Military angle either quantified from a cited source or explicitly framed qualitatively — no hand-waving.
+
+**Open questions for the panel.**
+- **Fayetteville boundary:** which ZCTAs define "Fayetteville" (e.g., 28301 / 28303 / 28304 / 28305 / 28311 / 28312 / 28314 …) vs whole-county.
+- **Score placement:** standalone Cumberland table (recommended) vs an 11-county re-run — confirm the manuscript table stays untouched.
+- **Military quantification:** is a defensible free Census/DoD figure obtainable, or is qualitative-only the honest call?
+- **City vs county emphasis:** lead with the city (mayor's audience) while keeping county framing for parallel county engagement?
+
+---
+
 ## Part C — Open questions & decision points (for the panel)
 
 The cross-cutting decisions the panel should resolve and feed into sequencing:
@@ -189,6 +231,8 @@ The cross-cutting decisions the panel should resolve and feed into sequencing:
 ## Part D — Expert-panel handoff brief (plan mode)
 
 > **How to run this:** open a session in the `ev-pulse-nc` repo, enter **plan mode**, and paste the brief below. Run it as a panel (multiple expert perspectives — e.g., an energy/grid analyst, a geospatial/data-engineering reviewer, and a policy/NEVI reviewer) and ask for a synthesized, sequenced plan. Pair this brief with the two anchor docs it references.
+>
+> **Note (2026-06-04):** this handoff covers Directions 1–5 (the grid-centric directions) and references "the five candidate directions" deliberately. **Direction 6 (Fayetteville/Cumberland stakeholder brief) is out of scope for this prompt** — it is reviewed separately by the standard advisory panel (Reyes / Okonkwo / Whitfield), not this grid-focused panel.
 
 ```
 ROLE
@@ -274,7 +318,7 @@ Complete link inventory so the panel (and future-us) never has to reconstruct a 
 ## Document metadata
 
 - **Created:** June 4, 2026
-- **Status:** Roadmap — not started; scheduled to revisit the second week of July 2026 (target ~Mon July 13)
-- **Version:** 1.0
+- **Status:** Roadmap — not started; scheduled to revisit the second week of July 2026 (target ~Mon July 13). Direction 6 (added 2026-06-04) is near-term, ahead of the July work.
+- **Version:** 1.1 (2026-06-04 — added Direction 6, Fayetteville/Cumberland stakeholder brief; no prior content removed)
 - **Related:** [`analytical-pipeline.md`](./analytical-pipeline.md) (Phases 6/7 Future Directions), [`README.md`](./README.md), [`../references/data-sources.md`](../references/data-sources.md)
 - **Origin:** Grew out of a June 2026 review of grid-mapping tools (inframap.org / openinframap.org) that surfaced the project's missing electrical-grid dimension.
