@@ -50,13 +50,25 @@ exclude = [".venv"]
 src = ["src"]
 
 [tool.ruff.lint]
-select = ["E", "F", "W", "I", "UP", "B", "SIM", "PTH", "RUF"]
+# CPY (flake8-copyright) enforces the required authorship/license banner. It is a
+# preview rule, so lint.preview must be on; we scope preview to LINT only (not the
+# top-level [tool.ruff] preview) so the stable formatter style is unchanged. The
+# banner sits at the tail of each module docstring, which CPY001 finds because the
+# docstring is short and the banner lands well within CPY001's 4096-byte head scan.
+preview = true
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "PTH", "RUF", "CPY"]
 # en-dash and multiplication-sign are intentional typography in labels and
 # docstrings; whitelist them so RUF001-003 still catch unexpected confusables.
 allowed-confusables = ["–", "×"]
 
 [tool.ruff.lint.isort]
 known-first-party = ["evpulse"]
+
+[tool.ruff.lint.flake8-copyright]
+# Match our exact banner copyright line (literal TOML string: no backslash
+# escaping). Pins the author so a generic third-party "Copyright 2024 X" notice
+# would not satisfy the check.
+notice-rgx = '(?i)Copyright\s+©\s+\d{4}\s+Wolfgang Sanyer'
 
 [tool.pyright]
 # Scoped to the reusable package: the analysis scripts lean on untyped
