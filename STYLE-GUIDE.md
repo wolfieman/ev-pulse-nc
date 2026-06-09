@@ -257,7 +257,10 @@ line-length = 88
 target-version = "py314"
 
 [tool.ruff.lint]
-select = ["E", "F", "W", "I"]
+select = ["E", "F", "W", "I", "UP", "B", "SIM", "PTH", "RUF"]
+# en-dash and multiplication-sign are intentional typography in labels and
+# docstrings; whitelist them so RUF001-003 still catch unexpected confusables.
+allowed-confusables = ["–", "×"]
 ```
 
 | Rule | Description |
@@ -266,6 +269,11 @@ select = ["E", "F", "W", "I"]
 | F | pyflakes (unused imports, undefined names) |
 | W | pycodestyle warnings |
 | I | isort (import ordering) |
+| UP | pyupgrade (modern syntax) |
+| B | flake8-bugbear (likely bugs) |
+| SIM | flake8-simplify |
+| PTH | flake8-use-pathlib |
+| RUF | Ruff-specific rules |
 
 Run the linter before committing (always via `uv run`, never a bare `ruff`):
 
