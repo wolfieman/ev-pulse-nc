@@ -109,7 +109,7 @@ git push -u origin main
 | Location | Contents |
 |----------|----------|
 | **Git LFS** | CSV, XLSX files (data) |
-| **Regular Git** | Code (.py), docs (.md, .pdf, .docx) |
+| **Regular Git** | Code (.py), docs (.md, .pdf) |
 | **Ignored** | *.log, *.lst, __pycache__, .DS_Store |
 
 ---
