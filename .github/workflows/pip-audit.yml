@@ -12,6 +12,9 @@ on:
     - cron: "0 6 1 * *" # 06:00 UTC on the 1st of each month
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   audit:
     runs-on: ubuntu-latest
