@@ -230,3 +230,6 @@ competitions/mba-showcase-2026/figures/
 
 # Claude local settings (machine-specific)
 .claude/settings.local.json
+
+# Cross-repo agent handoff scratch (private repo names / absolute paths; not for this public repo)
+CLAUDE_HANDOFF.md

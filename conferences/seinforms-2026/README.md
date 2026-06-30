@@ -15,3 +15,8 @@ Institute for Operations Research and the Management Sciences (SEINFORMS).
 The submission derives from the project manuscript in [`../../paper/`](../../paper/);
 a short abstract is in [`abstract.md`](abstract.md). The submitted paper and
 presentation will be linked here once finalized.
+
+The full-paper format requirements are being tracked in
+[`cfp-requirements.md`](cfp-requirements.md). Confirm the unresolved Exordo/CFP
+items there before condensing the 109-page capstone manuscript into the
+conference paper.
