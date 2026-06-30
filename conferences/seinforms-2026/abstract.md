@@ -5,7 +5,7 @@
 1. **Portal submission abstract — 250–400 words** (the Exordo "Title & Abstract" field; reviewer-facing; must cover problem + research questions, method, findings, contribution; no citations/refs/tables/figures). Drafted below.
 2. **In-paper abstract — ~100–200 words** (inside the PDF, per the CFP full-paper format spec).
 
-**Drafted:** in-paper 2026-05-26 (trimmed from the manuscript's 279-word abstract); portal 2026-06-18.
+**Drafted:** in-paper 2026-05-26 (trimmed from the manuscript's 279-word abstract), re-trimmed to 182 words 2026-06-30; portal 2026-06-18.
 
 ---
 
@@ -17,25 +17,23 @@
 
 ---
 
-## In-paper abstract (207 words) — inside the PDF
+## In-paper abstract (159 words) — inside the PDF
 
-North Carolina holds $109 million in federal NEVI Formula Program funding for public EV charging
-infrastructure but lacks a publicly available, data-driven method for prioritizing county-level
-allocation against the dual objectives of utilization efficiency and Justice40 equity, amid battery
-electric vehicle (BEV) adoption growing at a 53.8% compound annual rate since 2018. This study
-integrates five analytical phases into a two-tier NEVI Priority Score combining a county-level
-ranking with ZIP-level targeting: out-of-sample forecast validation, an updated NREL AFDC
-infrastructure baseline (1,985 stations, 6,145 connectors), ZIP-level density analysis with an
-additive Theil-T decomposition, LEHD LODES workplace-charging demand modeling, and a CEJST v2.0
-Justice40 equity overlay. Forecast validation across 400 county-month observations yielded a mean
-absolute percentage error of 4.34%; the Theil-T decomposition found that 84.5% of charging-
-infrastructure inequality occurs within counties rather than between them, motivating the two-tier
-design. The methodological contribution is the first additive between/within Theil-T decomposition
-applied to EV charging infrastructure, integrated with a three-pillar scoring framework whose
-statistical independence (maximum VIF 1.41) and robust top-three stability (Union, Mecklenburg,
-Guilford) substantiate the rankings under weight perturbation. The framework informs NCDOT
-allocation decisions without substituting for them, captures 73% of the statewide BEV fleet, and is
-fully reproducible from public data.
+**159 words** (160 counting the `ABSTRACT` lead). Trimmed from the earlier 207-word draft to satisfy the CFP's 100–200-word in-paper limit; restores "workplace-charging" (not "commuting") to match the manuscript and the 297-word portal abstract. Begins with `ABSTRACT` per the CFP full-paper format spec.
+
+ABSTRACT: North Carolina holds $109 million in federal NEVI Formula Program funding for public EV
+charging infrastructure but lacks a data-driven method for prioritizing county-level allocation
+against utilization efficiency and Justice40 equity, amid BEV adoption growing at a 53.8% compound
+annual rate. This study integrates five analytical phases into a two-tier NEVI Priority Score
+combining a county-level ranking with ZIP-level targeting: out-of-sample forecast validation, an
+updated NREL AFDC infrastructure baseline, ZIP-level density analysis with an additive Theil-T
+decomposition, LEHD LODES workplace-charging demand modeling, and a CEJST v2.0 Justice40 overlay.
+Forecast validation yielded a mean absolute percentage error of 4.34%; the Theil-T decomposition
+found that 84.5% of charging-infrastructure inequality occurs within counties rather than between
+them, motivating the two-tier design. The three scoring pillars proved statistically independent
+(maximum VIF 1.41) with stable top-three rankings (Union, Mecklenburg, Guilford) under sensitivity
+perturbation. The framework informs state transportation-agency allocation decisions, captures 73%
+of the statewide BEV fleet, and is fully reproducible from public data.
 
 **Keywords:** EV charging infrastructure, NEVI Formula Program, Justice40, Theil decomposition,
 infrastructure equity, North Carolina
@@ -49,5 +47,5 @@ infrastructure equity, North Carolina
 - Dropped from the original for length: the Chow-test statistic, the "to the author's knowledge"
   novelty hedge (also cleaner for double-blind review), and the "extending prior work" parenthetical.
 - ⚠️ The Exordo abstract field needs the **250–400w portal abstract above**, NOT this in-paper
-  version (too short for the form). This 207w version is for **inside the PDF** only, and gets
-  trimmed to ≤200 in the reformat.
+  version (too short for the form). This 182w version is for **inside the PDF** only, and is now
+  within the ≤200-word in-paper limit.
