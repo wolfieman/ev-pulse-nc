@@ -114,7 +114,7 @@ FIGURE_TITLES = {
 }
 
 FIGURE_REF_RE = re.compile(r"\bFigure (\d+)\b")
-FIGURE_WIDTH = Inches(6.0)
+FIGURE_WIDTH = Inches(5.0)
 
 
 # ---------------------------------------------------------------------------
