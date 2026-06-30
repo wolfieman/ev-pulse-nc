@@ -219,6 +219,9 @@ conferences/seinforms-2026/REFORMAT-PLAN.md
 conferences/seinforms-2026/cfp-submission-instructions.md
 conferences/seinforms-2026/call-for-papers.pdf
 conferences/seinforms-2026/docs/
+# Working manuscript drafts (raw capstone copy; pre-scrub, identifying info)
+conferences/seinforms-2026/seinforms_manuscript.md
+conferences/seinforms-2026/*_manuscript*.md
 
 competitions/**/drafts/
 competitions/**/scratch/
