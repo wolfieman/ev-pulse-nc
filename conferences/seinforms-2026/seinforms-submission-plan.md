@@ -26,7 +26,7 @@ checklist), Claude (manuscript import, corrections, environment constraints).
 | Portal abstract (250–400w) drafted | ✅ done | `abstract.md` — 297w, ready to paste |
 | In-paper abstract trimmed to ≤200w | ✅ done | applied to `abstract.md` (159 words; §5 draft) |
 | Content condensation (→ ~15 single-sp pp) | ⬜ todo | needs the working manuscript (now present) |
-| Double-blind scrub | ⬜ todo | §4 checklist |
+| Double-blind scrub (source text) | ✅ done | manuscript de-identified (Claude, `seinforms-002`); §4 — PDF metadata + file name remain at export |
 | `build_seinforms_docx.py` compiler | ⬜ todo | §6 spec; adapt `src/paper/build_docx.py` |
 | Compile → PDF → Exordo upload | ⬜ todo | §7 checklist |
 
@@ -71,14 +71,14 @@ Steps 1–3 and 4 are independent and can run in parallel.
 
 Remove from the review PDF **and** the file name:
 
-- [ ] Author name → `[Author Name]` or remove.
-- [ ] Faculty advisor name.
-- [ ] Institution / college name.
-- [ ] Acknowledgements section.
-- [ ] Appendix B (AI Methodology Disclosure) — identifying context; drop for the blind paper.
-- [ ] Any links/paths to the author's other (private) repositories.
-- [ ] PDF document metadata (author/title fields) — clear before upload.
-- [ ] File name carries no author name → use `ev-pulse-nc-seinforms-2026.pdf`.
+- [x] Author name → removed (title block now `*[Author name and affiliation removed…]*`).
+- [x] Faculty advisor name → removed (title block, §1.4, §13).
+- [x] Institution / college name → removed (title block, §1.4, §13).
+- [x] Acknowledgements section → §13 retitled "Data Sources and Disclosures"; personal thanks removed, public-data credits + Funding/COI/AI disclosures kept (de-identified).
+- [x] Appendix B (AI Methodology Disclosure) → dropped entirely.
+- [x] Any links/paths to the author's other (private) repositories → all `github.com/wolfieman/*` URLs, the `orchestrator` repo reference, `docs/research/*` paths, the `nc-ev-atlas` name, and `Sanyer, W.` citation forms removed/neutralized.
+- [ ] PDF document metadata (author/title fields) — clear before upload (export-time, `seinforms-005`).
+- [ ] File name carries no author name → use `ev-pulse-nc-seinforms-2026.pdf` (export-time, `seinforms-005`).
 
 Keep neutral, non-identifying phrasing for any unavoidable self-citations.
 (Portal does not state a self-citation or funding policy.)
