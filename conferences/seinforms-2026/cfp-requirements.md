@@ -147,6 +147,11 @@ Not found in the portal:
 
 ## Current Paper Gap
 
+> **Status (2026-06-30): COMPLETE.** The condensed, double-blind, 31-page paper
+> with numeric `[n]` citations, a 20-entry numbered `REFERENCES` list, and
+> stripped PDF metadata is built (`ev-pulse-nc-seinforms-2026.pdf`); only the
+> manual Exordo upload remains. The gap analysis below is kept for the record.
+
 The source manuscript is the capstone PDF at
 `paper/ev-pulse-nc-sanyer-paper.pdf`: 109 pages, APA 7, with all figures
 embedded. The SEINFORMS deliverable should be a distinct condensed,

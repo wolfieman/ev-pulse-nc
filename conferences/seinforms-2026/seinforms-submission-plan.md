@@ -19,16 +19,20 @@ checklist), Claude (manuscript import, corrections, environment constraints).
 
 | Item | State | Owner / notes |
 |---|---|---|
-| CFP full-paper requirements captured | ✅ done, committed | Codex → `cfp-requirements.md` (commit `93471c2`) |
-| Conference README links the spec | ✅ done, committed | Codex |
-| Cross-repo handoff scratch kept out of repo | ✅ done | `CLAUDE_HANDOFF.md` gitignored |
-| SEINFORMS working manuscript imported | ✅ done (this checkout) | Claude → `seinforms_manuscript.md` (gitignored, raw PDF extraction) |
-| Portal abstract (250–400w) drafted | ✅ done | `abstract.md` — 297w, ready to paste |
-| In-paper abstract trimmed to ≤200w | ✅ done | applied to `abstract.md` (159 words; §5 draft) |
-| Content condensation (→ ~15 single-sp pp) | ⬜ todo | needs the working manuscript (now present) |
-| Double-blind scrub (source text) | ✅ done | manuscript de-identified (Claude, `seinforms-002`); §4 — PDF metadata + file name remain at export |
-| `build_seinforms_docx.py` compiler | ⬜ todo | §6 spec; adapt `src/paper/build_docx.py` |
-| Compile → PDF → Exordo upload | ⬜ todo | §7 checklist |
+| CFP full-paper requirements captured | ✅ done | Codex → `cfp-requirements.md` |
+| Conference README links the spec | ✅ done | Codex |
+| High-fidelity manuscript source imported | ✅ done | clean `manuscript.md` markdown copied to `seinforms_manuscript.md` (gitignored) |
+| Portal abstract (250–400w) | ✅ done | `abstract.md` — 297w, ready to paste |
+| In-paper abstract (100–200w) | ✅ done | `abstract.md` — 159w |
+| Double-blind scrub (source text) | ✅ done | de-identified (Claude, `seinforms-002`) |
+| `build_seinforms_docx.py` compiler | ✅ done | Claude (`seinforms-003`); committed `b429c80` |
+| Numeric `[n]` citations + numbered `REFERENCES` | ✅ done | Codex (`seinforms-004`); processor runs in build |
+| Content condensation | ✅ done | 23,618 → ~13,500 words (Claude, `seinforms-005`); renders ~31 pp |
+| Bibliography cleanup (cited-only, 20 refs) | ✅ done | `Additional Sources Consulted` + uncited entries removed |
+| Appendix-before-References reorder + CFP QA | ✅ done | Codex (`seinforms-008`) |
+| Humanization (em-dash removal + sentence-split) | ✅ done | Claude (`seinforms-009`); docs-prose + mgmt-615 protocol |
+| Final blind PDF (metadata-stripped, TNR) | ✅ done | Codex → `inter-agency/seinforms/output/ev-pulse-nc-seinforms-2026.pdf` (31 pp) |
+| **Exordo portal upload** | ⬜ **todo — owner** | §7; manual submission by **2026-07-31** |
 
 ---
 
@@ -36,7 +40,7 @@ checklist), Claude (manuscript import, corrections, environment constraints).
 
 | Category | Capstone (source) | SEINFORMS 2026 (target) |
 |---|---|---|
-| Length | 109 pp (double-spaced) | ~15 single-spaced pp internal target; **no hard cap** (chair-confirmed); ≥ 2,000 words |
+| Length | 109 pp (double-spaced) | **Realized ~31 single-spaced pp** with all content/figures intact; no hard cap (chair-confirmed); ≥ 2,000 words ✓ |
 | Review | Authored (APA 7) | **Double-blind** — no author/affiliation/advisor/institution/repo info |
 | Font / margins | 12 pt TNR, 1″ | **11 pt** TNR (or similar), 1″ all sides |
 | Spacing | Double-spaced, indented paragraphs | **Single-spaced, justified**, flush-left, no indent, blank line between paragraphs |
@@ -45,8 +49,10 @@ checklist), Claude (manuscript import, corrections, environment constraints).
 | In-paper abstract | 207 words | **100–200 words**, begins with `ABSTRACT` |
 
 > On length: the portal's "20 single-spaced pages" is a **readability/preparation
-> target, not a hard cap** — confirmed with the chair (no page/word maximum;
-> 2,000-word minimum). Internal aim ~15 pp keeps it tight.
+> target, not a hard cap** (chair-confirmed; no page/word maximum, 2,000-word
+> minimum). The realized paper is **~31 pp**: the content is irreducibly
+> data-dense, and the owner approved keeping all methodology, tables, figures,
+> and quantitative results intact over hitting a lower page count.
 
 ---
 
@@ -64,6 +70,9 @@ checklist), Claude (manuscript import, corrections, environment constraints).
 6. **Submit** via Exordo (§7).
 
 Steps 1–3 and 4 are independent and can run in parallel.
+
+**Status (2026-06-30): steps 1–5 complete.** Only step 6 (Exordo submission)
+remains, as the owner's manual portal upload.
 
 ---
 
@@ -113,7 +122,10 @@ to match the manuscript and the 297-word portal abstract.
 
 ## 6. Compiler script — `src/paper/build_seinforms_docx.py`
 
-Adapt the existing `src/paper/build_docx.py` (present, 26 KB). Changes:
+**Status: ✅ implemented** (committed `b429c80`; figure width later set to 5 in,
+`9d99a82`). The citation processor (`tools/citation_processor.py`, Codex) runs
+inside the build to convert APA → `[n]`. Original spec, adapted from
+`src/paper/build_docx.py`:
 
 - Font size → `Pt(11)`.
 - Line spacing → `WD_LINE_SPACING.SINGLE`.
@@ -128,11 +140,11 @@ Adapt the existing `src/paper/build_docx.py` (present, 26 KB). Changes:
 
 ## 7. Exordo submission checklist
 
-1. Export `seinforms_manuscript.docx` → PDF; confirm blind + clean metadata; rename `ev-pulse-nc-seinforms-2026.pdf`.
+1. ✅ **Done** — blind, metadata-stripped `ev-pulse-nc-seinforms-2026.pdf` (31 pp, TNR embedded) is built at `inter-agency/seinforms/output/`. (Optional: a Word re-export for maximum font fidelity before upload.)
 2. Step 1 — Track: `ARTIFICIAL INTELLIGENCE, BUSINESS ANALYTICS, STATISTICS, & TECHNOLOGY MANAGEMENT`.
-3. Step 2 — Format: **Student** or **Oral** *(owner decision — see §8)*.
+3. Step 2 — Format: **Student** *(resolved, §8)*.
 4. Step 3 — Title + paste the **297-word portal abstract** from `abstract.md` (≤450-word field limit; no citations/figures).
-5. Step 4 — Author/presenter metadata (kept separate from the blind PDF). Student-submission flag *(owner decision — see §8)*.
+5. Step 4 — Author/presenter metadata (kept separate from the blind PDF). Student-submission flag: **Yes** (MBA in progress).
 6. Step 5 — Topic: `Analytics` (ANALYTICS group).
 7. Step 6 — Upload the blind PDF.
 
@@ -140,22 +152,19 @@ No slides/supplemental files are requested at submission. Only other portal date
 
 ---
 
-## 8. Open decisions for the owner
+## 8. Owner decisions (resolved)
 
-- **Presentation format (Step 2): Student or Oral?** Student enters student-track competition.
-- **Student-submission flag (Step 4): Yes/No?** (MBA in progress through Dec 2026 → likely Yes.)
-- **Internal length target:** ~15 single-spaced pp acceptable, or aim closer to the 20-page guidance?
-- **Title:** keep the capstone title or adjust for the conference?
+- **Presentation format (Step 2): Student.**
+- **Student-submission flag (Step 4): Yes** (MBA in progress through Dec 2026); confirm in the portal.
+- **Length:** all content kept intact; **~31 single-spaced pp accepted** (CFP has no hard cap).
+- **Title: keep the original capstone title** — a known, owner-approved double-blind exposure, since the project name is searchable.
 
 ---
 
-## 9. Environment constraint (Claude Code checkout)
+## 9. Environment note (resolved)
 
-This checkout has the **built PDF** and `src/paper/build_docx.py` and
-`output/figures/`, but **not** the original markdown `paper/manuscript.md`
-(gitignored, regenerable, absent here). The working manuscript
-(`seinforms_manuscript.md`) was therefore seeded by `pdftotext -layout`
-extraction of the capstone PDF — usable for condensation but carrying extraction
-artifacts (page numbers, running headers, broken tables, mangled equations). If
-the true `manuscript.md` source is available elsewhere, dropping it in (same
-gitignored path) gives higher-fidelity input than the PDF extraction.
+The earlier constraint (only a `pdftotext`-extracted manuscript was available) is
+**resolved**: the high-fidelity `manuscript.md` markdown source was located and
+used as the condensation input, so the working `seinforms_manuscript.md` carries
+no extraction artifacts. It stays gitignored as a pre-publication working draft;
+the canonical tracked artifact is the exported PDF.
