@@ -326,7 +326,7 @@ def _join_with_numbered_references(
     suffix: str,
 ) -> str:
     references_text = "\n\n".join(formatted_references)
-    updated_text = f"{body}\n\n---\n\n## 12. References\n\n{references_text}"
+    updated_text = f"{body}\n\n---\n\n## References\n\n{references_text}"
     if suffix:
         updated_text = f"{updated_text}\n\n---\n\n{suffix.rstrip()}"
     return f"{updated_text}\n"
