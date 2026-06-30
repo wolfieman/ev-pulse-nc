@@ -573,6 +573,17 @@ def main() -> None:
     md_text = SRC.read_text(encoding="utf-8")
     print(f"Read source: {SRC} ({len(md_text):,} chars)")
 
+    try:
+        import sys
+
+        sys.path.append(str(REPO_ROOT))
+        from tools.citation_processor import process_citations
+
+        md_text, _ = process_citations(md_text)
+        print("Applied citation processor: converted APA to numeric brackets.")
+    except (ImportError, Exception) as e:
+        print(f"Note: Citation processor not applied ({e}). Using raw source text.")
+
     blocks = parse_markdown(md_text)
     print(f"Parsed blocks: {len(blocks)}")
 
