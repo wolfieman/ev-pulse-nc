@@ -19,20 +19,20 @@ checklist), Claude (manuscript import, corrections, environment constraints).
 
 | Item | State | Owner / notes |
 |---|---|---|
-| CFP full-paper requirements captured | ✅ done | Codex → `cfp-requirements.md` |
-| Conference README links the spec | ✅ done | Codex |
-| High-fidelity manuscript source imported | ✅ done | clean `manuscript.md` markdown copied to `seinforms_manuscript.md` (gitignored) |
-| Portal abstract (250–400w) | ✅ done | `abstract.md` — 297w, ready to paste |
-| In-paper abstract (100–200w) | ✅ done | `abstract.md` — 159w |
-| Double-blind scrub (source text) | ✅ done | de-identified (Claude, `seinforms-002`) |
-| `build_seinforms_docx.py` compiler | ✅ done | Claude (`seinforms-003`); committed `b429c80` |
-| Numeric `[n]` citations + numbered `REFERENCES` | ✅ done | Codex (`seinforms-004`); processor runs in build |
-| Content condensation | ✅ done | 23,618 → ~13,500 words (Claude, `seinforms-005`); renders ~31 pp |
-| Bibliography cleanup (cited-only, 20 refs) | ✅ done | `Additional Sources Consulted` + uncited entries removed |
-| Appendix-before-References reorder + CFP QA | ✅ done | Codex (`seinforms-008`) |
-| Humanization (em-dash removal + sentence-split) | ✅ done | Claude (`seinforms-009`); docs-prose + mgmt-615 protocol |
-| Final blind PDF (metadata-stripped, TNR) | ✅ done | Codex → conferences/seinforms-2026/output/ev-pulse-nc-seinforms-2026.pdf (31 pp) |
-| **Exordo portal upload** | ⬜ **todo — owner** | §7; manual submission by **2026-07-31** |
+| CFP full-paper requirements captured | [X] done | Codex → `cfp-requirements.md` |
+| Conference README links the spec | [X] done | Codex |
+| High-fidelity manuscript source imported | [X] done | clean `manuscript.md` markdown copied to `seinforms_manuscript.md` (gitignored) |
+| Portal abstract (250–400w) | [X] done | `abstract.md` — 297w, ready to paste |
+| In-paper abstract (100–200w) | [X] done | `abstract.md` — 159w |
+| Double-blind scrub (source text) | [X] done | de-identified (Claude, `seinforms-002`) |
+| `build_seinforms_docx.py` compiler | [X] done | Claude (`seinforms-003`); committed `b429c80` |
+| Numeric `[n]` citations + numbered `REFERENCES` | [X] done | Codex (`seinforms-004`); processor runs in build |
+| Content condensation | [X] done | 23,618 → ~13,500 words (Claude, `seinforms-005`); renders ~31 pp |
+| Bibliography cleanup (cited-only, 20 refs) | [X] done | `Additional Sources Consulted` + uncited entries removed |
+| Appendix-before-References reorder + CFP QA | [X] done | Codex (`seinforms-008`) |
+| Humanization (em-dash removal + sentence-split) | [X] done | Claude (`seinforms-009`); docs-prose + mgmt-615 protocol |
+| Final blind PDF (metadata-stripped, TNR) | [X] done | Codex → conferences/seinforms-2026/output/ev-pulse-nc-seinforms-2026.pdf (31 pp) |
+| **Exordo portal upload** | [ ] todo — owner | §7; manual submission by **2026-07-31** |
 
 ---
 
