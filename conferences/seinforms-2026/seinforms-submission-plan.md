@@ -86,8 +86,8 @@ Remove from the review PDF **and** the file name:
 - [x] Acknowledgements section → §13 retitled "Data Sources and Disclosures"; personal thanks removed, public-data credits + Funding/COI/AI disclosures kept (de-identified).
 - [x] Appendix B (AI Methodology Disclosure) → dropped entirely.
 - [x] Any links/paths to the author's other (private) repositories → all `github.com/wolfieman/*` URLs, the `orchestrator` repo reference, `docs/research/*` paths, the `nc-ev-atlas` name, and `Sanyer, W.` citation forms removed/neutralized.
-- [ ] PDF document metadata (author/title fields) — clear before upload (export-time, `seinforms-005`).
-- [ ] File name carries no author name → use `ev-pulse-nc-seinforms-2026.pdf` (export-time, `seinforms-005`).
+- [x] PDF document metadata (author/title fields) — clear before upload (export-time, `seinforms-005`).
+- [x] File name carries no author name → use `ev-pulse-nc-seinforms-2026.pdf` (export-time, `seinforms-005`).
 
 Keep neutral, non-identifying phrasing for any unavoidable self-citations.
 (Portal does not state a self-citation or funding policy.)
