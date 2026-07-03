@@ -31,7 +31,7 @@ checklist), Claude (manuscript import, corrections, environment constraints).
 | Bibliography cleanup (cited-only, 20 refs) | ✅ done | `Additional Sources Consulted` + uncited entries removed |
 | Appendix-before-References reorder + CFP QA | ✅ done | Codex (`seinforms-008`) |
 | Humanization (em-dash removal + sentence-split) | ✅ done | Claude (`seinforms-009`); docs-prose + mgmt-615 protocol |
-| Final blind PDF (metadata-stripped, TNR) | ✅ done | Codex → `inter-agency/seinforms/output/ev-pulse-nc-seinforms-2026.pdf` (31 pp) |
+| Final blind PDF (metadata-stripped, TNR) | ✅ done | Codex → conferences/seinforms-2026/output/ev-pulse-nc-seinforms-2026.pdf (31 pp) |
 | **Exordo portal upload** | ⬜ **todo — owner** | §7; manual submission by **2026-07-31** |
 
 ---
