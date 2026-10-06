@@ -138,12 +138,9 @@ question is whether there's a defensible way to make it.
 
 **Speaker notes** (~50 s)
 
-Demand isn't the question. The fleet went from about 5,000 battery-electric
-vehicles in 2018 to over 94,000 by mid-2025, a 53.8% annual growth rate. It's
+Demand isn't the question. The fleet went from 5,165 battery-electric vehicles in 2018 to 94,371 by mid-2025, a 53.8% annual growth rate. It's
 also very concentrated: a county-level Gini of 0.805, and Wake County alone has
-more EVs than the bottom 60 counties put together. Supply hasn't kept up. North
-Carolina has about 17 EVs per public port, against a global benchmark of about
-10. The top 10 counties hold 73% of the fleet, which is why the scoring focuses
+more EVs than the bottom 60 counties put together. Supply hasn't kept up. North Carolina has 16.9 EVs per public port, against a global benchmark of about 10. The top 10 counties hold 73% of the fleet, which is why the scoring focuses
 on them.
 
 ---
@@ -205,8 +202,7 @@ First question: can we trust the demand forecasts? The SAS models were tested
 on four months they never saw, all 100 counties, 400 observations. The error
 was 4.34%, under the 5% usability bar. But look at the scatter: most points sit
 above the line. In 69% of cases actual registrations beat the forecast. That
-isn't a broken model. A Chow test puts a strong structural break at the
-Inflation Reduction Act in August 2022, F of about 1,268. The models learned a
+isn't a broken model. A Chow test puts a strong structural break at the Inflation Reduction Act in August 2022, F of 1,268.35. The models learned a
 slower world. The intervals are the right width but centered too low, so the
 fix is an upward buffer of 4 to 5% in planning, which the score carries.
 
@@ -232,9 +228,7 @@ right (~45% of width), bullets left.
 
 On the supply side, more than half of North Carolina's ZIP areas have no
 charger at all, covering 2.2 million people. That's not only a rural story.
-This map is Mecklenburg. Uptown Charlotte, the dark cluster, has almost 79
-ports per 10,000 residents. Fourteen miles east, ZIP 28215 has 64,000 people
-and two ports. That's a 250-fold difference inside one county. Hold on to this
+This map is Mecklenburg. Uptown Charlotte, the dark cluster, has 78.64 ports per 10,000 residents. Fourteen miles east, ZIP 28215 has 64,713 people and two ports. That's a 250-fold difference inside one county. Hold on to this
 picture, because the next slide shows it isn't an outlier.
 
 ---
@@ -291,11 +285,11 @@ which is not a paper figure).
 **Speaker notes** (~70 s)
 
 Registration data tells you where EVs sleep, not where they park during the
-day. Census commuter flows fill that in. Starting from 4.2 million workers, I
+day. Census commuter flows fill that in. Starting from 4,198,163 workers, I
 filtered by income, corrected to EV-affordable households, and applied a
-remote-work adjustment, leaving about 859,000 commuters. Mecklenburg takes in
-194,000 more workers a day than it sends out. Union, which ends up ranked first,
-goes the other way: it sends 36,000 a day into Charlotte. This feeds the
+remote-work adjustment, leaving 859,260 commuters. Mecklenburg takes in 194,361 more workers a day than it sends out. Union, which ends up ranked first,
+is a bedroom community of Charlotte, with a net outflow of 36,113
+commuters a day; its residents drive to Mecklenburg for work. This feeds the
 cost-effectiveness pillar.
 
 *(Cut candidate for a 15-minute slot: move to backup.)*
@@ -322,8 +316,7 @@ full width; bullets as a compact strip below.
 
 **Speaker notes** (~75 s)
 
-Phase 5 overlays the federal disadvantaged-community map. Statewide, 43% of
-tracts are designated disadvantaged. In the top 10 EV counties it's 18.5% of
+Phase 5 overlays the federal disadvantaged-community map. Statewide, 43.0% of tracts are designated disadvantaged. In the top 10 EV counties it's 18.5% of
 the population. About a quarter of stations, 24.5%, sit in those tracts. So in
 aggregate the siting is roughly proportional. The story is in the variation:
 some counties site stations in line with their disadvantaged population, others
@@ -380,7 +373,7 @@ highest variance inflation factor is 1.41.
 **Figure:** `fig-43-nevi-priority-scores.png` (aspect 1.45). Figure left
 (~60%), bullets right.
 
-**Sources:** §6.6, §4.7.1, Table 2, Table 1 #11 (L335–L354, L178); capstone s13; showcase s9. Fixes C7.
+**Sources:** §6.6, §4.7.1, §9.2 (0.75 / 0.85 / 0.95, L428), Table 2, Table 1 #11 (L335–L354, L178); capstone s13; showcase s9. Fixes C7.
 
 **Speaker notes** (~75 s)
 
@@ -399,7 +392,7 @@ equity burden is low.
 
 **On-slide text**
 
-- Headline: **Same Ranking Tier, Different Investment Needs**
+- Headline: **Three County Archetypes**
 - **Union: utilization-driven.** 101.5 BEVs per port, 3× the next county →
   *more stations*
 - **Mecklenburg & Guilford: equity-driven.** Equity 0.810 and 0.855 →
@@ -410,13 +403,12 @@ equity burden is low.
 **Figure:** `fig-45-equity-utilization-archetypes.png` (near-square, aspect
 1.14). Figure right (~50%), bullets left.
 
-**Sources:** §7.3, §6.6 (L386–L394, L348); capstone s14. Fixes C6.
+**Sources:** §7.3, §6.6 (L386–L394, L348); capstone s14 (headline; Orange "no priority deployment" wording). Fixes C6.
 
 **Speaker notes** (~75 s)
 
 The ranking says where, but not why. Plotting equity against utilization gives
-three archetypes. Union is utilization-driven: over 100 EVs per port, three
-times the next county. It needs more stations. Mecklenburg and Guilford are
+three archetypes. Union is utilization-driven: 101.5 EVs per port, more than three times the next county. It needs more stations. Mecklenburg and Guilford are
 equity-driven. They don't just need more stations, they need them in the right
 ZIP codes. Orange scores low on everything and doesn't need priority
 deployment now. Then look at the top-right corner: it's empty. No county is

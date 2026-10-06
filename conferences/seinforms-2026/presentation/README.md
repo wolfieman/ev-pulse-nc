@@ -11,20 +11,32 @@ Locked slide-by-slide content lives in [`deck-outline.md`](deck-outline.md).
 
 ## Sources
 
+The deck is built from three bases: the shortened SEINFORMS manuscript, the
+MBA Showcase competition deck, and the BIDA-670 capstone deck. The full
+100+ page capstone paper (`../../../paper/manuscript.md`; PDF
+`../../../paper/ev-pulse-nc-sanyer-paper.pdf`) is the parent of all three and
+settles any disagreement between them.
+
 | Source | Role |
 |---|---|
 | SEINFORMS paper (`../output/ev-pulse-nc-seinforms-2026.pdf`, 31 pp; source `../seinforms_manuscript.md`) | Source of truth for every number, claim, and figure |
 | MBA Showcase deck (`../../../competitions/mba-showcase-2026/`, 14 slides, 2nd place) | Storyline: tight and audience-friendly |
-| Capstone defense deck (`../../../paper/ev-pulse-nc-sanyer-presentation.pdf`, 25 slides, presented Spring 2026) | Methods depth: Chow break, Theil deep dive, scoring formula, sensitivity, archetypes with the empty quadrant, Justice40 framing, direction-of-bias limitations |
+| BIDA-670 capstone deck (`../../../paper/ev-pulse-nc-sanyer-presentation.pdf`, 25 slides, presented Spring 2026) | Methods depth: Chow break, Theil deep dive, scoring formula, sensitivity, archetypes with the empty quadrant, Justice40 framing, direction-of-bias limitations |
 
 Approach: keep the showcase storyline, take the methods slides from the capstone
 deck, and check every number against the SEINFORMS paper.
 
 ## Decisions (locked)
 
+**Numbers rule (owner, 2026-10-06).** Every number on a slide is quoted from
+the SEINFORMS manuscript as written. Nothing is recalculated, and nothing is
+invented. Where the paper states a figure two ways, the deck uses the abstract's
+version (e.g., 73% of BEVs in the top 10 counties) and sticks to it.
+
 **a. Deck-vs-paper differences.** All three sources come from the same capstone
 manuscript; the differences are slips in the showcase slides, fixed in the new
-deck. A few small slips inside the SEINFORMS manuscript are fixed at step 9.
+deck. Slips inside the SEINFORMS manuscript are reported to the owner in step 3
+and changed only with the owner's approval.
 Full list: the corrections log at the top of [`deck-outline.md`](deck-outline.md).
 
 - Gini: 0.805 is county-level BEV *ownership* concentration; 0.566 is ZIP-level
@@ -87,17 +99,26 @@ In the first timed run, any slide over 90 seconds gets trimmed in the outline.
 
 ## Steps
 
+Corrections come first: the bases are cleaned before the deck is built on them.
+
 | # | Step | Owner | Status |
 |---|---|---|---|
 | 1 | Lock decisions (sources, a/b/c, ~15-min target) | Owner | ✅ done |
-| 2 | Locked outline: per-slide text, numbers tied to paper sections, figure, source slide, draft speaker notes | Claude | ✅ drafted — [`deck-outline.md`](deck-outline.md) |
-| 3 | Figure check at projector scale; re-render any that fail from the repo's figure scripts (same data and palette) | Claude | ⬜ |
-| 4 | NEVI current-status check (~15 min), written up as a Q&A note | Claude | ⬜ |
-| 5 | Gamma: generate from the outline with the 7 paper PNGs; no generated charts, no rewritten numbers; export `.pptx` to Drive | Owner | ⬜ |
-| 6 | Polish in PowerPoint (Win 11 / Microsoft 365); finalize speaker notes per the humanization protocol | Owner + Claude | ⬜ |
-| 7 | Verification: a fresh agent compares the exported PDF against the paper, number by number | Claude | ⬜ |
-| 8 | Rehearsal: timed run-throughs; Q&A bank (~15 questions); mock Q&A with a skeptical-reviewer persona | Owner + Claude | ⬜ |
-| 9 | Freeze: PDF committed here, `.pptx` in Drive, backups (USB + PDF); manuscript fixes from the corrections log; stale status notes in the repo | Owner + Claude | ⬜ |
+| 2 | Draft outline: per-slide text, numbers tied to paper sections, figure, source slide, draft speaker notes | Claude | ✅ done — [`deck-outline.md`](deck-outline.md) |
+| 3 | **Corrections pass** | | |
+| 3b | Independent read-only audit (fresh agent): manuscript internal consistency; outline, showcase deck, and BIDA-670 deck checked number by number against the manuscript; condensation drift and tiebreaks against the full paper | Claude | ✅ done |
+| 3c | Report findings to the owner; **no change to the manuscript, decks, or outline without owner approval** | Claude → Owner | ✅ done — owner ruling: inconsistencies are minor; the deck uses the SEINFORMS manuscript as written, no recalculation, spring-26 materials unchanged |
+| 3d | Apply only the approved fixes | Claude | ✅ done — three outline slips fixed (slide 12 headline and source, slide 8 notes, slide 11 source note); manuscript untouched |
+| 4 | *(moved to step 9b: the current-status check now runs on the whole final deck)* | | — |
+| 5 | Build the `.pptx` from the corrected outline (pptxgenjs; showcase / BIDA-670 look, light, paper figures as-is, speaker notes); save to Drive | Claude | ✅ v1 in Drive: `01 Projects/seinforms-2026/ev-pulse-nc-seinforms-2026-deck-v1.pptx` (+ preview PDF) |
+| 6 | Review in PowerPoint (Win 11 / Microsoft 365) | Owner | ⬜ |
+| 7 | Import into Gamma, compare with the built deck, choose per slide | Owner + Claude | ⬜ |
+| 8 | Retouch the chosen version in PowerPoint | Owner | ⬜ |
+| 9 | Final number check: a fresh agent compares the exported PDF against the paper | Claude | ⬜ |
+| 9b | **Current-status check on the whole final deck:** flag any slide claim that may be out of date as of the talk (e.g., NEVI program status and rules, Justice40/CEJST successor, NCDOT deployment plans). Findings go to the owner as Q&A notes or proposed wording; no slide changes without owner approval | Claude → Owner | ⬜ |
+| 10 | Rehearsal: timed run-throughs; Q&A bank (~15 questions); mock Q&A with a skeptical-reviewer persona | Owner + Claude | ⬜ |
+| 11 | Figure re-render, only if steps 6–10 show it is needed (styling only: fonts, sizes, titles; same data and design) | Claude | ⬜ |
+| 12 | Freeze: PDF committed here, `.pptx` in Drive, backups (USB + PDF) | Owner + Claude | ⬜ |
 
 Q&A bank topics (step 8): Chow break and underprediction, the "first" claim, why
 these weights, why min-max normalization, the Justice40 rescission, the CEJST
