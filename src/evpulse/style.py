@@ -25,6 +25,7 @@ Licensed under the Polyform Noncommercial License 1.0.0 (see LICENSE).
 
 from __future__ import annotations
 
+import math
 from pathlib import Path
 from typing import Literal
 
@@ -324,7 +325,7 @@ def setup_publication_style(
     }
     scale = scale_factors.get(context, 1.0)
 
-    if scale != 1.0:
+    if not math.isclose(scale, 1.0):
         # Scale font sizes
         for key in rcparams:
             if "size" in key and isinstance(rcparams[key], (int, float)):

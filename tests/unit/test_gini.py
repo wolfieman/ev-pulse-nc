@@ -20,7 +20,7 @@ pytestmark = pytest.mark.unit
 
 
 def test_gini_uniform_is_zero():
-    assert gini.gini_unweighted(np.array([5.0, 5.0, 5.0, 5.0])) == 0.0
+    assert gini.gini_unweighted(np.array([5.0, 5.0, 5.0, 5.0])) == pytest.approx(0.0)
 
 
 def test_gini_two_point_is_one_half():

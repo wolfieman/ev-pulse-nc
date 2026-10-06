@@ -27,7 +27,7 @@ def test_minmax_maps_to_unit_interval():
 
 def test_minmax_zero_variance_returns_zero():
     out = scoring.minmax(pd.Series([7.0, 7.0, 7.0]))
-    assert (out == 0.0).all()
+    assert out.tolist() == pytest.approx([0.0, 0.0, 0.0])
 
 
 def test_composite_weights_sum_to_one():
@@ -40,6 +40,6 @@ def test_composite_weights_sum_to_one():
 
 
 def test_composite_weight_values():
-    assert scoring.WEIGHT_EQUITY == 0.40
-    assert scoring.WEIGHT_UTILIZATION == 0.35
-    assert scoring.WEIGHT_COST_EFFECTIVENESS == 0.25
+    assert pytest.approx(0.40) == scoring.WEIGHT_EQUITY
+    assert pytest.approx(0.35) == scoring.WEIGHT_UTILIZATION
+    assert pytest.approx(0.25) == scoring.WEIGHT_COST_EFFECTIVENESS
