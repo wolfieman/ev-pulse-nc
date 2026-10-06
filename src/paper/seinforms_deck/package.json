@@ -1,0 +1,16 @@
+{
+  "name": "seinforms-deck",
+  "version": "1.0.0",
+  "description": "Builds the SEINFORMS 2026 EV Pulse NC deck from the locked outline",
+  "main": "build.js",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "author": "Wolfgang Sanyer",
+  "license": "SEE LICENSE IN ../../../LICENSE",
+  "type": "commonjs",
+  "dependencies": {
+    "pptxgenjs": "^4.0.1"
+  },
+  "private": true
+}

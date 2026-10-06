@@ -236,3 +236,6 @@ competitions/mba-showcase-2026/figures/
 
 # Cross-repo agent handoff scratch (private repo names / absolute paths; not for this public repo)
 CLAUDE_HANDOFF.md
+
+# Node dependencies for the SEINFORMS deck builder (src/paper/seinforms_deck)
+node_modules/
