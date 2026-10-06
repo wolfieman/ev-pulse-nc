@@ -94,9 +94,11 @@ def fig09_stations_by_level(df: pd.DataFrame, out_dir: Path) -> Path:
     port_totals = (
         df.groupby("charging_level")
         .apply(
-            lambda g: g["ev_level1_evse_num"].sum()
-            + g["ev_level2_evse_num"].sum()
-            + g["ev_dc_fast_num"].sum()
+            lambda g: (
+                g["ev_level1_evse_num"].sum()
+                + g["ev_level2_evse_num"].sum()
+                + g["ev_dc_fast_num"].sum()
+            )
         )
         .reindex(order, fill_value=0)
     )
