@@ -11,6 +11,10 @@
 // Licensed under the Polyform Noncommercial License 1.0.0 (see LICENSE).
 const pptxgen = require("pptxgenjs");
 const path = require("path");
+const QRCode = require("qrcode");
+
+const REPO_URL = "https://github.com/wolfieman/ev-pulse-nc";
+let QR_REPO; // data URI, generated in main()
 
 const FIG = path.resolve(__dirname, "../../../output/figures") + path.sep;
 const OUT = process.argv[2] || "seinforms-2026-ev-pulse-nc.pptx";
@@ -19,6 +23,9 @@ const OUT = process.argv[2] || "seinforms-2026-ev-pulse-nc.pptx";
 const NAVY = "0F2A4A", BLUE = "1F6FC5", CARD = "E3EFFB", CARD2 = "CFE3F8", MUTED = "5B6B7F",
       GREEN_BG = "E4F4E3", GREEN = "2E7D32", WHITE = "FFFFFF";
 const FONT = "Calibri";
+
+async function main() {
+QR_REPO = "image/png;base64," + (await QRCode.toBuffer(REPO_URL, { width: 600, margin: 1, color: { dark: "#0F2A4A", light: "#FFFFFF" } })).toString("base64");
 
 const pres = new pptxgen();
 pres.layout = "LAYOUT_WIDE"; // 13.333 x 7.5
@@ -365,12 +372,16 @@ function figRight(s, items, size = 16) { bullets(s, items, 8.25, 1.95, W - 8.25 
     [b("NCDOT / FHWA: "), t("an auditable county ranking (VIF 1.41, MAPE 4.34%, robust top 3)")],
     [b("County planners: "), t("ZIP-level gap analysis for site selection")],
     [b("Next: "), t("all 100 counties · validate against NCDOT's actual NEVI deployments · confidence intervals on composite scores")],
-  ], M, 2.0, 7.4, 2.9, 17);
-  card(s, M, 5.0, 7.4, 1.75, CARD);
+  ], M, 2.0, 7.4, 2.6, 17);
+  card(s, M, 4.7, 7.4, 2.15, CARD);
   s.addText([
     { text: "Thank you", options: { fontSize: 28, bold: true, color: NAVY, breakLine: true } },
-    { text: "[contact (D4)]  ·  [repo link / QR (D3)]", options: { fontSize: 15, color: MUTED } },
-  ], { x: M + 0.3, y: 5.0, w: 6.8, h: 1.75, fontFace: FONT, valign: "middle", margin: 0, isTextBox: true });
+    { text: "wolfgang.sanyer@gmail.com", options: { fontSize: 15, color: NAVY, breakLine: true } },
+    { text: "linkedin.com/in/wolfgangsanyer", options: { fontSize: 15, color: NAVY, breakLine: true } },
+    { text: "github.com/wolfieman/ev-pulse-nc", options: { fontSize: 15, color: NAVY, breakLine: true } },
+    { text: "sanyer.org/research-lab", options: { fontSize: 15, color: NAVY } },
+  ], { x: M + 0.3, y: 4.7, w: 5.2, h: 2.15, fontFace: FONT, valign: "middle", margin: 0, isTextBox: true });
+  s.addImage({ data: QR_REPO, x: M + 7.4 - 1.95, y: 4.7 + 0.3, w: 1.55, h: 1.55, altText: "QR code: github.com/wolfieman/ev-pulse-nc" });
   s.addNotes("This isn't meant to replace NCDOT's judgment. Right-of-way, utilities, and politics all matter and aren't in the model. What it gives is an analytical floor: a ranking an auditor can trace, and ZIP-level targets a planner can use. Next steps are extending it to all 100 counties, checking it against NCDOT's actual deployments, and putting confidence intervals on the scores. Thank you, I'm happy to take questions.");
 }
 
@@ -441,4 +452,8 @@ const backup = () => pres.addSlide({ masterName: "CONTENT", sectionTitle: "Backu
   ], M, 4.75, W - 2 * M, 2.0, 16);
 }
 
-pres.writeFile({ fileName: OUT }).then((f) => console.log("wrote", f));
+const f = await pres.writeFile({ fileName: OUT });
+console.log("wrote", f);
+}
+
+main().catch((e) => { console.error(e); process.exit(1); });

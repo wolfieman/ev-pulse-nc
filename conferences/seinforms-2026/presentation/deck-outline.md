@@ -17,9 +17,9 @@ Structure per slide: **On-slide text** (what goes on the slide), **Figure**
 | # | Decision | Default until decided |
 |---|---|---|
 | D1 | Final title | Exordo program title (below) |
-| D2 | Title-slide author line | ✅ Decided: Wolfgang Sanyer, plus a smaller line "Faculty Advisor: Dr. Majed Al-Ghandour" (advisor, not co-author) |
-| D3 | Repo link / QR code on the closing slide (the talk is not blind) | Placeholder; capstone s25 used `github.com/wolfieman/ev-pulse-nc` |
-| D4 | Contact line on the closing slide | Placeholder |
+| D2 | Title-slide author line | ✅ Decided: Wolfgang Sanyer, plus a smaller line "Faculty Advisor: Dr. Majed Al-Ghandour" (advisor, not co-author). Prof. Burcu Adivar (3rd author in the Exordo programme) is not on the slide, by owner decision |
+| D3 | Repo link / QR code on the closing slide | ✅ Decided: `github.com/wolfieman/ev-pulse-nc` + QR code to it, and `sanyer.org/research-lab` |
+| D4 | Contact line on the closing slide | ✅ Decided: `wolfgang.sanyer@gmail.com` and `linkedin.com/in/wolfgangsanyer` |
 
 ---
 
@@ -496,7 +496,8 @@ which makes the scores conservative. None of them overturns the top three.
 - County planners: ZIP-level gap analysis for site selection
 - Next: all 100 counties · validate against NCDOT's actual NEVI deployments ·
   confidence intervals on composite scores
-- Thank you · [contact (D4)] · [repo link / QR (D3)]
+- Thank you · wolfgang.sanyer@gmail.com · linkedin.com/in/wolfgangsanyer ·
+  github.com/wolfieman/ev-pulse-nc (with QR code) · sanyer.org/research-lab
 
 **Figure:** none.
 

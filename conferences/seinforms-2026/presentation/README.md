@@ -1,6 +1,6 @@
 # SEINFORMS 2026 — Presentation Plan
 
-**Talk:** in person, SEINFORMS 2026, Myrtle Beach, SC (Oct 15–16, 2026).
+**Talk:** in person, SEINFORMS 2026, Myrtle Beach, SC. **Thursday Oct 15, 9:55–10:17am (22-min slot), Arcadian 1-2**, 2nd of 3 in "AI, BA, Statistics, & Tech Mgmt - Session 2" (chair: Prof. Jae-Dong Hong).
 **Target:** ~15.5 minutes of talk plus Q&A (15 core slides, 4 backup slides).
 **Deadline:** deck and rehearsal complete by Thu Oct 8, Fri Oct 9 at the latest.
 **Working rule:** steps run in order, as fast as they go, not tied to calendar days.
@@ -111,7 +111,7 @@ Corrections come first: the bases are cleaned before the deck is built on them.
 | 3c | Report findings to the owner; **no change to the manuscript, decks, or outline without owner approval** | Claude → Owner | ✅ done — owner ruling: inconsistencies are minor; the deck uses the SEINFORMS manuscript as written, no recalculation, spring-26 materials unchanged |
 | 3d | Apply only the approved fixes | Claude | ✅ done — three outline slips fixed (slide 12 headline and source, slide 8 notes, slide 11 source note); manuscript untouched |
 | 4 | *(moved to step 9b: the current-status check now runs on the whole final deck)* | | — |
-| 5 | Build the `.pptx` from the corrected outline (pptxgenjs, `src/paper/seinforms_deck/`; showcase / BIDA-670 look, light, paper figures as-is, speaker notes); save to Drive | Claude | ✅ v3 in Drive: `01 Projects/seinforms-2026/ev-pulse-nc-seinforms-2026-deck-v3.pptx` (+ preview PDF); v2 added the research-questions slide, v3 the faculty-advisor line |
+| 5 | Build the `.pptx` from the corrected outline (pptxgenjs, `src/paper/seinforms_deck/`; showcase / BIDA-670 look, light, paper figures as-is, speaker notes); save to Drive | Claude | ✅ v4 in Drive: `01 Projects/seinforms-2026/ev-pulse-nc-seinforms-2026-deck-v4.pptx` (+ preview PDF); v2 added the research-questions slide, v3 the faculty-advisor line, v4 the closing-slide contacts and repo QR code |
 | 6 | Review in PowerPoint (Win 11 / Microsoft 365) | Owner | ⬜ |
 | 7 | Import into Gamma, compare with the built deck, choose per slide | Owner + Claude | ⬜ |
 | 8 | Retouch the chosen version in PowerPoint | Owner | ⬜ |
