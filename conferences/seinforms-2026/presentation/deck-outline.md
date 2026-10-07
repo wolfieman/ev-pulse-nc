@@ -17,7 +17,7 @@ Structure per slide: **On-slide text** (what goes on the slide), **Figure**
 | # | Decision | Default until decided |
 |---|---|---|
 | D1 | Final title | Exordo program title (below) |
-| D2 | Title-slide author line (the Exordo listing may show Dr. Al-Ghandour; he is not a co-author) | Wolfgang Sanyer only |
+| D2 | Title-slide author line | ✅ Decided: Wolfgang Sanyer, plus a smaller line "Faculty Advisor: Dr. Majed Al-Ghandour" (advisor, not co-author) |
 | D3 | Repo link / QR code on the closing slide (the talk is not blind) | Placeholder; capstone s25 used `github.com/wolfieman/ev-pulse-nc` |
 | D4 | Contact line on the closing slide | Placeholder |
 
@@ -76,7 +76,8 @@ Structure per slide: **On-slide text** (what goes on the slide), **Figure**
 - Title (D1): *EV Pulse NC: A Data-Driven Framework for Equitable and
   Demand-Driven EV Charging Infrastructure Investment Prioritization in North
   Carolina*
-- Wolfgang Sanyer · MBA, Business Analytics · Fayetteville State University (D2)
+- Wolfgang Sanyer · MBA, Business Analytics · Fayetteville State University
+- Faculty Advisor: Dr. Majed Al-Ghandour (D2)
 - SEINFORMS 2026 · Myrtle Beach, SC · October 2026
 
 **Figure:** none.

@@ -101,8 +101,9 @@ pres.addSection({ title: "Talk" });
   });
   s.addText([
     { text: "Wolfgang Sanyer", options: { bold: true, breakLine: true } },
-    { text: "MBA, Business Analytics · Fayetteville State University" },
-  ], { x: M, y: 5.0, w: 7.4, h: 0.9, fontFace: FONT, fontSize: 18, color: NAVY, valign: "top", margin: 0, isTextBox: true });
+    { text: "MBA, Business Analytics · Fayetteville State University", options: { breakLine: true } },
+    { text: "Faculty Advisor: Dr. Majed Al-Ghandour", options: { fontSize: 16, color: MUTED } },
+  ], { x: M, y: 4.9, w: 7.4, h: 1.3, fontFace: FONT, fontSize: 18, color: NAVY, valign: "top", margin: 0, isTextBox: true });
   s.addNotes("Good morning. I'm Wolfgang Sanyer, an MBA student in business analytics at Fayetteville State. This talk is about how North Carolina could decide where $109 million in federal EV charging money should go, and what the data says about where the real gaps are.");
 }
 

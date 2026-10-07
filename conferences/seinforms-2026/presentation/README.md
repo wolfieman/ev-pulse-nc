@@ -111,7 +111,7 @@ Corrections come first: the bases are cleaned before the deck is built on them.
 | 3c | Report findings to the owner; **no change to the manuscript, decks, or outline without owner approval** | Claude → Owner | ✅ done — owner ruling: inconsistencies are minor; the deck uses the SEINFORMS manuscript as written, no recalculation, spring-26 materials unchanged |
 | 3d | Apply only the approved fixes | Claude | ✅ done — three outline slips fixed (slide 12 headline and source, slide 8 notes, slide 11 source note); manuscript untouched |
 | 4 | *(moved to step 9b: the current-status check now runs on the whole final deck)* | | — |
-| 5 | Build the `.pptx` from the corrected outline (pptxgenjs, `src/paper/seinforms_deck/`; showcase / BIDA-670 look, light, paper figures as-is, speaker notes); save to Drive | Claude | ✅ v2 in Drive: `01 Projects/seinforms-2026/ev-pulse-nc-seinforms-2026-deck-v2.pptx` (+ preview PDF); v2 adds the research-questions slide |
+| 5 | Build the `.pptx` from the corrected outline (pptxgenjs, `src/paper/seinforms_deck/`; showcase / BIDA-670 look, light, paper figures as-is, speaker notes); save to Drive | Claude | ✅ v3 in Drive: `01 Projects/seinforms-2026/ev-pulse-nc-seinforms-2026-deck-v3.pptx` (+ preview PDF); v2 added the research-questions slide, v3 the faculty-advisor line |
 | 6 | Review in PowerPoint (Win 11 / Microsoft 365) | Owner | ⬜ |
 | 7 | Import into Gamma, compare with the built deck, choose per slide | Owner + Claude | ⬜ |
 | 8 | Retouch the chosen version in PowerPoint | Owner | ⬜ |
