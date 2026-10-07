@@ -1,7 +1,7 @@
 # SEINFORMS 2026 — Presentation Plan
 
 **Talk:** in person, SEINFORMS 2026, Myrtle Beach, SC (Oct 15–16, 2026).
-**Target:** ~15 minutes of talk plus Q&A (14 core slides, 4 backup slides).
+**Target:** ~15.5 minutes of talk plus Q&A (15 core slides, 4 backup slides).
 **Deadline:** deck and rehearsal complete by Thu Oct 8, Fri Oct 9 at the latest.
 **Working rule:** steps run in order, as fast as they go, not tied to calendar days.
 
@@ -62,6 +62,7 @@ design input).
 |---|---|---|---|
 | 1 | Title | — | |
 | 2 | $109M, 100 counties, no framework | Showcase | |
+| 2a | Research questions (deck slide 3; added at owner request) | Capstone s5 + §1.3 | |
 | 3 | Demand signal | Showcase / Capstone | |
 | 4 | Five-phase pipeline + public data | Capstone | |
 | 5 | Forecast validation: MAPE, underprediction, Chow break | Capstone | Fig 44 |
@@ -84,10 +85,10 @@ showcase 14 slides in ~15 min (~64 s/slide).
 | Slide type | Slides | Time each | Subtotal |
 |---|---|---|---|
 | Title, closing | 1, 14 | ~30 s | ~1 min |
-| Quick setup | 2, 3, 4 | ~50 s | ~2.5 min |
+| Quick setup | 2, 2a, 3, 4 | ~50 s | ~3.3 min |
 | Figure slides | 5, 6, 7, 8, 9, 11, 12 | ~70–80 s | ~8.5 min |
 | Framework, contributions/limitations | 10, 13 | ~70 s | ~2.5 min |
-| **Total** | | | **~14.5 min** |
+| **Total** | | | **~15.3 min** |
 
 Slot adjustments:
 
@@ -110,7 +111,7 @@ Corrections come first: the bases are cleaned before the deck is built on them.
 | 3c | Report findings to the owner; **no change to the manuscript, decks, or outline without owner approval** | Claude → Owner | ✅ done — owner ruling: inconsistencies are minor; the deck uses the SEINFORMS manuscript as written, no recalculation, spring-26 materials unchanged |
 | 3d | Apply only the approved fixes | Claude | ✅ done — three outline slips fixed (slide 12 headline and source, slide 8 notes, slide 11 source note); manuscript untouched |
 | 4 | *(moved to step 9b: the current-status check now runs on the whole final deck)* | | — |
-| 5 | Build the `.pptx` from the corrected outline (pptxgenjs; showcase / BIDA-670 look, light, paper figures as-is, speaker notes); save to Drive | Claude | ✅ v1 in Drive: `01 Projects/seinforms-2026/ev-pulse-nc-seinforms-2026-deck-v1.pptx` (+ preview PDF) |
+| 5 | Build the `.pptx` from the corrected outline (pptxgenjs, `src/paper/seinforms_deck/`; showcase / BIDA-670 look, light, paper figures as-is, speaker notes); save to Drive | Claude | ✅ v2 in Drive: `01 Projects/seinforms-2026/ev-pulse-nc-seinforms-2026-deck-v2.pptx` (+ preview PDF); v2 adds the research-questions slide |
 | 6 | Review in PowerPoint (Win 11 / Microsoft 365) | Owner | ⬜ |
 | 7 | Import into Gamma, compare with the built deck, choose per slide | Owner + Claude | ⬜ |
 | 8 | Retouch the chosen version in PowerPoint | Owner | ⬜ |

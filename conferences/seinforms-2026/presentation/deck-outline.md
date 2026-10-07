@@ -121,6 +121,41 @@ question is whether there's a defensible way to make it.
 
 ---
 
+## Slide 2a — Research Questions
+
+Added at owner request (option A). In the deck it is slide 3, and every later
+slide shifts by one; outline slide numbers are kept as they were.
+
+**On-slide text**
+
+- Headline: **Five Questions Drive the Work**
+- 1 · Forecast Accuracy: How accurate are SAS Model Studio's county-level BEV
+  forecasts against unseen data?
+- 2 · Demand-Supply Gaps: Where are the largest demand-supply gaps?
+- 3 · Sub-County Inequality: How do ZIP-level density patterns reveal
+  priorities county aggregation obscures?
+- 4 · Commuter Flows: How do commuting flows reshape demand once workplace
+  needs are layered onto residential data?
+- 5 · Defensible Rankings: Can a weighted scoring equation translate these
+  layers into defensible recommendations?
+
+**Figure:** none (five numbered rows; deliberately not the card layout of slide 4).
+
+**Sources:** §1.3 (L29) for the questions; capstone s5 for the labels. The
+capstone subtitle "each maps directly to one of the five analytical phases" is
+not used: question 5 is answered by the scoring framework, and Phase 5 has no
+question of its own.
+
+**Speaker notes** (~50 s)
+
+Five questions drive the work. Can the county forecasts be trusted on data
+they haven't seen? Where are the biggest gaps between demand and supply? What
+do ZIP codes show that county averages hide? How does commuting change where
+charging is needed? And can one weighted score turn all of that into a ranking
+you can defend? The rest of the talk answers them in order.
+
+---
+
 ## Slide 3 — Demand Signal
 
 **On-slide text**

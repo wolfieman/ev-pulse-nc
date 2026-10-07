@@ -122,6 +122,28 @@ pres.addSection({ title: "Talk" });
   s.addNotes("North Carolina has $109 million in NEVI formula funding for public charging. What it doesn't have is a published, data-driven way to decide which counties get it. The two obvious approaches pull against each other. Follow demand, and you put chargers where they already are. Follow equity alone, and you can build stations nobody uses. NCDOT itself moved in February 2026, from a corridor-only plan to 16 rural and community sites. So this is a live decision, and the question is whether there's a defensible way to make it.");
 }
 
+// ---------- Slide 2a: Research questions (paper §1.3; BIDA-670 deck s5) ----------
+{
+  const s = content();
+  header(s, "Research questions", "Five Questions Drive the Work");
+  const qs = [
+    ["Forecast Accuracy", "How accurate are SAS Model Studio's county-level BEV forecasts against unseen data?"],
+    ["Demand-Supply Gaps", "Where are the largest demand-supply gaps?"],
+    ["Sub-County Inequality", "How do ZIP-level density patterns reveal priorities county aggregation obscures?"],
+    ["Commuter Flows", "How do commuting flows reshape demand once workplace needs are layered onto residential data?"],
+    ["Defensible Rankings", "Can a weighted scoring equation translate these layers into defensible recommendations?"],
+  ];
+  qs.forEach((q, i) => {
+    const y = 1.8 + i * 1.0;
+    s.addShape(pres.shapes.OVAL, { x: M, y: y + 0.1, w: 0.7, h: 0.7, fill: { color: BLUE }, line: { color: BLUE } });
+    s.addText(String(i + 1), { x: M, y: y + 0.1, w: 0.7, h: 0.7, fontFace: FONT, fontSize: 22, bold: true, color: WHITE, align: "center", valign: "middle", margin: 0, isTextBox: true });
+    card(s, M + 0.95, y, W - 2 * M - 0.95, 0.9);
+    s.addText(q[0], { x: M + 1.2, y, w: 3.2, h: 0.9, fontFace: FONT, fontSize: 19, bold: true, color: BLUE, valign: "middle", margin: 0, isTextBox: true });
+    s.addText(q[1], { x: M + 4.5, y, w: W - 2 * M - 4.75, h: 0.9, fontFace: FONT, fontSize: 17, color: NAVY, valign: "middle", margin: 0, isTextBox: true });
+  });
+  s.addNotes("Five questions drive the work. Can the county forecasts be trusted on data they haven't seen? Where are the biggest gaps between demand and supply? What do ZIP codes show that county averages hide? How does commuting change where charging is needed? And can one weighted score turn all of that into a ranking you can defend? The rest of the talk answers them in order.");
+}
+
 // ---------- Slide 3: Demand Signal ----------
 {
   const s = content();
