@@ -9,7 +9,7 @@ Institute for Operations Research and the Management Sciences (SEINFORMS).
 | **Location** | Myrtle Beach, SC |
 | **Track** | AI, Business Analytics, Statistics & Technology Management |
 | **Submission** | Full paper · sole author · in-person presentation |
-| **Status** | Paper finalized; awaiting Exordo upload (deadline 2026-07-31) |
+| **Status** | Accepted; presenting Thu Oct 15, 2026, 9:55–10:17am, Arcadian 1-2 (AI, BA, Statistics, & Tech Mgmt - Session 2) |
 | **Portal** | https://seinforms2026.exordo.com/ |
 
 The submission derives from the project manuscript in [`../../paper/`](../../paper/);
@@ -19,5 +19,6 @@ presentation will be linked here once finalized.
 The full-paper format requirements are captured in
 [`cfp-requirements.md`](cfp-requirements.md); the preparation plan and live
 status are in [`seinforms-submission-plan.md`](seinforms-submission-plan.md). The
-condensed, double-blind paper is built and ready; only the manual Exordo upload
-remains.
+condensed, double-blind paper was submitted through Exordo and accepted. The
+presentation plan, locked deck outline, and presenter bio are in
+[`presentation/`](presentation/).

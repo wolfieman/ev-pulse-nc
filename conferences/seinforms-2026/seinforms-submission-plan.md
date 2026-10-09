@@ -32,7 +32,7 @@ checklist), Claude (manuscript import, corrections, environment constraints).
 | Appendix-before-References reorder + CFP QA | ✅ done | Codex (`seinforms-008`) |
 | Humanization (em-dash removal + sentence-split) | ✅ done | Claude (`seinforms-009`); docs-prose + mgmt-615 protocol |
 | Final blind PDF (metadata-stripped, TNR) | ✅ done | Codex → conferences/seinforms-2026/output/ev-pulse-nc-seinforms-2026.pdf (31 pp) |
-| **Exordo portal upload** | ⬜ todo — owner | §7; manual submission by **2026-07-31** |
+| **Exordo portal upload** | ✅ done | Submitted by the owner; accepted (Exordo, 2026-09-06). Presentation work continues in [`presentation/`](presentation/) |
 
 ---
 
@@ -71,8 +71,8 @@ checklist), Claude (manuscript import, corrections, environment constraints).
 
 Steps 1–3 and 4 are independent and can run in parallel.
 
-**Status (2026-06-30): steps 1–5 complete.** Only step 6 (Exordo submission)
-remains, as the owner's manual portal upload.
+**Status: all steps complete.** Steps 1–5 finished 2026-06-30; the owner
+completed the Exordo submission (step 6), and the paper was accepted.
 
 ---
 

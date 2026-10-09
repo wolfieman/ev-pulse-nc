@@ -112,16 +112,18 @@ Corrections come first: the bases are cleaned before the deck is built on them.
 | 3d | Apply only the approved fixes | Claude | ✅ done — three outline slips fixed (slide 12 headline and source, slide 8 notes, slide 11 source note); manuscript untouched |
 | 4 | *(moved to step 9b: the current-status check now runs on the whole final deck)* | | — |
 | 5 | Build the `.pptx` from the corrected outline (pptxgenjs, `src/paper/seinforms_deck/`; showcase / BIDA-670 look, light, paper figures as-is, speaker notes); save to Drive | Claude | ✅ v4 in Drive: `01 Projects/seinforms-2026/ev-pulse-nc-seinforms-2026-deck-v4.pptx` (+ preview PDF); v2 added the research-questions slide, v3 the faculty-advisor line, v4 the closing-slide contacts and repo QR code |
-| 6 | Review in PowerPoint (Win 11 / Microsoft 365) | Owner | ⬜ |
-| 7 | Import into Gamma, compare with the built deck, choose per slide | Owner + Claude | ⬜ |
-| 8 | Retouch the chosen version in PowerPoint | Owner | ⬜ |
+| 6 | Review in PowerPoint (Win 11 / Microsoft 365) | Owner | ✅ owner is happy with the deck as is |
+| 7 | Import into Gamma, compare with the built deck, choose per slide | Owner + Claude | — skipped (owner is happy with the deck as is) |
+| 8 | Retouch the chosen version in PowerPoint | Owner | — skipped (no Gamma version) |
 | 9 | Final number check: a fresh agent compares the exported PDF against the paper | Claude | ⬜ |
-| 9b | **Current-status check on the whole final deck:** flag any slide claim that may be out of date as of the talk (e.g., NEVI program status and rules, Justice40/CEJST successor, NCDOT deployment plans). Findings go to the owner as Q&A notes or proposed wording; no slide changes without owner approval | Claude → Owner | ⬜ |
+| 9b | Current-status check on the whole final deck | Claude → Owner | — not needed (owner ruling: only if an agent changes slide content) |
 | 10 | Rehearsal: timed run-throughs; Q&A bank (~15 questions); mock Q&A with a skeptical-reviewer persona | Owner + Claude | ⬜ |
-| 11 | Figure re-render, only if steps 6–10 show it is needed (styling only: fonts, sizes, titles; same data and design) | Claude | ⬜ |
+| 11 | Figure re-render | Claude | — not needed (owner: the figures look great) |
 | 12 | Freeze: PDF committed here, `.pptx` in Drive, backups (USB + PDF) | Owner + Claude | ⬜ |
+| 13 | **Speaker notes pass** (delivery-ready, per the owner's humanization protocol) and add Dr. Burcu Adivar as Faculty Adviser on the title slide (v5) | Owner + Claude | ⬜ Fri Oct 9 |
+| 14 | Send the final PPTX to Dr. Al-Ghandour, who uploads it to Ex Ordo (accepts ppt/pptx/key only) | Owner | ⬜ Fri/Sat Oct 9–10 |
 
-Q&A bank topics (step 8): Chow break and underprediction, the "first" claim, why
+Q&A bank topics (step 10): Chow break and underprediction, the "first" claim, why
 these weights, why min-max normalization, the Justice40 rescission, the CEJST
 archive, the LODES 2021 vintage, why the top 10 counties and not all 100.
 
@@ -130,3 +132,20 @@ archive, the LODES 2021 vintage, why the top 10 counties and not all 100.
 - The editable `.pptx` lives in Google Drive (also the Linux ↔ Windows handoff)
   and is never committed.
 - The PDF export is the tracked artifact, committed in this folder at step 9.
+
+## Coordination with Dr. Al-Ghandour (as of 2026-10-08)
+
+His requests, and their status:
+
+| Request | Status |
+|---|---|
+| Presentation as PPTX (Ex Ordo accepts ppt/pptx/key only; upload extended to Fri/Sat) | ⬜ owner sends the final PPTX Fri/Sat; he uploads |
+| Shorten the owner's part so he can present a portion | ⬜ owner prefers not to cut unless necessary; to settle at the meeting |
+| Presenter bio | ✅ approved text in [`presenter-bio.md`](presenter-bio.md), sent to him; he enters it in Ex Ordo (the owner's account cannot) |
+| Add Dr. Burcu Adivar as Faculty Adviser | ⬜ owner agreed; added during the speaker-notes pass (v5) |
+| Register as a student | ⬜ owner registers Fri/Sat ($145) |
+| Travel pre-approval | ✅ under FSU Policy 707 he files it; the owner sent him the full packet (Travel Plan, Forms A–B pre-filled, Form C signed) on 2026-10-08 |
+| Meeting | ⬜ Teams invite for Thu Oct 8 after 9:15 PM (awaiting his reply) |
+
+Travel documents and reservations are kept in Google Drive
+(`01 Projects/seinforms-2026/travel/`), not in git.
