@@ -1,7 +1,7 @@
 # SEINFORMS 2026 — Presentation Plan
 
 **Talk:** in person, SEINFORMS 2026, Myrtle Beach, SC. **Thursday Oct 15, 9:55–10:17am (22-min slot), Arcadian 1-2**, 2nd of 3 in "AI, BA, Statistics, & Tech Mgmt - Session 2" (chair: Prof. Jae-Dong Hong).
-**Target:** ~15.5 minutes of talk plus Q&A (15 core slides, 4 backup slides).
+**Target:** under 15 minutes of talk plus Q&A (15 talk slides, 9 backup slides). Deck v6 notes: 12:52 at 150 wpm, about 14:10–14:50 live.
 **Deadline:** deck and rehearsal complete by Thu Oct 8, Fri Oct 9 at the latest.
 **Working rule:** steps run in order, as fast as they go, not tied to calendar days.
 
@@ -58,45 +58,34 @@ design input).
 
 ## Deck structure
 
-| # | Slide | Main source | Paper figure |
-|---|---|---|---|
-| 1 | Title | — | |
-| 2 | $109M, 100 counties, no framework | Showcase | |
-| 2a | Research questions (deck slide 3; added at owner request) | Capstone s5 + §1.3 | |
-| 3 | Demand signal | Showcase / Capstone | |
-| 4 | Five-phase pipeline + public data | Capstone | |
-| 5 | Forecast validation: MAPE, underprediction, Chow break | Capstone | Fig 44 |
-| 6 | Infrastructure gap: zero-station ZIPs, 250× within Mecklenburg | Showcase | Fig 24 |
-| 7 | 84.5% of inequality is within counties (Theil) | Capstone | Fig 33 |
-| 8 | Workplace demand | New | Fig 36 |
-| 9 | Justice40 overlay (paper framing) | Capstone | Fig 42 |
-| 10 | Scoring framework + normalization + VIF | Capstone + Showcase | |
-| 11 | Rankings + three sensitivity tests | Showcase / Capstone | Fig 43 |
-| 12 | Archetypes + empty quadrant | Capstone | Fig 45 |
-| 13 | Contributions + limitations (direction of bias) | Capstone | |
-| 14 | Implications, future work, thank you | Showcase | |
-| B1–B4 | Backup: Theil math, 23/23 crosswalk validation, sensitivity table, data sources | Capstone | |
+Current deck: v6 (2026-10-10). Slide-by-slide text and notes are in
+[`deck-outline.md`](deck-outline.md) ("Current deck (v6)").
+
+| # | Slide | Visual |
+|---|---|---|
+| 1 | Title | photo |
+| 2 | $109 Million. 100 Counties. No Data-Driven County Ranking. | stat cards |
+| 3 | Five Questions Drive the Work | question list |
+| 4 | The BEV Fleet Grew 1,727% Since 2018. Ports Have Not Kept Pace. | stat cards |
+| 5 | Five Analytical Phases, One Scoring Framework (PHASE n · Qn) | phase cards |
+| 6 | Forecasts Hold Out of Sample, and Adoption Accelerated After 2022 | Fig 44 (talk version) |
+| 7 | A 250-Fold Charging Gap Inside One County | Fig 24 + callouts |
+| 8 | 84.5% of Charging Inequality Is Within Counties | native Theil bar |
+| 9 | Commuters Shift Demand Toward Employment Centers | native commuter bar |
+| 10 | Roughly Proportional Overall, with Strong County-by-County Variation | native tiles + dot plot |
+| 11 | Three Pillars, One Score | formula + pillar cards |
+| 12 | Top 3: Union, Mecklenburg, Guilford | native Table 2 bar |
+| 13 | Three County Archetypes | native equity × utilization chart |
+| 14 | Contributions and Limitations | two cards |
+| 15 | A Ranking to Inform NCDOT's Decisions, and What Comes Next | takeaways ①–③ + contacts + QR |
+| B1–B9 | Theil detail · crosswalk validation · Table 2 · data sources · Fig 36 · Fig 42 · Fig 43 · Tier 2 ZIP targeting · glossary | |
 
 ## Timing
 
-Pace from earlier talks: capstone defense 25 slides in 23.2 min (~56 s/slide);
-showcase 14 slides in ~15 min (~64 s/slide).
-
-| Slide type | Slides | Time each | Subtotal |
-|---|---|---|---|
-| Title, closing | 1, 14 | ~30 s | ~1 min |
-| Quick setup | 2, 2a, 3, 4 | ~50 s | ~3.3 min |
-| Figure slides | 5, 6, 7, 8, 9, 11, 12 | ~70–80 s | ~8.5 min |
-| Framework, contributions/limitations | 10, 13 | ~70 s | ~2.5 min |
-| **Total** | | | **~15.3 min** |
-
-Slot adjustments:
-
-- **20-minute slot (most likely):** 14 slides (~15 min) plus ~5 min Q&A.
-- **15-minute slot:** move slides 4 and 8 to backup; 12 slides at ~12 min.
-- **25+ minutes:** bring backup B1 (Theil math) into the main deck.
-
-In the first timed run, any slide over 90 seconds gets trimmed in the outline.
+Speaker notes total 1,938 words: 12:52 at 150 wpm, about 14:10–14:50 at live
+pace (10–15% slower). No slides cut (owner, 2026-10-10); slides 5, 9 and 10
+carry a "(Cut candidate…)" note if a timed rehearsal runs long. Longest notes:
+slide 6 (210 words), slide 10 (~200).
 
 ## Steps
 
@@ -120,7 +109,9 @@ Corrections come first: the bases are cleaned before the deck is built on them.
 | 10 | Rehearsal: timed run-throughs; Q&A bank (~15 questions); mock Q&A with a skeptical-reviewer persona | Owner + Claude | ⬜ |
 | 11 | Figure re-render | Claude | — not needed (owner: the figures look great) |
 | 12 | Freeze: PDF committed here, `.pptx` in Drive, backups (USB + PDF) | Owner + Claude | ⬜ |
-| 13 | **Speaker notes pass** (delivery-ready, per the owner's humanization protocol) and add Dr. Burcu Adivar as Faculty Adviser on the title slide (v5) | Owner + Claude | ⬜ Fri Oct 9 |
+| 13 | **Speaker notes pass** (delivery-ready, per the owner's humanization protocol) and add Dr. Burcu Adivar as Faculty Adviser on the title slide (v5) | Owner + Claude | ✅ done — v5 slide-by-slide review (all 15 slides), Dr. Adivar added |
+| 13b | Independent whole-deck review (numbers, flow, Tufte/Knaflic, tell-them) and owner-approved fixes in six groups | Claude → Owner | ✅ done — v6 in Drive (`…deck-v6-presenter.pptx`, preview PDF, speaker notes); report in Drive `review-whole-deck-2026-10-10.md` |
+| 13c | Lock slide 15 | Owner | ⬜ |
 | 14 | Send the final PPTX to Dr. Al-Ghandour, who uploads it to Ex Ordo (accepts ppt/pptx/key only) | Owner | ⬜ Fri/Sat Oct 9–10 |
 
 Q&A bank topics (step 10): Chow break and underprediction, the "first" claim, why

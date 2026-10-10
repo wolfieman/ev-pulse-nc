@@ -84,7 +84,8 @@ as 1.
 - **Theil is a design input, not a score input:** the 84.5% finding justifies
   the ZIP-level tier; it does not enter either tier's score (§4.4).
 - **Who drives it:** Mecklenburg 41.5% and Wake 28.1% of within-county
-  inequality, together about 70% (§6.3).
+  inequality, together roughly 70% (§6.3). The talk says only the Mecklenburg
+  figure; the four-county chart is on backup **B1**.
 
 - **Gini vs. Theil (one-liner):** "The Gini tells us how uneven charging
   access is; the Theil decomposition tells us where that unevenness sits, and
@@ -142,8 +143,10 @@ as 1.
     compresses the other nine (§4.7). Bounds come from the sample, so adding a
     county rescales every score.
   - **Answer:** "The paper discloses that compression; the top three hold
-    across the equity-weight sweep and the remote-work multiplier (§4.7.1). A rank-stability check under z-score or
-    rank normalization is the natural next test."
+    across the equity-weight sweep (§4.7.1). The remote-work multiplier
+    cancels in min-max normalization by construction, so it is an invariance,
+    not a test. A rank-stability check under z-score or rank normalization is
+    the natural next test."
 - **VIF (variance inflation factor):** predict each pillar from the other two;
   VIF = 1 / (1 − R²). 1 = no overlap; under 5 = fine. Ours: Equity 1.41,
   Cost-Effectiveness 1.32, Utilization 1.08 (§4.9). It guards against double
@@ -166,13 +169,17 @@ as 1.
 
 ## Slide 12: rankings (cheat sheet)
 
-- **Reading the chart:** each bar is a county's total score; segments are
-  pillar contributions (equity blue, utilization orange, cost-effectiveness
-  green), Table 2 / Fig 43.
-- **Robustness shown on the slide:** the equity-weight sweep 0.30–0.50 (five
-  scenarios) and the remote-work multiplier (0.75 / 0.85 / 0.95, which cancels
-  in min-max normalization) (§4.7.1, §6.6, §9.2). One-factor-at-a-time, not a
-  full design over the weight simplex (§4.7.1, future work §11.3).
+- **Reading the chart:** each bar is a county's composite NEVI Priority Score,
+  copied from Table 2; the top three are blue. The pillar breakdown (paper
+  Fig 43: equity blue, utilization orange, cost-effectiveness green) is on
+  backup **B7**.
+- **Robustness shown on the slide:** the top-three *set* held across the
+  equity-weight sweep 0.30–0.50 (five scenarios); the order shifts, with
+  Mecklenburg gaining and Union falling as the equity weight rises (§6.6). The
+  remote-work multiplier (0.75 / 0.85 / 0.95) cancels in min-max
+  normalization by construction, so it is an invariance, not a test (§4.7.1,
+  §9.2). One-factor-at-a-time, not a full design over the weight simplex
+  (§4.7.1, future work §11.3).
 - **"The paper says triply robust; what's the third test?"** The paper cites
   cost-effectiveness sub-weight extremes (§4.7.1), but the detail isn't shown
   in §4.7, so the talk presents the two documented tests. If asked: "The paper
@@ -268,3 +275,41 @@ Do not say "the most recent release".
 
 > "We used the benchmark as published at the time. The point stands: North
 > Carolina is above the global benchmark."
+
+---
+
+## Added after the whole-deck review (2026-10-10)
+
+**"Where's the ZIP-level tier?"** (show backup **B8**)
+
+> "The talk shows why it exists, the 84.5% within-county finding and the
+> 250-fold gap in Mecklenburg. Tier 2 ranks ZIPs within each county on
+> population, disadvantaged status, and station density. The top 20
+> underserved ZIPs hold 732,892 residents served by 58 ports, and Mecklenburg
+> and Guilford each have five of them (§4.4, §6.2)."
+
+**"Isn't Union #1 just an artifact of min-max?"** (likely from the chair)
+
+> "Union's gap is real: 101.5 BEVs per port, more than three times the next
+> county. The paper discloses that min-max compresses the other nine and that
+> the scoring is sensitive to extreme values in small samples (§4.7). As the
+> equity weight rises, Union falls and Mecklenburg gains, but the top three
+> stay the same (§6.6)."
+
+Do not claim Union would or wouldn't stay #1 under other normalizations; the
+paper does not test that.
+
+**"Why fixed weights instead of letting the data choose (e.g., DEA-style)?"**
+
+> "For a state agency, a transparent, published formula matters (§7.2):
+> anyone can see that equity gets 0.40 and why. The weights follow data
+> confidence (§2.3), and the sweep shows the top three don't depend on the
+> exact choice. A full design over all weight combinations is future work
+> (§4.7.1)."
+
+**"The paper says 'statistically independent'; the slide says 'measure
+different things.'"**
+
+> "Precisely, it's low multicollinearity: maximum VIF 1.41. Equity and
+> cost-effectiveness do correlate +0.48, so 'measure different things' is the
+> more accurate phrase (§4.9)."

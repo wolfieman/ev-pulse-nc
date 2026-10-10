@@ -3,7 +3,7 @@
 Reuses the paper's figure code unchanged (``create_fig44`` in
 ``src/analysis/phase1_fig44_validation_scatter.py``) on the same validation
 results, then restyles the finished figure for projection: spelled-out model
-names with county-month counts in the legend, larger text, a larger
+names with county counts in the legend, larger text, a larger
 Mecklenburg callout, and no statistics inset (the slide lists those numbers
 beside the chart). Same data, same points; the paper's figure is not touched.
 
@@ -44,6 +44,10 @@ LEGEND_NAMES = {
     "UCM": "Unobserved components (UCM)",
 }
 
+# County counts per model type as printed in the paper (§4.2, §6.1). Each
+# county contributes four holdout months, so the figure's n must be 4x these.
+PAPER_COUNTIES = {"ESM": 82, "ARIMA": 13, "UCM": 5}
+
 
 def restyle(fig: plt.Figure) -> dict[str, str]:
     """Restyle the paper figure for the talk and return what was checked."""
@@ -71,14 +75,17 @@ def restyle(fig: plt.Figure) -> dict[str, str]:
             coll.set_sizes([420])
             coll.set_linewidth(2.8)
 
-    # Spelled-out legend with county-month counts.
+    # Spelled-out legend with the paper's county counts.
     handles, labels = ax.get_legend_handles_labels()
     new_labels = []
     for label in labels:
         model = label.split(" (n=")[0]
         if model in LEGEND_NAMES:
             n = label.split("n=")[1].rstrip(")")
-            new_labels.append(f"{LEGEND_NAMES[model]}:\n{n} county-months")
+            assert int(n) == 4 * PAPER_COUNTIES[model], (model, n)
+            new_labels.append(
+                f"{LEGEND_NAMES[model]}:\n{PAPER_COUNTIES[model]} counties"
+            )
             checked[model] = n
         else:
             new_labels.append("Identity line (actual = predicted)")

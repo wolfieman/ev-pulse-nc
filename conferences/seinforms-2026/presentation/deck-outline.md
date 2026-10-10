@@ -1,14 +1,17 @@
 # SEINFORMS 2026 — Locked Deck Outline
 
-Status: **draft v1, locked for content** (step 2 of [`README.md`](README.md)).
+Status: **deck v6 (2026-10-10), after the whole-deck review**; slides 1–14
+locked, slide 15 reviewed but not yet locked.
 Every number below comes from the SEINFORMS paper. Citations use the paper's
 section, table, and figure numbers (`§6.2`, `Table 1 #10`, `Fig 43`), so they
 also work against the submitted PDF. Manuscript line numbers (`L291`) refer to
 `../seinforms_manuscript.md` and are secondary; they shift after manuscript fixes.
 
-Structure per slide: **On-slide text** (what goes on the slide), **Figure**
-(file + layout), **Sources** (paper refs, source-deck slide), **Speaker notes**
-(what you say; not on the slide).
+The deck is built by `src/paper/seinforms_deck/build.js`. The per-slide section
+at the end ("Current deck (v6)") is generated from the built presenter edition,
+so it matches the deck exactly: on-slide text, native chart titles, and speaker
+notes with word counts. The earlier hand-written v1–v4 per-slide sections (with
+manuscript line references per slide) are in git history.
 
 ---
 
@@ -57,9 +60,7 @@ Structure per slide: **On-slide text** (what goes on the slide), **Figure**
 ## Deck v5 decisions (owner, 2026-10-09)
 
 **Slide review status (deck numbering, title = slide 1):** 🔒 1 Title · 🔒 2 The
-Problem · 🔒 3 Research Questions · 🔒 4 Demand Signal · 🔒 5 Pipeline · 🔒 6 Forecast Validation · 🔒 7 Infrastructure Gap · 🔒 8 Theil · 🔒 9 Workplace Demand · 🔒 10 Justice40 (cut candidate) · 🔒 11 Framework · 🔒 12 Rankings · 🔒 13 Archetypes · 🔒 14 Contributions · ⬜ 15 (slide 4 notes reopened for the Gini definition on 2026-10-10, then re-locked). Note: the
-per-slide sections below still use the older outline numbering (research
-questions = "2a"); renumbering follows at the next commit.
+Problem · 🔒 3 Research Questions · 🔒 4 Demand Signal · 🔒 5 Pipeline · 🔒 6 Forecast Validation · 🔒 7 Infrastructure Gap · 🔒 8 Theil · 🔒 9 Workplace Demand · 🔒 10 Justice40 (cut candidate) · 🔒 11 Framework · 🔒 12 Rankings · 🔒 13 Archetypes · 🔒 14 Contributions · ⬜ 15 (slide 4 notes reopened for the Gini definition on 2026-10-10, then re-locked). The v6 section below supersedes this list where they differ.
 
 - **Slide 1 locked:** "Faculty Advisors: Dr. Majed Al-Ghandour, Dr. Burcu
   Adivar"; program stays "MBA, Business Analytics"; speaker notes end with the
@@ -165,6 +166,50 @@ questions = "2a"); renumbering follows at the next commit.
 
 ---
 
+## Deck v6 changes (whole-deck review, owner-approved 2026-10-10)
+
+An independent whole-deck review (Drive: `01 Projects/seinforms-2026/review-whole-deck-2026-10-10.md`)
+checked numbers, flow, Tufte/Knaflic design, and "tell them what you told them".
+The owner approved its fixes in six groups. No slides were cut; time was
+recovered by trimming the notes.
+
+1. **Tell them:** slide 3 notes end with a one-sentence preview of the answer
+   (within-county inequality → two tiers; top three). Slide 15 replaces the
+   NCDOT/FHWA and planner lines with three takeaways (①–③: 84.5% within →
+   "county rankings for where to invest, ZIP-level targeting for whom" (§3.3);
+   top 3 with scores; MAPE 4.34% with a 4 to 5% upward buffer) plus "Next".
+2. **Methods wording:** slide 11 equity card names its inputs; notes define
+   Justice40 (§3.4) and say the VIF means modest overlap, not none (r = +0.48).
+   Slide 12: "Top-3 set held; order shifts" (§6.6); the remote-work multiplier
+   is an invariance (cancels by construction), not a test. Slide 13 notes
+   disclose min-max compression (§4.7; others ≤ 0.229). Slide 14 notes use
+   §9.11's "No limitation… directly undermines the headline rankings."
+3. **Polish:** "more than 3×" (slide 13); "12 checks, 23 of 23 sub-checks"
+   (slide 14); "largest single miss" dropped (slide 6 notes, not in paper);
+   Fig 44 talk legend shows 82 / 13 / 5 counties (§4.2) instead of derived
+   county-months; slide 8 chart scoped to the top 10 counties, within = blue,
+   between = grey; slide 10 tile scoped; EVs → BEVs where the figure is BEVs;
+   IEA named aloud; "pillars that measure different things" (slide 14);
+   "NEVI Priority Score" on slide 11; Orange card labelled; slide 9 no longer
+   uses the ranking before it is shown.
+4. **Bridges and trim:** bridge lines 3→4, 8→9, 10→11, 13→14; notes trimmed from
+   2,109 to 1,938 words with every context-bearing cut restored (12:52 at
+   150 wpm, about 14:10–14:50 live).
+5. **Owner decisions:** slide 12 is a native bar of the Table 2 composite scores
+   (top 3 blue); Fig 43 moved to backup B7. Slide 7 title "A 250-Fold Charging
+   Gap Inside One County" (§6.2), 58.5% moved into the first bullet, card "The
+   gap is not rural alone" (§6.2). Slide 10 title "Roughly Proportional
+   Overall, with Strong County-by-County Variation" (§6.5). Phase kickers kept;
+   slide 5 cards tagged "PHASE n · Qn" and the score box "→ Q5".
+6. **Backups (B1–B9):** B1 native chart of within-county shares (§6.3:
+   Mecklenburg 41.5%, Wake 28.1%, Guilford 7.7%, Union 0.6%) replaces the Fig 33
+   image; B7 Fig 43; new B8 "Tier 2: ZIP-Level Targeting" (§4.4, §6.2); B9
+   glossary in two columns at 12 pt with ARIMA, ESM, UCM, CSS/MLE, E/U/CE, EPA
+   EJScreen, EPSG, HUD USPS, TIGER, GE(0) and Justice40 added. `qa-bank.md`
+   updated to match.
+
+---
+
 ## Key terms and numbers register (consistency check)
 
 One standard phrasing per concept, where it is first explained (deck slide
@@ -174,14 +219,18 @@ before the freeze.
 
 | Concept | Standard phrasing | First explained | Also used | Paper |
 |---|---|---|---|---|
-| Gini coefficient | "measures how unevenly something is spread, from 0 for perfectly even to 1 for everything in one place" | slide 4 notes | slide 8 | §3.3 |
+| Gini coefficient | "on a scale where 0 is perfectly even and 1 is everything in one place" | slide 4 notes | slide 8 | §3.3 |
 | Gini 0.805 | EV (BEV) **ownership** across counties | slide 4 | — | §1.2, Table 1 #6 |
 | Gini 0.566 | "a second Gini": charging **ports** across ZIP codes (statewide, population-weighted) | slide 8 | — | §6.3, Table 1 #7 |
 | Theil index | "measures how unevenly charging ports are spread relative to where people live; zero would mean every ZIP code has the same access per person"; not on a 0–1 scale; the split matters, not the size | slide 8 notes | slide 14 | §3.3, §6.3 |
 | 84.5% / 15.5% | share of Theil-T inequality within / between counties, top 10 counties (0.4892 / 0.0900 of 0.5791) | slide 8 | slides 14–15 | §6.3 |
 | 73% | top 10 counties' share of the statewide BEV fleet (scope) | slide 4 | slide 14 | Abstract, §2.2 |
 | 16.9 | BEVs per public port (Feb 2026) vs. IEA global benchmark ≈10 | slide 4 | — | §1.2, Table 1 #5 |
-| 250-fold | port-density gap, ZIP 28202 (78.64) vs. 28215 (0.31) per 10,000 residents | slide 7 | slide 13 | §6.2 |
+| 250-fold | port-density gap, ZIP 28202 (78.64) vs. 28215 (0.31) per 10,000 residents | slide 7 (title) | slide 13 | §6.2 |
+| Justice40 | "a 2021 federal goal that 40% of certain federal benefits, NEVI included, flow to disadvantaged communities"; an analytical anchor, EO 14008 rescinded Jan 2025 | slide 11 notes | slide 10, B9 | §3.4 |
+| Pillar overlap | "pillars measure different things" (max VIF 1.41; modest overlap, E–CE r = +0.48), not "independent" or "non-redundant" | slide 11 | slide 14 | §4.9 |
+| Robustness | "top-3 set held; order shifts" (equity weight 0.30–0.50); remote-work multiplier = invariance, not a test | slide 12 | slide 14 | §4.7.1, §6.6, §9.2 |
+| NEVI Priority Score | full name on slides 5 and 11 | slide 5 | slide 11 | §4.7 |
 | MAPE 4.34% | mean absolute percentage error, true four-month holdout, 400 county-months | slide 6 | slide 15 | §6.1 |
 | Disadvantaged (tract) | "CEJST flags a census tract as disadvantaged when it's low-income and also burdened on at least one of eight environmental, health, or infrastructure measures" | slide 10 notes | — | §3.4 |
 | Fast-charger marker | red triangle = DC fast-charging station (slide 7); Fig 42 (backup B6) uses orange triangles, noted on that slide | slide 7 | backup B6 | — |
@@ -189,554 +238,539 @@ before the freeze.
 
 ---
 
-## Instructions for Gamma (paste first)
+## Current deck (v6): slide text and speaker notes
 
-> Build a 16:9 conference presentation from the outline below, one card per
-> slide, in order, 14 main slides then 4 backup slides.
-> - Use the uploaded figure images exactly as provided. Do not crop, recolor,
->   redraw, or regenerate them, and do not generate any charts or graphs.
-> - Keep every number, label, and county name exactly as written. Do not round,
->   paraphrase, or add statistics.
-> - On-slide text only: use the "On-slide text" sections. Put the "Speaker
->   notes" sections in the slide notes, not on the slides.
-> - Visual style: clean, academic, high contrast, readable from the back of a
->   room. Decorative elements are fine; they must not overlap figures or numbers.
+Generated from the v6 presenter edition (15 talk slides + backups B1–B9).
+Word counts exclude the "(Cut candidate…)" stage directions; times assume
+150 words per minute.
 
----
+### Slide 1 — EV Pulse NC: A Data-Driven Framework for Equitable and Demand-Driven EV Charging Infrastructure Investment Prioritization in North Carolina
 
-## Slide 1 — Title
+*Kicker:* SEINFORMS 2026 · MYRTLE BEACH, SC · OCTOBER 2026
 
 **On-slide text**
 
-- Title (D1): *EV Pulse NC: A Data-Driven Framework for Equitable and
-  Demand-Driven EV Charging Infrastructure Investment Prioritization in North
-  Carolina*
-- Wolfgang Sanyer · MBA, Business Analytics · Fayetteville State University
-- Faculty Advisors: Dr. Majed Al-Ghandour, Dr. Burcu Adivar (D2)
-- SEINFORMS 2026 · Myrtle Beach, SC · October 2026
+- Wolfgang Sanyer
+- MBA, Business Analytics · Fayetteville State University
+- Faculty Advisors: Dr. Majed Al-Ghandour, Dr. Burcu Adivar
 
-**Figure:** none.
+**Speaker notes** (56 words, ~22 s)
 
-**Sources:** Exordo listing; showcase s1.
-
-**Speaker notes** (~30 s)
-
-Good morning. I'm Wolfgang Sanyer, an MBA student in business analytics at
-Fayetteville State. This talk is about how North Carolina could decide where
-$109 million in federal EV charging money should go, and what the data says
-about where the real gaps are. The analysis was completed in spring 2026, using
-data through February 2026.
+Good morning. I'm Wolfgang Sanyer, an MBA student in business analytics at Fayetteville State. This talk is about how North Carolina could decide where $109 million in federal EV charging money should go, and what the data says about where the real gaps are. The analysis was completed in spring 2026, using data through February 2026.
 
 ---
 
-## Slide 2 — The Problem
+### Slide 2 — $109 Million. 100 Counties. No Data-Driven County Ranking.
+
+*Kicker:* THE PROBLEM
 
 **On-slide text**
 
-- Headline: **$109 Million. 100 Counties. No Allocation Framework.**
-- NC's federal NEVI Formula Program funding: **$109M**
-- No publicly available, data-driven method for allocating it across counties
-- Efficiency vs. equity: demand-driven allocation reinforces existing
-  concentration; equity-driven allocation can place stations where use is too
-  low to sustain them
-- Feb 2026: NCDOT shifts from 50 interstate-corridor stations toward **16 rural
-  and community locations**
+- $109M
+- NC's federal National Electric Vehicle Infrastructure (NEVI) Formula Program funding
+- No county ranking
+- The NC Department of Transportation (NCDOT) has a federally approved NEVI plan, but no publicly available, data-driven method for ranking counties
+- Feb 2026
+- NCDOT revises its NEVI plan, narrowing the corridor buildout and shifting funds toward rural and community charging
+- Efficiency vs. equity
+- Demand-driven allocation reinforces existing concentration; equity-driven allocation can place stations where use is too low to sustain them.
 
-**Figure:** none (stat-card layout).
+**Speaker notes** (124 words, ~50 s)
 
-**Sources:** §1.2, §2.1 (L25, L41); showcase s2; capstone s3.
-
-**Speaker notes** (~50 s)
-
-North Carolina has $109 million in NEVI formula funding for public charging.
-What it doesn't have is a published, data-driven way to decide which counties
-get it. The two obvious approaches pull against each other. Follow demand, and
-you put chargers where they already are. Follow equity alone, and you can build
-stations nobody uses. NCDOT itself moved in February 2026, from a corridor-only
-plan to 16 rural and community sites. So this is a live decision, and the
-question is whether there's a defensible way to make it.
+North Carolina has $109 million in National Electric Vehicle Infrastructure, or NEVI, formula funding for public charging. The two obvious approaches pull against each other. Follow demand, and you put chargers where they already are. Follow equity alone, and you can build stations nobody uses. The North Carolina Department of Transportation, NCDOT, has a federally approved NEVI plan and is building out highway corridors in rounds. In February 2026 it revised that plan, narrowing the corridor buildout and shifting funds toward rural and community charging. What it hasn't published is a data-driven way to rank counties, and that matters most for the community phase still ahead. So this is a live decision, and the question is whether there's a defensible way to make it.
 
 ---
 
-## Slide 2a — Research Questions
+### Slide 3 — Five Questions Drive the Work
 
-Added at owner request (option A). In the deck it is slide 3, and every later
-slide shifts by one; outline slide numbers are kept as they were.
+*Kicker:* RESEARCH QUESTIONS
 
 **On-slide text**
 
-- Headline: **Five Questions Drive the Work**
-- 1 · Forecast Accuracy: How accurate are SAS Model Studio's county-level BEV
-  forecasts against unseen data?
-- 2 · Demand-Supply Gaps: Where are the largest demand-supply gaps?
-- 3 · Sub-County Inequality: How do ZIP-level density patterns reveal
-  priorities county aggregation obscures?
-- 4 · Commuter Flows: How do commuting flows reshape demand once workplace
-  needs are layered onto residential data?
-- 5 · Defensible Rankings: Can a weighted scoring equation translate these
-  layers into defensible recommendations?
+- Forecast Accuracy
+- How accurate are SAS Model Studio's county-level battery electric vehicle (BEV) forecasts against unseen data?
+- Demand-Supply Gaps
+- Where are the largest demand-supply gaps?
+- Sub-County Inequality
+- How do ZIP-level density patterns reveal priorities county aggregation obscures?
+- Commuter Flows
+- How do commuting flows reshape demand once workplace needs are layered onto residential data?
+- Defensible Rankings
+- Can a weighted scoring equation translate these layers into defensible recommendations?
 
-**Figure:** none (five numbered rows; deliberately not the card layout of slide 4).
+**Speaker notes** (102 words, ~41 s)
 
-**Sources:** §1.3 (L29) for the questions; capstone s5 for the labels. The
-capstone subtitle "each maps directly to one of the five analytical phases" is
-not used: question 5 is answered by the scoring framework, and Phase 5 has no
-question of its own.
-
-**Speaker notes** (~50 s)
-
-Five questions drive the work. Can the county forecasts be trusted on data
-they haven't seen? Where are the biggest gaps between demand and supply? What
-do ZIP codes show that county averages hide? How does commuting change where
-charging is needed? And can one weighted score turn all of that into a ranking
-you can defend? The rest of the talk answers them in order.
+Five questions drive the work. Can the county forecasts of battery electric vehicles, or BEVs, be trusted on data they haven't seen? Where are the biggest gaps between demand and supply? What do ZIP codes show that county averages hide? How does commuting change where charging is needed? And can one weighted score turn all of that into a ranking you can defend? The rest of the talk follows these questions. The short answer: most of the charging inequality is inside counties, not between them, so the framework works in two tiers, and the top three counties are Union, Mecklenburg, and Guilford.
 
 ---
 
-## Slide 3 — Demand Signal
+### Slide 4 — The BEV Fleet Grew 1,727% Since 2018. Ports Have Not Kept Pace.
+
+*Kicker:* DEMAND SIGNAL
 
 **On-slide text**
 
-- Headline: **The BEV Fleet Grew 1,727% Since 2018. Ports Have Not Kept Pace.**
-- **5,165 → 94,371** BEVs (Sep 2018 → Jun 2025) · **53.8%** compound annual growth
-- **Gini 0.805**: county-level BEV ownership is highly concentrated; Wake alone
-  holds more BEVs than the bottom 60 counties combined
-- **16.9 BEVs per public port** (Feb 2026) vs. IEA global benchmark **≈10**
-- Top 10 counties hold **73%** of the statewide BEV fleet
+- 5,165 → 94,371
+- BEVs, Sep 2018 → Jun 2025
+- 53.8%
+- Compound annual growth
+- Gini 0.805
+- County-level BEV ownership is highly concentrated; Wake alone holds more BEVs than the bottom 60 counties combined
+- 16.9
+- BEVs per public port (Feb 2026) vs. International Energy Agency (IEA) global benchmark ≈10
+- Top 10 counties hold 73% of the statewide BEV fleet
+- Data as of Feb 2026: NCDOT registrations through Oct 2025; Alternative Fuels Data Center (AFDC) stations as of Feb 2026
 
-**Figure:** none (four stat cards).
+**Speaker notes** (104 words, ~42 s)
 
-**Sources:** §1.2 (L25), Table 1 #5, #6, Abstract, §2.2; showcase s3; capstone s4.
-
-**Speaker notes** (~50 s)
-
-Demand isn't the question. The fleet went from 5,165 battery-electric vehicles in 2018 to 94,371 by mid-2025, a 53.8% annual growth rate. It's
-also very concentrated: a county-level Gini of 0.805, and Wake County alone has
-more EVs than the bottom 60 counties put together. Supply hasn't kept up. North Carolina has 16.9 EVs per public port, against a global benchmark of about 10. The top 10 counties hold 73% of the fleet, which is why the scoring focuses
-on them.
+Start with the backdrop: demand isn't in doubt. The fleet went from 5,165 battery-electric vehicles in 2018 to 94,371 by mid-2025, a 53.8% annual growth rate. It's also very concentrated: a Gini coefficient of 0.805 across counties, on a scale where 0 is perfectly even and 1 is everything in one place. Wake County alone has more BEVs than the bottom 60 counties put together. Supply hasn't kept up. North Carolina has 16.9 BEVs per public port, against the International Energy Agency's global benchmark of about 10. The top 10 counties hold 73% of the fleet, which is why the scoring focuses on them.
 
 ---
 
-## Slide 4 — Five-Phase Pipeline
+### Slide 5 — Five Analytical Phases, One Scoring Framework
+
+*Kicker:* METHOD
 
 **On-slide text**
 
-- Headline: **Five Analytical Phases, One Scoring Framework**
-- Phase 1 · Forecast validation (NCDOT registrations, Sep 2018–Oct 2025)
-- Phase 2 · Infrastructure baseline (NREL AFDC API, Feb 2026: 1,985 stations,
-  6,145 connectors)
-- Phase 3 · ZIP-level inequality (Gini + additive Theil-T decomposition)
-- Phase 4 · Workplace charging demand (LEHD LODES 2021)
-- Phase 5 · Justice40 equity overlay (CEJST v2.0, area-weighted tract-to-ZCTA
-  crosswalk)
-- Footer: All public data · 8,600 county-month observations · Python + SAS
-  Model Studio
+- PHASE 1 · Q1
+- Forecast validation
+- NCDOT registrations, Sep 2018–Oct 2025
+- PHASE 2 · Q2
+- Infrastructure baseline
+- NREL AFDC API, Feb 2026: 1,985 stations, 6,145 connectors
+- PHASE 3 · Q3
+- ZIP-level inequality
+- Gini + additive Theil-T decomposition
+- PHASE 4 · Q4
+- Workplace charging demand
+- LEHD LODES 2021
+- PHASE 5
+- Justice40 equity overlay
+- CEJST v2.0, area-weighted tract-to-ZCTA crosswalk
+- NEVI Priority Score  →  Q5
+- All public data · 8,600 county-month observations · SAS Model Studio forecasts (fall 2025), validated in Python (spring 2026)
+- NREL: National Renewable Energy Laboratory · AFDC: Alternative Fuels Data Center · API: application programming interface · LEHD LODES: Longitudinal Employer-Household Dynamics Origin-Destination Employment Statistics · CEJST: Climate and Economic Justice Screening Tool · ZCTA: ZIP Code Tabulation Area
 
-**Figure:** none (five-step flow diagram feeding a "NEVI Priority Score" box).
+**Speaker notes** (79 words, ~32 s)
 
-**Sources:** §4.1, §2.2, §4.8; capstone s6–s7. ACS is 2022 five-year (C10).
+The work runs in five phases. Phase 1 tests the demand forecasts on data they never saw. Phase 2 rebuilds the supply side from the Department of Energy's Alternative Fuels Data Center, all charger levels, not just fast chargers. Phase 3 measures inequality at the ZIP level. Phase 4 adds workplace demand from Census commuting data. Phase 5 overlays the federal disadvantaged-community designations. Everything feeds one score, every input is public, and the whole pipeline reruns from the repository.
 
-**Speaker notes** (~50 s)
-
-The work runs in five phases. Phase 1 tests the demand forecasts on data they
-never saw. Phase 2 rebuilds the supply side from a full AFDC pull, all charger
-levels, not just fast chargers. Phase 3 measures inequality at the ZIP level.
-Phase 4 adds workplace demand from Census commuter flows. Phase 5 overlays the
-federal disadvantaged-community designations. Everything feeds one score.
-Every input is public, and the whole pipeline reruns from the repository.
-
-*(Cut candidate for a 15-minute slot: move to backup.)*
+(Cut candidate for a 15-minute slot: move to backup.)
 
 ---
 
-## Slide 5 — Forecast Validation
+### Slide 6 — Forecasts Hold Out of Sample, and Adoption Accelerated After 2022
+
+*Kicker:* PHASE 1 · FORECAST VALIDATION
 
 **On-slide text**
 
-- Headline: **Forecasts Hold Out of Sample, and Adoption Is Accelerating**
-- **MAPE 4.34%** on a true holdout (n = 400 county-months, Jul–Oct 2025, all
-  100 counties)
-- **69.00%** of actuals exceeded forecast (mean bias +18.22 vehicles per
-  county-month)
-- **Chow test: F = 1,268.35, p < 1 × 10⁻⁶** at the Aug 2022 Inflation
-  Reduction Act passage
-- 95% interval coverage **75.50% raw → 93.75%** after county bias correction:
-  a centering problem, not a width problem
+- Mean absolute percentage error (MAPE) 4.34% on a true holdout (n = 400 county-months, Jul–Oct 2025, all 100 counties)
+- 69.00% of actuals exceeded forecast (mean bias +18.22 vehicles per county-month)
+- Chow test: F = 1,268.35, p < 1 × 10⁻⁶ at the Aug 2022 Inflation Reduction Act passage
+- 95% interval coverage 75.50% raw → 93.75% after county bias correction: a centering problem, not a width problem
 
-**Figure:** `fig-44-validation-scatter.png` (aspect 1.25). Figure left (~60% of
-width), bullets right.
+**Speaker notes** (210 words, ~84 s)
 
-**Sources:** §6.1, §4.2, §4.9, Table 1 #1–#4 (L262–L266, L190, L194); capstone s11.
-
-**Speaker notes** (~75 s)
-
-First question: can we trust the demand forecasts? The SAS models were tested
-on four months they never saw, all 100 counties, 400 observations. The error
-was 4.34%, under the 5% usability bar. But look at the scatter: most points sit
-above the line. In 69% of cases actual registrations beat the forecast. That
-isn't a broken model. A Chow test puts a strong structural break at the Inflation Reduction Act in August 2022, F of 1,268.35. The models learned a
-slower world. The intervals are the right width but centered too low, so the
-fix is an upward buffer of 4 to 5% in planning, which the score carries.
+First question: can we trust the demand forecasts? The SAS models were tested on four months they never saw: all 100 counties, 400 observations. Each dot is one county in one month, forecast across, actual up, on a log scale because counties range from a handful of BEVs to tens of thousands. The colors are the model type SAS picked for each county. Dots on the dashed line are perfect forecasts. The mean absolute percentage error, or MAPE, was 4.34%, under the 5% usability bar. On this log scale the misses are hard to see, but 69% of them go the same way: actual registrations beat the forecast. The circled point is Mecklenburg in October 2025: its actual exceeded the forecast by 975 vehicles in a single month. That isn't a broken model. A Chow test, which checks whether a trend changed at a specific date, finds a strong break at the Inflation Reduction Act in August 2022. The models learned a slower world. Their 95% ranges caught only 75.5% of the actual counts, but after shifting each county's forecast up by its own average miss, 93.75%. So the ranges were the right width, just centered too low, and planners should add an upward buffer of 4 to 5 percent.
 
 ---
 
-## Slide 6 — Infrastructure Gap
+### Slide 7 — A 250-Fold Charging Gap Inside One County
+
+*Kicker:* PHASE 2 · INFRASTRUCTURE GAP
 
 **On-slide text**
 
-- Headline: **58.5% of NC ZIP Areas Have No Charging Station**
-- **499 of 853** ZCTAs have zero stations: **2.2 million people** (21.1% of the
-  state)
-- Charlotte 28202: **78.64** ports per 10,000 residents
-- Charlotte 28215, 14 miles east: **0.31** (64,713 residents, 2 ports)
-- **250-fold gap inside one county**
+- 58.5% of NC ZIP areas (499 of 853) have zero stations: 2.2 million people (21.1% of the state)
+- Charlotte 28202: 78.64 ports per 10,000 residents
+- Charlotte 28215, 14 miles east: 0.31 (64,713 residents, 2 ports)
+- The gap is not rural alone
+- ▲ DC fast-charging stations
+- ■ Color: all charging ports
+- ▨ No charging stations
+- 28202 Uptown: 78.64
+- 28215: 0.31
 
-**Figure:** `fig-24-heatmap-mecklenburg.png` (portrait, aspect 0.92). Figure
-right (~45% of width), bullets left.
+**Speaker notes** (101 words, ~40 s)
 
-**Sources:** §6.2, §6.3 (L291–L293, L307); showcase s4, s10; capstone s12.
-
-**Speaker notes** (~75 s)
-
-On the supply side, more than half of North Carolina's ZIP areas have no
-charger at all, covering 2.2 million people. That's not only a rural story.
-This map is Mecklenburg. Uptown Charlotte, the dark cluster, has 78.64 ports per 10,000 residents. Fourteen miles east, ZIP 28215 has 64,713 people and two ports. That's a 250-fold difference inside one county. Hold on to this
-picture, because the next slide shows it isn't an outlier.
+On the supply side, more than half of North Carolina's ZIP areas have no charger at all, covering 2.2 million people. That's not only a rural story. This map zooms into one county, Mecklenburg. The color is all charging ports per 10,000 residents, darker means more; gray hatching means no stations at all; the red triangles mark fast-charging stations. Uptown Charlotte, ZIP 28202, has 78.64 ports per 10,000 residents. Fourteen miles east, ZIP 28215 has 64,713 people and two ports. That's a 250-fold difference inside one county. Hold on to this picture, because the next slide shows it isn't an outlier.
 
 ---
 
-## Slide 7 — The Headline Finding (Theil)
+### Slide 8 — 84.5% of Charging Inequality Is Within Counties
+
+*Kicker:* PHASE 3 · THE HEADLINE FINDING
 
 **On-slide text**
 
-- Headline: **84.5% of Charging Inequality Is Within Counties**
-- Theil-T (top 10 counties) = **0.5791** = between **0.0900 (15.5%)** +
-  within **0.4892 (84.5%)**
-- Exact additive decomposition (GE(1)); verified to **2.22 × 10⁻¹⁶**; Theil-L
-  check: **82.5%** within
-- ZIP-level charging Gini (statewide, population-weighted): **0.566**
-- County-only formulas miss most of the problem → **two-tier design**: county
-  ranking + ZIP-level targeting
+- 84.5%
+- within
+- 15.5%
+- between
+- Exact additive decomposition (generalized entropy index GE(1)); verified to 2.22 × 10⁻¹⁶; Theil-L check: 82.5% within
+- ZIP-level charging Gini (statewide, population-weighted): 0.566
+- County-only formulas miss most of the problem → two-tier design: county ranking + ZIP-level targeting
 
-**Figure:** `fig-33-theil-decomposition.png` (aspect 1.73). Figure top, full
-width; bullets below.
+**Native chart:** Theil-T inequality index, top 10 counties (total = 0.5791)
 
-**Sources:** §6.3, §4.4, §3.3, Table 1 #7, #8 (L303–L305, L133–L139); capstone s9, s12; showcase s5. Fixes C1.
+**Speaker notes** (161 words, ~64 s)
 
-**Speaker notes** (~80 s)
-
-This is the central result. The Gini tells you inequality is high, 0.566
-across ZIP codes, but not where it lives. The Theil-T index splits exactly into
-a between-county part and a within-county part, with no residual. For the top
-10 counties, 84.5% of the inequality is within counties, not between them. The
-Theil-L version gives 82.5%, so it isn't an artifact of the index. Mecklenburg
-and Wake alone account for about 70% of it. The implication is structural: most
-state NEVI formulas allocate by county, so they miss most of the problem. That
-is why the framework has two tiers: rank the counties, then target ZIP codes
-inside them.
+This is the central result. A second Gini, this time for charging ports across ZIP codes, is 0.566: inequality is high, but that doesn't tell you where it lives. The Theil index measures how unevenly ports are spread relative to where people live; zero would mean every ZIP code has the same access per person. The Theil-T version splits exactly into a between-county part and a within-county part, with no residual. If every county had the same average access but big differences between its own ZIP codes, all the inequality would be within counties. That's essentially what we see: for the top 10 counties, 84.5% of the inequality is within counties. The Theil-L version gives 82.5%, so it isn't an artifact of the index. Mecklenburg alone contributes 41.5% of it. Most state NEVI formulas allocate by county, so they miss most of the problem. That is why the framework has two tiers: rank the counties, then target ZIP codes inside them.
 
 ---
 
-## Slide 8 — Workplace Demand
+### Slide 9 — Commuters Shift Demand Toward Employment Centers
+
+*Kicker:* PHASE 4 · WORKPLACE DEMAND
 
 **On-slide text**
 
-- Headline: **Commuters Shift Demand Toward Employment Centers**
-- LEHD LODES 2021: 4,198,163 workers → **859,260** EV-relevant commuters
-  (income filter, ACS $75K household correction, 0.85 remote-work multiplier)
-- Net daily inflow: Mecklenburg **+194,361** · Wake **+126,517** · Durham
-  **+89,450**
-- Union (ranked #1) is a bedroom community: **−36,113** net per day
+- U.S. Census commuting data (Longitudinal Employer-Household Dynamics Origin-Destination Employment Statistics, LEHD LODES, 2021): 4,198,163 workers → 859,260 adjusted commuters after income and remote-work filters
+- Union sends more commuters out than it takes in: a bedroom community of Charlotte
+- Feeds the cost-effectiveness pillar: Mecklenburg scores highest (0.801)
 
-**Figure:** `fig-36-demand-comparison.png` (aspect 1.39). Figure left (~60%),
-bullets right.
+**Native chart:** Net daily commuters, selected counties (in minus out)
 
-**Sources:** §6.4, §4.6 (L311–L315); new slide (replaces showcase s6 chart,
-which is not a paper figure).
+**Speaker notes** (122 words, ~49 s)
 
-**Speaker notes** (~70 s)
+That's where the inequality is. Next, where the demand is during the day. Registration data tells you where EVs sleep, not where they sit during the workday. For the workday I used Census commuting data, LODES, for 2021: 4,198,163 workers, filtered to EV-affordable incomes and adjusted for remote work, leaving 859,260 commuters. The chart shows net daily commuters. Mecklenburg takes in 194,361 more workers a day than it sends out, and Wake and Durham are job centers too. Union is the opposite: 36,113 more people leave each day than arrive. It's a bedroom community: people live there and drive to Charlotte for work. That daytime demand feeds the cost-effectiveness part of the score I'll show in a moment, where Mecklenburg scores highest.
 
-Registration data tells you where EVs sleep, not where they park during the
-day. Census commuter flows fill that in. Starting from 4,198,163 workers, I
-filtered by income, corrected to EV-affordable households, and applied a
-remote-work adjustment, leaving 859,260 commuters. Mecklenburg takes in 194,361 more workers a day than it sends out. Union, which ends up ranked first,
-is a bedroom community of Charlotte, with a net outflow of 36,113
-commuters a day; its residents drive to Mecklenburg for work. This feeds the
-cost-effectiveness pillar.
-
-*(Cut candidate for a 15-minute slot: move to backup.)*
+(Cut candidate for a 15-minute slot: move to backup.)
 
 ---
 
-## Slide 9 — Justice40 Overlay
+### Slide 10 — Roughly Proportional Overall, with Strong County-by-County Variation
+
+*Kicker:* PHASE 5 · JUSTICE40 OVERLAY
 
 **On-slide text**
 
-- Headline: **Where Stations Sit vs. Where Disadvantaged Communities Live**
-- **43.0%** of NC census tracts designated disadvantaged (934 of 2,170; CEJST v2.0)
-- Top 10 counties: **18.5%** population-weighted disadvantaged rate
-- **24.5%** of stations (296 of 1,210) sit in disadvantaged tracts: roughly
-  proportional overall, with **strong county-by-county variation**
-- Removing CEJST's climate category: **7 of 10** study counties unchanged
-- Footnote: CEJST v2.0 as of Jan 21, 2025; tool removed Jan 22, 2025 after
-  EO 14008 was rescinded; data from the EDGI / PEDP archive
+- 24.5%
+- of stations in the top 10 counties sit in disadvantaged tracts (296 of 1,210)
+- 18.5%
+- of residents in the top 10 counties live in those tracts
+- Roughly proportional overall
+- Statewide: 43.0% of NC census tracts designated disadvantaged (934 of 2,170; CEJST v2.0)
+- Removing CEJST's climate category: 7 of 10 study counties unchanged
+- Residents in disadvantaged tracts, by county
+- Top-10 average 18.5%
+- Guilford
+- 29.2%
+- New Hanover
+- 28.8%
+- Durham
+- 26.6%
+- Mecklenburg
+- 23.7%
+- Wake
+- 8.1%
+- Orange
+- 4.9%
+- 0%
+- 10%
+- 20%
+- 30%
+- CEJST v2.0 as of Jan 21, 2025; tool removed Jan 22, 2025 after Executive Order (EO) 14008 was rescinded; data from the Environmental Data & Governance Initiative (EDGI) / Public Environmental Data Partners (PEDP) archive
 
-**Figure:** `fig-42-stations-justice40-overlay.png` (wide, aspect 1.63). Figure
-full width; bullets as a compact strip below.
+**Speaker notes** (197 words, ~79 s)
 
-**Sources:** §6.5, §4.5, §5.5, Table 1 #9, #10 (L319–L325, L149, L240); capstone s15; showcase s7. Fixes C2–C4.
+Phase 5 brings in equity. The federal Climate and Economic Justice Screening Tool, CEJST, flags a census tract as disadvantaged when it's low-income and also burdened on at least one of eight environmental, health, or infrastructure measures. In the top 10 counties, 18.5% of residents live in those tracts, and 24.5% of stations sit in them. Those are the two numbers on the left: in aggregate the siting is roughly proportional. The story is in the variation, on the right. Each dot is a county's share of residents in disadvantaged tracts; the dashed line is the 18.5% average. Guilford is at 29.2%; Wake is at only 8.1%, and Orange at 4.9%. That share is the largest input to the equity pillar; the others are how unevenly chargers are spread inside each county and how many ZIP codes are underserved. And as the Theil result showed, proportional in total doesn't mean well served inside each county: Mecklenburg has plenty of chargers, but they're concentrated in Uptown. One caveat: the federal screening tool was taken down in January 2025. I use the archived version 2.0 data, and removing its most contested category, climate, leaves 7 of 10 counties unchanged.
 
-**Speaker notes** (~75 s)
-
-Phase 5 overlays the federal disadvantaged-community map. Statewide, 43.0% of tracts are designated disadvantaged. In the top 10 EV counties it's 18.5% of
-the population. About a quarter of stations, 24.5%, sit in those tracts. So in
-aggregate the siting is roughly proportional. The story is in the variation:
-some counties site stations in line with their disadvantaged population, others
-fall well short, and that variation is what drives the equity pillar. One
-caveat I want to be upfront about: the federal screening tool was taken down
-in January 2025. I use the archived v2.0 data, and removing its most contested
-category leaves 7 of 10 counties unchanged.
+(Cut candidate: trim first at rehearsal if the talk runs long.)
 
 ---
 
-## Slide 10 — Scoring Framework
+### Slide 11 — Three Pillars, One Score
+
+*Kicker:* THE FRAMEWORK
 
 **On-slide text**
 
-- Headline: **NEVI Score = 0.40 × Equity + 0.35 × Utilization + 0.25 × Cost-Effectiveness**
-- Each pillar is a weighted composite of sub-metrics, **min-max normalized to 0–1**
-- Weights follow data confidence:
-  - Equity 0.40: analytical anchor on the Justice40 40% target (EO 14008,
-    rescinded Jan 2025)
-  - Utilization 0.35: BEVs per port, from validated forecasts (strongest data)
-  - Cost-Effectiveness 0.25: workplace demand (most uncertain input)
-- Pillars are independent: **max VIF 1.41** (concern threshold 5.0)
+- NEVI Priority Score = 0.40 × Equity + 0.35 × Utilization + 0.25 × Cost-Effectiveness
+- 0.40
+- Equity
+- Disadvantaged residents, within-county charging Gini, underserved ZIPs; anchored on the Justice40 40% target (EO 14008, rescinded Jan 2025)
+- 0.35
+- Utilization
+- BEVs per port; demand data validated out of sample (strongest data)
+- 0.25
+- Cost-Effectiveness
+- Workplace demand (most uncertain input)
+- Weights follow data confidence. Each pillar is a weighted composite of sub-metrics, min-max normalized to 0–1.
+- Pillars measure different things: max variance inflation factor (VIF) 1.41 (concern threshold 5.0)
 
-**Figure:** none (formula banner + three pillar cards).
+**Speaker notes** (152 words, ~61 s)
 
-**Sources:** §2.3, §4.7, §4.9, Table 1 #12 (L49, L165–L169, L188); capstone s10; showcase s8. Fixes C3.
-
-**Speaker notes** (~70 s)
-
-The score combines three pillars. Each one is built from sub-metrics, all
-min-max normalized to a 0-to-1 scale. The weights follow data confidence.
-Equity gets 0.40, anchored on the Justice40 40% target. I treat that as an
-analytical anchor, not a legal requirement, since the executive order was
-rescinded in January 2025. Utilization gets 0.35 because it rests on the
-validated forecasts. Cost-effectiveness gets 0.25 because workplace demand is
-the least certain input. And the pillars aren't three views of one thing: the
-highest variance inflation factor is 1.41.
+Those three layers, demand, workplace, and equity, now go into one score with three pillars. Each pillar is built from several measures, and every measure is min-max normalized: rescaled so the lowest county gets 0 and the highest gets 1, so measures in different units can be added together. The weights follow data confidence. Equity gets 0.40. It's anchored on Justice40, a 2021 federal goal that 40% of certain federal benefits, NEVI included, flow to disadvantaged communities. I treat that as an analytical anchor, not a legal requirement, since the executive order was rescinded in January 2025. Utilization, which is BEVs per charging port, gets 0.35 because its demand data passed the out-of-sample test. Cost-effectiveness gets 0.25 because workplace demand is the least certain input. The highest variance inflation factor is 1.41, well under the usual concern threshold of 5, so the pillars overlap only modestly and each adds its own information.
 
 ---
 
-## Slide 11 — Rankings
+### Slide 12 — Top 3: Union, Mecklenburg, Guilford
+
+*Kicker:* THE RANKINGS
 
 **On-slide text**
 
-- Headline: **Top 3: Union, Mecklenburg, Guilford**
-- **Union 0.561 · Mecklenburg 0.548 · Guilford 0.465**
-- Top 3 held across three perturbations:
-  - equity weight 0.30–0.50 (five scenarios)
-  - cost-effectiveness sub-weight extremes
-  - remote-work multiplier 0.75 / 0.85 / 0.95 (cancels in normalization)
-- Wake ranks 5th despite the most BEVs (equity 0.322; 8.1% of tracts
-  disadvantaged)
+- 0.561
+- #1 Union
+- 0.548
+- #2 Mecklenburg
+- 0.465
+- #3 Guilford
+- Top-3 set held; order shifts:
+- Equity weight 0.30–0.50 (five scenarios): Mecklenburg gains and Union falls as the equity weight rises
+- Remote-work multiplier 0.75 / 0.85 / 0.95: cancels in min-max normalization, so the rankings are identical by construction
+- Wake ranks 5th despite the most BEVs (equity 0.322; 8.1% of residents in disadvantaged tracts)
 
-**Figure:** `fig-43-nevi-priority-scores.png` (aspect 1.45). Figure left
-(~60%), bullets right.
+**Native chart:** NEVI Priority Score, top 10 counties (Table 2)
 
-**Sources:** §6.6, §4.7.1, §9.2 (0.75 / 0.85 / 0.95, L428), Table 2, Table 1 #11 (L335–L354, L178); capstone s13; showcase s9. Fixes C7.
+**Speaker notes** (109 words, ~44 s)
 
-**Speaker notes** (~75 s)
-
-Here's the result. Union, Mecklenburg, and Guilford come out on top, and each
-bar shows how much of the score comes from each pillar. The top three held
-under three separate tests: moving the equity weight from 0.30 to 0.50, the
-extremes of the cost-effectiveness sub-weights, and the remote-work assumption,
-which cancels out in the normalization. To be precise about what that means:
-these are one-factor-at-a-time tests, not a full search over all weight
-combinations. Notice Wake: the most EVs in the state, but fifth, because its
-equity burden is low.
+Here's the result. Union, Mecklenburg, and Guilford come out on top. Each bar is a county's total score, and the top three are in blue. The same three stay on top as the equity weight moves from 0.30 to 0.50, though the order shifts: Mecklenburg gains as equity counts more. The remote-work assumption can't change the ranking at all, because a uniform multiplier cancels in the normalization, so I treat it as an invariance, not a test. And this is one factor at a time, not a full search of all weight combinations. Notice Wake: the most BEVs in the state, but fifth, because its equity burden is low.
 
 ---
 
-## Slide 12 — Three Archetypes
+### Slide 13 — Three County Archetypes
+
+*Kicker:* WHAT THE RANKING MEANS
 
 **On-slide text**
 
-- Headline: **Three County Archetypes**
-- **Union: utilization-driven.** 101.5 BEVs per port, 3× the next county →
-  *more stations*
-- **Mecklenburg & Guilford: equity-driven.** Equity 0.810 and 0.855 →
-  *better-targeted stations* in underserved ZIPs
-- **Orange: low across all pillars** (0.077) → no priority deployment now
-- **Empty quadrant:** no county is high on both equity and utilization
+- Union: utilization-driven
+- 101.5 BEVs per port, more than 3× the next county → more stations
+- Mecklenburg & Guilford: equity-driven
+- Equity 0.810 and 0.855 → better-targeted stations in underserved ZIPs
+- Orange: low across all pillars
+- Lowest overall score (0.077) → no priority deployment now
+- Empty quadrant: no county is high on both equity and utilization
+- Utilization-driven
+- High on both: none
+- Low across pillars
+- Equity-driven
+- 0.0
+- 0.0
+- 0.5
+- 0.5
+- 1.0
+- 1.0
+- Equity pillar score (0–1) →
+- Utilization pillar score (0–1) →
+- Union
+- Mecklenburg
+- Guilford
+- New Hanover
+- Wake
+- Durham
+- Forsyth
+- Cabarrus
+- Buncombe
+- Orange
 
-**Figure:** `fig-45-equity-utilization-archetypes.png` (near-square, aspect
-1.14). Figure right (~50%), bullets left.
+**Speaker notes** (166 words, ~66 s)
 
-**Sources:** §7.3, §6.6 (L386–L394, L348); capstone s14 (headline; Orange "no priority deployment" wording). Fixes C6.
-
-**Speaker notes** (~75 s)
-
-The ranking says where, but not why. Plotting equity against utilization gives
-three archetypes. Union is utilization-driven: 101.5 EVs per port, more than three times the next county. It needs more stations. Mecklenburg and Guilford are
-equity-driven. They don't just need more stations, they need them in the right
-ZIP codes. Orange scores low on everything and doesn't need priority
-deployment now. Then look at the top-right corner: it's empty. No county is
-high on both equity and utilization, so every county is a trade-off, and the
-framework makes that trade-off visible instead of hiding it.
+The ranking says where, but not why. Plotting equity against utilization gives three archetypes. Equity runs left to right, utilization bottom to top, and the top three counties are in color. Union is utilization-driven: 101.5 BEVs per port, more than three times the next county. It needs more stations. One caveat: Union is so far ahead that min-max scaling puts it at 1.0 and squeezes the other nine counties to 0.229 or below on utilization. The gap is real, not a data artifact, but the scoring is sensitive to an extreme value like this. Mecklenburg and Guilford are equity-driven. Mecklenburg's equity score is high not only because of its disadvantaged residents, but because its chargers are so unevenly spread across its ZIP codes, the Uptown gap. They need better-targeted stations. Orange is low on everything and isn't a priority now. And the top-right corner is empty: no county is high on both equity and utilization, so every county is a trade-off, which the framework makes visible.
 
 ---
 
-## Slide 13 — Contributions and Limitations
+### Slide 14 — Contributions and Limitations
+
+*Kicker:* WHAT IT ADDS
 
 **On-slide text**
 
-- Headline: **Contributions and Limitations**
-- Contributions:
-  1. Additive Theil-T decomposition of EV charging inequality, used as a design
-     input to allocation
-  2. Area-weighted CEJST–AFDC crosswalk at ZIP resolution (23 of 23 validation
-     checks)
-  3. Three-pillar NEVI score with VIF-confirmed independence and a robust top 3
-- Limitations, each with a direction of bias:
-  - Top-10 scope (73% of fleet): bounded
-  - LODES 2021 vintage: cancels in normalization
-  - Static BEV counts: understates growth (conservative)
-  - CEJST v2.0 lock, NEVI rule changes: policy risk
+- Contributions
+- Additive Theil-T decomposition of EV charging inequality, used as a design input to allocation
+- Area-weighted CEJST–AFDC crosswalk at ZIP resolution (12 checks, 23 of 23 sub-checks passed)
+- Three-pillar NEVI score with pillars that measure different things (VIF 1.41) and a robust top 3
+- Limitations, each with a direction of bias
+- Top-10 scope (73% of fleet): bounded
+- LODES 2021 vintage: cancels in normalization
+- Static BEV counts: understates growth (conservative)
+- CEJST v2.0 lock, NEVI rule changes: direction unknown (policy risk)
 
-**Figure:** none (two-column layout).
+**Speaker notes** (130 words, ~52 s)
 
-**Sources:** §10.3, §9, §9.11, §7.1 (L478–L490, L420–L464); capstone s16–s17. Fixes C11.
-
-**Speaker notes** (~70 s)
-
-Three contributions. First, using the Theil decomposition as a design input,
-not just a summary number; prior EV work, such as Choi, Xu and Jiao on Austin,
-reports Theil as a single magnitude. Second, a validated crosswalk that brings
-the federal equity designations down to ZIP level. Third, a score whose pillars
-are independent and whose top three survives perturbation. On limitations, I
-gave each one a direction. The scope covers 73% of the fleet. The 2021
-commuting data cancels out in normalization. Static counts understate growth,
-which makes the scores conservative. None of them overturns the top three.
+So what does this add, and where is it weak? Three contributions. First, using the Theil decomposition as a design input, not just a summary number. To my knowledge, it's the first state-level application, and the first to use the split to design the allocation itself. Second, a validated crosswalk that brings the federal equity designations down to ZIP level. Third, a score whose pillars measure different things and whose top three holds across the equity-weight sweep. Each limitation comes with its direction of bias. The scope covers 73% of the fleet. The 2021 commuting data cancels out in normalization. Static counts understate growth, which makes the scores conservative. And federal policy changes are a risk whose direction we can't know yet. None of them directly undermines the headline rankings.
 
 ---
 
-## Slide 14 — Implications and Next Steps
+### Slide 15 — A Ranking to Inform NCDOT's Decisions, and What Comes Next
+
+*Kicker:* IMPLICATIONS AND NEXT STEPS
 
 **On-slide text**
 
-- Headline: **Decision Support, Not Decision-Making**
-- NCDOT / FHWA: an auditable county ranking (VIF 1.41, MAPE 4.34%, robust top 3)
-- County planners: ZIP-level gap analysis for site selection
-- Next: all 100 counties · validate against NCDOT's actual NEVI deployments ·
-  confidence intervals on composite scores
-- Thank you · wolfgang.sanyer@gmail.com · linkedin.com/in/wolfgangsanyer ·
-  github.com/wolfieman/ev-pulse-nc (with QR code) · sanyer.org/research-lab
+- ①  84.5% of charging inequality is within counties: county rankings for where to invest, ZIP-level targeting for whom
+- ②  Top 3: Union 0.561 · Mecklenburg 0.548 · Guilford 0.465
+- ③  Forecasts hold out of sample (MAPE 4.34%) but run low: plan an upward buffer of 4 to 5%
+- Next: all 100 counties · validate against NCDOT's actual NEVI deployments · confidence intervals on composite scores
+- Thank you
+- wolfgang.sanyer@gmail.com
+- linkedin.com/in/wolfgangsanyer
+- github.com/wolfieman/ev-pulse-nc
+- sanyer.org/research-lab
 
-**Figure:** none.
+**Speaker notes** (115 words, ~46 s)
 
-**Sources:** §10.4, §7.2, §8.2, §11 (L494, L372–L382, L504–L512); showcase s12–s14; capstone s18–s19, s25. Fixes C8.
-
-**Speaker notes** (~40 s)
-
-This isn't meant to replace NCDOT's judgment. Right-of-way, utilities, and
-politics all matter and aren't in the model. What it gives is an analytical
-floor: a ranking an auditor can trace, and ZIP-level targets a planner can use.
-Next steps are extending it to all 100 counties, checking it against NCDOT's
-actual deployments, and putting confidence intervals on the scores. Thank you,
-I'm happy to take questions.
+This ranking is meant to inform NCDOT's decisions, not replace them. Right-of-way, utilities, and politics all matter and aren't in the model. What it gives is an analytical floor: a ranking an auditor can trace, and ZIP-level targets a planner can use. And NCDOT's community phase, which is still ahead, is exactly where a county ranking can help. Next: all 100 counties, a check against NCDOT's actual deployments, and confidence intervals on the scores. If you remember one thing: most of the charging gap is inside counties, so allocation has to work county first, then neighborhood. I'd like to thank my faculty advisors, Dr. Al-Ghandour and Dr. Adivar. Thank you, I'm happy to take questions.
 
 ---
-
-## Backup slides (for Q&A; not presented)
 
 ### B1 — Theil-T Decomposition
 
 **On-slide text**
 
-- GE(1) / Theil-T is additively decomposable: **T = T_between + T_within**,
-  with no residual (Bourguignon 1979; Shorrocks 1980)
-- Top 10 counties: **0.5791 = 0.0900 (15.5%) + 0.4892 (84.5%)**
-- Theil-L (GE(0)) robustness: **82.5%** within
-- Within-county contribution: Mecklenburg **41.5%**, Wake **28.1%**, Guilford
-  **7.7%**, Union **0.6%**
-- Theil is a diagnostic for the architecture (why Tier 2 exists), not an input
-  to either tier's score
+- GE(1) / Theil-T is additively decomposable: T = T_between + T_within, with no residual (Bourguignon 1979; Shorrocks 1980)
+- Top 10 counties: 0.5791 = 0.0900 (15.5%) + 0.4892 (84.5%)
+- Theil-L (GE(0)) robustness: 82.5% within
+- Within-county contribution: Mecklenburg 41.5%, Wake 28.1%, Guilford 7.7%, Union 0.6%
+- Theil is a diagnostic for the architecture (why Tier 2 exists), not an input to either tier's score
 
-**Figure:** `fig-33-theil-decomposition.png` (reuse) or none.
+**Native chart:** Share of within-county inequality (the four counties reported in §6.3)
 
-**Sources:** §6.3, §4.4, §3.3 (L303–L305, L139). Before adding the full formula,
-take it from the repo's Theil script so the notation matches the code.
+---
 
 ### B2 — Crosswalk Validation
 
 **On-slide text**
 
-- CEJST v2.0 (2010 tracts) → 2020 ZCTAs, area-weighted in NC State Plane
-  (EPSG:32119), the EPA EJScreen / HUD USPS approach
-- **12 checks in 3 tiers, 23 of 23 sub-checks passed**; per-ZCTA area
-  conservation within 1%
-- Slivers < 100 m² dropped; border-state tracts (VA, SC, TN, GA) included;
-  25 zero-population tracts excluded
+- CEJST v2.0 (2010 tracts) → 2020 ZCTAs, area-weighted in NC State Plane (EPSG:32119), the EPA EJScreen / HUD USPS approach
+- 12 checks in 3 tiers, 23 of 23 sub-checks passed; per-ZCTA area conservation within 1%
+- Slivers < 100 m² dropped; border-state tracts (VA, SC, TN, GA) included; 25 zero-population tracts excluded
 - Known limit: uniform within-tract population (weaker in large rural tracts)
 
-**Sources:** §4.5, §7.1, §9.7 (L143–L147, L368, L448).
+---
 
 ### B3 — Full NEVI Scores (Table 2)
 
-**On-slide text:** Table 2, all 10 counties:
+**On-slide text**
 
-| Rank | County | NEVI | Equity | Utilization | Cost-Eff. |
-|:--:|---|:--:|:--:|:--:|:--:|
-| 1 | Union | 0.561 | 0.319 | 1.000 | 0.333 |
-| 2 | Mecklenburg | 0.548 | 0.810 | 0.067 | 0.801 |
-| 3 | Guilford | 0.465 | 0.855 | 0.103 | 0.347 |
-| 4 | New Hanover | 0.341 | 0.607 | 0.071 | 0.293 |
-| 5 | Wake | 0.316 | 0.322 | 0.130 | 0.568 |
-| 6 | Durham | 0.313 | 0.469 | 0.033 | 0.454 |
-| 7 | Forsyth | 0.285 | 0.283 | 0.156 | 0.467 |
-| 8 | Cabarrus | 0.199 | 0.228 | 0.229 | 0.111 |
-| 9 | Buncombe | 0.197 | 0.470 | 0.000 | 0.034 |
-| 10 | Orange | 0.077 | 0.059 | 0.101 | 0.071 |
+- Rank | County | NEVI | Equity | Utilization | Cost-Eff.
+- 1 | Union | 0.561 | 0.319 | 1.000 | 0.333
+- 2 | Mecklenburg | 0.548 | 0.810 | 0.067 | 0.801
+- 3 | Guilford | 0.465 | 0.855 | 0.103 | 0.347
+- 4 | New Hanover | 0.341 | 0.607 | 0.071 | 0.293
+- 5 | Wake | 0.316 | 0.322 | 0.130 | 0.568
+- 6 | Durham | 0.313 | 0.469 | 0.033 | 0.454
+- 7 | Forsyth | 0.285 | 0.283 | 0.156 | 0.467
+- 8 | Cabarrus | 0.199 | 0.228 | 0.229 | 0.111
+- 9 | Buncombe | 0.197 | 0.470 | 0.000 | 0.034
+- 10 | Orange | 0.077 | 0.059 | 0.101 | 0.071
+- Equity weight 0.30–0.50 sweep: top 3 unchanged; Mecklenburg gains and Union falls as the equity weight rises; Orange stays 10th.
 
-Footer: equity weight 0.30–0.50 sweep: top 3 unchanged; Mecklenburg gains and
-Union falls as the equity weight rises; Orange stays 10th.
-
-**Sources:** Table 2, §6.6 (L335–L354).
+---
 
 ### B4 — Data Sources and Diagnostics
 
 **On-slide text**
 
-| Source | Content | Window |
-|---|---|---|
-| NCDOT | Monthly county BEV registrations | Sep 2018 – Oct 2025 |
-| NREL AFDC API | Station inventory, all levels | Feb 2026 pull |
-| U.S. Census ACS + TIGER | Income, tenure, population; boundaries | ACS 2022 five-year; TIGER 2020 |
-| LEHD LODES | Block-level commuter flows | 2021 |
-| CEJST v2.0 | Disadvantaged tract designations | Dec 2024 release (EDGI / PEDP archive) |
-
-- CSS vs. MLE estimator: forecast difference **< 0.1%**
-- NCDOT counting change (May 2025): ~**0.4%** of totals, works *against* the
-  underprediction
+- Source | Content | Window
+- NCDOT | Monthly county BEV registrations | Sep 2018 – Oct 2025
+- NREL AFDC API | Station inventory, all levels | Feb 2026 pull
+- U.S. Census ACS + TIGER | Income, tenure, population; boundaries | ACS 2022 five-year; TIGER 2020
+- LEHD LODES | Block-level commuter flows | 2021
+- CEJST v2.0 | Disadvantaged tract designations | Dec 2024 release (EDGI / PEDP archive)
+- CSS vs. MLE estimator: forecast difference < 0.1%
+- NCDOT counting change (May 2025): ~0.4% of totals, works against the underprediction
 - Pillar correlations: E–U −0.26 · E–CE +0.48 · U–CE −0.03
 
-**Sources:** §5.1–§5.5, §4.9 (L188–L192, L206). Fixes C10.
+---
+
+### B5 — Workplace Demand by County (Paper Fig 36)
+
+**On-slide text**
+
+- Blue: registered BEVs in the county (residential demand)
+- Orange: residential BEVs plus adjusted commuters who work in the county
+- The orange bar adds commuters to EVs: it shows where daytime demand concentrates, not an EV count. Port need uses a 30% charging adoption rate and a 15:1 port ratio (§6.4).
+
+---
+
+### B6 — Stations on Justice40 Tracts (Paper Fig 42)
+
+**On-slide text**
+
+- Pink: disadvantaged census tracts (CEJST v2.0)
+- Blue dots: Level 2 (L2) charging stations
+- Orange triangles: DC fast-charging (DCFC) stations
+- 1,210 stations in the 10 study counties; 24.5% in disadvantaged tracts (§6.5)
+
+---
+
+### B7 — Pillar Contributions to the NEVI Score (Paper Fig 43)
+
+**On-slide text**
+
+- Blue: equity (weight 0.40)
+- Orange: utilization (weight 0.35)
+- Green: cost-effectiveness (weight 0.25)
+- Union's bar is dominated by utilization; Mecklenburg's and Guilford's by equity (§6.7)
+
+---
+
+### B8 — Tier 2: ZIP-Level Targeting
+
+**On-slide text**
+
+- What Tier 2 uses: population, disadvantaged-community status, and station density, ranking ZIPs within each county (§4.4)
+- Its output: the top 20 underserved ZIPs hold 732,892 residents served by 58 ports; 15 have zero DC fast chargers (§6.2)
+- Mecklenburg and Guilford each contribute 5 ZIPs to the top 20: the state's two most infrastructure-rich counties also hold some of its worst gaps (§6.2)
+- Theil justifies Tier 2 but is not an input to either tier's score (§4.4)
+
+---
+
+### B9 — Glossary of Abbreviations
+
+**On-slide text**
+
+- Abbreviation | Meaning
+- ACS | American Community Survey
+- AFDC | Alternative Fuels Data Center
+- API | Application programming interface
+- ARIMA | Autoregressive integrated moving average
+- BEV | Battery electric vehicle
+- CEJST | Climate and Economic Justice Screening Tool
+- CSS / MLE | Conditional sum of squares / maximum likelihood estimation
+- DCFC | DC fast charging
+- E / U / CE | Equity / Utilization / Cost-Effectiveness pillars
+- EDGI | Environmental Data & Governance Initiative
+- EO | Executive Order
+- EPA EJScreen | U.S. Environmental Protection Agency environmental justice screening tool
+- EPSG | Standard ID code for a map projection (here, NC State Plane)
+- ESM | Exponential smoothing model
+- FHWA | Federal Highway Administration
+- GE(0) / GE(1) | Generalized entropy index, alpha = 0 (Theil-L) / alpha = 1 (Theil-T)
+- Abbreviation | Meaning
+- HUD USPS | Dept. of Housing and Urban Development / U.S. Postal Service ZIP crosswalk
+- IEA | International Energy Agency
+- IRA | Inflation Reduction Act
+- Justice40 | Federal goal (EO 14008, 2021): 40% of certain federal benefits to disadvantaged communities; rescinded Jan 2025
+- L2 | Level 2 charging
+- LEHD LODES | Longitudinal Employer-Household Dynamics Origin-Destination Employment Statistics
+- MAPE | Mean absolute percentage error
+- NCDOT | North Carolina Department of Transportation
+- NEVI | National Electric Vehicle Infrastructure (Formula Program)
+- NREL | National Renewable Energy Laboratory
+- PEDP | Public Environmental Data Partners
+- TIGER | Census Topologically Integrated Geographic Encoding and Referencing (boundaries)
+- UCM | Unobserved components model
+- VIF | Variance inflation factor
+- ZCTA | ZIP Code Tabulation Area
 
 ---
 
 ## Figure inventory
 
-| Slide | File (`output/figures/`) | Pixels | Aspect | Layout |
-|---|---|---|---|---|
-| 5 | `fig-44-validation-scatter.png` | 4569 × 3669 | 1.25 | Left 60% |
-| 6 | `fig-24-heatmap-mecklenburg.png` | 3384 × 3669 | 0.92 (portrait) | Right 45% |
-| 7, B1 | `fig-33-theil-decomposition.png` | 4269 × 2469 | 1.73 | Full width, top |
-| 8 | `fig-36-demand-comparison.png` | 4269 × 3069 | 1.39 | Left 60% |
-| 9 | `fig-42-stations-justice40-overlay.png` | 6069 × 3733 | 1.63 | Full width |
-| 11 | `fig-43-nevi-priority-scores.png` | 4869 × 3369 | 1.45 | Left 60% |
-| 12 | `fig-45-equity-utilization-archetypes.png` | 4869 × 4269 | 1.14 | Right 50% |
-
-Projector legibility (label and tick size at slide scale) is checked at step 3.
+| Slide | Visual | Source |
+|---|---|---|
+| 6 | Talk version of Fig 44 (`assets/fig-44-validation-scatter-talk.png`, from `fig44_talk.py`) | §6.1 data, legend counts §4.2 |
+| 7 | Fig 24 (`fig-24-heatmap-mecklenburg.png`) with ZIP callouts (`fig24_labels.py`) | §6.2 |
+| 8 | Native stacked bar: Theil-T between / within, top 10 counties | §6.3 |
+| 9 | Native diverging bar: net daily commuters, four counties | §6.4 |
+| 10 | Native tiles and dot plot: residents in disadvantaged tracts | §6.5, §6.6 |
+| 12 | Native bar: NEVI Priority Score, Table 2 | §6.6 |
+| 13 | Native equity × utilization chart from Table 2 (replaces Fig 45) | §6.6, §7.3 |
+| B1 | Native bar: share of within-county inequality, four counties | §6.3 |
+| B5 / B6 / B7 | Paper Figs 36 / 42 / 43, as-is | §6.4 / §6.5 / §6.7 |
