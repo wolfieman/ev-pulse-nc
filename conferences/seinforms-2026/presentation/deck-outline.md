@@ -1,7 +1,7 @@
 # SEINFORMS 2026 — Locked Deck Outline
 
-Status: **deck v6 (2026-10-10), after the whole-deck review**; slides 1–14
-locked, slide 15 reviewed but not yet locked.
+Status: **deck v6 (2026-10-10), after the whole-deck review**; all 15 talk
+slides locked (slide 15 locked 2026-10-10 with its v6 takeaways).
 Every number below comes from the SEINFORMS paper. Citations use the paper's
 section, table, and figure numbers (`§6.2`, `Table 1 #10`, `Fig 43`), so they
 also work against the submitted PDF. Manuscript line numbers (`L291`) refer to

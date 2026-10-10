@@ -111,7 +111,7 @@ Corrections come first: the bases are cleaned before the deck is built on them.
 | 12 | Freeze: PDF committed here, `.pptx` in Drive, backups (USB + PDF) | Owner + Claude | ⬜ |
 | 13 | **Speaker notes pass** (delivery-ready, per the owner's humanization protocol) and add Dr. Burcu Adivar as Faculty Adviser on the title slide (v5) | Owner + Claude | ✅ done — v5 slide-by-slide review (all 15 slides), Dr. Adivar added |
 | 13b | Independent whole-deck review (numbers, flow, Tufte/Knaflic, tell-them) and owner-approved fixes in six groups | Claude → Owner | ✅ done — v6 in Drive (`…deck-v6-presenter.pptx`, preview PDF, speaker notes); report in Drive `review-whole-deck-2026-10-10.md` |
-| 13c | Lock slide 15 | Owner | ⬜ |
+| 13c | Lock slide 15 | Owner | ✅ done — locked as in v6 (takeaways ①–③) |
 | 14 | Send the final PPTX to Dr. Al-Ghandour, who uploads it to Ex Ordo (accepts ppt/pptx/key only) | Owner | ⬜ Fri/Sat Oct 9–10 |
 
 Q&A bank topics (step 10): Chow break and underprediction, the "first" claim, why
