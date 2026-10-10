@@ -108,9 +108,9 @@ Corrections come first: the bases are cleaned before the deck is built on them.
 | 9b | Current-status check on the whole final deck | Claude → Owner | — not needed (owner ruling: only if an agent changes slide content) |
 | 10 | Rehearsal: timed run-throughs; Q&A bank (~15 questions); mock Q&A with a skeptical-reviewer persona | Owner + Claude | ⬜ |
 | 11 | Figure re-render | Claude | — not needed (owner: the figures look great) |
-| 12 | Freeze: PDF committed here, `.pptx` in Drive, backups (USB + PDF) | Owner + Claude | ⬜ |
+| 12 | Freeze: PDF committed here, `.pptx` in Drive, backups (USB + PDF) | Owner + Claude | 🟡 PDF committed ([`ev-pulse-nc-seinforms-2026-sanyer-plus-backup-slides.pdf`](ev-pulse-nc-seinforms-2026-sanyer-plus-backup-slides.pdf), 24 slides, v6); PPTX + PDF in Drive; USB copy pending |
 | 13 | **Speaker notes pass** (delivery-ready, per the owner's humanization protocol) and add Dr. Burcu Adivar as Faculty Adviser on the title slide (v5) | Owner + Claude | ✅ done — v5 slide-by-slide review (all 15 slides), Dr. Adivar added |
-| 13b | Independent whole-deck review (numbers, flow, Tufte/Knaflic, tell-them) and owner-approved fixes in six groups | Claude → Owner | ✅ done — v6 in Drive (`…deck-v6-presenter.pptx`, preview PDF, speaker notes); report in Drive `review-whole-deck-2026-10-10.md` |
+| 13b | Independent whole-deck review (numbers, flow, Tufte/Knaflic, tell-them) and owner-approved fixes in six groups | Claude → Owner | ✅ done — v6 delivered: Drive root holds `…-sanyer-upload.pptx` (15 slides, sent 2026-10-10) and `…-sanyer-plus-backup-slides.pptx` (24 slides); v6 presenter set in `presentation/legacy/`; report in Drive `notes/review-whole-deck-2026-10-10.md` |
 | 13c | Lock slide 15 | Owner | ✅ done — locked as in v6 (takeaways ①–③) |
 | 14 | Send the final PPTX to Dr. Al-Ghandour, who uploads it to Ex Ordo (accepts ppt/pptx/key only) | Owner | ⬜ Fri/Sat Oct 9–10 |
 

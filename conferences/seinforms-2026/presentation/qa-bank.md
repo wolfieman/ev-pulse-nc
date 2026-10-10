@@ -2,7 +2,7 @@
 
 Answers rest on the SEINFORMS paper (section numbers below). Items marked
 *briefing* come from the current-status briefing in Drive
-(`01 Projects/seinforms-2026/qa-briefing-current-status-2026-10-09.md`) and are
+(`01 Projects/seinforms-2026/notes/qa-briefing-current-status-2026-10-09.md`) and are
 context, not results of the study. Deck slide numbers count the title slide
 as 1.
 

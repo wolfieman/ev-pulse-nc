@@ -168,7 +168,7 @@ Problem · 🔒 3 Research Questions · 🔒 4 Demand Signal · 🔒 5 Pipeline 
 
 ## Deck v6 changes (whole-deck review, owner-approved 2026-10-10)
 
-An independent whole-deck review (Drive: `01 Projects/seinforms-2026/review-whole-deck-2026-10-10.md`)
+An independent whole-deck review (Drive: `01 Projects/seinforms-2026/notes/review-whole-deck-2026-10-10.md`)
 checked numbers, flow, Tufte/Knaflic design, and "tell them what you told them".
 The owner approved its fixes in six groups. No slides were cut; time was
 recovered by trimming the notes.
