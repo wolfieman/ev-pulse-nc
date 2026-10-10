@@ -26,8 +26,8 @@ as 1.
 - **Position along the diagonal** = county size: small rural counties lower
   left, large counties upper right.
 - **Colors** = the model type SAS chose for that county.
-- **Circled point** = Mecklenburg, October 2025: the largest single miss, 975
-  vehicles above forecast (§4.2, §6.1). It looks small because, on a log
+- **Circled point** = Mecklenburg, October 2025: 975 vehicles above forecast
+  in a single month (§4.2, §6.1). It looks small because, on a log
   scale, 975 is a small percentage of Mecklenburg's count; it is above the
   line too.
 
@@ -47,7 +47,8 @@ as 1.
 > for 5), and all three types show the same small, consistent
 > underprediction, so the conclusion doesn't depend on the model choice."
 
-- n in the legend = county-months: 328 = 82 × 4, 52 = 13 × 4, 20 = 5 × 4.
+- The legend shows counties (82 / 13 / 5, §4.2); each county has four holdout
+  months, giving 400 dots.
 - In-sample fit of the selected models: weighted MAPE 2.73% (§4.2).
 - ARIMA estimator choice (SAS CSS vs. Python MLE) changes forecasts by less
   than 0.1% (§4.9).

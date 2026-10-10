@@ -562,6 +562,7 @@ const backup = () => pres.addSlide({ masterName: "CONTENT", sectionTitle: "Backu
 {
   const s = backup();
   header(s, "Backup B1", "Theil-T Decomposition");
+  s.addNotes("If asked how the decomposition works, or who drives the within-county share. The Theil-T index splits exactly into a between-county and a within-county part, with no residual: 0.5791 = 0.0900 + 0.4892. The Theil-L version gives 82.5% within, so the result doesn't depend on the index. Mecklenburg alone contributes 41.5% of the within-county part and Wake 28.1%, together roughly 70%. Theil explains why Tier 2 exists; it isn't an input to either score.");
   // Native chart of each county's share of within-county inequality, the four
   // counties §6.3 reports (replaces the Fig 33 image, whose title overlaps).
   s.addChart(pres.charts.BAR, [
@@ -587,6 +588,7 @@ const backup = () => pres.addSlide({ masterName: "CONTENT", sectionTitle: "Backu
 {
   const s = backup();
   header(s, "Backup B2", "Crosswalk Validation");
+  s.addNotes("If asked how CEJST tracts get down to ZIP level. CEJST uses 2010 census tracts; ZIP areas are 2020. I area-weighted the tracts into ZIP areas in the NC State Plane projection, the approach EPA's EJScreen and HUD's USPS crosswalk use. Twelve checks in three tiers, 23 of 23 sub-checks passed, with area conserved within 1% per ZIP area. The known limit: it assumes population is spread evenly within a tract, which is weaker in large rural tracts.");
   bullets(s, [
     "CEJST v2.0 (2010 tracts) → 2020 ZCTAs, area-weighted in NC State Plane (EPSG:32119), the EPA EJScreen / HUD USPS approach",
     [b("12 checks in 3 tiers, 23 of 23 sub-checks passed"), t("; per-ZCTA area conservation within 1%")],
@@ -598,6 +600,7 @@ const backup = () => pres.addSlide({ masterName: "CONTENT", sectionTitle: "Backu
 {
   const s = backup();
   header(s, "Backup B3", "Full NEVI Scores (Table 2)");
+  s.addNotes("If asked about a specific county, or for the full table. All ten counties, with each pillar score. Union leads utilization at 1.000; Guilford and Mecklenburg lead equity; Mecklenburg leads cost-effectiveness at 0.801. Orange is last at 0.077. Across the equity-weight sweep from 0.30 to 0.50, the top three stay the same: Mecklenburg gains and Union falls as the equity weight rises, and Orange stays tenth.");
   const hdr = ["Rank", "County", "NEVI", "Equity", "Utilization", "Cost-Eff."].map((h) => ({ text: h, options: { bold: true, color: WHITE, fill: { color: NAVY } } }));
   const data = [
     ["1", "Union", "0.561", "0.319", "1.000", "0.333"],
@@ -618,6 +621,7 @@ const backup = () => pres.addSlide({ masterName: "CONTENT", sectionTitle: "Backu
 {
   const s = backup();
   header(s, "Backup B4", "Data Sources and Diagnostics");
+  s.addNotes("If asked about data vintages, the estimator, or pillar correlations. All five sources are public; the vintages are in the table. Two diagnostics: SAS's default ARIMA estimator versus exact maximum likelihood changes forecasts by less than 0.1%, and NCDOT's May 2025 counting change is about 0.4% of totals and works against the underprediction. Equity and cost-effectiveness correlate +0.48; the other pairs are −0.26 and −0.03. So the pillars measure different things, but they aren't independent.");
   const hdr = ["Source", "Content", "Window"].map((h) => ({ text: h, options: { bold: true, color: WHITE, fill: { color: NAVY } } }));
   const data = [
     ["NCDOT", "Monthly county BEV registrations", "Sep 2018 – Oct 2025"],
@@ -637,6 +641,7 @@ const backup = () => pres.addSlide({ masterName: "CONTENT", sectionTitle: "Backu
 {
   const s = backup();
   header(s, "Backup B5", "Workplace Demand by County (Paper Fig 36)");
+  s.addNotes("If asked how large workplace demand is, county by county. Blue is registered BEVs in the county; orange adds the adjusted commuters who work there. The orange bar isn't an EV count: it shows where daytime demand concentrates. Port need in the paper uses a 30% charging adoption rate and a 15-to-1 port ratio.");
   fig(s, "fig-36-demand-comparison.png", 4269, 3069, M, 1.75, 7.3, 5.15);
   bullets(s, [
     [b("Blue:"), t(" registered BEVs in the county (residential demand)")],
@@ -648,6 +653,7 @@ const backup = () => pres.addSlide({ masterName: "CONTENT", sectionTitle: "Backu
 {
   const s = backup();
   header(s, "Backup B6", "Stations on Justice40 Tracts (Paper Fig 42)");
+  s.addNotes("If asked where stations sit relative to disadvantaged areas. Pink tracts are disadvantaged under CEJST; blue dots are Level 2 stations and orange triangles are fast chargers. These colors differ from slide 7's map. Of 1,210 stations in the ten counties, 24.5% sit in disadvantaged tracts, against 18.5% of residents: roughly proportional overall, with strong variation county by county.");
   fig(s, "fig-42-stations-justice40-overlay.png", 6069, 3733, M, 1.7, 8.2, 5.0);
   bullets(s, [
     [b("Pink:"), t(" disadvantaged census tracts (CEJST v2.0)")],
@@ -660,6 +666,7 @@ const backup = () => pres.addSlide({ masterName: "CONTENT", sectionTitle: "Backu
 {
   const s = backup();
   header(s, "Backup B7", "Pillar Contributions to the NEVI Score (Paper Fig 43)");
+  s.addNotes("If asked what drives a county's score, e.g. Union's. This is the paper's breakdown of each total into weighted pillar contributions. Union's bar is dominated by utilization, its 1.000 normalized score; Mecklenburg's and Guilford's are dominated by equity. It's the archetype story from slide 13, shown as parts of each score.");
   fig(s, "fig-43-nevi-priority-scores.png", 4869, 3369, M, 1.7, 8.2, 5.15);
   bullets(s, [
     [b("Blue:"), t(" equity (weight 0.40)")],
@@ -672,6 +679,7 @@ const backup = () => pres.addSlide({ masterName: "CONTENT", sectionTitle: "Backu
 {
   const s = backup();
   header(s, "Backup B8", "Tier 2: ZIP-Level Targeting");
+  s.addNotes("If asked \"where's the ZIP-level tier?\" The talk shows why it exists: the 84.5% within-county finding and the 250-fold gap in Mecklenburg. Tier 2 ranks ZIPs within each county on population, disadvantaged status, and station density. The top 20 underserved ZIPs hold 732,892 residents served by 58 ports, 15 have zero fast chargers, and Mecklenburg and Guilford each have five of them.");
   bullets(s, [
     [b("What Tier 2 uses: "), t("population, disadvantaged-community status, and station density, ranking ZIPs within each county (§4.4)")],
     [b("Its output: "), t("the top 20 underserved ZIPs hold "), b("732,892 residents served by 58 ports"), t("; "), b("15"), t(" have zero DC fast chargers (§6.2)")],
