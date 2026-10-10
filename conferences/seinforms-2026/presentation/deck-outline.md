@@ -54,6 +54,141 @@ Structure per slide: **On-slide text** (what goes on the slide), **Figure**
 
 ---
 
+## Deck v5 decisions (owner, 2026-10-09)
+
+**Slide review status (deck numbering, title = slide 1):** 🔒 1 Title · 🔒 2 The
+Problem · 🔒 3 Research Questions · 🔒 4 Demand Signal · 🔒 5 Pipeline · 🔒 6 Forecast Validation · 🔒 7 Infrastructure Gap · 🔒 8 Theil · 🔒 9 Workplace Demand · 🔒 10 Justice40 (cut candidate) · 🔒 11 Framework · 🔒 12 Rankings · 🔒 13 Archetypes · 🔒 14 Contributions · ⬜ 15 (slide 4 notes reopened for the Gini definition on 2026-10-10, then re-locked). Note: the
+per-slide sections below still use the older outline numbering (research
+questions = "2a"); renumbering follows at the next commit.
+
+- **Slide 1 locked:** "Faculty Advisors: Dr. Majed Al-Ghandour, Dr. Burcu
+  Adivar"; program stays "MBA, Business Analytics"; speaker notes end with the
+  spring-2026 sentence above.
+- **Abbreviations:** spelled out in place at first use and said aloud: NEVI,
+  NCDOT (slide 2); BEV (research questions); IEA (demand signal); MAPE
+  (forecast); GE(1) (Theil); ACS (workplace); EO, EDGI, PEDP (Justice40 note);
+  VIF (framework); FHWA (closing). The pipeline slide carries one small line
+  spelling out NREL, AFDC, API, LEHD LODES, CEJST, ZCTA. EV, SAS, NC and ZIP stay
+  as is.
+- **Data as of:** first data slide (demand signal) carries "Data as of Feb 2026:
+  NCDOT registrations through Oct 2025; Alternative Fuels Data Center (AFDC)
+  stations as of Feb 2026".
+- **Backup slides:** B5 glossary added. The builder writes three files: upload
+  (15 talk slides, sent for the Ex Ordo upload), presenter (talk + B1–B5, USB),
+  and backup (B1–B5 only, USB).
+- Gamma step skipped; the deck is built and kept in PowerPoint.
+- **Slide 2 (option B, owner):** card 3 reads "The NC Department of Transportation
+  (NCDOT) revises its NEVI plan, narrowing the corridor buildout and shifting
+  funds toward rural and community charging". The paper's "16 rural and community
+  locations" wording is dropped: NCDOT's Jan 27, 2026 release cut the corridor
+  buildout from 41 to 16 corridor sites to free funds for a later community phase
+  (see the Q&A briefing). Speaker notes say NEVI and NCDOT in full and match the card.
+- **Slide 2 claim narrowed (owner, after advisor feedback):** title "$109
+  Million. 100 Counties. No Data-Driven County Ranking."; card 2 "No county
+  ranking: NCDOT has a federally approved NEVI plan, but no publicly available,
+  data-driven method for ranking counties" (paper §2.1, §2.3). Notes add that
+  NCDOT is building corridors in rounds and the community phase is still ahead
+  (the Sept 2026 awards were Round 2 of Phase 1).
+- **Slide 5:** footer reads "SAS Model Studio forecasts (fall 2025), validated in
+  Python (spring 2026)"; notes say AFDC, LODES and CEJST in full.
+- **Slide 6:** title "Forecasts Hold Out of Sample, and Adoption Accelerated
+  After 2022" (past tense: federal EV purchase credits ended Sept 30, 2025);
+  notes say MAPE in full and end on the planning buffer (paper §4.9) instead of
+  "which the score carries" (the buffer is uniform across the cohort, §4.7).
+- **Slide 6 figure:** talk version of Fig 44 (`src/paper/seinforms_deck/fig44_talk.py`,
+  output `assets/fig-44-validation-scatter-talk.png`): same 400 points (verified
+  identical), spelled-out legend with county-month counts, larger text and
+  Mecklenburg callout, statistics inset and figure title removed. Notes walk
+  through the chart, spell out ARIMA, explain the Chow test and the interval
+  coverage. Cheat sheet in `qa-bank.md`.
+- **Slide 7:** bullet "499 of 853 ZIP areas have zero stations" (ZCTA stays on
+  slide 5 and in the glossary). The paper's map image is unchanged; the slide
+  overlays labels "28202 Uptown: 78.64" and "28215: 0.31" (positions from
+  `fig24_labels.py`, raw ZCTA boundaries, map projection), a projector-size
+  legend ("Triangles: DC fast-charging stations · Colors: all charging ports ·
+  No charging stations"), and a white patch over the corner box (its population
+  and port counts are not in the paper text). Notes explain the map.
+- **Slide 8:** the Fig 33 image (its title and subtitle overlap) is replaced by a
+  native PowerPoint stacked bar of the paper's values (§6.3: between 0.0900,
+  within 0.4892, total 0.5791). The first bullet (same numbers) is dropped. Notes
+  add a plain-language explanation of within vs. between.
+- **Slide 9 (advisor feedback; Tufte/Knaflic):** Fig 36 replaced by a native
+  diverging bar of net daily commuters for the four counties the paper reports
+  (§6.4: Mecklenburg +194,361, Wake +126,517, Durham +89,450, Union −36,113).
+  LEHD LODES spelled out on the slide; "859,260 adjusted commuters" (paper
+  wording); cost-effectiveness link (Mecklenburg 0.801). Fig 36 moved to backup
+  B5 with a blue/orange explanation; glossary is now B6.
+- **Slide 10 (Tufte/Knaflic):** Fig 42 replaced by a native bar of residents in
+  disadvantaged tracts for the counties the paper reports (§6.5: Guilford 29.2%,
+  New Hanover 28.8%, Durham 26.6%, Mecklenburg 23.7%, Wake 8.1%) with the
+  top-10 average 18.5% as a grey bar. Notes define "disadvantaged" (CEJST, §3.4).
+  Fig 42 moved to backup B6 with L2 and DCFC spelled out (its marker colours
+  differ from slide 7); glossary is now B7 and adds DCFC and L2.
+- **Slide 10 redesign (owner):** title "Roughly Proportional Overall; Equity Gaps
+  Are County by County". Left: stat tiles 24.5% of stations / 18.5% of residents
+  (stations and communities together, as the message needs). Right: a dot plot
+  of residents in disadvantaged tracts by county (same §6.5 values) with a
+  dashed 18.5% average line, so it no longer repeats slide 9's bar layout. Orange (4.9%, §6.6) added as a sixth dot; notes link back to slides 7–8
+  (proportional in total, not well served inside each county).
+- **Slide 11:** utilization card reads "BEVs per port; demand data validated out
+  of sample (strongest data)" (the pillar is registrations ÷ ports, §4.7); green
+  bar reads "Pillars measure different things" (VIF 1.41; Equity–CE r = +0.48,
+  §4.9). Notes explain min-max and the VIF in plain words.
+- **Slide 12:** Wake box reads "8.1% of residents in disadvantaged tracts"
+  (matches slide 10, §6.5); robustness shows the two tests with full results
+  in the paper (equity-weight sweep, remote-work multiplier; the
+  cost-effectiveness sub-weight test is cited in §4.7.1 but not shown in §4.7);
+  notes explain how to read the bars. Fig 43 kept.
+- **Slide 13:** the paper's Fig 45 image is replaced by a native chart drawn
+  from Table 2 (equity, utilization), because the image mislabels three counties
+  and hides Guilford (logged as post-conference fix #2). Quadrants split at 0.5
+  and all four are named; the top three are in colour; no size encoding (totals
+  are on slide 12). Notes say how to read the axes.
+- **Slides 10 and 13 aligned (equity pillar):** slide 10 calls the county spread
+  "the largest input to the equity pillar" (notes; slide 10 reopened,
+  then re-locked); slide 13 notes explain that Mecklenburg's equity score also
+  reflects its uneven within-county charging (§4.7 equity sub-metrics: J40 share
+  0.40, population-weighted Gini 0.30, underserved ZIPs 0.20, zero-station share
+  0.10).
+- **Slide 14:** contribution 3 reads "non-redundant pillars (VIF 1.41)" (matches
+  slide 11); notes say "To my knowledge, it's the first state-level application,
+  and the first to use the split to design the allocation itself" (no Choi et al.
+  contrast; the Guo et al. 2025 Guangzhou precedent is in the Q&A bank).
+  The policy limitation reads "direction unknown (policy risk)" (§9.8–9.9);
+  notes explain what a direction of bias is.
+- **Slide 15 (advisor feedback on the title):** title "A Ranking to Inform
+  NCDOT's Decisions, and What Comes Next" (paper §10.4: decision-support, not
+  decision-making); planners line reads "for siting priorities" (site selection
+  is out of scope, §2.5). Notes open with "inform, not replace", tie back to the
+  community phase (slide 2), restate the big idea (county first, then
+  neighborhood), and thank both faculty advisors.
+
+---
+
+## Key terms and numbers register (consistency check)
+
+One standard phrasing per concept, where it is first explained (deck slide
+numbers), and the paper source. Every slide and its notes are checked against
+this as they are reviewed; a fresh-agent pass reads the whole deck against it
+before the freeze.
+
+| Concept | Standard phrasing | First explained | Also used | Paper |
+|---|---|---|---|---|
+| Gini coefficient | "measures how unevenly something is spread, from 0 for perfectly even to 1 for everything in one place" | slide 4 notes | slide 8 | §3.3 |
+| Gini 0.805 | EV (BEV) **ownership** across counties | slide 4 | — | §1.2, Table 1 #6 |
+| Gini 0.566 | "a second Gini": charging **ports** across ZIP codes (statewide, population-weighted) | slide 8 | — | §6.3, Table 1 #7 |
+| Theil index | "measures how unevenly charging ports are spread relative to where people live; zero would mean every ZIP code has the same access per person"; not on a 0–1 scale; the split matters, not the size | slide 8 notes | slide 14 | §3.3, §6.3 |
+| 84.5% / 15.5% | share of Theil-T inequality within / between counties, top 10 counties (0.4892 / 0.0900 of 0.5791) | slide 8 | slides 14–15 | §6.3 |
+| 73% | top 10 counties' share of the statewide BEV fleet (scope) | slide 4 | slide 14 | Abstract, §2.2 |
+| 16.9 | BEVs per public port (Feb 2026) vs. IEA global benchmark ≈10 | slide 4 | — | §1.2, Table 1 #5 |
+| 250-fold | port-density gap, ZIP 28202 (78.64) vs. 28215 (0.31) per 10,000 residents | slide 7 | slide 13 | §6.2 |
+| MAPE 4.34% | mean absolute percentage error, true four-month holdout, 400 county-months | slide 6 | slide 15 | §6.1 |
+| Disadvantaged (tract) | "CEJST flags a census tract as disadvantaged when it's low-income and also burdened on at least one of eight environmental, health, or infrastructure measures" | slide 10 notes | — | §3.4 |
+| Fast-charger marker | red triangle = DC fast-charging station (slide 7); Fig 42 (backup B6) uses orange triangles, noted on that slide | slide 7 | backup B6 | — |
+| NEVI / NCDOT / BEV | spelled out at first use (slides 2, 2, 3) and said aloud | slides 2–3 | throughout | — |
+
+---
+
 ## Instructions for Gamma (paste first)
 
 > Build a 16:9 conference presentation from the outline below, one card per
@@ -77,7 +212,7 @@ Structure per slide: **On-slide text** (what goes on the slide), **Figure**
   Demand-Driven EV Charging Infrastructure Investment Prioritization in North
   Carolina*
 - Wolfgang Sanyer · MBA, Business Analytics · Fayetteville State University
-- Faculty Advisor: Dr. Majed Al-Ghandour (D2)
+- Faculty Advisors: Dr. Majed Al-Ghandour, Dr. Burcu Adivar (D2)
 - SEINFORMS 2026 · Myrtle Beach, SC · October 2026
 
 **Figure:** none.
@@ -89,7 +224,8 @@ Structure per slide: **On-slide text** (what goes on the slide), **Figure**
 Good morning. I'm Wolfgang Sanyer, an MBA student in business analytics at
 Fayetteville State. This talk is about how North Carolina could decide where
 $109 million in federal EV charging money should go, and what the data says
-about where the real gaps are.
+about where the real gaps are. The analysis was completed in spring 2026, using
+data through February 2026.
 
 ---
 

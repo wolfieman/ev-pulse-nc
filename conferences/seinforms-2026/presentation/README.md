@@ -149,3 +149,13 @@ His requests, and their status:
 
 Travel documents and reservations are kept in Google Drive
 (`01 Projects/seinforms-2026/travel/`), not in git.
+
+## Post-conference fixes (logged, not done before the talk)
+
+Owner ruling: spring-26 materials stay unchanged until after the conference.
+
+| # | Item | Where | Fix |
+|---|---|---|---|
+| 1 | LODES vintage described as "LODES8, 2021 (most recent public release)", but Census had posted NC 2022 (Oct 3, 2024) and 2023 (Dec 3, 2025) before the Feb 2026 pull | `data/README.md`, `data/DATA-DICTIONARY.md`, `frameworks/README.md` | Reword to "LODES8, 2021 vintage; 2022 and 2023 releases available" (results unaffected: rankings are invariant to the remote-work multiplier, paper §9.2) |
+| 2 | Paper Fig 45 (archetype scatter): county labels are offset from their bubbles: "Mecklenburg" sits on New Hanover (0.607, 0.071), "New Hanover" on Durham, "Durham" on Buncombe; Mecklenburg's bubble is unlabeled, Guilford's is hidden behind the size legend, and the equity-driven quadrant label is missing | `output/figures/fig-45-equity-utilization-archetypes.png` (`src/analysis/phase5_fig45_archetype_scatter.py`); paper §7.3 | Fix the label placement and legend position, re-render, rebuild the paper PDF. The talk uses a native redraw from Table 2 (slide 13) |
+
