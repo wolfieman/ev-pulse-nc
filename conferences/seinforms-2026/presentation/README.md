@@ -106,17 +106,67 @@ Corrections come first: the bases are cleaned before the deck is built on them.
 | 8 | Retouch the chosen version in PowerPoint | Owner | — skipped (no Gamma version) |
 | 9 | Final number check: a fresh agent compares the exported PDF against the paper | Claude | ⬜ |
 | 9b | Current-status check on the whole final deck | Claude → Owner | — not needed (owner ruling: only if an agent changes slide content) |
-| 10 | Rehearsal: timed run-throughs; Q&A bank (~15 questions); mock Q&A with a skeptical-reviewer persona | Owner + Claude | ⬜ |
+| 10 | Rehearsal: timed run-throughs; Q&A bank (~15 questions); mock Q&A with a skeptical-reviewer persona | Owner + Claude | 🟡 plan set 2026-10-12 (see Rehearsal plan) |
 | 11 | Figure re-render | Claude | — not needed (owner: the figures look great) |
 | 12 | Freeze: PDF committed here, `.pptx` in Drive, backups (USB + PDF) | Owner + Claude | 🟡 PDF committed ([`ev-pulse-nc-seinforms-2026-sanyer-plus-backup-slides.pdf`](ev-pulse-nc-seinforms-2026-sanyer-plus-backup-slides.pdf), 24 slides, v6); PPTX + PDF in Drive; USB copy pending |
 | 13 | **Speaker notes pass** (delivery-ready, per the owner's humanization protocol) and add Dr. Burcu Adivar as Faculty Adviser on the title slide (v5) | Owner + Claude | ✅ done — v5 slide-by-slide review (all 15 slides), Dr. Adivar added |
 | 13b | Independent whole-deck review (numbers, flow, Tufte/Knaflic, tell-them) and owner-approved fixes in six groups | Claude → Owner | ✅ done — v6 delivered: Drive root holds `…-sanyer-upload.pptx` (15 slides, sent 2026-10-10) and `…-sanyer-plus-backup-slides.pptx` (24 slides); v6 presenter set in `presentation/legacy/`; report in Drive `notes/review-whole-deck-2026-10-10.md` |
 | 13c | Lock slide 15 | Owner | ✅ done — locked as in v6 (takeaways ①–③) |
-| 14 | Send the final PPTX to Dr. Al-Ghandour, who uploads it to Ex Ordo (accepts ppt/pptx/key only) | Owner | ⬜ Fri/Sat Oct 9–10 |
+| 14 | Send the final PPTX to Dr. Al-Ghandour, who uploads it to Ex Ordo (accepts ppt/pptx/key only) | Owner | ✅ done — sent 2026-10-10; he uploaded it to Ex Ordo |
 
 Q&A bank topics (step 10): Chow break and underprediction, the "first" claim, why
 these weights, why min-max normalization, the Justice40 rescission, the CEJST
 archive, the LODES 2021 vintage, why the top 10 counties and not all 100.
+
+## Rehearsal plan (set Mon Oct 12)
+
+Window: Mon evening, all of Tue, Wed until ~17:30 (rental pickup Wed
+18:30–18:45 at FAY, booked for 19:00, counter open to midnight; bed by 20:00; Thu wake 04:00, on the road 05:00–05:30).
+Talk Thu Oct 15, 9:55–10:17, Arcadian 1-2. Drive straight to the conference
+site on Thursday.
+
+Google Drive references (`01 Projects/seinforms-2026/`):
+
+- Talk files: `ev-pulse-nc-seinforms-2026-sanyer-upload.pptx` (15 slides, on
+  Ex Ordo) and `ev-pulse-nc-seinforms-2026-sanyer-plus-backup-slides.pptx`
+  (24 slides, USB copy), each with a slides-only `.pdf` fallback
+- Speaker notes with timings: `presentation/legacy/ev-pulse-nc-seinforms-2026-deck-v6-speaker-notes.md`
+- Q&A briefing: `notes/qa-briefing-current-status-2026-10-09.md`
+- Reservations: `travel/travel-seinforms-hotel-reservation-2026-10-15.pdf` and
+  `travel/travel-seinforms-car-rental-reservation-2026-10-14.pdf`
+- Travel plan and approval packet: `travel/seinforms-2026-travel-plan.pdf`,
+  `travel/seinforms-2026-travel-approval-packet.pdf`
+
+Dr. Al-Ghandour may show a couple of NEVI slides right before the talk. That
+time likely comes out of the same slot, so plan for ~14 min and be ready to
+shorten slide 2 (NEVI background) if he has already covered it.
+
+**Still unknown:** whether the 22 minutes include Q&A, and how long his NEVI
+part runs. If he takes 4+ minutes, the trim path (notes first, then slides
+5/9/10, each proposed and approved) applies.
+
+| When | Task | Done when |
+|---|---|---|
+| ✅ | Hotel kept (Embassy Suites, Thu night; reservation in Drive `travel/`) | done |
+| Mon, tonight | Register as student ($145, Ex Ordo) | confirmation email |
+| ✅ | PPTX uploaded to Ex Ordo by Dr. Al-Ghandour | done |
+| Mon, tonight | USB: both `-sanyer-` PPTX and both PDFs; open each from the stick | files open |
+| Mon, tonight | Run #1: talk out loud with a stopwatch, note the clock at slides 5, 10, 15 | splits logged |
+| Tue, morning | Trim notes on any slide that ran over its checkpoint (proposed, approved) | under budget |
+| Tue, midday | Runs #2 and #3, notes face-down after #2 | ≤ 14:30, no stalls |
+| Tue, afternoon | Mock Q&A #1: Prof. Hong (min-max, Union, invariance, weights); answers ≤ 60 s, checked against `qa-bank.md` | no blank answers |
+| Tue, evening | Mock Q&A #2: skeptical reviewer (Chow break, "first" claim, Justice40, LODES, Fig 45 labels, top 10 only) | weak answers rewritten |
+| Wed, by 17:30 | Final run standing, with a clicker; quick-fire 5 Q&A; print a one-page cue card; pack (USB, HDMI adapter, laptop, charger, clicker, **physical** driver's license and credit card for Budget, $300 hold) | packed |
+| Thu | 04:00 wake, 05:00–05:30 depart (~2.5 h) straight to the **venue**, Hilton Myrtle Beach Resort, 10000 Beach Club Dr (not the Embassy Suites, check-in 16:00); by 9:15 find Arcadian 1-2, load the USB on the room PC, check the presenter view, ask the chair for 5- and 1-minute signals | slides on screen |
+
+**Checkpoints** (v6 notes at 140 wpm, cumulative):
+
+| Slide | 1 | 3 | 5 | 6 | 8 | 10 | 12 | 13 | 15 |
+|---|---|---|---|---|---|---|---|---|---|
+| Clock | 0:24 | 2:00 | 3:23 | 4:53 | 6:45 | 9:12 | 11:03 | 12:15 | 14:00 |
+
+If you're more than 45 s behind at slide 8, use the in-room skip notes on
+slides 9 and 10.
 
 ## File policy
 
