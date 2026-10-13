@@ -398,16 +398,14 @@ Score: everything feeds one score, every input is public, and the whole pipeline
 - Chow test: F = 1,268.35, p < 1 × 10⁻⁶ at the Aug 2022 Inflation Reduction Act passage
 - 95% interval coverage 75.50% raw → 93.75% after county bias correction: a centering problem, not a width problem
 
-**Speaker notes** (187 words, ~75 s)
+**Speaker notes** (168 words, ~67 s)
 
-First question: can we trust the demand forecasts?
-The SAS models were tested on four months they never saw, across all 100 counties.
-Each dot is one county in one month: forecast across, actual up, on a log scale.
-The colors show SAS picked the best-fitting model for each county, rather than forcing one model on the whole state.
-The mean absolute percentage error, or MAPE, was 4.34%, under the 5% usability bar.
-But the misses lean one way. 69% of the dots sit above the line: actual registrations beat the forecast, so the models underestimated growth. The circled point, Mecklenburg, beat its forecast by 975 vehicles in one month.
-A Chow test finds a structural break at the Inflation Reduction Act in August 2022. The models learned a slower world.
-Their 95% ranges caught only 75.5% of the actual counts; re-centered on each county's average miss, 93.75%. Right width, wrong center, so planners should add a 4 to 5 percent upward buffer.
+First question, trust. The test: SAS forecasts against four held-out months, across all 100 counties.
+Each dot is one county in one month: forecast across, actual up, on a log scale. The colors show SAS picked the best-fitting model for each county, rather than forcing one model on the whole state.
+Accuracy: the average miss is under the 5% usability bar.
+Lean: but the misses lean upward. Most dots sit above the line: actual registrations beat the forecast, so the models underestimated growth. The circled point, Mecklenburg, beat its forecast by 975 vehicles in one month.
+Break: a Chow test finds a structural break at the Inflation Reduction Act in August 2022. The models learned a slower world.
+Buffer: their 95% ranges were the right width but the wrong center. They aim low, so planners should add a 4 to 5 percent upward buffer.
 And the bias cuts the safe way: real demand is likely higher than forecast, so the gaps in this study are understated, not overstated.
 
 ---
@@ -428,14 +426,14 @@ And the bias cuts the safe way: real demand is likely higher than forecast, so t
 - 28202 Uptown: 78.64
 - 28215: 0.31
 
-**Speaker notes** (101 words, ~40 s)
+**Speaker notes** (92 words, ~37 s)
 
-On the supply side, more than half of North Carolina's ZIP areas have no charger at all, covering 2.2 million people.
-That's not only a rural story. This map zooms into one county, Mecklenburg. The color is all charging ports per 10,000 residents, darker means more; gray hatching means no stations at all; the red triangles mark fast-charging stations.
-Uptown Charlotte, ZIP 28202, has 78.64 ports per 10,000 residents.
+On the supply side, more than half of North Carolina's ZIP areas have no charger at all. That's 2.2 million people.
+That's not only a rural story. This map zooms into one county, Mecklenburg: darker means more ports per resident, gray hatching means none, red triangles are fast chargers.
+Uptown Charlotte, ZIP 28202, is the dark cluster, with 78.64 ports per 10,000 residents.
 Fourteen miles east, ZIP 28215 has 64,713 people and two ports.
-That's a 250-fold difference inside one county.
-Hold on to this picture, because the next slide shows it isn't an outlier.
+That's a 250-fold difference inside one county, and a county average hides it.
+Hold on to this picture.
 
 ---
 
@@ -455,16 +453,15 @@ Hold on to this picture, because the next slide shows it isn't an outlier.
 
 **Native chart:** Theil-T inequality index, top 10 counties (total = 0.5791)
 
-**Speaker notes** (170 words, ~68 s)
+**Speaker notes** (122 words, ~49 s)
 
 And Mecklenburg isn't an outlier. This is the central result. A second Gini, this time for charging ports across ZIP codes, is 0.566: inequality is high, but that doesn't tell you where it lives.
-The Theil index measures how unevenly ports are spread relative to where people live; zero would mean every ZIP code has the same access per person.
+The Theil index measures how unevenly ports are spread relative to where people live. [optional: Zero would mean every ZIP code has the same access per person.]
 The Theil-T version splits exactly into a between-county part and a within-county part, with no residual.
-If every county had the same average access but big differences between its own ZIP codes, all the inequality would be within counties.
-That's essentially what we see: for the top 10 counties, 84.5% of the inequality is within counties.
-The Theil-L version gives 82.5%, so it isn't an artifact of the index.
+[optional: If every county had the same average access but big differences between its own ZIP codes, all the inequality would be within counties.]
+This is what we see: for the top 10 counties, 84.5% of the inequality is within counties.
 Mecklenburg alone contributes 41.5% of it.
-Here's why that matters: most state NEVI formulas allocate by county, so they miss most of the problem.
+(pause) Here's why that matters: most state NEVI formulas allocate by county, so they miss most of the problem.
 That is why the framework has two tiers: rank the counties, then target ZIP codes inside them.
 
 ---
