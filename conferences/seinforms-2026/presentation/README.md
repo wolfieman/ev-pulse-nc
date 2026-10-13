@@ -148,7 +148,7 @@ part runs. If he takes 4+ minutes, the trim path (notes first, then slides
 | When | Task | Done when |
 |---|---|---|
 | ✅ | Hotel kept (Embassy Suites, Thu night; reservation in Drive `travel/`) | done |
-| Mon, tonight | Register as student ($145, Ex Ordo) | confirmation email |
+| ✅ | Registered as a student on Ex Ordo ($145), 2026-10-13 | done |
 | ✅ | PPTX uploaded to Ex Ordo by Dr. Al-Ghandour | done |
 | Mon, tonight | USB: both `-sanyer-` PPTX and both PDFs; open each from the stick | files open |
 | Mon, tonight | Run #1: talk out loud with a stopwatch, note the clock at slides 5, 10, 15 | splits logged |
@@ -184,7 +184,7 @@ His requests, and their status:
 | Shorten the owner's part so he can present a portion | ⬜ owner prefers not to cut unless necessary; to settle at the meeting |
 | Presenter bio | ✅ approved text in [`presenter-bio.md`](presenter-bio.md), sent to him; he enters it in Ex Ordo (the owner's account cannot) |
 | Add Dr. Burcu Adivar as Faculty Adviser | ⬜ owner agreed; added during the speaker-notes pass (v5) |
-| Register as a student | ⬜ owner registers Fri/Sat ($145) |
+| Register as a student | ✅ registered 2026-10-13 ($145) |
 | Travel pre-approval | ✅ under FSU Policy 707 he files it; the owner sent him the full packet (Travel Plan, Forms A–B pre-filled, Form C signed) on 2026-10-08 |
 | Meeting | ⬜ Teams invite for Thu Oct 8 after 9:15 PM (awaiting his reply) |
 
