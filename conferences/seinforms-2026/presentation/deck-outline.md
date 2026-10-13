@@ -309,16 +309,15 @@ So, this is a live decision, and the question is whether there's a defensible wa
 - Defensible Rankings
 - Can a weighted scoring equation translate these layers into defensible recommendations?
 
-**Speaker notes** (102 words, ~41 s)
+**Speaker notes** (74 words, ~30 s)
 
-Five questions drive the work:
-Can the county forecasts of battery electric vehicles, or BEVs, be trusted on data they haven't seen?
-Where are the biggest gaps between demand and supply?
-What do ZIP codes show that county averages hide?
-How does commuting change where charging is needed? And
-Can one weighted score turn all of that into a ranking you can defend?
+Five questions drive the work.
+Trust: can the county forecasts of battery electric vehicles, or BEVs, be trusted on data they haven't seen?
+Gaps: where are demand and supply furthest apart?
+ZIP: what do ZIP codes show that county averages hide?
+Commute: how does commuting change where charging is needed? And
+Score: can one weighted score turn all of that into a ranking you can defend?
 The rest of the talk follows these questions.
-The short answer: most of the charging inequality is inside counties, not between them, so the framework works in two tiers, and the top three counties are Union, Mecklenburg, and Guilford.
 
 ---
 

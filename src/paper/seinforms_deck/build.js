@@ -159,7 +159,7 @@ pres.addSection({ title: "Talk" });
     s.addText(q[0], { x: M + 1.2, y, w: 3.2, h: 0.9, fontFace: FONT, fontSize: 19, bold: true, color: BLUE, valign: "middle", margin: 0, isTextBox: true });
     s.addText(q[1], { x: M + 4.5, y, w: W - 2 * M - 4.75, h: 0.9, fontFace: FONT, fontSize: 17, color: NAVY, valign: "middle", margin: 0, isTextBox: true });
   });
-  s.addNotes("Five questions drive the work:\nCan the county forecasts of battery electric vehicles, or BEVs, be trusted on data they haven't seen?\nWhere are the biggest gaps between demand and supply?\nWhat do ZIP codes show that county averages hide?\nHow does commuting change where charging is needed? And\nCan one weighted score turn all of that into a ranking you can defend?\nThe rest of the talk follows these questions.\nThe short answer: most of the charging inequality is inside counties, not between them, so the framework works in two tiers, and the top three counties are Union, Mecklenburg, and Guilford.");
+  s.addNotes("Five questions drive the work.\nTrust: can the county forecasts of battery electric vehicles, or BEVs, be trusted on data they haven't seen?\nGaps: where are demand and supply furthest apart?\nZIP: what do ZIP codes show that county averages hide?\nCommute: how does commuting change where charging is needed? And\nScore: can one weighted score turn all of that into a ranking you can defend?\nThe rest of the talk follows these questions.");
 }
 
 // ---------- Slide 3: Demand Signal ----------
