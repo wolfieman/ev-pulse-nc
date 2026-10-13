@@ -281,7 +281,7 @@ The analysis was completed in spring 2026, using data through February 2026.
 
 **Speaker notes** (125 words, ~50 s)
 
-North Carolina was allocated $109 million in National Electric Vehicle Infrastructure, or NEVI, formula funding for public charging.
+North Carolina was awarded $109 million in National Electric Vehicle Infrastructure, or NEVI, formula funding for public charging.
 The two obvious approaches pull against each other. Follow demand, and you put chargers where they already are. Follow equity alone, and you can build stations nobody uses.
 The North Carolina Department of Transportation, NCDOT, has a federally approved NEVI plan and is building out highway corridors in rounds.
 In February 2026 it revised that plan, narrowing the corridor buildout and shifting funds toward rural and community charging.
