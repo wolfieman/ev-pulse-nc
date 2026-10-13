@@ -1,7 +1,7 @@
 # SEINFORMS 2026 — Presentation Plan
 
 **Talk:** in person, SEINFORMS 2026, Myrtle Beach, SC. **Thursday Oct 15, 9:55–10:17am (22-min slot), Arcadian 1-2**, 2nd of 3 in "AI, BA, Statistics, & Tech Mgmt - Session 2" (chair: Prof. Jae-Dong Hong).
-**Target:** under 15 minutes of talk plus Q&A (15 talk slides, 9 backup slides). Deck v6 notes: 12:52 at 150 wpm, about 14:10–14:50 live.
+**Target:** under 15 minutes of talk plus Q&A (15 talk slides, 9 backup slides). Deck v7 notes: 13:27 at 140 wpm.
 **Deadline:** deck and rehearsal complete by Thu Oct 8, Fri Oct 9 at the latest.
 **Working rule:** steps run in order, as fast as they go, not tied to calendar days.
 
@@ -58,8 +58,9 @@ design input).
 
 ## Deck structure
 
-Current deck: v6 (2026-10-10). Slide-by-slide text and notes are in
-[`deck-outline.md`](deck-outline.md) ("Current deck (v6)").
+Current deck: v7 (2026-10-13; v6 slides with the Run 0 speaker-notes edits).
+Slide-by-slide text and notes are in [`deck-outline.md`](deck-outline.md)
+("Current deck (v7)").
 
 | # | Slide | Visual |
 |---|---|---|
@@ -82,10 +83,10 @@ Current deck: v6 (2026-10-10). Slide-by-slide text and notes are in
 
 ## Timing
 
-Speaker notes total 1,938 words: 12:52 at 150 wpm, about 14:10–14:50 at live
-pace (10–15% slower). No slides cut (owner, 2026-10-10); slides 5, 9 and 10
-carry a "(Cut candidate…)" note if a timed rehearsal runs long. Longest notes:
-slide 6 (210 words), slide 10 (~200).
+Deck v7 speaker notes (after Run 0, 2026-10-13) total about 1,880 spoken words:
+13:27 at 140 wpm. No slides cut (owner, 2026-10-10); slides 5, 9 and 10 still
+carry a "(Cut candidate…)" note. Longest notes: slide 6 (187 words), slide 11
+(177), slide 8 (170).
 
 ## Steps
 
@@ -112,6 +113,7 @@ Corrections come first: the bases are cleaned before the deck is built on them.
 | 13 | **Speaker notes pass** (delivery-ready, per the owner's humanization protocol) and add Dr. Burcu Adivar as Faculty Adviser on the title slide (v5) | Owner + Claude | ✅ done — v5 slide-by-slide review (all 15 slides), Dr. Adivar added |
 | 13b | Independent whole-deck review (numbers, flow, Tufte/Knaflic, tell-them) and owner-approved fixes in six groups | Claude → Owner | ✅ done — v6 delivered: Drive root holds `…-sanyer-upload.pptx` (15 slides, sent 2026-10-10) and `…-sanyer-plus-backup-slides.pptx` (24 slides); v6 presenter set in `presentation/legacy/`; report in Drive `notes/review-whole-deck-2026-10-10.md` |
 | 13c | Lock slide 15 | Owner | ✅ done — locked as in v6 (takeaways ①–③) |
+| 13d | Run 0: owner reviews speaker notes slide by slide; approved edits applied | Owner + Claude | ✅ done 2026-10-13 — deck v7 (notes only; slides identical to v6 and to the Ex Ordo upload). Drive root `-sanyer-` files refreshed; v7 presenter set in `presentation/final/` |
 | 14 | Send the final PPTX to Dr. Al-Ghandour, who uploads it to Ex Ordo (accepts ppt/pptx/key only) | Owner | ✅ done — sent 2026-10-10; he uploaded it to Ex Ordo |
 
 Q&A bank topics (step 10): Chow break and underprediction, the "first" claim, why
@@ -130,16 +132,20 @@ Google Drive references (`01 Projects/seinforms-2026/`):
 - Talk files: `ev-pulse-nc-seinforms-2026-sanyer-upload.pptx` (15 slides, on
   Ex Ordo) and `ev-pulse-nc-seinforms-2026-sanyer-plus-backup-slides.pptx`
   (24 slides, USB copy), each with a slides-only `.pdf` fallback
-- Speaker notes with timings: `presentation/legacy/ev-pulse-nc-seinforms-2026-deck-v6-speaker-notes.md`
+- Speaker notes with timings: `presentation/final/ev-pulse-nc-seinforms-2026-deck-v7-speaker-notes.md`
+  (v6 notes and the v6 delivery files are kept in `presentation/legacy/`)
+- Run 0 edit log: `notes/speaker-notes-run0-edits-2026-10-13.md`
 - Q&A briefing: `notes/qa-briefing-current-status-2026-10-09.md`
 - Reservations: `travel/travel-seinforms-hotel-reservation-2026-10-15.pdf` and
   `travel/travel-seinforms-car-rental-reservation-2026-10-14.pdf`
+- Parking instructions and conference validation code (from the program chair, 2026-10-13):
+  `travel/parking-code-seinforms.pdf`
 - Travel plan and approval packet: `travel/seinforms-2026-travel-plan.pdf`,
   `travel/seinforms-2026-travel-approval-packet.pdf`
 
-Dr. Al-Ghandour may show a couple of NEVI slides right before the talk. That
-time likely comes out of the same slot, so plan for ~14 min and be ready to
-shorten slide 2 (NEVI background) if he has already covered it.
+Dr. Al-Ghandour may show a couple of NEVI slides right before the talk; he
+said he'd try to email them by Wed. Rehearse without them. If they arrive (even
+Thu morning), decide then whether to shorten slide 2 (NEVI background).
 
 **Still unknown:** whether the 22 minutes include Q&A, and how long his NEVI
 part runs. If he takes 4+ minutes, the trim path (notes first, then slides
@@ -157,13 +163,16 @@ part runs. If he takes 4+ minutes, the trim path (notes first, then slides
 | Tue, afternoon | Mock Q&A #1: Prof. Hong (min-max, Union, invariance, weights); answers ≤ 60 s, checked against `qa-bank.md` | no blank answers |
 | Tue, evening | Mock Q&A #2: skeptical reviewer (Chow break, "first" claim, Justice40, LODES, Fig 45 labels, top 10 only) | weak answers rewritten |
 | Wed, by 17:30 | Final run standing, with a clicker; quick-fire 5 Q&A; print a one-page cue card; pack (USB, HDMI adapter, laptop, charger, clicker, **physical** driver's license and credit card for Budget, $300 hold) | packed |
-| Thu | 04:00 wake, 05:00–05:30 depart (~2.5 h) straight to the **venue**, Hilton Myrtle Beach Resort, 10000 Beach Club Dr (not the Embassy Suites, check-in 16:00); by 9:15 find Arcadian 1-2, load the USB on the room PC, check the presenter view, ask the chair for 5- and 1-minute signals | slides on screen |
+| Thu | 04:00 wake, 05:00–05:30 depart (~2.5 h) straight to the **venue**, Hilton Myrtle Beach Resort, 10000 Beach Club Dr (not the Embassy Suites, check-in 16:00); park in the garage next to the Hilton (conference validation code and steps in Drive `travel/parking-code-seinforms.pdf`; they assume a room number, so ask the front desk how a day arrival validates); recheck the session time on arrival (the organizers warn of adjustments); pick up badge at the West Mezzanine registration tables (open 07:00); Arcadian 1-2 hosts another session 8:00–9:15, so during the 9:15–9:30 coffee break load the USB on the room PC, check the presenter view, ask the chair for 5- and 1-minute signals | slides on screen |
 
-**Checkpoints** (v6 notes at 140 wpm, cumulative):
+**Run 0 (2026-10-13):** owner reviewed the notes slide by slide; the approved
+edits are in deck v7 (slides unchanged from v6, notes only).
+
+**Checkpoints** (v7 notes at 140 wpm, cumulative):
 
 | Slide | 1 | 3 | 5 | 6 | 8 | 10 | 12 | 13 | 15 |
 |---|---|---|---|---|---|---|---|---|---|
-| Clock | 0:24 | 2:00 | 3:23 | 4:53 | 6:45 | 9:12 | 11:03 | 12:15 | 14:00 |
+| Clock | 0:24 | 2:02 | 3:22 | 4:42 | 6:38 | 8:41 | 10:41 | 11:40 | 13:27 |
 
 If you're more than 45 s behind at slide 8, use the in-room skip notes on
 slides 9 and 10.
