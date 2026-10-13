@@ -338,13 +338,12 @@ The rest of the talk follows these questions.
 - Top 10 counties hold 73% of the statewide BEV fleet
 - Data as of Feb 2026: NCDOT registrations through Oct 2025; Alternative Fuels Data Center (AFDC) stations as of Feb 2026
 
-**Speaker notes** (108 words, ~43 s)
+**Speaker notes** (91 words, ~36 s)
 
-Start with the backdrop: demand isn't in doubt.
-The fleet went from 5,165 battery-electric vehicles in 2018 to 94,371 by mid-2025, a 53.8% annual growth rate.
-It's also very concentrated: a Gini coefficient of 0.805 across counties, on a scale where 0 is perfectly even and 1 is everything in one place.
-Wake County alone has more BEVs than the bottom 60 counties put together.
-Supply is the one that hasn't kept up. North Carolina has 16.9 BEVs per public port, against the International Energy Agency's global benchmark of about 10.
+Demand isn't in doubt.
+Growth: you can see how fast the fleet has grown since 2018.
+Concentrated: but it sits in a few counties. On the Gini scale, 0 is perfectly even and 1 is everything in one place, and we're close to 1. Wake County alone has more BEVs than the bottom 60 counties put together.
+Supply lags: there are far more BEVs per public port here than the International Energy Agency's benchmark.
 The top 10 counties hold 73% of the fleet, which is why the scoring focuses on them.
 
 ---
@@ -374,15 +373,15 @@ The top 10 counties hold 73% of the fleet, which is why the scoring focuses on t
 - All public data · 8,600 county-month observations · SAS Model Studio forecasts (fall 2025), validated in Python (spring 2026)
 - NREL: National Renewable Energy Laboratory · AFDC: Alternative Fuels Data Center · API: application programming interface · LEHD LODES: Longitudinal Employer-Household Dynamics Origin-Destination Employment Statistics · CEJST: Climate and Economic Justice Screening Tool · ZCTA: ZIP Code Tabulation Area
 
-**Speaker notes** (79 words, ~32 s)
+**Speaker notes** (100 words, ~40 s)
 
-My work runs in five phases.
-Phase 1 tests the demand forecasts on data they never saw.
-Phase 2 rebuilds the supply side from the Department of Energy's Alternative Fuels Data Center, all charger levels, not just fast chargers.
-Phase 3 measures inequality at the ZIP level.
-Phase 4 adds workplace demand from Census commuting data.
-Phase 5 overlays the federal disadvantaged-community designations.
-Everything feeds one score, every input is public, and the whole pipeline reruns from the repository.
+Here's how each question gets answered.
+Trust: Phase 1 tests the demand forecasts on data they never saw.
+Gaps: Phase 2 rebuilds the supply side from the Department of Energy's Alternative Fuels Data Center, all charger levels, not just fast chargers.
+ZIP: Phase 3 measures inequality at the ZIP level.
+Commute: Phase 4 adds workplace demand from Census commuting data.
+Phase 5 is the one the questions don't name: it overlays the federal disadvantaged-community designations, which drive the equity side of the score.
+Score: everything feeds one score, every input is public, and the whole pipeline reruns from the repository.
 
 (Cut candidate for a 15-minute slot: move to backup.)
 
