@@ -281,12 +281,14 @@ The analysis was completed in spring 2026, using data through February 2026.
 
 **Speaker notes** (125 words, ~50 s)
 
-North Carolina was awarded $109 million in National Electric Vehicle Infrastructure, or NEVI, formula funding for public charging.
-The two obvious approaches pull against each other. Follow demand, and you put chargers where they already are. Follow equity alone, and you can build stations nobody uses.
+That money comes from the federal National Electric Vehicle Infrastructure program, or NEVI, and it can only go to public charging.
+The two obvious approaches pull against each other.
+Follow demand, and you put chargers where they already are.
+Follow equity alone, and you can build stations nobody uses.
 The North Carolina Department of Transportation, NCDOT, has a federally approved NEVI plan and is building out highway corridors in rounds.
-In February 2026 it revised that plan, narrowing the corridor buildout and shifting funds toward rural and community charging.
+In February 2026 it narrowed the corridor buildout and shifted funds toward rural and community charging.
 What it hasn't published is a data-driven way to rank counties, and that matters most for the community phase still ahead.
-So this is a live decision, and the question is whether there's a defensible way to make it.
+So, this is a live decision, and the question is whether there's a defensible way to make it.
 
 ---
 
