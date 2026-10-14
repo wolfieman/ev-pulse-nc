@@ -1,7 +1,7 @@
 # SEINFORMS 2026 — Presentation Plan
 
 **Talk:** in person, SEINFORMS 2026, Myrtle Beach, SC. **Thursday Oct 15, 9:55–10:17am (22-min slot), Arcadian 1-2**, 2nd of 3 in "AI, BA, Statistics, & Tech Mgmt - Session 2" (chair: Prof. Jae-Dong Hong).
-**Target:** under 15 minutes of talk plus Q&A (15 talk slides, 9 backup slides). Deck v7 notes: 12:44 at 140 wpm.
+**Target:** under 15 minutes of talk plus Q&A (15 talk slides, 9 backup slides). Deck v7 notes: 12:11 at 140 wpm.
 **Deadline:** deck and rehearsal complete by Thu Oct 8, Fri Oct 9 at the latest.
 **Working rule:** steps run in order, as fast as they go, not tied to calendar days.
 
@@ -84,7 +84,7 @@ Slide-by-slide text and notes are in [`deck-outline.md`](deck-outline.md)
 ## Timing
 
 Deck v7 speaker notes (after Run 0 and the Round 1 rewrites, 2026-10-13):
-12:44 at 140 wpm, not counting "[optional: …]" sentences (slide 8) or
+12:11 at 140 wpm, not counting "[optional: …]" sentences (slides 8–11) or
 "(pause)" cues. No slides cut (owner, 2026-10-10); slides 5, 9 and 10 still
 carry a "(Cut candidate…)" note.
 
@@ -172,7 +172,7 @@ edits are in deck v7 (slides unchanged from v6, notes only).
 
 | Slide | 1 | 3 | 5 | 6 | 8 | 10 | 12 | 13 | 15 |
 |---|---|---|---|---|---|---|---|---|---|
-| Clock | 0:24 | 1:50 | 3:12 | 4:24 | 5:55 | 7:58 | 9:58 | 10:57 | 12:44 |
+| Clock | 0:24 | 1:50 | 3:12 | 4:24 | 5:55 | 7:33 | 9:25 | 10:24 | 12:11 |
 
 If you're more than 45 s behind at slide 8, use the in-room skip notes on
 slides 9 and 10.

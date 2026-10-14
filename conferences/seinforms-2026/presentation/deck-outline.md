@@ -478,13 +478,13 @@ That is why the framework has two tiers: rank the counties, then target ZIP code
 
 **Native chart:** Net daily commuters, selected counties (in minus out)
 
-**Speaker notes** (122 words, ~49 s)
+**Speaker notes** (108 words, ~43 s)
 
-That's where the inequality is. Next, where the demand is during the day. Registration data tells you where EVs sleep, not where they sit during the workday.
+Next, where the demand is during the day. Registration data tells you where EVs sleep, not where they sit during the workday.
 For the workday I used Census commuting data, LODES, for 2021: 4,198,163 workers, filtered to EV-affordable incomes and adjusted for remote work, leaving 859,260 commuters.
 The chart shows net daily commuters.
 Mecklenburg takes in 194,361 more workers a day than it sends out, and Wake and Durham are job centers too.
-Union is the opposite: 36,113 more people leave each day than arrive. It's a bedroom community: people live there and drive to Charlotte for work.
+Union is the opposite: 36,113 more people leave each day than arrive. It's a bedroom community. [optional: People live there and drive to Charlotte for work.]
 That daytime demand feeds the cost-effectiveness part of the score I'll show in a moment, where Mecklenburg scores highest.
 
 (Cut candidate for a 15-minute slot: move to backup.)
@@ -524,15 +524,14 @@ That daytime demand feeds the cost-effectiveness part of the score I'll show in 
 - 30%
 - CEJST v2.0 as of Jan 21, 2025; tool removed Jan 22, 2025 after Executive Order (EO) 14008 was rescinded; data from the Environmental Data & Governance Initiative (EDGI) / Public Environmental Data Partners (PEDP) archive
 
-**Speaker notes** (166 words, ~66 s)
+**Speaker notes** (122 words, ~49 s)
 
 Phase 5 brings in equity.
 The federal Climate and Economic Justice Screening Tool, CEJST, flags a census tract as disadvantaged when it's low-income and also burdened on at least one of eight environmental, health, or infrastructure measures.
-In the top 10 counties, 18.5% of residents live in those tracts, and 24.5% of stations sit in them. So in aggregate, siting is roughly proportional. The story is in the variation, on the right.
-Each dot is a county's share of residents in disadvantaged tracts; the dashed line is the 18.5% average.
-Guilford is at 29.2%; Wake at only 8.1%, and Orange at 4.9%. That share is the largest input to the equity pillar.
+In the top 10 counties, 18.5% of residents live in those tracts, and 24.5% of stations sit in them. This means that in aggregate, siting is roughly proportional. The story is in the variation, on the right.
+Guilford sits well above the dashed average; Wake and Orange sit far below it. That share is the largest input to the equity pillar.
 And as the Theil result showed, proportional in total doesn't mean well served inside: Mecklenburg has plenty of chargers, but they cluster in Uptown.
-One caveat: the screening tool was taken down in January 2025. I use the archived version 2.0, and dropping its most contested category, climate, leaves 7 of 10 counties unchanged.
+[optional: One caveat: the screening tool was taken down in January 2025. I use the archived version 2.0, and dropping its most contested category, climate, leaves 7 of 10 counties unchanged.]
 
 (Cut candidate: trim first at rehearsal if the talk runs long.)
 
@@ -557,17 +556,16 @@ One caveat: the screening tool was taken down in January 2025. I use the archive
 - Weights follow data confidence. Each pillar is a weighted composite of sub-metrics, min-max normalized to 0–1.
 - Pillars measure different things: max variance inflation factor (VIF) 1.41 (concern threshold 5.0)
 
-**Speaker notes** (177 words, ~71 s)
+**Speaker notes** (163 words, ~65 s)
 
-Those three layers, demand, workplace, and equity, now go into one score with three pillars.
+Score: those three layers, demand, workplace, and equity, now go into one score with three pillars.
 I call it the NEVI Priority Score because it's built to rank counties for NEVI funding, but the formula is mine, not a federal one.
-Each pillar is built from several measures, and every measure is min-max normalized: rescaled so the lowest county gets 0 and the highest gets 1, so measures in different units can be added together.
-The weights follow data confidence.
-Equity gets 0.40. It's anchored on Justice40, a 2021 federal goal that 40% of certain federal benefits, NEVI included, flow to disadvantaged communities.
-I treat that as an analytical anchor, not a legal requirement, since the executive order was rescinded in January 2025.
-Utilization, which is BEVs per charging port, gets 0.35 because its demand data passed the out-of-sample test.
+Each pillar is built from several measures, each min-max normalized: the lowest county gets 0 and the highest gets 1, so measures in different units can be added.
+[optional: The weights follow data confidence.]
+Equity gets 0.40, anchored on Justice40, a 2021 federal goal that 40% of certain federal benefits, NEVI included, flow to disadvantaged communities. That order was rescinded in January 2025, so I treat it as an analytical anchor, not a legal requirement.
+Utilization, BEVs per charging port, gets 0.35 because its demand data passed the out-of-sample test.
 Cost-effectiveness gets 0.25 because workplace demand is the least certain input.
-The highest variance inflation factor is 1.41, well under the usual concern threshold of 5, so the pillars overlap only modestly, and each adds its own information.
+And the pillars overlap only modestly: the highest variance inflation factor is 1.41, well under the usual threshold of 5, which means each adds its own information.
 
 ---
 
@@ -590,12 +588,12 @@ The highest variance inflation factor is 1.41, well under the usual concern thre
 
 **Native chart:** NEVI Priority Score, top 10 counties (Table 2)
 
-**Speaker notes** (102 words, ~41 s)
+**Speaker notes** (98 words, ~39 s)
 
 Here's the NEVI Priority Score for the top 10 counties.
-Union, Mecklenburg, and Guilford come out on top.
+(pause) Union, Mecklenburg, and Guilford come out on top.
 The same three stay on top as the equity weight moves from 0.30 to 0.50, though the order shifts: Mecklenburg gains as equity counts more.
-The remote-work assumption can't change the ranking at all, because a uniform multiplier cancels in the normalization, so I treat it as an invariance, not a test.
+The remote-work assumption can't change the ranking at all: a uniform multiplier cancels in the normalization, meaning it's an invariance, not a test.
 And this is one factor at a time, not a full search of all weight combinations.
 Notice Wake: the most BEVs in the state, but fifth, because its equity burden is low.
 
