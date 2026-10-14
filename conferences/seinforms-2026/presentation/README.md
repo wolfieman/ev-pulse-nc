@@ -158,7 +158,7 @@ part runs. If he takes 4+ minutes, the trim path (notes first, then slides
 | ✅ | PPTX uploaded to Ex Ordo by Dr. Al-Ghandour | done |
 | ✅ | Round 1 (Tue Oct 13): notes rewritten slide by slide for recall (hook words, `[optional: …]` sentences, `(pause)` cues); 11:52 at 140 wpm | done |
 | Wed, morning (HUB) | USB: copy both `-sanyer-` PPTX and both PDFs from the Drive root (current as of Round 1); open each from the stick | files open |
-| Wed, morning (HUB) | **Run #1** at the HUB: standing, full voice, clicker; record audio on the phone; slides and cue lines only, no notes; say the `[optional]` sentences; note the clock at slides 6, 10, 13 against the checkpoints; mark every blank | total, splits and blanks sent to Claude |
+| ✅ | **Run #1** at the HUB (Wed AM): 17:28, seated read-through of the notes while presenting live through Teams from OneDrive; ~95% of `[optional]` sentences skipped. Reading pace (~95 wpm), not the delivery pace; next runs standing from the cue card | done; cue card in [`cue-card.md`](cue-card.md) (printable PDF in Drive `presentation/final/`) |
 | Wed, late morning | Fix blanks; trim only if over (proposed, approved); Run #2 with notes face-down | ≤ 14:30 with optional sentences, no stalls |
 | Wed, midday | Mock Q&A #1: Prof. Hong (min-max, Union, invariance, weights); answers ≤ 60 s, checked against `qa-bank.md` | no blank answers |
 | Wed, afternoon | Mock Q&A #2: skeptical reviewer (Chow break, "first" claim, Justice40/CEJST takedown, LODES 2021, Fig 45 labels, top 10 only, siting) | weak answers rewritten |
