@@ -635,15 +635,16 @@ Notice Wake: the most BEVs in the state, but fifth, because its equity burden is
 - Buncombe
 - Orange
 
-**Speaker notes** (137 words, ~55 s)
+**Speaker notes** (95 words, ~38 s)
 
 The ranking says where, but not why.
-When you plot equity across and utilization up, three archetypes appear.
+Plotting equity across and utilization up, three archetypes appear.
 Union is utilization-driven: 101.5 BEVs per port, more than three times the next county. It needs more stations.
-One caveat: Union is so far ahead that min-max scaling puts it at 1.0 and squeezes the other nine to 0.229 or below on utilization. The gap is real, but the scoring is sensitive to an extreme value like this.
+[optional: One caveat: Union is so far ahead that min-max scaling puts it at 1.0 and squeezes the other nine to 0.229 or below on utilization. The gap is real, but the scoring is sensitive to an extreme value like this.]
 Mecklenburg and Guilford are equity-driven. For Mecklenburg, that's partly its disadvantaged residents and partly the Uptown gap: chargers unevenly spread across its ZIP codes.
 They need better-targeted stations.
-Orange is low on everything and isn't a priority now. And the top-right corner is empty: no county is high on both, so every county is a trade-off, which the framework makes visible.
+Orange is low on everything and isn't a priority now. (pause)
+And the top-right corner is empty: no county is high on both, so every county is a trade-off, which the framework makes visible.
 
 ---
 
@@ -663,17 +664,19 @@ Orange is low on everything and isn't a priority now. And the top-right corner i
 - Static BEV counts: understates growth (conservative)
 - CEJST v2.0 lock, NEVI rule changes: direction unknown (policy risk)
 
-**Speaker notes** (135 words, ~54 s)
+**Speaker notes** (126 words, ~50 s)
 
-So, what does this add, and where is it weak?
+What does this add, and where is it weak?
 Three contributions.
-First, using the Theil decomposition as a design input, not just a summary number. To my knowledge, it's the first state-level application, and the first to use the split to design the allocation itself.
+First, the Theil decomposition used as a design input, not just a summary number. To my knowledge, it's the first applied to a state-level allocation problem.
 Second, a validated crosswalk that brings the federal equity designations down to ZIP level.
 Third, a score whose pillars measure different things and whose top three holds across the equity-weight sweep.
 Now the limitations. Each one comes with its direction of bias.
-The scope covers 73% of the fleet. The 2021 commuting data shifts the totals, not the ranking.
-Static counts understate growth, which makes the scores conservative. And federal policy changes are a risk whose direction we can't know yet.
-None of them directly undermines the headline rankings.
+The scope covers 73% of the fleet.
+The 2021 commuting data shifts the totals, not the ranking.
+Static counts understate growth, which makes the scores conservative.
+And federal policy changes are a risk whose direction we can't know yet.
+(pause) None of them directly undermines the headline rankings.
 
 ---
 
@@ -693,16 +696,16 @@ None of them directly undermines the headline rankings.
 - github.com/wolfieman/ev-pulse-nc
 - sanyer.org/research-lab
 
-**Speaker notes** (115 words, ~46 s)
+**Speaker notes** (122 words, ~49 s)
 
 This ranking is meant to inform NCDOT's decisions, not replace them.
-Right-of-way, utilities, and politics all matter and aren't in the model.
+Site availability, power hookups, and politics all matter and aren't in the model.
 What it gives is an analytical floor: a ranking an auditor can trace, and ZIP-level targets a planner can use.
 And NCDOT's community phase, which is still ahead, is exactly where a county ranking can help.
-Next: all 100 counties, a check against NCDOT's actual deployments, and confidence intervals on the scores.
-If you remember one thing: most of the charging gap is inside counties, so allocation has to work county first, then neighborhood.
-I'd like to thank my faculty advisors, Dr. Al-Ghandour and Dr. Adivar.
-Thank you, I'm happy to take questions.
+Future research should involve: all 100 counties, a check against NCDOT's actual deployments, and confidence intervals on the scores.
+I'd like to thank my faculty advisors, Dr. Al-Ghandour and Dr. Adivar, and SEINFORMS for the opportunity to present.
+(pause) If you remember one thing: most of the charging gap is inside counties, so allocation has to work county first, then neighborhood.
+(pause) Thank you! [optional: I'm happy to take questions.]
 
 ---
 
