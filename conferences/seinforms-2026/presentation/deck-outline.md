@@ -257,10 +257,10 @@ times assume 150 words per minute.
 
 **Speaker notes** (56 words, ~22 s)
 
-Good morning!
+Good morning.
 I'm Wolfgang Sanyer, an MBA student in business analytics at Fayetteville State.
 This talk is about how North Carolina could decide where $109 million in federal EV charging money should go, and what the data says about where the real gaps are.
-The analysis was completed in spring 2026, using data through February 2026.
+The analysis was completed during the spring, using data through February 2026.
 
 ---
 
@@ -279,7 +279,7 @@ The analysis was completed in spring 2026, using data through February 2026.
 - Efficiency vs. equity
 - Demand-driven allocation reinforces existing concentration; equity-driven allocation can place stations where use is too low to sustain them.
 
-**Speaker notes** (147 words, ~59 s)
+**Speaker notes** (125 words, ~50 s)
 
 That money comes from the federal National Electric Vehicle Infrastructure program, or NEVI, and it can only go to public charging.
 The two obvious approaches pull against each other.
@@ -288,7 +288,6 @@ Follow equity alone, and you can build stations nobody uses.
 The North Carolina Department of Transportation, NCDOT, has a federally approved NEVI plan and is building out highway corridors in rounds.
 In February 2026 it narrowed the corridor buildout and shifted funds toward rural and community charging.
 What it hasn't published is a data-driven way to rank counties, and that matters most for the community phase still ahead.
-This builds on my fall 2025 research, where I built the county forecasts in SAS. This study extends it in five parts.
 So, this is a live decision, and the question is whether there's a defensible way to make it.
 
 ---
@@ -310,9 +309,10 @@ So, this is a live decision, and the question is whether there's a defensible wa
 - Defensible Rankings
 - Can a weighted scoring equation translate these layers into defensible recommendations?
 
-**Speaker notes** (74 words, ~30 s)
+**Speaker notes** (96 words, ~38 s)
 
 Five questions drive the work.
+This builds on my fall 2025 research, where I built the county forecasts in SAS. This study extends it in five parts.
 Trust: can the county forecasts of battery electric vehicles, or BEVs, be trusted on data they haven't seen?
 Gaps: where are demand and supply furthest apart?
 ZIP: what do ZIP codes show that county averages hide?
@@ -485,9 +485,8 @@ Next, where the demand is during the day. Registration data tells you where EVs 
 For the workday I used Census commuting data, LODES, for 2021: 4,198,163 workers, filtered to EV-affordable incomes and adjusted for remote work, leaving 859,260 commuters.
 The chart shows net daily commuters.
 Mecklenburg takes in 194,361 more workers a day than it sends out, and Wake and Durham are job centers too.
-Union is the opposite: 36,113 more people leave each day than arrive. It's a bedroom community. [optional: People live there and drive to Charlotte for work.]
+Union is the opposite: 36,113 more people leave each day than arrive. It's a bedroom community. [optional: people live there and drive to Charlotte for work.]
 That daytime demand feeds the cost-effectiveness part of the score I'll show in a moment, where Mecklenburg scores highest.
-
 (Cut candidate for a 15-minute slot: move to backup.)
 
 ---
