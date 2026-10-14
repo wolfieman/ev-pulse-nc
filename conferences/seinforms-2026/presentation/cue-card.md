@@ -5,7 +5,7 @@ Target end-of-slide times at ~125 wpm (13:17 total). **Bold** = say word for wor
 | # | Slide | End | Cues |
 |---|---|---|---|
 | 1 | Title | 0:27 | **"Good morning! I'm Wolfgang Sanyer, an MBA student in business analytics at Fayetteville State."** → $109M: where should it go, where are the real gaps → spring 2026, data through Feb 2026 |
-| 2 | $109M | 1:27 | That money → NEVI, public only → seesaw: demand (chargers where they are) / equity alone (stations nobody uses) → NCDOT plan, corridors in rounds → Feb '26 narrowed, rural + community → gap: no county ranking, community phase ahead → **"So, this is a live decision, and the question is whether there's a defensible way to make it."** |
+| 2 | $109M | 1:27 | That money → NEVI, public only → seesaw: demand (chargers where they are) / equity alone (stations nobody uses) → NCDOT plan, corridors in rounds → Feb '26 narrowed, rural + community → gap: no county ranking, community phase ahead → fall '25 research: SAS forecasts → this study: five parts → **"So, this is a live decision, and the question is whether there's a defensible way to make it."** |
 | 3 | Questions | 2:03 | **Trust · Gaps · ZIP · Commute · And… Score** (spell out BEVs on Trust) → "The rest of the talk follows these questions." |
 | 4 | Fleet | 2:47 | Demand isn't in doubt → Growth → Concentrated: Gini scale, close to 1; Wake > bottom 60 → Supply lags: per port vs IEA → top 10 = 73%, why scoring focuses on them |
 | 5 | Phases | 3:35 | "Here's how each question gets answered" → Trust P1 · Gaps P2 (AFDC, all levels) · ZIP P3 · Commute P4 → P5, the one the questions don't name: CEJST → Score: public, reruns |
