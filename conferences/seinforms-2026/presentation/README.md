@@ -156,17 +156,20 @@ part runs. If he takes 4+ minutes, the trim path (notes first, then slides
 | ✅ | Hotel kept (Embassy Suites, Thu night; reservation in Drive `travel/`) | done |
 | ✅ | Registered as a student on Ex Ordo ($145), 2026-10-13 | done |
 | ✅ | PPTX uploaded to Ex Ordo by Dr. Al-Ghandour | done |
-| Mon, tonight | USB: both `-sanyer-` PPTX and both PDFs; open each from the stick | files open |
-| Mon, tonight | Run #1: talk out loud with a stopwatch, note the clock at slides 5, 10, 15 | splits logged |
-| Tue, morning | Trim notes on any slide that ran over its checkpoint (proposed, approved) | under budget |
-| Tue, midday | Runs #2 and #3, notes face-down after #2 | ≤ 14:30, no stalls |
-| Tue, afternoon | Mock Q&A #1: Prof. Hong (min-max, Union, invariance, weights); answers ≤ 60 s, checked against `qa-bank.md` | no blank answers |
-| Tue, evening | Mock Q&A #2: skeptical reviewer (Chow break, "first" claim, Justice40, LODES, Fig 45 labels, top 10 only) | weak answers rewritten |
+| ✅ | Round 1 (Tue Oct 13): notes rewritten slide by slide for recall (hook words, `[optional: …]` sentences, `(pause)` cues); 11:52 at 140 wpm | done |
+| Wed, morning (HUB) | USB: copy both `-sanyer-` PPTX and both PDFs from the Drive root (current as of Round 1); open each from the stick | files open |
+| Wed, morning (HUB) | **Run #1** at the HUB: standing, full voice, clicker; record audio on the phone; slides and cue lines only, no notes; say the `[optional]` sentences; note the clock at slides 6, 10, 13 against the checkpoints; mark every blank | total, splits and blanks sent to Claude |
+| Wed, late morning | Fix blanks; trim only if over (proposed, approved); Run #2 with notes face-down | ≤ 14:30 with optional sentences, no stalls |
+| Wed, midday | Mock Q&A #1: Prof. Hong (min-max, Union, invariance, weights); answers ≤ 60 s, checked against `qa-bank.md` | no blank answers |
+| Wed, afternoon | Mock Q&A #2: skeptical reviewer (Chow break, "first" claim, Justice40/CEJST takedown, LODES 2021, Fig 45 labels, top 10 only, siting) | weak answers rewritten |
 | Wed, by 17:30 | Final run standing, with a clicker; quick-fire 5 Q&A; print a one-page cue card; pack (USB, HDMI adapter, laptop, charger, clicker, **physical** driver's license and credit card for Budget, $300 hold) | packed |
 | Thu | 04:00 wake, 05:00–05:30 depart (~2.5 h) straight to the **venue**, Hilton Myrtle Beach Resort, 10000 Beach Club Dr (not the Embassy Suites, check-in 16:00); park in the garage next to the Hilton (conference validation code and steps in Drive `travel/parking-code-seinforms.pdf`; they assume a room number, so ask the front desk how a day arrival validates); recheck the session time on arrival (the organizers warn of adjustments); pick up badge at the West Mezzanine registration tables (open 07:00); Arcadian 1-2 hosts another session 8:00–9:15, so during the 9:15–9:30 coffee break load the USB on the room PC, check the presenter view, ask the chair for 5- and 1-minute signals | slides on screen |
 
-**Run 0 (2026-10-13):** owner reviewed the notes slide by slide; the approved
-edits are in deck v7 (slides unchanged from v6, notes only).
+**Run 0 and Round 1 (2026-10-13):** owner reviewed, then rewrote for recall,
+the notes slide by slide; all approved edits are in deck v7 (slides unchanged
+from v6, notes only). Live pace is likely ~125 wpm: about 13:15, or ~14:20
+with every `[optional]` sentence. Use the slack for pauses and the S10/S13
+caveats, not padding.
 
 **Checkpoints** (v7 notes at 140 wpm, cumulative):
 
